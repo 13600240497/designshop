@@ -1,0 +1,149 @@
+<script>
+    ;(function(window, document, $) {
+        /* 商品数据 */
+        var goodsManager = {
+            $container: $('.nav-list-setting'),
+            updateIndex: function() {
+                this.$container.find('.nav-item').each(function(index){
+                    var $this = $(this);
+                    $this.find('.nav-title').html('分类' + (index + 1));
+                });
+            },
+            addEvents: function() {
+                var self = this;
+
+                self.removeEvents();
+
+                $('#U000208-model1')
+                .on('click.U000208', '.icon-up', function() {
+                    var target = $(this).closest('.nav-item');
+                    if (target.prev('.nav-item').length > 0) {
+                        target.prev('.nav-item').before(target);
+                        self.updateIndex();
+                    }
+                })
+                .on('click.U000208', '.icon-down', function() {
+                    var target = $(this).closest('.nav-item');
+                    if (target.next('.nav-item').length > 0) {
+                        target.next('.nav-item').after(target);
+                        self.updateIndex();
+                    }
+                })
+                .on('click.U000208', '.add-class', function() {
+                    var clone = self.$container.find('.nav-item').eq(0).clone();
+                    clone.find('input.category-name').val('');
+                    clone.find('textarea[name=goodsSKU]').val('');
+                    $('.nav-list-setting').append(clone);
+                    self.updateIndex();
+                })
+                .on('click.U000208', '.icon-delete', function() {
+                    var len = self.$container.find('.nav-item').length;
+                    if (len == 1){
+                        layui.layer.msg('最后一项不能删除');
+                    }else{
+                        var target = $(this).closest('.nav-item');
+                        layui.layer.confirm('确认删除吗？', {
+                            btn: ['取消', '确定'],
+                            area: '420px',
+                            skin: 'element-ui-dialog-class',
+                            icon: 3,
+                            title: '提示'
+                        }, function (index) {
+                            layui.layer.close(index);
+                        }, function (index) {
+                            target.remove();
+                            self.updateIndex();
+                        });
+                    }
+                });
+            },
+            removeEvents: function() {
+                $(document).off('click.U000208');
+            },
+            setGoods: function() {
+                var data = this.$container.find('.nav-item').map(function(i) {
+                    var $item = $(this);
+                    var categoryName = $.trim($item.find('input.category-name').val());
+                    var skus = $.trim($item.find('textarea[name=goodsSKU]').val());
+                    return { index: i + 1, categoryName: categoryName, lists: skus };
+                }).toArray();
+                this.$container.find('input[name=goodsSKU]').val(JSON.stringify(data));
+            },
+            init: function() {
+                this.addEvents();
+                this.updateIndex();
+            }
+        };
+
+        goodsManager.init();
+
+        function setImageSize(progress) {
+            /* 不是规定的尺寸要提示 */
+            var deferredList = [];
+            $('input[name=pc_banner], input[name=pad_banner], input[name=m_banner]').each(function() {
+                if ($.trim(this.value)) {
+                    var deferred = $.Deferred();
+                    deferredList.push(deferred);
+                    var imgEl = new Image();
+                    imgEl.onload = function () {
+                        if (this.name === 'pc_banner' && this.naturalWidth !== 1200) {
+                            deferred.reject('PC Banner图片宽度必须是1200px，现在是' + this.naturalWidth + 'px');
+                            return;
+                        }
+
+                        if (this.name === 'pad_banner' && this.naturalWidth !== 1024) {
+                            deferred.reject('PAD Banner图片宽度必须是1024px，现在是' + this.naturalWidth + 'px');
+                            return;
+                        }
+
+                        if (this.name === 'm_banner' && this.naturalWidth !== 750) {
+                            deferred.reject('M Banner图片宽度必须是750px，现在是' + this.naturalWidth + 'px');
+                            return;
+                        }
+
+                        var widthElSelector = 'input[name=' + this.name + '_width]';
+                        $(widthElSelector).val(this.naturalWidth);
+                        var heightElSelector = 'input[name=' + this.name + '_height]';
+                        $(heightElSelector).val(this.naturalHeight);
+                        deferred.resolve(true);
+                    };
+                    imgEl.onerror = function() {
+                        if (this.name === 'pc_banner') {
+                            deferred.reject('PC Banner图片自动获取宽高度失败');
+                            return;
+                        }
+
+                        if (this.name === 'pad_banner') {
+                            deferred.reject('PAD Banner图片自动获取宽高度失败');
+                            return;
+                        }
+
+                        if (this.name === 'm_banner') {
+                            deferred.reject('M Banner图片自动获取宽高度失败');
+                            return;
+                        }
+                    };
+                    imgEl.name = this.name;
+                    imgEl.src = this.value;
+                }
+            });
+            if (deferredList.length > 0) {
+                $.when.apply($, deferredList)
+                    .done(function() {
+                        progress.next();
+                    })
+                    .fail(function(errorMsg) {
+                        progress.cancel();
+                        layer.msg(errorMsg);
+                    });
+            } else {
+                progress.next();
+            }
+        }
+
+        window.U000208_submit = function(progress) {
+            goodsManager.setGoods();
+            setImageSize(progress);
+        };
+    })(window, document, jQuery);
+</script>

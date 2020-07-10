@@ -1,0 +1,130 @@
+
+{%
+    set config = {
+        type:1,
+        time:'Ends In:00:00:00:00',
+        imgSrc:'https://gloimg.gbtcdn.com/gb/201312/goods-img/1461829069883227068.jpg',
+        title:'tttitle',
+        oldPrice:'$20',
+        nowPrice:'$18',
+        couponLeft:200,
+        couponCode:'asx1993005050',
+        APP_price:'$20',
+        PC_price:'$40',
+        APP_imgSrc:'',
+        numLeft: 9,
+    }
+%}
+
+<div class="gs-list-item">
+   <div class="item-content">
+        {# 头部倒计时组件 #}
+       <p class="gs-goods-time gs-google-time" style="background-color: {{ data.time_limit_bgc }}; color: {{ data.time_limit_ftc }};">
+           <em class="icon-clock"></em>
+           <span class="gs-goodsRushDown" data-begin="{{ item.startTime }}" data-end="{{ item.endTime }}">{{gb_component_trans(lang , 'ends_in' )}}: 00:00:00</span>
+       </p>
+        {# 图片 #}
+        <a href="{{ item.surl_title }}" class="anthor-detail">
+            <div class="item-img-wrapper">
+                {% if item.stock_num > 0 %}
+                    <img class="js-lazyload item-img" src="{{item.goodsImg}}"/>
+                {% else %}
+					<div class="has-cloth-not">
+						<img class="js-lazyload item-img" src="{{item.goodsImg}}"/>
+						<i class="gs-goods-status"><span>{{gb_component_trans(lang , 'sold_out')}}</span></i>
+					</div>
+                {% endif %}
+                {% if data.discount_isShow == 1 %}
+                    <div class="price-off-icon" style="
+                            background: {{ data.discount_bgc }};
+                            color: {{ data.discount_ftc }};
+                            right: {{ data.discount_marginLeft }}px;
+                            top: {{ data.discount_marginTop }}px;
+                            width: {{ data.discount_width }}px;
+                            height: {{ data.discount_height }}px;
+                            font-size: {{ data.discount_fts }}px;
+                            {% if data.discount_bgImage != '' %}
+                                background: url({{ data.discount_bgImage }});
+                            {% endif %}
+
+                            ">
+                        <p><strong>{{ item.discount }}</strong>%</p><p style="font-size: {{ data.off_fts }}px;">OFF</p>
+                    </div>
+                {% endif %}
+            </div>
+            {# 商品标题 #}
+            <h3 class="item-title">{{ item.goodsTitle|default('fdafasdfa') }}</h3>
+        </a>
+        {% if config.type != 3 %}
+            {# 商品价格/原价 #}
+            <p class="old-price js-currency" data-currency="{{ item.shop_price }}"></p>
+            {# 商品折后价 #}
+            {% if data.sale_price_isShow == 1 %}
+            <p class="now-price">
+                <em style="font-size: {{ data.after_coupon_fts }}px;">{{gb_component_trans(lang , 'after_coupon' )}}:</em>
+                <em class="js-currency discountPrice" data-currency="{{ item.price }}"></em>
+            </p>
+            {% endif %}
+        {% endif %}
+        {# 优惠券coupon #}
+        {% if config.type == 1 %}
+        <div class="coupon" style="background: {{ data.coupon_block_bgc }}; color: {{ data.coupon_ftc }};
+                border-style: {% if data.coupon_border_type == 1 %} dashed {% else %} solid {% endif %};
+                border-color: {{ data.coupon_border_color }};
+                ">
+            <p style="color: {{ data.surplus_coupon_bgc }}; font-size: {{ data.surplus_coupon_fts }}px;">{{ item.leftCount }} coupon left</p>
+            <p style="font-size: {{ data.surplus_couponCode_fts }}px;">{{ item.couponCode|default('fdafasdfa') }}</p></div>
+        {% endif %}
+        {# 库存 200 PCs Left 或者 100%百分比显示 #}
+        {% if config.type == 2 %}
+        <div class="percent-wrap">
+            <div class="p-text-w">
+                {# <p class="text-num"><span class="value">294</span> PCs Left</p> #}
+                <p class="text-num">  {{gb_component_trans(lang , 'limited_to_units' , ['<span class="value">294</span>'])}} </p>
+                <p class="text-per"><span class="value">294</span> {{gb_component_trans(lang , 'left')}}</p>
+            </div>
+            <div class="percent-bar">
+                <div class="percent-inner"></div>
+            </div>
+        </div>
+        {% endif %}
+        {# APP专享价 #}
+        {% if config.type == 3 %}
+        <div class="APP-price-wrap clearfix">
+            <div class="APP-price-l">
+                <p class="price-app">APP:<span>{{config.APP_price}}<span></p>
+                <p class="price-pc">PC:<span>{{config.PC_price}}<span></p>
+            </div>
+            <div class="APP-price-r">
+                <img src="{{config.APP_imgSrc}}" />
+            </div>
+        </div>
+        {% endif %}
+        {# 购买按钮 #}
+		<p class="gs-goods-buy {% if config.numLeft <= 0 %} soldOut_btn {% endif %}">
+            <style>
+                .buyLink:hover{
+                    color: '{{ data.buy_hover_ftc }}!important';
+                    background: '{{ data.buy_hover_bgc }}!important';
+                }
+            </style>
+			<a href="{{item.url_title}}" class="buyLink" style="
+                    color: {{ data.buy_ftc }};
+                    background: {{ data.buy_bgc }};
+                    font-size: {{ data.buy_fts }}px;
+                    " target="_special">
+				{% if config.numLeft > 0 %}
+					{{ data.buy_text|default(gb_component_trans(lang , 'buy_now' )) }}
+				{% else %}
+					 {{gb_component_trans(lang , 'sold_out')}}
+				{% endif %}
+			</a>
+            <style>
+                .addCard:hover{
+                    background: {{ data.shopCar_hoverBg }}!important;;
+                }
+            </style>
+			<span class="js-addCart addCard" style="background: {{ data.shopCarBg }}" data-sku="{{item.goods_sku}}" data-data-warehousecode="{{item.warecode}}" data-img="{{item.goods_img}}"><i class="icon-cart"></i></span>
+		</p>
+   </div>
+</div>

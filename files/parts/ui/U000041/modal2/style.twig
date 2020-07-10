@@ -1,0 +1,57 @@
+
+
+{% if goodsData.goodsBdC %}
+    .wrap-{{ pageInstanceId }} .component-self-goodWrap:hover, .wrap-{{ pageInstanceId }} .current {
+        border-color:{{goodsData.goodsBdC|default('none')}};
+    }
+{% endif %}
+
+			{% if goodsData %}
+                .wrap-{{ pageInstanceId }} .gs-tab-label .current span{
+                color:{{goodsData.tabFtCA|default('transparent')}} !important;
+                background:{{goodsData.tabBgCA|default('transparent')}} !important;
+                }
+
+                .wrap-{{ pageInstanceId }} .gs-tab-label li span:hover{
+                color:{{goodsData.tabBgCA|default('transparent')}} !important;
+                }
+
+                .wrap-{{ pageInstanceId }} .gs-tab-label .current span:hover{
+                color:{{goodsData.tabFtCA|default('transparent')}} !important;
+                }
+                {# .wrap-{{ pageInstanceId }} .geshop-tab-btn{
+                    background:{{goodsData.tabBgCA|default('transparent')}} !important;
+                } #}
+
+                {# .wrap-{{ pageInstanceId }} .side-icon{
+                    border-color:{{goodsData.tabFtCA|default('transparent')}};
+                } #}
+
+                .wrap-{{ pageInstanceId }} .goods-nav-name .current:after{
+                border-top-color:{{goodsData.tabBgCA|default('transparent')}};
+                }
+            {% endif %}
+
+.wrap-{{ pageInstanceId }} {
+    margin-bottom: {{ data.mrbt ?? 32 }}px;
+}
+
+.wrap-{{ pageInstanceId }} .gs-shop-price .geshop-components-default-label-shop-price{
+    color: {{ data.priceC ?? '#333333' }}
+}
+
+
+{%
+    include geshop.default.pc.discount_float with { style: {
+        'background-color': data.discountBgc,
+        'color': data.discount_color,
+        'background-image': data.discountBgImg
+    }}
+%}
+{%
+    include geshop.default.pc.button_buy with { style: {
+    'background-color': data.buyBgcolor,
+    'border-radius': data.buyRadius,
+    'color': data.buyColor,
+}}
+%}

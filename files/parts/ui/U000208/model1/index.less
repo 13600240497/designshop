@@ -1,0 +1,95 @@
+@font-face {
+    font-family: "iconfont"; /* project id 214625 */
+    src: url("//at.alicdn.com/t/font_214625_m6rl698jyb9.eot");
+    src: url("//at.alicdn.com/t/font_214625_m6rl698jyb9.eot?#iefix")
+    format("embedded-opentype"),
+    url("//at.alicdn.com/t/font_214625_m6rl698jyb9.woff2") format("woff2"),
+    url("//at.alicdn.com/t/font_214625_m6rl698jyb9.woff") format("woff"),
+    url("//at.alicdn.com/t/font_214625_m6rl698jyb9.ttf") format("truetype"),
+    url("//at.alicdn.com/t/font_214625_m6rl698jyb9.svg#iconfont") format("svg");
+}
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@import "less/banner.less";
+@import "less/nav.less";
+@import "less/goodBase.less";
+@import "less/good.less";
+
+@descColor:#000000;
+
+.geshop-U000208-model1 {
+    // 调高装修蒙层的层级
+    &.is-edit .component-drag-mask {
+        z-index: 999;
+    }
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-tap-highlight-color: transparent;
+
+    em, i { font-style: normal; }
+    img { vertical-align: middle;max-width:100%; }
+    .clearfix {
+        display: block;
+        &:after {
+            content: '';
+            display: block;
+            height: 0;
+            font-size: 0;
+            clear: both;
+        }
+    }
+    .rank-content {
+        padding-top: 1px; // 阻止子元素margin合并
+    }
+    .rank-nav-container{
+        margin-top: -1px;
+    }
+    .rank-cutoff-label{
+        font-size:12px;
+    }
+    .rank-good-title{
+        color:@descColor;
+    }
+    .rank-good-promotion-text{
+        color:@descColor;
+    }
+    .grade_box {
+        font-size: 0;
+        color: #999999;
+        margin-top: 4px;
+        height: 16px;
+        display: none;
+        .grade-bar-l,.grade-bar-r {
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 0;
+        }
+        .grade-bar-l {
+            position: relative;
+            margin-right: 4px;
+            .iconfont {
+                font-size: 13px;
+            }
+            .grade-bot {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 0;
+                color: #FF4545;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+        }
+        .grade-bar-r {
+            font-size: 13px;
+        }
+
+    }
+}

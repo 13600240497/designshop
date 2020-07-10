@@ -1,0 +1,27 @@
+{#/**
+*@author: 任贸华
+*@date: 2018/11/24 16:31:41
+*@desc: 商品数据SKU组件 （积分兑换组件参考效果）
+* @param {string} data sku 1,2,3
+*/#}
+{% if options %}
+    <div class="component-form-setting-ite component-form-configure-item">
+        <div class="layui-form-item">
+            <label class="form-item-label">商品SKU</label>
+            <div class="layui-input-block">
+                <textarea
+                        cols="30"
+                        rows="3"
+                        class="layui-textarea"
+                        name="goodsSKU"
+                        data-from="sku"
+                        placeholder="请输入商品SKU，每个SKU用英文逗号隔开。SKU不可以重复，为了页面显示的美观，SKU数量尽量为4的倍数">{{ options.data | default('') }}</textarea>
+            </div>
+        </div>
+        <div class="layui-form-item goods-manage-row">
+            <a href="javascript:;" id="gs_getList" data-from="sku">商品管理</a>
+        </div>
+    </div>
+{% else %}
+    {{ include ('@app/files/parts/common/components/argsErrors.twig') }}
+{% endif %}

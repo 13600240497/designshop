@@ -1,0 +1,116 @@
+<input class="gs-typrarr" name="type_arr" type="hidden" value="{{ data.type_arr }}">
+
+<div class="gs-layui-form-item">
+    {% set pages = data.type_arr|split(',') %}
+    {% for item,index in pages|default([""]) %}
+        <div class="type-tab-item">
+            <div class="layui-form-item ">
+                <label class="layui-form-label ">分类ID
+                </label>
+                <div class="layui-input-block">
+                    <input autocomplete="off" class="layui-input type-input" name="type_{{ item }}" type="number" value="{{ index }}">
+                </div>
+            </div>
+            <div class="geshop-third-value">
+                <span class="img-btn class-up">
+                    <i class='icon-up'></i>
+                    <b class="tips">上移</b>
+                </span>
+                <span class="img-btn class-down">
+                    <i class='icon-down'></i>
+                    <b class="tips">下移</b>
+                </span>
+                <span class="img-btn class-close">
+                    <i class='icon-delete'></i>
+                    <b class="tips">删除</b>
+                </span>
+                <span class="img-btn class-add">
+                    <i class='icon-add'></i>
+                    <b class="tips">新增</b>
+                </span>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<script>
+    var submit= true;
+    function addOne() {
+        var clone = $('.type-tab-item:eq(0)').clone(true);
+        clone.find('.layui-input-block .layui-input').val('');
+        $('.gs-layui-form-item').append(clone);
+    };
+
+    showIcon();
+
+    function showIcon() {
+        var $domWrap = $(".gs-layui-form-item").find('.type-tab-item');
+        if ($domWrap.length == 1) {
+            $domWrap.find('.class-close').hide()
+        } else {
+            $domWrap.find('.class-close').show()
+        }
+    };
+
+    /* 删除分类 */
+    $(".gs-layui-form-item").on('click', '.class-close', function () {
+        var $tr = $(this).parents('.type-tab-item:eq(0)');
+        layer.confirm('是否删除该分类?', {
+            icon: 3,
+            title: '提示'
+        }, function (index) {
+            $tr.remove();
+            layer.close(index);
+            showIcon();
+        })
+    });
+    /* 新增分类 */
+    $(".gs-layui-form-item").on('click', '.class-add', function (e) {
+        e.stopPropagation();
+        addOne();
+        showIcon();
+    });
+    /* 移动分类 */
+    $(".gs-layui-form-item").on('click', '.class-down', function (e) {
+        var $tr = $(this).parents('.type-tab-item:eq(0)'),
+            $trNext = $tr.next();
+        if (0 != $trNext.length) {
+            $trNext.after($tr);
+        }
+    });
+    $(".gs-layui-form-item").on('click', '.class-up', function (e) {
+        var $tr = $(this).parents('.type-tab-item:eq(0)'),
+            $trPrev = $tr.prev();
+        if (0 != $trPrev.length) {
+            $trPrev.before($tr);
+        }
+    });
+    /* input 事件监听 */
+    $('.type-input').blur(function () {
+        var url = GESHOP_INTERFACE.community_category.url + '?cat_ids=' + $(this).val() + '&site=zafulcommunity';
+
+        var _this = this;
+        submit = false;
+        $.ajax({
+            url: url,
+            type: 'get',
+            data: {},
+            async:false,
+            timeout: 1000,
+            success: function (datas, status, xhr) {
+                submit = true;
+                if (datas.code == 0) {
+                    if (datas.data.length == 0) {
+                        layer.alert('该ID不存在，请重新输入！', {
+                            icon: 2,
+                            skin: 'layer-ext-moon'
+                        }, function (index) {
+                            $(_this).val('');
+                            layer.close(index);
+                        })
+                    }
+                }
+            }
+        });
+    })
+</script>
+

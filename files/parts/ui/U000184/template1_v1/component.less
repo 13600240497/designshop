@@ -1,0 +1,84 @@
+.geshop-component-body {
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+
+    .flex__body {
+        position: relative;
+        font-size: 0;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .banner__img--box img {
+        max-width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .mask {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+    }
+
+    .time-bg {
+        width: 220px;
+        height: 220px;
+        line-height: 220px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        border-radius: 50%;
+    }
+
+    .time-text {
+        text-align: center;
+        font-size: 22px;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        text-transform: capitalize;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    // 三端数据配置
+    &.geshop_dl_pc {
+
+    }
+
+    &.geshop_dl_pad {
+
+    }
+
+    &.geshop_dl_m {
+        .time-bg {
+            width: 110px;
+            height: 110px;
+            line-height: 110px;
+        }
+
+        .time-text {
+            font-size: 14px;
+        }
+    }
+}

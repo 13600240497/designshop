@@ -1,0 +1,88 @@
+{% set unit = 'rem' %}
+{% set unitrange = 75 %}
+{%
+    set pageData = {
+        boxWidth : (data.boxWidth | default(750)) / unitrange,
+        boxHeight : (data.boxHeight | default(440)) / unitrange,
+        boxMarginBottom : (data.boxMarginBottom | default(0)) / unitrange,
+        boxBackgroundColor : data.boxBackgroundColor | default('#EDEDED'),
+        boxBackgroundImage : data.boxBackgroundImage | default(''),
+        couponTextSize : (data.couponTextSize | default(48)) / unitrange,
+        couponTextColor : data.couponTextColor | default('#333333'),
+        couponId : data.couponId | default(''),
+        startText : data.startText | default('Coming Soon'),
+        getCouponText : data.getCouponText | default('Get now'),
+        couponTitle : data.couponTitle | default('CRAZY COUPON'),
+        countDown : data.countDown | default('1'),
+        countDownTitleTextSize : (data.countDownTitleTextSize | default(28)) / unitrange,
+        countDownTitleTextColor : data.countDownTitleTextColor | default('#333333'),
+        countDownBackgroundColor : data.countDownBackgroundColor | default('#333333'),
+        countDownTextColor : data.countDownTextColor | default('#ffffff'),
+        countDownRadius : (data.countDownRadius | default(0)) / unitrange,
+        btnWidth : (data.btnWidth | default(560)) / unitrange,
+        btnHeight : (data.btnHeight | default(72)) / unitrange,
+        btnTextSize : (data.btnTextSize | default(32)) /unitrange ,
+        btnBackgroundColor : data.btnBackgroundColor | default('#B8BEC4'),
+        btnTextColor : data.btnTextColor | default('#ffffff'),
+        btnRadius : (data.btnRadius | default(36)) / unitrange,
+        btnBackgroundImage : data.btnBackgroundImage | default(''),
+        countDownWidth : (data.countDownWidth | default(44)) / unitrange,
+        countDownHeight : (data.countDownHeight | default(32)) / unitrange,
+        alignType : data.alignType | default('2'),
+        timeSize : data.timeSize | default(24),
+    }
+%}
+<style>
+    [data-box="coupon-{{ pageInstanceId }}-1"]{
+        width:{{pageData.boxWidth}}{{unit}};
+        height:{{pageData.boxHeight}}{{unit}};
+        padding:{{40 / unitrange}}{{unit}};
+        background-color:{{ pageData.boxBackgroundColor }};
+        {% if data.boxBackgroundImage %}background-image: url("{{ data.boxBackgroundImage }}");{% endif %}
+        {% if pageData.alignType == 1 %}
+            float:left;
+            {% elseif pageData.alignType == 2 %}
+            float: none;
+            margin:0 auto;
+            {% elseif pageData.alignType == 3 %}
+            float:right;
+        {% endif %}
+        margin-bottom : {{ pageData.boxMarginBottom }}{{unit}};
+        box-sizing: border-box;
+    }
+    [data-box="coupon-{{ pageInstanceId }}-1"] .over-box{
+        font-size:{{ 40 / unitrange}}{{ unit }};
+    }
+    [data-box="coupon-{{ pageInstanceId }}-1"] .coupon-body .coupon-top{
+        font-size:{{ pageData.couponTextSize }}{{unit}};
+        color:{{ pageData.couponTextColor }};
+    }
+    [data-box="coupon-{{ pageInstanceId }}-1"] .coupon-body .coupon-layout .coupon-btn{
+        color: {{ pageData.btnTextColor }};
+        width:{{ pageData.btnWidth }}{{unit}};
+        height:{{ pageData.btnHeight }}{{unit}};
+        line-height: {{ pageData.btnHeight }}{{unit}};
+        background-color:{{ pageData.btnBackgroundColor }};
+        font-size:{{ pageData.btnTextSize }}{{unit}};
+        {% if data.btnBackgroundImage %}background-image: url("{{ pageData.btnBackgroundImage }}");{% endif %}
+        border-radius : {{ pageData.btnRadius }}{{unit}};
+    }
+    [data-box="coupon-{{ pageInstanceId }}-1"] .coupon-body .coupon-text{
+        font-size:{{ pageData.countDownTitleTextSize }}{{unit}};
+        color:{{ pageData.countDownTitleTextColor }};
+    }
+    [data-box="coupon-{{ pageInstanceId }}-1"] .coupon-body .coupon-time-box strong{
+        font-size:{{ pageData.timeSize / unitrange }}{{unit}};
+        color:{{ pageData.countDownTextColor }};
+        border-radius:{{ pageData.countDownRadius }}{{unit}};
+        width:{{ pageData.countDownWidth }}{{unit}};
+        height:{{ pageData.countDownHeight }}{{unit}};
+        line-height: {{ pageData.countDownHeight }}{{unit}};
+        background:{{ pageData.countDownBackgroundColor }};
+    }
+    [data-box="coupon-{{ pageInstanceId }}-1"] .coupon-body .coupon-time-box i{
+        width:{{ 4 / unitrange}}{{unit}};
+        font-size:{{ 24 / unitrange}}{{unit}};
+        margin:0 {{ 8 / unitrange}}{{unit}};
+    }
+</style>

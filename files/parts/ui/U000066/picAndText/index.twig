@@ -1,0 +1,44 @@
+
+{% set remUnit = 75 %}
+
+{% set pageData = {
+	boxHeight:(data.boxHeight|default(120))/remUnit,
+	boxMarginBottom:(data.boxMarginBottom|default(10))/remUnit,
+	titleFont:(data.titleFont|default(24))/remUnit,
+	textMargin:(data.textMargin|default(20))/remUnit,
+}%}
+
+<div class="geshop-component-box component-drag" id="U000066_{{ pageInstanceId }}" data-gid="U000066" data-key="U000066" data-id="{{ pageInstanceId }}" attr="nav_flag">
+	{% if data.imgSrcLeft !='' or data.imgSrcRight !='' or data.titleText !='' %}
+	<div style="{% if data.boxMarginBottom %}margin-bottom: {{ pageData.boxMarginBottom }}rem;{% endif %}
+		height:{{ pageData.boxHeight }}rem;
+		background-color:{{ data.bgColor }};
+		overflow: hidden;
+		text-align:center;">
+		<img src="{{ data.imgSrcLeft }}" 
+			style="display:inline-block;
+			vertical-align:middle;
+			height:{{ pageData.boxHeight }}rem;">
+		</img>
+		<a href="{{ data.viewHref }}"
+			style="display:inline-block;
+			text-align:center;
+			font-family:{{ data.fontFamily }};
+			line-height:{{ pageData.boxHeight }}rem;
+			{% if data.viewHref %}cursor: pointer;{% else %} cursor:default; {% endif %}
+			font-size:{% if pageData.titleFont %}{{ pageData.titleFont }}{% endif %}rem;
+			color:{% if data.titleColor %}{{ data.titleColor }}{% else %} #333333{% endif %};
+			font-weight:{% if data.titleWeight %}{{ data.titleWeight }}{% else %} normal {% endif %};
+			padding:0 {{ pageData.textMargin }}rem;">
+			{% if data.titleText %}{{ data.titleText }}{% endif %}
+		</a>
+		<img src="{{ data.imgSrcRight }}"
+			style="display:inline-block;
+			vertical-align:middle;
+			height:{{ pageData.boxHeight }}rem;">
+		</img>
+	</div>
+	{% else %}
+		<img src="{{ data.default.picandtext }}" style="height:{{ pageData.boxHeight }}rem;width:100%;display:block;margin:0 auto;"></img>
+	{% endif %}
+</div>

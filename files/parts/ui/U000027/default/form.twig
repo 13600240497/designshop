@@ -1,0 +1,132 @@
+{%
+	set pageData = {
+		bg_color:data.bg_color is not null?data.bg_color:'#fd6462',
+		hover_color:data.hover_color is not null?data.hover_color:'#ffffff',
+		font_color:data.font_color is not null?data.font_color:'#fff',
+		font_size:data.font_size is not null?data.font_size:15,
+		hover_font_color:data.hover_font_color is not null?data.hover_font_color:'#fd6462',
+		nav_h:data.nav_h is not null?data.nav_h:60,
+		nav_gap:data.nav_gap is not null?data.nav_gap:40,
+	}
+%}
+
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>导航设置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+  <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+    <div class="layui-tab">
+      <ul class="layui-tab-title">
+        <li class="layui-this">模板选择</li>
+        <li>样式设置</li>
+      </ul>
+      <div class="layui-tab-content layui-tab-content-parent">
+        <div class="layui-tab-item layui-show">
+          <style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+					{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+        </div>
+        <div class="layui-tab-item">
+          <div class="layui-carousel" id="form_carousel">
+            <div carousel-item>
+              <div>
+                <fieldset class="layui-elem-field">
+                  <legend>常用配置</legend>
+                  <div class="layui-field-box">
+										{{include ('@app/files/parts/formModules/userGroupItem.twig')}}
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">背景颜色</label>
+                      <div class="layui-input-block">
+                        <div class="color-picker-selector" data-hidden-name="bg_color"><div style="background-color: {{ pageData.bg_color }};"></div></div>
+                        <input type="text" class="layui-input" name="bg_color" autocomplete="off" value="{{ pageData.bg_color }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">激活状态背景颜色</label>
+                      <div class="layui-input-block">
+                        <div class="color-picker-selector" data-hidden-name="hover_color"><div style="background-color: {{ pageData.hover_color }};"></div></div>
+                        <input type="text" class="layui-input" name="hover_color" autocomplete="off" value="{{ pageData.hover_color }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">字体颜色</label>
+                      <div class="layui-input-block">
+                        <div class="color-picker-selector" data-hidden-name="font_color"><div style="background-color: {{ pageData.font_color }};"></div></div>
+                        <input type="text" class="layui-input" name="font_color" autocomplete="off" value="{{ pageData.font_color }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">激活状态字体颜色</label>
+                      <div class="layui-input-block">
+                        <div class="color-picker-selector" data-hidden-name="hover_font_color">
+                          <div style="background-color: {{ pageData.hover_font_color }};"></div>
+                        </div>
+                        <input type="text" class="layui-input" name="hover_font_color" autocomplete="off" value="{{ pageData.hover_font_color }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item" pane="">
+                      <label class="layui-form-label">可选导航菜单</label>
+                      <div class="layui-input-block">
+                        {% if data.navData %}
+                        {% for id,item in data.navData %}
+                        <input type="checkbox" name="nav_menu" value="{{ id }}" lay-skin="primary" title="{{ item }}" {% if id in data.nav_menu %} checked {% endif %}><br>
+                        {% endfor %}
+                        {% endif %}
+                      </div>
+                      <input type="checkbox" lay-filter="check_all" data-name="nav_menu" lay-skin="primary" title="全选">
+                    </div>
+                  </div>
+                </fieldset>
+                <div class="text-right">
+                  <button type="button" id="js_moreConfig" class="layui-btn layui-btn-normal layui-btn-sm">更多配置</button>
+                </div>
+              </div>
+              <div>
+                <div class="layui-tab layui-tab-vertical">
+                  <ul class="layui-tab-title">
+                    <li class="layui-this">字体设置</li>
+                    <li>尺寸/间距设置</li>
+                  </ul>
+                  <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">字体大小(px)</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="font_size" autocomplete="off" class="layui-input" value={{ pageData.font_size }}>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="layui-tab-item">
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">导航菜单高度(px)</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="nav_h" autocomplete="off" class="layui-input" value="{{ pageData.nav_h }}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">导航菜单间距(px)</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="nav_gap" autocomplete="off" class="layui-input" value="{{ pageData.nav_gap }}">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <button type="button" id="js_baseConfig" class="layui-btn layui-btn-normal layui-btn-sm">基础配置</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>

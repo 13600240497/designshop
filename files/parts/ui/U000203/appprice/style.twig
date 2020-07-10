@@ -1,0 +1,191 @@
+<!-- embed stylesheet begin -->
+<style type="text/css">
+{% set class_box = '.geshop-U000203-default-'~pageInstanceId~' ' %}
+{{ class_box }}{
+  margin-bottom: {{data.component_margin_bottom | default(32)}}px;
+  margin-top: {{data.component_margin_top | default(0)}}px;
+  border-radius: {{data.component_border_radius | default(0)}}px;
+  background-color: {{data.component_bgColor | default('#FDFDFD')}};
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+{{ class_box }} .nav-list li{
+  width: {{data.nav_width | default(172)}}px;
+  height: {{data.nav_height | default(44)}}px;
+  border-radius: {{data.nav_borderRadius | default(2)}}px;
+  background-color: {{data.inactive_nav_bgColor | default('#FFFFFF')}};
+  border-color: {{data.inactive_nav_borderColor | default('#333333')}};
+  {% if data.inactive_nav_bgImage is not empty %}
+      background-image: url({{data.inactive_nav_bgImage}});
+  {% endif %}
+  font-size: {{data.nav_fontsize | default(18)}}px;
+  margin-bottom: 16px;
+}
+{{ class_box }} .nav-list li span{
+    color: {{data.inactive_nav_fontcolor | default('#000000')}};
+    line-height: {{ (data.nav_height - 4) | default(40)}}px;
+}
+
+{{ class_box }} .nav-list li.active, {{ class_box }} .nav-list li:hover{
+  background-color: {{data.active_nav_bgColor | default('#000000')}};
+  border-color: {{data.active_nav_borderColor | default('#000000')}};
+  {% if data.active_nav_bgImage is not empty %}
+      background-image: url({{data.active_nav_bgImage}});
+  {% endif %}
+  color: {{data.active_nav_fontcolor | default('#FFFFFF')}};
+}
+
+{{ class_box }} .nav-list li.active span, {{ class_box }} .nav-list li:hover span{
+   color: {{data.active_nav_fontcolor | default('#FFFFFF')}};
+}
+{{ class_box }} .btn-seemore{
+  font-size: {{data.seemore_fontSize | default(18)}}px;
+  width: {{data.seemore_width | default(240)}}px;
+  height: {{data.seemore_height | default(44)}}px;
+  line-height: {{data.seemore_height | default(44)}}px;
+  background-color: {{data.seemore_bgColor | default('#FFFFFF')}};
+  border-color: {{data.seemore_borderColor | default('#000000')}};
+  {% if data.seemore_bgImage %}
+    background-image: url({{data.seemore_bgImage}});
+  {% endif %}
+  color: {{data.seemore_fontColor | default('#000000')}};
+}
+
+{{ class_box }} .geshop-goods-img .shop-now-container{
+    background-color: {{data.buyBtn_bgColor | default('#FFFFFF')}};
+    border-color: {{data.buyBtn_borderColor | default('#000')}};
+  }
+  {{ class_box }} .geshop-goods-img .shop-now-container .shop-now-text{
+      color: {{data.shopnow_fontColor | default('#000')}};
+      font-size: {{data.shopnow_fontSize | default(16)}}px;
+  }
+  {{ class_box }} .geshop-goods-shopprice{
+    color: {{data.shopprice_fontColor | default('#000000')}};
+  }
+
+  {{ class_box }} .geshop-goods-promotions em{
+    color: {{data.promotion_fontColor | default('#000000') }}
+  }
+  {{ class_box }} .geshop-goods-discount{
+    background-color: {{data.discount_bgColoe ?? '#333333'}};
+  }
+
+
+  {{ class_box }} .geshop-goods-discount p:first-child  {
+    padding-top: {{data.pc_discount_pt ?? 0}}px;
+
+  }
+  {{ class_box }} .geshop-goods-discount p{
+     color: {{data.discount_fontColor ?? '#ffffff'}};
+     padding-left: {{data.pc_discount_pl ?? 0}}px;
+   }
+
+  {{ class_box }}  .geshop-goods-discount{
+    margin-top: {{data.discount_mt ?? 0}}px;
+    right: {{data.discount_ml ?? 0}}px;
+    font-size: {{data.pc_discount_fontSize ?? 14}}px;
+  }
+
+@media screen and (min-width: 1025px){
+    {{ class_box }}  .geshop-goods-discount{
+        {% if data.pc_discount_bgImage %}
+            background-image: url({{data.pc_discount_bgImage}});
+            border-radius:0;
+            background-color: transparent;
+        {% endif %}
+    }
+}
+
+
+  @media screen and  (max-width: 375px){
+     {{ class_box }} .geshop-goods-discount{
+        {% if data.m_discount_bgImage %}
+          background-image: url({{data.m_discount_bgImage}});
+          border-radius:0;
+        background-color: transparent;
+        {% endif %}
+      font-size: {{data.m_discount_fontSize ?? 14}}px;
+    }
+     {{ class_box }} .geshop-goods-discount p:first-child  {
+       padding-top: {{data.m_discount_pt ?? 0}}px;
+     }
+     {{ class_box }} .geshop-goods-discount p{
+      padding-left: {{data.m_discount_pl ?? 0}}px;
+    }
+  }
+
+
+  {# 普通价配置 #}
+  {{ class_box }} .normal-price .geshop-goods-shopprice .price-label{
+    font-size: {{data.fl_label_fontSize_0 ?? 16}}px;
+    color: {{data.fl_label_fontColor_0 ?? '#333333'}};
+  }
+  {{ class_box }} .normal-price .geshop-goods-shopprice  .my-shop-price{
+    font-size: {{data.fl_price_fontSize_0 ?? 16}}px;
+    color: {{data.fl_text_fontColor_0 ?? '#ff4545'}};
+  }
+
+  {{ class_box }} .normal-price .geshop-goods-market-price .price-label{
+    font-size: {{data.cl_label_fontSize_0 ?? 14}}px;
+    color: {{data.cl_label_fontColor_0 ?? '#999999'}};
+  }
+  {{ class_box }} .normal-price .geshop-goods-market-price .my-shop-price{
+    font-size: {{data.cl_price_fontSize_0 ?? 14}}px;
+    color: {{data.cl_text_fontColor_0 ?? '#999999'}};
+  }
+
+  {# 新人价配置 #}
+  {{ class_box }} .newuser-price .geshop-goods-shopprice .price-label{
+    font-size: {{data.fl_label_fontSize_1 ?? 16}}px;
+    color: {{data.fl_label_fontColor_1 ?? '#333333'}};
+  }
+  {{ class_box }} .newuser-price .geshop-goods-shopprice  .my-shop-price{
+    font-size: {{data.fl_price_fontSize_1 ?? 16}}px;
+    color: {{data.fl_text_fontColor_1 ?? '#ff4545'}};
+  }
+
+  {{ class_box }} .newuser-price .geshop-goods-market-price .price-label{
+    font-size: {{data.cl_label_fontSize_1 ?? 14}}px;
+    color: {{data.cl_label_fontColor_1 ?? '#999999'}};
+  }
+  {{ class_box }} .newuser-price .geshop-goods-market-price .my-shop-price{
+    font-size: {{data.cl_price_fontSize_1 ?? 14}}px;
+    color: {{data.cl_text_fontColor_1 ?? '#333333'}};
+  }
+
+   {# app价配置 #}
+  {{ class_box }} .app-price .geshop-goods-shopprice .price-label{
+    font-size: {{data.fl_label_fontSize_2 ?? 16}}px;
+    color: {{data.fl_label_fontColor_2 ?? '#333333'}};
+  }
+  {{ class_box }} .app-price .geshop-goods-shopprice  .my-shop-price{
+    font-size: {{data.fl_price_fontSize_2 ?? 16}}px;
+    color: {{data.fl_text_fontColor_2 ?? '#ff4545'}};
+  }
+
+  {{ class_box }} .app-price .geshop-goods-market-price .price-label{
+    font-size: {{data.cl_label_fontSize_2 ?? 14}}px;
+    color: {{data.cl_label_fontColor_2 ?? '#999999'}};
+  }
+  {{ class_box }} .app-price .geshop-goods-market-price .my-shop-price{
+    font-size: {{data.cl_price_fontSize_2 ?? 14}}px;
+    color: {{data.cl_text_fontColor_2 ?? '#333333'}};
+  }
+   {{ class_box }} .geshop-goods-promotions .down-arrow:after{
+         border-color: {{data.downaarrow_color ?? '#333333'}};
+   }
+
+    {{ class_box }} .view_more{
+    color:{{ data.view_more_font_color|default('#FFFFFF') }};
+    background-color:{{ data.view_more_bg_color|default('#222222') }};
+}
+
+{{ include('style-pad.twig') }}
+{{ include('style-m.twig') }}
+
+
+{% include '@app/files/parts/formTemplate/components/margin-dl-style.twig' with{'space':class_box} %}
+</style>
+<!-- embed stylesheet end -->

@@ -1,0 +1,54 @@
+@height: 50px;
+
+.geshop-components-default-button-buy-animate {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    height: @height;
+    line-height: @height;
+    text-align: right;
+    overflow: hidden;
+
+    a {
+        line-height: 50px;
+        color: #fff;
+        font-size: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        height: 100%;
+        display: inline-block;
+        padding-left: 24px;
+        border-radius: @height 0 0 0;
+        padding-right: 20px;
+        max-width: 100%;
+        -webkit-transition: all .3s cubic-bezier(.455, .03, .215, 1) 0s;
+        transition: all .3s cubic-bezier(.455, .03, .215, 1) 0s;
+        -webkit-transform: translate3d(115px, 0, 0);
+        transform: translate3d(115px, 0, 0);
+        background: #333;
+        &:hover {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+          border-radius: 40px 0 0 0 !important;
+        }
+    }
+
+    img {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    label {
+        color: inherit;
+        font-size: 15px;
+        font-weight: 700;
+        text-transform: uppercase;
+        display: inline-block;
+        vertical-align: middle; // margin-top: 20px;
+        text-align: center;
+        margin-left: 15px;
+        min-width: 90px;
+        max-width: 100%;
+    }
+}

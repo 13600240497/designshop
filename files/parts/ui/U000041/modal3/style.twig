@@ -1,0 +1,58 @@
+
+{% if goodsData.goodsBdC %}
+    .wrap-{{ pageInstanceId }} .component-self-goodWrap:hover, .wrap-{{ pageInstanceId }} .current {
+        border-color:{{goodsData.goodsBdC|default('none')}};
+    }
+{% endif %}
+
+			{% if goodsData %}
+                .wrap-{{ pageInstanceId }} .gs-tab-label .current span{
+                color:{{goodsData.tabFtCA|default('transparent')}} !important;
+                background:{{goodsData.tabBgCA|default('transparent')}} !important;
+                }
+
+                .wrap-{{ pageInstanceId }} .gs-tab-label li span:hover{
+                color:{{goodsData.tabBgCA|default('transparent')}} !important;
+                }
+
+                .wrap-{{ pageInstanceId }} .gs-tab-label .current span:hover{
+                color:{{goodsData.tabFtCA|default('transparent')}} !important;
+                }
+
+                .wrap-{{ pageInstanceId }} .goods-nav-name .current:after{
+                border-top-color:{{goodsData.tabBgCA|default('transparent')}};
+                }
+                .wrap-{{ pageInstanceId }} .gs_see_more{
+                font-size:{{goodsData.seemoreFTS}}px;
+                color:{{goodsData.seemoreFTC}};
+                border:1px solid {{goodsData.seemoreBorC}};;
+                background-color:{{goodsData.seemoreBGC}};
+                }
+            {% endif %}
+
+.wrap-{{ pageInstanceId }} {
+    margin-bottom: {{ data.boxMarginBottom ?? 32 }}px;
+}
+
+.wrap-{{ pageInstanceId }} .gs-shop-price .geshop-components-default-label-shop-price{
+    {#color: {{ data.priceC ?? '#333333' }}#}
+}
+
+
+{%
+    include geshop.default.pc.discount_float with { style: {
+    'background-color': data.discountBgc,
+    'color': data.discountFtC,
+    'background-image': data.discountBgImg
+}}
+%}
+{%
+    include geshop.default.pc.button_quick_view with { style: {
+    'background-color': data.quickBgC,
+    'color': data.quickC
+}}
+%}{%
+    include geshop.default.pc.shop_price with { style: {
+    'color': data.priceC
+}}
+%}

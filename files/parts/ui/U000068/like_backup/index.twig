@@ -1,0 +1,139 @@
+{% set remUnit = 75 %}
+{# default value #}
+{% set pageData = {
+	componentMarginBottom:(data.componentMarginBottom|default(32))/remUnit,
+	saleFontSize:(data.saleFontSize|default(28))/remUnit,
+	offFontSize:(data.offFontSize|default(28))/remUnit,
+	smFontSize:(data.smFontSize|default(28))/remUnit,
+	OFF:data.off|default(get_component_trans(lang,'off')),
+	seeMore:data.seeMore|default(get_component_trans(lang,'see_more'))
+} %}
+
+<div 
+	data-key="U000068" 
+	data-gid="U000068_like"  
+	data-id="{{ pageInstanceId }}" 
+	data-static-domain="{{staticDomain}}"
+  class="geshop-component-box component-drag gs-index-main wrap-U000068_like wrap-{{ pageInstanceId }}"  style="margin-bottom: {{ pageData.componentMarginBottom }}rem;">
+  	<!-- embed stylesheet begin -->
+    <style type="text/css">
+  		.wrap-{{ pageInstanceId }} .shop-price{
+			font-size: {{ pageData.saleFontSize }}rem;
+			color: {{ data.salePriceColor|default('#666') }};
+  		}
+  		.wrap-{{ pageInstanceId }} .off-price{
+			font-size: {{ pageData.offFontSize }}rem;
+			color: {{ data.offColor|default('#333') }};
+  		}
+  		.wrap-{{ pageInstanceId }} .see-more a{
+  			font-size: {{ pageData.smFontSize }}rem;
+  			border-color: {{ data.smBorderColor|default('#333') }};
+  			color: {{ data.smColor|default('#333') }};
+  		}
+  	</style>
+		<!-- embed stylesheet end -->
+    <div 
+    	class="geshop-col-12" 
+    	style="
+			{% if data.boxMarginTop %}margin-top: {{ data.boxMarginTop }}px;{% endif %}
+			{% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}">
+		<script type="text/html" id="js_likeRecommendGoods">
+			<ul class="clearfix">
+				<%# if(d.goodsInfo.length > 0){ %>
+					{% if data.isEditEnv != 1 %}
+						<%# var likeGoodsInfo = d.goodsInfo; %>
+					{% else %}
+						<%# var likeGoodsInfo = d.goodsInfo.slice(0,4); %>
+					{% endif %}
+					<%#  $.each(likeGoodsInfo, function(index, item){ %>
+						<li class="geshop-col-6">
+							<div class="proImg">
+								<a class="logsss_event" href="<% item.url_title %>" data-logsss-event-value="
+									{
+										'pm': 'mr', 
+										'p': 'gs-{{ pageId }}-{{ pageInstanceId }}',
+										'ubcta':{
+											'cpID': '{{ pageInstanceId }}',
+											'cpnum':'{{ compKey }}',
+											'cplocation':'{{ uiIndex }}',
+											'sku': '<% item.goods_sn %>', 
+											'cporder': '{{ layoutIndex }}',
+											'rank': '<% index %>'
+										},
+										'skuinfo': {
+											'sku': '<% item.goods_sn %>',
+											'pam': '0',
+											'pc': '<% item.cateid %>',
+											'k': '<% item.warehousecode %>'
+										}
+									}">
+									{% if data.isEditEnv != 1 %}
+										<img class="js_likeImgLazy" src="{{data.default.lazyImg|default(data.default.good)}}" data-original="<% item.goods_img %>" alt="<% item.goods_title %>" data-logsss-browser-value="
+										{
+											'pm': 'mr',
+											'p': 'gs-{{ pageId }}-{{ pageInstanceId }}',
+											'bv': {
+												'cpID': '{{ pageInstanceId }}',
+												'cpnum':'{{ compKey }}',
+												'cplocation':'{{ uiIndex }}',
+												'sku': '<% item.goods_sn %>',
+												'cporder': '{{ layoutIndex }}',
+												'rank': '<% index %>'
+											}
+										}">
+									{% else %}
+										<img src="<% item.goods_img %>" alt="<% item.goods_title %>">
+									{% endif %}
+								</a>
+							</div>
+							<div class="price-wrap">
+								<p class="proPrice">
+									<span class="bizhong"></span>
+									<span class="my_shop_price shop-price" data-orgp="<% item.shop_price %>" data-currency-price="<% item.shop_price %>">$<% item.shop_price %></span>
+								</p>
+								<p class="proOff">
+									<%# if (item.discount > 0) { %>
+										<span class="off-price">
+											<%# if (GESHOP_LANG == 'fr') { %>
+												-<% item.discount %>%
+											<%# } else { %>
+												<% item.discount %>%{{ pageData.OFF }}
+											<%# } %>
+										</span>
+									<%# } %>
+								</p>
+							</div>
+						</li>
+					<%# }); %>
+				<%# } %>
+			</ul>
+		</script>
+
+		{% if data.isEditEnv != 1 %}
+			<div class="gs_like_goods_recommend"><div class="gs_like_loading"></div></div>
+		{% else %}
+			<div class="gs_like_goods_recommend">
+				{% if data.isEditEnv == 1 %}
+					<ul class="clearfix edit-style">
+						{% for i in (0..3) %}
+							<li class="geshop-col-6">
+								<div class="proImg"></div>
+								<div class="price-wrap">
+									<p class="proPrice">
+										<span class="shop-price">$24.99</span>
+									</p>
+									<p class="proOff">
+										<span class="off-price">50% {{ pageData.OFF }}</span>
+									</p>
+								</div>
+							</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			</div>
+		{% endif %}
+		<div class="see-more">
+			<a class="js_likeSeeMore" href="javascript:void(0)">{{ pageData.seeMore }}</a>
+		</div>
+    </div>
+</div>

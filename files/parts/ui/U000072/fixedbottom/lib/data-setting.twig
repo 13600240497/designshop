@@ -1,0 +1,45 @@
+
+<section>
+    <div class="component-form-setting-ite component-form-configure-item">
+      <input type="hidden" name="imgList">
+      <div class="layui-form-item">
+        <label class="layui-form-label">
+          链接是否打开新窗口</label>
+        <div class="layui-input-block">
+          <input type="radio" name="is_openNew" value="1" {% if data.is_openNew|default('0') == '1' %} checked{% endif %} title="是">
+          <input type="radio" name="is_openNew" value="0" {% if data.is_openNew|default('0') == '0' %} checked{% endif %} title="否">
+        </div>
+      </div>
+      </br>
+      <div class="img-body">
+        {% for key, item in data.imgList | default([""]) %}
+          <div class="img-item">
+           <p class="img-title">图片{{key+1}}</p>
+            <div class="layui-block">
+              <div class="layui-form-item">
+                  <label class="form-item-label">图片<span class="color-gray">(建议上传宽为500px，高为500px的图片)</span></label>
+                  <div class="layui-input-block">
+                      <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                      <input class="layui-input ad-img" type="text" name="{{key+1}}" value="{{item.imgUrl}}">
+                  </div>
+              </div> 
+              </br>
+              <div class="layui-form-item">
+                <label class="layui-form-label">图片链接</label>
+                <div class="layui-input-block rest-input">
+                  <input type="text" autocomplete="off" class="layui-input Unwanted img-link" value="{{item.imgLink}}" name="img_link">
+                </div>
+              </div>
+            </div>
+            <div class="geshop-third-value">
+              <span class="img-btn"><i class='icon-up'></i><b class="tips">上移</b></span>
+              <span class="img-btn"><i class='icon-down'></i><b class="tips">下移</b></span>
+              <span class="img-btn"><i class='icon-delete'></i><b class="tips">删除</b></span>
+              <span class="img-btn add-class"><i class='icon-add'></i><b class="tips">新增</b></span>
+            </div>
+          </div>
+          
+          {% endfor %}
+      </div>
+    </div>
+</section>

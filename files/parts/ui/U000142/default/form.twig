@@ -1,0 +1,498 @@
+{% set pageData = {
+	price_ft_weight:data.price_ft_weight|default(0),
+	base_bg_shadow:data.base_bg_shadow|default(1),
+	back_bgcolor:data.back_bgcolor is not null?data.back_bgcolor:'#fd9e62',
+	back_font_color:data.back_font_color is not null?data.back_font_color:'#ffffff',
+	item_bgcolor:data.item_bgcolor is not null?data.item_bgcolor:'#fd9e62',
+	font_color:data.font_color is not null?data.font_color:'#f7f7f7',
+	
+	scan_code_isShow:data.scan_code_isShow|default(1),
+	scan_code_position:data.scan_code_position|default(1),
+	share_area_isShow:data.share_area_isShow|default(1),
+	nav_bgc:data.nav_bgc is not null?data.nav_bgc:'#D8D8D8',
+	nav_bgc_hover:data.nav_bgc_hover is not null?data.nav_bgc_hover:'#999999',
+	nav_ftc:data.nav_ftc is not null?data.nav_ftc:'#333333',
+	nav_ftc_hover:data.nav_ftc_hover is not null?data.nav_ftc_hover:'#ffffff',
+	nav_radius:data.nav_radius|default(4),
+	nav_border_isShow:data.nav_border_isShow|default(0),
+	nav_border_size:data.nav_border_size|default(1),
+	nav_border_color:data.nav_border_color is not null?data.nav_border_color:'transparent',
+	nav_border_hover_c:data.nav_border_hover_c is not null?data.nav_border_hover_c:'transparent',
+	
+	nav_share_color:data.nav_share_color is not null?data.nav_share_color:'#333333',
+	nav_share_bgc:data.nav_share_bgc is not null?data.nav_share_bgc:'#D8D8D8',
+	nav_share_hover_bgc:data.nav_share_hover_bgc is not null?data.nav_share_hover_bgc:'#999999',
+	nav_share_hover_c:data.nav_share_hover_c is not null?data.nav_share_hover_c:'',
+	scan_code_bgc:data.scan_code_bgc is not null?data.scan_code_bgc:'#D8D8D8',
+	scan_code_ftc:data.scan_code_ftc is not null?data.scan_code_ftc:'#333333',
+	nav_top:data.nav_top|default(0),
+    nav_left:data.nav_left|default(0),
+    nav_right:data.nav_right|default(0),
+	nav_fontSize:data.nav_fontSize|default(14),
+	nav_item_w:data.nav_item_w|default(200),
+	nav_item_h:data.nav_item_h|default(40),
+	nav_item_margin:data.nav_item_margin|default(8),
+	headPic_isShow:data.headPic_isShow|default(1),
+	headPic_w:data.headPic_w|default(200),
+	headPic_h:data.headPic_h|default(130),
+	headPic_margin_bot:data.headPic_margin_bot|default(0),
+	goTop_bgc:data.goTop_bgc is not null?data.goTop_bgc:'#D8D8D8',
+	goTop_bgc_hover:data.goTop_bgc_hover is not null?data.goTop_bgc_hover:'#999999',
+	goTop_w:data.goTop_w|default(200),
+	goTop_h:data.goTop_h|default(40),
+	goTop_fontsize:data.goTop_fontsize|default(14),
+	goTop_text:data.goTop_text is not null?data.goTop_text:'TOP',
+	goTop_text_color:data.goTop_text_color is not null?data.goTop_text_color:'#333333',
+	
+} %}
+<style>
+	.activity-component-from-item .app-vip-item.layui-input-block {
+		margin-left: 20px;
+	}
+</style>
+
+<div class='design-form design-form-component design-form-visible'>
+	<h3 class='component-form-title'>竖直导航设置
+		<a href="javascript:;" class="design-form-close js_closeDesignForm gs-icon-close">
+			<i class="el-icon-close"></i>
+		</a>
+	</h3>
+	<blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+	<div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+		<div class="layui-tab">
+			<ul class="layui-tab-title">
+				<li class="layui-this">模板选择</li>
+				<li>内容配置</li>
+				<li>样式配置</li>
+			</ul>
+			<div class="layui-tab-content layui-tab-content-parent">
+				<div class="layui-tab-item layui-show">
+						<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+						{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				</div>
+				<div class="layui-tab-item">
+					<div class="layui-form-item">
+						<label class="public-data">导航内容选择</label>
+						<div class="app-vip-item layui-input-block">
+							{% if data.navData %}
+								{% for id,item in data.navData %}
+									<input type="checkbox" name="nav_menu" value="{{ id }}" lay-skin="primary" title="{{ item }}" {% if id in data.nav_menu %} checked {% endif %} data-public-tag="true"><br>
+								{% endfor %}
+								<input type="checkbox" lay-filter="check_all" data-name="nav_menu" lay-skin="primary" title="全选">
+							{% endif %}
+						</div>
+					</div>
+					<fieldset class="layui-elem-field">
+						<legend>二维码配置</legend>
+						<div class="layui-form-item">
+							<label class="gs-label-block">二维码是否显示</label>
+							<div class="layui-input-block">
+								<input type="radio" name="scan_code_isShow" data-public-tag="true" value="1" title="是" {% if data.scan_code_isShow == '1' or data.scan_code_isShow is empty %} checked="checked" {% endif %}>
+								<input type="radio" name="scan_code_isShow" data-public-tag="true" value="0" title="否" {% if data.scan_code_isShow == '0' %} checked="checked" {% endif %}>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="gs-label-block">二维码显示位置</label>
+							<div class="layui-input-block">
+								<input type="radio" name="scan_code_position" data-public-tag="true" value="1" title="导航顶部" {% if data.scan_code_position == '1' or data.scan_code_position is empty %} checked="checked" {% endif %}>
+								<input type="radio" name="scan_code_position" data-public-tag="true" value="0" title="导航底部" {% if data.scan_code_position == '0' %} checked="checked" {% endif %}>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="gs-label-block">分享区域是否显示</label>
+							<div class="layui-input-block">
+								<input type="radio" name="share_area_isShow" data-public-tag="true" value="1" title="是" {% if data.share_area_isShow == '1' or data.share_area_isShow is empty %} checked="checked" {% endif %}>
+								<input type="radio" name="share_area_isShow" data-public-tag="true" value="0" title="否" {% if data.share_area_isShow == '0' %} checked="checked" {% endif %}>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="gs-label-block">分享内容区域</label>
+							<div class="layui-input-block form-share-box">
+							
+							</div>
+						</div>
+					</fieldset>
+				</div>
+				<div class="layui-tab-item">
+					<div class="layui-carousel" id="form_carousel">
+						<div carousel-item>
+							<div>
+								{# <fieldset class="layui-elem-field">
+                  <legend>常用配置</legend>
+                  
+                </fieldset> #}
+								<fieldset class="layui-elem-field">
+									<legend>导航配置</legend>
+									<div class="layui-field-box">
+										<div class="layui-form-item class-bg-group">
+											<label class="layui-form-label">组件背景图片</label>
+											<div class="layui-input-block">
+												<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+												<input class="layui-input component_bg" type="text" name="base_box_bgImage" value="{{data.base_box_bgImage}}">
+												<input type="hidden" name="component_bg_value" value="{{ data.component_bg_value }}">
+												<input type="hidden" name="component_bg_repeat" value="{{ data.component_bg_repeat }}">
+												<input type="hidden" name="component_bg_position" value="{{ data.component_bg_position }}">
+												<span class="el-button el-button--primary el-button--small el-button--blue class-background"  style="float:right">设置</span>
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">背景图片</label>
+											<div class="layui-input-block">
+												<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+												<input type="text" name="nav_bgimg" autocomplete="off" class="layui-input" value="{{ data.nav_bgimg }}" data-width="nav_bgimg_width" data-height="nav_bgimg_height">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">背景颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="nav_bgc">
+													<div style="background-color: {{ pageData.nav_bgc }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="nav_bgc" autocomplete="off" value="{{ pageData.nav_bgc }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">鼠标滑过背景颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="nav_bgc_hover">
+													<div style="background-color: {{ pageData.nav_bgc_hover }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="nav_bgc_hover" autocomplete="off" value="{{ pageData.nav_bgc_hover }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">文字颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="nav_ftc">
+													<div style="background-color: {{ pageData.nav_ftc }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="nav_ftc" autocomplete="off" value="{{ pageData.nav_ftc }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">鼠标滑过文字颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="nav_ftc_hover">
+													<div style="background-color: {{ pageData.nav_ftc_hover }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="nav_ftc_hover" autocomplete="off" value="{{ pageData.nav_ftc_hover }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">背景圆角大小（px）</label>
+											<div class="layui-input-block">
+												<input type="text" name="nav_radius" autocomplete="off" class="layui-input" value="{{ pageData.nav_radius }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="gs-label-block">边框是否显示</label>
+											<div class="layui-input-block">
+												<input type="radio" name="nav_border_isShow" data-public-tag="true" value="1" title="是" {% if pageData.nav_border_isShow == '1' or pageData.nav_border_isShow is empty %} checked="checked" {% endif %}>
+												<input type="radio" name="nav_border_isShow" data-public-tag="true" value="0" title="否" {% if pageData.nav_border_isShow == '0' %} checked="checked" {% endif %}>
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="gs-label-block">边框粗细配置（px）</label>
+											<div class="layui-input-block">
+												<input type="radio" name="nav_border_size" data-public-tag="true" value="1" title="1" {% if data.nav_border_size == '1' or data.nav_border_size is empty %} checked="checked" {% endif %}>
+												<input type="radio" name="nav_border_size" data-public-tag="true" value="2" title="2" {% if data.nav_border_size == '2' %} checked="checked" {% endif %}>
+												<input type="radio" name="nav_border_size" data-public-tag="true" value="3" title="3" {% if data.nav_border_size == '3' %} checked="checked" {% endif %}>
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">边框颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="nav_border_color">
+													<div style="background-color: {{ pageData.nav_border_color }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="nav_border_color" autocomplete="off" value="{{ pageData.nav_border_color }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">鼠标滑过边框颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="nav_border_hover_c">
+													<div style="background-color: {{ pageData.nav_border_hover_c }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="nav_border_hover_c" autocomplete="off" value="{{ pageData.nav_border_hover_c }}">
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset class="layui-elem-field">
+									<legend>分享区域配置</legend>
+									<div class="layui-field-box">
+										<div class="layui-form-item">
+											<label class="layui-form-label">图标默认颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="nav_share_color">
+													<div style="background-color: {{ pageData.nav_share_color }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="nav_share_color" autocomplete="off" value="{{ pageData.nav_share_color }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">图标背景颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="nav_share_bgc">
+													<div style="background-color: {{ pageData.nav_share_bgc }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="nav_share_bgc" autocomplete="off" value="{{ pageData.nav_share_bgc }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">鼠标经过图标颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="nav_share_hover_c">
+													<div style="background-color: {{ pageData.nav_share_hover_c }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="nav_share_hover_c" autocomplete="off" value="{{ pageData.nav_share_hover_c }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">鼠标经过图标背景颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="nav_share_hover_bgc">
+													<div style="background-color: {{ pageData.nav_share_hover_bgc }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="nav_share_hover_bgc" autocomplete="off" value="{{ pageData.nav_share_hover_bgc }}">
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset class="layui-elem-field">
+									<legend>二维码区域配置</legend>
+									<div class="layui-field-box">
+										<div class="layui-form-item">
+											<label class="layui-form-label">背景图片</label>
+											<div class="layui-input-block">
+												<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+												<input type="text" name="scan_code_bgImage" autocomplete="off" class="layui-input" value="{{ data.scan_code_bgImage }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">背景颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="scan_code_bgc">
+													<div style="background-color: {{ pageData.scan_code_bgc }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="scan_code_bgc" autocomplete="off" value="{{ pageData.scan_code_bgc }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">二维码文本颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="scan_code_ftc">
+													<div style="background-color: {{ pageData.scan_code_ftc }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="scan_code_ftc" autocomplete="off" value="{{ pageData.scan_code_ftc }}">
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset class="layui-elem-field">
+									<legend>导航栏配置</legend>
+									<div class="layui-field-box">
+										<div class="layui-form-item">
+											<label class="gs-label-block">导航栏位置配置</label>
+											<div class="layui-input-block">
+												{% if data.position %}
+													<input type="radio" name="position" value="left" title="页面左边"{% if data.position == 'left' %} checked{% endif %}>
+													<input type="radio" name="position" value="right" title="页面右边"{% if data.position == 'right' %} checked{% endif %}>
+												{% else %}
+													<input type="radio" name="position" value="left" title="页面左边" checked>
+													<input type="radio" name="position" value="right" title="页面右边">
+												{% endif %}
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<div class="text-right">
+									<button type="button" id="js_moreConfig" class="layui-btn layui-btn-normal layui-btn-sm">更多配置</button>
+								</div>
+							</div>
+							<div>
+								<div class="layui-tab layui-tab-vertical">
+									<ul class="layui-tab-title">
+										<li class="layui-this">基础配置</li>
+										<li>导航头部配置</li>
+										<li>返回顶部配置</li>
+									</ul>
+									<div class="layui-tab-content">
+										<div class="layui-tab-item layui-show">
+
+											{# PO: 新增导航顶部/左右间距配置项 GMT+8 2018-12-17 11:35:20 #}
+											<div class="layui-form-item">
+												<label class="layui-form-label">导航顶部间距（px）</label>
+												<div class="layui-input-block">
+													<input type="text" name="nav_top" autocomplete="off" class="layui-input" value="{{ pageData.nav_top }}">
+												</div>
+											</div>
+
+											<div class="layui-form-item">
+												{% if data.position == 'left' %}
+													<label class="layui-form-label">导航左间距（px）</label>
+													<div class="layui-input-block">
+														<input type="text" name="nav_left" autocomplete="off" class="layui-input" value="{{ pageData.nav_left }}">
+													</div>
+												{% elseif data.position == 'right' %}
+													<label class="layui-form-label">导航右间距（px）</label>
+													<div class="layui-input-block">
+														<input type="text" name="nav_right" autocomplete="off" class="layui-input" value="{{ pageData.nav_right }}">
+													</div>
+												{% else %}
+													<label class="layui-form-label">导航左间距（px）</label>
+													<div class="layui-input-block">
+														<input type="text" name="nav_left" autocomplete="off" class="layui-input" value="{{ pageData.nav_left }}">
+													</div>
+												{% endif %}
+											</div>
+											
+											<div class="layui-form-item">
+												<label class="layui-form-label">导航字体大小（px）</label>
+												<div class="layui-input-block">
+													<input type="text" name="nav_fontSize" autocomplete="off" class="layui-input" value="{{ pageData.nav_fontSize }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">导航条宽度（px）</label>
+												<div class="layui-input-block">
+													<input type="text" name="nav_item_w" autocomplete="off" class="layui-input" value="{{ pageData.nav_item_w }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">导航条高度（px）</label>
+												<div class="layui-input-block">
+													<input type="text" name="nav_item_h" autocomplete="off" class="layui-input" value="{{ pageData.nav_item_h }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">各导航之间的间距（px）</label>
+												<div class="layui-input-block">
+													<input type="text" name="nav_item_margin" autocomplete="off" class="layui-input" value="{{ pageData.nav_item_margin }}">
+												</div>
+											</div>
+										</div>
+										<div class="layui-tab-item">
+											<div class="layui-form-item">
+												<label class="gs-label-block">是否显示头部图片</label>
+												<div class="layui-input-block">
+													<input type="radio" name="headPic_isShow" data-public-tag="true" value="1" title="是" {% if data.headPic_isShow == '1' or data.headPic_isShow is empty %} checked="checked" {% endif %}>
+													<input type="radio" name="headPic_isShow" data-public-tag="true" value="0" title="否" {% if data.headPic_isShow == '0' %} checked="checked" {% endif %}>
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">图片宽度（px）</label>
+												<div class="layui-input-block">
+													<input type="text" name="headPic_w" autocomplete="off" class="layui-input" value="{{ pageData.headPic_w }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">图片高度（px）</label>
+												<div class="layui-input-block">
+													<input type="text" name="headPic_h" autocomplete="off" class="layui-input" value="{{ pageData.headPic_h }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">背景图片</label>
+												<div class="layui-input-block">
+													<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+													<input type="text" name="head_bgimg" autocomplete="off" class="layui-input" value="{{ data.head_bgimg }}" data-width="head_bgimg_width" data-height="head_bgimg_height">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">图片下边距（px）</label>
+												<div class="layui-input-block">
+													<input type="text" name="headPic_margin_bot" autocomplete="off" class="layui-input" value="{{ pageData.headPic_margin_bot }}">
+												</div>
+											</div>
+										</div>
+										<div class="layui-tab-item">
+											<div class="layui-form-item">
+												<label class="layui-form-label">按钮宽度（px）</label>
+												<div class="layui-input-block">
+													<input type="text" name="goTop_w" autocomplete="off" class="layui-input" value="{{ pageData.goTop_w }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">按钮高度（px）</label>
+												<div class="layui-input-block">
+													<input type="text" name="goTop_h" autocomplete="off" class="layui-input" value="{{ pageData.goTop_h }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">按钮背景颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="goTop_bgc">
+														<div style="background-color: {{ pageData.goTop_bgc }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="goTop_bgc" autocomplete="off" value="{{ pageData.goTop_bgc }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">鼠标经过按钮背景颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="goTop_bgc_hover">
+														<div style="background-color: {{ pageData.goTop_bgc_hover }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="goTop_bgc_hover" autocomplete="off" value="{{ pageData.goTop_bgc_hover }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">按钮背景图片</label>
+												<div class="layui-input-block">
+													<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+													<input type="text" name="goTop_btn" autocomplete="off" class="layui-input" value="{{ data.goTop_btn }}" data-width="goTop_btn_width" data-height="goTop_btn_height">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">按钮字体大小（px）</label>
+												<div class="layui-input-block">
+													<input type="text" name="goTop_fontsize" autocomplete="off" class="layui-input" value="{{ pageData.goTop_fontsize }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">返回顶部文案</label>
+												<div class="layui-input-block">
+													<input type="text" name="goTop_text" autocomplete="off" class="layui-input" value="{{ pageData.goTop_text }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">返回顶部文案颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="goTop_text_color">
+														<div style="background-color: {{ pageData.goTop_text_color }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="goTop_text_color" autocomplete="off" value="{{ pageData.goTop_text_color }}">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="text-right">
+									<button type="button" id="js_baseConfig" class="layui-btn layui-btn-normal layui-btn-sm">基础配置</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+	<button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+	<button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>
+<script>
+	var shareHtml = "";
+	var shareChannel = $("#shareChannel").val().split(",");
+	var shareArr = $(".form-share-box");
+	for (var i = 0; i < shareChannel.length; i++) {
+		shareHtml += '<input disabled="disabled" type="checkbox" checked lay-skin="primary"  title="' + shareChannel[i] + '">';
+	}
+	
+	shareHtml += '<input  type="hidden"  name="shareArr" value="' + $("#shareChannel").val() + '">';
+	shareArr.html(shareHtml);
+</script>

@@ -1,0 +1,28 @@
+{
+    "name": "pc score",
+    "version": "v1.0.0.1",
+    "fields": {
+        "active_id": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        }
+    },
+    "languages": {
+        "top": {
+            "cn": "即将开启",
+            "zh-tw": "即將開始",
+            "en": "TOP ",
+            "ar": "القادمة",
+            "de": "In Kürze",
+            "es": "Próximamente",
+            "fr": "À venir",
+            "it": "Prossimamente",
+            "pt": "Não iniciado",
+            "ru": "Скоро",
+            "th": "จะเริ่มเร็วๆนี้",
+            "ja": "間もなく始まる",
+            "ro": "TOP"
+        }
+    }
+}

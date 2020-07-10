@@ -1,0 +1,11 @@
+{%
+    set components = [
+    {
+        label: '销售价文字颜色',
+        name: 'shop_price_color',
+        default: '#FF4545',
+        type: 'colorPicker'
+    }
+]
+%}
+{{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}

@@ -1,0 +1,53 @@
+<style type="text/css">
+    .geshop-U000152-modal1-{{pageInstanceId}} .geshop-tabs .swiper-slide-active-1 .swiper-slide-item-1{
+        {% if data.tabSelectBgurl %}background-image: url('{{data.tabSelectBgurl}}');{% endif %}
+        background-color: {{data.tabSelectedBgColor|default('#999999')}};
+        color:{{data.tabSelectedTextColor|default('#ffffff')}};
+    }
+    .geshop-U000152-modal1-{{pageInstanceId}} .geshop-tabs .swiper-slide-item-1 {
+    {# 未选中Tab背景图片 #}
+        {% if data.tabunSelectBgurl %}background-image: url('{{data.tabunSelectBgurl}}');{% endif %}
+        background-color:{{ data.tabUnselectedBgColor | default('#D8D8D8')}};
+        color:{{ data.tabUnselectedTextColor | default('#ffffff') }};
+        font-size:{{ data.tabFontSize | default(26) }}px;
+        background-repeat: repeat-x;
+    }
+    .geshop-U000152-modal1-{{pageInstanceId}} .geshop-tabs .swiper-slide{
+        width : {% if _tabs|length <= 1 %}100% {% else %} 50% {% endif %};
+        height:100%;
+    }
+    .geshop-U000152-modal1-{{pageInstanceId}} .swiper-container{
+        position: relative;
+    {% if _tabs|length > 2 %}
+    {% endif %};
+        height: {{ data.tabHeadHeight | default(60) }}px;
+        line-height: {{ data.tabHeadHeight | default(60) }}px;
+    }
+    .geshop-U000152-modal1-{{pageInstanceId}} {
+        margin-bottom: {{ data.box_margin_bottom ?? 32 }}px;
+    }
+    .geshop-U000152-modal1-{{pageInstanceId}} .geshop-U000152-modal1-list:hover  {
+        border: 1px solid {{ data.goodsBoder ?: 'transparent' }};
+    }
+    .geshop-U000152-modal1-{{pageInstanceId}} .gs-shop-price, .geshop-U000152-modal1-{{pageInstanceId}} .gs-shop-price span{
+        color: {{ data.shop_price_color ?: '#333333' }};
+    }
+
+    .geshop-U000152-modal1-{{pageInstanceId}} .goods-banners{
+    {% if data.bannerBackgroundImage == false %}
+        height:150px;
+        line-height:150px;
+    {% endif %}
+    }
+
+    {%
+    include geshop.default.pc.button_buy with { style: {
+        'color': data.buynow_font_color,
+        'background-color': data.buynow_bg_color,
+        'background-image': data.buynow_bg_image,
+        'border-radius': data.buynow_radius,
+        'display': data.buynow_show
+    }}
+
+%}
+</style>

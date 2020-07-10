@@ -1,0 +1,209 @@
+{% set suffix ='px'%}
+{%
+    set pageData = {
+        from_radio_type: data.from_radio_type|default(0),
+        imgHeight: data.img_height_column0_1|default(230)~suffix,
+        base_magin_top: data.base_magin_top|default(0)~suffix,
+        base_magin_bottom: data.base_magin_bottom|default(32)~suffix,
+        base_border_width: data.base_border_width|default(0)~suffix,
+        base_border_color: data.base_border_color|default(''),
+        base_radius_size: data.base_radius_size|default(0)~suffix,
+
+        imgLink1: data.imgLink1 is not null ? data.imgLink1 : 'javascript:;',
+        imgTitle1: data.imgTitle1 is not null ? data.imgTitle1 : '',
+        imgHeight1: data.imgHeight1|default(230)~suffix,
+        resourceImg1: data.resourceImg1,
+        imgDescribe1: data.imgDescribe1 is not null ? data.imgDescribe1 : '',
+        resourceImg1Width: data.resourceImg1Width,
+        resourceImg1Height: data.resourceImg1Height,
+
+        imgHeight2: data.imgHeight2|default(230)~suffix,
+        imgTitle21: data.imgTitle21 is not null ? data.imgTitle21 : '',
+        imgLink21: data.imgLink21 is not null ? data.imgLink21 : 'javascript:;',
+        imgDescribe21: data.imgDescribe21 is not null ? data.imgDescribe21 : '',
+        resourceImg21: data.resourceImg21,
+        resourceImg21Width: data.resourceImg21Width,
+        resourceImg21Height: data.resourceImg21Height,
+
+        imgLink22: data.imgLink22 is not null ? data.imgLink22 : 'javascript:;',
+        imgTitle22: data.imgTitle22 is not null ? data.imgTitle22 : '',
+        imgDescribe22: data.imgDescribe22 is not null ? data.imgDescribe22 : '',
+        resourceImg22: data.resourceImg22,
+
+        imgHeight3: data.imgHeight3|default(230)~suffix,
+        imgTitle31: data.imgTitle31 is not null ? data.imgTitle31 : '',
+        imgLink31: data.imgLink31 is not null ? data.imgLink31 : 'javascript:;',
+        imgDescribe31: data.imgDescribe31 is not null ? data.imgDescribe31 : '',
+        resourceImg31Width: data.resourceImg31Width,
+        resourceImg31Height: data.resourceImg31Height,
+        resourceImg31: data.resourceImg31,
+
+        imgLink32: data.imgLink32 is not null ? data.imgLink32 : 'javascript:;',
+        imgTitle32: data.imgTitle32 is not null ? data.imgTitle32 : '',
+        imgDescribe32: data.imgDescribe32 is not null ? data.imgDescribe32 : '',
+        resourceImg32: data.resourceImg32,
+
+        imgLink33: data.imgLink33 is not null ? data.imgLink33 : 'javascript:;',
+        imgTitle33: data.imgTitle33 is not null ? data.imgTitle33 : '',
+        imgDescribe33: data.imgDescribe33 is not null ? data.imgDescribe33 : '',
+        resourceImg33: data.resourceImg33,
+
+        imgHeight4: data.imgHeight4|default(230)~suffix,
+        imgTitle41: data.imgTitle41 is not null ? data.imgTitle41 : '',
+        imgLink41: data.imgLink41 is not null ? data.imgLink41 : 'javascript:;',
+        imgDescribe41: data.imgDescribe41 is not null ? data.imgDescribe41 : '',
+        resourceImg41Width: data.resourceImg41Width,
+        resourceImg41Height: data.resourceImg41Height,
+        resourceImg41: data.resourceImg41,
+
+        imgLink42: data.imgLink42 is not null ? data.imgLink42 : 'javascript:;',
+        imgTitle42: data.imgTitle42 is not null ? data.imgTitle42 : '',
+        imgDescribe42: data.imgDescribe42 is not null ? data.imgDescribe42 : '',
+        resourceImg42: data.resourceImg42,
+
+        imgLink43: data.imgLink43 is not null ? data.imgLink43 : 'javascript:;',
+        imgTitle43: data.imgTitle43 is not null ? data.imgTitle43 : '',
+        imgDescribe43: data.imgDescribe43 is not null ? data.imgDescribe43 : '',
+        resourceImg43: data.resourceImg43,
+
+        imgLink44: data.imgLink44 is not null ? data.imgLink44 : 'javascript:;',
+        imgTitle44: data.imgTitle44 is not null ? data.imgTitle44 : '',
+        imgDescribe44: data.imgDescribe44 is not null ? data.imgDescribe44 : '',
+        resourceImg44: data.resourceImg44
+    }
+%}
+
+
+<div class="geshop-component-box component-drag geshop-U000197-default geshop-U000197-default-{{ pageInstanceId }} clearfix component-sync geshop-component-goods" data-gid="U000197_default" data-key="U000197" data-id="{{ pageInstanceId }}">
+
+    {{ include('style.twig') }}
+
+    <div class="gs-ad-default-content">
+        <ul class="clearfix gs-ad-thumb-item {% if data.base_is_border == '1' %} base_border {% endif %} {% if data.base_is_radius == '1' %} base_border_radius {% endif %} {% if pageData.from_radio_type == '0' %} thumb_col_1 {% elseif pageData.from_radio_type == '1' %} thumb_col_2 {% elseif pageData.from_radio_type == '2' %} thumb_col_3  {% elseif pageData.from_radio_type == '3' %} thumb_col_4 {% endif %}">
+            {% if pageData.from_radio_type == '0' %}
+                <li>
+                    {% if data.resourceImg1 %}
+                        <a class="gs-ad-thumb-img" {% if data.imgLink1 %}href="{{ data.imgLink1 }}"{% endif %} target="_special">
+                            <img class="gs-resource-img" src="{{ data.resourceImg1 }} " width="1000" {% if data.resourceImg1Width and data.resourceImg1Height %} height="{{ (1000 * (data.resourceImg1Height|default(230)) / (data.resourceImg1Width|default(1000)))|round(0, 'floor') }}" {% else %} height="{{ data.imgHeight1|default(230) }}" {% endif %} alt="{{ data.imgDescribe1 }}" title="{{ data.imgTitle1 }}"  />
+                        </a>
+                    {% else %}
+                        <a class="gs-ad-thumb-img" href="javascript:;">
+                            <img src="{{ data.default.ad_default_bg }}" />
+                        </a>
+                    {% endif %}
+                </li>
+            {% elseif pageData.from_radio_type == '1' %}
+                <li>
+                    {% if data.resourceImg21 %}
+                        <a class="gs-ad-thumb-img thumb-column2" {% if data.imgLink21 %}href="{{ data.imgLink21 }}"{% endif %} target="_special">
+                            <img class="gs-resource-img" src="{{ data.resourceImg21 }}" width="495" {% if data.resourceImg21Width and data.resourceImg21Height %} height="{{ (495 * (data.resourceImg21Height|default(230)) / (data.resourceImg21Width|default(495)))|round(0, 'floor') }}" {% else %} height="{{ data.imgHeight2|default(230) }}" {% endif %} alt="{{ data.imgDescribe21 }}" title="{{ data.imgTitle21 }}" />
+                        </a>
+                    {% else %}
+                        <a class="gs-ad-thumb-img thumb-column2" href="javascript:;">
+                            <img src="{{ data.default.ad_default_bg2 }}" width="495" height="230" />
+                        </a>
+                    {% endif %}
+                </li>
+
+                <li style="margin-right: 0;">
+                    {% if data.resourceImg22 %}
+                        <a class="gs-ad-thumb-img thumb-column2" {% if data.imgLink22 %}href="{{ data.imgLink22 }}"{% endif %} target="_special">
+                            <img class="gs-resource-img" src="{{ data.resourceImg22 }}" width="495" {% if data.resourceImg21Width and data.resourceImg21Height %} height="{{ (495 * (data.resourceImg21Height|default(230)) / (data.resourceImg21Width|default(495)))|round(0, 'floor') }}"  {% else %} height="{{ data.imgHeight2|default(230) }}" {% endif %} alt="{{ data.imgDescribe22 }}" title="{{ data.imgTitle22 }}" />
+                        </a>
+                    {% else %}
+                        <a class="gs-ad-thumb-img thumb-column2" href="javascript:;">
+                            <img src="{{ data.default.ad_default_bg2 }}" width="495" height="230" />
+                        </a>
+                    {% endif %}
+                <li>
+            {% elseif pageData.from_radio_type == '2' %}
+                {# 三列 #}
+                <li>
+                    {% if data.resourceImg31 %}
+                        <a class="gs-ad-thumb-img thumb-column3" {% if data.imgLink31 %}href="{{ data.imgLink31 }}"{% endif %} target="_special">
+                            <img class="gs-resource-img" src="{{ data.resourceImg31 }}" width="328" {% if data.resourceImg31Width and data.resourceImg31Height %} height="{{ (328 * (data.resourceImg31Height|default(230)) / (data.resourceImg31Width|default(328)))|round(0, 'floor') }}"  {% else %} height="{{ data.imgHeight3|default(230) }}" {% endif %} alt="{{ data.imgDescribe31 }}" title="{{ data.imgTitle31 }}" />
+                        </a>
+                    {% else %}
+                        <a class="gs-ad-thumb-img thumb-column3" href="javascript:;">
+                            <img src="{{ data.default.ad_default_bg3 }}" style="{% if data.isEditEnv == '1' %} height: 230px; {% endif %}" />
+                        </a>
+                    {% endif %}
+                </li>
+
+                <li>
+                    {% if data.resourceImg32 %}
+                        <a class="gs-ad-thumb-img thumb-column3" {% if data.imgLink32 %}href="{{ data.imgLink32 }}"{% endif %} target="_special">
+                            <img class="gs-resource-img" src="{{ data.resourceImg32 }}" width="328" {% if data.resourceImg31Width and data.resourceImg31Height %} height="{{ (328 * (data.resourceImg31Height|default(230)) / (data.resourceImg31Width|default(328)))|round(0, 'floor') }}"  {% else %} height="{{ data.imgHeight3|default(230) }}" {% endif %} alt="{{ data.imgDescribe32 }}" title="{{ data.imgTitle32 }}"  />
+                        </a>
+                    {% else %}
+                        <a class="gs-ad-thumb-img thumb-column3" href="javascript:;">
+                            <img src="{{ data.default.ad_default_bg3 }}" width="328" height="230" />
+                        </a>
+                    {% endif %}
+                </li>
+
+                <li>
+                    {% if data.resourceImg33 %}
+                        <a class="gs-ad-thumb-img thumb-column3" {% if data.imgLink33 %}href="{{ data.imgLink33 }}"{% endif %} target="_special">
+                            <img class="gs-resource-img" src="{{ data.resourceImg33 }}" width="328" {% if data.resourceImg31Width and data.resourceImg31Height %} height="{{ (328 * (data.resourceImg31Height|default(230)) / (data.resourceImg31Width|default(328)))|round(0, 'floor') }}"  {% else %} height="{{ data.imgHeight3|default(230) }}" {% endif %} alt="{{ data.imgDescribe33 }}" title="{{ data.imgTitle33 }}" />
+                        </a>
+                    {% else %}
+                        <a class="gs-ad-thumb-img thumb-column3" href="javascript:;">
+                            <img src="{{ data.default.ad_default_bg3 }}" width="328" height="230" />
+                        </a>
+                    {% endif %}
+                </li>
+
+            {% elseif pageData.from_radio_type == '3' %}
+                {# 四列 #}
+                <li>
+                    {% if data.resourceImg41 %}
+                        <a class="gs-ad-thumb-img thumb-column4" {% if data.imgLink41 %}href="{{ data.imgLink41 }}"{% endif %} target="_special">
+                            <img class="gs-resource-img" src="{{ data.resourceImg41 }}" width="246" {% if data.resourceImg41Width and data.resourceImg41Height %} height="{{ (246 * (data.resourceImg41Height|default(230)) / (data.resourceImg41Width|default(246)))|round(0, 'floor') }}"  {% else %} height="{{ data.imgHeight4|default(230) }}" {% endif %} alt="{{ data.imgDescribe41 }}" title="{{ data.imgTitle41 }}" />
+                        </a>
+                    {% else %}
+                        <a class="gs-ad-thumb-img thumb-column4" href="javascript:;">
+                            <img src="{{ data.default.ad_default_bg4 }}" width="246" height="230" />
+                        </a>
+                    {% endif %}
+                </li>
+
+                <li>
+                    {% if data.resourceImg42 %}
+                        <a class="gs-ad-thumb-img thumb-column4" {% if data.imgLink42 %}href="{{ data.imgLink42 }}"{% endif %} target="_special">
+                            <img class="gs-resource-img" src="{{ data.resourceImg42 }}" width="246" {% if data.resourceImg41Width and data.resourceImg41Height %} height="{{ (246 * (data.resourceImg41Height|default(230)) / (data.resourceImg41Width|default(246)))|round(0, 'floor') }}"  {% else %} height="{{ data.imgHeight4|default(230) }}" {% endif %} alt="{{ data.imgDescribe42 }}" title="{{ data.imgTitle42 }}" />
+                        </a>
+                    {% else %}
+                        <a class="gs-ad-thumb-img thumb-column4" href="javascript:;">
+                            <img src="{{ data.default.ad_default_bg4 }}" width="246" height="230" />
+                        </a>
+                    {% endif %}
+                </li>
+
+                <li>
+                    {% if data.resourceImg43 %}
+                        <a class="gs-ad-thumb-img thumb-column4" {% if data.imgLink43 %}href="{{ data.imgLink43 }}"{% endif %} target="_special">
+                            <img class="gs-resource-img" src="{{ data.resourceImg43 }}" width="246" {% if data.resourceImg41Width and data.resourceImg41Height %} height="{{ (246 * (data.resourceImg41Height|default(230)) / (data.resourceImg41Width|default(246)))|round(0, 'floor') }}"  {% else %} height="{{ data.imgHeight4|default(230) }}" {% endif %} alt="{{ data.imgDescribe43 }}" title="{{ data.imgTitle43 }}" />
+                        </a>
+                    {% else %}
+                        <a class="gs-ad-thumb-img thumb-column4" href="javascript:;">
+                            <img src="{{ data.default.ad_default_bg4 }}" width="246" height="230" />
+                        </a>
+                    {% endif %}
+                </li>
+
+                <li>
+                    {% if data.resourceImg44 %}
+                        <a class="gs-ad-thumb-img thumb-column4" {% if data.imgLink44 %}href="{{ data.imgLink44 }}"{% endif %} target="_special">
+                            <img class="gs-resource-img" src="{{ data.resourceImg44 }}" width="246" {% if data.resourceImg41Width and data.resourceImg41Height %} height="{{ (246 * (data.resourceImg41Height|default(230)) / (data.resourceImg41Width|default(246)))|round(0, 'floor') }}"  {% else %} height="{{ data.imgHeight4|default(230) }}" {% endif %} alt="{{ data.imgDescribe44 }}" title="{{ data.imgTitle44 }}" />
+                        </a>
+                    {% else %}
+                        <a class="gs-ad-thumb-img thumb-column4" href="javascript:;">
+                            <img src="{{ data.default.ad_default_bg3 }}" width="246" height="230" />
+                        </a>
+                    {% endif %}
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>

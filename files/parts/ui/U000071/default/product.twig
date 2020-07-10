@@ -1,0 +1,17 @@
+<a 
+  href="{{ data.link }}" 
+  style="display: block;margin-top: {{ data.marginTop | default(0) }}px; margin-bottom: {{ data.marginBottom | default(0) }}px; text-align: {{ data.imgAlign }};{% if data.ImgHeight %} height: {{ data.ImgHeight }}px;{% endif %}" 
+  class="logsss_event js-geshop-ga-view js-geshop-ga-click" 
+  geshop-component-name="{{ data.imgAlt }}" 
+  data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.imgSrc }}','cporder':'{{ layoutIndex }}','rank':'1'} }"
+  {% if data.target_active == "1"%} target="_blank"  {% endif %}>
+  <img 
+    class="{{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy" 
+    width="{{ data.ImgWidth }}" 
+    height="{{ data.ImgHeight }}" 
+    alt="{{ data.imgAlt }}"
+    data-original="{{ data.imgSrc | default(data.default.banner) }}" 
+    src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs="
+    data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.imgSrc }}','cporder':'{{ layoutIndex }}','rank':'1'} }"
+    style="margin-left: {{ data.marginLeft | default(0) }}px;margin-right: {{ data.marginRight | default(0) }}px;{% if data.imgSrc|length == 0 %}max-width: 100%;{% endif %}vertical-align: top;">
+</a>

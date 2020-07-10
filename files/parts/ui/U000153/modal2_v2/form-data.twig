@@ -1,0 +1,80 @@
+<fieldset class="layui-elem-field" id="form_carousel">
+    <legend>数据添加</legend>
+    {# 剩余秒数,倒计时状态0,1,2 未开始,已开始,已结束 #}
+    <input type="hidden" name="count_textStatus" value="{{data.count_textStatus}}" data-public-tag="true">
+    <input type="hidden" name="sku_selector_parent" value=".goods-tab-item">
+    <div class="layui-field-box">
+    {# 秒杀内容设置 #}
+        <div id="killTabWrap">
+            <input type="hidden" name="goodsSKUSort" value='{{json_encode_no_unicode(data.goodsSKUSort)}}'>
+            <input type="hidden" name="goodsSKUTab" value='{{json_encode_no_unicode(data.goodsSKUTab)}}' >
+
+            {# JS模版 #}
+            <ul class="layui-hide tab-template">
+                <li class="goods-tab-item" style="margin-bottom: 20px;">
+                    <div class="layui-form-item">
+                        <div class="gs-lable-block">秒杀模块<span class="loop-index"></span>设置</div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="gs-lable-block">秒杀时间段(请选择北京时间)</div>
+                        <div class="layui-input-block">
+                            <input class="layui-input down-timestamp Unwanted" type="text" value="" data-public-tag="true">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="gs-lable-block">商品sku</div>
+                        <div class="layui-input-block">
+                            <textarea class="layui-input goods-sku Unwanted js-valid-skus" name="goodsSKU" data-public-tag="true" value="" placeholder="请输入商品SKU，每个SKU用英文逗号隔" style="height:80px;"></textarea>
+                        </div>
+                    </div>
+                    <div class="geshop-third-value tab-add-btn">
+                        <span class="el-button el-button--primary el-button--small class-manage" style="float:left;margin-left:0px;">商品管理</span>
+                        <span class="img-btn delete-datetime-item">
+                            <i class='icon-delete'></i>
+                            <b class="tips">删除</b>
+                        </span>
+                    </div>
+                </li>
+            </ul>
+
+            {# 真实数据 #}
+            <ul class="tab-lists-wrap">
+                {% for tabItem in data.goodsSKUTab|default(0..0) %}
+                    <li class="goods-tab-item" style="margin-bottom: 20px; overflow: hidden;">
+                        <div class="layui-form-item">
+                            <div class="gs-lable-block">秒杀模块<span class="loop-index">{{loop.index}}</span>设置</div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="gs-lable-block">秒杀时间段(请选择北京时间)</div>
+                            <div class="layui-input-block">
+                                <input class="layui-input down-timestamp Unwanted" type="text" value="{{tabItem.timeRange}}" data-public-tag="true" data-start="{{tabItem.dataStartTime}}" data-end="{{tabItem.dataEndTime}}">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="gs-lable-block">商品sku</div>
+                            <div class="layui-input-block">
+                                <textarea class="layui-input goods-sku js-valid-skus Unwanted" name="goodsSKU" data-public-tag="true" value="{{tabItem.lists}}" placeholder="请输入商品SKU，每个SKU用英文逗号隔" style="height:80px;">{{tabItem.lists}}</textarea>
+                            </div>
+                        </div>
+                        {# <div class="layui-form-item tab-add-btn">
+
+                        </div> #}
+                        <div class="geshop-third-value tab-add-btn">
+                            <span class="el-button el-button--primary el-button--small class-manage" style="float:left; margin-left: 0px;">商品管理</span>
+                            <span class="img-btn delete-datetime-item">
+                                <i class='icon-delete'></i>
+                                <b class="tips">删除</b>
+                            </span>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="layui-form-item tab-add-btn">
+                <span class="el-button el-button--primary el-button--small" id="gs_tab_add">新增秒杀模块</span>
+            </div>
+        </div>
+    {# 秒杀内容设置 end #}
+    </div>
+</fieldset>

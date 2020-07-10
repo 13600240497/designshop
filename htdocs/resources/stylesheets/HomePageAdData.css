@@ -1,0 +1,470 @@
+.geshop-el-main .el-row {
+  margin-bottom: 0;
+}
+
+.gs-activity-ad-tit {
+  margin-bottom: 8px !important;
+}
+
+.gs-activity-ad-title {
+  width: 88px;
+  font-size: 22px;
+  color: #3C4144;
+  line-height: 30px;
+}
+
+.gs-activity-ad-btn {
+  background-color: #FFFFFF;
+  line-height: 72px;
+  position: relative;
+  margin-bottom: 0;
+}
+
+.gs-activity-ad-btn .gs-activity-ad-port {
+  width: 196px !important;
+  margin-left: 24px;
+}
+
+.gs-activity-ad-port .gs-activity-ad-port-name {
+  width: 28px;
+  line-height: 20px;
+  font-size: 14px;
+  color: #3C4144;
+  display: inline-block;
+}
+
+.gs-activity-ad-port .gs-activity-ad-port-select {
+  width: 160px;
+  height: 40px;
+  display: inline-block;
+}
+
+.gs-activity-ad-time {
+  width: 340px;
+  display: inline-block;
+  margin-left: 13px;
+}
+
+.gs-activity-ad-time .el-button-group .el-button {
+  width: 84px;
+  background-color: #FFFFFF;
+}
+
+.gs-activity-ad-time .el-button-group .el-button.is-active, 
+.gs-activity-ad-time .el-button-group .el-button:active, 
+.gs-activity-ad-time .el-button-group .el-button:focus,
+.gs-activity-ad-time .el-button-group .el-button:hover {
+  color:#FFFFFF !important;
+  background-color: #1E9FFF !important;
+}
+
+.gs-activity-ad-screening {
+  width: 436px;
+}
+
+.gs-activity-ad-screening .gs-activity-ad-screening-time {
+  width: 70px;
+  height: 20px;
+  margin-left: 9px;
+}
+
+.gs-activity-ad-screening .gs-activity-ad-screening-select {
+  width: 321px;
+  margin-left: 4px;
+}
+
+.gs-activity-ad-screening .gs-activity-ad-screening-select input:nth-child(2){
+  margin-left: 40px;
+}
+
+.gs-activity-ad-screening .el-icon-time:before {
+  content: none;
+}
+
+.gs-activity-ad-screening .el-range-editor.el-input__inner {
+  padding: 3px 0px !important;
+}
+
+.gs-activity-ad-screening .el-range__icon {
+  background: url('../../resources/images/activity/time.png') no-repeat;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  margin-left: 0px;
+  top: 11px;
+  left: 17px;
+}
+
+.gs-activity-ad-screening .el-range__icon::before,
+.gs-activity-ad-screening .el-range__icon::after {
+  content: none;
+}
+
+.gs-activity-ad-search {
+  width: 60px;
+}
+
+.gs-activity-ad-search .el-button:hover {
+  background-color: #34A8FF;
+  color: #FFFFFF;
+}
+
+.gs-activity-ad-search .el-button:focus {
+  background-color: #2E96E5;
+  color: #FFFFFF;
+}
+
+.gs-activity-ad-search .el-button {
+  width: 100%;
+  color: #FFFFFF;
+  background-color: #1E9FFF;
+  padding: 12px 16px !important;  
+}
+
+.gs-activity-ad-export {
+  width: 106px;
+  float: right;
+  margin-right: 24px;
+}
+
+.gs-activity-ad-export .el-button {
+  width: 100%;
+  padding: 12px 16px !important;
+  color: #333333;
+}
+
+
+.gs-activity-ad-export .el-button:hover {
+  border-color: #34A8FF;
+  color: #34A8FF;
+  background-color: #FFFFFF;
+}
+
+.gs-activity-ad-export .el-button:focus {
+  border-color: #2E96E5;
+  color: #2E96E5;
+  background-color: #FFFFFF;
+}
+
+.gs-activity-ad-swtich {
+  background-color: #FFFFFF;
+  padding-left: 16px;
+  padding-bottom: 16px;
+}
+
+.gs-activity-ad-swtich .el-tabs__content {
+  display: none;
+}
+
+.gs-activity-ad-swtich .el-tabs__nav {
+  height: 60px;
+  border: none !important;
+}
+
+.gs-activity-ad-swtich .el-tabs__nav .el-tabs__item {
+  width: 130px;
+  height: 60px;
+  line-height: 60px;
+  border: none;
+  font-size: 16px;
+  color: #333333;
+  text-align: center;
+}
+
+.gs-activity-ad-swtich .el-tabs__nav .el-tabs__item.is-active {
+  border-bottom: 4px solid #1E9FFF !important;
+  color: #333333;
+}
+
+.gs-activity-ad-table {
+  background-color: #FFFFFF;
+  padding: 0px 24px 0px 24px;
+  margin-top: -16px;
+}
+
+.gs-activity-ad-table .el-table__body {
+  color: #333333;
+  text-align: center;
+}
+
+/* 表头样式修改开始 */
+.gs-activity-ad-table .has-gutter th {
+  background-color: #F4F4F4 !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  text-align: center;
+  color: #333333;
+}
+
+.gs-activity-ad-table .el-table td {
+  padding: 8px 0px !important;
+}
+
+.gs-activity-ad-table  .el-table__row {
+  height: 40px !important;
+}
+/* 表头样式修改结束 */
+
+/* 分页条 */
+.gs-paging-areas {
+  height: 100px;
+  background-color: #FFFFFF;
+}
+.geshop-article-page .el-pagination {
+  background-color: #FFFFFF;
+  padding-top: 40px;
+}
+.geshop-article-page .el-pagination li {
+  line-height: 20px;
+  min-width:20px;
+  margin-left: 24px;
+  font-weight: normal;
+}
+.geshop-article-page .el-pagination li.active {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #1E9FFF;
+  color: #FFFFFF;
+}
+.geshop-article-page .el-icon-arrow-right {
+  margin-top: -5px;
+}
+
+
+/* 导出excel弹窗 */
+.el-message-box {
+  width: 560px;
+  height: 268px;
+  padding-bottom: 0px;
+}
+
+.el-message-box__header {
+  padding: 20px 20px 0px 40px;
+}
+
+.el-message-box__title {
+  line-height: 25px;
+}
+
+.el-message-box__headerbtn {
+  font-size: 24px;
+}
+
+.el-message-box__content {
+  padding: 0px 0px;
+  margin-top: 59px;
+  line-height: 22px;
+  text-align: center;
+}
+
+.el-message-box__btns {
+  text-align: center;
+  margin-top: 62PX;
+}
+
+.el-message-box__btns .el-button {
+  width: 100px;
+  height: 40px;
+}
+
+.el-message-box__btns .el-button:first-child:hover {
+  border-color: #34A8FF;
+  color: #34A8FF;
+  background-color: #FFFFFF;
+}
+
+.el-message-box__btns .el-button:first-child:focus {
+  border-color: #2E96E5;
+  color: #2E96E5;
+  background-color: #FFFFFF;
+}
+.el-message-box__btns .el-button:last-child:hover {
+  background-color: #34A8FF;
+  color: #FFFFFF;
+}
+
+.el-message-box__btns .el-button:last-child:focus {
+  background-color: #2E96E5;
+  color: #FFFFFF;
+}
+
+.el-message-box__btns button:nth-child(2) {
+  margin-left: 18px;
+}
+/* 导出excel弹窗 */
+
+/* 数据报表media query 适配小屏幕 */
+@media only screen and (min-width:1280px) and (max-width:1500px) {
+  .gs-activity-ad-btn .gs-activity-ad-port {
+    width: 80px !important;
+    margin-left: 8px;
+  }
+  .gs-activity-ad-btn .gs-activity-ad-port.activity-select-list {
+    width: 130px !important;
+  }
+  
+  .gs-activity-ad-btn .gs-activity-ad-port.activity-select-position {
+    width: 120px !important;
+  }
+  
+  .gs-activity-ad-btn .gs-activity-ad-port.activity-select-component {
+    width: 160px !important;
+  }
+
+  .gs-activity-ad-port .gs-activity-ad-port-select {
+    width: 80px;
+  }
+  .gs-activity-ad-port.activity-select-list .gs-activity-ad-port-select {
+    width: 130px;
+  }
+  .gs-activity-ad-time-container {
+    background-color:#ffffff;
+  }
+  .gs-activity-ad-time {
+    width: auto;
+  }
+  .gs-activity-ad-screening .gs-activity-ad-screening-select {
+    width: 228px;
+  }
+  .gs-activity-ad-screening {
+    width: 318px;
+    font-size: 14px;
+  }
+  .el-radio-button__inner {
+    padding: 12px 8px;
+  }
+  .gs-activity-ad-btn .gs-activity-ad-clear {
+    width: auto;
+    margin-left: 8px;
+  }
+  .gs-activity-ad-btn .gs-activity-ad-clear .el-button {
+    padding: 12px 12px;
+  }
+  .gs-activity-ad-export {
+    width: auto;
+    margin-right: 10px;
+  }
+  .gs-activity-ad-export .el-button {
+    padding: 12px 5px !important;
+  }
+  .gs-activity-ad-search {
+    margin-left: 6px;
+  }
+}
+
+@media only screen and (min-width:1501px) and (max-width:1800px) {
+  .gs-activity-ad-btn .gs-activity-ad-port {
+    width: 100px !important;
+    margin-left: 10px;
+  }
+  .gs-activity-ad-btn .gs-activity-ad-port.activity-select-list {
+    width: 130px !important;
+  }
+  
+  .gs-activity-ad-btn .gs-activity-ad-port.activity-select-position {
+    width: 120px !important;
+  }
+  
+  .gs-activity-ad-btn .gs-activity-ad-port.activity-select-component {
+    width: 160px !important;
+  }
+
+  .gs-activity-ad-port .gs-activity-ad-port-select {
+    width: 100px;
+  }
+  .gs-activity-ad-port.activity-select-list .gs-activity-ad-port-select {
+    width: 130px;
+  }
+  .gs-activity-ad-time-container {
+    background-color:#ffffff;
+  }
+  .gs-activity-ad-time {
+    width: auto;
+  }
+  .gs-activity-ad-screening .gs-activity-ad-screening-select {
+    width: 225px;
+  }
+  .gs-activity-ad-screening {
+    width: 314px;
+    font-size: 14px;
+  }
+  .el-radio-button__inner {
+    padding: 12px 10px;
+  }
+  .gs-activity-ad-btn .gs-activity-ad-clear {
+    width: auto;
+    margin-left: 8px;
+  }
+  .gs-activity-ad-btn .gs-activity-ad-clear .el-button {
+    padding: 12px 12px;
+  }
+  .gs-activity-ad-export {
+    width: auto;
+    margin-right: 15px;
+  }
+  .gs-activity-ad-export .el-button {
+    padding: 12px 5px !important;
+  }
+  .gs-activity-ad-search {
+    margin-left: 6px;
+  }
+}
+
+@media only screen and (min-width:1801px) {
+  .gs-activity-ad-btn .gs-activity-ad-port {
+    width: 125px !important;
+    margin-left: 15px;
+  }
+  .gs-activity-ad-btn .gs-activity-ad-port.activity-select-list {
+    width: 130px !important;
+  }
+  
+  .gs-activity-ad-btn .gs-activity-ad-port.activity-select-position {
+    width: 120px !important;
+  }
+  
+  .gs-activity-ad-btn .gs-activity-ad-port.activity-select-component {
+    width: 160px !important;
+  }
+
+  .gs-activity-ad-port .gs-activity-ad-port-select {
+    width: 125px;
+  }
+  .gs-activity-ad-port.activity-select-list .gs-activity-ad-port-select {
+    width: 130px;
+  }
+  .gs-activity-ad-time-container {
+    background-color:#ffffff;
+  }
+  .gs-activity-ad-time {
+    width: auto;
+  }
+  .gs-activity-ad-screening .gs-activity-ad-screening-select {
+    width: 280px;
+  }
+  .gs-activity-ad-screening {
+    width: 370px;
+    font-size: 14px;
+  }
+  .el-radio-button__inner {
+    padding: 12px 16px;
+  }
+  .gs-activity-ad-btn .gs-activity-ad-clear {
+    width: auto;
+    margin-left: 8px;
+  }
+  .gs-activity-ad-btn .gs-activity-ad-clear .el-button {
+    padding: 12px 12px;
+  }
+  .gs-activity-ad-export {
+    width: auto;
+    margin-right: 15px;
+  }
+  .gs-activity-ad-export .el-button {
+    padding: 12px 10px !important;
+  }
+  .gs-activity-ad-search {
+    margin-left: 6px;
+  }
+}

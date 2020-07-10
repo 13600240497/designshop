@@ -1,0 +1,158 @@
+{% set static = {}
+%}
+<!-- embed stylesheet begin -->
+    <style type="text/css">
+	.wrap_U000181_model1 .gs-aigoods .discount-text p.discountText{
+		font-size: {{ data.discountFontSize | default(28) / 75}}rem;
+		margin-bottom: 0.03rem;
+	}
+</style>
+<!-- embed stylesheet end -->
+
+<div class="gs-goodsWrap gs-aigoods" data-gid="m_zaful_sync">
+	<div name="netError" class="net-error">
+	  <img  src="https://geshopimg.logsss.com/uploads/24M3UjECuNkOHzl61R5cWrBLGbA7ZyKI.png" / >
+		<p class="error-text">The network is abnormal. Please try again！</p>
+		<div class="re-request">Re-request</div>
+	</div>
+
+	<ul class="clearfix" style=" {% if data.isEditEnv == 1 %} padding: 0 11px; {% else %} padding: 0 0.32rem; {% endif %} {% if data.baseBgC %}background-color:{{data.baseBgC}};{% endif %}">
+	</ul>
+
+    {% if data.isBottomTextVis == 1 %}
+        <div name="ended" class="loading-end">{{data.bottomCopywriter}}</div>	
+    {% endif %}
+	
+	<div class="ui-recommend-loading"></div>
+	<div class="geshop_eurogentec_{{pageInstanceId}}"  style="height:17.786rem; background:url(data:image/gif;base64,R0lGODlhdwE9AZEAAPr6+v////n5+QAAACH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxMzggNzkuMTU5ODI0LCAyMDE2LzA5LzE0LTAxOjA5OjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxNyAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0N0E5NjI2RTA3M0QxMUU5Qjg0NDlFOTRFOUY0NDg1RiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0N0E5NjI2RjA3M0QxMUU5Qjg0NDlFOTRFOUY0NDg1RiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkRGMTk0RUZGMDcxQjExRTlCODQ0OUU5NEU5RjQ0ODVGIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkRGMTk0RjAwMDcxQjExRTlCODQ0OUU5NEU5RjQ0ODVGIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2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) repeat center top; background-size:100% auto;"></div>
+</div>
+
+<script type="text/html" id="gsTpl_{{pageInstanceId}}" class="gsTpl_zaful_sync">
+	<%#
+		var result = d;
+		var types = {
+			'1': 'HOT',
+			'2': 'POPULAR',
+			'3': 'NEW'
+		};
+		for(var i = 0; i < result.length; i++){
+			var item = result[i];
+			var sku = item.goods_sn;
+			if(item.promotions[0]){
+				var type = item.promotions[0].type;
+			}
+			var index = i;
+	 %>
+	 	<%# if(item.is_on_sale == 1){ %>
+			<li class="	<%# if(item.goods_number == 0){ %> soldout	<%# } %>" data-index="{{loop.index0}}" style="{% if data.goodsBRadius %}border-radius: {{ data.goodsBRadius|default(12) / 75 }}rem;{% endif %}">
+				<%# if(item.promotions[0]){ %>
+					<%# if(type == 1){ %>
+						{% if data.isDiscountVis|default(1) == 1 %} 
+							<div class="discount" style="
+							position: absolute;
+							text-align:center;
+							background-size: 100% 100%;
+							border-radius: 50%;
+							{# {% if data.isDiscountLeft | default(1) == 1 %}left: 0px; {% else %} right: 0; {% endif %} #}
+							{% if data.discountBgColor %}background-color: {{ data.discountBgColor }};{% endif %}
+							{% if data.discountFontColor %}color: {{ data.discountFontColor | default('#ffffff') }};{% endif %}
+							{% if data.discountBgColor %}background-image: url({{ data.discountBgColor|default('#999999') }});{% endif %}
+							{% if data.discountwidth|default(88) > 0 %} width: {{ data.discountwidth|default(88) / 75}}rem;{% else %}width: 0; {% endif %}
+							{% if data.discountHeight|default(88) > 0 %}height: {{ data.discountHeight|default(88) / 75}}rem;line-height:{{ data.labelHeight / 75}}rem;{% else %}height: 0; {% endif %}
+							{% if data.discountImg %}background-image: url({{ data.discountImg }});{% endif %}
+							{% if data.discountTop %}top: {{ data.discountTop / 75 }}rem;{% endif %}
+							{% if data.isDiscountLeft|default(1) == 0 %}
+								right: {{ data.discountLeft / 75 }}rem;
+							{% else %}
+								left: {{ data.discountLeft / 75 }}rem;
+							{% endif %}
+						">
+							<div class="discount-text">
+								{% if data.isDiscountStyle == 1 %}
+									<p class="discountText" style="	
+									{% if data.discountTextTop %}padding-top: {{ data.discountTextTop / 75 }}rem;{% endif %}
+									{% if data.discountTextLeft %}padding-left: {{ data.discountTextLeft / 75 }}rem;{% endif %}">
+									<% item.promotions[0].value %>%</p>
+									<p class="offtext" style="{% if data.discountTextLeft %}padding-left: {{ data.discountTextLeft / 75 }}rem;{% endif %}" >{{pageData.off}}</p>
+								{% else %}
+									<p class="discountText" style="line-height: 0.8rem;
+										{% if data.discountTextTop %}padding-top: {{ data.discountTextTop / 75 }}rem;{% endif %}
+										{% if data.discountTextLeft %}padding-left: {{ data.discountTextLeft / 75 }}rem;{% endif %}
+									"><% item.promotions[0].value %>%</p>
+								{% endif %}
+							</div>
+							{# <% types[item.promotions[0].type] %> #}
+						</div>
+						{% endif %}
+						
+						
+					<%# }else if(type == 2){ %>
+						<div class="mark" style="
+							{% if data.labelwidth %} width: {{ data.labelwidth / 75 | default(120/75)}}rem;{% endif %}
+							{% if data.labelHeight %}height: {{ data.labelHeight / 75 | default(48/75)}}rem;line-height:{{ data.labelHeight / 75}}rem;{% endif %}
+							{% if data.labelBgColor %}background-color: {{ data.labelBgColor | default('#333') }};{% endif %}
+							{% if data.labelBgImg %}background-image: url({{ data.labelBgImg }});{% endif %}
+							{% if data.labelFontColor %}color: {{ data.labelFontColor | default('#ffffff') }};{% endif %}
+							{% if data.isMarkLeft == 1 %}left: 4px;{% endif %}
+                            {% if data.goodsBRadius %}border-radius: {{ data.goodsBRadius|default(12) / 75 }}rem 0 0 0;{% endif %}
+                            
+							">
+
+							<%# if(types[item.promotions[0].type] == 'HOT'){ %>
+								{{pageData.hot}}
+							<%# }else if(types[item.promotions[0].type] == 'NEW'){ %>
+								{{pageData.new}}
+							<%# }else if(types[item.promotions[0].type] == 'POPULAR'){ %>
+								{{pageData.popular}}
+							<%# } %>
+
+						</div>
+					<%# } %>
+				<%# } %>
+				<div class="component-self-goodWrap" style="{% if data.goodsBgc %}background-color:{{data.goodsBgc}}{% endif %};
+					padding:{{pageData.gsInnerPadding}}rem {{pageData.gsInnerPadding}}rem 0;
+					{% if data.gsRadius%}border-radius:{{data.gsRadius}}px;{% endif %}">
+						<div class="gs-img">
+								<%# if(item.goods_number == 0){ %>
+										<div class="soout">{{pageData.soldOut}}</div>
+								<%# } %>
+								<a href="<% item.url_title %>"  class="logsss_event goods-img-wrap"
+									data-logsss-event-value="{ 'pm':'mr','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'<% sku  %>','cporder':'{{ layoutIndex }}','rank':'<% index + 1 %>'},'skuinfo':{'sku':'<% sku  %>','pam':'0','pc':'','k':''} }"
+								>
+
+									{% if data.isEditEnv == '1' %}
+										<img src="<% item.goods_img %>" style="max-width: 100%">
+									{% elseif  data.isEditEnv == '0' %}
+										<img class="js-geshopImg-lazyload" data-sku="<% sku %>" src="{{data.default.lazyImg|default(data.default.good)}}" data-original="<% item.goods_img %>" style="max-width: 100%; {% if data.goodsBRadius %}border-radius: {{ data.goodsBRadius|default(12) / 75 }}rem {{ data.goodsBRadius|default(12) / 75 }}rem 0 0;{% endif %}"
+											data-logsss-browser-value="{ 'pm':'mr','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'<% sku  %>','cporder':'{{ layoutIndex }}','rank':'<% index + 1 %>'} }"
+										> 
+									{% endif %}
+
+								</a>
+								
+						</div>
+						<div class="gs-desc" style="padding: 0.24rem 0.32rem;">
+							<a href="<% item.url_title %>" class="logsss_event goods-title"
+								data-logsss-event-value="{ 'pm':'mr','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'<% sku %>','cporder':'{{ layoutIndex }}','rank':'<% index + 1 %>'},'skuinfo':{'sku':'<% sku %>','pam':'0','pc':'','k':''} }"
+							>
+								<span class="item-name" style="display: block; {% if data.goodsFtC %}color:{{data.goodsFtC}};{% endif %}{% if pageData.goodsFtS %}font-size:{{pageData.goodsFtS}}rem;{% endif %}"><% item.goods_title %></span>
+							</a>
+
+							<p class="item-price text-lt">
+									<span class="shop-price" style="{% if data.shopPriceColor %}color:{{data.shopPriceColor}};{% endif %}
+										{% if pageData.priceFt %}font-size:{{pageData.priceFt}}rem;{% endif %}">
+										<strong class="bizhong"></strong>
+										<span class="bz_icon"></span>
+										<span class="my_shop_price js-refresh-all" data-sku="<% sku %>" data-orgp="<% item.shop_price %>"
+									><% item.shop_price %></span>
+										</span>
+
+							</p>
+							
+						</div>
+							
+				</div>
+			</li>
+		<%# } %>
+	<%# 		} %>
+</script>

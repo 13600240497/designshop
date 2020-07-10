@@ -1,0 +1,69 @@
+
+{% set space = '#U000229_'~pageInstanceId %}
+
+
+{{ space }} .geshop-u000229-default-body {
+    width: 100%;
+    overflow: hidden;
+}
+
+
+{# PC 模式 #}
+@media screen and (min-width: 1025px) {
+    {{ space }} .geshop-u000229-default-body {
+        margin-top: {{ data.box_pc_margin_top|default('0') }}px;
+        margin-bottom: {{ data.box_pc_margin_bottom|default('20') }}px;
+    }
+
+   
+    {% if data.pc_pad_width is not empty %}
+    {{ space }} .geshop-u000229-default-body .wrap .item-list-box .layout-u000229-for-pc a img {
+        width: {{ data.pc_pad_width }}px;
+    }
+    {% endif %} 
+    
+   
+    {% if data.isEditEnv == '1' %}{% endif %} 
+}
+
+{# PAD #}
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+    {{ space }} .geshop-u000229-default-body {
+        margin-top: {{ data.box_pad_margin_top|default('0') }}px;
+        margin-bottom: {{ data.box_pad_margin_bottom|default('20') }}px;
+    }
+
+    {{ space }} .geshop-u000229-default-body .wrap .item-list-box {
+        text-align: {{ data.img_align|default('left') }};
+    }
+
+   
+    {% if data.pc_pad_width is not empty %}
+    {{ space }} .geshop-u000229-default-body .wrap .item-list-box .layout-u000229-for-pc a img {
+        width: {{ data.pc_pad_width }}px;
+       
+    }  
+   
+    {% endif %} 
+    
+    
+}
+
+{# M #}
+@media screen and (max-width: 767px) and (min-width: 0px) {
+    {{ space }} .geshop-u000229-default-body {
+       
+        margin-top: {{ data.box_m_margin_top|default('0') }}px;
+        margin-bottom: {{ data.box_m_margin_bottom|default('10') }}px;
+    }
+
+   
+    {% if data.for_m_width is not empty %}
+    {{ space }} .geshop-u000229-default-body .wrap .item-list-box .layout-u000229-for-wap a img {
+    
+        width: {{ data.for_m_width }}px;
+       
+    }  
+    {% endif %} 
+    
+}

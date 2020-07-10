@@ -1,0 +1,24 @@
+<div class="geshop-coupon-style4-dialog-1 <%# if (d.show == true) { %>is-show<%# }%>">
+    <div class="gc4d1-wrapper">
+        <div class="gc4d1-head">{{ data.dialog_title ?? 'CONGRATUATIONS！' }}</div>
+        <div class="gc4d1-body">
+            {# <div class="gc4d1-coupon">
+                <div class="gc4d1-coupon-td">
+                    <p>{{ get_component_trans(lang,'coupon_dialog_content1') }}</p>
+                    <p>{{ get_component_trans(lang,'coupon_dialog_content2') }}</p>
+                </div>
+            </div> #}
+            <p class="get-success">{{ get_component_trans(lang,'coupon_success_text') }}</p>
+            <button type="button" class="user-btn" data-id="<% d.componentID %>"><a href="<% d.coupon_url %>"><span>{{ get_component_trans(lang,'coupon_can_use') }}</span></a></button>
+            <button type="button" class="gc4d1-close close-btn" data-id="<% d.componentID %>"><a href="javascript:;"><span>{{ get_component_trans(lang,'coupon_dialog2_close') }}</span></a></button>
+        </div>
+        <div class="gc4d1-close" data-id="<% d.componentID %>">
+            {% if data.dialog_close_image is not empty %}
+                <img src="{{ data.dialog_close_image }}">
+            {% else %}
+                <img src="{{ data.default.coupon_close }}">
+            {% endif %}
+        </div>
+    </div>
+</div>
+<div class="geshop-popup-shade"></div>

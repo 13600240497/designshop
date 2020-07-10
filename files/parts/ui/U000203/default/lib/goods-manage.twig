@@ -1,0 +1,47 @@
+{{include ('@app/files/parts/temp/goods_manager.twig')}}
+<section>
+  <div class="component-form-setting-ite component-form-configure-item">
+    <div class="nav-list-setting">
+        <input type="hidden" data-public-tag="true" name="goodsSKU">
+        {% for key, item in data.goodsSKU | default([""]) %}
+          <div class="nav-item">
+           <p class="nav-title">TAB分类{{key+1}}</p>
+            <div class="layui-block">
+              <div class="layui-form-item">
+                  <label class="form-item-label">分类名</label>
+                  <div class="layui-input-block">
+                      <input type="text" class="layui-input category-name" type="text" value="{{item.categoryName}}">
+                  </div>
+              </div> 
+              </br>
+              <div class="layui-form-item">
+                <label class="layui-form-label">商品SKU</label>
+                <div class="layui-input-block rest-input">
+                  <textarea class="layui-textarea Unwanted js-valid-skus" name="goodsSKU" data-public-tag="true" data-from="sku" placeholder="请输入商品编号（sku ID），编号与编号间用英文逗号隔开.">{{item.lists}}</textarea>
+                </div>
+                <div class="layui-form-item tab-add-btn class-manage" data-from="tabs">
+                  <span class="el-button el-button--primary el-button--small">商品管理</span>
+                </div>
+              </div>
+                {% if siteCode == 'dl-web' %}
+              <div class="layui-form-item">
+                <label class="layui-form-label">See more跳转链接</label>
+                <div class="layui-input-block rest-input">
+                  <input type="text" autocomplete="off" class="layui-input" value="{{item.link}}" name="link">
+                </div>
+              </div>
+                {% endif %}
+            </div>
+            
+            <div class="geshop-third-value">
+              <span class="img-btn"><i class='icon-up'></i><b class="tips">上移</b></span>
+              <span class="img-btn"><i class='icon-down'></i><b class="tips">下移</b></span>
+              <span class="img-btn"><i class='icon-delete'></i><b class="tips">删除</b></span>
+              <span class="img-btn add-class"><i class='icon-add'></i><b class="tips">新增</b></span>
+            </div>
+          </div>
+          
+          {% endfor %}
+      </div>
+    </div>
+</section>

@@ -1,0 +1,48 @@
+{%
+    set pageData = {
+        validText : data.validText | default('Validity：Nov.23-Nov.25'),
+        couponId : data.couponId | default(''),
+    }
+%}
+{# start wrap #}
+{{include ('@app/files/parts/ui/U000087/coupon2/style.twig')}}
+{# end wrap #}
+<div data-key="U000087" data-id="{{ pageInstanceId }}" data-static-domain="{{staticDomain}}" data-gid="U000087" class="geshop-component-box component-drag gs-index-main">
+    <div data-module="U000087-2" data-box="coupon-{{ pageInstanceId }}-2" data-id="{{ pageInstanceId }}">
+        <input
+            class="hide-info-input"
+            type="hidden"
+            unReceivedText="{{ get_component_trans(lang,'un_received') }}"
+            receivedText="{{ get_component_trans(lang,'gift_sold') }}"
+            failedText="{{ get_component_trans(lang,'failed') }}"
+            successText="{{ get_component_trans(lang,'success_text') }}"
+            couponId="{{ pageData.couponId }}"
+            lang="{{ lang }}"
+            serverTime="{{ serverTime }}"
+            env="{{ data.isEditEnv }}"
+            staticDomain="{{staticDomain}}"
+        />
+
+        <div class="coupon-body">
+            <div class="coupon-layout coupon-top">
+                <div class="center-center">
+                    <span class="coupon-discount"></span>
+                    <span class="coupon-discount-term">{{ get_component_trans(lang,'off') }} <i style="font-style: normal;"></i> </span>
+                </div>
+            </div>
+            <div class="coupon-layout coupon-middle">
+                <div class="center-center">
+                <div class="coupon-text">{{ pageData.validText }}</div>
+                </div>
+            </div>
+            <div class="coupon-layout coupon-bottom">
+                <div class="center-center">
+                <div class="coupon-btn inline-box" >Claim Now</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {# <div class="snowberg-png"></div> #}
+</div>
+<div style="clear: both;"></div>
+

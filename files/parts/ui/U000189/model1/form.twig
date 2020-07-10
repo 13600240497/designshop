@@ -1,0 +1,78 @@
+{% set formData = {
+    id: 'U000189',
+    name: '社区组件配置',
+    theme: 'model1',
+    tabs: [
+
+        {
+            label: '商品数据',
+            components: [
+            {
+                type: 'diy',
+                src: '/diy.twig'
+            }
+        ]
+        },
+        {
+            label: '样式设置',
+            components: [
+            {
+                label: '常用配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '组件背景颜色',
+                    name: 'bg_color',
+                    type: 'colorPicker',
+                    public: false,
+                    default: '#FFFFFF',
+                },
+                {
+                    label: '选中标题颜色',
+                    name: 'title_color',
+                    type: 'colorPicker',
+                    public: false,
+                    default: '#333333',
+                },
+                {
+                    label: '未选中标题颜色',
+                    name: 'title_color_off',
+                    type: 'colorPicker',
+                    public: false,
+                    default: '#999999',
+                },
+            ]
+            }
+        ]
+        }
+    ],
+    beforeSubmit: 'onSubmit'
+
+} %}
+
+    {# 引入渲染函数 #}
+    {{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+<script>
+    function onSubmit(progress) {
+        var str = [];
+        $('.gs-layui-form-item .layui-input-block input.type-input').each(function () {
+            str.push($(this).val());
+        });
+        $('.gs-typrarr').val(str.join(','));
+        if (str.indexOf('') >= 0) {
+            layer.alert('ID不能存在空值！', {
+                icon: 2,
+                skin: 'layer-ext-moon'
+            }, function (index) {
+                layer.close(index);
+            });
+        } else {
+            $('.swiper-wrapper').empty();
+            if(submit){
+                progress.next();
+            }
+        }
+
+    }
+</script>

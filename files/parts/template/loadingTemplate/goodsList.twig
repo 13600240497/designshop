@@ -1,0 +1,16 @@
+{% if data.goodsSKU is not empty %}
+    {% if data.goodsSKU is not iterable %}
+        {% set maps = data.goodsSKU | split(',') %}
+    {% else %}
+        {% set maps = ["","","",""] %}
+    {% endif %}
+{% else %}
+    {% set maps = ["","","",""] %}
+{% endif %}
+<div class="geshop-loading-goodsList is-{{ platform }}">
+    <ul>
+        {% for index in maps %}
+            <li><span></span><p></p><p></p></li>
+        {% endfor %}
+    </ul>
+</div>

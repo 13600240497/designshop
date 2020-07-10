@@ -1,0 +1,49 @@
+[data-gid="U000124_default"] li {
+  list-style: none;
+}
+[data-gid="U000124_default"] .gb_goodsWrap .gb_price1 {
+  font-size: 12px;
+  margin: 0 10px;
+}
+[data-gid="U000124_default"] .gb_goodsWrap .gb_price2 {
+  font-size: 18px;
+}
+[data-gid="U000124_default"] .gb_goodsWrap .gb_buy {
+  margin-top: 8px;
+  cursor: pointer;
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+}
+[data-gid="U000124_default"] .gb_goodsWrap .gb_cart {
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  border-radius: 25px;
+}
+[data-gid="U000124_default"] .gb_goodsWrap .gb_goodsName {
+  margin: 12px 0 8px 0;
+  text-align: center;
+  font-size: 14px;
+}
+[data-gid="U000124_default"] .gb_goodsWrap .gb_endTime {
+  margin: 8px 0;
+}
+[data-gid="U000124_default"] .gb_goodsWrap .gb_times em {
+  margin-right: 15px;
+}
+[data-gid="U000124_default"] .gb_goodsWrap .gb_contents::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 3.5px;
+  background: #999999;
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  margin-top: -3px;
+}

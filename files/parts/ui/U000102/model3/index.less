@@ -1,0 +1,162 @@
+[data-gid="U000102_model3"] {
+  overflow: hidden;
+  li {
+    list-style: none;
+  }
+  .gb_goodsWrap {
+    .gb_price1 {
+      font-size: 0.32rem;
+    }
+    .gb_footer{
+      margin-top: 0.266rem;
+      height: 0.8rem;
+      line-height: 0.8rem;
+      width:4rem; 
+      font-size: 0;
+    }
+    .gb_goods_buy{
+      float:left;
+      width:2.667rem;
+    }
+    .gb_goods_cart{
+      float: left;
+      width:1.333rem;
+    }
+    .gb_buy {
+      cursor: pointer;
+      display: inline-block;
+      width:100%;
+      text-align: center;
+    }
+    .gb_cart {
+      cursor: pointer;
+      display: inline-block;
+      width:100%;
+      font-size: 0.586rem;
+      height: 0.8rem;
+      line-height: 0.8rem;
+      color:#FFFFFF;
+      text-align: center;
+    }
+    .gb_goodsName {
+      text-align: left;
+      font-size: 0.32rem;
+      font-weight: 700;
+      overflow: hidden;
+		  white-space: nowrap;
+	    text-overflow: ellipsis;
+    }
+    .gb_leftInfo{
+      height:100%;
+      width:4.266rem;
+      float:left;
+    }
+    .gb_rightInfo {
+      position:relative;
+      height:100%;
+      width:4.92rem;
+      float:left;
+      overflow:hidden;
+      margin-left:0.266rem;
+      padding-bottom: 0.266rem;
+      min-height:3.4rem;
+      box-sizing: border-box;
+    }
+    .gb_contents{
+      margin:0;
+      position:relative;
+      font-size:0.32rem;
+      line-height:0.426667rem;
+      color:rgba(51,51,51,1);
+      font-family:OpenSans;
+      word-wrap:break-word
+    }
+  }
+  .gb_stylenone {
+    padding: 0.266rem;
+    overflow: hidden;
+  }
+  .gb_main {
+    padding: 0 !important;
+    height: auto !important;
+  }
+  .gb_imgBox {
+    position:relative;
+    margin:0 auto;
+    height:4.266rem;
+    width:4.266rem;
+  }
+  .gb_imgBox img{
+    width:100%;
+		height:100%;
+  }
+  /* 售空 */
+  .gb_imgBox>a {
+    display: block;
+  }
+  .gs-goods-status {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 2.133rem;
+    height: 2.133rem;
+    padding: 0.533rem 0.266rem;
+    font-size: 0.533rem;
+    line-height: 0.533rem;
+    color: #fff;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    visibility: visible;
+    background: rgba(0, 0, 0, .6);
+    border-radius: 50%;
+    font-style: normal;
+    display: none;
+    white-space:normal; 
+    word-break:break-all;
+    white-space:normal; 
+    word-break:break-all; 
+    white-space:normal; 
+    word-break:break-all; 
+  }
+  .good_soldOut {
+    .gs-goods-status {
+      display: block;
+    }
+  }
+
+  .cart_good_soldOut{
+    background-color: #999 !important;
+    color: #fff !important;
+    pointer-events: none;
+    cursor: default;
+  }
+
+    // 服务标
+    @import '../../../temp/gb/css/good_label_m.less';
+
+}
+
+
+
+[data-gid="U000102_default"] .good_soldOut {
+  .buyLink{
+    pointer-events: none;
+    cursor: default;
+    background-color: #999 !important;
+    color: #fff !important;
+  }
+  .gb_cart{
+    background-color: #CCC!important;
+    color: #fff!important;
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
+li {
+  list-style: none;
+}

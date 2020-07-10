@@ -1,0 +1,20 @@
+<div class="layui-form-item">
+    <div class="layui-form-item" style="margin-bottom: 10px;">
+        <label class="gs-lable-block">商品SKU显示数量（<span style="font-size:12px;color:#bbb;">*建议输入4的倍数，且不超过100</span>）</label>
+        <div class="layui-input-block">
+            <input class="layui-input" type="text" name="skuLimit" value="{{data.skuLimit|default('')}}">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="gs-lable-block public-data">商品SKU</label>
+        <div class="layui-input-block">
+            <textarea placeholder="请输入商品SKU，每个SKU用英文逗号隔开。" class="layui-textarea js-valid-skus" name="goodsSKU" data-public-tag="true">{{data.goodsSKU}}</textarea>
+        </div>
+        <span style="margin: 10px 0 10px 15px; display: block; color: #bbb;">"商品SKU"不可重复</span>
+    </div>
+        
+    <div class="layui-form-item tab-add-btn">
+        <span class="el-button el-button--primary el-button--small" id="gs_getList" style="float:right">商品管理</span>
+    </div>
+</div>

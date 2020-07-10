@@ -1,0 +1,217 @@
+	/* 专题与活动管理图标 */
+	.geshop-icon-activity {
+		background:url('../images/activity/activity.png') no-repeat;
+		width: 24px;
+		height: 24px;
+		display: inline-block;
+		margin-right: 16px;
+	}
+	/* 首页管理图标 */
+	.geshop-icon-homePage {
+		background:url('../images/activity/homePage.png') no-repeat;
+		width: 24px;
+		height: 24px;
+		display: inline-block;
+		margin-right: 16px;
+	}
+	/* 页面模板管理图标 */
+  .geshop-icon-pageModel {
+		background:url('../images/activity/pageModel.png') no-repeat;
+		width: 24px;
+		height: 24px;
+		display: inline-block;
+		margin-right: 16px;
+	}
+	/* 商品数据管理图标 */
+  .geshop-icon-commodity {
+		background:url('../images/activity/commodity.png') no-repeat;
+		width: 24px;
+		height: 24px;
+		display: inline-block;
+		margin-right: 16px;
+	}
+	/* 数据报表图标 */
+	.geshop-icon-dataReport {
+		background:url('../images/activity/dataReport.png') no-repeat;
+		width: 24px;
+		height: 24px;
+		display: inline-block;
+		margin-right: 16px;
+	}
+	/* 素材管理图标 */
+  .geshop-icon-material {
+		background:url('../images/activity/material.png') no-repeat;
+		width: 24px;
+		height: 24px;
+		display: inline-block;
+		margin-right: 16px;
+	}
+	/* 系统组件图标 */
+  .geshop-icon-component {
+		background:url('../images/activity/component.png') no-repeat;
+		width: 24px;
+		height: 24px;
+		display: inline-block;
+		margin-right: 16px;
+	}
+	/* 系统管理图标 */
+  .geshop-icon-setting {
+		background:url('../images/activity/setting.png') no-repeat;
+		width: 24px;
+		height: 24px;
+		display: inline-block;
+		margin-right: 16px;
+	}
+	/* 列表折叠图标 */
+  .geshop-icon-reduce {
+		background:url('../images/activity/reduce_white.png') no-repeat;
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		margin-top: 4px;
+	}
+	/* 组件模板图标 */
+	.geshop-icon-componenttpl{
+		background:url('../images/activity/component-temp.png') no-repeat;
+		width: 24px;
+		height: 24px;
+		display: inline-block;
+		margin-right: 16px;
+	}
+	/* 添加活动图标 */
+  .geshop-icon-add {
+		background:url('../images/activity/add_white.png') no-repeat;
+		width: 20px;
+		height: 20px;
+		display: block;
+	}
+	/* 刷新活动图标 */
+	.geshop-icon-refresh {
+		background:url('../images/activity/refresh.png') no-repeat;
+		width: 20px;
+		height: 20px;
+		display: block;
+	}
+	/* 搜索活动图标 灰色 */
+	.geshop-icon-search-gray {
+		background:url('../images/activity/search_gray.png') no-repeat;
+		width: 24px;
+		height: 24px;
+		display: block;
+	}
+	/* 搜索活动图标 蓝色 */
+	.geshop-icon-search-blue {
+		background:url('../images/activity/search_blue.png') no-repeat;
+		width: 24px;
+		height: 24px;
+		display: block;
+	}
+	/* 搜索活动图标 黑色 */
+	.geshop-icon-search-black {
+		background:url('../images/activity/search_black.png') no-repeat;
+		width: 24px;
+		height: 24px;
+		display: block;
+	}
+	/* 上线黑色图标 */
+	.geshop-icon-online-black {
+		background:url('../images/activity/online_black.png') no-repeat;
+		width: 24px;
+		height: 24px;
+		display: inline-block;
+	}
+		/* 下线黑色图标 */
+	.geshop-icon-offline-black {
+		background:url('../images/activity/offline_black.png') no-repeat;
+		width: 24px;
+		height: 24px;
+		display: inline-block;
+	}
+	/* 上线黑色图标 禁用 */
+	.geshop-icon-online-blue {
+		background:url('../images/activity/online_blue.png') no-repeat;
+		width: 24px;
+		height: 24px;
+		display: inline-block;
+	}
+	/* 下线黑色图标 禁用 */
+	.geshop-icon-offline-blue {
+		background:url('../images/activity/offline_blue.png') no-repeat;
+		width: 24px;
+		height: 24px;
+		display: inline-block;
+	}
+	/* 更多黑色图标 */
+	.geshop-icon-more-black{
+		background:url('../images/activity/more_black.png') no-repeat;
+		width: 24px;
+		height: 24px;
+		display: inline-block;
+	}
+	/* 更多黑色图标 禁用 */
+	.geshop-icon-more-blue{
+		background:url('../images/activity/more_blue.png') no-repeat;
+		width: 24px;
+		height: 24px;
+		display: inline-block;
+	}
+	/* 上线状态图标 */
+	.geshop-icon-online {
+		width: 8px;
+		height: 8px;
+		background-color: #3ACA60;
+		border-radius: 4px;
+		display: inline-block;
+	}
+	/* 待上线状态图标 */
+	.geshop-icon-online-stay {
+		width: 8px;
+		height: 8px;
+		background-color: #1E9FFF;
+		border-radius: 4px;
+		display: inline-block;
+	}
+	/* 下线状态图标 */
+	.geshop-icon-offline {
+		width: 8px;
+		height: 8px;
+		background-color: #D0021B;
+		border-radius: 4px;
+		display: inline-block;
+	}
+	/* 添加子页面图标 黑色小*/
+	.geshop-icon-black-copys {
+		width: 24px;
+		height: 24px;
+		background:url('../images/activity/black_copys.png') no-repeat;
+		display: inline-block;
+	}
+	/* 添加子页面图标 蓝色小*/
+	.geshop-icon-blue-copys {
+		width: 24px;
+		height: 24px;
+		background:url('../images/activity/blue_copys.png') no-repeat;
+		display: inline-block;
+	}
+	/* 添加子页面图标 黑色大*/
+	.geshop-icon-black-copy {
+		width: 40px;
+		height: 40px;
+		background:url('../images/activity/black_copy.png') no-repeat;
+		display: block;
+	}
+	/* 添加子页面图标 蓝色大*/
+	.geshop-icon-blue-copy {
+		width: 40px;
+		height: 40px;
+		background:url('../images/activity/blue_copy.png') no-repeat;
+		display: block;
+    }
+    /* 多语言管理图标 */
+    .geshop-icon-language {
+        background:url('../images/activity/setting.png') no-repeat;
+        width: 24px;
+        height: 24px;
+        display: inline-block;
+        margin-right: 16px;
+    }

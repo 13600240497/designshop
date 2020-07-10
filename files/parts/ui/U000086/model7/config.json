@@ -1,0 +1,516 @@
+{
+    "fields": {
+        "coupon_id": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "coupon_tit_main": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "coupon_tit_side": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "site_url": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "box_margin_bottom": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "box_margin_top": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "box_text_align": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "coupon_bg": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "limit_bg_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "limit_show": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "limit_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "dis_hd_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "dis_hd_fontSize": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "currency_icon_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "currency_icon_fontSize": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "center_tit_hd_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "center_tit_bd_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "time_display": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "time_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "platform_show": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "platform_type": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "platform_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "canvas_out_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "canvas_in_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "canvas_text_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "text_type": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "claim_bg_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "claim_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "coupon_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "coupons_received_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "use_bg_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "use_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "end_bg_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "end_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "dia_bg_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "dia_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "dia_coup_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "dia_coup_bg_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        }
+    },
+    "languages": {
+        "coming_soon": {
+            "en": "Coming Soon",
+            "fr": "Arrivera Bientôt",
+            "es": "Ven pronto",
+            "de": "In Kürze",
+            "it": "In Arrivo",
+            "pt": "Em breve",
+            "th": "ยังไม่ได้เริ่ม",
+            "zh-tw": "未開始",
+            "ar": "ستأتي تقريبا",
+            "ru": "Недоступно",
+            "tr": "Çok Yakında",
+            "vi": "Chưa bắt đầu",
+            "ja": "公開予定",
+            "ro": "In curand"
+        },
+        "claim": {
+            "en": "Claim",
+            "fr": "Réclamez",
+            "es": "Reclamar",
+            "de": "Coupon aktivieren",
+            "it": "Disponibile",
+            "pt": "Ganhar",
+            "th": "รับ",
+            "zh-tw": "可以領取",
+            "ar": "إحصل ليها",
+            "ru": "Подать заявку",
+            "tr": "Talep Et",
+            "vi": "Có thể nhận",
+            "ja": "クレーム",
+            "ro": "Revendica"
+        },
+        "ended": {
+            "en": "Ended",
+            "de": "Abgelaufen",
+            "fr": "Terminé",
+            "es": "Terminado",
+            "pt": "Terminado",
+            "th": "จบแล้ว",
+            "zh-tw": "結束",
+            "ar": "تنتهي",
+            "ru": "Завершено",
+            "it": "Finito",
+            "tr": "Bitti",
+            "vi": "Kết thúc",
+            "ja": "終了しました",
+            "ro": "Sfarsit"
+        },
+        "coupons_none": {
+            "en": "All coupons have been claimed",
+            "de": "Alle Gutscheine wurden beansprucht",
+            "fr": "Épuisé",
+            "es": "agotado",
+            "pt": "Todos os cupons estão esgotados",
+            "th": "คูปองหมด",
+            "zh-tw": "優惠券總張數已被領取完",
+            "ar": "تم استلام جميع الكوبونات",
+            "ru": "Все купоны были предъявлены",
+            "it": "Tutti i coupon sono esauriti",
+            "tr": "Tüm kuponlar talep edildi",
+            "vi": "Tổng số phiếu giảm giá đã nhận",
+            "ja": "すべてのクーポンが引き換えられました",
+            "ro": "Toate cupoanele au fost revendicate"
+        },
+        "user_none": {
+            "en": "Uses expired",
+            "de": "Alle Nutzungschancen wurden genutzt",
+            "fr": "Épuisé",
+            "es": "agotado",
+            "pt": "Você esgotou as chances de uso",
+            "th": "คุณหมดเวลาใช้งานแล้ว",
+            "zh-tw": "您已用完可用次數",
+            "ar": "لقد نفدت أوقات الاستخدام",
+            "ru": "Срок использования истек",
+            "it": "Hai esaurito le chance di utilizzo del coupon",
+            "tr": "Kullanım süresi dolmuş ",
+            "vi": "Bạn đã sử dụng hết số lần có sẵn",
+            "ja": "期限切れ",
+            "ro": "Folosiri expirate"
+        },
+        "use_now": {
+            "en": "Use now",
+            "de": "Jetzt benutzen",
+            "fr": "Utilisez-le",
+            "es": "Ir a usar cupón",
+            "pt": "Use agora",
+            "th": "ไปใช้คูปอง",
+            "zh-tw": "去使用優惠券",
+            "ar": "استحدمه الآن",
+            "ru": "Используй сейчас",
+            "it": "Usalo ora",
+            "tr": "Şimdi kullan",
+            "vi": "Đi sử dụng phiếu giảm giá",
+            "ja": "今すぐ使う",
+            "ro": "Foloseste acum"
+        },
+        "coupons_received": {
+            "en": "Already Claimed",
+            "de": "Bereits erhalten",
+            "fr": "Déjà Reçu",
+            "es": "Se ha agotado",
+            "pt": "Já peguei",
+            "th": "หมดแล้ว",
+            "zh-tw": "已領取",
+            "ar": "قد اُستلمت الكامل",
+            "ru": "Уже Заявлено",
+            "it": "Già Preso",
+            "tr": "Zaten Talepte Bulunuldu",
+            "vi": "Đã nhận hết",
+            "ja": "受け取った",
+            "ro": "Deja revendicat"
+        },
+        "congrats": {
+            "en": "Congrats!",
+            "de": "Glückwunsch!",
+            "fr": "Félicitations !",
+            "es": "¡Felicidades!",
+            "pt": "Parabéns!",
+            "th": "ขอแสดงความยินดีด้วย",
+            "zh-tw": "恭喜！",
+            "ar": "مبروك!",
+            "ru": "Поздравляю!",
+            "it": "Congratulazione!",
+            "tr": "Tebrikler!",
+            "vi": "Xin chúc mừng!",
+            "ja": "おめでとうございます！",
+            "ro": "Felicitari! "
+        },
+        "desc_tit": {
+            "en": "You just received a <br><span class='cop'>XX coupon </span> ",
+            "de": "Sie haben gerade einen Gutschein über<br><span class='cop'>XX erhalten</span>",
+            "fr": "Vous venez de recevoir un coupon de<br><span class='cop'>XX</span>",
+            "es": "Acabas de recibir un cupón de<br><span class='cop'>XX</span>",
+            "pt": "Você recebeu um cupom de<br><span class='cop'>RXX.</span>",
+            "th": "คุณเพิ่งได้รับคูปองส่วนลด<br><span class='cop'>XX coupon </span>",
+            "zh-tw": "你剛收到一張<br><span class='cop'>XX 的優惠券</span>",
+            "ar": "<span class='cop'>XX </span><br> لقد تستلمت كوبونات بقيمة",
+            "ru": "Вы только что получили купон на<br><span class='cop'>XX coupon </span>",
+            "it": "Hai ricevuto un coupon di<br><span class='cop'>XX</span>",
+            "tr": "<span class='cop'>XX </span><br>kupon aldınız",
+            "vi": "Bạn vừa nhận được phiếu giảm giá<br><span class='cop'>XX coupon </span>",
+            "ja": "<br> <span class='cop'> XXクーポン</span>が届きました",
+            "ro": "Tocmai ai primit <br><span class='cop'>XX cupon</span>"
+        },
+        "check_left": {
+            "en": "Check them at &quot;Coupons & Points&quot;",
+            "de": "Überprüfen Sie unter &quot;Gutscheine und Punkte&quot;",
+            "fr": "Vérifiez-les dans &quot;COUPONS & POINTS&quot;",
+            "es": "Puedes consultarlos en &quot;CUPONES Y PUNTOS&quot;",
+            "pt": "Confira em &quot;Cupons e Pontos&quot;",
+            "th": "เช็คคูปองส่วนลดและแต้ม",
+            "zh-tw": "在“優惠券和積分”上查看",
+            "ar": "التحقق منها في &quot;كوبونات ونقاط&quot;",
+            "ru": "Проверьте их в «Купоны и Баллы»",
+            "it": "Verifica su &quot;Coupon & Punti&quot;",
+            "tr": "Kuponlar ve Puanlar bölümünde kontrol edin",
+            "vi": "Xem trên Phiếu giảm giá và Điểm",
+            "ja": "&quot;クーポン＆ポイント&quot;でチェックしてください。",
+            "ro": "Verifica-le la Cupoane & Puncte"
+        },
+        "validity": {
+            "en": "Validity",
+            "de": "Gültigkeit",
+            "fr": "Validité",
+            "es": "Validez",
+            "pt": "Validade",
+            "th": "ขวันหมดอายุ",
+            "zh-tw": "有效期",
+            "ar": "صلاحية",
+            "ru": "Период действия",
+            "it": "Validità",
+            "tr": "Geçerlik",
+            "vi": "Thời hạn hiệu lực",
+            "ja": "有効",
+            "ro": "Valabilitate"
+        },
+        "left_tips": {
+            "en": "Left",
+            "de": "übrig",
+            "fr": "Restants",
+            "es": "Queda",
+            "pt": "restante",
+            "th": "เหลือ",
+            "zh-tw": "剩餘",
+            "ar": "متبق",
+            "ru": "Осталось",
+            "it": "Lasciato",
+            "tr": "Kaldı",
+            "vi": "còn lại",
+            "ja": "残り",
+            "ro": "Ramas"
+        },
+        "coupons_max": {
+            "en": "Unlimited Coupons",
+            "de": "Unbegrenzte Gutscheine",
+            "fr": "Coupons Illimités",
+            "es": "Cupones inlimitados",
+            "pt": "Cupons Ilimitados",
+            "th": "คูปองไร้จำกัด",
+            "zh-tw": "無限優惠券",
+            "ar": "كوبونات غير محدودة ",
+            "ru": "Неограниченные Купоны",
+            "it": "Coupon illimitati",
+            "tr": "Sınırsız Kupon",
+            "vi": "Phiếu giảm giá không giới hạn",
+            "ja": "無制限クーポン",
+            "ro": "Cupoane nelimitate"
+        },
+        "pcs_left": {
+            "en": "Left",
+            "de": "übrig",
+            "fr": "Restant(s)",
+            "es": "Queda",
+            "pt": "restantes",
+            "th": "เหลือ",
+            "zh-tw": "剩餘",
+            "ar": "متبق",
+            "ru": "Осталось",
+            "it": "Lasciati",
+            "tr": "Kaldı",
+            "vi": "còn lại",
+            "ja": "残り",
+            "ro": "Ramas"
+        },
+        "limited": {
+            "en": "Available",
+            "de": "verfügbar",
+            "fr": "Disponibles",
+            "es": "disponibles",
+            "pt": "Disponível",
+            "th": "เหลือ",
+            "zh-tw": "可用",
+            "ar": " متاح",
+            "ru": "Доступно",
+            "it": "Disponibili",
+            "tr": "Mevcut",
+            "vi": "có sẵn",
+            "ja": "利用できる",
+            "ro": "Disponibil"
+        },
+        "month": {
+            "en": "['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.']",
+            "de": "['Jan.', 'Feb.', 'Mär.', 'Apr.', 'Mai.', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Okt.', 'Nov.', 'Dez.']",
+            "fr": "['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.']",
+            "es": "['Ene', 'Feb', 'Mar', 'Abr', 'Mayo', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']",
+            "pt": "['Ene.', 'Fev.', 'Mar.', 'Abr.', 'Mai.', 'Jun.', 'Jul.', 'Ago.', 'Set.', 'Out.', 'Nov.', 'Dez']",
+            "th": "['ม.ค.', 'ก.พ.', ' มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.']",
+            "zh-tw": "['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.']",
+            "ar": "['يناير', 'فبراير', 'مارس', 'أبريل', 'أيار', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر']",
+            "ru": "['Янв.', 'Фев.', 'Мар.', 'Апр.', 'Май', 'Июн.', 'Июл.', 'Авг.', 'Сен.', 'Окт.', 'Ноя.', 'Дек.']",
+            "it": "['gen.', 'feb.', 'mar.', 'apr.', 'mag.', 'giu.', 'lug.', 'ago.', 'set.', 'ott.', 'nov.', 'dic.']",
+            "tr": "['Oca.', 'Şub.', 'Mar.', 'Nis.', 'May.', 'Haz.', 'Tem.', 'Ağu.', 'Eyl.', 'Eki.', 'Kas.', 'Ara.']",
+            "vi": "['Tháng một', 'Tháng Hai', 'Tháng Ba', 'Tháng Tư', 'Tháng Năm', 'Tháng Sáu', 'Tháng Bảy', 'Tháng Tám', 'Tháng Chín', 'Tháng Mười', 'Tháng Mười Một', 'Tháng Mười Hai']",
+            "ja": "['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']",
+            "ro": "['Ian', 'Feb', 'Mar', 'Apr', 'Mai', 'Iun', 'Iul', 'Aug', 'Sep', 'Oct', 'Noi', 'Dec']"
+        },
+        "all": {
+            "en": "All Platforms",
+            "de": "Alle Plattformen",
+            "fr": "Sur tout le site",
+            "es": "Todas las plataformas",
+            "pt": "Todas as plataformas",
+            "th": "แพลตฟอร์มทั้งหมด",
+            "zh-tw": "三端都顯示",
+            "ar": "All Platforms",
+            "ru": "Все Платформы",
+            "it": "Tutte le piattaforme",
+            "tr": "Tüm Platformlar",
+            "vi": "Hiển thị trong PC,Máy di động,APP",
+            "ja": "すべてのプラットフォーム",
+            "ro": "Toate platformele"
+        },
+        "pc": {
+            "en": "PC Only",
+            "de": "Nur auf dem PC",
+            "fr": "Valide sur Site Web",
+            "es": "Sólo en PC",
+            "pt": "Apenas no PC",
+            "th": "คอมพิวเตอร์เท่านั้น",
+            "zh-tw": "只顯示PC端",
+            "ar": "All Platforms",
+            "ru": "Только ПК",
+            "it": "Solo su PC",
+            "tr": "Sadece PC",
+            "vi": "Chỉ hiển thị phía PC",
+            "ja": "パソコンのみ",
+            "ro": "Doar pentru PC"
+        },
+        "m": {
+            "en": "Mobile Site Only",
+            "de": "Nur auf mobiler Seite",
+            "fr": "Valide sur Site Mobile",
+            "es": "Sólo en sitio de móvil",
+            "pt": "Apenas site móvel",
+            "th": "ไซต์มือถือเท่านั้น",
+            "zh-tw": "只顯示M端",
+            "ar": "Mobile Site Only",
+            "ru": "Только Мобильный Сайт",
+            "it": "Solo sul sito mobile",
+            "tr": "Yalnızca Mobil Site",
+            "vi": "Chỉ hiển thị phía Máy di động",
+            "ja": "携帯サイトのみ",
+            "ro": "Doar pentru site-ul mobil"
+        },
+        "app": {
+            "en": "App Only",
+            "de": "Nur in App",
+            "fr": "Valide sur Appli",
+            "es": "Sólo en App",
+            "pt": "Apenas no APP",
+            "th": "แอปเท่านั้น",
+            "zh-tw": "只顯示APP端",
+            "ar": "App Only",
+            "ru": "Только Приложение",
+            "it": "Solo su App",
+            "tr": "Sadece Uygulama",
+            "vi": "Chỉ hiển thị phía APP",
+            "ja": "アプリのみ",
+            "ro": "Doar pentru aplicatie"
+        }
+    }
+}

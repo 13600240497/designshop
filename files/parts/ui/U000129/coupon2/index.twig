@@ -1,0 +1,60 @@
+{%
+    set pageData = {
+        validText : data.validText | default('Validity：Nov.23-Nov.25'),
+        couponId : data.couponId | default(''),
+    }
+%}
+
+{# 新老客的css类名 #}
+{% set userGroupClass = "geshop_user_"~data.userGroupSelect|default(0) %}
+
+{# start wrap #}
+{{include ('@app/files/parts/ui/U000129/coupon2/style.twig')}} 
+{# end wrap #}
+
+
+<div 
+    data-key="U000129" 
+    data-module="U000129-2" 
+    data-id="{{pageInstanceId}}" 
+    data-box="coupon-{{pageInstanceId}}-2" 
+    data-static-domain="{{staticDomain}}" 
+    data-gid="U000129" 
+    class="geshop-component-box component-drag gs-index-main {{userGroupClass}}">
+    <input 
+        class="hide-info-input"
+        type="hidden"
+        unReceivedText="{{ get_component_trans(lang,'un_received') }}"
+        receivedText="{{ get_component_trans(lang,'received') }}"
+        failedText="{{ get_component_trans(lang,'failed') }}"
+        successText="{{ get_component_trans(lang,'success_text') }}"
+        couponId="{{ pageData.couponId }}"
+        lang="{{ lang }}"
+        serverTime="{{ serverTime }}"
+        env="{{ data.isEditEnv }}"
+        staticDomain="{{staticDomain}}"
+        siteCode="{{siteCode}}"
+    />
+    <div class="coupon-body">
+        <div class="coupon-layout coupon-top">
+            <div class="center-center">
+                <span class="coupon-discount site-bold-strict"></span>
+                <span class="coupon-discount-term">{{ get_component_trans(lang,'off') }} <i style="font-style: normal;"></i> </span>
+            </div>
+        </div>
+        <div class="coupon-layout coupon-middle">
+            <div class="center-center">
+            <div class="coupon-text">{{ pageData.validText }}</div>
+            </div>
+        </div>
+        <div class="coupon-layout coupon-bottom">
+            <div class="center-center">
+            <div class="coupon-btn inline-box" ></div>
+            </div>
+        </div>
+    </div>
+    {# <div class="snowberg-png"></div> #}
+</div>
+<div style="clear: both;"></div>
+
+

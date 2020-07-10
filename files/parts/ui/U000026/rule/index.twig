@@ -1,0 +1,18 @@
+<div class="geshop-component-box component-drag geshop-U000026-default geshop-U000026-default-{{ pageInstanceId }}"
+     data-key="U000026" data-id="{{ pageInstanceId }}">
+    {{ include('style.twig') }}
+    <div class="gs-bg-img">
+        {% if data.jump_url %}
+            <a href="{{data.jump_url}}" target="_blank" style="display:block;width:100%;height:100%"></a>
+        {% endif %}
+        {% if data.rule_btn_type == 1 %}
+            <a href="javascript:;" class="dialog-btn">{{ data.btn_title }}</a>
+        {% endif %}
+    </div>
+    {{ include('form-dialog.twig') }}
+</div>
+<script>
+    $(function(){
+        geshop_U000026_rule_init('{{ pageInstanceId }}');
+    });
+</script>

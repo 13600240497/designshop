@@ -1,0 +1,22 @@
+<!-- embed stylesheet begin -->
+<style type="text/css">
+.geshop-U000184-{{ pageInstanceId }}{
+    margin-bottom: {{data.box_margin_bottom | default(32) }}px;
+    margin-top: {{data.box_margin_top | default(0) }}px;
+  }
+  .geshop-U000184-{{ pageInstanceId }} .banner{
+    text-align: center;
+    display:block;
+    cursor: pointer;
+    overflow: hidden;
+    width: 100%;
+    {% if data.imgUrl %}
+    cursor: pointer;
+    {% else %}
+    cursor: default;
+    {% endif %}
+  }
+{% set space = '.geshop-U000184-'~pageInstanceId %}
+{% include '@app/files/parts/formTemplate/components/margin-dl-style.twig' with{'space':space} %}
+</style>
+<!-- embed stylesheet end -->

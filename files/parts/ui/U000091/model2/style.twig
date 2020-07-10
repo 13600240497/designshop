@@ -1,0 +1,97 @@
+<style type="text/css">
+	.geshop-gb-component.ui-{{ pageInstanceId }}{
+		margin-top: {{ pageData.base_magin_top }};
+		margin-bottom:{{pageData.base_magin_bottom}};
+	}
+	.geshop-gb-component.ui-{{ pageInstanceId }} .js-addCart{
+		background-color:{{pageData.buy_cart_bgc}};
+	}
+	
+	{#.geshop-gb-component.ui-{{ pageInstanceId }} .gb_goodsWrap{#}
+	{#background-color:{{pageData.base_bgc}};#}
+	{#}#}
+	
+	.geshop-gb-component.ui-{{ pageInstanceId }} .gb_goodsWrap{
+		position: relative;
+	}
+	
+	
+	{# 折扣标 #}
+	.geshop-gb-component.ui-{{ pageInstanceId }} .gs-goods-discount{
+		background-color:{{pageData.discount_bgc}};
+		color:{{pageData.discount_ftc}};
+		width:{{pageData.discount_width}};
+		height:{{pageData.discount_height}};
+		top:{{pageData.discount_top}};
+		right:{{pageData.discount_right}};
+	{% if pageData.discount_bgImage %}
+		background:url({{pageData.discount_bgImage}}) no-repeat center center/100% 100%;
+		border-radius:0;
+	{% endif %}
+	}
+	.geshop-gb-component.ui-{{ pageInstanceId }} .gs-goods-discount span{
+		font-size:{{pageData.discount_fts}};
+	}
+	.geshop-gb-component.ui-{{ pageInstanceId }} .gs-goods-discount .curtoff-text{
+		font-size:12px;
+	}
+	
+	{# 售价 #}
+	.geshop-gb-component.ui-{{ pageInstanceId }} .gs-goods-price .gs-shop-price{
+		font-size:{{pageData.price_fts}};
+		color:{{pageData.price_color}};
+	}
+	
+	{# 购买按钮设置 #}
+	.geshop-gb-component.ui-{{ pageInstanceId }} .gs-goods-buy .buyLink{
+		color:{{pageData.buy_ftc}};
+		background-color:{{pageData.buy_bgc}};
+		font-size:{{pageData.buy_fts}};
+	}
+	.geshop-gb-component.ui-{{ pageInstanceId }} .gs-goods-buy .js-addCart{
+		background-color:{{pageData.buy_cart_bgc}};
+	}
+	.geshop-gb-component.ui-{{ pageInstanceId }} .gs-goods-buy .buyLink:hover{
+		color:{{pageData.buy_hover_ftc}};
+		background-color:{{pageData.buy_hover_bgc}};
+	}
+	.geshop-gb-component.ui-{{ pageInstanceId }} .gs-goods-buy .js-addCart:hover{
+		background-color:{{pageData.buy_cart_hover_bgc}};
+	}
+	
+	/*背景图*/
+	
+	.geshop-gb-component.ui-{{ pageInstanceId }} .view-more-box{
+		width: 1000px;
+		margin: 0 auto;
+		position: relative;
+		text-align: right;
+		padding-bottom: 16px;
+	}
+	
+	.geshop-gb-component.ui-{{ pageInstanceId }} .fix-clear {
+		clear: both;
+	}
+	
+	.geshop-gb-component.ui-{{ pageInstanceId }}  .view-more-box .view-more{
+		color: {{pageData.base_view_more_color}};
+		font-size: {{pageData.base_view_more_fontS}};
+	}
+	.geshop-gb-component.ui-{{ pageInstanceId }}  .view-more-box .view-more:hover {
+		color: {{pageData.base_view_more_hoveC}};
+	}
+	
+	/* 图片尺寸 */
+	.geshop-gb-component.ui-{{ pageInstanceId }} .gs-goods-item-common {
+		display: block;
+		overflow: hidden;
+		text-align: center;
+		height: 322px;
+	}
+	.geshop-gb-component.ui-{{ pageInstanceId }} .gs-goods-item-common img {
+		height: 322px;
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+</style>

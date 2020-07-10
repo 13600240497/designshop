@@ -1,0 +1,149 @@
+{#
+    Component Name: 积分兑换
+    Component Key: U000166
+    Theme: 默认模板
+    Device: Mobile
+    Author: Cullen Ng
+    Create at: 2018.10.27
+    Vision: v.1.6.3
+    PS: 如需修改样式，请修改 .less 文件（index.less, form.less）
+#}
+
+
+<div 
+    class="geshop-component-box component-drag wrap-U000166 wrap-{{ pageInstanceId }}"
+    data-key="U000166" 
+    data-id="{{ pageInstanceId }}" 
+    data-theme="default" 
+    data-defaultImg="{{ data.default.clothes3x4 }}" 
+    data-defaultImg2="{{ data.default.clothes2 }}" 
+    data-isEditEnv="{{ data.isEditEnv }}"
+    style="display:none;"> 
+    {%
+        set classSpace = '.wrap-'~pageInstanceId
+    %}
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+    {# 当前组件 样式定制  #}
+    {{classSpace}} {
+        margin-bottom: {{ (data.boxMarginBottom | default(32))/75 }}rem;
+    }
+
+    {{classSpace}} .BP-goods-block .BP-goods-other span {
+        
+    }
+
+    {{classSpace}} .BP-goods-block .BP-goods-other-set {
+        height: auto !important;
+        display: inline-block;
+    }
+
+    {{classSpace}} .BP-goods-block .BP-goods-other .BP-goods-float {
+        float: left;
+        width: 4.08rem;
+        height: auto;
+        max-width: 4.08rem !important;
+        max-height: .96rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    {# 外层块设置 样式定制 #}
+    {{classSpace}} .geshop-BP-block {
+        background-color: {{ data.cmptBgColor | default('#F8F8F8') }};
+    }
+
+    {{classSpace}}  .geshop-BP-good-list {
+        padding-left: {{ (data.cmptPaddingLR | default(20)) / 75 }}rem;
+        padding-right: {{ (data.cmptPaddingLR | default(20)) / 75 }}rem;
+    }
+
+    {# 标题栏样式定制 #}
+    {{classSpace}} .geshop-BP-header {
+        color: {{ data.titleFontColor | default('#333333') }};
+        font-size: {{ (data.titleFontSize | default(40))/75 }}rem;
+        height: {{ (data.titleHeight | default(120))/75 }}rem;
+        line-height: {{ (data.titleHeight | default(120))/75 }}rem;
+        {% if data.titleBgImg is empty %}
+            background: {{ data.titleBgColor | default('#ededed') }};
+        {% else %}
+            background: {{ 'url('~data.titleBgImg~')' }};
+        {% endif %}
+    }
+
+    {# 商品标题 样式定制 #}
+    {{classSpace}} .BP-goods-title {
+        color: {{ data.goodsFontColor | default('#999') }} !important;
+    }
+
+    {# 售价，积分 样式定制 #}
+    {{classSpace}} .BP-goods-price {
+        color: {{ data.goodsSalePriceFontColor | default('#FA386A') }} !important;
+    }
+
+    {# 库存 样式定制 #}
+    {{classSpace}} .BP-goods-left {
+        background: {{ data.goodsLeftBgColor | default('#d8d8d8') }} !important;
+        color: {{ data.goodsLeftFontColor | default('#666666')  }} !important;
+    }
+
+    {# 兑换按钮 样式定制 #}
+    {{classSpace}} .BP-goods-buynow a {
+        width: {{ (data.goodsBtnWidth | default(306)) / 75 }}rem !important;
+        height: {{ (data.goodsBtnHeight | default(64)) / 75 }}rem !important;
+        line-height: {{ (data.goodsBtnHeight | default(64)) / 75 }}rem !important;
+        border-radius: {{ (data.goodsBtnRadius | default(64)) / 75 }}rem !important;
+        font-size: {{ (data.goodsBtnFontSize | default(28)) / 75 }}rem !important;
+        color: {{ data.goodsBtnFontColor | default('#ffffff') }} !important;
+        {% if data.goodsBtnImg %}
+            background-image: {{ 'url('~data.goodsBtnImg~')'}};
+        {% else %}
+            background-color: {{ data.goodsBtnBgColor | default('#333333') }} !important;
+        {% endif %}
+    }
+
+    {# viewmore 样式定制 #}
+    {{classSpace}} .geshop-BP-viewmore a {
+        color: {{ data.viewmoreFontColor | default('#333') }} !important;
+        background-color: {{ data.viewmoreBgColor | default('') }} !important;
+        border-color: {{ data.viewmoreBdColor | default('#333') }} !important;
+        font-size: {{ (data.viewmoreFontSize | default(28)) / 75 }}rem !important;
+        border-radius: {{ (data.viewmoreRadius | default(80)) / 75 }}rem !important;
+    }
+
+    {# {{}} #}
+    </style>
+    <!-- embed stylesheet end -->
+    <div class="geshop-BP-block">
+        {# 标题 #}
+        <div class="geshop-BP-header">
+            <span class="geshop-BP-title">{{ data.titleText | default('Points exchange products') }}</span>
+        </div>
+        {# 商品列表，JS异步渲染 #}
+        <div class="geshop-BP-good-list">
+            <ul></ul>
+        </div>
+        {# JS template 渲染模版 #}
+        <script class="geshop-BP-good-template"  type="text/template">
+            {{ include ('GoodItem.twig') }}
+        </script>
+        {# 查看更多 #}
+        {% if data.viewmoreShow is empty or data.viewmoreShow == 1 %}
+        <div class="geshop-BP-viewmore">
+            <a href="{{ data.viewmoreHref }}" target="_blank">{{ data.viewmoreText | default('VIEW MORE') }}</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    var U000166_{{ pageInstanceId }} = {
+        goodsSKU: '{{ data.goodsSKU }}',
+        dataRange: '{{ data.dataRange }}',
+        isEditEnv: '{{ data.isEditEnv }}',
+        langCode: '{{ lang }}',
+        languages: '{{ languages | json_encode | raw }}'
+    };
+</script>

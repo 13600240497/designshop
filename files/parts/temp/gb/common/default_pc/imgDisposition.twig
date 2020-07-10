@@ -1,0 +1,7 @@
+<div class="layui-form-item">
+    <label class="gs-label-block">商品图片比例</label>
+    <div class="layui-input-block">
+        <input type="radio" name="goods_img_one" lay-filter="goodsDataFrom" value="0" title="1 : 1" {% if data.goods_img_one == '0' or data.goods_img_one is empty  %} checked="checked" {% endif %}>
+        <input type="radio" name="goods_img_one" lay-filter="goodsDataFrom" value="1" title="3 : 4" {% if data.goods_img_one == '1' %} checked="checked" {% endif %}>
+    </div>
+</div>

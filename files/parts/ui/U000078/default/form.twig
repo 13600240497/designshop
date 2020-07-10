@@ -1,0 +1,1009 @@
+{% set buyBorderSArr = [
+	{name:'无',value:'none'},
+	{name:'实线',value:'solid'},
+	{name:'虚线',value:'dashed'},
+	{name:'点状',value:'dotted'},
+	{name:'双线',value:'double'},
+	{name:'继承上级',value:'inherit'},
+]%}
+
+{%
+	set pageData = {
+		goodsBgc:data.goodsBgc is not null?data.goodsBgc:'#ffffff',
+		goodsBdC:data.goodsBdC is not null?data.goodsBdC:'#E33194',
+		goodsFtS:data.goodsFtS|default(14),
+		discountBgc:data.discountBgc is not null?data.discountBgc:'#E33194',
+		goodsFtC:data.goodsFtC is not null?data.goodsFtC:'#333',
+		priceC:data.priceC is not null?data.priceC:'#E33194',
+		marketPriceFt:marketPriceFt|default(13),
+		buyBgC:data.buyBgC is not null?data.buyBgC:'#E33194',
+		buyBorderC:data.buyBorderC is not null?data.buyBorderC:'#E33194',
+		marketPriceC:data.marketPriceC is not null?data.marketPriceC:'#999999',
+		buyFtC:data.buyFtC is not null?data.buyFtC:'#ffffff',
+
+		tab_selectBgc:data.tab_selectBgc|default('#E33194'),
+		tab_bothBdType:data.tab_bothBdType|default('1'),
+		tab_endBgc:data.tab_endBgc|default('#F6F6F6'),
+		tab_endTextC:data.tab_endTextC|default('#999999'),
+		tab_endBdC:data.tab_endBdC|default(''),
+		tab_ingBgc:data.tab_ingBgc|default('#E33194'),
+		tab_ingTextC:data.tab_ingTextC|default('#FFFFFF'),
+		tab_ingBdC:data.tab_ingBdC|default(''),
+		tab_soonBgc:data.tab_soonBgc|default('#F6F6F6'),
+		tab_soonTextC:data.tab_soonTextC|default('#999999'),
+		tab_soonBdC:data.tab_soonBdC|default(''),
+
+		downFtS:data.downFtS|default(16),
+		downTextC:data.downTextC|default('#333333'),
+		downBgc:data.downBgC,
+		downBdRadius:data.downBdRadius|default('100%'),
+		downTimeBgC:data.downTimeBgC
+	}
+%}
+
+{% set tabColorOption = [
+	{
+		key:'tab_endBgc',
+		value:data.tab_endBgc|default('#999999'),
+		title:'结束时段背景颜色'
+	},
+	{
+		key:'tab_endTextC',
+		value:data.tab_endTextC|default('#FFFFFF'),
+		title:'结束时段文字颜色'
+	},
+	{
+		key:'tab_endBdC',
+		value:data.tab_endBdC|default('#999999'),
+		title:'结束时段边框颜色'
+	},
+	{
+		key:'tab_ingBgc',
+		value:data.tab_ingBgc|default('#E33194'),
+		title:'进行时段背景颜色'
+	},
+	{
+		key:'tab_ingTextC',
+		value:data.tab_ingTextC|default('#FFFFFF'),
+		title:'进行时段文字颜色'
+	},
+	{
+		key:'tab_ingBdC',
+		value:data.tab_ingBdC|default('#E33194'),
+		title:'进行时段边框颜色'
+	},
+	{
+		key:'tab_soonBgc',
+		value:data.tab_soonBgc|default('#999999'),
+		title:'未开始时段背景颜色'
+	},
+	{
+		key:'tab_soonTextC',
+		value:data.tab_soonTextC|default('#FFFFFF'),
+		title:'未开始时段文字颜色'
+	},{
+		key:'tab_soonBdC',
+		value:data.tab_soonBdC|default('#999999'),
+		title:'未开始时段边框颜色'
+	}
+]
+%}
+<style>
+.gs-lable-block{
+	margin:0 0 5px 20px;
+}
+.gs-lable-block+.layui-input-block,.class-manage{
+	margin-left:20px
+}
+#killTabWrap{
+    margin: 15px 0 30px;
+}
+
+#goods_tab .tab-add-btn{
+	    margin: 15px 0;
+    height: 32px;
+    line-height: 36px;
+}
+
+</style>
+{{include ('@app/files/parts/temp/goods_manager.twig')}}
+
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>多时段秒杀设置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+  <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+		<div class="layui-tab" id="goods_tab">
+			<ul class="layui-tab-title">
+				<li class="layui-this">模板选择</li>
+				{# <li>商品数据</li> #}
+				<li>样式设置</li>
+			</ul>
+			<div class="layui-tab-content layui-tab-content-parent" data-goodsType="tab">
+				<div class="layui-tab-item layui-show">
+						<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+						{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				</div>
+				{# <div class="layui-tab-item">
+					<div class="layui-form-item">
+						<label class="layui-form-label public-data">商品SKU</label>
+						<div class="layui-input-block">
+							<textarea placeholder="请输入商品编号（SKU ID），编号与编号间用英文逗号隔开" class="layui-textarea" name="goodsSKU" data-public-tag="true">{{data.goodsSKU}}</textarea>
+						</div>
+						<span style="margin: 10px 0 10px 110px; display: block; color: #bbb;">"商品SKU"不可重复</span>
+					</div>
+					<div class="layui-form-item tab-add-btn">
+						<span class="el-button el-button--primary el-button--small" id="gs_getList" style="float:right">商品管理</span>
+					</div>
+				</div> #}
+				<div class="layui-tab-item">
+					<div class="layui-carousel" id="form_carousel">
+						<div carousel-item>
+							<div>
+
+								<fieldset class="layui-elem-field">
+									<legend>常用配置</legend>
+									{# 剩余秒数,倒计时状态0,1,2 未开始,已开始,已结束 #}
+										{# <input type="hidden" name="left_time" value="{{data.left_time}}">
+										<input type="hidden" name="serverTime" value="{{serverTime}}" data-public-tag="true"> #}
+										<input type="hidden" name="count_textStatus" value="{{data.count_textStatus}}" data-public-tag="true">
+									<div class="layui-field-box">
+									{# 秒杀内容设置 #}
+											<div id="killTabWrap">
+											{# 	<input type="hidden" name="goodsSKU" data-public-tag="true"> #}
+                        <input type="hidden" name="goodsSKUSort" value='{{json_encode_no_unicode(data.goodsSKUSort)}}'>
+                        <input type="hidden" name="goodsSKUTab" value='{{json_encode_no_unicode(data.goodsSKUTab)}}' >
+												<ul class="layui-hide tab-template">
+													<li>
+														<div class="layui-form-item">
+															<div class="gs-lable-block">秒杀模块<span class="loop-index"></span>设置</div>
+														</div>
+														<div class="layui-form-item">
+															<div class="gs-lable-block">秒杀时间段(请选择北京时间)</div>
+															<div class="layui-input-block">
+																<input class="layui-input down-timestamp Unwanted" type="text" readonly value="" data-public-tag="true">
+															</div>
+														</div>
+
+														<div class="layui-form-item">
+															<div class="gs-lable-block">商品sku</div>
+															<div class="layui-input-block">
+																<input class="layui-input Unwanted" name="goodsSKU" data-public-tag="true" value="">
+															</div>
+														</div>
+														{# <div class="layui-form-item tab-add-btn">
+
+														</div> #}
+														<div class="geshop-third-value tab-add-btn">
+																<span class="el-button el-button--primary el-button--small class-manage" style="float:left;">商品管理</span>
+																<span class="img-btn">
+																	<i class='icon-delete'></i>
+																	<b class="tips">删除</b>
+																</span>
+														</div>
+													</li>
+												</ul>
+												<ul class="tab-lists-wrap">
+														{% for tabItem in data.goodsSKUTab|default(0..0) %}
+															<li>
+																<div class="layui-form-item">
+																	<div class="gs-lable-block">秒杀模块<span class="loop-index">{{loop.index}}</span>设置</div>
+																</div>
+
+																<div class="layui-form-item">
+																	<div class="gs-lable-block">秒杀时间段(请选择北京时间)</div>
+																	<div class="layui-input-block">
+																		<input class="layui-input down-timestamp Unwanted" type="text" value="{{tabItem.timeRange}}" readonly data-public-tag="true" data-start="{{tabItem.dataStartTime}}" data-end="{{tabItem.dataEndTime}}">
+																	</div>
+																</div>
+
+																<div class="layui-form-item">
+																	<div class="gs-lable-block">商品sku</div>
+																	<div class="layui-input-block">
+																		<input class="layui-input Unwanted" name="goodsSKU" data-public-tag="true" value="{{tabItem.lists}}">
+																	</div>
+																</div>
+																{# <div class="layui-form-item tab-add-btn">
+
+																</div> #}
+																<div class="geshop-third-value tab-add-btn">
+																	<span class="el-button el-button--primary el-button--small class-manage" style="float:left;">商品管理</span>
+																		<span class="img-btn">
+																			<i class='icon-delete'></i>
+																			<b class="tips">删除</b>
+																		</span>
+																</div>
+															</li>
+														{% endfor %}
+												</ul>
+												<div class="layui-form-item tab-add-btn" style="margin-left:20px;">
+													<span class="el-button el-button--primary el-button--small" id="gs_tab_add">新增秒杀模块</span>
+												</div>
+											</div>
+									{# 秒杀内容设置 end #}
+									</div>
+									<legend style="margin-bottom: 20px;">秒杀模块样式设置</legend>
+									<div class="layui-field-box">
+
+
+									{# 秒杀模块设置 start#}
+
+									<div class="layui-form-item">
+										<label class="gs-lable-block">是否显示已结束时段的秒杀内容</label>
+										<div class="layui-input-block">
+											<input type="radio" name="tab_endShowActive" value="1" title="是" {% if data.tab_endShowActive == '1' or data.tab_endShowActive is empty %} checked="checked" {% endif %}>
+											<input type="radio" name="tab_endShowActive" value="0" title="否" {% if data.tab_endShowActive == '0'%} checked="checked" {% endif %}>
+										</div>
+									</div>
+
+									{% for key,item in tabColorOption %}
+										<div class="layui-form-item">
+											<label class="layui-form-label">{{item.title}}</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="{{item.key}}">
+													<div style="background-color: {{ item.value }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="{{item.key}}" autocomplete="off" value="{{ item.value }}">
+											</div>
+										</div>
+									{% endfor %}
+
+									<div class="layui-form-item">
+										<label class="layui-form-label">秒杀主题文字</label>
+										<div class="layui-input-block"><input class="layui-input" type="text" name="tab_headerTitle" value="{{data.tab_headerTitle|default('Daily Flash Sale')}}">
+										</div>
+									</div>
+									<div class="layui-form-item">
+										<label class="layui-form-label">秒杀主题字体颜色</label>
+										<div class="layui-input-block">
+											<div class="color-picker-selector" data-hidden-name="tab_headerFtC">
+												<div style="background-color: {{ data.tab_headerFtC|default('#ffffff') }};"></div>
+											</div>
+											<input type="text" class="layui-input" name="tab_headerFtC" autocomplete="off" value="{{ data.tab_headerFtC|default('#ffffff') }}">
+										</div>
+									</div>
+									<div class="layui-form-item">
+										<label class="layui-form-label">秒杀主题背景颜色</label>
+										<div class="layui-input-block">
+											<div class="color-picker-selector" data-hidden-name="tab_headerBgC">
+												<div style="background-color: {{ data.tab_headerBgC|default('#666666') }};"></div>
+											</div>
+											<input type="text" class="layui-input" name="tab_headerBgC" autocomplete="off" value="{{ data.tab_headerBgC|default('#666666') }}">
+										</div>
+									</div>
+									<div class="layui-form-item">
+									<label class="layui-form-label">秒杀背景图片</label>
+									<div class="layui-input-block">
+										<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+										<input class="layui-input" type="text" name="tab_headerBgImg" value="{{data.tab_headerBgImg}}">
+									</div>
+								</div>
+									{# <div class="layui-form-item">
+										<label class="layui-form-label">两端圆角设置</label>
+										<div class="layui-input-block">
+											<input type="radio" name="tab_headerBdType" value="1" title="无" {% if data.tab_headerBdType == '1' or data.tab_headerBdType is empty %} checked="checked" {% endif %}>
+											<input type="radio" name="tab_headerBdType" value="0" title="圆角" {% if data.tab_headerBdType == '0' %} checked="checked" {% endif %}>
+										</div>
+									</div> #}
+									<div class="layui-form-item">
+										<label class="layui-form-label">商品边框hover颜色</label>
+										<div class="layui-input-block">
+											<div class="color-picker-selector" data-hidden-name="goodsBdC">
+												<div style="background-color: {{ pageData.goodsBdC }};"></div>
+											</div>
+											<input type="text" class="layui-input" name="goodsBdC" autocomplete="off" value="{{ pageData.goodsBdC }}">
+										</div>
+									</div>
+
+									<div class="layui-form-item">
+										<label class="layui-form-label">下边距(px)</label>
+										<div class="layui-input-block"><input class="layui-input" type="text" name="tab_marginBottow" value="{{data.tab_marginBottow|default('40')}}">
+										</div>
+									</div>
+
+									{# 秒杀模块设置 end #}
+
+
+
+									</div>
+								</fieldset>
+								<div class="text-right">
+									<button type="button" id="js_moreConfig" class="layui-btn layui-btn-normal layui-btn-sm">更多配置</button>
+								</div>
+							</div>
+							<div>
+								<div class="layui-tab layui-tab-vertical">
+									<ul class="layui-tab-title">
+										<li class="layui-this">倒计时间</li>
+										<li>商品基础设置</li>
+										<li>折扣标</li>
+										<li>商品名称</li>
+										<li>市场价</li>
+										<li>销售价</li>
+										<li>购买按钮</li>
+										<li>库存管理</li>
+									</ul>
+									<div class="layui-tab-content">
+										<div class="layui-tab-item layui-show">
+											<div class="layui-form-item">
+												<label class="layui-form-label">文字大小(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="downFtS" value="{{pageData.downFtS}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">文字颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="downTextC">
+														<div style="background-color: {{ pageData.downTextC }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="downTextC" autocomplete="off" value="{{ pageData.downTextC }}">
+												</div>
+											</div>
+											{# <div class="layui-form-item">
+												<label class="layui-form-label">背景颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="downBgc">
+														<div style="background-color: {{ pageData.downBgc }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="downBgc" autocomplete="off" value="{{ pageData.downBgc }}">
+												</div>
+											</div> #}
+											<div class="layui-form-item">
+												<label class="layui-form-label">倒计时背景颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="downTimeBgC">
+														<div style="background-color: {{ pageData.downTimeBgC }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="downTimeBgC" autocomplete="off" value="{{ pageData.downTimeBgC }}">
+												</div>
+											</div>
+											{# <div class="layui-form-item">
+												<label class="layui-form-label public-data">预热文案</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="downBfText" value="{{data.downBfText|default(get_component_trans(lang,'coming_soon'))}}" data-public-tag="true">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label public-data">进行文案</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="downIngText" value="{{data.downIngText|default(get_component_trans(lang,'go_going'))}}" data-public-tag="true">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label public-data">结束文案</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="downAfText" value="{{data.downAfText|default(get_component_trans(lang,'already_ended'))}}" data-public-tag="true">
+												</div>
+											</div> #}
+											<div class="layui-form-item">
+												<label class="layui-form-label">圆角大小</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="downBdRadius" value="{{pageData.downBdRadius}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">下边距(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="downMarginB" value="{{data.downMarginB}}">
+												</div>
+											</div>
+
+										</div>
+										<div class="layui-tab-item">
+											<div class="layui-form-item">
+												<label class="layui-form-label">上边距(px)</label>
+												<div class="layui-input-block">
+													<input type="text" name="boxMarginTop" autocomplete="off" class="layui-input" value="{{ data.boxMarginTop | default(0) }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">下边距(px)</label>
+												<div class="layui-input-block">
+													<input type="text" name="boxMarginBottom" autocomplete="off" class="layui-input" value="{{ data.boxMarginBottom | default(0) }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">宽度(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="baseWidth" value="{{data.baseWidth|default(1200)}}">
+												</div>
+											</div>
+											{# <div class="layui-form-item">
+												<label class="layui-form-label">每列商品数量</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="colNum" value="{{data.colNum|default(4)}}">
+												</div>
+											</div> #}
+											<div class="layui-form-item">
+												<label class="layui-form-label">商品字体颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="goodsFtC">
+														<div style="background-color: {{ pageData.goodsFtC }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="goodsFtC" autocomplete="off" value="{{ pageData.goodsFtC }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">整体背景颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="baseBgC">
+														<div style="background-color: {{ data.baseBgC }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="baseBgC" autocomplete="off" value="{{ data.baseBgC }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">每栏颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="goodsBgc">
+														<div style="background-color: {{ pageData.goodsBgc }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="goodsBgc" autocomplete="off" value="{{ pageData.goodsBgc }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">商品左右间距(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="gsPadding" value="{{data.gsPadding|default(10)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">商品上下间距(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="gsMarginBottom" value="{{data.gsMarginBottom|default(10)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">商品内间距(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="gsInnerPadding" value="{{data.gsInnerPadding|default(20)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">商品圆角(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="gsRadius" value="{{data.gsRadius}}">
+												</div>
+											</div>
+											{# <div class="layui-form-item">
+												<label class="layui-form-label">商品倒计时</label>
+												<div class="layui-input-block">
+													<input type="radio" name="goodsTimeActive" value="1" title="是" {% if data.goodsTimeActive == '1' %} checked="checked" {% endif %}>
+													<input type="radio" name="goodsTimeActive" value="0" title="否" {% if data.goodsTimeActive == '0' or data.goodsTimeActive is empty %} checked="checked" {% endif %}>
+												</div>
+											</div> #}
+										</div>
+										{# 折扣设置 #}
+										<div class="layui-tab-item">
+											{# <div class="layui-form-item">
+												<label class="layui-form-label">后缀文字(OFF)</label>
+												<div class="layui-input-block"><input class="layui-input layui-disabled" disabled type="text" name="discountTextSuffix" value="{{get_component_trans(lang,'off')}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">后缀(OFF)</label>
+												<div class="layui-input-block">
+													<input type="radio" name="discountSuffix" value="1" title="是" {% if data.discountSuffix == '1' or data.discountSuffix is empty %} checked="checked" {% endif %}>
+													<input type="radio" name="discountSuffix" value="0" title="否" {% if data.discountSuffix == '0' %} checked="checked" {% endif %}>
+												</div>
+											</div> #}
+											<div class="layui-form-item">
+												<label class="layui-form-label">是否开启</label>
+												<div class="layui-input-block">
+													<input type="radio" name="discountActive" value="1" title="是" {% if data.discountActive == '1' or data.discountActive is empty %} checked="checked" {% endif %}>
+													<input type="radio" name="discountActive" value="0" title="否" {% if data.discountActive == '0'%} checked="checked" {% endif %}>
+												</div>
+											</div>
+
+											<div class="layui-form-item">
+												<label class="layui-form-label">折扣标显示方式</label>
+												<div class="layui-input-block">
+													<input type="radio" name="discountType" data-public-tag="true" value="1" title="***%OFF" {% if data.discountType == '1' or data.discountType is empty %} checked="checked" {% endif %}>
+													<input type="radio" name="discountType" data-public-tag="true" value="0" title="-***%" {% if data.discountType == '0' %} checked="checked" {% endif %}>
+												</div>
+											</div>
+
+											<div class="layui-form-item">
+												<label class="layui-form-label">折扣标显示位置</label>
+												<div class="layui-input-block">
+													<input type="radio" name="discountArea" value="1" title="右上角" {% if data.discountArea == '1' or data.discountArea is empty %} checked="checked" {% endif %}>
+													<input type="radio" name="discountArea" value="0" title="左上角" {% if data.discountArea == '0' %} checked="checked" {% endif %}>
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">文字上间距(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="discountTop" value="{{data.discountTop|default('0')}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">折扣宽度(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="discountWidth" value="{{data.discountWidth|default('52')}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">折扣高度(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="discountHeight" value="{{data.discountHeight|default('52')}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">折扣背景图片</label>
+												<div class="layui-input-block">
+													<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+													<input class="layui-input" type="text" name="discountBgImg" value="{{data.discountBgImg}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">折扣文字颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="discountFtC">
+														<div style="background-color: {{ data.discountFtC }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="discountFtC" autocomplete="off" value="{{ data.discountFtC }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">折扣背景颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="discountBgc">
+														<div style="background-color: {{ pageData.discountBgc }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="discountBgc" autocomplete="off" value="{{ pageData.discountBgc }}">
+												</div>
+											</div>
+{#
+											<div class="layui-form-item">
+												<label class="layui-form-label">上偏移(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="discountOffsetT" value="{{data.discountOffsetT|default('-10')}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">右偏移(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="discountOffsetR" value="{{data.discountOffsetR|default('-10')}}">
+												</div>
+											</div> #}
+											{# <div class="layui-form-item">
+												<label class="layui-form-label">文字上间距(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="discountTop" value="{{data.discountTop|default('6')}}">
+												</div>
+											</div> #}
+											{# <div class="layui-form-item">
+												<label class="layui-form-label">文字左间距(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="discountLeft" value="{{data.discountLeft|default('0')}}">
+												</div>
+											</div> #}
+											{# <div class="layui-form-item">
+												<label class="layui-form-label">圆角(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="discountRadius" value="{{data.discountRadius|default('50')}}">
+												</div>
+											</div> #}
+										</div>
+										<div class="layui-tab-item">
+											<div class="layui-form-item">
+												<label class="layui-form-label">字体大小(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="goodsFtS" value="{{pageData.goodsFtS}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">是否开启</label>
+												<div class="layui-input-block">
+													<input type="radio" name="goodsActive" value="1" title="是" {% if data.goodsActive == '1'  or data.goodsActive is empty %} checked="checked" {% endif %}>
+													<input type="radio" name="goodsActive" value="0" title="否" {% if data.goodsActive == '0'%} checked="checked" {% endif %}>
+												</div>
+											</div>
+										</div>
+										<div class="layui-tab-item">
+											<div class="layui-form-item">
+												<label class="layui-form-label">字体大小(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="marketPriceFt" value="{{pageData.marketPriceFt}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">市场价颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="marketPriceC">
+														<div style="background-color: {{ pageData.marketPriceC }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="marketPriceC" autocomplete="off" value="{{ pageData.marketPriceC }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">是否开启</label>
+												<div class="layui-input-block">
+													<input type="radio" name="marketActive" value="1" title="是" {% if data.marketActive == '1' or data.marketActive is empty %} checked="checked" {% endif %}>
+													<input type="radio" name="marketActive" value="0" title="否" {% if data.marketActive == '0'%} checked="checked" {% endif %}>
+												</div>
+											</div>
+										</div>
+										<div class="layui-tab-item">
+											<div class="layui-form-item">
+												<label class="layui-form-label">字体大小(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="priceFt" value="{{data.priceFt|default(20)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">销售价颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="priceC">
+														<div style="background-color: {{ pageData.priceC }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="priceC" autocomplete="off" value="{{ pageData.priceC }}" >
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">是否开启</label>
+												<div class="layui-input-block">
+													<input type="radio" name="priceActive" value="1" title="是" {% if data.priceActive == '1' or data.priceActive is empty %} checked="checked" {% endif %}>
+													<input type="radio" name="priceActive" value="0" title="否" {% if data.priceActive == '0'%} checked="checked" {% endif %}>
+												</div>
+											</div>
+										</div>
+										<div class="layui-tab-item">
+											<div class="layui-form-item">
+												<label class="layui-form-label">是否开启</label>
+												<div class="layui-input-block">
+													<input type="radio" name="buyActive" value="1" title="是" {% if data.buyActive == '1' or data.buyActive is empty %} checked="checked" {% endif %}>
+													<input type="radio" name="buyActive" value="0" title="否" {% if data.buyActive == '0'%} checked="checked" {% endif %}>
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">字体大小(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="buyFtS" value="{{data.buyFtS|default(16)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label public-data">购买按钮文案</label>
+												<div class="layui-input-block"><input class="layui-input"  type="text" name="buyText" value="{{data.buyText|default(get_component_trans(lang,'btn_buy_now'))}}" data-public-tag="true">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">购买按钮字体颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="buyFtC">
+														<div style="background-color: {{ pageData.buyFtC }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="buyFtC" autocomplete="off" value="{{ pageData.buyFtC }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">购买按钮背景颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="buyBgC">
+														<div style="background-color: {{ pageData.buyBgC }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="buyBgC" autocomplete="off" value="{{ pageData.buyBgC }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">购买按钮边框颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="buyBorderC">
+														<div style="background-color: {{ pageData.buyBorderC }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="buyBorderC" autocomplete="off" value="{{ pageData.buyBorderC }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">宽度(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="buyWidth" value="{{data.buyWidth|default(180)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">高度(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="buyHeight" value="{{data.buyHeight|default(34)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">圆角大小(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="buyRadius" value="{{data.buyRadius|default('20')}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">边框大小(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="buyBorderW" value="{{data.buyBorderW|default('0')}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">边框类型</label>
+												<div class="layui-input-block">
+													<select name="buyBorderS" lay-verify="required" value="{{data.buyBorderS|default('solid')}}">
+													{% for item in buyBorderSArr%}
+														<option value="{{item.value}}" {% if item.value == data.buyBorderS|default('solid')%}selected{% endif %}>{{item.name}}</option>
+													{% endfor %}
+													</select>
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">背景图片</label>
+												<div class="layui-input-block">
+													<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+													<input class="layui-input" type="text" name="buyBgImg" value="{{data.buyBgImg}}">
+												</div>
+											</div>
+										</div>
+										{# 库存 #}
+										<div class="layui-tab-item">
+											<div class="layui-form-item">
+												<label class="layui-form-label">是否开启</label>
+												<div class="layui-input-block">
+													<input type="radio" name="goodsLimitActive" value="1" title="是" {% if data.goodsLimitActive == '1' or data.goodsLimitActive is empty %} checked="checked" {% endif %}>
+													<input type="radio" name="goodsLimitActive" value="0" title="否" {% if data.goodsLimitActive == '0' %} checked="checked" {% endif %}>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="text-right">
+									<button type="button" id="js_baseConfig" class="layui-btn layui-btn-normal layui-btn-sm">基础配置</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+	<button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+		<span type="button" class="layui-btn layui-btn-normal" id="gs_submit">提交</span>
+	<button type="button" class="layui-btn layui-btn-normal js_submitDesignForm layui-hide">提交</button>
+</div>
+<script>
+function dateChange(_this,value){
+	var $tabTarget = $('#goods_tab');
+	var dateStrArr = value.split(' - '),
+		dataStartTime,
+		dataEndTime;
+	if (dateStrArr) {
+		dataStartTime = new Date(dateStrArr[0]).getTime();
+		dataEndTime = new Date(dateStrArr[1]).getTime();
+		if(!(dataStartTime && dataEndTime && dataStartTime < dataEndTime)){
+			layui.layer.msg('请填写正确时间格式');
+			return false;
+		}
+		/* var serverTime = $('#gs_component_countdown').find('input[name=serverTime]').val() ||new Date().getTime(); */
+		var serverTime = new Date().getTime();
+
+		/*校验是否已存在时间*/
+		var hasSameStartTime = false;
+		$('.down-timestamp').not(_this).each(function(){
+			var dataStartItem = $(this).attr('data-start');
+			if(dataStartItem == dataStartTime ){
+				hasSameStartTime = true;
+				layer.msg('该开始时间已有秒杀');
+				setTimeout(function(){
+				_this.val('');
+				},500);
+				return false
+			}
+		});
+		if(hasSameStartTime){
+			return false;
+		}
+		/*状态*/
+		var status = 0,
+			leftTime = 0,
+			textCont = "",
+			textArr = ['未开始', '已开始', '已结束'];
+		if (dataStartTime > serverTime) {
+			leftTime = dataStartTime - serverTime;
+		} else if (dataStartTime <= serverTime && dataEndTime > serverTime) {
+			status = 1;
+			leftTime = dataEndTime - serverTime;
+		} else if (dataEndTime < serverTime) {
+			status = 2;
+			leftTime = 0;
+		}
+		textCont = textArr[status];
+		/*
+		leftTime = Math.round(leftTime / 1000);
+		$('#gs_component_countdown').find('input[name=left_time]').val(leftTime);
+		*/
+		_this.attr({"data-start":dataStartTime,"data-end":dataEndTime});
+		$tabTarget.find('input[name=count_textStatus]').val(status);
+	}
+}
+
+/* 时间 */
+function downDateInit (min, max) {
+	var laydate = layui.laydate;
+	var $tabTarget = $('#goods_tab');
+	$('.tab-lists-wrap .down-timestamp').each(function(){
+		var _this = $(this);
+		laydate.render({
+			elem: this
+			, type: 'datetime'
+			, range: true
+			, done: function (value, date, endDate) {
+				dateChange(_this,value);
+			}
+		});
+
+		_this.change(function(){
+			var value = $(this).val();
+			dateChange(_this,value)
+		})
+	})
+
+};
+
+function compareTime(property){
+	return function(a,b){
+		var value1 = a[property],
+		value2 = b[property];
+		return value1-value2
+	}
+}
+
+downDateInit();
+
+var $goodsTable = $('#form_carousel');
+{# 新增秒杀模块 #}
+$('#gs_tab_add').on('click',function(){
+	var clone = $('.tab-template li',$goodsTable).clone();
+	$('.tab-lists-wrap',$goodsTable).append(clone);
+	initIndex();
+	downDateInit();
+});
+{# 删除秒杀模块 #}
+$('body').on('click', '.icon-delete', function () {
+	var target = $(this).closest('li');
+	target.remove();
+	initIndex()
+});
+
+$('#gs_submit').on('click',function(){
+	var goodsArr = [];
+	var goodsSortArr = [];
+	var skuValidArr = 0;
+	/*是否显示已结束秒杀*/
+	var currentTime= new Date().getTime();
+	var tab_endShowActive = $(".design-form  [name=tab_endShowActive]:checked").val();
+
+	$('#form_carousel input[name=goodsSKU].Unwanted').each(function(index,element){
+		var $val = $(this).val();
+		var $time = $(this).closest('li').find('.down-timestamp');
+		var $timeRange = $time.val();
+		/*sku数量校验*/
+		var skuArr = $val.split(',');
+		if(skuArr.length>100){
+			skuValidArr++;
+			$(this).addClass('sku-valid');
+			return false;
+		}else{
+			$(this).removeClass('sku-valid');
+		}
+
+		if($val && $timeRange){
+			var endTime = $time.attr('data-end');
+			goodsArr.push({
+				"timeRange":$timeRange,
+				"lists":$val,
+				"dataStartTime":$time.attr('data-start'),
+				"dataEndTime":$time.attr('data-end')
+			});
+			if(tab_endShowActive == '0'  && endTime>currentTime){
+				goodsSortArr.push({
+					"timeRange":$timeRange,
+					"lists":$val,
+					"dataStartTime":$time.attr('data-start'),
+					"dataEndTime":$time.attr('data-end')
+				})
+			}
+		}
+	});
+
+	if(skuValidArr>0){
+		layui.layer.msg('每个模块商品sku数量不得多于100');
+		return false;
+	}
+
+	if(goodsArr.length<1){
+		layui.layer.msg('秒杀时间及商品sku为必填');
+		return false;
+	}
+{# 		debugger;
+		/*开始时间不可一致*/
+		var hasSameSKU = false;
+		for(var i in goodsArr){
+			for(var u in goodsArr){
+				if(i!=u && goodsArr[i].dataStartTime == goodsArr[u].dataStartTime){
+					hasSameSKU = true
+				}
+			}
+		}
+
+		if(hasSameSKU){
+			layui.layer.msg('请勿添加开始时间相同的的秒杀');
+			return false;
+		}
+ #}
+
+	$('#form_carousel input[name=goodsSKUTab]:eq(0)').val(JSON.stringify(goodsArr));
+
+	/* 排序显示*/
+	if(tab_endShowActive == '1'){
+		goodsSortArr = goodsArr
+	}
+	var goodsSkuSort = goodsSortArr.sort(compareTime('dataStartTime'));
+	$('#form_carousel input[name=goodsSKUSort]:eq(0)').val(JSON.stringify(goodsSkuSort));
+	$(this).next('button').trigger('click');
+});
+
+function initIndex() {
+	$('.tab-lists-wrap li').each(function(){
+		var index = parseInt($(this).index()) + 1;
+		$(this).find('.loop-index').text(index)
+	})
+}
+
+{# sku校验 #}
+function goods_exists (sku, callback) {
+		var url = '/activity/goods/tpl-goods-exists';
+		return $.ajax({
+			type: 'GET',
+			url: url,
+			data: { lang: 'en', skus: sku, uiId: uiId },
+			dataType: 'json',
+			fail: function () {
+				layer.msg('连接服务器失败')
+			}
+		})
+};
+
+	$(function(){
+		$("body").on('change','#goods_tab input[name=goodsSKU].Unwanted',function(){
+			var $this = $(this);
+			var res = /(\s{5,1000})/g;
+			var reg = /\n/g;
+			var skuList = $(this).val().replace(res, ',').replace(reg, ',');
+			var skuArr = skuList.split(',');
+			if (!skuList) {
+				return false
+			}
+			if (skuArr[skuArr.length - 1] === '') {
+				skuArr.pop();
+			}
+		/*去重*/
+		var newArr = [];
+		for(var i=0;i<skuArr.length;i++){
+			if(newArr.indexOf(skuArr[i]) == -1){
+				newArr.push(skuArr[i]);
+			}
+		}
+		skuArr = newArr;
+		skuList = newArr.toString();
+		$(this).val(skuList);
+
+			{# goods_exists(skuList).done(function(res){
+				if(res.code !== 0){
+						layer.confirm(''+res.message+',是否清空', {
+						title: '提示',
+						btn: ['否', '是'],
+						area: '420px',
+						icon: 3,
+						skin: 'element-ui-dialog-class'
+						}, function (index) {layui.layer.close(index)}, function (index) {
+						var delSkuArr = res.message.split(' ')[1].split(','),
+								skuListArr = skuList.split(','),
+								newSku = '';
+					delSkuArr.forEach(function(delItem){
+						skuListArr.forEach(function(skuItem, skuIndex){
+							if (delItem == skuItem) {
+								skuListArr.splice(skuIndex, 1)
+							}
+						})
+					});
+					newSku = skuListArr.toString();
+					$this.val(newSku);
+					layer.close(index);
+					})
+				}
+			}); #}
+			if(skuArr.length>100){
+					layui.layer.msg('每个模块商品sku数量不得多于100');
+					$(this).addClass('sku-valid')
+			}else{
+				$(this).removeClass('sku-valid')
+			}
+		})
+	});
+</script>
+<style>
+.sku-valid{
+	border-color:red;
+}
+</style>

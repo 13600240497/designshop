@@ -1,0 +1,27 @@
+
+<div class="component-form-setting-item component-form-templatelist-item" id="component-form-{{ pageInstanceId }}">
+  <h4 class="title">模板选择<span>（切换模板后 <span class="layui-badge-dot layui-bg-orange"></span> 标识的配置数据将被重置）</span></h4>
+  <p class="template-operating">当前使用：{{ data.templates.selected_name }} {% if data.templates.list|length > 2  %} <a href="javascript:;" class="arrow show" id="js_showMoreTemplate">更多</a> {% endif %}</p>
+  {# <p class="template-operating">当前使用：{{ data.templates.selected_name }}</p> #}
+  <div class="component-form-template-container">
+    {% for item in data.templates.list %}
+    {# <div class="component-tmp-list {% if item.id==data.templates.selected %}component-tmp-current{% endif %} js_changeComponentTemplate" {% if loop.index > 2 %}style="display:none"{% endif %} data-id="{{item.id}}" data-pic="{{item.pic}}" data-name="{{item.name}}"> #}
+    <div class="component-tmp-list {% if item.id==data.templates.selected %}component-tmp-current{% endif %} js_changeComponentTemplate" data-id="{{item.id}}" data-pic="{{item.pic}}" data-name="{{item.name}}">
+      {% if item.id==data.templates.selected %}
+      <input type="hidden" name="tpl_id" value="{{ item.id }}">
+      {% endif %}
+      <p class="component-tmp-content">
+        <i class="layui-icon layui-icon-ok"></i>
+        <img alt="{{ item.name }}" src="{{ item.pic }}">
+        <span class="tpl-name">{{ item.name }}</span>
+      </p>
+    </div>
+    {% endfor %}
+    {% if data.templates.list|length % 2 != 0 %}
+    {# <div class="component-tmp-list" {% if data.templates.list|length > 2 %}style="display:none"{% endif %}> #}
+    <div class="component-tmp-list">
+      <p class="component-tmp-content more">期待更多模板...</p>
+    </div>
+    {% endif %}
+  </div>
+</div>

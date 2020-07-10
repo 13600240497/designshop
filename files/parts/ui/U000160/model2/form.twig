@@ -1,0 +1,277 @@
+<style>
+.layui-form-select .layui-edge{
+	right:20px;
+}
+</style>
+
+{% set buyBorderSArr = [
+	{name:'无',value:'none'},
+	{name:'实线',value:'solid'},
+	{name:'虚线',value:'dashed'},
+	{name:'点状',value:'dotted'},
+	{name:'双线',value:'double'},
+	{name:'继承上级',value:'inherit'},
+]%}
+
+{% set fontFamily = [
+	{name:'OpenSans-Semibold (zaful)',value:'OpenSans-Semibold'},
+  {name:'OpenSans-Bold (zaful)',value:'OpenSans-Bold'},
+  {name:'OpenSans-Regular (zaful)',value:'OpenSans-Regular'},
+  {name:'Trebuchet MS (RG)',value:'Trebuchet MS'},
+  {name:'Tahoma (RW)',value:'Tahoma'},
+  {name:'Arial (RW)',value:'Arial'},
+  {name:'Helvetica (RW)',value:'Helvetica'},
+  {name:'sans-serif (RW)',value:'sans-serif'},
+  {name:'AvenirLTStd_Book (RW)',value:'AvenirLTStd_Book'},
+  {name:'Georgia (RW)',value:'Georgia'},
+  {name:'Times New Roman (RW)',value:'Times New Roman'},
+  {name:'Verdana (RW)',value:'Verdana'},
+]%}
+
+{% set siteCodeOp = {
+	baseWidthDefault: siteCode == 'zf-pc'?1260:1200,
+
+}%}
+
+{%
+	set pageData = {
+		price_ft_weight:data.price_ft_weight|default(0),
+		base_bg_shadow:data.base_bg_shadow|default(1),
+		base_magin_top: data.base_magin_top|default(0),
+		base_magin_bottom: data.base_magin_bottom|default(32),
+		base_bgc:data.base_bgc is not null ? data.base_bgc:'#FFFFFF',
+	
+		buy_ftc:data.buy_ftc is not null ? data.buy_ftc:'#FFFFFF',
+		buy_bgc:data.buy_bgc is not null ? data.buy_bgc:'#FF8A00',
+		buy_hover_bgc:data.buy_hover_bgc is not null ? data.buy_hover_bgc:'#FFC556',
+		buy_hover_ftc:data.buy_hover_ftc is not null ? data.buy_hover_ftc:'#FFFFFF',
+
+		buy_cart_bgc:data.buy_cart_bgc is not null ? data.buy_cart_bgc:'#CC0000',
+		buy_cart_hover_bgc:data.buy_cart_hover_bgc is not null ? data.buy_cart_hover_bgc:'#E00101',
+
+		price_fts:data.price_fts|default(22),
+		price_color:data.price_color is not null ? data.price_color:'#f30240',
+		market_active:data.market_active|default(1),
+
+		discount_bgc:data.discount_bgc is not null ? data.discount_bgc:'#FF8A00',
+		discount_ftc:data.discount_ftc is not null ? data.discount_ftc:'#FFFFFF',
+		discount_height:data.discount_height|default(50),
+		discount_width:data.discount_width|default(50),
+		discount_fts:data.discount_fts|default(16),
+		discount_off_fts:data.discount_off_fts|default(12),
+		discount_right:data.discount_right|default(10),
+		discount_top:data.discount_top|default(10),
+		discount_bgImage:data.discount_bgImage,
+
+		discount_active: data.discount_active|default(0),
+		server_label_active: data.server_label_active|default(0),
+
+		buy_text:data.buy_text,
+		buy_fts:data.buy_fts|default(18),
+		base_view_more_url: data.base_view_more_url is not null ? data.base_view_more_url : '',
+		view_more_ftc: data.view_more_ftc is not null ? data.view_more_ftc: "#333",
+		view_more_hover_ftc: data.view_more_hover_ftc is not null ? data.view_more_hover_ftc: "#333",
+		view_more_fts: data.view_more_fts|default(20),
+		view_more_bold: data.view_more_bold|default(1),
+		star_level: data.star_level|default(''),
+		star_level_color: data.star_level_color|default('#FF8A00'),
+		view_all_link:data.view_all_link|default(''),
+	}
+%}
+
+<style>
+.gs-lable-block{
+	margin:0 0 5px 20px;
+}
+.gs-lable-block+.layui-input-block,.class-manage{
+	margin-left:20px
+}
+
+#goods_tab .tab-add-btn{
+	margin: 15px 0;
+    height: 32px;
+    line-height: 36px;
+}
+.text-explain{
+	margin-bottom:24px;
+	font-size:14px;
+	font-weight:400;
+	color:rgba(158,158,158,1);
+	line-height:20px;
+}
+#component_form1 .img_openResource{
+	width:38px;
+}
+</style>
+{{include ('@app/files/parts/temp/goods_manager.twig')}}
+
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>广告-多商品推荐 配置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm gb-icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+  <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+		<div class="layui-tab">
+			<ul class="layui-tab-title">
+				<li class="layui-this">模板选择</li>
+				<li>商品数据</li>
+				<li>样式设置</li>
+			</ul>
+			<div class="layui-tab-content layui-tab-content-parent" data-goodsType="">
+				<div class="layui-tab-item layui-show">
+						<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+						{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				</div>
+				<div class="layui-tab-item radio-tab-true" id="component_form1">
+					<div class="layui-form-item">
+						<label class="gs-lable-block">默认显示商品个数</label>
+						<div class="layui-input-block">
+							<input type="text" name="show_num" autocomplete="off" placeholder="建议输入2的倍数，如配置的商品不足输入的值，按实际商品数量显示" class="layui-input" value="{{ data.show_num }}">
+							<p class="text-explain">建议输入2的倍数，如配置的商品不足输入的值，按实际商品数量显示</p>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="gs-label-block">加星等级</label>
+						<div class="layui-input-block">
+							<input type="text" name="star_level" placeholder="请输入0-5之间的数值" autocomplete="off" class="layui-input star_level" value="{{ pageData.star_level }}" onkeyup="value = value.replace(/[^\\d{1,}\\.\\d{1,}|\\d{1,}]/g,'')">
+						</div>
+					</div>
+					<div class="goods-hide {% if data.goodsDataFrom|default('1') == '1' %}goods-visible{% endif %}" data-target="goodsDataFrom-1">
+						<div class="layui-form-item" >
+							{# <label class="layui-form-label public-data">商品SKU</label> #}
+							<label style="display:block;" class="gs-label-block">商品数据</label>
+							<div class="layui-input-block">
+								<textarea placeholder="请输入商品编号（SKU ID），编号与编号间用英文逗号隔开" class="layui-textarea {% if data.goodsDataFrom|default('1') != '1' %}Unwanted{% endif %}" name="goodsSKU" data-skuvalid="true" data-public-tag="true">{{data.goodsSKU}}</textarea>
+							</div>
+							<span style="margin: 10px 0 10px 110px; display: block; color: #bbb;">"商品SKU"不可重复</span>
+						</div>
+						<div class="layui-form-item tab-add-btn">
+							<span class="el-button el-button--primary el-button--small" id="gs_getList" style="float:right">商品管理</span>
+						</div>
+					</div>
+					{# PO: View more链接配置项 GMT+8 2018-12-18 13:50:10 #}
+					{# <legend style="font-size: 18px; color: #333;">View more</legend> #}
+					<div class="layui-field-box">
+						<div class="layui-form-item ">
+							<label class="gs-lable-block">View all跳转链接</label>
+							<div class="layui-input-block">
+								<input class="layui-input" type="text" name="view_all_link" autocomplete="off" value="{{ pageData.view_all_link }}">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-tab-item">
+					<div class="layui-carousel" id="form_carousel">
+						<div carousel-item>
+							<div>
+								<fieldset class="layui-elem-field">
+									<legend style="font-size: 18px; color: #333;">常用配置</legend>
+									<div class="layui-field-box">
+										{# PO: 新增上边距配置项 2018-12-18 13:40:10 #}
+										<div class="layui-form-item">
+											<label class="gs-lable-block">组件上边距(px)</label>
+											<div class="layui-input-block">
+												<input type="text" name="base_magin_top" autocomplete="off" class="layui-input" value="{{ pageData.base_magin_top }}">
+											</div>
+										</div>
+
+										<div class="layui-form-item">
+											<label class="gs-lable-block">组件下边距(px)</label>
+											<div class="layui-input-block">
+												<input type="text" name="base_magin_bottom" autocomplete="off" class="layui-input" value="{{ pageData.base_magin_bottom }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="gs-lable-block">星级颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="star_level_color">
+													<div style="background-color: {{ pageData.star_level_color }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="star_level_color" autocomplete="off" value="{{ pageData.star_level_color }}">
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<div class="layui-form-item">
+									<label class="gs-lable-block">折扣标是否显示</label>
+									<div class="layui-input-block">
+										<input type="radio" name="discount_active" data-public-tag="true" value="1" title="是" {% if pageData.discount_active == '1' or pageData.discount_active is empty %} checked="checked" {% endif %}>
+										<input type="radio" name="discount_active" data-public-tag="true" value="0" title="否" {% if pageData.discount_active == '0' %} checked="checked" {% endif %}>
+									</div>
+								</div>
+								{# PO: 服务标设置 #}
+								<div class="layui-form-item">
+									<label class="gs-lable-block">服务标是否显示</label>
+									<div class="layui-input-block">
+										<input type="radio" name="server_label_active" data-public-tag="true" value="1" title="是" {% if pageData.server_label_active == '1' %} checked="checked" {% endif %}>
+										<input type="radio" name="server_label_active" data-public-tag="true" value="0" title="否" {% if pageData.server_label_active == '0' or pageData.server_label_active is empty %} checked="checked" {% endif %}>
+									</div>
+								</div>
+								{{include ('@app/files/parts/temp/gb/common/default_pc/imgDisposition.twig')}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+	<button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+		<span type="button" class="layui-btn layui-btn-normal" id="gs_submit">提交</span>
+	<button type="button" class="layui-btn layui-btn-normal js_submitDesignForm layui-hide">提交</button>
+</div>
+
+<style>
+	.class-add{
+		display:none;
+	}
+	.goods-tab-lists .goods-tab-item:last-child .class-add{
+		display:inline-block;
+	}
+</style>
+
+<script>
+function mul(a, b) {
+    var c = 0,
+        d = a.toString(),
+        e = b.toString();
+    try {
+        c += d.split(".")[1].length;
+    } catch (f) {}
+    try {
+        c += e.split(".")[1].length;
+    } catch (f) {}
+    return Number(d.replace(".", "")) * Number(e.replace(".", "")) / Math.pow(10, c);
+};
+function div(a, b) {
+    var c, d, e = 0,
+        f = 0;
+    try {
+        e = a.toString().split(".")[1].length;
+    } catch (g) {}
+    try {
+        f = b.toString().split(".")[1].length;
+    } catch (g) {}
+    return c = Number(a.toString().replace(".", "")), d = Number(b.toString().replace(".", "")), mul(c / d, Math.pow(10, f - e));
+};
+$('.star_level').on('blur', function () {
+	var $value = $('.star_level').val();
+	if ($value > 5) {
+		$('.star_level').val('');
+		layui.layer.msg('请填写0-5之间的数值');
+	} else {
+		if (div(Math.floor(mul($value, 1000)) ,1000) > div(Math.floor(mul($value, 100)) ,100)) {
+			var currentValue = div(Math.floor(mul($value, 100)) ,100);
+			$('.star_level').val(currentValue);
+			layui.layer.msg('仅支持保留两位小数');
+		};
+	};
+});
+$('#gs_submit').on('click',function(){
+	$(this).next('button').trigger('click');
+});
+</script>

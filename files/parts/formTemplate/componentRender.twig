@@ -1,0 +1,34 @@
+<div class="layui-row layui-col-space20">
+{# 循环组件 #}
+{% for componentData in components %}
+    {% if componentData.isshow is null  or  componentData.isshow == siteCode %} 
+        {% set col = componentData.col | default(1) == 1  ?  12 : 6 %}
+        {% set type = componentData.type | default('input') %}
+        {% set conponentURL = '@app/files/parts/formTemplate/components/'~type~'.twig' %}
+        {# 缺省值设置 value，默认读取 data下面的值 #}
+        {% if componentData.name and componentData.value is null %}
+            {% set componentData = componentData|merge({'value': data[componentData.name]}) %}
+        {% endif %}
+        {% if componentData.value is empty %}
+            {% set componentData = componentData|merge({'value': componentData.default }) %}
+        {% endif %}
+        {# 缺省值设置 public, 默认true #}
+        {% if componentData.public is null %}
+            {% set componentData = componentData|merge({'public': false}) %}
+        {% endif %}
+        {# 如果是时间区间控件，则回填时间戳 #}
+        {% if type == 'dataRangePicker' %}
+            {% set componentData = componentData|merge({'start_time': data.start_time }) %}
+            {% set componentData = componentData|merge({'end_time': data.end_time }) %}
+        {% endif %}
+        <div class="layui-col-xs{{ col }} {{ componentData.className }}" filter="{{componentData.filter}}" name="filter">
+            {% if componentData.src is not empty %}
+                {{ include (componentData.src, componentData) }}
+            {% else %}
+                {{ include (conponentURL, componentData) }}
+            {% endif %}
+        </div>
+    {% endif %}
+    
+{% endfor %}
+</div>

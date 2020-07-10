@@ -1,0 +1,100 @@
+.layui-form-select .layui-edge {
+  right: 20px;
+}
+
+
+[data-gid="U000056"] .gs-list-product {
+  width: 100%;
+  height: auto;
+	margin: 0 auto; 
+}
+
+[data-gid="U000056"] .goods-item-bigPromote {
+  width: 50%;
+  float: left;
+  position: relative;
+  margin-top: 15px;
+  padding: 0 .09333333rem;
+  box-sizing: border-box;
+}
+
+[data-gid="U000056"] .goods-item-bigPromote .gs-img {
+  width: 100%;
+  text-align: center;
+}
+
+[data-gid="U000056"] .goods-item-bigPromote .gs-img a {
+  width: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+[data-gid="U000056"] .goods-item-bigPromote .gs-img img {
+  width: 100%;
+  min-height: 170px;
+  max-width: 300px;
+  max-height: 450px;
+  vertical-align: top;
+}
+
+[data-gid="U000056"] .goods-item-bigPromote .gs-goods-describe {
+  padding: 5px;
+  font-size: 13px;
+  height: 36px;
+  line-height: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-align: center;
+}
+
+[data-gid="U000056"] .goods-item-bigPromote .gs-goods-describe a {
+  color: #666666;
+  text-decoration: none;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+[data-gid="U000056"] .goods-item-bigPromote .gs-goods-price {
+  height: 40px;
+  line-height: 20px;
+  margin-top: 5px;
+  padding-right: 30px;
+  white-space: nowrap;
+  position: relative;
+  text-align: center;
+}
+
+[data-gid="U000056"] .goods-item-bigPromote .gs-goods-price del {
+  display: inline-block;
+  color: #000;
+  text-decoration: line-through;
+  font-size:13px;
+}
+
+[data-gid="U000056"] .goods-item-bigPromote .gs-goods-price span {
+	display:inline-block;
+	color:#333333;
+	margin-top:6px;
+	height:22px;
+	line-height:20px;
+  font-weight:600;
+  margin-left: 4px;
+}
+
+
+[data-gid="U000056"] .gs-discount {
+	position: absolute;
+	top: -15px;
+	border-radius: 50%;
+	text-align: center;
+}
+
+[data-gid="U000056"] .gs-discount .gs-discount-box {
+	margin-top: 50%;
+	transform: translateY(-50%);
+}

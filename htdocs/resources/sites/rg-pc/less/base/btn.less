@@ -1,0 +1,62 @@
+//实心按钮
+.btn{
+	color:@colorf;background-image:url("../images/btn_bg.png");background-repeat:repeat-x;
+	border-radius:3px;border:none;font-size:12px;padding:8px 12px;font-weight:bold;display:inline-block;max-height:45px;
+	overflow:hidden;text-align:center;cursor:pointer;
+	//定义不同风格按钮
+	&.btn_normal{background-position:0 0;}	
+	&.btn_black{background-color:@color0;background-position:0 -65px;}
+	&.btn_disable{background-color:#e7e7e7;background-position:0 -130px;opacity:0.3;filter:alpha(opacity=30);}
+	//定义不同尺寸按钮
+	&.btn_small{width:75px;height:30px;line-height:30px;padding:0;}
+	&.btn_middle{width:110px;height:35px;line-height:35px;padding:0;}
+	&.btn_large{width:180px;height:40px;line-height:40px;padding:0;}
+	&:hover{opacity:0.9!important;filter:alpha(opacity=90)!important;}
+}
+/*pointer-event user-select w3c检查不通过故注释掉*/
+.btn-loading{position: relative;cursor: default;/*pointer-events: none;*/color: transparent!important;/*user-select: none;*/white-space: nowrap;
+	&:after{animation:rotate 500ms infinite linear;border:2px solid #dbdbdb;border-radius:100%;border-right-color:transparent;border-top-color:transparent;content:"";display:block;height:16px;position:relative;width:16px;left:50%;margin-left:-8px;margin-top:-8px;position:absolute;top:50%;position:absolute !important;box-sizing: border-box;}
+	& > *{opacity: 0;}
+}
+@keyframes rotate 
+{
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+
+//带1px背景的按钮
+.btn_hollow{
+	color:@colorf;background-image:url("/resources/sites/rg-pc/images/btn_bg.png");background-repeat:repeat-x;
+	border-radius:3px;font-size:12px;font-weight:bold;display:inline-block;max-height:45px;
+	overflow:hidden;text-align:center;cursor:pointer;padding:1px;
+	span{
+		display:block;padding:8px 12px;background:@colorf;color:@colorRed;
+	}
+	//定义不同风格按钮
+	&.btn_hollow_normal{
+		background-position:0 -195px;
+	}	
+	&.btn_hollow_black{
+		background-position:0 -260px;
+	}
+	&.btn_hollow_disable{
+		background-position:0 -260px;
+		span{color:@color0;}
+	}
+	//定义不同尺寸按钮
+	&.btn_hollow_small{
+		span{width:75px;height:30px;line-height:30px;padding:0;}
+	}
+	&.btn_hollow_middle{
+		span{width:110px;height:35px;line-height:35px;padding:0;}
+	}
+	&.btn_hollow_large{
+		span{width:180px;height:40px;line-height:40px;padding:0;}
+	}
+	&:hover{opacity:0.9!important;filter:alpha(opacity=90)!important;}
+}
+//各种链接
+.red_link{color:@colorRed;text-decoration:underline!important;}
+.red_font{color:@colorRed!important;}
+.yellow_font{color:#ffa42b!important;}
+.black_font{color:@color3!important;}

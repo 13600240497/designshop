@@ -1,0 +1,109 @@
+<!-- embed stylesheet begin -->
+    <style type="text/css">
+        .geshop-gb-component.ui-{{ pageInstanceId }}{
+            margin-bottom:{{pageData.base_magin_bottom}};
+        }
+        .geshop-gb-component.ui-{{ pageInstanceId }} .js-addCart{
+            background-color:{{pageData.buy_cart_bgc}};
+        }
+        {# 折扣标 #}
+        .geshop-gb-component.ui-{{ pageInstanceId }} .gs-goods-discount{
+            background-color:{{pageData.discount_bgc}};
+            color:{{pageData.discount_ftc}};
+            width:{{pageData.discount_width}};
+            height:{{pageData.discount_height}};
+            top:{{pageData.discount_top}} !important;
+            right:{{pageData.discount_right}} !important;
+            {% if pageData.discount_bgImage %}
+                background:url({{pageData.discount_bgImage}}) no-repeat center center/100% 100%;
+                border-radius:0;
+            {% endif %}
+        }
+        .geshop-gb-component.ui-{{ pageInstanceId }} .gs-goods-price {
+            text-align: left;
+        }
+        .geshop-gb-component.ui-{{ pageInstanceId }} .gs-goods-title a{
+            color:#333 !important;
+        }
+
+        .geshop-gb-component.ui-{{ pageInstanceId }} .gs-goods-discount span.curtoff-box{
+            font-size:{{pageData.discount_fts}}px;
+        }
+        .geshop-gb-component.ui-{{ pageInstanceId }} .gs-goods-discount span.curtoff-text{
+            font-size:{{pageData.discount_off_fts}}px;
+        }
+
+        {# 售价 #}
+        .geshop-gb-component.ui-{{ pageInstanceId }} .gs-goods-price .gs-shop-price{
+                font-size:{{pageData.price_fts}};
+                color:{{pageData.price_color}};
+        }
+
+        /*动态价格粗细*/
+        .geshop-gb-component.ui-{{ pageInstanceId }} .gs-shop-price strong,.geshop-gb-component.ui-{{ pageInstanceId }} .gs-sale-price{
+            {% if pageData.price_ft_weight == '1' %}
+                font-weight:bold !important;
+            {% else %}
+                font-weight:normal !important;
+            {% endif %}
+        }
+
+        .geshop-gb-component.ui-{{ pageInstanceId }} .gs-goods-item-common {
+            display: block;
+            overflow: hidden;
+            text-align: center;
+            height: 229px;
+        }
+
+        .geshop-gb-component.ui-{{ pageInstanceId }} .gs-goods-item-common img {
+            height: 229px;
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .geshop-gb-component.ui-{{ pageInstanceId }} .gs-goods-price .gs-market-price {
+            display: none;
+        }
+
+        .geshop-gb-component.ui-{{ pageInstanceId }} .goods_viewMoreContainer {
+            width: 1000px;
+            text-align: right;
+            margin: 0 auto 15px;
+        }
+        .geshop-gb-component.ui-{{ pageInstanceId }} .goods_viewMoreContainer .goods-view-more {
+            color: {{ pageData.view_more_ftc }};
+            font-size: {{ pageData.view_more_fts }}px;
+        }
+        .geshop-gb-component.ui-{{ pageInstanceId }} .goods_viewMoreContainer .goods-view-more-bold {
+            font-family: OpenSans-Bold;
+        }
+        .geshop-gb-component.ui-{{ pageInstanceId }} .goods_viewMoreContainer .goods-view-more:hover {
+            color: {{ pageData.view_more_hover_ftc }};
+            transition: .2s ease-in-out;
+        }
+        .geshop-gb-component.ui-{{ pageInstanceId }} .iconfont-start {
+            color: {{ pageData.star_level_color }};
+            margin-right: 1px;
+        }
+        .geshop-gb-component.ui-{{ pageInstanceId }} .star-box {
+            width: 100%;
+            height: 18px;
+            margin-left: 10px;
+        }
+        .geshop-gb-component.ui-{{ pageInstanceId }} .star-box .rating_model {
+            float:left;
+        }
+        .geshop-gb-component.ui-{{ pageInstanceId }} .star-box p {
+            float:left;
+            color: {{pageData.star_level_color}};
+            font-size: 12px;
+            line-height: 22px;
+            padding-left: 5px;
+        }
+        .geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item:nth-child(5n) {
+            margin-right: 0 ! important;
+        }
+        .geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item,.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item_tag {
+            /*box-shadow: none !important;*/
+        }
+    </style>
+<!-- embed stylesheet end -->

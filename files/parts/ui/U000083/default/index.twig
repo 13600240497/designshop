@@ -1,0 +1,13 @@
+{% set userGroupClass = "geshop_user_"~data.userGroupSelect|default(0)%}
+<div data-key="U000083" data-id="{{ pageInstanceId }}"  data-static-domain="{{ staticDomain }}" class="geshop-component-box component-drag geshop-component-box-U000083 {{ userGroupClass }}"
+	style="margin-top: {{ data.marginTop | default(0) }}px; margin-bottom: {{ data.marginBottom | default(0) }}px;height:400px;">
+	{% if data.goodsInfo != 0 %}
+		{% if data.isEditEnv == 1 %}
+			{{ include('edit.twig') }}
+		{% else %}
+			{{ include('product.twig') }}
+		{% endif %}
+	{% else %}
+		<img src="{{ data.default.pureimage }}" style="height:392px;display:block;margin:0 auto;">
+	{% endif %}
+</div>

@@ -1,0 +1,28 @@
+{#/**
+*@author: 任贸华
+*@date: 2018/11/24 16:31:41
+*@desc: 自定义组件
+* @param {string} label 名称
+* @param {object} data 对象 {a:1,b:2}
+* @param {string} name 参数名
+* @param {string} value 参数值
+*/#}
+{% if options %}
+    <div class="layui-collapse" lay-accordion>
+        {% for key,obj in options.data %}
+        <div class="layui-colla-item">
+            <h2 class="layui-colla-title">{{ obj.label }}</h2>
+            <div class="layui-colla-content  {% if key== 0 %}layui-show{% endif %}">
+                <div class="layui-form-item">
+                    <div class="layui-input-block geshop-{{obj.type}}-area">
+                        <input name={{ obj.name }} type="hidden" value='{{ obj.value }}'>
+                        <div id="editor_{{obj.type}}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    {{include ('@app/files/parts/common/components/argsErrors.twig')}}
+{% endif %}

@@ -1,0 +1,555 @@
+{%
+    set pageData = {
+        price_ft_weight:data.price_ft_weight|default(0),
+        base_bg_shadow:data.base_bg_shadow|default(1),
+        base_magin_top: data.base_magin_top|default(0),
+        base_magin_bottom: data.base_magin_bottom|default(32),
+        base_bgc: data.base_bgc is not null ? data.base_bgc: "#F8F8F8",
+        price_ftc: data.price_ftc is not null ? data.price_ftc: "#333333",
+        price_active: data.price_active|default(1),
+        discount_active: data.discount_active|default(1),
+        discount_bgc: data.discount_bgc is not null ? data.discount_bgc: "#FF8A00",
+        discount_ftc: data.discount_ftc is not null ? data.discount_ftc: "#FFFFFF",
+        buy_ftc: data.buy_ftc is not null ? data.buy_ftc: "#FFFFFF",
+        buy_bgc: data.buy_bgc is not null ? data.buy_bgc: "#FF8A00",
+        buy_hover_bgc: data.buy_hover_bgc is not null ? data.buy_hover_bgc: "#FFAE5A",
+        buy_hover_ftc: data.buy_hover_ftc is not null ? data.buy_hover_ftc: "#FFFFFF",
+        buy_cart_bgc: data.buy_cart_bgc is not null ? data.buy_cart_bgc: "#CC0000",
+        goods_title_active: data.goods_title_active|default(1),
+        price_fts: data.price_fts|default(22),
+        discount_right: data.discount_right|default(10),
+        discount_top: data.discount_top|default(10),
+        discount_width: data.discount_width|default(44),
+        discount_height: data.discount_height|default(44),
+        discount_bgImage: data.discount_bgImage is not null ? data.discount_bgImage,
+        discount_fts: data.discount_fts|default(16),
+        discount_off_fts: data.discount_off_fts|default(12),
+        buy_text: data.buy_text,
+        buy_fts: data.buy_fts|default(18),
+        app_vip_img: data.app_vip_img is not null ? data.app_vip_img,
+        app_vip_link: data.app_vip_img is not null ? data.app_vip_link,
+        maxCount:data.maxCount|default(''),
+
+        base_view_more_url: data.base_view_more_url is not null ? data.base_view_more_url : '',
+        view_more_ftc: data.view_more_ftc is not null ? data.view_more_ftc: "#333",
+        view_more_hover_ftc: data.view_more_hover_ftc is not null ? data.view_more_hover_ftc: "#333",
+        view_more_fts: data.view_more_fts|default(20),
+        view_more_bold: data.view_more_bold|default(1)
+    }
+%}
+
+<style>
+  .app-vip-font {
+    font-size: 14px;
+  }
+  .app-vip-title {
+    color: #333;
+    margin-bottom: 10px;
+  }
+  .app-vip-form label {
+    display: block;
+    padding: 15px 0 10px 0;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333;
+  }
+  .app-vip-intro {
+    color: #9E9E9E;
+  }
+  .activity-component-from-item .app-vip-item.layui-input-block {
+     margin-left: 0px;
+  }
+</style>
+{{include ('@app/files/parts/temp/goods_manager.twig')}}
+
+<div class='design-form design-form-component design-form-visible app-vip-font'>
+    <h3 class='component-form-title'>APP专享价组件
+        <a href="javascript:;" class="design-form-close js_closeDesignForm gb-icon-close">
+            <i class="el-icon-close"></i>
+        </a>
+    </h3>
+  <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+    <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+        <div class="layui-tab">
+            <ul class="layui-tab-title">
+                <li class="layui-this">模板选择</li>
+                <li>商品数据</li>
+                <li>样式设置</li>
+            </ul>
+
+            <div class="layui-tab-content layui-tab-content-parent">
+                <div class="layui-tab-item layui-show">
+						<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+						{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				</div>
+
+                <div class="layui-tab-item app-vip-form">
+                    <div>
+                        <label class="public-data">左侧图片<span class="app-vip-intro">(建议上传宽244px，高417px)</span></label>
+                        <div class="app-vip-item layui-input-block">
+                            <a href="javascript:;" class="js_openResource design-open-resource" style="width: 38px;"><i class="layui-icon">&#xe64a;</i></a>
+                            <input type="text" name="app_vip_img" autocomplete="off" class="layui-input select-img" value="{{ pageData.app_vip_img }}" data-width="app_vip_img_width" data-height="app_vip_img_height" style="margin-left: 0px;">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="public-data">跳转链接</label>
+                        <div class="app-vip-item">
+                            <input type="text" name="app_vip_link" autocomplete="off" class="layui-input" value="{{ pageData.app_vip_link }}">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="public-data">展示商品个数</label>
+                        <div class="app-vip-item">
+                            <input type="text" name="maxCount" autocomplete="off" class="layui-input" value="{{ pageData.maxCount }}" onkeyup="value = value.replace(/[^\\d{1,}\\d{1,}|\\d{1,}]/g,'')">
+                        </div>
+                    </div>
+
+                    {# <div>
+                        <label class="public-data">商品SKU</label>
+                        <div class="app-vip-item">
+                        <textarea placeholder="请输入商品编号（SKU ID），编号与编号间用英文逗号隔开" class="layui-textarea" name="goodsSKU" data-skuvalid="true" data-public-tag="true">{{data.goodsSKU}}</textarea>
+                        </div>
+                        <span style="margin: 10px 0 10px 110px; display: block; color: #bbb;">"商品SKU"不可重复</span>
+                        <div class="layui-form-item tab-add-btn">
+                        <span class="el-button el-button--primary el-button--small" id="gs_getList" style="float:right">商品管理</span>
+                        </div>
+                    </div> #}
+
+                    {# 商品管理 #}
+                    <div class="radio-tab-true">
+                        <div class="layui-form-item">
+                            <label class="gs-label-block">商品数据</label>
+                            <div class="layui-input-block" style="margin-left: 0;">
+                                <input type="radio" name="goodsDataFrom" lay-filter="goodsDataFrom" value="3" title="OBS系统" {% if data.goodsDataFrom == '3' %} checked="checked" {% endif %}>
+                                {# <input type="radio" name="goodsDataFrom" lay-filter="goodsDataFrom" value="2" title="选品系统" {% if data.goodsDataFrom == '2' %} checked="checked" {% endif %}> #}
+                                <input type="radio" name="goodsDataFrom" lay-filter="goodsDataFrom" value="1" title="商品SKU" {% if data.goodsDataFrom == '1' or data.goodsDataFrom is empty %} checked="checked" {% endif %}>
+                            </div>
+                        </div>
+                        <div class1="radio-tab-group" class="goods-data-wrapper obs-box" data-from="obs">
+                            <div class="goods-box-item goods-hide {% if data.goodsDataFrom|default('1') == '3' %}goods-visible{% endif %}" data-target="goodsDataFrom-3">
+                                <div class="layui-form-item">
+                                {# <input type="hidden" name="gsSelectLevel0" value="{{data.gsSelectLevel0}}">
+                                <input type="hidden" name="gsSelectLevel1" value="{{data.gsSelectLevel1}}">
+                                <input type="hidden" name="gsSelectLevel2" value="{{data.gsSelectLevel2}}"> #}
+                                <input type="hidden" name="obsId" value="{{themeList.section_id}}">
+                                <input type="hidden" name="obsName" value="{{themeList.section_name}}">
+                                <input type="hidden" class="Unwanted" name="theme_id" value="{{themeList.theme_id}}">
+                                <input type="hidden" class="Unwanted" name="page_id" value="{{themeList.page_id}}">
+                                <input type="hidden" class="Unwanted" name="obs_skus" value="{{data.goodsSKU}}">
+                                    <div class="select-item">
+                                        <label class="gs-block">OBS专题</label>
+                                        <input type="text" class="layui-input layui-disabled Unwanted" disabled placeholder="请选择专题" value="{{themeList.theme_name}}">
+                                    </div>
+                                    <div class="select-item">
+                                        <label class="gs-block">OBS页面</label>
+                                        <input type="text" class="layui-input layui-disabled Unwanted" disabled placeholder="请选择页面" value="{{themeList.page_name}}">
+                                    </div>
+                                    <div class="select-item">
+                                        <label class="gs-block">OBS板块</label>
+                                        <select class="gs-select-item gs-obs-item gs-select-level2" lay-ignore placeholder="请选择板块">
+                                            <option value="00">请选择活动</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                {# <div class="layui-form-item layui-hide">
+                                    <label class="layui-form-label public-data">商品SKU</label>
+                                    <label class="gs-label-block gs-label-blank"></label>
+                                    <div class="layui-input-block">
+                                        <textarea placeholder="请输入商品编号（SKU ID），编号与编号间用英文逗号隔开" class="layui-textarea layui-disabled {% if data.goodsDataFrom|default('1') != '3' %}Unwanted{% endif %}" disabled name="goodsSKU" data-skuvalid="true" data-public-tag="true"></textarea>
+                                    </div>
+                                    <span style="margin: 10px 0 10px 110px; display: block; color: #bbb;">"商品SKU"不可重复</span>
+                                </div> #}
+                                <div class="layui-form-item tab-add-btn layui-hide">
+                                    <span class="el-button el-button--primary el-button--small" id="gs_getList" style="float:right">商品管理</span>
+                                </div>
+                            </div>
+
+                            <div class="goods-hide {% if data.goodsDataFrom|default('1') == '2' %}goods-visible{% endif %}" data-target="goodsDataFrom-2">
+                                <div class="layui-form-item">
+                                <input type="hidden" name="gsSelectLevel0" class="Unwanted" value="{{data.gsSelectLevel0}}">
+                                <input type="hidden" name="gsSelectLevel1" class="Unwanted" value="{{data.gsSelectLevel1}}">
+                                <input type="hidden" name="gsSelectLevel2" class="Unwanted" value="{{data.gsSelectLevel2}}">
+                                    <div class="select-item">
+                                        <label class="gs-block">一级活动信息</label>
+                                        <select class="gs-select-box gs-select-level0 Unwanted" lay-ignore placeholder="请输入活动名称" data-searchplaceholder="搜索分类">
+                                            <option value="00">请选择活动</option>
+                                        </select>
+                                    </div>
+                                    <div class="select-item layui-hide">
+                                        <label class="gs-block">二级活动信息</label>
+                                        <select class="gs-select-box gs-select-level1 Unwanted" lay-ignore placeholder="请输入活动名称">
+                                            <option value="00">请选择活动</option>
+                                        </select>
+                                    </div>
+                                    <div class="select-item layui-hide">
+                                        <label class="gs-block">三级活动信息</label>
+                                        <select class="gs-select-box gs-select-level2 Unwanted" lay-ignore placeholder="请输入活动名称">
+                                            <option value="00">请选择活动</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="goods-hide {% if data.goodsDataFrom|default('1') == '1' %}goods-visible{% endif %}" data-target="goodsDataFrom-1">
+                                <div class="layui-form-item" >
+                                    {# <label class="layui-form-label public-data">商品SKU</label> #}
+                                    <label class="gs-label-block gs-label-blank"></label>
+                                    <div class="layui-input-block" style="margin-left: 0;">
+                                        <textarea placeholder="请输入商品编号（SKU ID），编号与编号间用英文逗号隔开" class="layui-textarea {% if data.goodsDataFrom|default('1') != '1' %}Unwanted{% endif %}" name="goodsSKU" data-skuvalid="true" data-public-tag="true">{{data.goodsSKU}}</textarea>
+                                    </div>
+                                    <span style="margin: 10px 0 10px 110px; display: block; color: #bbb;">"商品SKU"不可重复</span>
+                                </div>
+                                <div class="layui-form-item tab-add-btn">
+                                    <span class="el-button el-button--primary el-button--small" id="gs_getList" style="float:right">商品管理</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {# PO：APP专享价新增View more配置项 GMT+8 2018-12-18 10:13 #}
+                    <div class="vier-more-item-block" style="margin-bottom: 50px;">
+                        <label class="public-data">View more跳转链接</label>
+                        <div class="app-vip-item">
+                            <input type="text" name="base_view_more_url" autocomplete="off" class="layui-input" value="{{ pageData.base_view_more_url }}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-tab-item">
+                    <div class="layui-carousel" id="form_carousel">
+                        <div carousel-item>
+                            <div>
+                                <div>
+                                    {# 基本设置 #}
+                                    <div>
+                                        <p class="app-vip-title">基本设置</p>
+                                        <div class="layui-field-box">
+                                            {# PO: 新增上边距配置项 GMT+8 2018-12-18 12:20 #}
+                                            <div class="layui-form-item">
+                                                <label class="gs-lable-block">上边距(px)</label>
+                                                <div class="layui-input-block">
+                                                    <input type="text" name="base_magin_top" autocomplete="off" class="layui-input" value="{{ pageData.base_magin_top }}">
+                                                </div>
+                                            </div>
+
+                                            <div class="layui-form-item">
+                                                <label class="gs-lable-block">下边距(px)</label>
+                                                <div class="layui-input-block">
+                                                    <input type="text" name="base_magin_bottom" autocomplete="off" class="layui-input" value="{{pageData.base_magin_bottom}}">
+                                                </div>
+                                            </div>
+
+                                            {{include ('@app/files/parts/temp/gb/common/default_pc/imgDisposition.twig')}}
+
+                                            {#<div class="layui-form-item">#}
+                                                {#<label class="gs-lable-block">组件整体背景颜色</label>#}
+                                                {#<div class="layui-input-block">#}
+                                                    {#<div class="color-picker-selector" data-hidden-name="base_box_bgc">#}
+                                                        {#<div style="background-color: {{ data.base_box_bgc|default('#FFFFFF') }};"></div>#}
+                                                    {#</div>#}
+                                                    {#<input type="text" class="layui-input" name="base_box_bgc" autocomplete="off" value="{{ data.base_box_bgc|default('#FFFFFF') }}">#}
+                                                {#</div>#}
+                                            {#</div>#}
+
+                                            <div class="layui-form-item">
+                                                <label class="gs-lable-block">背景颜色</label>
+                                                <div class="layui-input-block">
+                                                    <div class="color-picker-selector" data-hidden-name="base_bgc">
+                                                        <div style="background-color: {{ pageData.base_bgc }};"></div>
+                                                    </div>
+                                                    <input type="text" class="layui-input" name="base_bgc" autocomplete="off" value="{{ pageData.base_bgc }}">
+                                                </div>
+                                            </div>
+
+                                            {# 组件背景图 #}
+                                            {#<div class="layui-form-item class-bg-group">#}
+                                                {#<label class="gs-lable-block">组件背景图片</label>#}
+                                                {#<div class="layui-input-block">#}
+                                                    {#<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>#}
+                                                    {#<input class="layui-input component_bg" type="text" name="base_box_bgImage" value="{{data.base_box_bgImage}}">#}
+                                                    {#<input type="hidden" name="component_bg_value" value="{{ data.component_bg_value }}">#}
+                                                    {#<input type="hidden" name="component_bg_repeat" value="{{ data.component_bg_repeat }}">#}
+                                                    {#<input type="hidden" name="component_bg_position" value="{{ data.component_bg_position }}">#}
+                                                    {#<span class="el-button el-button--primary el-button--small el-button--blue class-background"  style="float:right">设置</span>#}
+                                                {#</div>#}
+                                            {#</div>#}
+                                        </div>
+                                    </div>
+
+                                    {# 商品信息设置 #}
+                                    {#<div>#}
+                                        {#<p class="app-vip-title">商品信息设置</p>#}
+                                        {#<div class="layui-field-box">#}
+                                        {#<div class="layui-form-item">#}
+                                            {#<label class="gs-lable-block">APP专享价格颜色</label>#}
+                                            {#<div class="layui-input-block">#}
+                                            {#<div class="color-picker-selector" data-hidden-name="price_ftc">#}
+                                                {#<div style="background-color: {{ pageData.price_ftc }};"></div>#}
+                                            {#</div>#}
+                                            {#<input type="text" class="layui-input" name="price_ftc" autocomplete="off" value="{{ pageData.price_ftc }}">#}
+                                            {#</div>#}
+                                        {#</div>#}
+                                            {##}
+                                            {##}
+                                                                    {# 动态价格字体加粗 #}
+                                                                    {#<div class="layui-form-item">#}
+                                                                        {#<label class="gs-lable-block">动态价格是否加粗</label>#}
+                                                                        {#<div class="layui-input-block">#}
+                                                                            {#<input type="radio" name="price_ft_weight" data-public-tag="true" value="1" title="是" {% if pageData.price_ft_weight == '1' %} checked="checked" {% endif %}>#}
+                                                                            {#<input type="radio" name="price_ft_weight" data-public-tag="true" value="0" title="否" {% if pageData.price_ft_weight == '0' %} checked="checked" {% endif %}>#}
+                                                                        {#</div>#}
+                                                                    {#</div>#}
+                                                                    {# 投影配置 #}
+                                                                    {#<div class="layui-form-item">#}
+                                                                        {#<label class="gs-lable-block">商品背景投影是否显示</label>#}
+                                                                        {#<div class="layui-input-block">#}
+                                                                            {#<input type="radio" name="base_bg_shadow" data-public-tag="true" value="1" title="是" {% if pageData.base_bg_shadow == '1' %} checked="checked" {% endif %}>#}
+                                                                            {#<input type="radio" name="base_bg_shadow" data-public-tag="true" value="0" title="否" {% if pageData.base_bg_shadow == '0' %} checked="checked" {% endif %}>#}
+                                                                        {#</div>#}
+                                                                    {#</div>#}
+                                                                    {#<div class="layui-form-item">#}
+                                                                        {#<label class="gs-lable-block">商品背景投影颜色</label>#}
+                                                                        {#<div class="layui-input-block">#}
+                                                                            {#<div class="color-picker-selector" data-hidden-name="base_bg_shadow_color">#}
+                                                                                {#<div style="background-color: {{ data.base_bg_shadow_color|default('#CCCCCC') }};"></div>#}
+                                                                            {#</div>#}
+                                                                            {#<input type="text" class="layui-input" name="base_bg_shadow_color" autocomplete="off" value="{{ data.base_bg_shadow_color|default('#CCCCCC') }}">#}
+                                                                        {#</div>#}
+                                                                    {#</div>#}
+                                                                    {# 基础商品信息设置 end #}
+                                        {#</div>#}
+                                    {#</div>#}
+
+                                    {# 折扣表设置 #}
+                                    <div>
+                                        <p class="app-vip-title">折扣标设置</p>
+                                        <div class="layui-field-box">
+                                        <div class="layui-form-item">
+                                            <label class="gs-lable-block">折扣标是否显示</label>
+                                            <div class="layui-input-block">
+                                            <input type="radio" name="discount_active" value="1" {% if pageData.discount_active == "1" %} checked="checked" {% endif %} title="是">
+                                            <input type="radio" name="discount_active" value="0" {% if pageData.discount_active == "0" %} checked="checked" {% endif %} title="否">
+                                            </div>
+                                        </div>
+                                        {#<div class="layui-form-item">#}
+                                            {#<label class="gs-lable-block">折扣标背景颜色</label>#}
+                                            {#<div class="layui-input-block">#}
+                                            {#<div class="color-picker-selector" data-hidden-name="discount_bgc">#}
+                                                {#<div style="background-color: {{ pageData.discount_bgc }};"></div>#}
+                                            {#</div>#}
+                                            {#<input type="text" class="layui-input" name="discount_bgc" autocomplete="off" value="{{ pageData.discount_bgc }}">#}
+                                            {#</div>#}
+                                        {#</div>#}
+                                        {#<div class="layui-form-item">#}
+                                            {#<label class="gs-lable-block">折扣字体颜色</label>#}
+                                            {#<div class="layui-input-block">#}
+                                            {#<div class="color-picker-selector" data-hidden-name="discount_ftc">#}
+                                                {#<div style="background-color: {{ pageData.discount_ftc }};"></div>#}
+                                            {#</div>#}
+                                            {#<input type="text" class="layui-input" name="discount_ftc" autocomplete="off" value="{{ pageData.discount_ftc }}">#}
+                                            {#</div>#}
+                                        {#</div>#}
+                                        </div>
+                                    </div>
+
+                                    {# 购买按钮设置 #}
+                                    {#<div>#}
+                                        {#<p class="app-vip-title">购买按钮设置</p>#}
+                                        {#<div class="layui-field-box">#}
+                                        {#<div class="layui-form-item">#}
+                                            {#<label class="gs-lable-block">文案颜色</label>#}
+                                            {#<div class="layui-input-block">#}
+                                            {#<div class="color-picker-selector" data-hidden-name="buy_ftc">#}
+                                                {#<div style="background-color: {{ pageData.buy_ftc }};"></div>#}
+                                            {#</div>#}
+                                            {#<input type="text" class="layui-input" name="buy_ftc" autocomplete="off" value="{{ pageData.buy_ftc }}">#}
+                                            {#</div>#}
+                                        {#</div>#}
+                                        {#<div class="layui-form-item">#}
+                                            {#<label class="gs-lable-block">背景颜色</label>#}
+                                            {#<div class="layui-input-block">#}
+                                            {#<div class="color-picker-selector" data-hidden-name="buy_bgc">#}
+                                                {#<div style="background-color: {{ pageData.buy_bgc }};"></div>#}
+                                            {#</div>#}
+                                            {#<input type="text" class="layui-input" name="buy_bgc" autocomplete="off" value="{{ pageData.buy_bgc }}">#}
+                                            {#</div>#}
+                                        {#</div>#}
+                                        {#<div class="layui-form-item">#}
+                                            {#<label class="gs-lable-block">hover状态背景颜色</label>#}
+                                            {#<div class="layui-input-block">#}
+                                            {#<div class="color-picker-selector" data-hidden-name="buy_hover_bgc">#}
+                                                {#<div style="background-color: {{ pageData.buy_hover_bgc }};"></div>#}
+                                            {#</div>#}
+                                            {#<input type="text" class="layui-input" name="buy_hover_bgc" autocomplete="off" value="{{ pageData.buy_hover_bgc }}">#}
+                                            {#</div>#}
+                                        {#</div>#}
+                                        {#<div class="layui-form-item">#}
+                                            {#<label class="gs-lable-block">hover状态字体颜色</label>#}
+                                            {#<div class="layui-input-block">#}
+                                            {#<div class="color-picker-selector" data-hidden-name="buy_hover_ftc">#}
+                                                {#<div style="background-color: {{ pageData.buy_hover_ftc }};"></div>#}
+                                            {#</div>#}
+                                            {#<input type="text" class="layui-input" name="buy_hover_ftc" autocomplete="off" value="{{ pageData.buy_hover_ftc }}">#}
+                                            {#</div>#}
+                                        {#</div>#}
+                                        {#<div class="layui-form-item">#}
+                                            {#<label class="gs-lable-block">购物车背景填充颜色</label>#}
+                                            {#<div class="layui-input-block">#}
+                                            {#<div class="color-picker-selector" data-hidden-name="buy_cart_bgc">#}
+                                                {#<div style="background-color: {{ pageData.buy_cart_bgc }};"></div>#}
+                                            {#</div>#}
+                                            {#<input type="text" class="layui-input" name="buy_cart_bgc" autocomplete="off" value="{{ pageData.buy_cart_bgc }}">#}
+                                            {#</div>#}
+                                        {#</div>#}
+                                        {#</div>#}
+                                    {#</div>#}
+
+                                    {# View more 设置 #}
+                                    <div class="form-view-more-btn">
+                                        <p class="app-vip-title">View more设置</p>
+                                        <div class="layui-field-box">
+                                            <div class="layui-form-item">
+                                                <label class="gs-lable-block">文字是否加粗</label>
+                                                <div class="layui-input-block">
+                                                    <input type="radio" name="view_more_bold" value="1" {% if pageData.view_more_bold == "1" %} checked="checked" {% endif %} title="是">
+                                                    <input type="radio" name="view_more_bold" value="0" {% if pageData.view_more_bold == "0" %} checked="checked" {% endif %} title="否">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <button type="button" id="js_moreConfig" class="layui-btn layui-btn-normal layui-btn-sm">更多配置</button>
+                                </div>
+                            </div>
+                        <div>
+                            {# 商品信息设置 #}
+                            <div>
+                                <p class="app-vip-title">商品信息设置</p>
+                                <div class="layui-field-box">
+                                    <div class="layui-form-item">
+                                    <label class="gs-lable-block">商品标题是否显示</label>
+                                    <div class="layui-input-block">
+                                        <input type="radio" name="goods_title_active" value="1" {% if pageData.goods_title_active == "1" %} checked="checked" {% endif %}  title="是">
+                                        <input type="radio" name="goods_title_active" value="0" {% if pageData.goods_title_active == "0" %} checked="checked" {% endif %}  title="否">
+                                    </div>
+                                    </div>
+                                    {#<div class="layui-form-item">#}
+                                    {#<label class="gs-lable-block">APP专享价格文字大小(px)</label>#}
+                                    {#<div class="layui-input-block">#}
+                                        {#<input type="text" name="price_fts" autocomplete="off" class="layui-input" value="{{pageData.price_fts}}">#}
+                                    {#</div>#}
+                                    {#</div>#}
+                                </div>
+                            </div>
+
+                            {# 折扣标位置 #}
+                            {#<div>#}
+                                {#<p class="app-vip-title">折扣标位置</p>#}
+                                {#<div class="layui-field-box">#}
+                                    {#<div class="layui-form-item">#}
+                                        {#<label class="gs-lable-block">折扣标右偏移(px)</label>#}
+                                        {#<div class="layui-input-block">#}
+                                        {#<input type="text" name="discount_right" autocomplete="off" class="layui-input" value="{{ pageData.discount_right }}">#}
+                                        {#</div>#}
+                                    {#</div>#}
+                                    {#<div class="layui-form-item">#}
+                                        {#<label class="gs-lable-block">折扣标上偏移(px)</label>#}
+                                        {#<div class="layui-input-block">#}
+                                        {#<input type="text" name="discount_top" autocomplete="off" class="layui-input" value="{{ pageData.discount_top }}">#}
+                                        {#</div>#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</div>#}
+
+                            {# 折扣标内容设置 #}
+                            {#<div>#}
+                                {#<p class="app-vip-title">折扣标内容设置</p>#}
+                                {#<div class="layui-field-box">#}
+                                    {#<div class="layui-form-item">#}
+                                    {#<label class="gs-lable-block">折扣标宽度(px)</label>#}
+                                    {#<div class="layui-input-block">#}
+                                        {#<input type="text" name="discount_width" autocomplete="off" class="layui-input" value="{{ pageData.discount_width }}">#}
+                                    {#</div>#}
+                                    {#</div>#}
+                                    {#<div class="layui-form-item">#}
+                                    {#<label class="gs-lable-block">折扣标高度(px)</label>#}
+                                    {#<div class="layui-input-block">#}
+                                        {#<input type="text" name="discount_height" autocomplete="off" class="layui-input" value="{{ pageData.discount_height }}">#}
+                                    {#</div>#}
+                                    {#</div>#}
+                                    {#<div class="layui-form-item">#}
+                                    {#<label class="gs-lable-block">折扣标背景图</label>#}
+                                    {#<div class="layui-input-block">#}
+                                        {#<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>#}
+                                        {#<input type="text" name="discount_bgImage" autocomplete="off" class="layui-input" value="{{ pageData.discount_bgImage }}">#}
+                                    {#</div>#}
+                                    {#</div>#}
+                                    {#<div class="layui-form-item">#}
+                                    {#<label class="gs-lable-block">折扣字体大小(px)</label>#}
+                                    {#<div class="layui-input-block">#}
+                                        {#<input type="text" name="discount_fts" autocomplete="off" class="layui-input" value="{{ pageData.discount_fts }}">#}
+                                    {#</div>#}
+                                    {#</div>#}
+                                    {#<div class="layui-form-item">#}
+                                    {#<label class="gs-lable-block">OFF字体大小(px)</label>#}
+                                    {#<div class="layui-input-block">#}
+                                        {#<input type="text" name="discount_off_fts" autocomplete="off" class="layui-input" value="{{ pageData.discount_off_fts }}">#}
+                                    {#</div>#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</div>#}
+
+                            {# 购买按钮设置 #}
+                            <div>
+                                <p class="app-vip-title">购买按钮设置</p>
+                                <div class="layui-field-box">
+                                    <div class="layui-form-item">
+                                        <div class="layui-form-item">
+                                            <label class="gs-lable-block">购买文案</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="buy_text" autocomplete="off" class="layui-input" value="{{ pageData.buy_text }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <div class="layui-form-item">
+                                            <label class="gs-lable-block">购买文案字体大小(px)</label>
+                                            <div class="layui-input-block">
+                                            <input type="text" name="buy_fts" autocomplete="off" class="layui-input" value="{{ pageData.buy_fts}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-right">
+                                <button type="button" id="js_baseConfig" class="layui-btn layui-btn-normal layui-btn-sm">基础配置</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <span type="button" class="layui-btn layui-btn-normal" id="gs_submit">提交</span>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm layui-hide">提交</button>
+</div>
+
+<script>
+$(function() {
+    $("#gs_submit").on("click", function() {
+		var submitValid = GS_OBS.submitValid();
+	    if(!submitValid) return false;
+        $this = $(this);
+        $this.next('button').trigger('click');
+    })
+});
+</script>

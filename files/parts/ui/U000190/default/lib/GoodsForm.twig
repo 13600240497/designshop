@@ -1,0 +1,31 @@
+<section>
+    <div class="component-form-setting-ite component-form-configure-item">
+        <h4 class="column-title">商品数据</h4>
+        <div class="layui-form-item">
+            <label class="form-item-label">
+                价格类型</label>
+            <div class="layui-input-block">
+                <input type="radio" name="newUserPrice" value="1" {% if data.newUserPrice|default(1) == 1 %} checked{% endif %} title="新人价">
+                <input type="radio" name="newUserPrice" value="0" {% if data.newUserPrice|default(1) == 0 %} checked{% endif %} title="普通价">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="form-item-label">商品SKU</label>
+            <div class="layui-input-block">
+                <textarea
+                    cols="30"
+                    rows="3"
+                    class="layui-textarea"
+                    name="goodsSKU"
+                    data-from="sku"
+                    placeholder="请输入商品SKU，每个SKU用英文逗号隔">{{ data.goodsSKU | default('') }}</textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item goods-manage-row">
+            <a href="javascript:;" id="gs_getList" data-from="sku">商品管理</a>
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,315 @@
+{{ include ('@app/files/parts/temp/goods_manager.twig') }}
+
+{% set formData = {
+    id: 'U000233',
+    name: '搭配购',
+    theme: 'model1',
+    tabs: [
+        {
+            label: '商品设置',
+            components: [
+            {
+                type: 'diy',
+                src: 'lib/goods.twig'
+            }
+        ]
+        },
+        {
+            label: '样式设置',
+            components: [
+            {
+                label: '常用配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '单品本店售价文字颜色',
+                    name: 'shop_price_color',
+                    type: 'colorPicker',
+                    default: '#FF4545',
+                },
+                {
+                    label: '组合购买价文字颜色',
+                    name: 'comp_price_color',
+                    type: 'colorPicker',
+                    default: '#FFFFFF',
+                    col: 2,
+                },
+                {
+                    label: '划线总价文字颜色',
+                    name: 'disc_price_color',
+                    type: 'colorPicker',
+                    default: '#FFFFFF',
+                    col: 2,
+                },
+                {
+                    label: '购买区域背景颜色',
+                    name: 'count_bg_color',
+                    type: 'colorPicker',
+                    default: '#333333',
+                },
+                {
+                    label: '购物车按钮背景颜色',
+                    name: 'buy_bg_color',
+                    type: 'colorPicker',
+                    default: '#FFFFFF',
+                    col: 2,
+                },
+                {
+                    label: '购物车按钮文字颜色',
+                    name: 'buy_color',
+                    type: 'colorPicker',
+                    default: '#000000',
+                    col: 2,
+                },
+                {
+                    label: '购物车图标',
+                    desc: '(建议上传宽24PX，高24PX)',
+                    name: 'box_bg_image',
+                    type: 'image',
+                    default: 'https://geshopimg.logsss.com/uploads/MPoZtbNVsTgAD4a08ykSJix6rmH3wncK.png' ,
+                },
+            ]
+            },
+            {
+                label: '属性/选择下拉配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '文字颜色',
+                    name: 'select_color',
+                    type: 'colorPicker',
+                    default: '#000000',
+                    col: 2,
+                },
+                {
+                    label: '背景颜色',
+                    name: 'select_bg_color',
+                    type: 'colorPicker',
+                    default: '#FFFFFF',
+                    col: 2,
+                },
+                {
+                    label: '属性下拉边框颜色',
+                    name: 'select_down_color',
+                    type: 'colorPicker',
+                    default: '#DDDDDD',
+                },
+                {
+                    label: '折扣标配置',
+                    type: 'discount-dl'
+                },
+                {
+                    label: '组件上边距',
+                    name: 'box_margin_top_m',
+                    default: 0,
+                    col: 2,
+                    isshow: 'dl-app',
+                },
+                {
+                    label: '组件下边距',
+                    name: 'box_margin_bottom_m',
+                    default: 16,
+                    col: 2,
+                    isshow: 'dl-app',
+                },
+
+                {
+                    label: '单品本店售价文字大小',
+                    name: 'dan_fontsize_m',
+                    default: 18,
+                    col: 2,
+                    isshow: 'dl-app',
+                },
+                {
+                    label: '组合购买价文字大小',
+                    name: 'comb_fontsize_m',
+                    default: 28,
+                    col: 2,
+                    isshow: 'dl-app',
+                },
+            ]
+            },
+            {
+                label: '三端配置',
+                type: 'fieldset',
+                isshow: 'dl-web',
+                components: [
+                {
+                    type: 'tab',
+                    items: [
+                    {
+                        label: 'PC / PAD',
+                        components: [
+                        {
+                            label: '组件上边距',
+                            name: 'box_margin_top',
+                            default: 0,
+                            col: 2,
+                        },
+                        {
+                            label: '组件下边距',
+                            name: 'box_margin_bottom',
+                            default: 32,
+                            col: 2,
+                        },
+
+                        {
+                            label: '单品本店售价文字大小',
+                            name: 'dan_fontsize',
+                            default: 22,
+                            col: 2,
+                        },
+                        {
+                            label: '组合购买价文字大小',
+                            name: 'comb_fontsize',
+                            default: 34,
+                            col: 2,
+                        },
+                    ]
+                    },
+                    {
+                        label: 'M',
+                        components: [
+                        {
+                            label: '组件上边距',
+                            name: 'box_margin_top_m',
+                            default: 0,
+                            col: 2,
+                        },
+                        {
+                            label: '组件下边距',
+                            name: 'box_margin_bottom_m',
+                            default: 16,
+                            col: 2,
+                        },
+
+                        {
+                            label: '单品本店售价文字大小',
+                            name: 'dan_fontsize_m',
+                            default: 18,
+                            col: 2,
+                        },
+                        {
+                            label: '组合购买价文字大小',
+                            name: 'comb_fontsize_m',
+                            default: 28,
+                            col: 2,
+                        },
+                        {
+                            label: '组件背景颜色',
+                            desc: '(多栏和移动端有效)',
+                            name: 'coponent_bg_color',
+                            type: 'colorPicker',
+                            default: '#F8F8F8',
+                        }
+                    ]
+                    },
+                ]
+                },
+            ],
+            },
+
+
+        ]
+        }
+    ],
+    beforeSubmit: 'onSubmit'
+
+} %}
+
+
+<script>
+    $('#U000233-model1').on('click', '.btn-getID', function () {
+        var id =$('#U000233-model1').find("input[name='act_id']").val();
+        if (id) {
+            getVilSku(id)
+        }
+    });
+
+    {#  自定义保存函数 #}
+    function onSubmit(progress) {
+        var id = $('#U000233-model1').find("input[name='act_id']").val();
+        var goodsSKU = $('#U000233-model1').find("textarea[name='goodsSKU']").val();
+        {#  goodsSKU 存在 #}
+        if(goodsSKU) {
+            getGoodList(goodsSKU, id, progress);
+        } else {
+            if(id) {
+                getVilSku(id, progress);
+            } else if ($('#U000233-model1').find("textarea[name='goodsSKU']").val() == "" && id == "") {
+                progress.next();
+            }
+        }
+    }
+
+    {# 获取活动ID里的SKU #}
+    function getVilSku(id, progress) {
+       {# const url = 'http://www.pc-dresslily.com.v0426.php5.egomsl.com/geshop/goods/verifycombo';  #}
+       const url = GESHOP_INTERFACE.goods_verifycombo.url;
+       const data = {
+           lang: GESHOP_LANG,
+           id: id,
+           client: GESHOP_PLATFORM,
+       };
+       $.ajax({
+           url: url,
+           type: 'get',
+           dataType: 'jsonp',
+           data: { content: JSON.stringify(data) },
+           success: function (res) {
+               if (JSON.stringify(res.data.comboInfo) == "[]") {
+                   layui.layer.msg(res.message);
+                   $('#U000233-model1').find("textarea[name='goodsSKU']").val('')
+               } else {
+                   $('#U000233-model1').find("textarea[name='goodsSKU']").val(res.data.comboInfo.validSKU.join(','));
+                   if(progress) {
+                       if(res.data.comboInfo.invalidSKU.length ){
+                           layui.layer.msg(res.data.comboInfo.invalidSKU.join(',') + ' SKU已下架');
+                       }
+                       progress.next()
+                   }
+               }
+
+           }, error: function (err) {
+           }
+       });
+   }
+
+
+    {# 根据sku获取数据 并校验ID 和 sku  是否对应 否则提示更新ID里的SKU#}
+
+   function getGoodList(goodsSn, id, progress) {
+       const url = GESHOP_INTERFACE.goods_comblist.url;
+       const data = {
+           lang: GESHOP_LANG,
+           id: id,
+           client: GESHOP_PLATFORM,
+           goodsSn: goodsSn
+       };
+       $.ajax({
+           url: url,
+           type: 'get',
+           dataType: 'jsonp',
+           data: { content: JSON.stringify(data) },
+           success: function (res) {
+               if (JSON.stringify(res.data.goodsInfo) == "[]") {
+                  var index = layui.layer.confirm('此活动下的SKU与该ID活动不匹配，是否清除？', {
+                       btn: ['否','是']
+                   }, function(){
+                      layui.layer.close(index);
+                   }, function(){
+                      $('#U000233-model1').find("textarea[name='goodsSKU']").val('');
+                      layui.layer.close(index);
+                   });
+
+               } else {
+                   progress.next();
+               }
+
+           }, error: function (err) {
+           }
+       });
+   }
+</script>
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

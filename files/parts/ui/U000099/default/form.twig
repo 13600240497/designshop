@@ -1,0 +1,240 @@
+{% set pageData = {
+	price_ft_weight:data.price_ft_weight|default(0),
+	base_bg_shadow:data.base_bg_shadow|default(1),
+	base_magin_top: data.base_magin_top|default(0),
+	base_magin_bottom: data.base_magin_bottom|default(32),
+	base_bgc: data.base_bgc is not null ? data.base_bgc: "#F8F8F8",
+	price_ftc: data.price_ftc is not null ? data.price_ftc: "#f30240",
+	discount_active: data.discount_active|default(1),
+	discount_bgc: data.discount_bgc is not null ? data.discount_bgc: "#FF8A00",
+	discount_ftc: data.discount_ftc is not null ? data.discount_ftc: "#FFFFFF",
+	price_fts: data.price_fts|default(22),
+	discount_right: data.discount_right|default(3),
+	discount_top: data.discount_top|default(3),
+	discount_width: data.discount_width|default(44),
+	discount_height: data.discount_height|default(44),
+	discount_bgImage: data.discount_bgImage is not null ? data.discount_bgImage,
+	discount_fts: data.discount_fts|default(16),
+	discount_off_fts: data.discount_off_fts|default(12),
+	app_vip_img: data.app_vip_img is not null ? data.app_vip_img,
+	app_vip_link: data.app_vip_link is not null ? data.app_vip_link,
+	
+	market_active: data.market_active|default(1),
+	maxCount:data.maxCount|default(''),
+	server_label_active: data.server_label_active|default(0),
+	
+	base_view_more_url: data.base_view_more_url is not null ? data.base_view_more_url : '',
+	view_more_ftc: data.view_more_ftc is not null ? data.view_more_ftc: "#333",
+	view_more_hover_ftc: data.view_more_hover_ftc is not null ? data.view_more_hover_ftc: "#333",
+	view_more_fts: data.view_more_fts|default(20),
+	view_more_bold: data.view_more_bold|default(1)
+} %}
+
+<style>
+	.app-vip-font {
+		font-size: 14px;
+	}
+	
+	.app-vip-title {
+		color: #333;
+		margin-bottom: 10px;
+	}
+	
+	.app-vip-form label {
+		display: block;
+		padding: 15px 0 10px 0;
+		font-weight: 400;
+		line-height: 20px;
+		color: #333;
+	}
+	
+	.app-vip-intro {
+		color: #9E9E9E;
+	}
+	
+	.activity-component-from-item .jia-pc-item.layui-input-block {
+		margin-left: 0px;
+	}
+</style>
+{{ include ('@app/files/parts/temp/goods_manager.twig') }}
+
+<div class='design-form design-form-component design-form-visible app-vip-font'>
+	<h3 class='component-form-title'>加价购
+		<a href="javascript:;" class="design-form-close js_closeDesignForm gb-icon-close">
+			<i class="el-icon-close"></i>
+		</a>
+	</h3>
+	<blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+	<div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+		<div class="layui-tab">
+			<ul class="layui-tab-title">
+				<li class="layui-this">模板选择</li>
+				<li>加价购内容配置</li>
+				<li>样式设置</li>
+			</ul>
+			<div class="layui-tab-content layui-tab-content-parent">
+				<div class="layui-tab-item layui-show">
+						<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+						{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				</div>
+				<div class="layui-tab-item app-vip-form">
+					<div>
+						<label class="public-data">左侧图片<span class="app-vip-intro">(建议上传宽235px，高346px)</span></label>
+						<div class="jia-pc-item layui-input-block">
+							<a href="javascript:;" class="js_openResource design-open-resource" style="width: 38px;"><i class="layui-icon">&#xe64a;</i></a>
+							<input type="text" name="app_vip_img" autocomplete="off" class="layui-input select-img" value="{{ pageData.app_vip_img }}" data-width="app_vip_img_width" data-height="app_vip_img_height" style="margin-left: 0px;">
+						</div>
+					</div>
+					<div>
+						<label class="public-data">跳转链接</label>
+						<div class="jia-pc-item">
+							<input type="text" name="app_vip_link" autocomplete="off" class="layui-input" value="{{ pageData.app_vip_link }}">
+						</div>
+					</div>
+					{# <div>
+            <label class="public-data">商品SKU</label>
+            <div class="app-vip-item">
+              <textarea placeholder="请输入商品编号（SKU ID），编号与编号间用英文逗号隔开" class="layui-textarea" name="goodsSKU" data-skuvalid="true" data-public-tag="true">{{data.goodsSKU}}</textarea>
+            </div>
+            <span style="margin: 10px 0 10px 110px; display: block; color: #bbb;">"商品SKU"不可重复</span>
+            <div class="layui-form-item tab-add-btn">
+              <span class="el-button el-button--primary el-button--small" id="gs_getList" style="float:right">商品管理</span>
+            </div>
+          </div> #}
+					<div class="">
+						<label class="public-data">加价购活动ID</label>
+						<div class="jia-pc-item layui-input-block">
+							<input type="text" name="activityId" autocomplete="off" class="layui-input" value="{{ data.activityId }}" placeholder="请输入加价购活动ID">
+						</div>
+					</div>
+					<div class="">
+						<label class="public-data">展示商品个数</label>
+						<div class="jia-pc-item layui-input-block">
+							<input type="text" name="maxCount" autocomplete="off" class="layui-input" value="{{ pageData.maxCount }}" onkeyup="value = value.replace(/[^\\d{1,}\\d{1,}|\\d{1,}]/g,'')">
+						</div>
+					</div>
+					
+					{# PO: View more链接 #}
+					<div class="view-more-links">
+						<label class="public-data">View more 跳转链接</label>
+						<div class="jia-pc-item layui-input-block">
+							<input type="text" name="base_view_more_url" autocomplete="off" class="layui-input" value="{{ pageData.base_view_more_url }}">
+						</div>
+					</div>
+				
+				</div>
+				
+				<div class="layui-tab-item">
+					<div class="layui-carousel" id="form_carousel">
+						<div carousel-item>
+							<div>
+									{# 基本设置 #}
+								<div>
+										<p class="app-vip-title">基本设置</p>
+										<div class="layui-field-box">
+											{# PO: 新增上边距配置项 GMT+8 2018-12-18 12:20 #}
+											<div class="layui-form-item">
+												<label class="gs-lable-block">上边距(px)</label>
+												<div class="layui-input-block">
+													<input type="text" name="base_magin_top" autocomplete="off" class="layui-input" value="{{ pageData.base_magin_top }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="gs-lable-block">下边距(px)</label>
+												<div class="layui-input-block">
+													<input type="text" name="base_magin_bottom" autocomplete="off" class="layui-input" value="{{ pageData.base_magin_bottom }}">
+												</div>
+											</div>
+											{{include ('@app/files/parts/temp/gb/common/default_pc/imgDisposition.twig')}}
+										
+										</div>
+									
+									</div>
+								{# 商品信息设置 #}
+								<div>
+									<p class="app-vip-title">商品信息设置</p>
+									<div class="layui-field-box">
+										
+										<div class="layui-form-item">
+											<label class="gs-lable-block">本店售价是否显示</label>
+											<div class="layui-input-block">
+												<input type="radio" name="market_active" value="1" {% if pageData.market_active == "1" %} checked="checked" {% endif %} title="是">
+												<input type="radio" name="market_active" value="0" {% if pageData.market_active == "0" %} checked="checked" {% endif %} title="否">
+											</div>
+										</div>
+									</div>
+								</div>
+								{# 折扣表设置 #}
+								<div>
+									<p class="app-vip-title">折扣标设置</p>
+									<div class="layui-field-box">
+										<div class="layui-form-item">
+											<label class="gs-lable-block">折扣标是否显示</label>
+											<div class="layui-input-block">
+												<input type="radio" name="discount_active" value="1" {% if pageData.discount_active == "1" %} checked="checked" {% endif %} title="是">
+												<input type="radio" name="discount_active" value="0" {% if pageData.discount_active == "0" %} checked="checked" {% endif %} title="否">
+											</div>
+										</div>
+									
+									</div>
+								</div>
+								
+								{# 服务标设置 #}
+								<div class="form-setc-label">
+									<p class="app-vip-title">服务标设置</p>
+									<div class="layui-field-box">
+										<div class="layui-form-item">
+											<label class="gs-lable-block">服务标是否显示</label>
+											<div class="layui-input-block">
+												<input type="radio" name="server_label_active" value="1" {% if pageData.server_label_active == "1" %} checked="checked" {% endif %} title="是">
+												<input type="radio" name="server_label_active" value="0" {% if pageData.server_label_active == "0" %} checked="checked" {% endif %} title="否">
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								{# View more 设置 #}
+								<div class="form-view-more-btn">
+									<p class="app-vip-title">View more设置</p>
+									<div class="layui-field-box">
+										<div class="layui-form-item">
+											<label class="gs-lable-block">文字是否加粗</label>
+											<div class="layui-input-block">
+												<input type="radio" name="view_more_bold" value="1" {% if pageData.view_more_bold == "1" %} checked="checked" {% endif %} title="是">
+												<input type="radio" name="view_more_bold" value="0" {% if pageData.view_more_bold == "0" %} checked="checked" {% endif %} title="否">
+											</div>
+										</div>
+									</div>
+								</div>
+								{# <div class="text-right">
+									<button type="button" id="js_moreConfig" class="layui-btn layui-btn-normal layui-btn-sm">更多配置</button>
+								</div> #}
+							</div>
+							<div>
+								<div class="text-right">
+									<button type="button" id="js_baseConfig" class="layui-btn layui-btn-normal layui-btn-sm">基础配置</button>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+	<button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+	<span type="button" class="layui-btn layui-btn-normal" id="gs_submit">提交</span>
+	<button type="button" class="layui-btn layui-btn-normal js_submitDesignForm layui-hide">提交</button>
+</div>
+
+<script>
+$(function () {
+	$("#gs_submit").on("click", function () {
+		$this = $(this);
+		$this.next('button').trigger('click');
+	})
+});
+</script>

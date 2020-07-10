@@ -1,0 +1,99 @@
+{% set box = '#U000166_'~pageInstanceId %}
+
+#U000166_{{ pageInstanceId }} {
+    margin-top: {{ data.box_margin_top ?? 24/ 75 }}rem;
+    margin-bottom: {{ data.box_margin_bottom ?? 32/75 }}rem;
+}
+
+{{ box }} .geshop-u000166-coupon2 {
+    text-align : {{ data.components_align ?: 'center' }}
+}
+
+{{ box }} .u000166-coupon2-box {
+    width: {{ data.bg_width ?? 702/ 75 }}rem;
+    height: {{ data.bg_height ?? 320/ 75 }}rem;
+    background: url({{ data.bg_img ?: '//geshopimg.logsss.com/uploads/ofDJESmYvy9RCcMstIl47BO2hQ5uHGAi.png' }}) 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+
+{{ box }} .good-range-bar {
+    background-color: {{ data.count_bg ?: '#ffffff' }};
+}
+
+{{ box }} .good-range-left {
+    background-color: {{ data.left_bg ?: '#222222' }};
+}
+
+{{ box }} .good-range-box {
+    color: {{ data.left_color ?: '#222222' }};
+}
+
+{{ box }} .coupon2-info-group {
+    width: {{ data.btn_w ?? 186/ 75 }}rem;
+    bottom: {{ data.btn_mb ?? 104/ 75 }}rem;
+    right: {{ data.btn_mr ?? 58/ 75 }}rem;
+}
+
+{{ box }} .group-state-comming > li{
+    background-color: {{ data.notstart_bg_color ?: '#999999' }};
+    color: {{ data.notstart_text_color ?: '#FFFFFF' }};
+}
+
+{{ box }} .group-state-start > li, {{ box }} .group-state-start > li a{
+    background-color: {{ data.underway_bg_color ?: '#222222' }};
+    color: {{ data.underway_text_color ?: '#FFFFFF' }};
+}
+
+{{ box }} .group-state-end > li{
+    background-color: {{ data.ended_bg_color ?: '#999999' }};
+    color: {{ data.ended_text_color ?: '#FFFFFF' }};
+}
+
+{{ box }} .group-state-start > li.state-all-claimed{
+    background-color: {{ data.ended_bg_color ?: '#999999' }};
+    color: {{ data.ended_text_color ?: '#FFFFFF' }};
+}
+
+{{ box }} .getting-main {
+    background-color: #ffffff;
+    background-image: url({{ data.model_bg ?: "//geshopimg.logsss.com/uploads/b7OtAaSETQIcYF2q1v349mNg8BwDyjxC.png" }});
+    background-positino: 0 0;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+} 
+
+{{ box }} .getting-info p {
+    color: {{ data.model_text_color ?: '#FFFFFF' }};
+}
+
+{{ box }} .getting-info p span{
+    color: {{ data.model_title_color ?: '#FA386A' }};
+}
+
+{{ box }} .getting-info .btn-sure{
+    background-color: {{ data.model_btn_bg ?: '#FA386A' }};
+    color: {{ data.model_btn_color ?: '#FFFFFF' }};
+}
+
+
+{{ box }} .noEnough-main {
+    background-color: #ffffff;
+    background-image: url({{ data.tisp_bg ?: "//geshopimg.logsss.com/uploads/5n4TNJHwgFCP9Z1W2vzxlKypSrmAVDct.png" }});
+    background-positino: 0 0;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+{{ box }} .noEnough-info p , {{ box }} .noEnough-info p a{
+    color: {{ data.tisp_text_color ?: '#FFFFFF' }};
+}
+
+{{ box }} .noEnough-info h3{
+    color: {{ data.tisp_title_color ?: '#FA386A' }};
+}
+
+{{ box }} .noEnough-info .btn-sure{
+    background-color: {{ data.tisp_btn_bg ?: '#222222' }};
+    color: {{ data.tisp_btn_color ?: '#FFFFFF' }};
+}
+

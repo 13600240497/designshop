@@ -1,0 +1,329 @@
+{%
+    set formData = {
+        id: 'U0000223',
+        name: '标题栏组件',
+        theme: 'default',
+        tabs: [
+            {
+                label: '样式配置',
+                components: [
+                    {
+                          label: '链接配置',
+                            type: 'fieldset',
+                            components: [
+                            {
+                                type: 'platData-dl-target',
+                                name: 'is_open_new',
+                            },
+                    ]
+                    },
+                    {
+                        label: '常用配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '背景颜色',
+                                name: 'component_bg_color',
+                                default: '#FFFFFF',
+                                type: 'colorPicker',
+                                public: false,
+                            },
+                            {
+                                label: '标题文案',
+                                name: 'title_text',
+                                default: 'Title Name',
+                                public: false,
+                            },
+                            {
+                                label: '链接跳转',
+                                name: 'link_href',
+                                default: '',
+                                public: false,
+                            },
+                            {
+                                label: '文案位置',
+                                name: 'components_align',
+                                type: 'radio',
+                                default: 'left',
+                                options: [
+                                    { label: '居左', value: 'left' },
+                                    { label: '居中', value: 'center' },
+                                    { label: '居右', value: 'right' }
+                                ],
+                                public: false,
+                                filter: 0
+                            },
+                            {
+                                label: '文案颜色',
+                                name: 'text_color',
+                                default: '#333333',
+                                type: 'colorPicker',
+                                public: false,
+                            },
+                            {
+                                label: '是否具有下划线',
+                                name: 'is_underline',
+                                type: 'radio',
+                                default: '1',
+                                options: [
+                                    { label: '是', value: '1' },
+                                    { label: '否', value: '0' }
+                                ],
+                                public: false
+                            },
+                            {
+                                label: '下划线颜色',
+                                name: 'underline_color',
+                                default: '#DCDCDC',
+                                type: 'colorPicker',
+                                public: false,
+                            },
+                             {
+                                type: 'tab',
+                                items: [
+                                    {
+                                        label: 'PC',
+                                        components: [
+
+                                             {
+                                                label: '组件上边距(px)',
+                                                name: 'pc_box_margin_top',
+                                                default: '0',
+                                                col: 2,
+                                                public: false,
+                                            },
+                                            {
+                                                label: '组件下边距(px)',
+                                                name: 'pc_box_margin_bottom',
+                                                default: '32',
+                                                col: 2,
+                                                public: false,
+                                            },
+                                            {
+                                                label: '标题栏高度(px)',
+                                                name: 'pc_title_height',
+                                                default: '70',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '左图片',
+                                                name: 'pc_left_img',
+                                                default: '',
+                                                type: 'image',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '右图片',
+                                                name: 'pc_right_img',
+                                                default: '',
+                                                type: 'image',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '图标距文案距离(PX)',
+                                                name: 'pc_icon_gap',
+                                                default: '10',
+                                                public: false,
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        label: 'PAD',
+                                        components: [
+
+                                             {
+                                                label: '组件上边距(px)',
+                                                name: 'pad_box_margin_top',
+                                                default: '0',
+                                                col: 2,
+                                                public: false,
+                                            },
+                                            {
+                                                label: '组件下边距(px)',
+                                                name: 'pad_box_margin_bottom',
+                                                default: '32',
+                                                col: 2,
+                                                public: false,
+                                            },
+                                            {
+                                                label: '标题栏高度(px)',
+                                                name: 'pad_title_height',
+                                                default: '70',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '左图片',
+                                                name: 'pad_left_img',
+                                                default: '',
+                                                type: 'image',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '右图片',
+                                                name: 'pad_right_img',
+                                                default: '',
+                                                type: 'image',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '图标距文案距离(PX)',
+                                                name: 'pad_icon_gap',
+                                                default: '10',
+                                                public: false,
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        label: 'M',
+                                        components: [
+                                            {
+                                                label: '组件上边距(px)',
+                                                name: 'm_box_margin_top',
+                                                default: '0',
+                                                col: 2,
+                                                public: false,
+                                            },
+                                            {
+                                                label: '组件下边距(px)',
+                                                name: 'm_box_margin_bottom',
+                                                default: '16',
+                                                col: 2,
+                                                public: false,
+                                            },
+                                            {
+                                                label: '标题栏高度(px)',
+                                                name: 'm_title_height',
+                                                default: '42',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '左图片',
+                                                name: 'm_left_img',
+                                                default: '',
+                                                type: 'image',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '右图片',
+                                                name: 'm_right_img',
+                                                default: '',
+                                                type: 'image',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '图标距文案距离(PX)',
+                                                name: 'm_icon_gap',
+                                                default: '5',
+                                                public: false,
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        moreConfig: [
+            {
+                label: '基础配置',
+                type: 'collapse',
+                items: [
+                    {
+                        label: '基础配置',
+                        components: [
+                            {
+                                type: 'tab',
+                                items: [
+                                    {
+                                        label: 'PC',
+                                        components: [
+
+                                            {
+                                                label: '文字大小(px)',
+                                                name: 'pc_text_fz',
+                                                default: '24',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '下划线高度(PX)',
+                                                name: 'pc_underline_height',
+                                                default: '1',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '背景图片',
+                                                type: 'image',
+                                                name: 'pc_text_bgImg',
+                                                public: false,
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        label: 'PAD',
+                                        components: [
+
+                                            {
+                                                label: '文字大小(px)',
+                                                name: 'pad_text_fz',
+                                                default: '24',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '下划线高度(PX)',
+                                                name: 'pad_underline_height',
+                                                default: '1',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '背景图片',
+                                                type: 'image',
+                                                name: 'pad_text_bgImg',
+                                                public: false,
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        label: 'M',
+                                        components: [
+
+                                            {
+                                                label: '文字大小(px)',
+                                                name: 'm_text_fz',
+                                                default: '16',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '下划线高度(PX)',
+                                                name: 'm_underline_height',
+                                                default: '1',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '背景图片',
+                                                type: 'image',
+                                                name: 'm_text_bgImg',
+                                                public: false,
+                                            }
+
+                                        ]
+                                    }
+                                ]
+                            }
+
+                        ]
+                    },
+                ]
+            }
+        ]
+    }
+%}
+ 
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+{# 引入自定义函数 #}
+<script>
+{% include 'form.js' %}
+</script>

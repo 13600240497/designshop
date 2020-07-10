@@ -1,0 +1,257 @@
+{% set conponentImage = '@app/files/parts/formTemplate/components/image.twig' %}
+{% set conponentInput = '@app/files/parts/formTemplate/components/input.twig' %}
+{% set blogData = {
+    imageData: {
+        name: 'image_url_<% i %>',
+        value: '<% d.list[i].image_url %>',
+        default: ''
+    },
+    jumpData: {
+        name: 'jump_url',
+        value: '<% d.list[i].jump_url %>',
+        default: ''
+    },
+    titleData: {
+        name: 'blog_title',
+        value: '<% d.list[i].blog_title %>',
+        default: ''
+    },
+    descriptionData: {
+        name: 'description',
+        value: '<% d.list[i].description %>',
+        default: ''
+    }
+} %}
+
+<style type="text/css">
+    #U000210-default .goods-tab-wrap{
+        border: 1px solid rgba(230,230,230,1);
+        padding: 16px;
+    }
+    #U000210-default .layui-form-item .goods-tab-box{
+        margin-bottom: 16px;
+    }
+    #U000210-default .layui-form-item .goods-tab-box:last-child{
+        margin-bottom: 0px;
+    }
+
+</style>
+<div class="layui-form-item" id="dataIDs">
+    <input type="hidden" name="blogIds" id="blogIdInput" value="" >
+    <div id="blogList"></div>
+</div>
+
+<script type="text/html" id="blogTemplate">
+    <%# for(var i = 0; i<d.list.length; i++) { %>
+        <div class="goods-tab-item">
+            <div class="gs-lable-block title-index">博客<span><% i+1 %></span></div>
+            <div class="goods-tab-wrap">
+                <div class="goods-tab-box">
+                    <label>标题</label>
+                    {% include conponentInput with { componentData: blogData.titleData } %}
+                </div>
+                <div class="goods-tab-box">
+                    <label>描述</label>
+                    {% include conponentInput with { componentData: blogData.descriptionData } %}
+                </div>
+                <div class="goods-tab-box input-img">
+                    <label>图片</label>
+                    {% include conponentImage with { componentData: blogData.imageData } %}
+                </div>
+                <div class="goods-tab-box">
+                    <label>跳转链接</label>
+                    {% include conponentInput with { componentData: blogData.jumpData } %}
+                </div>
+            </div>
+
+            <div class="geshop-third-value mr-10">
+                <span class="img-btn class-up">
+                    <i class='icon-up'></i>
+                    <b class="tips">上移</b>
+                </span>
+                <span class="img-btn class-down">
+                    <i class='icon-down'></i>
+                    <b class="tips">下移</b>
+                </span>
+                <span class="img-btn class-add">
+                    <i class='icon-add'></i>
+                    <b class="tips">新增</b>
+                </span>
+                <span class="img-btn class-delete">
+                    <i class='icon-delete'></i>
+                    <b class="tips">新增</b>
+                </span>
+            </div>
+        </div>
+    <%# } %>
+</script>
+
+<script type="text/html" id="blogTempalteSingle">
+<div class="goods-tab-item">
+    <div class="gs-lable-block title-index">博客<span><% d.index %></span></div>
+        <div class="goods-tab-wrap">
+            <div class="goods-tab-box">
+                <label>标题</label>
+                <input type="text" name="blog_title" autocomplete="off" class="layui-input unWanted" value="" placeholder="" data-public-tag="">
+            </div>
+            <div class="goods-tab-box">
+                <label>描述</label>
+                <input type="text" name="description" autocomplete="off" class="layui-input unWanted" value="" placeholder="" data-public-tag="">
+            </div>
+            <div class="goods-tab-box input-img">
+                <label>图片</label>
+                <div class="layui-form-item "> <label class="layui-form-label "> <span></span> </label> <div class="layui-input-block"> <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon"></i></a> <input type="text" name="image_url_2" autocomplete="off" class="layui-input" value="" data-public-tag="" data-width="0" data-height="0"> </div></div>
+            </div>
+            <div class="goods-tab-box">
+                <label>跳转链接</label>
+                <input type="text" name="jump_url" autocomplete="off" class="layui-input" value="" placeholder="" data-public-tag="">
+            </div>
+        </div>
+        <div class="geshop-third-value mr-10">
+            <span class="img-btn class-up">
+                <i class='icon-up'></i>
+                <b class="tips">上移</b>
+            </span>
+            <span class="img-btn class-down">
+                <i class='icon-down'></i>
+                <b class="tips">下移</b>
+            </span>
+            <span class="img-btn class-add">
+                <i class='icon-add'></i>
+                <b class="tips">新增</b>
+            </span>
+            <span class="img-btn class-delete">
+                <i class='icon-delete'></i>
+                <b class="tips">新增</b>
+            </span>
+        </div>
+    </div>
+</script>
+
+<script>
+$(function () {
+    var $dataIDs = $('#dataIDs');
+        $Uid = $('#U000210-default.design-form'),
+        $ImgWidth = $Uid.find('input[name=image_width]'),
+        $ImgHeight = $Uid.find('input[name=image_height]');
+
+    init();
+
+    /*下移 */
+    $("#dataIDs").on('click','.goods-tab-item .class-down',function(e){
+        var $this = $(this),
+            $tr = $this.parents('.goods-tab-item:eq(0)'),
+            $trNext = $tr.next();
+        if (0 != $trNext.length) {
+            $trNext.after($tr);
+        }
+        initItemIndex();
+    });
+
+    /*上移 */
+    $("#dataIDs").on('click','.goods-tab-item .class-up',function(e){
+        var $this = $(this),
+            $tr = $this.parents('.goods-tab-item:eq(0)'),
+            $trPrev = $tr.prev();
+        if(0 != $trPrev.length){
+            $trPrev.before($tr);
+        }
+        initItemIndex();
+    });
+
+    /*tabs切换 */
+    $Uid.on('click', '.layui-unselect', function(e){
+        var type = $(this).prev('input').val();
+        var _width = '';
+        switch (Number(type)) {
+            case 2:
+                _width = '590';
+                break;
+            case 3:
+                _width = '387';
+                break;
+            case 4:
+                _width = '285';
+                break;
+            default:
+                break;
+        }
+        $ImgWidth.val(_width);
+        $ImgHeight.val(_width);
+        /* 切换展示列数，不重新渲染HTML */
+        return false;
+        renderTemplate(type);
+    });
+
+    /* 新增 */
+    $("#dataIDs").on('click', '.class-add', function() {
+        var timestamp = new Date().getTime();
+        var current = $(this).parents('.goods-tab-item').index();
+        var template = $('#blogTempalteSingle').html();
+            template = template.replace('image_url_2', 'image_url_' + timestamp);
+        var index = $('#blogList > .goods-tab-item').length + 1;
+        layui.laytpl(template).render({index: index}, function (res) {
+            $('#blogList > .goods-tab-item').eq(current).before(res);
+            /* 执行排序序号变更 */
+            change_sort_index();
+        });
+    });
+
+    /* 删除 */
+    $("#dataIDs").on('click', '.class-delete', function() {
+        var len = $('#blogList .goods-tab-item').length;
+        if (len <= 1) return false;
+        $(this).parents('.goods-tab-item').remove();
+        /* 执行排序序号变更 */
+        change_sort_index();
+    });
+
+
+    function init(){
+        $ImgWidth.attr('disabled', 'disabled');
+    };
+
+    function initItemIndex(){
+        $dataIDs.find('.goods-tab-item').each(function(index){
+            $(this).find('.title-index').text('博客' + (index + 1));
+        })
+    };
+
+    /* 更改序号 */
+    function change_sort_index() {
+        $('#blogList .goods-tab-item').each(function(key, item) {
+            $(item).find('.title-index span').html(key+1);
+        });
+    };
+
+    function renderTemplate(type) {
+        var type = type || 3;
+        var $target = $('#blogList'),
+            template = $('#blogTemplate').html(),
+            initData = { list: []};
+
+        var _list = {{ json_encode_no_unicode(data.blogIds) }};
+        var col_type = "{{ data.col_type }}";
+
+        if (_list && col_type == type) {
+            initData.list = _list
+        } else {
+            for (var i = 0; i<type; i++) {
+                initData.list.push({
+                   image_url: '',
+                   jump_url: '',
+                   blog_title: '',
+                   description: ''
+                });
+            };
+        };
+        layui.laytpl.config({ open: "<%", close: "%>" });
+        layui.laytpl(template).render(initData, function (res) {
+            $target.html(res);
+        });
+    };
+
+    var col_type = "{{ data.col_type }}";
+    renderTemplate(col_type);
+})
+</script>

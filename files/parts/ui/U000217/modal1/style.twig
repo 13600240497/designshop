@@ -1,0 +1,20 @@
+<!-- embed stylesheet begin -->
+<style type="text/css" >
+    {% set class_root = '.geshop-u000217-modal1-'~pageInstanceId %}
+    {% set class_box = '.geshop-u000217-modal1-'~pageInstanceId~' .geshop-container' %}
+    {% set unit = 'rem' %}
+    {% if data.isEditEnv== 0 %}
+        .hotArea {
+            background: transparent;
+        }
+    {% else %}
+        .hotArea {
+            border: 1px dotted #ffffff;
+            background: rgba(30, 159, 255, .5);
+        }
+    {% endif %}
+
+
+    {% include '@app/files/parts/formTemplate/components/margin-dl-style.twig' with{'space':class_root} %}
+</style>
+<!-- embed stylesheet end -->

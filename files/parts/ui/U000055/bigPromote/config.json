@@ -1,0 +1,295 @@
+{
+    "name": "pc goodsList",
+    "version": "v1.0.0.1",
+    "description": "pc goodsList",
+    "author": "xingtao",
+    "commjs": {
+        "jquery": true
+    },
+    "commcss": {
+        "main": true
+    },
+    "min-width": "auto",
+    "min-height": "inherit",
+    "fields": {
+        "titleText": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "titleNavText": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "imgSrc": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "titleBgI": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "viewHref": {
+            "is_public": "1",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "title_bgColor": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "title_titleColor": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "title_viewColor": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "title_viewBorderC": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "title_viewText": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "title_boxMarginTop": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "title_boxMarginBottom": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "title_boxPaddingTop": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "title_boxPaddingBottom": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "title_height": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "title_imgSrc": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "title_titleWidth": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "title_titleHeight": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "title_titleFont": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "title_titleWeight": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "title_titleBgI": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "title_viewFont": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "title_viewWeight": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "title_viewBgColor": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "title_viewRadius": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "title_viewMarginT": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "title_viewPaddingTB": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "title_viewPaddingLR": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "title_viewBorderW": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "title_viewBorderS": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "title_isShow": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "goodsSKU": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "marginBottom": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "componentBgc": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "fontFamily": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "salePriceText": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "quickBuyText": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "disVis": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "discountType": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "inforColor": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "originalPriceColor": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "salePriceFtS": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "salePriceColor": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "buyBtnBgc": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "buyBtnTextColor": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "dislocation": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "disWidth": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "disHeight": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "disFtS": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "disOffFtS": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "disTextColor": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "disTextBgc": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "disBgImg": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        }
+    },
+    "languages": {
+        "off": {
+            "en": "off",
+            "de": "off",
+            "es": "DTO.",
+            "fr": "",
+            "it": "off",
+            "pt": "off",
+            "ru": "скидку",
+            "ar": "الخصم",
+            "ja": "オフ",
+            "ro": "reducere"
+        }
+    }
+}

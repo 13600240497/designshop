@@ -1,0 +1,129 @@
+{%
+    set components = [
+                {
+            label: '是否显示',
+            name: 'discount_show',
+            default: '1',
+            type: 'radio',
+            options: [
+                {
+                    label: '是',
+                    value: '1'
+                },
+                {
+                    label: '否',
+                    value: '0'
+                }
+            ]
+        },
+        {
+            label: '显示方式',
+            name: 'discount_type',
+            default: '1',
+            type: 'radio',
+            options: [
+                {
+                    label: '***%OFF',
+                    value: '1'
+                },
+                {
+                    label: '-***%',
+                    value: '2'
+                }
+            ]
+        },
+        {
+            label: '背景颜色',
+            name: 'discount_bg_color',
+            default: '#333333',
+            type: 'colorPicker',
+            col: 2
+        },
+        {
+            label: '文字颜色',
+            name: 'discount_font_color',
+            default: '#ffffff',
+            type: 'colorPicker',
+            col: 2
+        },
+        {
+            label: '折扣标宽度（PX）',
+            name: 'discount_width_m',
+            default: 40,
+            col: 2,
+            isshow: 'dl-app',
+        },
+        {
+            label: '折扣标高度（PX）',
+            name: 'discount_height_m',
+            default: 40,
+            col: 2,
+            isshow: 'dl-app',
+        },
+        {
+            label: '折扣标背景图片',
+            name: 'discount_bg_image_m',
+            type: 'image',
+            default: '',
+            isshow: 'dl-app',
+        },
+        {
+            type: 'tab',
+            isshow: 'dl-web',
+            items: [
+                {
+                    label: 'PC / PAD',
+                    components: [
+                        {
+                            label: '折扣标宽度（PX）',
+                            name: 'discount_width',
+                            default: 50,
+                            col: 2,
+                        },
+                        {
+                            label: '折扣标高度（PX）',
+                            name: 'discount_height',
+                            default: 50,
+                            col: 2,
+                        },
+                        {
+                            label: '折扣标背景图片',
+                            name: 'discount_bg_image',
+                            type: 'image',
+                            default: '',
+                        },
+                    ]
+                },
+                {
+                    label: 'M',
+                    components: [
+                        {
+                            label: '折扣标宽度（PX）',
+                            name: 'discount_width_m',
+                            default: 40,
+                            col: 2,
+                        },
+                        {
+                            label: '折扣标高度（PX）',
+                            name: 'discount_height_m',
+                            default: 40,
+                            col: 2,
+                        },
+                        {
+                            label: '折扣标背景图片',
+                            name: 'discount_bg_image_m',
+                            type: 'image',
+                            default: '',
+                        },
+                    ]
+                },
+            ]
+        },
+    ]
+%}
+<fieldset class="layui-elem-field">
+    <legend>折扣标</legend>
+    <div class="layui-field-box">
+        {{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}
+    </div>
+</fieldset>

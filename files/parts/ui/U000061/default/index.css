@@ -1,0 +1,171 @@
+[data-gid="U000061"] {
+  overflow: hidden;
+  /* compoment layout class list */
+}
+
+[data-gid="U000061"] .clearfix:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+
+[data-gid="U000061"] .g-w990 {
+  width: 990px;
+}
+
+[data-gid="U000061"] .text-center {
+  text-align: center;
+}
+
+[data-gid="U000061"] .geshop-component-box {
+  overflow: hidden;
+}
+
+[data-gid="U000061"] .geshop-panel {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+}
+
+[data-gid="U000061"] .layui-form-label {
+  white-space: nowrap;
+}
+
+[data-gid="U000061"] .gs-time-inner {
+  height: 32px;
+  line-height: 32px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #333333;
+  margin-left: -20px;
+  padding: 5px 0;
+  display: block;
+  text-align: center;
+}
+
+[data-gid="U000061"] .gs-time-inner .icon-clock-black {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 5px;
+  background-image: url(../../../resources/images/view/icon-block-black.png);
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 32px;
+  background-position: 0 0;
+}
+
+[data-gid="U000061"] .gs-time-inner .gs-down-text {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+[data-gid="U000061"] .gs_component_countDown em {
+  font-style: normal;
+  padding: 4px;
+}
+[data-gid="U000061_swiper"].gs-index-main{
+  margin: 0 auto;
+  /* padding-bottom: 60px; */
+  width: 1240px;
+}  
+[data-gid="U000061_swiper"] #custom-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+}
+[data-gid="U000061_swiper"] #pro-name{
+  height: 30px;
+  color: #666;
+  line-height: 1.2;
+  font-size: 14px;
+  overflow: hidden;
+  font-family: AvenirLTStd_Book;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  position:absolute;
+  top:245px;
+}
+[data-gid="U000061_swiper"] #pro-name a:hover{
+  text-decoration:underline;
+}
+[data-gid="U000061_swiper"] #pro-price{
+  font-style: normal;
+  line-height: 1;
+  position:absolute;
+  margin-top:16px;
+  top:285px;
+}
+[data-gid="U000061_swiper"] #quickShop{
+  display: block;
+  position: absolute;
+  background:green;
+  bottom: 80px;
+  left: 50%;
+  margin-left: -60px;
+  height: 20px;
+  width: 118px;
+  line-height: 20px;
+  padding: 5px 0;
+  border: 1px solid #ddd;
+  text-align: center;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  bottom: 10px;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  transition: all .5s;
+  font-size:12px;
+}
+[data-gid="U000061_swiper"] #quickShop i{
+  display: inline-block;
+  vertical-align: middle;
+  width: 11px;
+  height: 18px;
+  background-position: -240px -120px;
+}
+[data-gid="U000061_swiper"] #pro-price #new-price{
+ font-size: 16px;
+ color: #1c1c1c;
+ font-weight: 700;
+ display: inline-block;
+ margin-right: 5px;
+ font-family: AvenirLTStd_Book;
+}
+[data-gid="U000061_swiper"] #pro-price #old-price{
+  font-size: 14px;
+  color: #888;
+  font-family: AvenirLTStd_Book;
+}
+[data-gid="U000061_swiper"] #pre-button:hover{
+  background: url('../../../resources/images/carousel-image/tag.png') no-repeat;
+  background-position: -641px -146px;
+}
+[data-gid="U000061_swiper"] #pre-button{
+  left: 0px;
+  top:38%;
+  background: url('../../../resources/images/carousel-image/tag.png') no-repeat;
+  background-position: -641px -80px;
+}
+[data-gid="U000061_swiper"] #next-button:hover{
+  background: url('../../../resources/images/carousel-image/tag.png') no-repeat;
+  background-position: -702px -146px;
+}
+[data-gid="U000061_swiper"] #next-button{
+  right:0px;
+  top:38%;
+  background: url('../../../resources/images/carousel-image/tag.png') no-repeat;
+  background-position: -702px -80px;
+}
+[data-gid="U000061_swiper"] .icon-up{
+  background-image:url('../../../resources/images/carousel-image/up.png');
+} 
+[data-gid="U000061_swiper"] .icon-down{
+  background-image:url('../../../resources/images/carousel-image/down.png');
+} 
+[data-gid="U000061_swiper"] .icon-delete{
+  background-image:url('../../../resources/images/carousel-image/delete.png');
+}

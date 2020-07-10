@@ -1,0 +1,13 @@
+<div class="layui-collapse">
+    {% for item in componentData.items %}
+    {% if item.isshow is null  or  item.isshow == siteCode %} 
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">{{ item.label }}</h2>
+        <div class="layui-colla-content layui-show">
+            {% set components = item.components %}
+            {{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>

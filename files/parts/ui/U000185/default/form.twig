@@ -1,0 +1,213 @@
+{% set formData = {
+    id: 'U000185',
+    name: '标题栏组件',
+    theme: 'default',
+    tabs: [
+            {
+                label: '样式设置',
+                components: [
+                    {
+                        label: '常用配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                type: 'margin-dl'
+                            },
+                            {
+                                label: '组件背景颜色',
+                                name: 'moduleBgColor',
+                                type: 'colorPicker',
+                                default: '#FFFFFF',
+                            },
+                            {
+                                label: '标题文案',
+                                name: 'titleText',
+                                default: '',
+                            },
+                            {
+                                label: '标题文案颜色',
+                                name: 'titleFontColor',
+                                type: 'colorPicker',
+                                default: '#000000',
+                            },
+                            {
+                                label: '链接文案',
+                                name: 'linkCopywrite',
+                                default: 'Get More',
+                            },
+                            {
+                                label: '链接文案颜色',
+                                name: 'linkFontColor',
+                                type: 'colorPicker',
+                                default: '#000000',
+                            },
+                            {
+                                label: '链接URL',
+                                name: 'link',
+                                default: '',
+                            },
+                            {
+                                label: '链接是否打开新窗口',
+                                type: 'radio',
+                                default: 0,
+                                name: 'isOpenNew',
+                                options: [
+                                    { label: '是', value: 1 },
+                                    { label: '否', value: 0 },
+                                ]
+                            },
+                            {
+                                label: '基础配置',
+                                type: 'fieldset',
+                                components: [
+                                    {
+                                        type:'platData-dl',
+                                        componentsData:[
+                                            {
+                                                label: '上内边距(px)',
+                                                name: 'paddingTop',
+                                                default: 20,
+                                                default_m: 20,
+                                                col: 2
+                                            },
+                                            {
+                                                label: '下内边距(px)',
+                                                name: 'paddingBottom',
+                                                default: 20,
+                                                default_m: 20,
+                                                col: 2
+                                            },
+                                            {
+                                                label: '背景图片',
+                                                type: 'image',
+                                                name: 'bgImg',
+                                                default: '',
+                                                default_m: ''
+                                            },
+                                        ]
+                                    },
+                                ]
+                            },
+                            {
+                                label: '标题配置',
+                                type: 'fieldset',
+                                components: [
+                                    {
+                                        type:'platData-dl',
+                                        componentsData:[
+                                            {
+                                                label: '文字大小(px)',
+                                                name: 'titleFontSize',
+                                                default: 34,
+                                                default_m: 34
+                                            },
+                                            {
+                                                label: '文字粗细',
+                                                type: 'radio',
+                                                default: 0,
+                                                name: 'titleFontWeightBold',
+                                                options: [
+                                                    { label: '正常', value: 0 },
+                                                    { label: '加粗', value: 1 },
+                                                ]
+                                            },
+                                            {
+                                                label: '左图片',
+                                                type: 'image',
+                                                name: 'leftBgImg',
+                                                default: '',
+                                                default_m: ''
+                                            },
+                                            {
+                                                label: '右图片',
+                                                type: 'image',
+                                                name: 'rightBgImg',
+                                                default: '',
+                                                default_m: ''
+                                            },
+                                            {
+                                                label: '标题左右边距(px)',
+                                                name: 'titlePadding',
+                                                default: 16,
+                                                default_m: 16
+                                            },
+                                        ]
+                                    },
+                                ]
+                            },
+                            {
+                                label: '链接配置',
+                                type: 'fieldset',
+                                components: [
+                                    {
+                                        type:'platData-dl',
+                                        componentsData:[
+                                            {
+                                                label: '上内边距(px)',
+                                                name: 'linkPaddingTop',
+                                                default: 10,
+                                                default_m: 10,
+                                                col: 2
+                                            },
+                                            {
+                                                label: '文字大小(px)',
+                                                name: 'linkFontSize',
+                                                default: 12,
+                                                default_m: 12,
+                                                col: 2
+                                            },
+                                            {
+                                                label: '文字粗细',
+                                                type: 'radio',
+                                                default: 1,
+                                                name: 'linkFontWeightBold',
+                                                options: [
+                                                    { label: '正常', value: 0 },
+                                                    { label: '加粗', value: 1 },
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                ]
+                            },
+                            {
+                                label: '横线配置',
+                                type: 'fieldset',
+                                components: [
+                                    {
+                                        type:'platData-dl',
+                                        componentsData:[
+                                            {
+                                                label: '上边距(px)',
+                                                name: 'shortLinePaddingTop',
+                                                default: 15,
+                                                default_m: 15,
+                                                col: 2
+                                            },
+                                            {
+                                                label: '横线高度(px)',
+                                                name: 'shortLineHeight',
+                                                default: 5,
+                                                default_m: 5,
+                                                col: 2
+                                            },
+                                            {
+                                                label: '横线颜色',
+                                                type: 'colorPicker',
+                                                name: 'shorLineBgColor',
+                                                default: '#000000',
+                                                default_m: '#000000'
+                                            },
+                                        ]
+                                    },
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+    ],
+} %}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

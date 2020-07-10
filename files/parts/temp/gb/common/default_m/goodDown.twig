@@ -1,0 +1,8 @@
+				{# 倒计时 #}
+				<div class="gs-gb-timer" style="{% if pageData.down_active != '1' %}display:none{% endif %}">
+					<p class="gs-goods-time--m gs-google-time">
+						{# <em class="icon-clock"></em> #}
+						{# <span class="gs-goodsRushDown" data-begin="0" data-end="0" data-stock="0">Ends in: 00:00:00:00</span> #}
+						<span class="gs-goodsRushDown" data-begin="{{item.promote_start_date}}" data-end="{{item.promote_end_date}}" data-stock="{{left_number}}"> {{gb_component_trans(lang , 'ends_in' )}} : 00:00:00:00</span>
+					</p>
+				</div>

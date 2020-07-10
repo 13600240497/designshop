@@ -1,0 +1,46 @@
+{
+    "name": "商品列表",
+    "version": "v1.8.8",
+    "fields": {
+        "goodsSKU": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        
+        "pc_box_margin_top": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "pc_box_margin_bottom": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "pad_box_margin_top": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "pad_box_margin_bottom": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "m_box_margin_top": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "m_box_margin_bottom": { "is_public": "0", "is_m": "1", "is_app": "1" },
+
+        "cornermark_is_show": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        
+        "cornermark_bgImg_pc": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "cornermark_left_pc": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "cornermark_top_pc": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "cornermark_bgImg_pad": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "cornermark_left_pad": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "cornermark_top_pad": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "cornermark_bgImg_m": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "cornermark_left_m": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "cornermark_top_m": { "is_public": "0", "is_m": "1", "is_app": "1" },
+
+        "promote_bg_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "promote_text_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "shopprice_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "start_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "reviews_color": { "is_public": "0", "is_m": "1", "is_app": "1" }
+    },
+    "languages": {
+        "reviews": {
+            "en": "Reviews",
+            "fr": "Avis",
+            "ja": "レビュー",
+            "ro": "Recenzii"
+        },
+        "sale":{
+            "en": "SALE",
+            "fr": "VENTE",
+            "ja": "セール",
+            "ro": "REDUCERI"
+        }
+    }
+}

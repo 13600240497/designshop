@@ -1,0 +1,38 @@
+{#/**
+  *@author: 胡明
+  *@date: 2018/12/19 17:05:00
+  *@desc: dresslily商品折扣标组件
+*/#}
+{% if options %}
+  {% if options.isShow == 1 %}
+    <p class="geshop-goods-discount" 
+      style= "
+        width: {{ options.styleObj.width }}px;
+        height: {{ options.styleObj.height }}px;
+        background-color: {{ options.styleObj.bgColor }} ;
+        color: {{ options.styleObj.color }} ;
+        background-image: url({{ options.styleObj.bgImg }});
+        right: {{options.styleObj.left}}px;
+        top: {{options.styleObj.top}}px;
+        background-size: 100% 100%;
+      ">
+      <span style="
+        font-size: {{ options.styleObj.discountfontSize }}px;
+        margin-top: {{options.styleObj.marginTop}}px;
+        margin-left: {{options.styleObj.marginLeft}}px;"> 
+        {{options.value}}%
+      </span>
+       {% if options.isDiscountStyle == 1 %}
+          <span style="
+            font-size: {{ options.styleObj.offFontSize }}px;
+            margin-top: {{options.styleObj.marginTop}}px;
+            margin-left: {{options.styleObj.marginLeft}}px;">
+            OFF
+          </span>
+       {% endif %}
+        
+      </p>
+  {% endif %}
+{% else %}
+  {{ include ('@app/files/parts/common/components/argsErrors.twig') }}
+{% endif %}

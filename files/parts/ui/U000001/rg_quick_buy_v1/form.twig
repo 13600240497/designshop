@@ -1,0 +1,200 @@
+<input type="hidden" class="Unwanted" name="sku_selector_parent" value=".radio-tab-group">
+{% set formData = {
+    id: 'U000001',
+    name: '商品列表',
+    theme: 'rg_quick_buy_v1',
+    tabs: [
+        {
+            label: '商品设置',
+            components: [
+            {
+                type: 'diy',
+                src: 'lib/goodsSku.twig'
+            },
+            {
+                label: '商品设置',
+                type: 'fieldset',
+                components: [
+                {
+                    type: 'tab',
+                    className: 'goods_tab_from',
+                    items:[
+                    {
+                        label: '选品和sku',
+                        components:[
+                        {
+                            label: '数据配置',
+                            type: 'goods-manager',
+                            ipsMethodsArr: ['1','2'],
+                            ipsDefault:'2',
+                            ipsAutoLimitClose:false
+                        }
+                    ]
+                    },
+                    {
+                        label: '商品分类id',
+                        components:[
+                        {
+                            label: '分类商品数据',
+                            name: 'cat_goods_type',
+                            type: 'radio',
+                            default: 1,
+                            options: [
+                            { label: 'ALL', value: '1' },
+                            { label: '促销', value: '2' },
+                            { label: '非促销', value: '3' }
+                        ]
+                        },
+                        {
+                            type: 'tab_catId',
+                            formID: '#U000001-rg_quick_buy_v1',
+                            componentData: {
+                                limitNum: 10,
+                                limitTip: '新增分类ID最多10个'
+                            }
+
+                        }]
+                    }
+                ]
+                }
+            ]
+            }
+        ]
+        },
+        {
+            label: '样式设置',
+            components: [
+            {
+                label: '常用配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '组件上边距 (PX)',
+                    name: 'box_margin_top',
+                    default: 0,
+                    col: 2,
+                },
+                {
+                    label: '组件下边距 (PX)',
+                    name: 'box_margin_bottom',
+                    default: 16,
+                    col: 2,
+                },
+                {
+                    type: 'siteParam-rg',
+                    componentType: 'background-rg'
+                }
+            ]
+            },
+            {
+                label: '商品配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '商品颜色规格图片是否显示',
+                    type: 'radio',
+                    default: 1,
+                    name: 'pic_is_show',
+                    options: [
+                    { label: '是', value: '1' },
+                    { label: '否', value: '0' },
+                ]
+                },
+                {
+                    label: '营销信息是否显示',
+                    type: 'radio',
+                    default: 1,
+                    name: 'marketing_is_show',
+                    options: [
+                    { label: '是', value: '1' },
+                    { label: '否', value: '0' },
+                ]
+                },
+                {
+                    type: 'stock-rg'
+                },
+                {
+                    label: '本店售价颜色',
+                    name: 'shop_price_color',
+                    type: 'colorPicker',
+                    default: '#FA386A',
+                },
+            ]
+            },
+            {
+                label: '折扣标配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '折扣标',
+                    type: 'discount-rg',
+                }
+            ]
+            }
+        ]
+        }
+    ],
+    skuValidConfig: 'skuValidConfig',
+    beforeSubmit: 'onSubmit',
+    apiParams: 'fn',
+    isAutoRefresh: 1
+
+} %}
+
+
+<script>
+
+{#  自定义保存函数 #}
+
+{# 自定义校验函数 #}
+function skuValidConfig () {
+    return {
+        check_type: 'goods',
+        check_rules: 'GOODS_VALIDATE_SAME_SPU',
+        ignore_cateIds: '0'
+    };
+}
+
+function fn() {
+    return { "isSync": 1 }
+}
+function onSubmit(progress){
+    var $id = $('#U000001-rg_quick_buy_v1');
+    /* 0 选品 1分类id */
+    var goods_tab_from = $('.goods_tab_from .layui-tab-title .layui-this',$id).index();
+    $id.find('input[name=goods_tab_from]').val(goods_tab_from);
+
+    if(goods_tab_from == 1) {
+        /* 数量是否验证通过 1-100 */
+        var validStatus = true;
+        $('.goods__tab--wrap .list-group-item',$id).each(function(index,element){
+            var goods_limit_num = $(element).find('input[name=catNum]').val();
+            var result = tabCatIdFn.validNum(element,goods_limit_num);
+            validStatus = result;
+            return result;
+        });
+
+        if(!validStatus){
+            return false;
+        }
+        /**
+         * 保存分类数据到[name=navList]
+         */
+        saveTabInfo(function(){
+            progress.next();
+        })
+    }else{
+        progress.next();
+    }
+
+}
+/* 组件初始化 */
+$(function(){
+    var $id = $('#U000001-rg_quick_buy_v1');
+    var goods_tab_from = $id.find('input[name=goods_tab_from]').val();
+    $('.goods_tab_from .layui-tab-title li:eq('+goods_tab_from+')').trigger('click');
+
+})
+</script>
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

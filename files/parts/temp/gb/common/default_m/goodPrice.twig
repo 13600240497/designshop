@@ -1,0 +1,29 @@
+{% set isPriceEqual =  item.market_price <= item.shop_price or item.market_price<=0 or item.discount<=0 ? 'visible-hide':''%}
+						{# 商品价格配置 #}
+						<p class="gs-goods-price--m">
+							{% if (data.goodsInfo|default([]))|length > 0 %}
+
+								{% if pageData.market_active == '1' %}
+								<del class="gs-market-price js-currency {{isPriceEqual}}" data-currency="{{item.market_price}}" data-wrap="0" data-round="2" data-prefixkey="base.rrp_special">${{item.market_price}}</del>
+								{% endif %}
+
+								<span class="gs-shop-price">
+									{% if item.shop_price %}
+									<strong class="js-currency" data-currency="{{item.shop_price}}" data-wrap="0" data-round="2">${{item.shop_price}}</strong>
+									{% else %}
+									<strong class="js-currency visible-hide" data-currency="{{item.shop_price}}" data-wrap="0" data-round="2">0</strong>
+									{% endif %}
+								</span>
+
+							{% endif %}
+
+							{# 装修价格 #}
+							{% if (data.goodsInfo|default([]))|length == 0 %}
+									{% if pageData.market_active == '1' %}
+								<del class="gs-market-price js-currency" data-currency="0.00" data-wrap="0" data-round="2" data-prefixkey="base.rrp_special">$0.00</del>
+									{% endif %}
+								<span class="gs-shop-price">
+									<strong class="js-currency" data-currency="0.00" data-wrap="0" data-round="2">$0.00</strong>
+								</span>
+							{% endif %}
+						</p>

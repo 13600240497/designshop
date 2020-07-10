@@ -1,0 +1,62 @@
+{% set pageData = {
+	titleWidth:data.titleWidth is not null?data.titleWidth:'',
+	titleIcon:data.titleIcon|default(staticDomain ~ '/resources/images/gb/icon/arrowLink.png')
+} %}
+
+{% set suffix='px'%}
+
+<style>
+[data-gid="U000024_iconLink"][data-id="{{ pageInstanceId }}"] .geshop-icon-link{
+	width:{{ data.title_icon_w|default('20') }}{{suffix}};
+	height:{{ data.title_icon_h|default('20') }}{{suffix}};
+}
+[data-gid="U000024_iconLink"][data-id="{{ pageInstanceId }}"] .icon_style{
+	{% if data.imgSrc is not empty %}
+		background-image: url({{ data.imgSrc }});
+		background-position: center;
+		background-repeat: no-repeat;
+	{% endif %}
+}
+</style>
+
+
+<div class="geshop-component-box component-drag" id="U000024_{{pageInstanceId}}"  data-gid="U000024_iconLink" data-key="U000024" 
+		 data-id="{{ pageInstanceId }}" attr="nav_flag">
+	<div class="icon_style" style="
+	{% if data.boxMarginTop %}margin-top: {{ data.boxMarginTop }}px;{% endif %}
+		{% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}
+		{% if data.boxPaddingTop %}padding-top: {{ data.boxPaddingTop }}px;{% endif %}
+		{% if data.boxPaddingBottom %}padding-bottom: {{ data.boxPaddingBottom }}px;{% endif %}
+		padding-top: {{ data.boxPaddingTop | default(30) }}px;
+		padding-bottom: {{ data.boxPaddingBottom | default(30) }}px;
+	{# height:{{data.height|default(80)}}px; #}
+		{# line-height:{{data.height|default(80)}}px; #}
+		line-height: 1.5;
+		background-color:{% if data.bgColor %}{{ data.bgColor }}{% endif %};
+		text-align:center;
+		width:100%;
+		overflow: hidden;
+		">
+		<h2>
+			<span style="
+				display:inline-block;
+				vertical-align: middle;
+			{% if data.viewHref %}cursor: pointer;{% else %} cursor:default; {% endif %}
+				font-size:{% if data.titleFont %}{{ data.titleFont }}{% else %} 16{% endif %}px;
+				color:{% if data.titleColor %}{{ data.titleColor }}{% else %} #333333{% endif %};
+				font-weight:{% if data.titleWeight %}{{ data.titleWeight }}{% else %} bold{% endif %};
+			{% if pageData.titleWidth %}width:{{pageData.titleWidth}}px;{% endif %}
+				margin-left:auto;
+				{# margin-right:auto; #}
+				margin-right: 8px;
+			{% if data.titleBgI %}background:url('{{data.titleBgI}}') no-repeat center center/100%;{% endif %}
+				">{{ data.titleText|default('请设置导航标题') }}</span>
+			<a class="geshop-icon-link" href="{{ data.viewHref|default('javascript:;') }}" target="_special"
+			style="
+			{% if data.titleIcon%} background:url('{{data.titleIcon}}') no-repeat center center;background-size:100%; {% endif %}">
+
+			</a>
+		</h2>
+
+	</div>
+</div>

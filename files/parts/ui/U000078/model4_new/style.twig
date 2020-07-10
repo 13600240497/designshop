@@ -1,0 +1,99 @@
+.warp-U000078_model4_new_{{ pageInstanceId }} .gs-tab-status {
+    {% if pageData.tab_unselectBdC %}
+        border-color:{{pageData.tab_unselectBdC}};
+    {% endif %}
+
+}
+
+.warp-U000078_model4_new_{{ pageInstanceId }} .bd-main li{
+    background-color: {{pageData.tab_unselectBgc}};
+    color: {{pageData.tab_unselectTextC}};
+}
+
+.warp-U000078_model4_new_{{ pageInstanceId }} .gs-tab_select {
+        border-width:1px;
+        background-color: {{pageData.tab_selectBgc}} !important;
+        color: {{pageData.tab_selectTextC}} !important;
+        {% if pageData.tab_selectBdC %}
+            border-color:{{pageData.tab_selectBdC}} !important;
+        {% endif %}
+
+}
+
+.warp-U000078_model4_new_{{ pageInstanceId }} [data-gid="gs-goods-rwDefult-tabspike"].gs-goodsWrap li {
+    margin-top: {{pageData.goodsMarginTop}}px;
+    margin-bottom: {{pageData.goodsMarginBottom}}px;
+}
+
+.warp-U000078_model4_new_{{ pageInstanceId }} [data-gid="gs-goods-rwDefult-tabspike"].gs-goodsWrap li:hover {
+    border-color: {{pageData.goodsBdC}};
+{#    box-shadow: 0 0 10px {{pageData.goodsBShadowdC}};#}
+}
+
+.warp-U000078_model4_new_{{ pageInstanceId }} .gs-option .prev,.warp-U000078_model4_new_{{ pageInstanceId }} .gs-option .next{
+    background-color:{{pageData.arrowBgC}};
+    
+}
+
+.warp-U000078_model4_new_{{ pageInstanceId }} .gs-option .prev {
+    {% if pageData.arrowLBgImg %}background-image:url({{pageData.arrowLBgImg}});{% else %}background-image:url(../../../resources/images/icon/tabspike-arrow-left.png);{% endif %}
+}
+
+.warp-U000078_model4_new_{{ pageInstanceId }} .gs-option .next {
+    {% if pageData.arrowRBgImg %}background-image:url({{pageData.arrowRBgImg}});{% else %}background-image:url(../../../resources/images/icon/tabspike-arrow-right.png);{% endif %}
+}
+
+.warp-U000078_model4_new_{{ pageInstanceId }} .gs_component_countDown em{
+    font-size:{{pageData.downFtS}}{{suffix}};
+    line-height:{{sizeWidth}}{{suffix}};
+    color:{{pageData.downTextC}};
+    background: {{data.downTimeBgC|default('transparent')}};
+}
+
+.warp-U000078_model4_new_{{ pageInstanceId }} [data-gid="gs-goods-rwDefult-tabspike"] .goodStatus {
+{#    {% if data.isEditEnv == 1 %}#}
+{#    font-size: 18px;#}
+{#    {% endif %}#}
+}
+
+.warp-U000078_model4_new_{{ pageInstanceId }} .gs-goodsWrap li:hover{
+    border:solid 1px {{data.hover_border_c}};
+}
+{%
+    set nameSpace = '.geshop-U000080-default-'~pageInstanceId
+%}
+
+{{ nameSpace }} li:hover:after {
+    border-color: {{ data.goodsBdC }};
+}
+
+.warp-U000078_model4_new_{{ pageInstanceId }} .goods-limit-tips_left{
+    color:{{ goodsData.goodsLimitsTextColor }};
+}
+
+.warp-U000078_model4_new_{{ pageInstanceId }} .geshop-components-default-label-shop-price{
+    color:{{ data.shop_price_color|default('#333333') }}
+}
+
+{%
+    include geshop.default.pc.discount_float with { style: {
+      
+        'color':goodsData.discount_font_color,
+        'background-color':goodsData.discount_bg_color,
+        'background-image': data.discount_bg_image,
+    }}
+%}
+
+{%
+    include geshop.default.pc.shop_price with { style: {
+        'color': goodsData.shop_price_color
+    }}
+%}
+
+{%
+    include geshop.default.pc.button_buy with { style: {
+        'color': goodsData.buyFtC,
+        'background-color': goodsData.buyBgC,
+        'border-radius': data.buyBorderR
+    }}
+%}

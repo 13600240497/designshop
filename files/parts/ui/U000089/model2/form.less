@@ -1,0 +1,45 @@
+.nav-list-setting{
+  legend{
+    height: 22px;
+    line-height: 22px;
+    margin-left: 0;
+    margin-bottom: 16px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    padding-left: 0;
+  }
+  .nav-item{
+    .nav-title{
+      margin-bottom: 5px;
+    }
+    .layui-form-item{
+      margin-bottom: 5px;
+    }
+    .layui-block{
+      border-radius:4px;
+      border:1px solid rgba(230,230,230,1);
+      padding: 16px;
+    }
+  }
+  .add-class {
+    display: none;
+  }
+  .nav-item{
+    &:first-of-type{
+      .up-class{
+        display: none;
+      }
+    }
+    &:last-child{
+      .geshop-third-value .add-class {
+        display: inline-block;
+      }
+      .down-class{
+        display: none;
+      }
+    }
+    
+  }
+  
+}

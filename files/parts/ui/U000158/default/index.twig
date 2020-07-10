@@ -1,0 +1,211 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+{% set suffix ='rem'%}
+{% set remUnit = 75 %}
+
+{% if data.colNum == '1'%}
+    {% set colClass = liCol[0] %}
+{% elseif data.colNum == '2' %}
+    {% set colClass = liCol[1] %}
+{% elseif data.colNum == '3' %}
+    {% set colClass = liCol[2] %}
+{% elseif data.colNum == '4' %}
+    {% set colClass = liCol[3] %}
+{% elseif data.colNum == '5' %}
+    {% set colClass = liCol[4] %}
+{% else %}
+    {% set colClass = liCol[3] %}
+{% endif %}
+
+
+
+
+{%
+    set pageData = {
+		price_ft_weight:data.price_ft_weight|default(1),
+		base_bg_shadow:data.base_bg_shadow|default(0),
+		lang:data.lang|default('en'),
+		page_point_type:'landPage',
+
+		defaultGoodsCount:data.defaultGoodsCount|default(''),
+		base_magin_bottom:data.base_magin_bottom|default(32)/remUnit~suffix,
+		base_bgc:data.base_bgc is not null ? data.base_bgc:'#FFFFFF',
+
+		price_color:data.price_color is not null ? data.price_color:'#f30240',
+		price_fts:data.price_fts|default(22),
+
+		buy_ftc:data.buy_ftc is not null ? data.buy_ftc:'#FFFFFF',
+		buy_bgc:data.buy_bgc is not null ? data.buy_bgc:'#CC0000',
+
+		view_more_ftc:data.view_more_ftc is not null ? data.view_more_ftc:'#333333',
+		view_more_bdc:data.view_more_bdc is not null ? data.view_more_bdc:'#333333',
+
+
+		discount_bgc:data.discount_bgc is not null ? data.discount_bgc:'#FF8A00',
+		discount_ftc:data.discount_ftc is not null ? data.discount_ftc:'#FFFFFF',
+		discount_height:(data.discount_height|default(70)/remUnit)|number_format(3, '.')~suffix,
+		discount_width:(data.discount_width|default(70)/remUnit)|number_format(3, '.')~suffix,
+		discount_fts:(data.discount_fts|default(24)/remUnit)|number_format(3, '.')~suffix,
+		discount_off_fts:data.discount_off_fts|default(12),
+		discount_right:data.discount_right|default(10),
+		discount_top:data.discount_top|default(10),
+		discount_bgImage:data.discount_bgImage,
+
+		buy_text:data.buy_text,
+		buy_fts:(data.buy_fts|default(24)/remUnit)|number_format(3, '.')~suffix,
+		view_more_text:data.view_more_text,
+
+		discount_active:data.discount_active|default(1),
+		goods_title_active:data.goods_title_active|default(1),
+		market_active:data.market_active|default(1),
+		down_active:down_active|default(0),
+		base_magin_top:data.base_magin_top|default(0)/remUnit~suffix,
+		service_tag:data.service_tag|default(0),
+		view_all_fts:(data.view_more_fts|default(24)/remUnit)|number_format(3, '.'),
+    }
+%}
+
+<div class="geshop-component-box component-drag geshop-component-goods component-sync clearfix geshop-gb-component ui-{{ pageInstanceId }}" data-gid="U000158_default" data-key="U000158" data-id="{{ pageInstanceId }}"
+	data-editenv="{{data.isEditEnv}}" data-static-domain="{{staticDomain}}" data-vis="{{liLength}}" data-lang="{{lang}}"
+	style="margin-bottom: {{ pageData.base_magin_bottom }}px;">
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+[data-gid="U000158_default"][data-id="{{ pageInstanceId }}"]{
+	margin-bottom:{{pageData.base_magin_bottom}};
+	margin-top:{{pageData.base_magin_top}};
+}
+
+[data-gid="U000158_default"][data-id="{{ pageInstanceId }}"] .gb_goodsWrap{
+	position: relative;
+}
+
+[data-gid="U000158_default"][data-id="{{ pageInstanceId }}"] .gb_goodsWrap .gb-list-default {
+	margin-right: -0.5667rem !important;
+}
+
+{# 折扣标 #}
+[data-gid="U000158_default"][data-id="{{ pageInstanceId }}"] .gs-goods-discount--m{
+	background-color:{{pageData.discount_bgc}};
+	color:{{pageData.discount_ftc}};
+	width:{{pageData.discount_width}};
+	height:{{pageData.discount_height}};
+	top:{{pageData.discount_top}};
+	right:{{pageData.discount_right}};
+	{% if pageData.discount_bgImage %}
+		background:url({{pageData.discount_bgImage}}) no-repeat center center/100% 100%;
+		border-radius:0;
+	{% endif %}
+}
+[data-gid="U000158_default"][data-id="{{ pageInstanceId }}"] .gs-goods-discount--m .curtoff-box{
+	font-size:{{pageData.discount_fts}};
+}
+[data-gid="U000158_default"][data-id="{{ pageInstanceId }}"] .gs-goods-discount--m .curtoff-text{
+	font-size:{{pageData.discount_off_fts}};
+}
+{# 售价 #}
+[data-gid="U000158_default"][data-id="{{ pageInstanceId }}"] .gs-goods-price--m .gs-shop-price{
+		font-size:{{pageData.price_fts}};
+		color:{{pageData.price_color}};
+}
+
+{# 购买按钮设置 #}
+[data-gid="U000158_default"][data-id="{{ pageInstanceId }}"] .gs-goods-buy--m .buyLink{
+	color:{{pageData.buy_ftc}};
+	background-color:{{pageData.buy_bgc}};
+	font-size:{{pageData.buy_fts}};
+}
+[data-gid="U000158_default"][data-id="{{ pageInstanceId }}"] .isHide{
+	display:none;
+	height:0;
+	opacity:0;
+}
+[data-gid="U000158_default"][data-id="{{ pageInstanceId }}"] .view-more-btn{
+	color:{{pageData.view_more_ftc}};
+	border-color:{{pageData.view_more_bdc}} !important;
+}
+[data-gid="U000158_default"][data-id="{{ pageInstanceId }}"] .gs-goods-item-common {
+  position: relative;
+  width: 4.2rem;
+  height: 5.6rem;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+[data-gid="U000158_default"][data-id="{{ pageInstanceId }}"] .gs-goods-item-common img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+{# view 按钮样式 #}
+[data-gid="U000158_default"][data-id="{{ pageInstanceId }}"] .view-more{
+	min-height:{{2 * pageData.view_all_fts}}rem;
+}
+
+</style>
+    <!-- embed stylesheet end -->
+
+    <div class="geshop-col-12">
+
+		<div class="gb_goodsWrap gb_wrapper_common" data-skus="{{data.goodsSKUList}}" data-isEditEnv="{{data.isEditEnv}}"
+			style="
+		 	{% if data.baseFtFa %}font-family:{{data.baseFtFa}};{% endif %}">
+			{# felix #}
+			<ul  class="clearfix gb-list-default gb-lists-default" data-shownum = "{{pageData.defaultGoodsCount}}">
+			{% for key,item in data.goodsInfo|default(0..3)%}
+			{# css属性单位 #}
+			{% set left_number =  (item.stock_num- item.activity_stock)>0?(item.stock_num - item.activity_stock):0 %}
+			{% set goodsStatus =  left_number == 0 and data.goodsInfo and pageData.limit_active!='1'? 'good_soldOut' :'goodsBuyPro'%}
+			{% set isLimitGoods = pageData.down_active == '1' ? 'is_goods_limit' : 'not_goods_limit'%}
+			{% set isPriceEqual =  item.market_price == item.shop_price? 'visible-hide':''%}
+			{% set isHide = (key >= pageData.defaultGoodsCount and pageData.defaultGoodsCount > 0) ? 'isHide' : "" %}
+				<li class="gs-list-item_tag gs-list-item--m subjectGoodItem {{goodsStatus}} {{isLimitGoods}} 
+					{{ isHide }}" data-track-key="{{item.goods_sn}}">
+					{# 倒计时 #}
+					{{include ('@app/files/parts/temp/gb/common/default_m/goodDown.twig')}}
+					<div class="item-content">
+						<div class="gs-goods-wrap--m">
+						{# 商品图片配置 #}
+						{{include ('@app/files/parts/temp/gb/common/default_m/goodImg.twig')}}
+						{# 折扣标配置 #}
+						{{include ('@app/files/parts/temp/gb/common/default_m/goodDiscount.twig')}}
+
+						{# 折扣标配置 #}
+						{{include ('@app/files/parts/temp/gb/common/default_m/goodLabel.twig')}}
+
+
+						</div>
+						{# 库存配置 #}
+						{{include ('@app/files/parts/temp/gb/common/default_m/goodLimit.twig')}}
+
+						<div class="gs-goods-desc--m">
+							{# 商品标题配置 #}
+							{{include ('@app/files/parts/temp/gb/common/default_m/goodTitle.twig')}}
+
+							{# 商品价格配置 #}
+							{{include ('@app/files/parts/temp/gb/common/default_m/goodPrice.twig')}}
+						</div>
+
+						{# 商品购买配置 #}
+							{{include ('@app/files/parts/temp/gb/common/default_m/goodBuy.twig')}}
+					</div>
+				</li>
+			{% endfor %}
+			</ul>
+			{# view 按钮 #}
+			{{include ('@app/files/parts/temp/gb/common/default_m/goodMoreBtn.twig')}}
+
+
+{#			{% if pageData.defaultGoodsCount < data.goodsInfo|length or data.goodsInfo is null %}#}
+{#				<div class="view-more">#}
+{#					<p class="view-more-btn" data-moretext="{{pageData.view_more_text|default(gb_component_trans(lang , 'view_more'))}}" data-lesstext="{{pageData.view_less_text|default(gb_component_trans(lang , 'view_less'))}}">#}
+{#						<span style="display: inline-block;max-width: 3rem;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;vertical-align: middle;">{{pageData.view_more_text|default(gb_component_trans(lang , 'view_more'))}}</span>#}
+{#						<i class="gs-iconfont gs-icon-down1"></i>#}
+{#					</p>#}
+{#				</div>#}
+{#			{% endif %}#}
+
+		</div>
+
+    </div>
+</div>
+

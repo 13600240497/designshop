@@ -1,0 +1,100 @@
+<div class="geshop-component-box component-drag geshop-component-box-U000130 geshop-component-U000130-default geshop-component-box-U000130-{{ pageInstanceId }}"
+  data-key="U000130"
+  data-id="{{ pageInstanceId }}"
+  data-static-domain="{{ staticDomain }}"
+  data-skus='{{ data.goodsSKUTab | json_encode(constant('JSON_UNESCAPED_UNICODE')) }}'
+  data-page-id='{{ pageId }}'
+  data-page-instance-id='{{ pageInstanceId }}'
+  data-layout-index='{{ layoutIndex }}'
+  data-comp-key='{{ compKey }}'
+  data-ui-index='{{ uiIndex }}'
+  data-goods-lazyimg='{{data.default.lazyImg|default(data.default.good)}}'
+>
+  <!-- embed stylesheet begin -->
+  <style type="text/css">
+    .geshop-component-box-U000130-{{ pageInstanceId }} .geshop-flash-sale-title {
+      font-weight: {{ data.titleFtW | default('bold') }};
+      color: {{ data.titleFtC | default('#333333') }};
+      font-size: {{ ((data.titleFtS | default(34)) / 75) | number_format(3, '.') }}rem;
+    }
+    .geshop-component-box-U000130-{{ pageInstanceId }} .geshop-flash-sale-status {
+      background-color: {{ data.tab_headerBgC | default('#333333') }};
+      color: {{ data.tab_headerFtC | default('#ffffff') }};
+    }
+    .geshop-component-box-U000130-{{ pageInstanceId }} .geshop-flash-sale-price{
+      height: auto;
+      margin:0 auto;
+    }
+    .geshop-component-box-U000130-{{ pageInstanceId }} .geshop-flash-sale-price-sale {
+      color: {{ data.priceC | default('#333333') }};
+    }
+    .geshop-component-box-U000130-{{ pageInstanceId }} .geshop-flash-sale-price-market {
+      color: {{ data.marketPriceC | default('#999999') }};
+    }
+    .geshop-component-box-U000130-{{ pageInstanceId }} .geshop-flash-sale-text {
+      color: {{ data.downStatusTextC | default('#333333') }};
+    }
+    .geshop-component-box-U000130-{{ pageInstanceId }} .geshop-flash-sale-number {
+      color: {{ data.downTextC | default('#ffffff') }};
+      background-color: {{ data.downTimeBgC | default('#333333') }};
+    }
+    .geshop-component-box-U000130-{{ pageInstanceId }} .geshop-flash-sale-upcoming {
+      background-color: {{ data.presaleTimeBgC | default('#333333') }};
+    }
+    .geshop-component-box-U000130-{{ pageInstanceId }} .geshop-flash-sale-upcoming-time {
+      color: {{ data.presaleTextC | default('#ffffff') }};
+      font-size: {{ ((data.presaleFtS | default(28)) / 75) | number_format(3, '.') }}rem;
+    }
+    .geshop-component-box-U000130-{{ pageInstanceId }} .geshop-flash-sale-upcoming-text {
+      color: {{ data.presaleStatusTextC | default('#ffffff') }};
+      font-size: {{ ((data.presaleStatusFtS | default(28)) / 75) | number_format(3, '.') }}rem;
+    }
+    .geshop-component-box-U000130-{{ pageInstanceId }} .buyBtn{
+      width: {{ ((data.btnWidth | default(160)) / 75) | number_format(3, '.') }}rem;
+      height: {{ ((data.btnHeight | default(56)) / 75) | number_format(3, '.') }}rem;
+      line-height: {{ ((data.btnHeight | default(24)) / 75) | number_format(3, '.') }}rem;
+      font-size: {{ ((data.btnFontSize | default(24)) / 75) | number_format(3, '.') }}rem;
+      color: {{ data.btnTextColor | default('#FFFFFF') }};
+      background-color: {{ data.btnBgColor | default('#333333') }};
+      {% if data.btnBgImg is not empty %}
+        background-image: url({{data.btnBgImg}});
+      {% endif %}
+      background-size: 100% 100%;
+      margin: 5px auto;
+      display: block;
+      text-align: center;
+    }
+  </style>
+  <!-- embed stylesheet end -->
+  {% if data.isEditEnv == 0 %}
+  <div class="geshop-loading">
+    <div class="geshop-loading-img"></div>
+  </div>
+  {% else %}
+  <div class="geshop-flash-sale-default-img">
+    <img src="{{staticDomain}}/resources/images/default/u000130.jpg">
+  </div>
+  {% endif %}
+  <input type="hidden" value="{{data.btnText}}" name="btnText">
+  <input type="hidden" value="{{data.isShowBtn}}" name="isShowBtn">
+  <div class="geshop-flash-sale-block" style="display: none; margin-bottom: {{ ((data.tab_marginBottow | default(50)) / 75) | number_format(3, '.') }}rem;">
+    <h3 class="geshop-flash-sale-title js_geshopFlashSaleTitle {% if data.titleFtW | default('bold') == 'bold'%}site-bold-strict{% endif %}">20:00 GMT-6</h3>
+    <p class="geshop-flash-sale-header">
+      <span class="geshop-flash-sale-status">{{ get_component_trans(lang,'on_going') }}</span>
+      <span class="geshop-flash-sale-time">
+        <span class="geshop-flash-sale-text">{{ get_component_trans(lang,'btn_ended') }}</span>
+        <span class="geshop-flash-sale-number js_geshopFlashSaleDay">00</span>
+        <span class="geshop-flash-sale-time-separator" style="color: {{ data.downTimeBgC | default('#333333') }};">:</span>
+        <span class="geshop-flash-sale-number js_geshopFlashSaleHour">00</span>
+        <span class="geshop-flash-sale-time-separator" style="color: {{ data.downTimeBgC | default('#333333') }};">:</span>
+        <span class="geshop-flash-sale-number js_geshopFlashSaleMinute">00</span>
+        <span class="geshop-flash-sale-time-separator" style="color: {{ data.downTimeBgC | default('#333333') }};">:</span>
+        <span class="geshop-flash-sale-number js_geshopFlashSaleSecond">00</span>
+      </span>
+    </p>
+    <div class="geshop-flash-sale-body swiper-container">
+      <div class="gehsop-flash-sale-inner-body js_geshopFlashSaleBody swiper-wrapper"></div>
+      <div class="swiper-scrollbar"></div>
+    </div>
+  </div>
+</div>

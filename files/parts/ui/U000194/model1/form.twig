@@ -1,0 +1,326 @@
+<style>
+.layui-form-select .layui-edge{
+	right:20px;
+}
+</style>
+
+{% set buyBorderSArr = [
+	{name:'无',value:'none'},
+	{name:'实线',value:'solid'},
+	{name:'虚线',value:'dashed'},
+	{name:'点状',value:'dotted'},
+	{name:'双线',value:'double'},
+	{name:'继承上级',value:'inherit'},
+]%}
+
+{% set fontFamily = [
+  {name:'OpenSans-Semibold (zaful)',value:'OpenSans-Semibold'},
+  {name:'OpenSans-Bold (zaful)',value:'OpenSans-Bold'},
+  {name:'OpenSans-Regular (zaful)',value:'OpenSans-Regular'},
+  {name:'Trebuchet MS (RG)',value:'Trebuchet MS'},
+  {name:'Tahoma (RW)',value:'Tahoma'},
+  {name:'Arial (RW)',value:'Arial'},
+  {name:'Helvetica (RW)',value:'Helvetica'},
+  {name:'sans-serif (RW)',value:'sans-serif'},
+  {name:'AvenirLTStd_Book (RW)',value:'AvenirLTStd_Book'},
+  {name:'Georgia (RW)',value:'Georgia'},
+  {name:'Times New Roman (RW)',value:'Times New Roman'},
+  {name:'Verdana (RW)',value:'Verdana'},
+]%}
+
+{% set siteCodeOp = {
+	baseWidthDefault: siteCode == 'zf-pc'?1260:1200,
+}%}
+
+{%
+	set pageData = {
+		base_magin_bottom:data.base_magin_bottom|default(32),
+		base_magin_top:data.base_magin_top|default(0),
+	}
+%}
+
+<style>
+.gs-lable-block{
+	margin:0 0 5px 20px;
+}
+.gs-lable-block+.layui-input-block,.class-manage{
+	margin-left:20px
+}
+
+#goods_tab .tab-add-btn{
+	margin: 15px 0;
+    height: 32px;
+    line-height: 36px;
+}
+.text-explain{
+	margin-bottom:24px;
+	font-size:14px;
+	font-weight:400;
+	color:rgba(158,158,158,1);
+	line-height:20px;
+}
+#component_form1 .img_openResource{
+	width:38px;
+}
+</style>
+{{include ('@app/files/parts/temp/goods_manager.twig')}}
+
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>品牌组件配置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm gb-icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+  <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+		<div class="layui-tab">
+			<ul class="layui-tab-title">
+				<li class="layui-this">模板选择</li>
+				<li>商品数据</li>
+				<li>样式设置</li>
+			</ul>
+			<div class="layui-tab-content layui-tab-content-parent" data-goodsType="tab_new">
+				<div class="layui-tab-item layui-show">
+						<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+						{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				    </div>
+				<div class="layui-tab-item radio-tab-true" id="component_form1">
+					<label class="gs-lable-block">商品数据</label>
+					<div class="layui-table goods-form-table">
+						<div class="layui-form-item">
+							<input type="hidden" name="goodsSKU"  data-public-tag="true" value='{{SKU_encode}}'>
+							<input type="hidden" name="maxCount"  data-public-tag="true" value='3'>
+							<div class="goods-tab-item tab-template layui-hide">
+								<fieldset class="layui-elem-field">
+									<legend style="color:#333;">品牌列表<span class="gs-tab-index"></span></legend>
+									<div class="layui-field-box">
+										<div class="layui-form-item">
+											<label class="gs-lable-block" style="display:inline-block;color:#333;">背景图片<span class="gs-lable-block" style="display:inline-block;margin:10px 0;color:#666;">(建议上传宽328px，高202px图片)</span></label>
+											<div class="layui-input-block U000160-img">
+												<a href="javascript:;" class=" js_openResource design-open-resource" style="width: 38px;"><i class="layui-icon">&#xe64a;</i></a>
+												<input type="text" name="goodImg0" autocomplete="off" class="layui-input tab-item-img" value="{{tabItem.goodsImg}}" data-width="goodImg0_width" data-height="goodImg0_height" style="margin-left: 0px;">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="gs-lable-block" style="color:#333;">品牌区域SKU</label>
+											<div class="goods-hide {% if tabItem.skuFrom|default('1') == '1' %}goods-visible{% endif %}" data-target="skuFrom-1">
+												<textarea class="layui-textarea Unwanted" name="goodsSKU" data-skuvalid="true" data-public-tag="true" placeholder="请输入商品SKU,每个SKU用英文逗号隔开." style="width:90%;margin:0 auto;">{{tabItem.lists}}</textarea>
+											</div>
+										</div>
+										<div class="layui-form-item view-more-input">
+											<label class="gs-lable-block" style="color:#333;">View more跳转链接</label>
+											<div class="layui-input-block">
+												<input type="text" class="layui-input view-more-label" name="base_view_more_url" autocomplete="off" value="{{tabItem.base_view_more_url}}">
+											</div>
+										</div>
+										<div class="layui-form-item tab-add-btn" style="margin-top:15px">
+											<span class="el-button el-button--primary el-button--small" id="gs_getList" style="float:left;margin-left:20px;">商品管理</span>
+										</div>
+									</div>
+								</fieldset>
+								<div class="geshop-third-value">
+									<span class="img-btn class-up">
+										<i class='gb-icon-up'></i>
+										<b class="tips">上移</b>
+									</span>
+									<span class="img-btn class-down">
+										<i class='gb-icon-down'></i>
+										<b class="tips">下移</b>
+									</span>
+									<span class="img-btn class-close">
+										<i class='gb-icon-delete'></i>
+										<b class="tips">删除</b>
+									</span>
+									<span class="img-btn class-add">
+										<i class='gb-icon-add'></i>
+										<b class="tips">新增</b>
+									</span>
+								</div>
+							</div>
+							<div class="goods-tab-lists radio-tab-true">
+								{% for key,tabItem in data.goodsSKU|default(0..2) %}
+								<div class="goods-tab-item">
+									<fieldset class="layui-elem-field">
+										<legend style="color:#333;">品牌列表<span class="gs-tab-index"> {{ key + 1 }} </span></legend>
+										<div class="layui-field-box">
+											<div class="layui-form-item">
+											    <label class="gs-lable-block" style="display:inline-block;color:#333;">背景图片<span class="gs-lable-block" style="display:inline-block;margin:10px 0;color:#666;">(建议上传宽328px，高202px图片)</span></label>
+												{# <label class="gs-lable-block">背景图片</label>
+												<span class="gs-lable-block" style="color:#999;">(建议上传宽328px，高202px)</span> #}
+												<div class="layui-input-block U000160-img">
+													<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+													<input class="layui-input tab-item-img" type="text" name="goodImg{{key + 1}}" value="{{tabItem.goodsImg}}" data-public-tag="true">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="gs-lable-block" style="color:#333;">品牌区域SKU</label>
+												<textarea class="layui-textarea Unwanted" name="goodsSKU" data-skuvalid="true" data-public-tag="true" placeholder="请输入商品SKU,每个SKU用英文逗号隔开." style="width:90%;margin:0 auto;">{{tabItem.lists}}</textarea>
+											</div>
+											<div class="layui-form-item">
+												<label class="gs-lable-block" style="color:#333;">View more跳转链接</label>
+												<div class="layui-input-block">
+													<input type="text" class="layui-input view-more-label" data-public-tag="true" name="base_view_more_url" autocomplete="off" value="{{tabItem.base_view_more_url}}">
+												</div>
+											</div>
+											<div class="layui-form-item tab-add-btn" style="margin-top:15px">
+												<span class="el-button el-button--primary el-button--small" id="gs_getList" style="float:left;margin-left:20px;">商品管理</span>
+											</div>
+										</div>
+									</fieldset>
+									<div class="geshop-third-value">
+										<span class="img-btn class-up">
+											<i class='gb-icon-up'></i>
+											<b class="tips">上移</b>
+										</span>
+										<span class="img-btn class-down">
+											<i class='gb-icon-down'></i>
+											<b class="tips">下移</b>
+										</span>
+										<span class="img-btn class-close">
+											<i class='gb-icon-delete'></i>
+											<b class="tips">删除</b>
+										</span>
+										<span class="img-btn class-add">
+											<i class='gb-icon-add'></i>
+											<b class="tips">新增</b>
+										</span>
+									</div>
+								</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-tab-item">
+					<div class="layui-carousel" id="form_carousel">
+						<div carousel-item>
+							<div>
+								<fieldset class="layui-elem-field">
+									<legend>常用配置</legend>
+									<div class="layui-field-box">
+										<div class="layui-form-item">
+											<label class="gs-lable-block">上边距(px)</label>
+											<div class="layui-input-block">
+												<input type="text" name="base_magin_top" autocomplete="off" class="layui-input" value="{{ pageData.base_magin_top }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="gs-lable-block">下边距(px)</label>
+											<div class="layui-input-block">
+												<input type="text" name="base_magin_bottom" autocomplete="off" class="layui-input" value="{{ pageData.base_magin_bottom }}">
+											</div>
+										</div>
+									</div>
+								</fieldset>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+  </div>
+</div>
+<div class="layui-form-item geshop-form-operation">
+	<button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+		<span type="button" class="layui-btn layui-btn-normal" id="gs_submit">提交</span>
+	<button type="button" class="layui-btn layui-btn-normal js_submitDesignForm layui-hide">提交</button>
+</div>
+
+<style>
+	.class-add{
+		display:none;
+	}
+	.goods-tab-lists .goods-tab-item:last-child .class-add{
+		display:inline-block;
+	}
+</style>
+
+<script>
+	$('#gs_submit').on('click',function(){
+		var goodsArr = [];
+		$('.goods-form-table textarea[name=goodsSKU]').each(function(index,element){
+			var $flag = true;
+			var $val = $(this).val();
+			var $goodsImg = $(this).parents('.goods-tab-item:eq(0)').find('.tab-item-img').val();
+			var $viewMoreUrl = $(this).parents('.goods-tab-item:eq(0)').find('input.view-more-label').eq(0).val();
+			if (
+				$val == '' &&
+				$goodsImg == '' &&
+				$viewMoreUrl == ''
+			) {
+				$flag = false;
+			};
+			if ($flag) {
+				goodsArr.push({
+					"goodsImg":$goodsImg,
+					"lists":$val,
+					"base_view_more_url":$viewMoreUrl
+				});
+			};
+		});
+		if(goodsArr.length>0){
+			$('.goods-form-table input[name=goodsSKU]').val(JSON.stringify(goodsArr));
+		}else{
+			$('.goods-form-table input[name=goodsSKU]').val("");
+		}
+		$(this).next('button').trigger('click');
+	});
+
+	$(function() {
+		var $goodsTable = $('.goods-form-table');
+		function addOne(){
+			var clone = $('.tab-template',$goodsTable).clone(true);
+			clone.removeClass('tab-template layui-hide');
+			$('.goods-tab-lists',$goodsTable).append(clone);
+		}
+		
+		function initItemIndex(){
+			$('.goods-tab-lists').find('.goods-tab-item').each(function(index){
+				var $this = $(this);
+				var listNum = index + 1;
+				$this.find('.gs-tab-index').text(listNum);
+				$this.find('.tab-item-img').attr('name','tabImg'+listNum+'');
+			})
+		}
+
+		/*删除分类 */
+		$("#component_form1").on('click','.goods-form-table .class-close',function(){
+			var $this = $('this');
+			$tr = $(this).parents('.goods-tab-item:eq(0)'),
+			layer.confirm('是否删除该分类?',{icon:3,title:'提示'},function(index){
+				$tr.remove();
+				initItemIndex();
+				layer.close(index);
+			});
+		});
+
+		/* 新增分类 */
+		$("#component_form1").on('click','.goods-tab-lists .class-add',function(e){
+			e.stopPropagation();
+			addOne();
+			initItemIndex();
+		});
+
+		/*移动分类 */
+		$("#component_form1").on('click','.goods-form-table .class-down',function(e){
+			var $this = $('this'),
+			$tr = $(this).parents('.goods-tab-item:eq(0)'),
+			$trNext = $tr.next();
+			if(0 != $trNext.length){
+				$trNext.after($tr);
+			}
+			initItemIndex();
+
+		});
+		$("#component_form1").on('click','.goods-form-table .class-up',function(e){
+			var $this = $('this'),
+			$tr = $(this).parents('.goods-tab-item:eq(0)'),
+			$trPrev = $tr.prev();
+			if(0 != $trPrev.length){
+				$trPrev.before($tr);
+			}
+			initItemIndex();
+		});
+		
+	})
+</script>

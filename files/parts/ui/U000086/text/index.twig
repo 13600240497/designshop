@@ -1,0 +1,81 @@
+{%
+	set pageData = {
+		height:data.height is not null?data.height:220,
+		paddingTopBottom:data.paddingTopBottom is not null ? data.paddingTopBottom : 15,
+		boxMarginBottom:data.boxMarginBottom is not null?data.boxMarginBottom:24,
+		textTitle:data.textTitle is not null?data.textTitle:'CODE',
+    textCode:data.textCode is not null?data.textCode:'SCHOOL',
+		fontSize:data.fontSize is not null?data.fontSize:'30',
+		textColor:data.textColor is not null?data.textColor:'#333333',
+		copyBtnIsVisible:data.copyBtnIsVisible is not null?data.copyBtnIsVisible:'1',
+		bgColor:data.bgColor is not null?data.bgColor:'#F5F7F9',
+		btnfontSize:data.btnfontSize is not null?data.btnfontSize:'20',
+		btnWidth:data.btnWidth is not null?data.btnWidth:'160',
+		btnHeight:data.btnHeight is not null?data.btnHeight:'40',
+		copyCodeText:data.copyCodeText is not null?data.copyCodeText:'Copy Code',
+		copyCodeTextColor:data.copyCodeTextColor is not null?data.copyCodeTextColor:'#000000',
+		copyCodeBgColor:data.copyCodeBgColor is not null?data.copyCodeBgColor:'#D8D8D8',
+		discountMainTextFize:data.discountMainTextFize is not null ? data.discountMainTextFize:80,
+		discountTextFize:data.discountTextFize is not null ? data.discountTextFize:18,
+		btnBgImg:data.btnBgImg is not null?data.btnBgImg:'',
+		copyCodeVisitedText:data.copyCodeVisitedText is not null?data.copyCodeVisitedText:'Copied!',
+		copyCodeVisitedTextColor:data.copyCodeVisitedTextColor is not null?data.copyCodeVisitedTextColor:'#9B9B9B',
+		copyCodeVisitedBgColor:data.copyCodeVisitedBgColor is not null?data.copyCodeVisitedBgColor:'#D8D8D8',
+		discountTextMarginTop:data.discountTextMarginTop is not null?data.discountTextMarginTop:'16',
+		discountLeftText:data.discountLeftText is not null?data.discountLeftText:'UP TO',
+		discountMainText:data.discountMainText is not null?data.discountMainText:'$18',
+		discountRightTopText:data.discountRightTopText is not null?data.discountRightTopText:'All Orders',
+		discountRightBottomText:data.discountRightBottomText is not null?data.discountRightBottomText:'Over $20',
+		discountTextColor:data.discountTextColor is not null?data.discountTextColor:'#000000',
+		codeTextMarginTop:data.codeTextMarginTop is not null?data.codeTextMarginTop:'8',
+		codeTextFontSize:data.codeTextFontSize is not null?data.codeTextFontSize:'30',
+		codeTextColor:data.codeTextColor is not null?data.codeTextColor:'#333333',
+	}
+%}
+<div class="geshop-component-box component-drag" data-gid="U000086_text" data-key="U000086" data-id="{{ pageInstanceId }}" data-static-domain="{{ staticDomain }}" attr="nav_flag">
+	<div class="coupon-default-container" style="
+		{% if pageData.height %}height: {{ pageData.height }}px;{% endif %}
+		{% if pageData.boxMarginBottom %}margin-bottom: {{ pageData.boxMarginBottom }}px;{% endif %}
+		{% if data.bgImage %}background-image: url({{ data.bgImage }});{% else %}background-image:url({{ data.default.coupon }});{% endif %}
+		{% if pageData.bgColor %}background-color: {{ pageData.bgColor }};{% endif %}
+		{% if pageData.paddingTopBottom %}padding-top:{{pageData.paddingTopBottom}}px;padding-bottom:{{pageData.paddingTopBottom}}px;{% endif %}
+		
+	">
+		<div class="coupon-title-text-wraper" style="
+			{% if pageData.discountTextMarginTop %}margin-top: {{ pageData.discountTextMarginTop }}px;{% endif %}
+			{% if pageData.discountTextColor %}color: {{ pageData.discountTextColor }};{% endif %}
+			{% if pageData.discountTextFize %}font-size:{{ pageData.discountTextFize }}px;{% endif %}
+		">
+			<div class="left"><p>{{ pageData.discountLeftText }}</p></div>
+			<div class="middle" style="{% if pageData.discountMainTextFize %} font-size:{{pageData.discountMainTextFize}}px;{% endif %}"><p>{{ pageData.discountMainText }}</p></div>
+			<div class="right">
+				{% if pageData.discountRightTopText %}<p>{{ pageData.discountRightTopText }}</p>{% endif %}
+				{% if pageData.discountRightBottomText %}<p style="margin-top:8px">{{ pageData.discountRightBottomText }}</p>{% endif %}
+			</div>
+		</div>
+		<p class="coupon-default-text" style="
+			{% if pageData.codeTextFontSize %}font-size: {{ pageData.codeTextFontSize }}px;{% endif %}
+			{% if pageData.codeTextFontSize %}line-height: {{ pageData.codeTextFontSize }}px;{% endif %}
+			{% if pageData.codeTextColor %}color: {{ pageData.codeTextColor }};{% endif %}
+			{% if pageData.codeTextMarginTop %}margin-top: {{ pageData.codeTextMarginTop }}px;{% endif %}
+		">{{ pageData.textTitle }}: {{ pageData.textCode }}</p>
+		<input type="hidden" value="{{ pageData.textCode }}" />
+		<a href="javascript:;" class="coupon-default-btn js_copyTextBtn btn__site-default"
+		 data-clipboard-text="{{ pageData.textCode }}"
+		 {% if pageData.copyCodeVisitedText %}data-visitedtext="{{ pageData.copyCodeVisitedText }}"{% endif %}
+		 {% if pageData.copyCodeVisitedTextColor %}data-visitedtextcolor="{{ pageData.copyCodeVisitedTextColor }}"{% endif %}
+		 {% if pageData.copyCodeVisitedBgColor %}data-visitedbgcolor="{{ pageData.copyCodeVisitedBgColor }}"{% endif %}
+		 style="
+			{% if pageData.copyBtnIsVisible == 2 %}display:none;{% endif %}
+			{% if pageData.btnfontSize %}font-size: {{ pageData.btnfontSize }}px;{% endif %}
+			{% if pageData.btnWidth %}width: {{ pageData.btnWidth }}px;{% endif %}
+			{% if pageData.btnHeight %}height: {{ pageData.btnHeight }}px;{% endif %}
+			{% if pageData.btnHeight %}line-height: {{ pageData.btnHeight }}px;{% endif %}
+			{% if pageData.copyCodeTextColor %}color: {{ pageData.copyCodeTextColor }};{% endif %}
+			{% if pageData.copyCodeBgColor %}background-color: {{ pageData.copyCodeBgColor }};{% endif %}
+			{% if pageData.btnBgImg %}background-image: url({{ pageData.btnBgImg }});{% endif %}
+		">
+			{% if pageData.copyCodeText %}{{ pageData.copyCodeText }}{% endif %}
+		</a>
+	</div>
+</div>

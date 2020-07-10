@@ -1,0 +1,54 @@
+<h4 class="column-title">常用配置<span></span></h4>
+
+{{ include ('@app/files/parts/formTemplate/components/margin-dl.twig') }}
+
+
+<h3>图片设置</h3>
+<div class="layui-form-item">
+    <label class="form-item-label">Banner图片-PC</br>
+        <span class="color-gray">请上传宽为1920px的图片，建议图片高度为490px</span>
+    </label>
+    <div class="layui-input-block">
+        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+        <input class="layui-input" type="text" data-valid-width="pcWidth" name="bannerPcImg" value="{{data.bannerPcImg|default('')}}">
+        <input type="hidden" class="Unwanted" value="1920" name="pcWidth"></input>
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">Banner图片-PAD
+        <p class="color-gray">请上传宽为1024px的图片，建议图片高度为340px</p>
+    </label>
+    <div class="layui-input-block">
+        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+        <input class="layui-input" type="text"  data-valid-width="padWidth" name="bannerPadImg" value="{{data.bannerPadImg|default('')}}">
+        <input type="hidden" class="Unwanted" value="1024" name="padWidth"></input>
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">Banner图片-M
+        <p class="color-gray">请上传宽为750px的图片，建议图片高度为500px</p>
+    </label>
+    <div class="layui-input-block">
+        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+        <input class="layui-input" type="text" data-valid-width="mWidth" name="bannerMImg" value="{{data.bannerMImg|default('')}}">
+        <input type="hidden" class="Unwanted" value="750" name="mWidth"></input>
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">图片链接</label>
+    <div class="layui-input-block">
+        <input type="text" name="imgUrl" autocomplete="off" class="layui-input" value="{{ data.imgUrl | default('') }}">
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">跳转链接是否新窗口打开</label>
+    <div class="layui-input-block">
+    <input type="radio" name="openInNewWindow" value="1" title="是"{% if data.openInNewWindow|default('1') == '1' %} checked{% endif %}>
+    <input type="radio" name="openInNewWindow" value="0" title="否"{% if data.openInNewWindow|default('1') == '0' %} checked{% endif %}>
+    </div>
+</div>
+

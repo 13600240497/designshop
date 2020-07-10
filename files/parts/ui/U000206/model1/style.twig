@@ -1,0 +1,119 @@
+<!-- embed stylesheet begin -->
+{% set instanceClass = ".geshop-U000206-model1-#{pageInstanceId}" %}
+{% set time_show_type = data.time_show_type ?? 'day' %}
+<style type="text/css">
+    {{ instanceClass }} {
+        margin-top: {{ formData.box_margin_top }}px;
+        margin-bottom: {{ formData.comp_padding_bottom }}px;
+    }
+
+    {{ instanceClass }} .cd:before {
+        background-color: {{ formData.cd_container_bcolor }};
+        opacity: {{ formData.cd_container_opacity }};
+    }
+
+    {{ instanceClass }} .cd-title {
+        color: {{ formData.cd_title_fcolor }};
+        {% if time_show_type == 'day' %}
+            display: inline-block;
+        {% endif %}
+    }
+
+    {{ instanceClass }} .cd-value {
+        background-color: {{ formData.cd_value_bcolor }};
+        color: {{ formData.cd_value_fcolor }};
+    }
+    {{ instanceClass }} .cd-content{
+        color: {{ formData.cd_title_fcolor }};
+    }
+
+    {{ instanceClass }} .cd-split {
+        color: {{ formData.cd_value_bcolor }};
+    }
+
+    {# WAP 端 #}
+    @media screen and (max-width: 767px) {
+        {{ instanceClass }} .cd-container {
+            padding-top: {{ formData.m_banner_ratio }}%;
+            {% if formData.m_banner %}
+            background-image: url({{ formData.m_banner }});
+            {% endif %}
+        }
+
+        {{ instanceClass }} .cd {
+            top: {{ formData.m_cd_container_padding_top }}px;
+            width: {{ formData.m_cd_container_width }}px;
+            height: {{ formData.m_cd_container_height }}px;
+        }
+
+        {{ instanceClass }} .cd-inner {
+            font-size: {{ formData.m_cd_font_size }}px;
+        }
+
+        {{ instanceClass }} .cd-content.is-day {
+            display: inline-block;
+        }
+        {{ instanceClass }} .cd-content.is-second {
+            margin-top: {{ formData.m_cd_padding_top }}px;
+        }
+    }
+
+    {# PAD 端 #}
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+        {{ instanceClass }} .cd-container {
+            padding-top: {{ formData.pad_banner_ratio }}%;
+            {% if formData.pad_banner %}
+            background-image: url({{ formData.pad_banner }});
+            {% endif %}
+        }
+
+        {{ instanceClass }} .cd {
+            top: {{ formData.pad_cd_container_padding_top }}px;
+            width: {{ formData.pad_cd_container_width }}px;
+            height: {{ formData.pad_cd_container_height }}px;
+        }
+
+        {{ instanceClass }} .cd-inner {
+            font-size: {{ formData.pad_cd_font_size }}px;
+        }
+
+        {{ instanceClass }} .cd-content.is-day {
+            display: inline-block;
+        }
+        {{ instanceClass }} .cd-content.is-second {
+            margin-top: {{ formData.pad_cd_padding_top }}px;
+        }
+    }
+
+    {# PC 端 #}
+    @media screen and (min-width: 1025px) {
+        {{ instanceClass }} .cd-container {
+            padding-top: {{ formData.pc_banner_ratio }}%;
+            {% if data.pc_banner is not empty %}
+                background-image: url({{ data.pc_banner }});
+            {% else %}
+                background-image: url('https://geshopimg.logsss.com/uploads/sQ1tUd5mz0Oo2gIiy8jlB7vPJ6YGEKbC.png');
+                background-position: center;
+                background-color: #ededed;
+            {% endif %}
+        }
+
+        {{ instanceClass }} .cd {
+            top: {{ formData.pc_cd_container_padding_top }}px;
+            width: {{ formData.pc_cd_container_width }}px;
+            height: {{ formData.pc_cd_container_height }}px;
+        }
+
+        {{ instanceClass }} .cd-inner {
+            font-size: {{ formData.pc_cd_font_size }}px;
+        }
+
+        {{ instanceClass }} .cd-content.is-day {
+            display: inline-block;
+        }
+        {{ instanceClass }} .cd-content.is-second {
+            margin-top: {{ formData.pc_cd_padding_top }}px;
+        }
+    }
+</style>
+<!-- embed stylesheet end -->

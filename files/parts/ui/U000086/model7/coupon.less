@@ -1,0 +1,263 @@
+.geshop-U000086-model7 {
+  line-height: normal;
+  font-size: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .U000086-model7-wrap {
+    .coupon7_body {
+      text-align: left;
+      display: inline-block;
+      font-size: 0;
+      height: 156px;
+      width: 584px;
+      overflow: hidden;
+
+
+      > li {
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        font-size: 14px;
+        height: 100%;
+
+        &.coupon_left {
+          width: 152px;
+
+          .coupon_dis_num {
+            text-align: center;
+
+            .dis_hd {
+              display: inline-block;
+              font-family: OpenSans-Semibold;
+              position: relative;
+              margin-top: 32px;
+              line-height: 72px;
+
+              > span {
+                position: absolute;
+                right: 100%;
+                top: 0;
+                line-height: 22px;
+
+                &.c_icon_right {
+                  left: 100%;
+                }
+              }
+            }
+          }
+
+          .limit_num {
+            width: 120px;
+            height: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 0 auto;
+            line-height: 20px;
+            font-size: 12px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+        }
+
+        &.coupon_center {
+          width: 272px;
+          box-sizing: border-box;
+          padding: 0 24px;
+          text-align: left;
+
+          .center_tit_hd {
+            width: 224px;
+            font-size: 18px;
+            min-height: 30px;
+            line-height: 20px;
+            margin-top: 24px;
+            font-family: OpenSans-Semibold;
+            overflow : hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+          }
+
+          .center_tit_bd {
+            width: 224px;
+            height: 20px;
+            font-size: 20px;
+            font-family: OpenSans-Semibold;
+            line-height: 16px;
+            margin-top: 12px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+
+          .time_pla_info {
+            font-size: 12px;
+            margin-top: 4px;
+
+            > li {
+              position: relative;
+              padding-left: 8px;
+              line-height: 16px;
+
+              &:before {
+                content: '';
+                width: 4px;
+                height: 4px;
+                position: absolute;
+                background-color: currentColor;
+                border-radius: 100%;
+                left: 0;
+                top: 50%;
+                margin-top: -2px;
+              }
+            }
+          }
+        }
+
+        &.coupon_right {
+          width: 160px;
+
+          &.max {
+            .btn-group {
+              width: 90%;
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%, -50%);
+            }
+
+            &.off {
+              .btn-group {
+                position: relative;
+                left: auto;
+                top: 50%;
+                transform: translate(0, -50%);
+              }
+            }
+          }
+
+          .percent-range {
+            display: block;
+            margin: 14px auto 0;
+          }
+
+          .use_now_box {
+            text-align: center;
+
+            .coupon_code {
+              font-size: 16px;
+              font-family: OpenSans-Semibold;
+              font-weight: 600;
+              line-height: 22px;
+              margin-top: 38px;
+            }
+
+            .coupon_code_desc {
+              font-size: 12px;
+              font-family: OpenSans-Semibold;
+              font-weight: 600;
+              line-height: 17px;
+              margin-top: 4px;
+              margin-bottom: 23px;
+            }
+          }
+        }
+
+        .btn_coupons_none, .btn_user_none {
+          box-sizing: border-box;
+          padding: 0 6px;
+          line-height: 14px;
+        }
+
+        .btn-group {
+          cursor: pointer;
+          display: block;
+          text-align: center;
+          //background-color: #333333;
+          margin: 0 auto;
+
+          &.btn-icon {
+            width: 123px;
+            height: 28px;
+            line-height: 28px;
+            border-radius: 15px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+
+          &.btn-useNow, &.btn-claim {
+
+            &:hover {
+              opacity: .9;
+            }
+          }
+
+          &.btn-end, &.btn-soon {
+            cursor: inherit;
+          }
+        }
+      }
+    }
+  }
+
+  .dialog-msg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+
+    .dia-box {
+      width: 600px;
+      height: 324px;
+      border-radius: 20px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -300px;
+      margin-top: -162px;
+      text-align: center;
+
+      > h3 {
+        font-size: 38px;
+        font-family: OpenSans-Semibold;
+        line-height: 52px;
+        margin-top: 56px;
+      }
+
+      .dia-body-desc {
+        font-size: 20px;
+        //font-family: OpenSans-Semibold;
+        line-height: 14px;
+        margin-top: 32px;
+      }
+
+      .user_coupon_info {
+        font-size: 14px;
+        font-family: OpenSans-Semibold;
+        line-height: 22px;
+        margin-top: 32px;
+
+        > a {
+          text-decoration: underline;
+        }
+      }
+
+      .close_dia {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background: url("https://geshopimg.logsss.com/uploads/Evaqs7hkcYMgUOdt5yPTuIG0NBw3VCJz.png") 0 0 no-repeat;
+        right: -15px;
+        top: -15px;
+        cursor: pointer;
+      }
+    }
+  }
+}

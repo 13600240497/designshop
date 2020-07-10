@@ -1,0 +1,262 @@
+{%
+	set pageData = {
+    ImgWidth:data.ImgWidth is not null?data.ImgWidth:276,
+    ImgHeight:data.ImgHeight is not null?data.ImgHeight:480, 
+	}
+%}
+<style>
+  .goods-quantity-container .layui-form-radio {
+    margin-right: 5px;
+  }
+</style>
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>排行榜组件设置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+  <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+    <div class="layui-tab">
+      <ul class="layui-tab-title">
+        <li class="layui-this">模板选择</li>
+        <li>商品数据</li>
+        <li>样式设置</li>
+      </ul>
+      <div class="layui-tab-content layui-tab-content-parent">
+        <div class="layui-tab-item layui-show">
+						<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+						{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				</div>
+        <div class="layui-tab-item">
+          <h3>商品数据来源</h3>
+          <div class="layui-form-item">
+            <input type="radio" name="goodsDataSource" value="1" title="调用{% if siteCode|split('-')[0] == 'zf' %}ZAFUL{% elseif siteCode|split('-')[0] == 'rw' %}RW{% elseif siteCode|split('-')[0] == 'rg' %}RG{% endif %}网站新品榜"{% if data.goodsDataSource|default('1') == '1' %} checked{% endif %}>
+          </div>
+          <div class="layui-form-item">
+            <input type="radio" name="goodsDataSource" value="2" title="调用{% if siteCode|split('-')[0] == 'zf' %}ZAFUL{% elseif siteCode|split('-')[0] == 'rw' %}RW{% elseif siteCode|split('-')[0] == 'rg' %}RG{% endif %}网站热卖榜"{% if data.goodsDataSource|default('1') == '2' %} checked{% endif %}>
+          </div>
+          <div class="layui-form-item">
+            <input type="radio" name="goodsDataSource" value="3" title="调用{% if siteCode|split('-')[0] == 'zf' %}ZAFUL{% elseif siteCode|split('-')[0] == 'rw' %}RW{% elseif siteCode|split('-')[0] == 'rg' %}RG{% endif %}网站折扣榜"{% if data.goodsDataSource|default('1') == '3' %} checked{% endif %}>
+          </div>
+          <div class="layui-form-item">
+            <label class="gs-lable-block">商品分类ID</label>
+            <div class="layui-input-block gs-category-id" style="margin-left: 0px;margin-top: 5px;">
+              <input type="text" name="cateId" class="layui-input" value="{{data.cateId}}">
+            </div>
+          </div>
+        </div>
+        <div class="layui-tab-item">
+          <div class="layui-carousel" id="form_carousel">
+            <div carousel-item>
+              <div>
+                <fieldset class="layui-elem-field">
+                  <legend>基础配置</legend>
+                  <div class="layui-field-box" style="margin-top:10px">
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">下边距(px)</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="boxMarginBottom" autocomplete="off" class="layui-input" value="{{ data.boxMarginBottom | default(40) }}">
+                      </div>
+                    </div>
+                    {# <div class="layui-form-item">
+                      <label class="layui-form-label">背景颜色</label>
+                      <div class="layui-input-block">
+                        <div class="color-picker-selector" data-hidden-name="bgColor"><div style="background-color: {{ data.bgColor | default('#ffffff') }};"></div></div>
+                        <input type="text" class="layui-input" name="bgColor" autocomplete="off" value="{{ data.bgColor | default('#ffffff') }}">
+                      </div>
+                    </div> #}
+                    <div class="layui-form-item goods-quantity-container">
+                      <label class="layui-form-label">商品数量设置</label>
+                      <div class="layui-input-block">
+                        <input type="radio" name="goodsQuantity" value="3" title="一行"{% if data.goodsQuantity|default('3') == '3' %} checked{% endif %}>
+                        <input type="radio" name="goodsQuantity" value="6" title="二行"{% if data.goodsQuantity|default('3') == '6' %} checked{% endif %}>
+                        <input type="radio" name="goodsQuantity" value="9" title="三行"{% if data.goodsQuantity|default('3') == '9' %} checked{% endif %}>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                <fieldset class="layui-elem-field">
+                  <legend>排行榜图标配置</legend>
+                  <div class="layui-field-box" style="margin-top:10px">
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">图标宽度（px）</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="iconWidth" autocomplete="off" class="layui-input" value="{{ data.iconWidth | default(29) }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">图标高度（px）</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="iconHeight" autocomplete="off" class="layui-input" value="{{ data.iconHeight | default(36) }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">第一名图标</label>
+                      <div class="layui-input-block">
+                        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                        <input type="text" name="iconFirstImg" autocomplete="off" class="layui-input" value="{{ data.iconFirstImg }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">第二名图标</label>
+                      <div class="layui-input-block">
+                        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                        <input type="text" name="iconSecondImg" autocomplete="off" class="layui-input" value="{{ data.iconSecondImg }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">第三名图标</label>
+                      <div class="layui-input-block">
+                        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                        <input type="text" name="iconThirdImg" autocomplete="off" class="layui-input" value="{{ data.iconThirdImg }}">
+                      </div>
+                    </div>
+                    {# <div class="layui-form-item">
+                      <label class="layui-form-label">其他名次图标</label>
+                      <div class="layui-input-block">
+                        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                        <input type="text" name="iconOtherImg" autocomplete="off" class="layui-input" value="{{ data.iconOtherImg }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">其他名次文案颜色</label>
+                      <div class="layui-input-block">
+                        <div class="color-picker-selector" data-hidden-name="iconOtherTextColor"><div style="background-color: {{ data.iconOtherTextColor }};"></div></div>
+                        <input type="text" class="layui-input" name="iconOtherTextColor" autocomplete="off" value="{{ data.iconOtherTextColor }}">
+                      </div>
+                    </div> #}
+                  </div>
+                </fieldset>
+                <fieldset class="layui-elem-field">
+                  <legend>销售价设置</legend>
+                  <div class="layui-field-box" style="margin-top:10px">
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">销售价字体大小(px)</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="priceTextFontSize" autocomplete="off" class="layui-input" value="{{ data.priceTextFontSize | default(16) }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">销售价颜色</label>
+                      <div class="layui-input-block">
+                        <div class="color-picker-selector" data-hidden-name="priceDefaultTextColor"><div style="background-color: {{ data.priceDefaultTextColor | default('#333333') }};"></div></div>
+                        <input type="text" class="layui-input" name="priceDefaultTextColor" autocomplete="off" value="{{ data.priceDefaultTextColor | default('#333333') }}">
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                <fieldset class="layui-elem-field">
+                  <legend>已卖提示配置</legend>
+                  <div class="layui-field-box" style="margin-top:10px">
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">已卖提示文字颜色</label>
+                      <div class="layui-input-block">
+                        <div class="color-picker-selector" data-hidden-name="leaderBoardTextColor"><div style="background-color: {{ data.leaderBoardTextColor | default('#ff5058') }};"></div></div>
+                        <input type="text" class="layui-input" name="leaderBoardTextColor" autocomplete="off" value="{{ data.leaderBoardTextColor | default('#ff5058') }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">已卖提示背景颜色</label>
+                      <div class="layui-input-block">
+                        <div class="color-picker-selector" data-hidden-name="btnBgColor"><div style="background-color: {{ data.btnBgColor | default('#ffecec') }};"></div></div>
+                        <input type="text" class="layui-input" name="btnBgColor" autocomplete="off" value="{{ data.btnBgColor | default('#ffecec') }}">
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                {# <div class="text-right">
+                  <button type="button" id="js_moreConfig" class="layui-btn layui-btn-normal layui-btn-sm">更多配置</button>
+                </div> #}
+              </div>
+              <div>
+                {# <div class="layui-tab layui-tab-vertical">
+                  <ul class="layui-tab-title">
+                    <li class="layui-this">排行版图标设置</li>
+                    <li>商品设置</li>
+                    <li>按钮设置</li>
+                  </ul>
+                  <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">排行版名次位置</label>
+                        <div class="layui-input-block">
+                          <input type="radio" name="leaderBoardIconPosition" value="1" title="左上角"{% if data.leaderBoardIconPosition|default('1') == '1' %} checked{% endif %}>
+                          <input type="radio" name="leaderBoardIconPosition" value="2" title="右上角"{% if data.leaderBoardIconPosition|default('1') == '2' %} checked{% endif %}>
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">排行版其他名次文字大小(px)</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="leaderBoardOtherFontSize" autocomplete="off" class="layui-input" value="{{ data.leaderBoardOtherFontSize | default(18) }}">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="layui-tab-item">
+                      
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">鼠标滑过商品阴影颜色</label>
+                        <div class="layui-input-block">
+                          <div class="color-picker-selector" data-hidden-name="goodsItemHoverShadowColor"><div style="background-color: {{ data.goodsItemHoverShadowColor | default('#f78e7d') }};"></div></div>
+                          <input type="text" class="layui-input" name="goodsItemHoverShadowColor" autocomplete="off" value="{{ data.goodsItemHoverShadowColor | default('#f78e7d') }}">
+                        </div>
+                      </div>
+                      
+                    </div>
+                    <div class="layui-tab-item">
+                      
+                      
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">排名信息按钮边框颜色</label>
+                        <div class="layui-input-block">
+                          <div class="color-picker-selector" data-hidden-name="btnDefaultBorderColor"><div style="background-color: {{ data.btnDefaultBorderColor }};"></div></div>
+                          <input type="text" class="layui-input" name="btnDefaultBorderColor" autocomplete="off" value="{{ data.btnDefaultBorderColor }}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">购买文案字体大小(px)</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="buyTextFontSize" autocomplete="off" class="layui-input" value="{{ data.buyTextFontSize | default(20) }}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">购买按钮默认边框颜色</label>
+                        <div class="layui-input-block">
+                          <div class="color-picker-selector" data-hidden-name="buyBtnDefaultBorderColor"><div style="background-color: {{ data.buyBtnDefaultBorderColor }};"></div></div>
+                          <input type="text" class="layui-input" name="buyBtnDefaultBorderColor" autocomplete="off" value="{{ data.buyBtnDefaultBorderColor }}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">购买按钮鼠标滑过边框颜色</label>
+                        <div class="layui-input-block">
+                          <div class="color-picker-selector" data-hidden-name="btnHoverBorderColor"><div style="background-color: {{ data.btnHoverBorderColor }};"></div></div>
+                          <input type="text" class="layui-input" name="btnHoverBorderColor" autocomplete="off" value="{{ data.btnHoverBorderColor }}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">排行版左右切换按钮箭头颜色</label>
+                        <div class="layui-input-block">
+                          <div class="color-picker-selector" data-hidden-name="btnSwitchColor"><div style="background-color: {{ data.btnSwitchColor }};"></div></div>
+                          <input type="text" class="layui-input" name="btnSwitchColor" autocomplete="off" value="{{ data.btnSwitchColor }}">
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+                <div class="text-right">
+                  <button type="button" id="js_baseConfig" class="layui-btn layui-btn-normal layui-btn-sm">基础配置</button>
+                </div>
+              </div> #}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>

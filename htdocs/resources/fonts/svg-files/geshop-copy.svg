@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>svg_16x16_copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="切圖" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="SVG" transform="translate(-74.000000, -24.000000)" fill="#333333" fill-rule="nonzero">
+            <g id="svg_16x16_copy" transform="translate(76.000000, 26.000000)">
+                <path d="M9.29292929,2 L0.707070707,2 C0.316566339,2 4.78229925e-17,2.31656634 0,2.70707071 L0,11.2929293 C4.78229925e-17,11.6834337 0.316566339,12 0.707070707,12 L9.29292929,12 C9.68343366,12 10,11.6834337 10,11.2929293 L10,2.70707071 C10,2.31656634 9.68343366,2 9.29292929,2 Z M11.3636364,0 L3.63636364,0 C3.2849097,-2.15203466e-17 3,0.284909705 3,0.636363636 L3,2.60606061 L4,2.60606061 L4,1 L11,1 L11,8 L9.39393939,8 L9.39393939,9 L11.3636364,9 C11.7150903,9 12,8.7150903 12,8.36363636 L12,0.636363636 C12,0.284909705 11.7150903,2.15203466e-17 11.3636364,0 Z" id="copy"></path>
+            </g>
+        </g>
+    </g>
+</svg>

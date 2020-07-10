@@ -1,0 +1,55 @@
+<!-- embed stylesheet begin -->
+<style type="text/css">
+    {% set classRoot = '.geshop-U000026-default-'~pageInstanceId~'' %}
+    {% set classDialog = '.geshop-U000026-default-'~pageInstanceId~' .geshop-U000026-dialog-rule' %}
+
+    {{ classRoot }} {
+        text-align: center;
+        margin-top: {{ (data.margin_top|default(0)) / 75 }}rem;
+        margin-bottom: {{ (data.margin_bottom|default(0)) / 75 }}rem;
+    }
+
+    {{ classRoot }} .gs-bg-img {
+        margin: 0 auto;
+        {% if data.img_url %}
+            background-image: url({{ data.img_url }});
+        {% else %}
+            background-image: url({{ data.default.b_m_bg }});
+        {% endif %}
+        background-size: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: {{ (data.img_height|default(400)) / 75 }}rem;
+        width: {{ (data.img_width|default(750)) / 75 }}rem;
+        position: relative;
+    }
+    {{ classRoot }} .dialog-btn {
+        position: absolute;
+        top: {{ (data.btn_offset_up|default(40)) / 75 }}rem;
+        right: {{ (data.btn_offset_right|default(40)) / 75 }}rem;
+        width: {{ (data.btn_width|default(88)) / 75 }}rem;
+        height: {{ (data.btn_height|default(38)) / 75 }}rem;
+        line-height: {{ (data.btn_height|default(38)) / 75 }}rem;
+        color: {{ data.btn_foot_color }};
+        {% if data.btn_bg_color is not null %}
+            background-color: {{ data.btn_bg_color }};
+        {% endif %}
+        {% if data.btn_bg_img %}
+            background-image: url({{ data.btn_bg_img }});
+            background-repeat: no-repeat;
+            background-position: center;
+        {% endif %}
+        font-size: {{ (data.btn_title_size|default(24)) / 75 }}rem;
+        border-radius: {{ data.btn_border_radius|default('0px') }};
+        cursor: pointer;
+    }
+
+    {{ classDialog }} {
+        display: none;
+    }
+    .blockPage {
+        border-radius: {{ 18/75 }}rem !important;
+    }
+
+</style>
+<!-- embed stylesheet end -->

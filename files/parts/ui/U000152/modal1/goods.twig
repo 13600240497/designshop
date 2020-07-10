@@ -1,0 +1,161 @@
+<div id="tabsConfig">
+    <div class="layui-form-item" style="margin-bottom: 16px">
+        <div class="gs-lable-block">Tab显示商品数量(建议产品数量4的倍数,不超过100)</div>
+        <div class="layui-input-block">
+            <input type="text" name="productsNum" autocomplete="off" class="layui-input" value="{{ data.productsNum | default(4) }}">
+        </div>
+    </div>
+    <div class="goods-tab-lists radio-tab-true" id="dataIDs">
+        <div id="goodsIDs"> <input type="hidden" name="goodsID" id="goodsIDInput">
+            {% for item in data.goodsID |default([{name : '',ids:''},{name : '',ids:''}])%}
+                <div class="goods-tab-item goods-tab-item{{loop.index}}" >
+                    <div class="goods-tab-box layui-form-item" style="margin-bottom: 16px">
+                        <div class="gs-lable-block title-index">分类{{ loop.index }}</span></div>
+                        <div class="layui-input-block">
+                            <input class="layui-input title-name Unwanted" data-ids="true"  autocomplete="off"  value="{{item.name}}">
+                        </div>
+                    </div>
+                    <div class="goods-tab-box layui-form-item" style="margin-bottom: 16px">
+                        <div class="gs-lable-block">商品数据ID</div>
+                        <div class="layui-input-block">
+                            <input class="layui-input goodsIDitem Unwanted" data-ids="true"  autocomplete="off"  value="{{item.ids}}">
+                        </div>
+                    </div>
+                    <div class="geshop-third-value mr-10">
+									<span class="img-btn class-up">
+										<i class='icon-up'></i>
+										<b class="tips">上移</b>
+									</span>
+                        <span class="img-btn class-down">
+										<i class='icon-down'></i>
+										<b class="tips">下移</b>
+									</span>
+                        <span class="img-btn class-close">
+										<i class='icon-delete' data="{{key+1}}"></i>
+										<b class="tips" >删除</b>
+									</span>
+                        <span class="img-btn class-add">
+										<i class='icon-add'></i>
+										<b class="tips">新增</b>
+									</span>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function(){
+        var idIndex =$(".goods-tab-item").length;
+        var $dataIDs = $('#dataIDs');
+        var $tabsConfig = $('#tabsConfig');
+        var $productsNum = $tabsConfig.find('input[name="productsNum"]');
+
+        /*新增分类 */
+        $("#dataIDs").on('click','.goods-tab-item .class-add',function(e){
+            e.stopPropagation();
+            var $item = $(this).parents('.goods-tab-item'),$tmp = $item.clone().find('input').val('').end();
+            $item.after($tmp);
+            initItemIndex();
+        });
+
+        /*删除 */
+        $("#dataIDs").on('click','.goods-tab-item .class-close',function(e){
+            if($tabsConfig.find('.goods-tab-item').length  === 1){
+                layer.msg('最后一组数据不能删除', { time: 5000 });
+                return;
+            }
+            var $item = $(this).parents('.goods-tab-item');
+            if(!$item.find('.goodsIDitem').val().trim() && !$item.find('.title-name').val().trim()){
+                $item.remove();
+                return;
+            }
+            layer.confirm('删除当前数据不可恢复，确定是否删除?',{icon:3,title:'提示'},function(index){
+                $item .remove();
+                layer.closeAll();
+                initItemIndex();
+            });
+        });
+
+        /*下移 */
+        $("#dataIDs").on('click','.goods-tab-item .class-down',function(e){
+            var $this = $('this'),
+                $tr = $(this).parents('.goods-tab-item:eq(0)'),
+                $trNext = $tr.next();
+            if (0 != $trNext.length) {
+                $trNext.after($tr);
+            }
+            initItemIndex();
+        });
+        /*上移 */
+        $("#dataIDs").on('click','.goods-tab-item .class-up',function(e){
+            var $this = $('this'),
+                $tr = $(this).parents('.goods-tab-item:eq(0)'),
+                $trPrev = $tr.prev();
+            if(0 != $trPrev.length){
+                $trPrev.before($tr);
+            }
+            initItemIndex();
+        });
+
+        function initItemIndex(){
+            $dataIDs.find('.goods-tab-item').each(function(index){
+                $(this).find('.title-index').text('分类' + (index + 1));
+            })
+        }
+        var _inputFirm = function _inputFirm($input,text){
+            $input.val('');
+            var _index = layer.confirm(text || '优惠券ID错误，请正确填写优惠券ID', {
+                btn: ['取消', '确定'],
+                area: '420px',
+                icon: 3,
+                skin: 'element-ui-dialog-class'
+            },function(){
+                $input.focus();
+                layer.close(_index);
+            },function(){
+                $input.focus();
+            });
+        };
+        /*$this.addClass('errorborser')  */
+        $("#dataIDs").on('blur','.goodsIDitem',function(){
+            var $this = $(this);
+            var lang = typeof GESHOP_LANG != 'undefined' ? GESHOP_LANG : 'en';
+            var _val = $(this).val().trim();
+            if(!_val)return;
+            var params = {
+                lang: lang,
+                activityid: _val,
+                pageno: 1,
+                pagesize: 20,
+                pipeline: (typeof GESHOP_PIPELINE != 'undefined' ? GESHOP_PIPELINE : '')
+            };
+            var url = GESHOP_INTERFACE.increasebuylist.url;
+            var content = {content: JSON.stringify(params)};
+            $.ajax({
+                url: url,
+                type: 'GET',
+                dataType: 'jsonp',
+                data: content,
+                success: function(res) {
+                    if(res.code==0){
+                        if(!res.data.activityInfo.id) {
+                            _inputFirm($this,'请输入正确的id');
+                            $this.attr('data-ids',false);
+                        } else{
+                            $this.attr('data-ids',true);
+                        }
+                    }else{
+                        _inputFirm($this,'请输入正确的id');
+                        $this.attr('data-ids',false);
+                    }
+                },error:function(){
+                    _inputFirm($this,'请输入正确的id');
+                    $this.attr('data-ids',false);
+
+                }
+            });
+        });
+    })
+</script>

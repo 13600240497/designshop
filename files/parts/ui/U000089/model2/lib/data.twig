@@ -1,0 +1,44 @@
+{{include ('@app/files/parts/temp/goods_manager.twig')}}
+<section>
+   
+    <div class="nav-list-setting">
+        <legend>导航内容配置</legend>
+        <input type="hidden" data-public-tag="true" name="navList">
+        {% for key, item in data.navList | default([""]) %} 
+          <div class="nav-item">
+           <p class="nav-title">导航{{key+1}}</p>
+            <div class="layui-block">
+                <div class="layui-form-item">
+                    <label class="form-item-label">导航文本</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input Unwanted" name="nav_text" type="text" value="{{item.nav_text}}">
+                    </div>
+                </div> 
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">导航图片</label>
+                    <div class="layui-input-block">
+                        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                        <input class="layui-input Unwanted nav-img" type="text" name="nav_bg{{key+1}}" value="{{item.nav_img}}">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="form-item-label">跳转链接</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="nav_link" class="Unwanted layui-input"  type="text" value="{{item.nav_link}}">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="geshop-third-value">
+              <span class="img-btn up-class"><i class='icon-up'></i><b class="tips">上移</b></span>
+              <span class="img-btn down-class"><i class='icon-down'></i><b class="tips">下移</b></span>
+              <span class="img-btn remove-class"><i class='icon-delete'></i><b class="tips">删除</b></span>
+              <span class="img-btn add-class"><i class='icon-add'></i><b class="tips">新增</b></span>
+            </div>
+          </div>
+          
+          {% endfor %}
+      </div>
+</section>

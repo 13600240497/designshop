@@ -1,0 +1,43 @@
+
+<div data-key="U000065" data-id="{{ pageInstanceId }}" data-static-domain="{{staticDomain}}" id="gs-index-main" data-gid="U000065_mobile_point"
+  class="geshop-component-box component-drag U000065_mobile_point warp-{{ pageInstanceId }}" >
+	<!-- embed stylesheet begin -->
+	<style type="text/css">
+			.warp-{{ pageInstanceId }}{
+				min-height: 60px;
+				width: {% if data.isEditEnv %}100%{% else %}{{ (data.ImgWidth | default(750) / 75) | number_format(3, '.') }}rem{% endif %};
+				{% if data.ImgHeight %}
+					height: {{ (data.ImgHeight / 75) | number_format(3, '.') }}rem;
+				{% else %}
+					min-height:{{(400/75)| number_format(3, '.')}}rem;
+				{% endif %}
+				margin-left: auto;
+				margin-right: auto;·
+				margin-top: {{ ((data.marginTop | default(0)) / 75) | number_format(3, '.') }}rem;
+				margin-bottom: {{ ((data.marginBottom | default(0)) / 75) | number_format(3, '.') }}rem;
+				overflow: hidden;
+			}
+			.warp-{{ pageInstanceId }} .swiper-pagination-bullet {
+				width: .2rem;
+				height: .2rem;
+				border-radius: 50%;
+				background-color: {{ data.bgColorPoint | default('#7f6f70') }};
+				vertical-align: top;
+			}
+			.warp-{{ pageInstanceId }} .swiper-pagination-bullet-active {
+				background-color: {{ data.bgColorPointActive | default('#e33194') }};
+			}
+	</style>
+	<!-- embed stylesheet end -->
+	<div class="swiper-container geshop-index-banner geshop-index-banner-{{ pageInstanceId }}" data-id="{{ pageInstanceId }}" style="height: 100%;">
+		<div class="swiper-wrapper">
+		{% if data.isEditEnv == 1 %}
+			{% include 'edit.twig' with{"data":data} %}
+		{% else %}
+			{% include 'product.twig' with{"data":data} %}
+		{% endif %}
+		</div>
+		<div class="swiper-pagination"></div>
+ </div>
+</div>
+

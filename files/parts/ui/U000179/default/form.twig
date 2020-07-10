@@ -1,0 +1,83 @@
+{#/**
+*@author: 任贸华
+*@date: 2018/12/1 16:31:41
+*@desc: 签到送积分组件form
+*/#}
+{% set pageData = {
+    boxMarginBottom: data.boxMarginBottom|default(32),
+    boxBackgroundImg: data.boxBackgroundImg|default(''),
+    boxBackgroundColor: data.boxBackgroundColor|default('#F8F8F8'),
+    boxTitleTxt: data.boxTitleTxt|default('Battle of R Points'),
+    boxTitleColor: data.boxTitleColor|default('#333333'),
+    ruleTxt:data.ruleTxt|default('Rules'),
+    ruleColor: data.ruleColor|default('#333333'),
+    ruleBackgroundColor: data.ruleBackgroundColor|default('#D8D8D8'),
+    popRuleTxt: data.popRuleTxt|default('
+1.Earn free points every day by checking in. Get 5 points on the first day, if continuous check-in, you can get more points. ;
+2.From the 7th day to check-in continuous, you can get 35 points every day. ;
+3.If you break continuous check-in, the chain will reset to the first day.'),
+		MyPointsBackgroundImg: data.MyPointsBackgroundImg|default(''),
+    MyPointsTxtColor: data.MyPointsTxtColor|default('#333333'),
+    UnSignIntegralStateImg: data.UnSignIntegralStateImg|default(staticDomain ~ '/resources/images/view/unsign.png'),
+    UnSignIntegralNumColor: data.UnSignIntegralNumColor|default('#333333'),
+    UnSignIntegralDayColor: data.UnSignIntegralDayColor|default('#333333'),
+    UnSignBackgroundImg: data.UnSignBackgroundImg|default(''),
+    UnSignButtonTxtColor: data.UnSignButtonTxtColor|default('#FFFFFF'),
+    UnSignButtonBackgroundColor:data.UnSignButtonBackgroundColor|default('#999999'),
+    UnSignButtonTxt: data.UnSignButtonTxt|default('Check In'),
+    SignIntegralStateImg: data.SignIntegralStateImg|default(staticDomain ~ '/resources/images/view/signin.png'),
+    SignIntegralNumColor: data.SignIntegralNumColor|default('#FFFFFF'),
+    SignIntegralDayColor: data.SignIntegralDayColor|default('#333333'),
+    SignBackgroundImg: data.SignBackgroundImg|default(''),
+    SignButtonTxtColor: data.SignButtonTxtColor|default('#FFFFFF'),
+    SignButtonBackgroundColor:data.SignButtonBackgroundColor|default('#D8D8D8'),
+    SignButtonTxt: data.SignButtonTxt|default('Checked In'),
+    boxMarginTop: data.boxMarginTop|default(32),
+    ruleButtonBorderRadius:data.ruleButtonBorderRadius|default('20px 0px 0px 20px'),
+    MyPointsIntegralTxtSize:data.MyPointsIntegralTxtSize|default(50),
+    MyPointsButtonTxtSize:data.MyPointsButtonTxtSize|default(14),
+    MyPointsButtonBorderRadius:data.MyPointsButtonBorderRadius|default(4),
+    IntegralBlockItemWidth:data.IntegralBlockItemWidth|default(90),
+    IntegralBlockItemMarginRight:data.IntegralBlockItemMarginRight|default(36),
+    IntegralBlockItemtxtSize:data.IntegralBlockItemtxtSize|default(30),
+    IntegralBlockItemTxtPaddingTop:data.IntegralBlockItemTxtPaddingTop|default(32),
+    popConfirmButtonTxt:data.popConfirmButtonTxt|default('OK'),
+    popConfirmTxtColor:data.popConfirmTxtColor|default('#333333'),
+    popConfirmButtonTxtColor:data.popConfirmButtonTxtColor|default('#FFFFFF'),
+    popConfirmButtonBackgroundColor:data.popConfirmButtonBackgroundColor|default('#333333'),
+    popConfirmButtonBackgroundImg:data.popConfirmButtonBackgroundImg|default(''),
+    popConfirmBackgroundImg:data.popConfirmBackgroundImg|default(staticDomain ~ '/resources/images/view/bac.png'),
+    signSucceedPop:get_component_trans(lang,'sign_succeed_pop'),
+    signSucceedTitle:get_component_trans(lang,'sign_succeed_title'),
+    signFail:get_component_trans(lang,'sign_fail'),
+    d1:get_component_trans(lang,'d1'),
+    d2:get_component_trans(lang,'d2'),
+    d3:get_component_trans(lang,'d3'),
+    d4:get_component_trans(lang,'d4'),
+    d5:get_component_trans(lang,'d5'),
+    d6:get_component_trans(lang,'d6'),
+    d7:get_component_trans(lang,'d7'),
+    SignImgBoxHeight: data.SignImgBoxHeight|default(108),
+} %}
+<div class='design-form design-form-component design-form-visible banner-timezone-form-container'>
+    {{ include ('@app/files/parts/common/components/formTitle.twig',{options:{title:'签到送积分'}}) }}
+
+    {{ include ('@app/files/parts/common/components/tips.twig',{options:{type:'form'}}) }}
+    <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+        {{ include ('@app/files/parts/common/components/tab.twig',{options:{list:[
+            {
+                title:'模板选择',
+                content:include ('@app/files/parts/common/components/selectTemplate.twig',{ options: { label:'模板选择',name:'tpl_id',list:data.templates.list,active:data.templates.selected }})
+            },
+            {
+                title:'样式配置',
+                content:include ('./form/components/setStyle.twig',{ options: { class:'layui-tab-content-parent'}})
+            }
+        ],class:'layui-tab-content-parent'}}) }}
+    </div>
+</div>
+
+{{ include ('@app/files/parts/common/components/formFooter.twig') }}
+
+{{ include ('@app/files/parts/common/js/form_js.twig') }}
+{{ include ('./form/js/formFooter_js.twig') }}

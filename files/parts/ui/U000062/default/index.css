@@ -1,0 +1,107 @@
+[data-gid="U000062"] .gs-title-wrap{
+	display:table;
+}
+
+[data-gid="U000062"] .gs-title-box{
+	vertical-align: middle;
+  display: table-cell;
+}
+
+[data-gid="U000062"] .index-blogs {
+	width: 1240px;
+	margin: 30px auto;
+  height: 460px;
+  overflow: hidden;
+}
+
+[data-gid="U000062"] .index-blogs .index-blog {
+	display: block;
+	float: left;
+	margin-right: 20px;
+	width: 400px;
+	text-align: center;
+}
+
+[data-gid="U000062"] .index-blog.last-child {
+		margin-right: 0;
+	}
+	
+[data-gid="U000062"] .index-blog:hover .index-blog-content {
+	margin-top: -120px;
+	height: 133px;
+	transition: all .2s linear;
+}
+
+[data-gid="U000062"] .index-blog:hover .index-blog-desc {
+	max-height: 57px;
+	white-space: normal;
+}
+
+[data-gid="U000062"] .index-blog-content {
+	position: relative;
+	z-index: 1;
+	display: inline-block;
+	padding: 25px 40px 27px 40px;
+	width: 220px;
+	height: 95px;
+	background-color: #ffffff;
+	margin-top: -60px;
+	overflow: hidden;
+	transition: all .2s linear;
+}
+
+[data-gid="U000062"] .index-blog-title {
+	display: inline-block;
+	margin-bottom: 10px;
+	font-size: 18px;
+	line-height: 28px;
+	color: #2d2d2d;
+	max-height: 56px;
+	overflow: hidden;
+	font-family: OpenSans-Semibold;
+}
+
+[data-gid="U000062"] .index-blog-desc {
+	display: inline-block;
+	font-size: 13px;
+	line-height: 19px;
+	color: #999999;
+	overflow: hidden;
+	max-height: 19px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 100%;
+}
+
+[data-gid="U000062"] .geshop-form-content {
+	padding-left: 20px;
+}
+
+[data-gid="U000062"] .geshop-title {
+	font-size: 16px;
+	color: #333333;
+	margin-top: 16px;
+}
+
+[data-gid="U000062"] .label-form-item {
+	font-size: 14px;
+	color: #333333;
+}
+
+[data-gid="U000062"] .rest-input {
+	margin-left: 0px;
+	margin-top: 5px;
+}
+
+[data-gid="U000062"] .add-form-button span {
+	display: block;
+	width: 116px;
+	height: 36px;
+	background: #34A8FF;
+	text-align: center;
+	line-height: 36px;
+	font-size: 14px;
+	color: #FFFFFF;
+	cursor: pointer;
+	margin-top: 24px;
+}

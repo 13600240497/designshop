@@ -1,0 +1,19 @@
+{# rg 组件背景颜色配置 #}
+{% set components = [
+    {
+        label: '库存告急是否显示',
+        type: 'radio',
+        default: 1,
+        name: 'stock_urgent',
+        options: [
+        { label: '是', value: '1' },
+        { label: '否', value: '2' },
+    ]
+    }
+] %}
+
+<fieldset class="layui-elem-field">
+    <div class="layui-field-box">
+        {{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}
+    </div>
+</fieldset>

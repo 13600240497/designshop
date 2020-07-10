@@ -1,0 +1,46 @@
+
+
+<div data-key="U000058" data-id="{{ pageInstanceId }}" data-gid="U000058_fullScreen" data-static-domain="{{staticDomain}}" class="geshop-component-box component-drag gs-index-main wrap-U000058_fullScreen wrap-{{ pageInstanceId }}">
+	<!-- embed stylesheet begin -->
+	<style type="text/css">
+		.wrap-{{ pageInstanceId }}{
+			height: {{data.ImgHeight | default(600)}}px;
+			margin-top: {{ data.marginTop | default(0) }}px;
+			margin-bottom: {{ data.marginBottom | default(0) }}px;
+		}
+	</style>
+  <!-- embed stylesheet end -->
+	
+	{% if data.imgItem %}
+	<div class="geshop swiper-container geshop-index-banner geshop-swiper-container-{{ pageInstanceId }}" data-id="{{ pageInstanceId }}">
+		<div class="swiper-wrapper">
+			{% for item in data.imgItem %}
+			{% if loop.index == 1 %}
+			<div class="geshop-swiper-slide swiper-slide">
+				<a href="{{item.url}}" class="logsss_event" style="height:{{data.ImgHeight}}px;"
+					data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ item.img }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+					<div class="ge-banner-img" style="background:url({{item.img}}) no-repeat center center;height:{{data.ImgHeight}}px;" data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ item.img }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }"></div>
+				</a>
+			</div>
+			{% else %}
+			<div class="geshop-swiper-slide swiper-slide">
+				<a href="{{item.url}}" class="logsss_event" style="height:{{data.ImgHeight}}px;"
+					data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ item.img }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+					<div class="ge-banner-img" data-src="{{item.img}}" style="background:url(data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=) no-repeat center center;height:{{data.ImgHeight}}px;"
+						data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ item.img }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }"></div>
+				</a>
+			</div>
+			{% endif %}
+			{% endfor %}
+		</div>
+		<div class="geshop swiper-button-prev" style='display: none;'></div>
+		<div class="geshop swiper-button-next" style='display: none;'></div>
+		<div class="swiper-pagination"></div>
+	</div>
+	{% else %}
+		
+		<div class="geshop swiper-container geshop-index-banner" style="height:{{data.ImgHeight | default(600)}}px;{% if data.default.bannerView is not empty %}background-image:url('{{ data.default.bannerView }}');background-repeat:no-repeat;background-position: center center;background-size:350px 270px;{% endif %}background-color:#EDEDED;"></div>
+		
+	{% endif %}
+</div>
+

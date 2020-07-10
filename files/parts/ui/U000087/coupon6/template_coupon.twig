@@ -1,0 +1,183 @@
+<div class="geshop-coupon-style4
+    <%# if (d.type == 1) { %>is-percent<%# } %>
+    <%# if (d.type == 2) { %>is-reduction<%# } %>
+    <%# if (d.resource == 0) { %>is-all-category<%# } %>
+    <%# if (d.resource == 1) { %>is-category<%# } %>
+    <%# if (d.resource == 2) { %>is-sku<%# } %>
+    <%# if (d.free_shipping == 1) { %>is-free-shipping<%# } %>
+    <%# if (d.receivedCount >= 1) { %>is-get<%# } %>
+    ">
+    <div class="gc4-l">
+        <div class="gc4-free-tag">{{ get_component_trans(lang,'free_shipping') }}</div>
+        <div class="coupon-container ">
+            <div class="top-info clearfix">
+                <%# if (d.resource == 2) { %>
+                    <div class="gc4-product-image">
+                        <span><a href="<% d.product_link %>"><img src="<% d.product_image %>" /></a></span>
+                    </div>
+                    <div class="gc4-right-info">
+
+                        <p>
+
+                            <span class="coupon-value">
+                                {% if lang == 'fr' %}<span class="gc4-coupon-value-fr">-</span>{% endif %}
+                                <span class="gc4-coupon-sign currency">$</span>
+                                <span class="gc4-coupon-value"><% d.offerAmount %></span>
+                                <span class="gc4-coupon-sign percent">%</span>
+                            </span>
+
+                            <%# if (d.thresholdAmount > 0) { %>
+                                {# 满减门槛 #}
+                                    <span class="coupon-condition">{{ get_component_trans(lang,'coupon_off3') }}</span>
+
+                            <%# } else  { %>
+                                 <%# if (d.type == 1 || d.type == 2) { %>
+                                    <span class="coupon-condition">{{ get_component_trans(lang,'coupon_off_only') }}</span>
+                                 <%# }else{ %>
+                                {# 0门槛直减 #}
+                                    <span class="coupon-condition">{{ get_component_trans(lang,'coupon_off2') }}</span>
+                                <%# } %>
+                            <%# } %>
+
+
+                        </p>
+
+
+                    </div>
+
+                <%# } else { %>
+                    {% if lang == 'fr' %}<span class="coupon-value-fr">-</span>{% endif %}
+                    <span class="coupon-value">
+                        <span class="gc4-coupon-sign currency">$</span>
+                        <span class="gc4-coupon-value"><% d.offerAmount %></span>
+                        <span class="gc4-coupon-sign percent">%</span>
+                    </span>
+                <%# } %>
+
+
+                 {# <%# if (d.type == 1 && d.resource == 0) { %>
+                    <span class="coupon-condition gc4-title"><span>{{ get_component_trans(lang,'off') }}</span></span>
+                <%# }else{ %>
+                    <span class="coupon-condition gc4-title"><span>{{ get_component_trans(lang,'coupon_off2') }}</span></span>
+                <%# } %> #}
+
+                <span class="coupon-condition">
+                 <%# if (d.resource != 2) { %>
+
+                    <%# if (d.thresholdAmount > 0 ) { %>
+                        {# 满减门槛 #}
+                            <span>{{ get_component_trans(lang,'coupon_off3') }}</span>
+
+                     <%# } else  { %>
+
+                         <%# if (d.type == 1 || d.type == 2) { %>
+                            <span>{{ get_component_trans(lang,'coupon_off_only') }}</span>
+                            <%# }else{ %>
+                        {# 0门槛直减 #}
+                            <span>{{ get_component_trans(lang,'coupon_off2') }}</span>
+                        <%# } %>
+                    <%# } %>
+
+                  <%# } %>
+
+                </span>
+            </div>
+
+            <%# if (d.integral > 0 && d.resource != 2) { %>
+                <p class="coupon-score">*{{ get_component_trans(lang,'coupon_points') }}</p>
+            <%# } %>
+            <%# if (d.resource == 2) { %>
+                <%# if (d.integral > 0) { %>
+                    <p class="coupon-score">*{{ get_component_trans(lang,'coupon_points') }}</p>
+                <%# } %>
+                <p class="justfor">*{{ get_component_trans(lang,'coupon_justfor') }}<% d.product_sku %></p>
+                <%# if (d.limited == 1) { %>
+                    <p class="gc4-coutdown-layer">
+                        <span class="countdown-ready-label">*{{ get_component_trans(lang,'start_in') }}</span>
+                        <span class="countdown-end-label">*{{ get_component_trans(lang,'end_in') }}</span>
+                        <span class="countdown-number">
+                            <span class="countdown-number-hour"></span>{{ get_component_trans(lang,'hour') }}
+                            :
+                            <span class="countdown-number-minute"></span>{{ get_component_trans(lang,'minute') }}
+                            :
+                            <span class="countdown-number-second"></span>{{ get_component_trans(lang,'second') }}
+                        </span>
+                    </p>
+                <%# } %>
+            <%# } else { %>
+                <div class="gc4-title coupon_category_only" data-category-name>*{{ get_component_trans(lang,'coupon_category_only_m') }}</div>
+
+                <%# if (d.resource == 0 && d.type == 1 ) { %>
+                    <div class="gc4-title coupon-site" data-all-category>*{{ get_component_trans(lang,'coupon_category_percent_m') }}</div>
+                <%# }else{ %>
+                    <div class="gc4-title coupon-site" data-all-category>*{{ get_component_trans(lang,'coupon_all_category_m') }}</div>
+                <%# }  %>
+
+
+            <%# } %>
+
+            <p class="coupon-valid">*{{ get_component_trans(lang,'coupon_valid') }}</p>
+            <%# if (d.limited == 1 && d.resource != 2) { %>
+                <p class="gc4-coutdown-layer">
+                    <span class="countdown-ready-label">*{{ get_component_trans(lang,'start_in') }}</span>
+                    <span class="countdown-end-label">*{{ get_component_trans(lang,'end_in') }}</span>
+                    <span class="countdown-number">
+                        <span class="countdown-number-hour"></span>{{ get_component_trans(lang,'hour') }}
+                        :
+                        <span class="countdown-number-minute"></span>{{ get_component_trans(lang,'minute') }}
+                        :
+                        <span class="countdown-number-second"></span>{{ get_component_trans(lang,'second') }}
+                    </span>
+                </p>
+            <%# } %>
+        </div>
+
+    </div>
+    <div class="gc4-r
+        <%# if (d.leftCount > 0) { %>
+            <%# if (d.receivedCount <= 0) { %>
+                notdone
+            <%# } else { %>
+                canUse
+            <%# } %>
+
+        <%# } else { %>
+            <%# if (parseInt(d.receivedCount) >= 1) { %>
+                canUse
+            <%# } else { %>
+                unable
+             <%# } %>
+        <%# } %>
+    ">
+        <div class="gc4-circle-process geshop-js-circle" data-percent="10">
+            <div class="wrapper right">
+                <div class="circle rightcircle" style="transform: rotate(-135deg);"></div>
+            </div>
+            <div class="wrapper left">
+                <div class="circle leftcircle" style="transform: rotate(-135deg);"></div>
+            </div>
+            <p class="percent{% if data.left_isshow == 0 %} noleft {% endif %}">
+                <% d.percent %>%<br>
+                {% if data.left_isshow == 1 %}
+                    {{ get_component_trans(lang,'coupon_left') }}
+                {% endif %}
+            </p>
+        </div>
+        {# <div class="gc4-coupon-code"><% d.coupon_code %></div>
+        <div class="gc4-get-message"><a href="<% d.coupon_url %>">{{ get_component_trans(lang,'received') }}</a></div> #}
+        <%# if (d.leftCount > 0) { %>
+            <%# if (d.receivedCount <= 0) { %>
+            <div class="gc4-get-btn" data-type="ready"><span>{{ get_component_trans(lang,'coupon_coming_soon') }}</span></div>
+            <div class="gc4-get-btn" data-type="canGet" data-event="getCoupon"><span>{{ get_component_trans(lang,'coupon_can_get') }}</span></div>
+            <div class="gc4-get-btn" data-type="ended"><span>{{ get_component_trans(lang,'btn_ended') }}</span></div>
+            <%# } %>
+            <div class="gc4-get-btn" data-type="canUse" data-url="<% d.use_link %>" data-event="useCoupon"><span>{{ get_component_trans(lang,'coupon_can_use') }}</span></div>
+        <%# } else { %>
+            <%# if (parseInt(d.receivedCount) >= 1) { %>
+                <div class="gc4-get-btn" data-type="canUse" data-url="<% d.use_link %>" data-event="useCoupon"><span>{{ get_component_trans(lang,'coupon_can_use') }}</span></div>
+            <%# } else { %>
+                <div class="gc4-get-btn" data-type="unable" style="display: table;"><span>{{ get_component_trans(lang,'coupon_unable') }}</span></div>
+            <%# } %>
+        <%# } %>
+    </div>
+</div>

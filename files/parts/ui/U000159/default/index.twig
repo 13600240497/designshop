@@ -1,0 +1,144 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+{% set suffix='px'%}
+
+{% if data.colNum == '1'%}
+    {% set colClass = liCol[0] %}
+{% elseif data.colNum == '2' %}
+    {% set colClass = liCol[1] %}
+{% elseif data.colNum == '3' %}
+    {% set colClass = liCol[2] %}
+{% elseif data.colNum == '4' %}
+    {% set colClass = liCol[3] %}
+{% elseif data.colNum == '5' %}
+    {% set colClass = liCol[4] %}
+{% else %}
+    {% set colClass = liCol[3] %}
+{% endif %}
+
+{%
+    set pageData = {
+		price_ft_weight:data.price_ft_weight|default(0),
+		base_bg_shadow:data.base_bg_shadow|default(1),
+		lang:data.lang|default('en'),
+		page_point_type:'landPage',
+		imgSrc:'https://gloimg.gbtcdn.com/soa/gb/pdm-product-pic/Electronic/2018/01/19/goods_thumb_220-v2/20180119095740_68364.jpg',
+		base_magin_top: data.base_magin_top|default(0),
+		base_magin_bottom: data.base_magin_bottom|default(32)~suffix,
+		base_bgc:data.base_bgc is not null ? data.base_bgc:'#FFFFFF',
+		discount_bgc:data.discount_bgc is not null ? data.discount_bgc:'#FF8A00',
+		discount_ftc:data.discount_ftc is not null ? data.discount_ftc:'#FFFFFF',
+		buy_ftc:data.buy_ftc is not null ? data.buy_ftc:'#FFFFFF',
+		buy_bgc:data.buy_bgc is not null ? data.buy_bgc:'#FF8A00',
+		buy_hover_bgc:data.buy_hover_bgc is not null ? data.buy_hover_bgc:'#FFC556',
+		buy_hover_ftc:data.buy_hover_ftc is not null ? data.buy_hover_ftc:'#FFFFFF',
+		buy_cart_bgc:data.buy_cart_bgc is not null ? data.buy_cart_bgc:'#CC0000',
+		buy_cart_hover_bgc:data.buy_cart_hover_bgc is not null ? data.buy_cart_hover_bgc:'#E00101',
+		price_fts:data.price_fts|default(22)~suffix,
+		price_color:data.price_color is not null ? data.price_color:'#f30240',
+		market_active:data.market_active|default(1),
+		discount_height:data.discount_height|default(50)~suffix,
+		discount_width:data.discount_width|default(50)~suffix,
+		discount_fts:(data.discount_fts|default(16))~suffix,
+		discount_off_fts:data.discount_off_fts|default(12),
+		discount_right:(data.discount_right|default(10))~suffix,
+		discount_top:(data.discount_top|default(10))~suffix,
+		discount_bgImage:data.discount_bgImage,
+		buy_text:data.buy_text,
+		buy_fts:data.buy_fts|default(18)~suffix,
+		discount_active:data.discount_active|default(0),
+		server_label_active: data.server_label_active|default(0),
+		goods_title_active:data.goods_title_active|default(1),
+		market_active:data.market_active|default(1),
+		down_active:down_active|default(0),
+		wrapperWidth:1200,
+		baseWidth:1000,
+		col:4,
+		marginRight:12,
+		base_view_more_url: data.base_view_more_url is not null ? data.base_view_more_url : '',
+		view_more_ftc: data.view_more_ftc is not null ? data.view_more_ftc: "#333",
+    	view_more_hover_ftc: data.view_more_hover_ftc is not null ? data.view_more_hover_ftc: "#333",
+    	view_more_fts: data.view_more_fts|default(20),
+		view_more_bold: data.view_more_bold|default(1),
+		goods_img_one: data.goods_img_one|default(0)
+    }
+%}
+
+{% set liWidth = (pageData.baseWidth-3*pageData.marginRight)/pageData.col %}
+
+<div 
+    class="geshop-component-box component-drag geshop-component-goods component-sync clearfix geshop-gb-component ui-{{ pageInstanceId }}" 
+	data-gid="U000159_default" 
+	data-key="U000159" 
+	data-id="{{ pageInstanceId }}" 
+	data-editenv="{{data.isEditEnv}}" 
+	data-static-domain="{{staticDomain}}" 
+	data-vis="{{liLength}}" 
+	data-lang="{{lang}}"
+	style="{% if data.base_magin_top %}margin-top:{{data.base_magin_top }}px;{% endif %}{% if data.boxMarginBottom %}margin-bottom:{{data.boxMarginBottom}}px;{% endif %}"
+>
+{{ include('style.twig') }}
+	<div class="geshop-col-12">
+		<div 
+			class="gb_goodsWrap gb_wrapper_common" 
+			data-skus="{{data.goodsSKUList}}" 
+			data-isEditEnv="{{data.isEditEnv}}" 
+			style="margin:auto;{% if data.baseFtFa %}font-family:{{data.baseFtFa}};{% endif %}padding:50px 0 38px;"
+		>
+				{# felix #}
+			<ul class="clearfix gb-list-default gb-global-wrapper" style="width:{{pageData.baseWidth}}{{suffix}}">
+				{% for key,item in data.goodsInfo|default(0..3)%}
+				{% set left_number =  (item.stock_num- item.activity_stock)>0?(item.stock_num - item.activity_stock):0 %}
+				{% set goodsStatus =  left_number == 0 and data.goodsInfo and pageData.limit_active!='1'? 'good_soldOut' :'goodsBuyPro'%}
+				{% set isLimitGoods = pageData.down_active == '1' ? 'is_goods_limit' : 'not_goods_limit'%}
+				{% set isPriceEqual =  item.market_price == item.shop_price? 'visible-hide':''%}
+				{# 专题页/落地页 #}
+				{% set pageWrapTrack = page_point_type|default('activityPage') == 'activityPage' ? 'track-goodsItem' : 'subjectGoodItem'%}
+				{# felix #}
+				<li class="gs-list-item gs-subjectGoodItem {{pageWrapTrack}} {{goodsStatus}} {{isLimitGoods}}" data-track-key="{{item.goods_sn}}"
+				style="width:{{liWidth}}px;margin-bottom:12px">
+					<div class="item-content">
+						{# 倒计时配置 #}
+						{{include ('@app/files/parts/temp/gb/common/default_pc/goodDown.twig')}}
+						<div class="gs-goods-wrap pr">
+							{% set img_src =  data.goodsImgObj[item.goods_sn]?data.goodsImgObj[item.goods_sn]:item.goods_img %}
+							{% set img_common_height = pageData.goods_img_one == '0'?'220px':'322px'%}
+							{# 商品图片配置 #}
+							<a href="{{item.url_title}}" target="_special" class="js-link {% if img_src|default('') == '' %}has-cloth-not{% endif %} {% if pageData.goods_img_one == '1' %}gs-goods-item-common{% endif %}">
+								{% if data.isEditEnv == '1' and data.goodsInfo %}
+									<img class="js-lazyload" src="{{img_src}}" style="width:225px!important;height:{{img_common_height}}!important;" data-lazy="{{img_src}}" >
+								{% elseif data.isEditEnv == '0' and data.goodsInfo %}
+									<img class="js-lazyload" src="{{data.default.good_gb}}" style="width:225px!important;height:{{img_common_height}}!important;" data-lazy="{{img_src}}" title="{{item.goods_title}}" alt="{{item.goods_title}}">
+								{% else %}
+									<img class="gs-default-clothes" src="{{data.default.clothes}}" class="gs-default-clothes" style="width:225px!important;height:{{img_common_height}}!important;">
+								{% endif %}
+								<i class="gs-goods-status"><span>{{gb_component_trans(lang , 'sold_out')}}</span></i>
+							</a>
+							{# 折扣标配置 #}
+							{{include ('@app/files/parts/temp/gb/common/default_pc/goodDiscount.twig')}}
+						</div>
+						<div class="gs-goods-desc">
+							{# 商品标题配置 #}
+								{{include ('@app/files/parts/temp/gb/common/default_pc/goodTitle.twig')}}
+
+							{# 商品价格配置 #}
+								{{include ('@app/files/parts/temp/gb/common/default_pc/goodPrice.twig')}}
+						</div>
+						{# 库存配置start #}
+							{{include ('@app/files/parts/temp/gb/common/default_pc/goodLimit.twig')}}
+					{# 库存配置end #}
+					</div>
+					{# 商品购买配置 #}
+					{{include ('@app/files/parts/temp/gb/common/default_pc/goodBuy.twig')}}
+				</li>
+			{% endfor %}
+			</ul>
+			{# PO：新增View more链接 GMT+8 2018-12-18 10:20:12 #}
+			{% if pageData.base_view_more_url %}
+			<div class="goods_viewMoreContainer view-more-box">
+				<a class="goods-view-more view-more view-more-btn" style="{% if pageData.view_more_bold == "1" %} font-weight: 600 {% endif %}" href="{{ pageData.base_view_more_url }}" target="_blank">{{ gb_component_trans(lang , 'view_more') }} ></a>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+

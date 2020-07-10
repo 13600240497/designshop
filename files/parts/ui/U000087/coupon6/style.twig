@@ -1,0 +1,295 @@
+<!-- embed stylesheet begin -->
+<style type="text/css">
+	{% set classSapce = '.geshop-U000087-coupon6.wrap_'~pageInstanceId %}
+	{% set unit = 'px' %}
+	{% set rem = 'rem' %}
+	{{ classSapce }} {
+		margin-top: {{ data.component_margin_top | default(0) / 75 ~ rem }};
+		margin-bottom: {{ data.component_margin_bottom | default(32) / 75 ~ rem }};
+		overflow: hidden;
+	}
+	{{ classSapce }} .geshop-coupon-style4{
+		height: {{data.component_height | default(270)/75 ~ rem}};
+	}
+
+	{# 左侧 #}
+	{{ classSapce }} .geshop-coupon-style4 .gc4-l {
+		border-radius: {{ data.coupon_radius | default('8px 8px 8px 8px') }};
+		{% if data.coupon_bgImage is empty %}
+			background: {{ data.coupon_bgColor | default('#fafafa') }};
+		{% else %}
+			background-image: url('{{ data.coupon_bgImage }}');
+			background-size: 100% 100%;
+		{% endif %}
+	}
+	{{ classSapce }} .geshop-coupon-style4.is-get .gc4-l {
+		{% if data.coupon_get_bgImage is not empty %}
+			background-image: url('{{ data.coupon_get_bgImage }}');
+			background-size: 100% 100%;
+		{% endif %}
+	}
+
+	{{ classSapce }} .coupon-container{
+
+		line-height: {{data.coupon_title_lh | default(18) /37.5 ~ rem}};
+	}
+	{{ classSapce }} .coupon-container .coupon-condition span,{{ classSapce }} .coupon-container .coupon-condition {
+		color: {{data.coupon_info_color | default('#333')}};
+		background: {{data.coupon_condition_bgcolor | default('#eeeeee')}};
+		font-size: {{data.coupon_condition_fontsize | default(34) /75 ~ rem}};
+	}
+	{{ classSapce }} .coupon-container .top-info{
+			margin-top: {{data.coupon_title_pt | default(28) /37.5 }}rem;
+			border-bottom: dashed 1px {{data.line_color | default('#cccccc')}};
+	}
+	{{ classSapce }} .coupon-container .coupon-valid{
+		color: {{data.coupon_validate_color | default('#333333')}};
+		font-size: {{data.coupon_validate_fontsize | default(24) /75 }}rem;
+	}
+
+	{{ classSapce }} .coupon-container .coupon-score{
+			color: {{data.score_color | default('#333333')}};
+			font-size: {{data.score_fontsize | default(24) /75 }}rem;
+	}
+
+	{{ classSapce }} .coupon_category_only{
+		color: {{data.notype_color | default('#333333')}};
+		font-size: {{data.coupon_type_fontsize | default(24) /75}}rem;
+	}
+	{{ classSapce }} .coupon_category_only a {
+		color: {{data.type_color | default('#333333')}};
+	}
+
+	{{ classSapce }} .coupon-value, {{ classSapce }} .coupon-value-fr{
+		color: {{ data.coupon_value_color | default('#333333') }};
+		font-size: {{ data.coupon_value_fontsize | default(72) / 37.5 / 2 }}rem;
+
+	}
+
+	{{ classSapce }} .gc4-coupon-sign {
+		{#
+			color: {{ data.coupon_value_color | default('#333333') }};
+			font-size: {{ data.coupon_value_sign_fontsize | default(24) / 37.5 / 2 }}rem;
+			height: {{ data.coupon_value_sign_fontsize | default(24) / 37.5 / 2 }}rem;
+			line-height: {{ data.coupon_value_sign_fontsize | default(24) / 37.5 / 2 }}rem;
+		#}
+	}
+
+
+
+	{{ classSapce }} .gc4-desc p {
+		color: {{ data.coupon_desc_color | default('#333333') }};
+		{# font-size: {{ data.coupon_desc_fontsize | default(24) / 75 ~ rem }}; #}
+		line-height: {{ data.coupon_desc_fontsize | default(24) / 75 * 1.4 }} rem;
+	}
+
+	{{ classSapce }} .gc4-coutdown-layer span {
+		color: {{ data.coupon_countdown_color | default('#333333') }};
+		font-size: {{ data.coupon_countdown_fontsize | default(24) / 75 ~ rem }};
+		line-height: {{ data.coupon_countdown_fontsize | default(24) / 75 * 1.4  }}rem;
+	}
+
+	{{ classSapce }} .gc4-free-tag {
+		color: {{ data.free_shipping_color | default('#333333') }};
+		background: {{ data.free_shipping_bgColor | default('#D8D8D8') }};
+	}
+
+	{# 右侧 #}
+	{{ classSapce }} .geshop-coupon-style4 .gc4-r {
+		width: {{ data.btnarea_width | default(242) / 37.5 / 2 ~ rem }};
+		border-radius: {{ data.right_radius | default('8px 8px 8px 8px') }};
+		{% if data.right_btn_bgImage is not empty %}
+			background-image: url('{{ data.right_btn_bgImage }}');
+			background-size: 100% 100%;
+			border-radius: 0px;
+		{% endif %}
+	}
+	{{ classSapce }} .geshop-coupon-style4 .gc4-r:before {
+		border-color: {{ data.coupon_solid_color | default('#979797') }};
+	}
+
+	{# 未领取 #}
+	{{ classSapce }} .is-countStart .gc4-r{
+		background-color: {{data.notget_bgColor | default('#d8d8d8')}};
+		background-image: url({{data.notget_bgImage}});
+	}
+	{{ classSapce }} .is-countStart .gc4-r .gc4-get-btn{
+		color: {{data.notget_btn_color | default('#ffffff')}};
+		background-color: {{data.notget_btn_bgColor | default('#333333')}};
+	}
+
+
+	{# 非进行中 #}
+	{{ classSapce }} .is-countReady .gc4-r, {{ classSapce }} .is-countEnd .gc4-r{
+		background-color: {{data.notdone_bgColor | default('#d8d8d8')}};
+		background-image: url({{data.notdone_bgImage}});
+
+	}
+
+	{{ classSapce }}  .is-countReady .gc4-r .gc4-get-btn, {{ classSapce }}  .is-countEnd .gc4-r .gc4-get-btn{
+		color: {{data.notdone_btn_color | default('#ffffff')}};
+		background-color: {{data.notdone_btn_bgColor | default('#c8c8c8')}};
+	}
+
+	{# 无资源 #}
+	{{ classSapce }} .geshop-coupon-style4 .gc4-r.unable{
+		background-color: {{data.nores_bgColor | default('#C6C6C6')}};
+		background-image: url({{data.nores_bgImage}});
+
+	}
+
+	{{ classSapce }} .geshop-coupon-style4 .gc4-r.unable .gc4-get-btn{
+		color: {{data.nores_btn_color | default('#ffffff')}};
+		background-color: {{data.nores_btn_bgColor | default('#c6c6c6')}};
+	}
+
+
+
+	{# 可使用 #}
+	{{ classSapce }} .is-get .gc4-r{
+		background-color: {{data.able_bgColor | default('#d8d8d8')}};
+		background-image: url({{data.able_bgImage}});
+	}
+
+	{{ classSapce }} .is-countStart.is-get .gc4-r  .gc4-get-btn{
+		color: {{data.able_btn_color | default('#ffffff')}};
+		background-color: {{data.able_btn_bgColor | default('#333333')}};
+	}
+
+	{{ classSapce }} .geshop-coupon-style4 .gc4-circle-process .percent {
+		color: {{ data.stock_tips_color | default('#333333') }};
+	}
+
+	{{ classSapce }} .geshop-coupon-style4 .unable .gc4-circle-process .percent {
+		color: {{ data.nostock_tips_color | default('#333333') }};
+	}
+
+	{{ classSapce }} .gc4-circle-process .circle.leftcircle {
+		border-color: {{ data.stock_limit_bgColor | default('#ffffff') }};
+		border-bottom-color: {{ data.stock_total_bgColor | default('#979797') }};
+		border-left-color: {{ data.stock_total_bgColor | default('#979797') }};
+	}
+
+	{{ classSapce }} .gc4-circle-process .circle.rightcircle {
+		border-color: {{ data.stock_limit_bgColor | default('#ffffff') }};
+		border-top-color: {{ data.stock_total_bgColor | default('#979797') }};
+		border-right-color: {{ data.stock_total_bgColor | default('#979797') }};
+	}
+
+	{{ classSapce }} .gc4-coupon-code {
+		color: {{ data.right_code_color | default('#333333') }};
+	}
+
+	{{ classSapce }} .gc4-get-message a {
+		color: {{ data.right_use_link_color | default('#333333') }};
+	}
+
+	{{ classSapce }} .gc4-get-btn {
+		font-size: {{ data.btn_fontsize | default(24) / 75 ~ rem }};
+		width: {{ data.btn_width | default(210) / 75 ~ rem }};
+		height: {{ data.btn_height | default(46) / 75 ~ rem }};
+		line-height: {{ data.btn_height | default(46) / 75 ~ rem }};
+		border-radius: {{ data.btn_radius | default('2') }}px;
+	}
+
+	{{ classSapce }} .gc4-get-btn[data-type="ready"] {
+		color: {{ data.right_unable_color | default('#FFFFFF') }};
+		background: {{ data.right_unable_bgColor | default('#c1c1c1') }};
+		margin-top:{{data.btn_mt | default(16)/75}}rem;
+		{% if data.right_unable_bgImage is not empty %}
+			background-image: url('{{ data.right_unable_bgImage }}');
+			background-size: 100% 100%;
+			border-radius: 0px;
+		{% endif %}
+	}
+
+	{{ classSapce }} .gc4-get-btn[data-type="ended"] {
+		color: {{ data.right_unable_color | default('#FFFFFF') }};
+		background: {{ data.right_unable_bgColor | default('#c1c1c1') }};
+		{% if data.right_unable_bgImage is not empty %}
+			background-image: url('{{ data.right_unable_bgImage }}');
+			background-size: 100% 100%;
+			border-radius: 0px;
+		{% endif %}
+	}
+
+	{{ classSapce }} .gc4-get-btn[data-type="unable"] {
+		color: {{ data.right_unable_color | default('#FFFFFF') }};
+		background: {{ data.right_unable_bgColor | default('#c1c1c1') }};
+		{% if data.right_unable_bgImage is not empty %}
+			background-image: url('{{ data.right_unable_bgImage }}');
+			background-size: 100% 100%;
+			border-radius: 0px;
+		{% endif %}
+	}
+
+	{{ classSapce }} .gc4-get-btn[data-type="canUse"] {
+		color: {{ data.right_able_color | default('#FFFFFF') }};
+		background: {{ data.right_able_bgColor | default('#333333') }};
+		{% if data.right_able_bgImage is not empty %}
+			background-image: url('{{ data.right_able_bgImage }}');
+			background-size: 100% 100%;
+			border-radius: 0px;
+		{% endif %}
+	}
+
+	{{ classSapce }} .gc4-get-btn[data-type="canGet"] {
+		color: {{ data.right_able_color | default('#FFFFFF') }};
+		background: {{ data.right_able_bgColor | default('#333333') }};
+		{% if data.right_able_bgImage is not empty %}
+			background-image: url('{{ data.right_able_bgImage }}');
+			background-size: 100% 100%;
+			border-radius: 0px;
+		{% endif %}
+	}
+
+	{{ classSapce }} .gc4d1-wrapper {
+		width: {{ data.dialog_width | default(640) / 75 ~ rem }};
+		height: {{ data.dialog_height | default(454) / 75 ~ rem }};
+		margin-left: -{{ data.dialog_width | default(640) / 75 / 2 ~ rem }};
+		margin-top: -{{ data.dialog_height | default(454) / 75 / 2 ~ rem }};
+	}
+
+	{{ classSapce }} .gc4d1-head {
+		font-size: {{ data.dialog_coupon_title | default(42) / 75 ~ rem }};
+		color: {{ data.dialog_coupon_color | default('#333333') }};
+	}
+
+	{{ classSapce }} .gc4d1-coupon {
+		background-size: 100% 100%;
+		{% if data.dialog_coupon_bgImage is empty %}
+			background-image: url('{{ data.default.coupon_bg_wap }}');
+		{% else %}
+			background-image: url('{{ data.dialog_coupon_bgImage }}');
+		{% endif %}
+	}
+
+	{{ classSapce }} .gc4d1-wrapper .get-success{
+		font-size: {{ data.dialog_success_fontSize | default(42) / 75 ~ rem }};
+		color: {{ data.dialog_success_fontColor | default('#333333') }};
+	}
+
+	{{ classSapce }} .gc4d1-wrapper .user-btn{
+		color: {{data.usebtn_fontColor | default('#ffffff')}};
+		background-color: {{data.usebtn_bgColor | default('#333333')}};
+	}
+
+	{{ classSapce }} .gc4d1-wrapper .close-btn{
+		color: {{data.closebtn_fontColor | default('#ffffff')}};
+		background-color: {{data.closebtn_bgColor | default('#333333')}};
+	}
+
+	{{ classSapce }} .gc4d1-coupon-td p {
+		color: {{ data.dialog_promo_default_color | default('#333333') }};
+	}
+
+	{{ classSapce }} .gc4d1-coupon-td p a {
+		color: {{ data.dialog_promo_default_color | default('#333333') }};
+	}
+
+	{{ classSapce }} .gc4d1-coupon-td p:nth-child(2) {
+		font-size: {{ data.dialog_promo_fontsize | default(48) / 75 ~ rem }};
+		color: {{ data.dialog_promo_color | default('#333333') }};
+	}
+</style>
+<!-- embed stylesheet end -->

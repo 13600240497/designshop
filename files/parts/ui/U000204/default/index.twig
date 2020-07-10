@@ -1,0 +1,20 @@
+<div 
+	class="geshop-component-box component-drag geshop-U000204-default geshop-U000204-default-{{ pageInstanceId }}" data-key="U000204"  data-static-domain="{{ staticDomain }}" data-id="{{ pageInstanceId }}">
+	{{ include('style.twig') }}
+	<div class="coupon-container clearfix">
+		<div class="coupon-top-info clearfix">
+			<div class="ct-left">{{data.discount_left_text | default('UP TO')}}</div>
+			<div class="ct-center">{{data.discount_important_text | default('$18')}}</div>
+			<div class="ct-right">
+				<p>{{data.discount_rt_text | default('All Order')}}</p>
+				<p>{{data.discount_rb_text | default('Over $50')}}</p>
+				</div>
+		</div>
+		<div class="code-info"><span class="code-info-label">{{data.code_text | default('CODE')}}</span> : {{data.code_val | default('SCHOOL')}}</div>
+		<div class="btn-copy js_copyBtn" data-clipboard-text="{{data.code_val | default('SCHOOL')}}" data-visitedtextcolor="{{data.active_fontColor | default('#ffffff')}}" data-visitedbgcolor="{{data.active_bgColor | default('#999999')}}" data-copyedtext="{{data.active_text | default('Copied!')}}">
+			{{data.unactive_text | default('Copy Code')}}
+		</div>
+	</div>
+	
+</div>
+

@@ -1,0 +1,145 @@
+<style>{{ include ('lib/form.css') }}</style>
+
+{{include ('@app/files/parts/temp/goods_manager.twig')}}
+
+{#站点兼容 start#}
+{% set siteData = {
+    price_color: 'rg' in siteCode ? '#FA386A' : null
+} %}
+
+<div class='design-form design-form-component design-form-visible' id="U000141-default">
+    <h3 class='component-form-title'>秒杀商品
+        <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+            <i class="el-icon-close"></i>
+        </a>
+    </h3>
+    <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+
+    {# main content #}
+    <div class="section-panel">
+
+        {# 基础设置 #}
+        <section class="basicSetting">
+            <div class="layui-tab" data-theme="20181010">
+                <ul class="layui-tab-title">
+                    <li>模板选择</li>
+                    <li>商品数据</li>
+                    <li>样式设置</li>
+                </ul>
+                <div class="layui-tab-content" data-goodsType="tab_new2">
+                    {# <div class="layui-tab-item">
+                        {{ include ('lib/TempForm.twig') }}
+                    </div> #}
+                    <div class="layui-tab-item layui-show">
+						<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+						{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				    </div>
+                    <div class="layui-tab-item">
+                        {{ include ('lib/GoodsForm.twig') }}
+                    </div>
+                    <div class="layui-tab-item">
+                        {{ include ('lib/StyleForm.twig') }}
+                    </div>
+                </div>
+            </div>
+            <div class="changeSection">
+                <a href="javascript:;" id="js_moreConfig" style="display:none;">高级设置<i class="layui-icon layui-colla-icon"></i></a>
+            </div>
+        </section>
+
+        {# 高级配置 #}
+        <section class="heightLevelSetting">
+            {{ include ('lib/HightLevelForm.twig') }}
+        </section>
+
+    </div>
+
+    <div class="layui-form-item geshop-form-operation">
+		<button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+		<button type="button" class="layui-btn layui-btn-normal" id="custom_submit">提交</button>
+		<button type="button" class="layui-btn layui-btn-normal js_submitDesignForm" style="display:none;">提交</button>
+    </div>
+
+</div>
+
+
+
+<script>
+
+$(function(){
+
+    /* min,max close*/
+    function downDateInit (target) {
+        var laydate = layui.laydate;
+        laydate.render({
+            elem: target
+            , type: 'datetime'
+            , range: true
+            , done: function (value, date, endDate) {
+
+            }
+        })
+    };
+
+    function checkSku(arr) {
+        var tof = [];
+        for (var i=0; i<arr.length; i++) {
+            for (var j=i+1; j<arr.length; j++) {
+                if (arr[i]==arr[j]) tof.push(arr[i]);
+            }
+        }
+        return tof;
+    }
+
+
+
+    downDateInit('[name="dataRange"]');
+    /* 初始化Tab */
+    var bTab = $('#U000141-default').find('.basicSetting > .layui-tab');
+        bTab.find('.layui-tab-title').children().eq(0).addClass('layui-this');
+        bTab.find('.layui-tab-content').children().eq(0).addClass('layui-show');
+
+    /* 高级配置 */
+    $('#js_moreConfig').click(function() {
+        $('.section-panel .heightLevelSetting').show();
+        $('.section-panel .basicSetting').hide();
+    });
+
+
+    $('#js_advanced_baseConfig').click(function() {
+        $('.section-panel .heightLevelSetting').hide();
+        $('.section-panel .basicSetting').show();
+    });
+
+    /* 提交校验 */
+    $('#custom_submit').click(function() {
+        var dateRange = $('[name="dataRange"]').val();
+        var startDate, endDate;
+
+        if ($.trim(dateRange).length > 0) {
+            dateRange = dateRange.replace(/-/g, '/').split(' / ');
+            startDate = new Date(dateRange[0]).getTime();
+            endDate = new Date(dateRange[1]).getTime();
+
+            $('[name="startDate"]').val(startDate);
+            $('[name="endDate"]').val(endDate);
+        }
+
+        var sku = $('[name="goodsSKU"]').val().split(' ').join(',').split(',');
+        if (checkSku(sku).length>0) {
+            layer.msg('sku重复,'+checkSku(sku).join(', '));
+            return false;
+        }
+        $('.js_submitDesignForm').click();
+    });
+
+
+    bTab.find('.layui-tab-title').children().on('click', function(){
+        var target = $("#U000141-default").find('#js_moreConfig');
+        var index = $(this).index();
+            index == 2 ? target.show() : target.hide();
+    })
+
+});
+
+</script>

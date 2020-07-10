@@ -1,0 +1,46 @@
+{
+  "name": "pc danpin",
+  "version": "v1.0.0.1",
+  "commjs": {
+    "jquery": true
+  },
+  "commcss": {
+    "main": true
+  },
+  "min-width": "auto",
+  "min-height": "inherit",
+	"fields": {
+		"base_box_bgImage": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"component_bg_value": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"component_bg_repeat": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"component_bg_position": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"price_ft_weight": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"base_bg_shadow": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "goodsSKU": { "is_public": "1", "is_m": "1", "is_app": "1" },
+    "goodsModule":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "activity_type":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "activity_id":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "sku_main1":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "sku_parts1":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "sku_main0":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "sku_parts0":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "discount_bgc":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "discount_ftc":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "discount_bgImage":{ "is_public": "1", "is_m": "1", "is_app": "1" },
+    "discount_active":{ "is_public": "1", "is_m": "1", "is_app": "1" },
+    "preferential_bgc":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "preferential_left_ftc":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "preferential_total":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "preferential_yousave":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "preferential_finalprice":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "buy_ftc":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "buy_borderc":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+		"buy_bgc": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"more_ftc": { "is_public": "1", "is_m": "1", "is_app": "1" },
+    "more_borderc":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "more_bgc":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "base_bgc":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "base_bgImage":{ "is_public": "0", "is_m": "1", "is_app": "1" }
+	}
+
+}

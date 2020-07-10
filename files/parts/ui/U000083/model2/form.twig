@@ -1,0 +1,107 @@
+<div class='design-form design-form-component design-form-visible'>
+    <h3 class='component-form-title'>纯图片商品组件设置
+      <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+        <i class="el-icon-close"></i>
+      </a>
+    </h3>
+    
+    {{include ('@app/htdocs/resources/template/pc/templateList/index.twig')}}
+
+    <div class="geshop-form-content component-form-setting-item component-form-template-item" style="padding:0 40px 120px 40px !important;">
+      <p class='geshop-title'>常用配置</p>
+      
+      
+      <div class="layui-form-item">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 商品SKU</label>
+        <div class="layui-input-block rest-input">
+          <input type="text" name="goodsSKU" autocomplete="off" class="layui-input" value="{{ data.goodsSKU }}">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 组件宽度(px)</label>
+        <div class="layui-input-block rest-input">
+          <input type="text" name="width" autocomplete="off" class="layui-input" value="{{ data.width | default(1200) }}">
+        </div>
+      </div>
+      {# <div class="layui-form-item">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 上边距</label>
+        <div class="layui-input-block rest-input">
+          <input type="text" name="marginTop" autocomplete="off" class="layui-input" value="{{ data.marginTop | default(0) }}">
+        </div>
+      </div> #}
+      <div class="layui-form-item">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 组件下边距</label>
+        <div class="layui-input-block rest-input">
+          <input type="text" name="marginBottom" autocomplete="off" class="layui-input" value="{{ data.marginBottom | default(0) }}">
+        </div>
+      </div>
+     
+      <div class="layui-form-item">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 商品块下边距</label>
+        <div class="layui-input-block rest-input">
+          <input type="text" name="itemMarginBottom" autocomplete="off" class="layui-input" value="{{ data.itemMarginBottom | default(10) }}">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 商品块左边距</label>
+        <div class="layui-input-block rest-input">
+          <input type="text" name="itemMarginLeft" autocomplete="off" class="layui-input" value="{{ data.itemMarginLeft | default(0) }}">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 商品块右边距</label>
+        <div class="layui-input-block rest-input">
+          <input type="text" name="itemMarginRight" autocomplete="off" class="layui-input" value="{{ data.itemMarginRight | default(10) }}">
+        </div>
+      </div>
+
+     <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 商品名称字体颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="goodsFtC"><div style="background-color: {{ data.goodsFtC|default('#666') }};"></div></div>
+        <input type="text" class="layui-input" name="goodsFtC" autocomplete="off" value="{{ data.goodsFtC|default('#666') }}">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 商品名称字体大小(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="goodsFtS" autocomplete="off" class="layui-input" value="{{ data.goodsFtS | default(16) }}">
+      </div>
+    </div>
+
+      <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 商品价格字体颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="priceC"><div style="background-color: {{ data.priceC|default('#222') }};"></div></div>
+        <input type="text" class="layui-input" name="priceC" autocomplete="off" value="{{ data.priceC|default('#222') }}">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 商品价格字体大小(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="priceFt" autocomplete="off" class="layui-input" value="{{ data.priceFt | default(26) }}">
+      </div>
+    </div>
+
+    
+
+     <div class="layui-form-item">
+            <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 文案对齐方式</label>
+            <div class="layui-input-block">
+				  		<input type="radio" name="textAlgin" value="left" title="居左对齐"{% if data.textAlgin|default('left') != 'center' or data.textAlgin|default('left') != 'right' %} checked{% endif %}>
+              <input type="radio" name="textAlgin" value="center" title="居中对齐"{% if data.textAlgin|default('left') == 'center' %} checked{% endif %}>
+              <input type="radio" name="textAlgin" value="right" title="居右对齐"{% if data.textAlgin|default('left') == 'right' %} checked{% endif %}>
+            </div>
+				  </div>
+
+    </div>  
+</div> 
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+<div>
+<script>
+  {# $('#current_template_name').text($('input[name="tpl_id"]').attr('title')); #}
+</script>

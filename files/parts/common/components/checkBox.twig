@@ -1,0 +1,29 @@
+{#/**
+*@author: 任贸华
+*@date: 2018/11/24 16:31:41
+*@desc: 多选框组件
+* @param {string} label 名称
+* @param {object} data 对象 {a:1,b:2}
+* @param {string} name 参数名
+* @param {string} value 参数值
+*/#}
+{% if options %}
+    {% set num=0 %}
+    <div class="layui-form-item">
+        <label class="layui-form-label">{{ options.label }}</label>
+        <div class="layui-input-block">
+            {% for key,value in options.data %}
+                <input type="checkbox" name={{ options.name }} value={{ key }} lay-skin="primary"
+                       title={{ value }} {% if key in options.active %} {% set num=num+1 %} checked {% endif %}>
+            {% endfor %}
+            {{ options.data.keys }}
+            {% if options.checkAll %}
+                <div><input type="checkbox" lay-filter="check_all" data-name={{ options.name }} lay-skin="primary"
+                            title="全选" {% if options.active|length==num %} checked {% endif %}></div>
+            {% endif %}
+        </div>
+    </div>
+
+{% else %}
+    {{ include ('@app/files/parts/common/components/argsErrors.twig') }}
+{% endif %}

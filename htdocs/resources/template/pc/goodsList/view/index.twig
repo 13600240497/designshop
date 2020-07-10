@@ -1,0 +1,177 @@
+{% set static = {
+	discountFtS:data.discountFtS|default(12)
+	}
+%}
+
+<ul class="clearfix" data-gid="zaful-default" style="padding:{{goodsData.gsPadding}}px {{goodsData.gsPadding}}px 0;">
+		{% for key,item in data.goodsInfo[loop.index0].lists|default(0..3) %}
+	
+				<li class="{{colClass}} goods-item" style="{% if goodsData.colNum %}width:{{100/goodsData.colNum}}%;{% endif %}" data-test="{{data.gsPadding}}">
+						<div class="component-self-goodBox" style="
+						padding-bottom:{{data.gsMarginBottom|default('10')}}px;
+						{# padding-left:{{ data.gsPadding|default(10)}}px; #}
+						">
+							<div class="component-self-goodWrap" style="
+							{# {% if goodsData.goodsBgc %}background-color:{{goodsData.goodsBgc}}{% endif %}; #}
+							margin:{{data.gsInnerPadding|default(10)}}px;
+							
+							{% if data.gsRadius %}border-radius:{{data.gsRadius}}px;{% endif %}">
+									<div class="gs-img" data-editEnv="{{data.isEditEnv}}">
+										<a href="{{item.url_title|default('javascript:;')}}" style="height:{{data.default.lazyHeight}}px;
+										{% if item.goods_img is null %} background-color:#EDEDED;{% endif %}
+										" class="logsss_event"
+											data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }"
+										>
+											{% if data.isEditEnv == '1' and data.goodsInfo %}
+												<img  src="{{item.goods_img|default(data.default.good)}}" style="max-width: 100%;max-height:100%;">
+											{% elseif  data.isEditEnv == '0' and data.goodsInfo %}
+												<img class="js_gdexp_lazy js-geshopImg-lazyload js_gbexp_lazy" src="{{data.default.lazyImg|default(data.default.good)}}" data-original="{{item.goods_img|default(data.default.good)}}" style="max-width: 100%;max-height:100%;
+													{% if goodsData.colNum == 4%}width:100%;{% endif %}"
+													data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }"
+												>
+											{% else %}
+												<img  src="{{data.default.clothes}}" class="gs-default-clothes" style="max-width: 100%;max-height:100%;">
+											{% endif %}
+											{# 上架状态 #}
+											{% if data.goodsLimitActive == '1' and item.activity_number == activity_volume_number %}
+												<span class="goodStatus">{{ get_component_trans(lang,'sold_out') }}</span>
+											{% endif %}
+											<span class="quick_view" data-site="{{siteCode}}"   data-goodsSn="{{item.goods_sn}}" data-goodsId="{{item.goods_id}}" data-siteDomain="{{siteDomain}}"> {{goodsData.quickview}} </span>
+										</a>
+										{% if data.discountActive|default(1) == '1' and item.discount > 0 %}
+										<div class="discont-wrap discont-curtoff google-sprite text-center" style="
+										{% if goodsData.discountFtC %}color:{{goodsData.discountFtC}};{% endif %}
+										{% if goodsData.discountBgc %} background-color:{{goodsData.discountBgc}} {% endif %};
+										width:{{data.discountWidth|default(50)}}px;
+										height:{{data.discountHeight|default(50)}}px;
+										top:{{-10 + goodsData.discountOffsetTop}}px;
+										{% if data.discountArea|default(1) == '1' %};
+											right:{{ -10  + goodsData.discountOffsetLeft }}px;
+										{% else %}
+											left:{{ -10 + goodsData.discountOffsetLeft}}px;
+										{% endif %}
+										
+										border-radius:{{goodsData.discountRadius}}px;
+										{% if data.discountBgImg %}background:url({{data.discountBgImg}}) no-repeat 0 0/100% 100%;border-radius:0;{% endif %}">
+											<div class="gs-curtoff-wrap">
+											{# 折扣方式 #}
+												<div class="curtoff-box" style="top:{{data.discountTop|default('0')}}px;left:{{data.discountLeft|default('0')}}px;
+														font-size:{{goodsData.discountFtS}}px;
+														{% if goodsData.discountType == '0' %}
+															height:{{goodsData.discountFtS }}px;
+															line-height:{{goodsData.discountFtS }}px;
+														{% endif %}
+														">
+															{% if goodsData.discountType == '1' %}
+																<strong style="font-size:{{goodsData.discountFtS}}px">{{item.discount}}%</strong>
+																<span  style="font-size:{{goodsData.discountOffFtS}}px"> {% if data.discountSuffix|default('1') == '1' %}<br/>{{ get_component_trans(lang,'off') }}{% endif %} </span>
+															{% else %}
+																<strong style="font-size:{{goodsData.discountFtS}}px">-{{item.discount}}%</strong>
+															{% endif %}
+												</div>
+											</div>
+										</div>
+										{% endif %}
+								</div>
+								{# 商品详情 #}
+								<div class="gs-goods-info" style="margin-top:-3px;">
+									<div class="gs-desc">
+											{% if data.goodsActive|default(1) == '1' %}
+													<a href="{{item.url_title|default('javascript:;')}}" class="logsss_event"
+														data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }"
+													>
+														<span class="item-name" style="{% if goodsData.goodsFtC %}color:{{goodsData.goodsFtC}};{% endif %}{% if data.goodsFtS %}font-size:{{data.goodsFtS}}px;{% endif %}">{{item.goods_title|default('High Leg One Shoulder Ribbed Bikini Set High Leg One Shoulder Ribbed Bikini Set')}}</span>
+														
+													</a>
+											{% endif %}
+
+											<p class="item-price">
+													{% if data.priceActive|default(1) == '1' and item.shop_price %}
+													<span class="shop-price">
+													{# 销售价前缀 #}
+														{% if goodsData.priceBeforeActive == '1' %}
+														<span class="my_shop_price_prefix" style="
+														font-size:{{data.priceBeforeFtS|default(14)}}px;
+														color:{{data.priceBeforeFtC|default('#e1679d')}};
+														">
+																{{data.priceBeforeText|default('EXCLUSIVE:')}}
+														</span>
+														{% endif %}
+														<span class="my_shop_price" data-orgp="{{item.shop_price}}" style="{% if goodsData.priceC %}color:{{goodsData.priceC}};{% endif %}{% if goodsData.priceFt %}font-size:{{goodsData.priceFt}}px;{% endif %}">
+														${{item.shop_price}}</span>
+													</span>
+													{% endif %}
+
+													{% if data.marketActive|default(1) == '1' and item.market_price %}
+													<del class="market-price" style="{% if goodsData.marketPriceFt %}font-size:{{goodsData.marketPriceFt}}px;{% endif %}"><span class="my_shop_price" data-orgp="{{item.market_price}}"
+													style="
+													{% if data.marketPriceC %}color:{{data.marketPriceC}};{% endif %}
+													">${{item.market_price}}</span></del>
+													{% endif %}
+
+
+												{# 装修价格 #}
+												{% if data.goodsInfo is not defined %}
+													{% if data.priceActive|default(1) == '1' %}
+													<span class="shop-price">
+													{# 销售价前缀 #}
+														{% if goodsData.priceBeforeActive == '1' %}
+														<span class="my_shop_price_prefix" style="
+														font-size:{{data.priceBeforeFtS|default(14)}}px;
+														color:{{data.priceBeforeFtC|default('#e1679d')}};
+														">
+																{{data.priceBeforeText|default('EXCLUSIVE:')}}
+														</span>
+														{% endif %}
+														<span class="my_shop_price" data-orgp="{{item.shop_price}}" style="{% if goodsData.priceC %}color:{{goodsData.priceC}};{% endif %}{% if goodsData.priceFt %}font-size:{{goodsData.priceFt}}px;{% endif %}">
+														$0.00</span>
+													</span>
+													{% endif %}
+
+													{% if data.marketActive|default(1) == '1' %}
+													<del class="market-price" style="{% if goodsData.marketPriceFt %}font-size:{{goodsData.marketPriceFt}}px;{% endif %}"><span class="my_shop_price" data-orgp="{{item.market_price}}"
+													style="
+													{% if data.marketPriceC %}color:{{data.marketPriceC}};{% endif %}
+													">$0.00</span></del>
+													{% endif %}
+
+
+												{% endif %}
+											
+											</p>
+
+											{# 商品倒计时 #}
+											{# {% if data.goodsTimeActive|default(0) == '1' %}
+											<span class="promotion-time-inner">
+											{% if item.left_time and item.left_time>=0 %}
+												<i class="icon-clock-black"></i>
+												<span class="gs_countDown" data-left-time="{{item.left_time}}"><strong>00 day(S)</strong>00:00:00</span>
+											{% endif %}
+											</span>
+											{% endif %}
+
+											{% if data.goodsLimitActive|default(0) == '1' %}
+												{{include ('@app/files/parts/temp/goods_limit.twig')}}
+											{% endif %} #}
+									</div>
+									{# {% if data.buyActive|default(1) == '1' %}
+									<div class="gs-btn-area">
+											<a href="{{item.url_title|default('javascript:;')}}" class="gs-btn btn-primary {% if data.goodsLimitActive == '1' and item.activity_number == activity_volume_number %}buyLink{% endif %}"
+											style="{% if goodsData.buyBgC %}background-color:{{goodsData.buyBgC}};{% endif %}{% if data.buyFtC %}color:{{data.buyFtC}};{% endif %}
+											{% if goodsData.buyFtS %}font-size:{{goodsData.buyFtS}}px;{% endif %}
+											{% if data.buyBgImg %}background:url({{data.buyBgImg}}) no-repeat 0 0/100% 100%;border:none;{% endif %}
+											{% if goodsData.buyRadius %}border-radius:{{goodsData.buyRadius}}px;{% endif %};
+											{% if data.buyWidth %}width:{{data.buyWidth}}px;{% endif %}
+											{% if goodsData.buyHeight %}height:{{goodsData.buyHeight}}px;line-height:{{goodsData.buyHeight}}px;{% endif %}
+											{% if goodsData.buyBorderC %}border-color:{{goodsData.buyBorderC}};{% endif %}
+											border-width:{{goodsData.buyBorderW|default('0')}}px;
+											{% if data.buyBorderS %}border-style:{{data.buyBorderS}};{% endif %}">{{goodsData.buyText}}</a>
+									</div>
+									{% endif %} #}
+								</div>
+
+							</div>
+						</div>
+				</li>
+		{% endfor %}
+</ul>

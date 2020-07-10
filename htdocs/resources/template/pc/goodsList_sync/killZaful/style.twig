@@ -1,0 +1,17 @@
+
+{%
+    include geshop.default.pc.discount_float with { style: {
+        background:url(data.discountBgImg) no-repeat 0 0/100% 100%,
+        color:goodsData.discountFtC,
+        background-color:goodsData.discountBgc,
+        width: data.discountWidth|default(52)+ 'px',
+        height: data.discountHeight|default(52) + 'px',
+        top:goodsData.discountOffsetT+ 'px',
+        {% if goodsData.discountArea == '1' %}
+          right:goodsData.discountOffsetR + 'px';
+        {% else %}
+          left:goodsData.discountOffsetL + 'px';
+        {% endif %}
+        border-radius:goodsData.discountRadius +'px';
+    }}
+%}

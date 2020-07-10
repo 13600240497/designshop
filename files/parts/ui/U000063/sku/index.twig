@@ -1,0 +1,61 @@
+{% set pageData = {
+	viewText:data.viewText is not null?data.viewText:'VIEW IT',
+	textColor:data.textColor is not null?data.textColor:'#ffffff',
+	marginTop:data.marginTop is not null?data.marginTop:'30',
+	marginBottom:data.marginBottom is not null?data.marginBottom:'30'
+}%}
+
+<script type="text/html" id="view-it-dialog-container">
+	<div class="view-it-dialog js_viewIt_alert">
+		<a href="javascript:void(0)" rel="nofollow" class="js_close_btn close-btn"></a>
+		<a href="javascript:void(0)" rel="nofollow" class="prev"></a>
+		<a href="javascript:void(0)" rel="nofollow" class="next"></a>
+		<div class="dialog-box js_box_container">
+			<div class="left">
+				<a href="" class="img-wrap js_goods_link" target="_blank">
+					<img class="js_ins_img" src="" alt="rosewholesale">
+				</a>
+			</div>
+			<div class="right">
+				<h2>SHOP IT</h2>
+				<div>
+					<a class="img-wrap js_goods_link" target="_blank" href="">
+						<img class="js_goods_img" src="" alt="rosewholesale">
+					</a>
+					<a target="_blank" class="goods-title js_goods_title js_goods_link"></a>
+					<div class="goods-price">
+						<strong class="my_shop_price new-price js_new_price" data-orgp=""></strong>
+						<del class="my_shop_price old-price js_old_price" data-orgp=""></del>
+					</div>
+					<div class="buy-now">
+						<a href="" target="_blank" class="js_buy_now js_goods_link">BUY NOW</a>
+					</div>
+				</div>
+			</div>
+			<div class="bottom">
+				<p class="share" style="text-align: left;">
+					<span class="title">Share It</span>
+					<span class="fb-icon js_share_btn" data-share-type="facebook"></span>
+					<span class="twitter-icon js_share_btn" data-share-type="twitter"></span>
+					<span class="pinterest-icon js_share_btn" data-share-type="pinterest"></span>
+				</p>
+			</div>
+		</div>
+		<div class="loading js_show_styles_loading"></div>
+	</div>
+</script>
+
+<div class="geshop-component-box component-drag" data-gid="U000063_sku" data-key="U000063" data-static-domain="{{staticDomain}}" data-id="{{ pageInstanceId }}" attr="nav_flag">
+	<div class="buyer-show js_buyer_show" style="margin-bottom:{{ data.marginBottom | default(0) }}px">
+		<ul id="goodsSKUContainer" style="display:none">
+			{% for key,item in data.goodsInfo|default(0..3) %}
+				<li>{{ json_encode_no_unicode(item) }}</li>
+			{% endfor %}
+		</ul>
+		{% if data.isEditEnv == 1 %}
+			{{ include('edit.twig') }}
+		{% else %}
+			{{ include('product.twig') }}
+		{% endif %}
+	</div>
+</div>

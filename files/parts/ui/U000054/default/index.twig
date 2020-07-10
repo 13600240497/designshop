@@ -1,0 +1,51 @@
+{% set count_type = 'default' %}
+{% set device_type = 'mobile' %}
+{% set suffix='rem'%}
+{% set remUnit = 37.5 %}
+{% set pageData = {
+	tabBgCA:data.tabBgCA is not null?data.tabBgCA:'#f7e2b7',
+	left_time:data.left_time|default(0),
+	downFtS:(data.downFtS|default(15))/remUnit,
+	downTimeFtS:(data.downTimeFtS|default(15))/remUnit,
+	count_textStatus:data.count_textStatus|default(0),
+	downBfText:data.downBfText|default('Comming soon'),
+	downIngText:data.downIngText|default('Hot sale'),
+	downAfText:data.downAfText|default('Ends')
+} %}
+
+<div class="geshop-component-box component-drag clearfix gs-count-down" data-gid="U000054" data-key="U000054" data-id="{{ pageInstanceId }}">
+	<!-- embed stylesheet begin -->
+	<style type="text/css">
+		{% if pageData %}
+		[data-id="{{ pageInstanceId }}"] .component-self-goodWrap:hover, [data-id="{{ pageInstanceId }}"] .current {
+			border-color:{{pageData.goodsBdC|default('none')}};
+		}
+		{% endif %}
+
+		{% if pageData %}
+		[data-id="{{ pageInstanceId }}"] .gs-tab-label .current span{
+			color:{{pageData.tabFtCA|default('transparent')}} !important;
+			background:{{pageData.tabBgCA|default('transparent')}} !important;
+		}
+		{% endif %}
+
+		[data-id="{{ pageInstanceId }}"] .gs_component_countDown em {
+				background: {{data.downTimeBgC|default('transparent')}} !important;
+		}
+
+		[data-id="{{ pageInstanceId }}"] .gs-time-inner{
+			margin-left: 0;
+		}
+	</style>
+  <!-- embed stylesheet end -->
+	<input type="hidden" name="count_leftTime">
+	<input type="hidden" name="count_textStatus">
+
+	<div class="geshop-col-12" style="background-color:{{data.downBgC|default('#ffffff')}}">
+	{# start wrap #}
+		{{include ('@app/files/parts/temp/count_down.twig')}}
+	{# end wrap #}
+	</div>
+</div>
+
+

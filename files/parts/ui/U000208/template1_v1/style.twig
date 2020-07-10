@@ -1,0 +1,99 @@
+{% set space = '#U000208_'~pageInstanceId %}
+{% set body =  space~' .U0000208_rank_wrap' %}
+
+{{ body }} {
+    margin-top: {{ data.box_margin_top ?? 0 }}px;
+    margin-bottom: {{ data.box_margin_top ?? 0 }}px;
+    border-radius: {{ data.box_border_radius ?? 0 }}px;
+    background-color: {{ data.box_bg_color ?? '#F8F8F8' }}
+}
+
+{{ body }} .top-swiper-wrap, {{ body }} .nav-top.fixed {
+    background-color: {{ data.tab_bg_color ?? '#000000' }};
+}
+{{ body }} .nav-item {
+    color: {{ data.tab_color_off ?? '#999999' }};
+}
+
+{{ body }} .nav-item.on span:after {
+    content: '';
+    background-color: {{ data.tab_bd_color ?? '#FFFFFF' }};
+}
+
+{{ body }} .nav-item.on, {{ body }} .nav-item:hover {
+    color: {{ data.tab_color_on ?? '#FFFFFF' }};
+}
+
+
+{{ body }} .nav-item span {
+    font-size: {{ data.nav_font_size ?? 18 }}px;
+    line-height: {{ data.nav_height ?? 70 }}px;
+}
+
+{{ body }} .promotion-info {
+    color: {{ data.promotion_color ?? '#000000' }};
+}
+
+{{ body }} .banner {
+    margin-bottom: -{{ data.nav_height/2 ?? 35 }}px;
+}
+
+{{ body }} .top-swiper-wrap ,{{ body }} .sp-box, {{ body }} .nav-top.fixed,{{ body }} .top-swiper-container {
+    height: {{ data.nav_height ?? 70 }}px;
+}
+
+{{ body }} .top-good-logo {
+    top: {{ data.topn_padding_top ?? 0 }}px;
+    left: {{ data.topn_padding_left ?? 0 }}px;
+}
+
+{{ body }} .sp-box {
+    border-radius: {{ data.nav_radius ?? 0 }}px;
+    overflow: hidden;
+
+}
+{{ body }} .fixed {
+    border-radius: {{ data.nav_radius ?? 0 }}px;
+}
+
+{{ body }} .btn-buy {
+    font-size: {{ data.pc_shop_font_size ?? 16 }}px;
+    background: {{ data.pc_shop_bcolor ?? '#000000' }};
+    color: {{ data.pc_shop_fcolor ?? '#000000' }};
+    border: 2px solid {{ data.pc_shop_border_color ?? '#000000' }};
+}
+
+
+{{ body }} .grade_box {
+    {% if data.grad_show == 1 %}
+        display: block;
+    {% endif %}
+}
+
+
+
+
+@media screen and (max-width: 767px) {
+    {{ space }} {
+        margin-top: {{ data.box_margin_top_m ?? 0 }}px;
+        margin-bottom: {{ data.box_margin_top_m ?? 0 }}px;
+        border-radius: {{ data.box_border_radius_m ?? 0 }}px;
+    }
+
+    {{ body }} .top-good-logo {
+        margin-top: {{ data.topn_padding_top_m ?? 0 }}px;
+        margin-left: {{ data.topn_padding_left_m ?? 0 }}px;
+    }
+
+
+    {{ body }} .btn-shop {
+        font-size: {{ data.m_shop_font_size ?? 14 }}px;
+        background: {{ data.m_shop_bcolor ?? '#000000' }};
+        color: {{ data.m_shop_fcolor ?? '#FFFFFF' }};
+    }
+
+    {{ body }} .top-good-logo {
+        top: auto;
+        left: auto;
+    }
+}

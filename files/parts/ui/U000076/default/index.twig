@@ -1,0 +1,35 @@
+<div class="geshop-component-box component-drag wrap-U000076" data-key="U000076" data-id="{{ pageInstanceId }}" data-unique="true" data-static-domain="{{staticDomain}}"
+  data-fontColorDiscount="{{ data.fontColorDiscount | default('#ffffff') }}"
+  data-bgColorDiscount="{{ data.bgColorDiscount | default('#e33194') }}"
+  data-bgColorFlashed="{{ data.bgColorFlashed | default('#f8cce4') }}"
+  data-fontColorSalePrice="{{ data.fontColorSalePrice | default('#e33194') }}"
+  data-fontColorMarketPrice="{{ data.fontColorMarketPrice | default('#aaaaaa') }}"
+  data-fontColorBuyNow="{{ data.fontColorBuyNow | default('#000000') }}"
+  data-bgColorBuyNow="{{ data.bgColorBuyNow | default('#ffffff') }}"
+  data-borderColorBuyNow="{{ data.borderColorBuyNow | default('#000000') }}"
+>
+  <div class="geshop-loading">
+    <div class="geshop-loading-img"></div>
+  </div>
+  <div class="geshop-flash-sale-block" style="display: none; margin-top: 0.64rem; margin-bottom: {{ ((data.boxMarginBottom | default(50)) / 75) | number_format(3, '.') }}rem;">
+    <p class="geshop-flash-sale-header site-bold-strict">
+      <span class="geshop-flash-sale-title" style="color: {{ data.fontColorFlashSale | default('#000000') }};">FLASH SALE</span>
+      <span class="geshop-flash-sale-time">
+        <span class="geshop-flash-sale-number js_geshopFlashSaleHour" style="color: {{ data.fontColorTime | default('#000000') }}; background-color: {{ data.bgColorFlashSale | default('#f8cce4') }};">00</span>
+        <span class="geshop-flash-sale-time-separator" style="color: {{ data.fontColorTime | default('#000000') }};">:</span>
+        <span class="geshop-flash-sale-number js_geshopFlashSaleMinute" style="color: {{ data.fontColorTime | default('#000000') }}; background-color: {{ data.bgColorFlashSale | default('#f8cce4') }};">00</span>
+        <span class="geshop-flash-sale-time-separator" style="color: {{ data.fontColorTime | default('#000000') }};">:</span>
+        <span class="geshop-flash-sale-number js_geshopFlashSaleSecond" style="color: {{ data.fontColorTime | default('#000000') }}; background-color: {{ data.bgColorFlashSale | default('#f8cce4') }};">00</span>
+      </span>
+    </p>
+    <div class="geshop-flash-sale-body swiper-container">
+      <div class="gehsop-flash-sale-inner-body js_geshopFlashSaleBody swiper-wrapper">
+        {% if data.isshowViewMore == 1 %}
+        <div class="geshop-flash-sale-item swiper-slide">
+            <a class="geshop-flash-sale-more js_geshopFlashSaleMore" href="javascript:;" style="background-color: {{ data.bgColorViewMore | default('#e9e9e9') }}; color: {{ data.fontColorViewMore | default('#000000') }};">VIEW MORE &gt;&gt;</a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

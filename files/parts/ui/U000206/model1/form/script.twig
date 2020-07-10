@@ -1,0 +1,97 @@
+<script>
+    ;(function(window, document, $) {
+        function getTime(dateObj) {
+            if (dateObj.year) {
+                var dateStr = dateObj.year + '-' + dateObj.month + '-' + dateObj.date +
+                    ' ' + dateObj.hours + ':' + dateObj.minutes + ':' + dateObj.seconds;
+
+                return new Date(dateStr).getTime();
+            } else {
+                return '';
+            }
+        }
+        function renderDateRange() {
+            var $ele = $('.js-dateRange');
+            var $hiddenInput = $ele.parent().find('input[type=hidden]');
+            var startTime = window.parseInt($hiddenInput.eq(0).val());
+            var endTime = window.parseInt($hiddenInput.eq(1).val());
+            var value = '';
+
+            if (startTime && endTime) {
+                /*formatDateTime函数定义在files\parts\formTemplate\formRender.twig中*/
+                value = formatDateTime(startTime) + ' 至 ' + formatDateTime(endTime);
+            }
+
+            layui.laydate.render({
+                elem: '.js-dateRange',
+                type: 'datetime',
+                range: '至',
+                format: 'yyyy-MM-dd HH:mm:ss',
+                trigger: 'click',
+                value: value,
+                done: function(value, date, endDate) {
+                    var startTime = getTime(date);
+                    var endTime = getTime(endDate);
+                    var $hiddenInput = $(this.elem[0]).parent().find('input[type=hidden]');
+                    $hiddenInput.eq(0).val(startTime);
+                    $hiddenInput.eq(1).val(endTime);
+                }
+            });
+        }
+
+        function setImageSize(progress) {
+            /* 不是规定的尺寸要提示 */
+            var deferredList = [];
+            $('input[name=pc_banner], input[name=pad_banner], input[name=m_banner]').each(function() {
+                if ($.trim(this.value)) {
+                    var deferred = $.Deferred();
+                    deferredList.push(deferred);
+                    var imgEl = new Image();
+                    imgEl.onload = function () {
+                        var widthElSelector = 'input[name=' + this.name + '_width]'; 
+                        $(widthElSelector).val(this.naturalWidth);
+                        var heightElSelector = 'input[name=' + this.name + '_height]'; 
+                        $(heightElSelector).val(this.naturalHeight);
+                        deferred.resolve(true);
+                    };
+                    imgEl.onerror = function() {
+                        if (this.name === 'pc_banner') {
+                            deferred.reject('PC Banner图片自动获取宽高度失败');
+                            return;
+                        }
+
+                        if (this.name === 'pad_banner') {
+                            deferred.reject('PAD Banner图片自动获取宽高度失败');
+                            return;
+                        }
+
+                        if (this.name === 'm_banner') {
+                            deferred.reject('M Banner图片自动获取宽高度失败');
+                            return;
+                        }
+                    };
+                    imgEl.name = this.name;
+                    imgEl.src = this.value;
+                }
+            });
+            if (deferredList.length > 0) {
+                $.when.apply($, deferredList)
+                    .done(function() {
+                        progress.next();
+                    })
+                    .fail(function(errorMsg) {
+                        progress.cancel();
+                        layer.msg(errorMsg);
+                    });
+            } else {
+                progress.next();
+            }
+        }
+
+        window.U000206_submit = function(progress) {
+            setImageSize(progress);
+        };
+
+        renderDateRange();
+    })(window, document, jQuery);
+</script>

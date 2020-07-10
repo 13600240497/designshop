@@ -1,0 +1,27 @@
+{{include ('@app/files/parts/temp/goods_manager.twig')}}
+
+<div class="layui-form-item">
+    <label class="layui-form-label">商品SKU</label>
+    <div class="layui-input-block rest-input">
+        <textarea class="layui-textarea js-valid-skus  geshop-msgoods-sku" name="goodsSKU"  data-public-tag="true" data-from="sku" placeholder="请输入商品编号（sku ID），编号与编号间用英文逗号隔开.">{{ data.goodsSKU}}</textarea>
+    </div>
+    <div class="layui-form-item tab-add-btn class-manage" data-from="tabs">
+        <span class="el-button  el-button--small btn-goods">商品管理</span>
+    </div>
+</div>
+<style>
+    .class-manage{
+        text-align: right;
+    }
+    .btn-goods{
+        color: #1E9FFF;
+        width:88px;
+        height:40px;
+        line-height: 40px;
+        background:rgba(244,250,255,1);
+        border-radius:4px;
+        border:1px solid rgba(189,227,255,1);
+        margin-top: 8px;
+        padding: 0;
+    }
+</style>

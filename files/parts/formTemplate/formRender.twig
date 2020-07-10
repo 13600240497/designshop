@@ -1,0 +1,815 @@
+<style> {{ include('@app/htdocs/resources/stylesheets/design.activity.form.css') }} </style>
+<script src="/resources/template/goods/default/index.js?v={{ serverTime }}"></script>
+<link rel="stylesheet" href="/resources/template/goods/default/goodsUnit.css??v={{ serverTime }}">
+
+{#  #}
+<div class='design-form design-form-component design-form-visible design-activity-form' id="{{ formData.id }}-{{ formData.theme }}">
+    {# 配置 config #}
+    <input id="design_form_pageInstanceId" type="hidden" value="{{ pageInstanceId }}"></input>
+    <input id="design_form_is_new" type="hidden" value="1" class="Unwanted"></input>
+    {# 标题 #}
+    <h3 class='component-form-title' data-id="{{ formData.id }}" data-theme="{{ formData.theme }}">{{ formData.name }}
+        <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+            <i class="el-icon-close"></i>
+        </a>
+    </h3>
+    <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+
+    {# main content #}
+    <div class="section-panel">
+
+        {# 基础设置 #}
+        <section class="section-basic">
+            <div class="layui-tab">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">模板选择</li>
+                    {% for tab in formData.tabs %}
+                    <li>{{ tab.label }}</li>
+                    {% endfor %}
+                </ul>
+                <div class="layui-tab-content" data-goodsType="tab_new2">
+                    {# 第一个模版选择 #}
+                    <div class="layui-tab-item layui-show">
+                        {{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+                    </div>
+                    {# 循环配置项 tabs #}
+                    {% for tab in tabs %}
+                        <div class="layui-tab-item">
+                            {% set components = tab.components %}
+                            {{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="changeSection" style="margin-top: 24px;">
+                {% if formData.moreConfig %}
+                    <a href="javascript:;" id="js_moreConfig" style="display: none;">高级设置<i class="layui-icon layui-colla-icon"></i></a>
+                {% endif %}
+            </div>
+        </section>
+
+        {# 高级配置， 0103增加容错判断 #}
+        {% if formData.moreConfig %}
+        <section class="section-heightLevel" style="display: none;">
+            <h4 class="column-back-title js_advanced_baseConfig" style="cursor: pointer;"><i class="layui-icon back">&#xe603;</i>常用配置</h4>
+            {% set components = formData.moreConfig %}
+            {{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}
+            <div class="changeSection" style="margin-top: 24px; padding-bottom: 20px;">
+                <a href="javascript:;" class="js_advanced_baseConfig">
+                    <i class="layui-icon back">&#xe603;</i>
+                    常用配置
+                </a>
+            </div>
+        </section>
+        {% endif %}
+
+    </div>
+    <div class="layui-form-item geshop-form-operation">
+		<button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+		<button type="button" class="layui-btn layui-btn-normal" id="newSubmitForm">提交</button>
+		<button type="button" class="layui-btn layui-btn-normal js_submitDesignForm" style="display: none;">提交</button>
+    </div>
+</div>
+<script>
+
+/* 时间格式化 */
+function formatDateTime (inputTime) {
+    var date = new Date(inputTime);
+    var y = date.getFullYear();
+    var m = date.getMonth() + 1;
+    m = m < 10 ? ('0' + m) : m;
+    var d = date.getDate();
+    d = d < 10 ? ('0' + d) : d;
+    var h = date.getHours();
+    h = h < 10 ? ('0' + h) : h;
+    var minute = date.getMinutes();
+    var second = date.getSeconds();
+    minute = minute < 10 ? ('0' + minute) : minute;
+    second = second < 10 ? ('0' + second) : second;
+    return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second;
+};
+
+/* 初始化时间控件 min,max close*/
+function downDateInit (min, max) {
+    var laydate = layui.laydate;
+    $('.down-timestamp').each(function(){
+        var _this = $(this);
+        laydate.render({
+            elem: this
+            , type: 'datetime'
+            , range: true
+            , trigger: 'click'
+            , done: function (value, date, endDate) {
+                var dateStrArr = value.split(' - '),
+                    validateStartTime,
+                    validateEndTime,
+                    dateStartTime,
+                    dateEndTime;
+                dateStartTime = Date.parse(new Date(dateStrArr[0]));
+                dateEndTime = Date.parse(new Date(dateStrArr[1]));
+                _this.attr({"data-start":dateStartTime,"data-end":dateEndTime});
+                $('#gs_component_countdown').find('input[name=dataStartTime]').val(dateStartTime);
+                $('#gs_component_countdown').find('input[name=dataEndTime]').val(dateEndTime);
+                _this.parent('.layui-input-block').find('input[name=start_time]').val(dateStartTime);
+                _this.parent('.layui-input-block').find('input[name=end_time]').val(dateEndTime)
+            }
+        })
+    })
+};
+
+
+/*
+    查找表单的所有 SKUS, cateIds, couponIds，返回数组
+    @params {String} dom 查找的CSS类名
+*/
+function design_form_get_arr (dom) {
+    var $target = $(dom);
+    var arr = [];
+    $target.each(function(key, item) {
+        /* 过滤非法空格[space]和回车[enter] */
+        var _str = $.trim($(item).val()).split(' ').join('').replace(/\\n/g, '');
+        if (_str != '') {
+            var itemArr = [];
+            _str.split(',').forEach(function (item) {
+                if (item != '') {
+                    itemArr.push(item);
+                }
+            });
+            /* 合并数组 */
+            arr = arr.concat(itemArr);
+            /* 更新 dom 的数据 */
+            $(item).val(itemArr.join(','));
+        }
+    });
+    return arr;
+}
+
+function design_form_clean_arr(dom, invalid) {
+    var $target = $(dom);
+    var invalid = invalid.split(',');
+    $target.each(function(key, item) {
+        /* 过滤非法空格 */
+        var dom_skus = $(item).val().split(',');
+        var valid_skus = dom_skus.filter(function(value) {
+            return invalid.indexOf(value) < 0;
+        });
+        $(item).val(valid_skus.join(','));
+    });
+}
+
+/*
+    查找表单的所有 SKUS，返回数组
+*/
+function design_form_get_skus() {
+    var dom = $('.js-valid-skus');
+    var skus = [];
+    dom.each(function(key, item) {
+        /* 过滤非法空格[space]和回车[enter] */
+        var _str = $.trim($(item).val()).split(' ').join('').replace(/\\n/g, '');
+        if (_str != '') {
+            var itemArr = [];
+            var _arr = _str.split(',');
+            _arr.forEach(function (item) {
+                if (item != '') {
+                    itemArr.push(item);
+                }
+            });
+            /* 合并数组 */
+            skus = skus.concat(itemArr);
+            /* 更新 dom 的数据 */
+            $(item).val(itemArr.join(','));
+        }
+    });
+    return skus;
+}
+
+/* 清空 DOM 的 SKU */
+function design_form_clean_skus(invalid) {
+    var dom = $('.js-valid-skus');
+    var invalid = invalid.split(',');
+    dom.each(function(key, item) {
+        /* 过滤非法空格 */
+        var dom_skus = $(item).val().split(',');
+        var valid_skus = dom_skus.filter(function(value) {
+            return invalid.indexOf(value) < 0;
+        });
+        $(item).val(valid_skus.join(','));
+    });
+}
+
+
+/*
+表单提交函数before队列
+design_form_submit_valid_color
+*/
+window.before_submit_queue = [];
+/* 表单提交函数递归执行 */
+function before_submit_run(index, callback) {
+    if (typeof before_submit_queue[index] == "function") {
+        if (typeof before_submit_queue[index+1] == "function") {
+            before_submit_queue[index](function() {
+                before_submit_run(index+1, callback);
+            });
+        } else {
+            before_submit_queue[index](callback);
+        }
+    } else {
+        callback();
+    }
+}
+
+/* 新老表单的提交按钮 */
+var $pre_submit_button = $('#newSubmitForm');
+var $on_submit_button = $('.js_submitDesignForm');
+
+/** 表单校验Dom **/
+var $sku = '.js-valid-skus';
+var $cateId = '.js-valid-cateIds';
+var $couponId = '.js-valid-couponIds';
+
+/**
+* 表单提交流程
+* 1. 执行各个组件 form.twig 中定义的提交前置函数 beforeSubmit
+* 2. 执行 before_submit_queue 队列函数
+* 3. 执行 valid_skus 公共校验表单函数
+* 4. 通过提交 save-form 接口
+*/
+function design_form_submit_progress () {
+    var progress = {
+        next: design_form_submit,
+        cancel: function() {
+            return false;
+        }
+    };
+    /* 遍历所有的提交函数 */
+    before_submit_run(0, function() {
+        /* */
+        if (typeof {{ formData.beforeSubmit | default('undefined') }} === "function") {
+            var customFunction = {{ formData.beforeSubmit | default('undefined') }};
+            customFunction && customFunction(progress);
+        } else if (typeof {{ formData.onSubmit | default('undefined') }} === "function") {
+            var customFunction = {{ formData.onSubmit | default('undefined') }};
+            customFunction(progress);
+        } else {
+            progress.next();
+        }
+    });
+}
+
+/**
+* 表单主提交函数
+* @params {Function} callback 校验通过的回调
+* @params {Function} errorCallback 校验失败的回调 2020-01-10
+*/
+function design_form_submit (callback, errorCallback) {
+    $pre_submit_button.addClass('loading').html('正在提交');
+
+    /*  判断 SKU, 分类id, 优惠券 是否需要校验 */
+    if (design_form_get_arr($sku).length > 0 || design_form_get_arr($cateId).length > 0 || design_form_get_arr($couponId).length > 0) {
+        design_form_submit_valid({
+            type: 'submit',
+            success: function() {
+                design_auto_refresh();
+                $pre_submit_button.removeClass('loading').html('提交');
+                typeof callback == 'function' && callback && callback();
+                $on_submit_button.click();
+            },
+            /* 校验失败 */
+            fail: function() {
+                $pre_submit_button.removeClass('loading').html('提交');
+                typeof errorCallback == 'function' && errorCallback && errorCallback();
+            }
+        });
+    } else {
+        $pre_submit_button.removeClass('loading').html('提交');
+        design_auto_refresh();
+        $on_submit_button.click();
+    }
+}
+
+/*  自定义 SKU 校验的参数 */
+{% if formData.skuValidConfig is not null and formData.skuValidConfig != '' %}
+    var design_form_skus_valid_params = {{ formData.skuValidConfig }};
+{% else %}
+    var design_form_skus_valid_params = function() {
+        return {};
+    };
+{% endif %}
+
+
+/**
+ * 自定义组件内是否自动刷新
+ * @param {string} isAutoRefresh [0: 默认不刷新，1：商品列表, 2: tab商品列表]
+ */
+{% if formData.isAutoRefresh is not null and formData.isAutoRefresh != '' %}
+    var design_form_auto_refresh = {{ formData.isAutoRefresh | default('0') }};
+{% else %}
+    var design_form_auto_refresh = 0;
+{% endif %}
+
+/**
+ * 校验SKU是否正确，SKU超过100个，则分批请求
+ * @param {string} type [submit=提交函数，goodsManage=商品管理]
+ * @param {array} skus SKU数组
+ * @param {string} api 接口
+ * @param {object} content data值
+ * @param {function} success 成功
+ * @param {fucntion} confirm(array) 清空回调(数组)
+ * @param {function} cancel 取消
+ * @param {function} fail 错误
+*/
+var errorRule = [];
+
+function design_form_submit_valid_common (params) {
+    /* 验证类型 goods: 商品sku category: 商品分类 coupon: 优惠码 */
+    var type = params.requestParams.check_type;
+    var invalid_ids = [];
+
+    var requestParams = {
+        uiId: params.requestParams.uiId,
+        check_rules: params.requestParams.check_rules,
+        check_type: params.requestParams.check_type,
+        lang: params.requestParams.lang,
+        site_code: params.requestParams.site_code,
+        pipeline: params.requestParams.pipeline || '',
+        client: params.requestParams.client
+    };
+
+    switch (type) {
+        case 'goods':
+            /* 页面获取到的 [SKU] 去重 */
+            var skus = params.skus || design_form_get_skus();
+            var obj = getUnique(skus);
+            var all_skus = obj.newArr;
+
+            /* 每超过100个进行分组AJAX请求，解决数据量大的问题 */
+            var _group_request_marque = [];
+            var _group_size = 99999;
+            var _group_pages = Math.ceil(all_skus.length / _group_size);
+
+            /* 根据分页 SKU，封装 AJAX 的 request 对象*/
+            for (var i = 0; i < _group_pages; i++) {
+                /* 根据页码获取对应的数据 */
+                var _page_skus = all_skus.splice(0, _group_size);
+                var requestParams = {
+                    uiId: params.requestParams.uiId,
+                    check_rules: params.requestParams.check_rules,
+                    check_type: params.requestParams.check_type,
+                    lang: params.requestParams.lang,
+                    site_code: params.requestParams.site_code,
+                    client: params.requestParams.client,
+                    goods_sku: _page_skus.join(',')
+                };
+
+                try {
+                    requestParams.pipeline = GESHOP_PIPELINE || '';
+                } catch (e) {}
+                /* 将 request 对象加入到执行队列里面 */
+                _group_request_marque.push(requestParams);
+            };
+            break;
+        case 'category':
+            /* 分类id */
+            var cateIds = params.cateIds || design_form_get_arr($cateId);
+            /* 存在需过滤的cateid */
+            if(params.ignore_cateIds){
+                var ignore_ids = params.ignore_cateIds.split(',');
+                ignore_ids.forEach((item)=>{
+                    if (cateIds.indexOf(item) != -1) {
+                        cateIds.splice(cateIds.indexOf(item), 1);
+                    }
+                })
+            }
+            requestParams.category_id =  cateIds.join(',');
+            requestParams.check_rules = params.check_rules || 'CATEGORY_VALIDATE_EXITS';
+            break;
+        case 'coupon':
+            var couponIds = params.couponIds || design_form_get_arr($couponId);
+            requestParams.coupon_id =  couponIds.join(',');
+            break;
+        default:
+            break;
+    }
+
+    /* 避免AJAX卡死页面渲染进程，所以加个定时器，推迟执行 */
+    setTimeout(function () {
+        if (type == 'goods') {
+            /* 循环队列执行 */
+            for (var i = 0; i < _group_request_marque.length; i++) {
+                var _data = _group_request_marque[i];
+                $.ajax({
+                    url: params.url,
+                    type: 'post',
+                    data: _data,
+                    async: false,
+                    success: function(res) {
+                        /* 校验结果 */
+                        if (res.code != 0) {
+                            var _data = res.data;
+                            if (_data) {
+                                var obj = {
+                                    check_type: _data.check_type,
+                                    fail_rule: _data.fail_rule,
+                                    invalid: []
+                                };
+                                obj.invalid.push(_data.invalid_data.join(','));
+                                errorRule.push(obj);
+                            }
+                        };
+                    }
+                });
+            }
+            /* 如果分类id同时也存在校验 */
+            var cateIds = params.cateIds || design_form_get_arr($cateId);
+            if (cateIds.length > 0) {
+                params.requestParams.check_type = 'category';
+                return design_form_submit_valid_common(params);
+            }
+        } else {
+            $.ajax({
+                url: params.url,
+                type: 'post',
+                data: requestParams,
+                async: false,
+                success: function(res) {
+                    /* 校验结果 */
+                    if (res.code != 0) {
+                        var _data = res.data;
+                        if (_data) {
+                            var obj = {
+                                check_type: res.data.check_type,
+                                fail_rule: _data.fail_rule,
+                                invalid: []
+                            };
+                            obj.invalid.push(_data.invalid_data.join(','));
+                            errorRule.push(obj);
+                        }
+                    };
+                }
+            });
+        }
+        Design.disableLoading();
+
+        /* 如果没有错误，则执行成功回调 */
+        if (errorRule.length <= 0) {
+            params.success && params.success();
+            return false;
+        }
+
+        /** 合并 **/
+        var oRule = {};
+        var iName = 0;
+        errorRule.forEach(function(item) {
+            var key = item.fail_rule;
+            oRule[key] ? invalid_ids[oRule[key] - 1].invalid.push(item.invalid) : oRule[key] = ++iName && invalid_ids.push({
+                check_type: [item.check_type],
+                invalid: [item.invalid],
+                fail_rule: key
+            });
+        });
+
+        var tips = design_form_error_tip(invalid_ids);
+        layer.confirm(tips, {
+            title: '提示',
+            btn: ['否', '是'],
+            area: '420px',
+            icon: 3,
+            skin: 'element-ui-dialog-class'
+        }, function (index) {
+            errorRule = [];
+            layer.close(index);
+            params.fail && params.fail();
+        }, function (index) {
+            /* 清空DOM数据 */
+            errorRule = [];
+            var _skus = invalid_ids[0]['invalid'];
+            var type = invalid_ids[0]['check_type'];
+
+            /* sku */
+            if (type == 'goods'){
+                design_form_clean_arr($sku, _skus.join(','));
+            } else if (type == 'category') {
+                design_form_clean_arr($cateId, _skus.join(','));
+            } else if (type == 'coupon') {
+                design_form_clean_arr($couponId, _skus.join(','));
+            }
+            /* 失败回调 */
+            params.fail && params.fail();
+            layer.close(index);
+        });
+    }, 50);
+    return false;
+}
+
+
+function design_form_error_tip(arr) {
+    var invalidArr = arr[0].invalid;
+    var rule = arr[0].fail_rule;
+
+    /* 有错误的，只展示前100个 */
+    var _invalid = invalidArr.slice(0, 100);
+    var _tips = invalidArr.length > 100 ? '...等' : '';
+    var tips = '';
+
+    switch ($.trim(rule)) {
+        case 'GOODS_VALIDATE_EXITS':
+            tips = '商品SKU ' + _invalid.join(', ') + _tips + ' 不存在，是否清空？';
+            break;
+        case 'GOODS_VALIDATE_ON_SALE':
+            tips = '商品SKU ' + _invalid.join(', ') + _tips + ' 已下架，是否清空？';
+            break;
+        case 'GOODS_VALIDATE_STOCK':
+            tips = '商品SKU ' + _invalid.join(', ') + _tips + ' 库存(包含虚拟和真实库存), 库存小于等于0为无效SKU, 是否清空？';
+            break;
+        case 'GOODS_VALIDATE_REAL_STOCK':
+            tips = '商品SKU ' + _invalid.join(', ') + _tips + ' 真实库存小于等于0为无效SKU, 是否清空？';
+            break;
+        case 'GOODS_VALIDATE_SECKILL':
+            tips = '商品SKU ' + _invalid.join(', ') + _tips + ' 不是秒杀商品，是否清空？';
+            break;
+        case 'GOODS_VALIDATE_NEW_USER_PRICE':
+            tips = '商品SKU ' + _invalid.join(', ') + _tips + ' 没有新人专享价，是否清空？';
+            break;
+        case 'GOODS_VALIDATE_APP_PRICE':
+            tips = '商品SKU ' + _invalid.join(', ') + _tips + ' 没有APP专享价，是否清空？';
+            break;
+        case 'GOODS_VALIDATE_GIFT':
+            tips = '商品SKU ' + _invalid.join(', ') + _tips + ' 不是赠品，是否清空？';
+            break;
+        case 'GOODS_VALIDATE_PRE_PROMOTION':
+            tips = _invalid.join(', ') + _tips + ' 不是预促销SKU，是否清空？';
+            break;
+        case 'GOODS_VALIDATE_REDEEM':
+            tips = _invalid.join(', ') + _tips + ' 不是积分兑换商品SKU，是否清空？';
+            break;
+        case 'GOODS_VALIDATE_SAME_SPU':
+            tips = _invalid.join(', ') + _tips + ' 为同款商品SKU，是否清空？';
+            break;
+        case 'CATEGORY_VALIDATE_EXITS':
+            tips = '商品分类id ' + _invalid.join(', ') + _tips + ' 不存在，是否清空？';
+            break;
+        case 'COUPON_VALIDATE_EXITS':
+            tips = '优惠码 ' + _invalid.join(', ') + _tips + ' 不存在，是否清空？';
+            break;
+        case 'COUPON_VALIDATE_EXPIRED':
+            tips = '优惠码 ' + _invalid.join(', ') + _tips + ' 已过期，是否清空？';
+            break;
+        case 'COUPON_VALIDATE_FINISHED':
+            tips = '优惠码 ' + _invalid.join(', ') + _tips + ' 已领完，是否清空？';
+            break;
+        case 'COUPON_VALIDATE_TYPE':
+            tips = '优惠码 ' + _invalid.join(', ') + _tips + ' 为不是指定类型的优惠码，是否清空？';
+            break;
+        case 'COUPON_VALIDATE_ID_EXITS':
+            tips = '优惠券ID ' + _invalid.join(', ') + _tips + ' 不存在，是否清空？';
+            break;
+        default:
+            tips = '';
+            break
+    }
+    return tips;
+}
+
+/**
+ * SKU 去重
+ */
+
+function getUnique(skuArr) {
+    var obj = {};
+    /*去重*/
+    var newArr = [];
+    var repeatList = [];
+    for (var i = 0; i < skuArr.length; i++) {
+        var skuItem = skuArr[i];
+        if (newArr.indexOf(skuItem) === -1) {
+            newArr.push(skuItem);
+        }else{
+            if(repeatList.indexOf(skuItem) === -1){
+                repeatList.push(skuItem);
+            }
+        }
+    }
+    obj.newArr = newArr;
+    obj.repeatList = repeatList;
+    return obj;
+}
+
+/**
+ * 校验SKU
+ */
+function design_check_sku(target) {
+    var repeatArr = [];
+    var $target = $(target);
+
+    $target.each(function (idx, item) {
+        var value = $(item).val();
+        if(value != ''){
+            var res = /(\s{5,1000})/g;
+            var reg = /\n/g;
+            var skuList = value.replace(res, '').replace(reg, ',');
+            var skuArr = skuList.split(',');
+            if (skuArr[skuArr.length - 1] === '') {
+                skuArr.pop()
+            }
+            var data = getUnique(skuArr);
+            var newArr = data.newArr.toString();
+            var repeatList = data.repeatList.toString();
+
+            if (newArr) {
+                $(item).val(newArr);
+            }
+            if (repeatList) {
+                repeatArr.push(repeatList);
+            }
+        }
+    });
+
+    if (repeatArr.length > 0) {
+        /* 去重 */
+        var arr = repeatArr.toString().split(',');
+        var data = getUnique(arr);
+        var title = data.newArr.toString();
+        var text = title + ' sku重复，已自动去重，保留位置靠前的一个';
+        layui.layer.open({
+            title: false,
+            btn: false,
+            content: '<div style="padding-top:15px;text-align:center;">'+ text +'</div>',
+            area: ['420px'],
+            skin: 'element-ui-dialog-class dialog-repeat-toast',
+            success:function(layero, index){
+                setTimeout(function(){
+                    layui.layer.close(index)
+                },2000)
+            }
+        });
+    };
+    return repeatArr;
+}
+
+
+/* 获取组件内部是否自动刷新 */
+function design_auto_refresh() {
+    var apiParamsData = null;
+    if (typeof {{ formData.apiParams | default('undefined') }}  == 'function') {
+        var apiParamsFn = {{ formData.apiParams | default('undefined') }};
+        apiParamsData = apiParamsFn();
+    }
+    if (design_form_auto_refresh != 0) {
+        var id = '#{{ formData.id }}-{{ formData.theme }}';
+        /* 商品列表 */
+        if (design_form_auto_refresh == 1) {
+            GsSelect && GsSelect.saveSyncDataInfo($(id), apiParamsData);
+        } else if (design_form_auto_refresh == 2) { /* tab商品列表 */
+            GsSelect && GsSelect.saveSyncTabInfo($(id), apiParamsData);
+        }
+    }
+}
+
+/**
+ * 校验SKU，分类ID, 优惠券id 是否正确，SKU超过100个，则分批请求
+ * @param {string} type [submit=提交函数，goodsManage=商品管理]
+ * @param {function} success 成功
+ * @param {fucntion} confirm(array) 清空回调(数组)
+ * @param {function} cancel 取消
+ * @param {function} fail 错误
+ */
+function design_form_submit_valid (params) {
+
+    /* 页面获取到的 [SKU] */
+    var all_skus = params.skus || design_form_get_arr($sku);
+
+    /* 页面获取到的商品分类 [cateIds] */
+    var all_cateId = params.cateIds || design_form_get_arr($cateId);
+
+    /* 优惠券 */
+    var all_couponId = params.couponIds || design_form_get_arr($couponId);
+
+
+    /* sku, cateId, couponId 都没有，则不需要校验 */
+    if (all_skus.length <= 0 && all_cateId.length <=0 && all_couponId.length <= 0) {
+        params.success && params.success();
+        return true;
+    }
+
+    Design.enableLoading();
+
+    /* sku去重 */
+    design_check_sku($sku);
+
+    params.url = '/common/site-verification/verify';
+    /** 封装请求的对象 */
+    params.requestParams = {
+        site_code: GESHOP_SITECODE || '',
+        lang: GESHOP_LANG || '',
+        check_type: params.check_type || 'goods',
+        check_rules: params.check_rules || 'GOODS_VALIDATE_EXITS,GOODS_VALIDATE_ON_SALE',
+        uiId: $('#design_form_pageInstanceId').val(),
+        client: sessionStorage.getItem('gs_media_platform') != null ? sessionStorage.getItem('gs_media_platform') : ''
+    };
+
+    try {
+        params.requestParams.pipeline = GESHOP_PIPELINE || '';
+    } catch (e) {}
+
+    /* 获取组件内部自定义的请求参数, 判断校验类型 */
+    var custom_config = design_form_skus_valid_params() || {};
+    if (custom_config && custom_config.hasOwnProperty('check_type') && custom_config.check_type !== '' ) {
+        /* 验证规则 */
+        if (custom_config.check_type == 'goods') {
+            params.requestParams.check_rules += ',' + custom_config.check_rules;
+        } else {
+            params.requestParams.check_rules = custom_config.check_rules;
+        }
+        params.requestParams.check_type = custom_config.check_type;
+        params.requestParams.goods_sku = custom_config.goods_sku;
+        params.ignore_cateIds = custom_config.ignore_cateIds;
+    };
+
+    design_form_submit_valid_common(params);
+    return false;
+}
+
+/**
+ * 校验 colorPicker 字段值是否正确
+ * 目前只支持十六进制[#FFFFFF] 或者 rgb(red, green, blue) 或者 rgba(red, green, blue, opacity)
+ */
+function design_form_submit_valid_color (next) {
+    var doms = $('div.color-picker-selector');
+    if (doms.length <= 0) return next();
+    /* 有DOM，进行校验 */
+    var reg1 = /^#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})$/;
+    var reg2 = /^[rR][gG][Bb][Aa]?[\(]((2[0-4][0-9]|25[0-5]|[01]?[0-9][0-9]?),){2}(2[0-4][0-9]|25[0-5]|[01]?[0-9][0-9]?),?(0\.\d{1,2}|1|0)?[\)]{1}$/;
+    var reg3 = /^transparent$/;
+    var wrong_field_name = '';
+    var wrong_field_name_cn = '';
+    doms.each(function (index, elem) {
+        var field_name = $(elem).attr('data-hidden-name');
+        var field_name_cn = $(elem).parent().prev('label').html() || '';
+        var field_value = $('input[name="' + field_name + '"]').val() || '';
+        if (field_value !== '') {
+            if (reg1.test(field_value) !== true && reg2.test(field_value) !== true && reg3.test(field_value) !== true) {
+                wrong_field_name = field_name;
+                wrong_field_name_cn = field_name_cn;
+                return false;
+            }
+        }
+    });
+    if (wrong_field_name_cn !== '' || wrong_field_name !== '') {
+        layer.alert('配置项 "' + wrong_field_name_cn + '" 有误，请调整。只支持十六进制、RGB、RGBA和 transparent', {
+            title: '提示',
+            area: '420px',
+            icon: 3,
+            skin: 'element-ui-dialog-class'
+        });
+    } else {
+        next();
+    }
+}
+
+
+
+
+$(function() {
+
+    /* 初始化时间控件 */
+    downDateInit();
+
+    /* 是否展示高级配置按钮 */
+    var bTab = $('.section-basic > .layui-tab > .layui-tab-title li');
+    bTab.on('click', function(){
+        var target = $('#js_moreConfig');
+        var index = $(this).index();
+        if(bTab.length == 2){
+            index == 1 ? target.show() : target.hide();
+        } else if (bTab.length == 3) {
+            index == 2 ? target.show() : target.hide();
+        }
+    });
+
+    /* 高级配置切换 */
+    $('#js_moreConfig').click(function() {
+        $('.section-basic').hide();
+        $('.section-heightLevel').show();
+    });
+    $('#js_advanced_baseConfig, .js_advanced_baseConfig').click(function() {
+        $('.section-basic').show();
+        $('.section-heightLevel').hide();
+    });
+
+    /* 商品sku过滤双引号 */
+    $('.js-valid-skus').on('keyup', function (e) {
+        var val = $(e.target).val();
+        if (val.indexOf('"') != -1) {
+            val = val.replace(/\"/g, '');
+        }
+        e.target.value = val;
+    });
+
+    /* 绑定提交按钮事件 */
+    $('#newSubmitForm').click(design_form_submit_progress);
+});
+
+
+
+
+</script>

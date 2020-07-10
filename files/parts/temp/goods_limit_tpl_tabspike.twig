@@ -1,0 +1,149 @@
+{# 产品库存 #}
+
+{% set goodLimit = {
+	activity_number :item.activity_number|default(0),
+	activity_volume_number:item.activity_volume_number|default(0),
+	activity_number_left:item.activity_number|number_format - item.activity_volume_number|number_format
+}%}
+
+<style>
+  [data-id="{{ pageInstanceId }}"] .gs-goods-limit {
+    width: 100%;
+    margin: 0px auto 16px;
+    height: 28px;
+    position: relative;
+		text-align: center;
+  }
+
+  [data-id="{{ pageInstanceId }}"] .gs-goods-limit .process-bar {
+    position: absolute;
+    right: 0;
+    top: 24px;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+  }
+
+  [data-id="{{ pageInstanceId }}"] .gs-goods-limit .process-bar,
+  [data-id="{{ pageInstanceId }}"] .gs-goods-limit .process-inner {
+		display:block;
+    height: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+		width: 100%;
+  }
+
+  [data-id="{{ pageInstanceId }}"] .gs-goods-limit .process-inner {
+		display: block;
+    top: 0;
+    background: {{pageData.tab_ingBgc}};
+    width: 0;
+  }
+
+  [data-id="{{ pageInstanceId }}"] .gs-goods-limit .goods-limit-tips_left {
+		position:relative;
+    font: normal 12px/25px Arial;
+		width: 100%;
+    display: block;
+  }
+
+  [data-id="{{ pageInstanceId }}"] .gs-goods-limit .goods-limit-tips_left b,[data-id="{{ pageInstanceId }}"] .goods-limit-tips_sold b{
+    color: {{pageData.goodsLimitsTextColor}};
+    padding-right: 5px;
+  }
+
+  [data-id="{{ pageInstanceId }}"] .gs-goods-limit .goods-limit-tips_left em {
+    position: absolute;
+    display: block;
+    bottom: -10px;
+    left: 10px;
+    border-width: 5px;
+    border-style: solid;
+  }
+
+  [data-id="{{ pageInstanceId }}"] .gs-goods-limit .goods-limit-tips_left em.tri_bd {
+    border-color: #ddd transparent transparent;
+    bottom: -11px;
+    z-index: 1;
+  }
+
+  [data-id="{{ pageInstanceId }}"] .gs-goods-limit .goods-limit-tips_left em.tri_bg {
+    border-color: #fff transparent transparent;
+    z-index: 2;
+  }
+
+	[data-id="{{ pageInstanceId }}"] .goods-limit-tips_sold{
+		position:relative;
+		text-align:center;
+	}
+</style>
+
+<div class="gs-goods-limit">
+
+      
+			<%#
+				var kill_number = parseInt(item.activity_number);
+				var left_persent = (function (activity_number_left, activity_number) {
+              var sold_persent = 0;
+              
+              if (activity_number_left - 0 >= activity_number - 0) {
+                sold_persent = 100;
+              } else {
+                sold_persent = ((activity_number_left - 0) / (activity_number - 0)) * 100;
+                sold_persent.toFixed(2);
+              }
+
+              return sold_persent;
+        })(item.activity_number_left || 0, item.activity_number || 0);
+				var langLeft = "{{get_component_trans(lang,'left')}}";
+				var itemKillLeft = item.activity_number_left;
+				var langKillLeftValue = langLeft.replace('XX',item.activity_number_left);
+				var volume_persent = item.kill_volume_number/item.activity_number;
+        var sold_persent = (function (activity_volume_number, activity_number) {
+              var sold_persent = 0;
+              
+              if (activity_volume_number - 0 >= activity_number - 0) {
+                sold_persent = 100;
+              } else {
+                sold_persent = ((activity_volume_number - 0) / (activity_number - 0)) * 100;
+                sold_persent.toFixed(2);
+              }
+
+              return parseInt(sold_persent,10);
+        })(item.activity_volume_number || 0, item.activity_number || 0);
+
+        if(item.goodsLimitsTextType == 1){ %>
+        <span class="goods-limit-tips_left">
+          <b style="{% if goodsData.goodsLimitsTextColor %}color:{{goodsData.goodsLimitsTextColor}};{% endif %}">
+            <% sold_persent %>%
+          </b><span style="
+            {% if goodsData.soldFtS %}font-size:{{goodsData.soldFtS}}px;{% endif %}
+            {% if goodsData.soldTextC %}color:{{goodsData.soldTextC}};{% endif %}
+            {% if goodsData.goodsLimitsTextColor %}color:{{goodsData.goodsLimitsTextColor}};{% endif %}
+          ">{{get_component_trans(lang,'sold')}}</span>
+        </span>
+        <span class="process-bar" style="{% if goodsData.goodsLimitsTotalBgColor %}background-color:{{goodsData.goodsLimitsTotalBgColor}};{% endif %}">
+          <em class="process-inner"
+            style="{% if goodsData.goodsLimitsSoldBgColor %}background-color:{{goodsData.goodsLimitsSoldBgColor}};{% endif %}
+            width:<% sold_persent %>%;
+            "></em>
+        </span>
+        <%# } else if(item.goodsLimitsTextType == 0) { %>
+        <span class="goods-limit-tips_left">
+          
+          <span style="
+            {% if goodsData.soldFtS %}font-size:{{goodsData.soldFtS}}px;{% endif %}
+            {% if goodsData.soldTextC %}color:{{goodsData.soldTextC}};{% endif %}
+            {% if goodsData.goodsLimitsTextColor %}color:{{goodsData.goodsLimitsTextColor}};{% endif %}
+          "><% langKillLeftValue %></span>
+        </span>
+        <span class="process-bar" style="{% if goodsData.goodsLimitsTotalBgColor %}background-color:{{goodsData.goodsLimitsTotalBgColor}};{% endif %}">
+          <em class="process-inner"
+            style="{% if goodsData.goodsLimitsRemainBgColor %}background-color:{{goodsData.goodsLimitsRemainBgColor}};{% endif %}
+            width:<% left_persent %>%;
+            "></em>
+        </span>
+				<%# }%>
+      
+</div>
+

@@ -1,0 +1,235 @@
+<div class="geshop-component-box component-drag geshop-U000041-model4 geshop-U000041-model4-{{ pageInstanceId }}" data-key="U000041" data-id="{{ pageInstanceId }}">
+	{{ include('style.twig') }}
+	<div class="geshop-containr"  data-fixed="{{ data.is_fixed ?? 1 }}">
+
+        {% if data.navList |length  == 0 %}
+            {#顶部图片#}
+            <div class="geshop-ad-wrap">
+                <ul>
+                    <li class="on">
+                        <a href="">
+                            <img src="https://geshopimg.logsss.com/uploads/jKOsUVRWStMXopN2khH7e5PfTBQuCawq.png"
+                                 alt="banner">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="https://geshopimg.logsss.com/uploads/jKOsUVRWStMXopN2khH7e5PfTBQuCawq.png"
+                                 alt="banner">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="https://geshopimg.logsss.com/uploads/jKOsUVRWStMXopN2khH7e5PfTBQuCawq.png"
+                                 alt="banner">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="https://geshopimg.logsss.com/uploads/jKOsUVRWStMXopN2khH7e5PfTBQuCawq.png"
+                                 alt="banner">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="https://geshopimg.logsss.com/uploads/jKOsUVRWStMXopN2khH7e5PfTBQuCawq.png"
+                                 alt="banner">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="https://geshopimg.logsss.com/uploads/jKOsUVRWStMXopN2khH7e5PfTBQuCawq.png"
+                                 alt="banner">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            {#一级导航#}
+            <div class="data-wrap">
+                <div class="swiper-container  geshop-navswiper">
+                    <div class="swiper-wrapper wrap-center">
+                        <div class="swiper-slide active">
+                            <span>Women</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <span>Plus Size</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <span>Little Black Dresses</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <span>Pink Brt</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <span>Women</span>
+                        </div>
+                        <div class="swiper-slide">
+                            <span>Little Black Dresses</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                {#二级导航#}
+                <div class="secdBox">
+                    {% for index in 0..5 %}
+                        <div class="swiper-container geshop-secondswiper geshop-secondswiper-{{ index }} {% if index==0 %}on{% endif %}">
+                            <div class="swiper-wrapper wrap-center">
+                                <div class="swiper-slide active">
+                                    <img class="nav-img"
+                                        src="https://geshopimg.logsss.com/uploads/4NTvJ3E9HbDxGShyOcrkQ7u1dqlaZw5i.png "
+                                        alt="">
+                                    <span>{{ index }}-Swimwear</span>
+                                    <i class="btr" style="background-color: #d8d8d8"></i>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img class="nav-img"
+                                        src="https://geshopimg.logsss.com/uploads/4NTvJ3E9HbDxGShyOcrkQ7u1dqlaZw5i.png "
+                                        alt="">
+                                    <span>Women's Accessories</span>
+                                    <i class="btr" style="background-color: #d8d8d8"></i>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img class="nav-img"
+                                        src="https://geshopimg.logsss.com/uploads/4NTvJ3E9HbDxGShyOcrkQ7u1dqlaZw5i.png "
+                                        alt="">
+                                    <span>Swallow </span>
+                                    <i class="btr" style="background-color: #d8d8d8"></i>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img class="nav-img"
+                                        src="https://geshopimg.logsss.com/uploads/4NTvJ3E9HbDxGShyOcrkQ7u1dqlaZw5i.png "
+                                        alt="">
+                                    <span>Women's Accessories</span>
+                                    <i class="btr" style="background-color: #d8d8d8"></i>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                {#内容列表#}
+                <ul class="second-nav-list">
+                    {% for index in 0..9 %}
+                        <li>
+                            <a href="">
+                                <img src="{{ data.default.lazyImg|default('https://geshopcss.logsss.com/imagecache/geshop/resources/images/rg/loading_big.gif') }}"
+                                    data-original="https://geshopimg.logsss.com/uploads/RO2KTybdpMct1JuLjFgYWVPrXmZEsH3q.png "
+                                    class="js-geshopImg-lazyload">
+                                {% if (data.discount_type ?? 0) == 1 %}
+                                    <span class="discount-off site-font-bold">{{ item.discount ?? 50 }}% OFF</span>
+                                {% else %}
+                                    <span class="discount-off site-font-bold">-{{ item.discount ?? 50 }}%</span>
+                                {% endif %}
+                            </a>
+                            <div class="shop-fast">
+                                <div class="rice-info">
+                                    <p>Buy 1 Get <span class="site-font-bold" style="color: #FA386A;">15%</span> OFF</p>
+                                </div>
+                            </div>
+                            <div class="goods-desc">
+                                <a href="">ZAFUL HOT Slip Pockets us ZAFUL HOT </a>
+                                <p class="item-price">
+                                <span class="shop-price">
+                                    <span class="my_shop_price site-bold-strict" data-orgp="22.99">$22.99</span>
+                                </span>
+                                    <del class="market-price">
+                                        <span class="my_shop_price js_market_wrap" data-orgp="40.99">$40.99</span>
+                                    </del>
+                                </p>
+                            </div>
+                            <span class="quick_view" data-site="rg-pc" data-goodssn="171560703" data-goodsid="372024" data-sitedomain="http://www.pc-rosegal.com.master.php5.egomsl.com"> QUICK SHOP </span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% else %}
+            {#顶部图片#}
+            <div class="geshop-ad-wrap">
+                <ul>
+
+                </ul>
+            </div>
+            <div class="data-wrap">
+                {#一级导航#}
+                <div class="swiper-container  geshop-navswiper">
+                    <div class="swiper-wrapper">
+
+                    </div>
+                    <div class="outfit-prev swiper-button-prev j-tags-prev"><i class="icon-left"></i></div>
+                    <div class="outfit-next swiper-button-next j-tags-next"><i class="icon-right"></i></div>
+
+                </div>
+                {#二级导航#}
+                <div class="secdBox">
+
+                </div>
+                {#商品列表#}
+                <ul class="second-nav-list">
+
+                </ul>
+            </div>
+            <script class="cont-goodsList" type="text/html">
+                <div>
+                    <%# d.forEach(function(item, index) { %>
+                    <li class="goos-item">
+                        <a href="<% item.url_title %>">
+                            <img src="{{ data.default.lazyImg|default('https://geshopcss.logsss.com/imagecache/geshop/resources/images/rg/loading_big.gif') }}"
+                                 data-original="<% item.goods_img %>"
+                                 class="js-geshopImg-lazyload">
+                            <%# if (item.promote_price != '0.00') { %>
+                                <%# if (item.discount > 0) { %>
+                                    {% if data.discount_type == 1 %}
+                                        <span class="discount-off site-font-bold"><% item.discount %>% OFF</span>
+                                    {% else %}
+                                        <span class="discount-off site-font-bold">-<% item.discount %>%</span>
+                                    {% endif %}
+                                <%# } %>
+                            <%# } %>
+                            {# 库存告急 #}
+                            {% include geshop.default.pc.stock_tip_laytpl with { itemType: 'normal' }%}
+                        </a>
+                        <%# if(item.promotions.length > 0){ %>
+                            <div class="shop-fast">
+
+                                <p class="rice-info">
+                                    <% item.promotions[item.promotions.length - 1] %>
+                                </p>
+                            </div>
+                        <%# } %>
+                        <div class="goods-desc">
+                            <a href="<% item.url_title %>"><% item.goods_title %></a>
+                            <p class="item-price">
+                                <%# if (item.promote_price != '0.00') { %>
+                                    <span class="shop-price">
+                                            <span class="my_shop_price site-bold-strict" data-orgp="<% item.promote_price %>">$<% item.promote_price %></span>
+                                        </span>
+                                    <del class="market-price">
+                                        <span class="my_shop_price js_market_wrap" data-orgp="<% item.market_price %>">$<% item.market_price %></span>
+                                    </del>
+                                <%# }else{ %>
+                                <span class="shop-price">
+                                         <span class="my_shop_price site-bold-strict"
+                                               data-orgp="<% item.shop_price %>">$<% item.shop_price %></span>
+                                    </span>
+
+                                <%# } %>
+                            </p>
+                        </div>
+                        <span class="quick_view" data-site="{{siteCode}}"   data-goodsSn="<%  item.goods_sn %>" data-goodsId="<% item.goods_id %>" data-siteDomain="{{siteDomain}}"> {{data.shop_fast_text ?? 'QUICK SHOP'}} </span>
+                    </li>
+                    <%# }) %>
+                    <%# if(d.length === 0){ %>
+                    无数据
+                    <%# } %>
+                </div>
+            </script>
+
+        {% endif %}
+    </div>
+    <script>
+        window.navList_{{pageInstanceId}} = {{ json_encode_no_unicode(data.navList) }};
+        window.goodsSku_{{pageInstanceId}} = {{ json_encode_no_unicode(data.goodsSKU) }};
+    </script>
+</div>
+

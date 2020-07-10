@@ -1,0 +1,56 @@
+{%
+    set pageData = {
+        couponId : data.couponId | default(''),
+        startText : data.startText | default('Coming Soon'),
+        getCouponText : data.getCouponText | default('Get now'),
+        couponTitle : data.couponTitle | default('CRAZY COUPON'),
+        countDown : data.countDown | default('1'),
+    }
+%}
+{# start wrap #}
+{{include ('@app/files/parts/ui/U000129/coupon1/style.twig')}} 
+{# end wrap #}
+
+<div data-key="U000129" data-module="U000129-1" id="box{{ pageInstanceId }}" data-id="{{ pageInstanceId }}" data-box="coupon-{{ pageInstanceId }}-1" data-static-domain="{{staticDomain}}" data-gid="U000129" class="geshop-component-box component-drag gs-index-main">
+    <input 
+        class="hide-info-input"
+        type="hidden"
+        startIn="{{ get_component_trans(lang,'start_in') }}"
+        endIn="{{ get_component_trans(lang,'end_in') }}"
+        successText="{{ get_component_trans(lang,'success_text') }}"
+        startText="{{ pageData.startText }}"
+        getCouponText="{{ pageData.getCouponText }}"
+        lang="{{ lang }}"
+        serverTime="{{ serverTime }}"
+        couponId="{{ pageData.couponId }}"
+        countDown="{{ pageData.countDown }}"
+        env="{{ data.isEditEnv }}"
+        staticDomain="{{staticDomain}}"
+        siteCode="{{siteCode}}"
+    />
+    <div class="over-box">
+        <div class="over-box-table"><span>{{ get_component_trans(lang,'btn_ended') }}</span></div>
+    </div>
+    <div class="coupon-inset">
+        
+        <div class="coupon-body">
+            <div class="coupon-layout coupon-top">
+                <div class="center-center">{{ pageData.couponTitle }}</div>
+            </div>
+            <div class="coupon-layout coupon-middle">
+                <div class="center-center">
+                <div class="coupon-btn inline-box"></div>
+                </div>
+            </div>
+            <div class="coupon-layout coupon-bottom">
+                <div class="center-center">
+                <div class="coupon-text"></div>
+                <div class="coupon-time-box site-bold-strict">
+                    <strong class="time-line"></strong><span>:</span><strong class="time-line"></strong><span>:</span><strong class="time-line"></strong><span>:</span><strong class="time-line"></strong> 
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="clear: both;"></div>

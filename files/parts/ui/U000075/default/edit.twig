@@ -1,0 +1,11 @@
+<a {% if data.link %}href="{{ data.link }}"{% endif %} style="
+  display: block; text-align: {{ data.imgAlign }}; width: 100%;
+  {% if data.ImgHeight %}height: {{ (data.ImgHeight / 75) | number_format(3, '.') }}rem;{% endif %}"
+>
+  <img style="
+    width: {% if data.ImgWidth %}{{ (data.ImgWidth / 75) | number_format(3, '.') }}rem{% else %}100%{% endif %};
+    {% if data.ImgHeight %}height: {{ (data.ImgHeight / 75) | number_format(3, '.') }}rem;{% endif %}
+    {% if data.imgSrc|length == 0 %}max-width: 100%;{% endif %}
+    vertical-align: top;"
+    alt="{{ data.imgAlt }}" src="{{ data.imgSrc | default(data.default.banner) }}">
+</a>

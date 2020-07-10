@@ -1,0 +1,480 @@
+{# 拆分 M和APP 的配置项目出来 #}
+{%
+    set app_data_setting = [
+        {
+            label: '活动logo是否开启',
+            name: 'm_show_logo',
+            type: 'radio',
+            default: '1',
+            options: [ { label: '是', value: '1' }, { label: '否', value: '0' } ]
+        },
+        {
+            label: '活动日历是否开启',
+            name: 'm_show_calendar',
+            type: 'radio',
+            default: '1',
+            options: [ { label: '是', value: '1' }, { label: '否', value: '0' } ]
+        },
+        {
+            label: '攻略页是否开启',
+            name: 'm_show_raiders',
+            type: 'radio',
+            default: '1',
+            options: [ { label: '是', value: '1' }, { label: '否', value: '0' } ]
+        }
+    ]
+%}
+
+
+{# 拆分 M和APP 的样式配置项目出来 #}
+{%
+    set app_style_setting = [
+        {
+            label: '背景图片',
+            desc: '(建议宽750px,高140px)',
+            name: 'm_bg_image',
+            type: 'image'
+        },
+        {
+            label: '活动logo图片',
+            desc: '(建议宽140px,高140px)',
+            name: 'm_logo_image',
+            type: 'image',
+        },
+        {
+            label: '活动日历图片',
+            desc: '(建议宽140px,高140px)',
+            name: 'm_calendar_image',
+            type: 'image',
+        },
+        {
+            label: '弹窗活动日历图背景',
+            desc: '(建议宽600px,高760px)',
+            name: 'm_calendar_dialog_image',
+            type: 'image',
+        },
+        {
+            label: '攻略图片',
+            desc: '(建议宽140px,高140px)',
+            name: 'm_raiders_image',
+            type: 'image',
+        },
+        {
+            label: '活动日历标题',
+            name: 'm_calendar_title',
+            default: 'Black Friday Sale 2019 is here!',
+        },
+        {
+            label: '标题文案颜色',
+            name: 'm_calendar_color',
+            type: 'colorPicker',
+            default: '#333333',
+            col: 2,
+        },
+        {
+            label: '标题文字大小 (PX)',
+            name: 'm_calendar_size',
+            default: '16',
+            col: 2
+        },
+        {
+            label: '攻略链接',
+            name: 'm_raiders_link',
+        },
+        {
+            label: '时间轴连接图片',
+            desc: '(建议宽20px,高20px)',
+            name: 'm_timezone_image',
+            type: 'image',
+        }
+    ]
+%}
+
+
+{# 开始配置 #}
+{%
+    set formData = {
+        id: 'U0000220',
+        name: '时间轴配置',
+        theme: 'default',
+        tabs: [
+            {
+                label: '数据配置',
+                components: [
+                    {
+                        label: '图片配置',
+                        type: 'fieldset',
+                        isshow: 'dl-web',
+                        components: [
+                            {
+                                type: 'tab',
+                                isshow: 'dl-web',
+                                items: [
+                                    {
+                                        label: 'PC',
+                                        components: [
+                                            {
+                                                label: '活动logo是否开启',
+                                                name: 'pc_show_logo',
+                                                type: 'radio',
+                                                default: '1',
+                                                options: [ { label: '是', value: '1' }, { label: '否', value: '0' } ]
+                                            },
+                                            {
+                                                label: '活动日历是否开启',
+                                                name: 'pc_show_calendar',
+                                                type: 'radio',
+                                                default: '1',
+                                                options: [ { label: '是', value: '1' }, { label: '否', value: '0' } ]
+                                            },
+                                            {
+                                                label: '攻略页是否开启',
+                                                name: 'pc_show_raiders',
+                                                type: 'radio',
+                                                default: '1',
+                                                options: [ { label: '是', value: '1' }, { label: '否', value: '0' } ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        label: 'PAD',
+                                        components: [
+                                            {
+                                                label: '活动logo是否开启',
+                                                name: 'pad_show_logo',
+                                                type: 'radio',
+                                                default: '1',
+                                                options: [ { label: '是', value: '1' }, { label: '否', value: '0' } ]
+                                            },
+                                            {
+                                                label: '活动日历是否开启',
+                                                name: 'pad_show_calendar',
+                                                type: 'radio',
+                                                default: '1',
+                                                options: [ { label: '是', value: '1' }, { label: '否', value: '0' } ]
+                                            },
+                                            {
+                                                label: '攻略页是否开启',
+                                                name: 'pad_show_raiders',
+                                                type: 'radio',
+                                                default: '1',
+                                                options: [ { label: '是', value: '1' }, { label: '否', value: '0' } ]
+                                            }
+                                        ],
+                                    },
+                                    {
+                                        label: 'M',
+                                        components: app_data_setting
+                                    }
+                                ]
+                            },
+                        ]
+                    },
+                    {
+                        label: '图片配置',
+                        type: 'fieldset',
+                        isshow: 'dl-app',
+                        components: app_data_setting
+                    },
+                    {
+                        label: '活动时间轴数据配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                type: 'diy',
+                                src: 'form-data-pc.twig'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                label: '样式配置',
+                components: [
+                    {
+                        label: '常用配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                type: 'margin-dl'
+                            },
+                            {
+                                label: '组件背景颜色',
+                                name: 'box_bg_color',
+                                default: '#f8f8f8',
+                                type: 'colorPicker',
+                            },
+                        ]
+                    },
+					{
+                        type: 'tab',
+                        isshow: 'dl-web',
+						items: [
+							{
+                                label: 'PC',
+                                components: [
+                                    {
+                                        label: '背景图片',
+                                        desc: '(建议宽1920px,高100px)',
+                                        name: 'pc_bg_image',
+                                        type: 'image'
+                                    },
+                                    {
+                                        label: '活动logo图片',
+                                        desc: '(建议宽100px,高100px)',
+                                        name: 'pc_logo_image',
+                                        type: 'image',
+                                    },
+                                    {
+                                        label: '默认活动日历图片',
+                                        desc: '(建议宽100px,高100px)',
+                                        name: 'pc_calendar_image',
+                                        type: 'image',
+                                    },
+                                    {
+                                        label: 'Hover活动日历图片',
+                                        desc: '(建议宽100px,高100px)',
+                                        name: 'pc_calendar_hover_image',
+                                        type: 'image',
+                                    },
+                                    {
+                                        label: 'Hover下拉活动日历图背景',
+                                        desc: '(建议宽900px,高400px)',
+                                        name: 'pc_calendar_hover_pop_image',
+                                        type: 'image',
+                                    },
+                                    {
+                                        label: '攻略图片',
+                                        desc: '(建议宽100px,高100px)',
+                                        name: 'pc_raiders_image',
+                                        type: 'image',
+                                    },
+                                    {
+                                        label: '活动日历标题',
+                                        name: 'pc_calendar_title',
+                                        default: 'Black Friday Sale 2019 is here!',
+                                    },
+                                    {
+                                        label: '标题文案颜色',
+                                        name: 'pc_calendar_color',
+                                        type: 'colorPicker',
+                                        default: '#333333',
+                                        col: 2,
+                                    },
+                                    {
+                                        label: '标题文字大小 (PX)',
+                                        name: 'pc_calendar_size',
+                                        default: '18',
+                                        col: 2,
+                                    },
+                                    {
+                                        label: '攻略链接',
+                                        name: 'pc_raiders_link',
+                                    },
+                                    {
+                                        label: '时间轴连接图片',
+                                        desc: '(建议宽20px,高20px)',
+                                        name: 'pc_timezone_image',
+                                        type: 'image',
+                                    },
+                                ],
+                            },
+                            {
+                                label: 'PAD',
+                                components: [
+                                    {
+                                        label: '背景图片',
+                                        desc: '(建议宽1024px,高100px)',
+                                        name: 'pad_bg_image',
+                                        type: 'image'
+                                    },
+                                    {
+                                        label: '活动logo图片',
+                                        desc: '(建议宽100px,高100px)',
+                                        name: 'pad_logo_image',
+                                        type: 'image',
+                                    },
+                                    {
+                                        label: '默认活动日历图片',
+                                        desc: '(建议宽100px,高100px)',
+                                        name: 'pad_calendar_image',
+                                        type: 'image',
+                                    },
+                                    {
+                                        label: '弹窗活动日历图背景',
+                                        desc: '(建议宽600px,高500px)',
+                                        name: 'pad_calendar_dialog_image',
+                                        type: 'image',
+                                    },
+                                    {
+                                        label: '攻略图片',
+                                        desc: '(建议宽100px,高100px)',
+                                        name: 'pad_raiders_image',
+                                        type: 'image',
+                                    },
+                                    {
+                                        label: '活动日历标题',
+                                        name: 'pad_calendar_title',
+                                        default: 'Black Friday Sale 2019 is here!',
+                                    },
+                                    {
+                                        label: '标题文案颜色',
+                                        name: 'pad_calendar_color',
+                                        type: 'colorPicker',
+                                        default: '#333333',
+                                        col: 2
+                                    },
+                                    {
+                                        label: '标题文字大小 (PX)',
+                                        name: 'pad_calendar_size',
+                                        default: '18',
+                                        col: 2
+                                    },
+                                    {
+                                        label: '攻略链接',
+                                        name: 'pad_raiders_link',
+                                    },
+                                    {
+                                        label: '时间轴连接图片',
+                                        desc: '(建议宽20px,高20px)',
+                                        name: 'pad_timezone_image',
+                                        type: 'image',
+                                    },
+                                ],
+                            },
+                            {
+                                label: 'M',
+                                components: app_style_setting
+                            },
+						]
+					},
+                    {
+                        type: 'fieldset',
+                        isshow: 'dl-app',
+                        components: app_style_setting
+                    },
+                    {
+                        label: '活动样式配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                type: 'tab',
+                                items: [
+                                    {
+                                        label: '未开始',
+                                        components: [
+                                            {
+                                                label: '日期文字颜色',
+                                                name: 'ready_date_font_color',
+                                                type: 'colorPicker',
+                                                default: '#ffffff',
+                                                col: 2,
+                                            },
+                                            {
+                                                label: '日期背景颜色',
+                                                name: 'ready_date_bg_color',
+                                                type: 'colorPicker',
+                                                default: '#CCCCCC',
+                                                col: 2,
+                                            },
+                                            {
+                                                label: '活动名称文字颜色',
+                                                name: 'ready_title_font_color',
+                                                type: 'colorPicker',
+                                                default: '#333333',
+                                                col: 2,
+                                            },
+                                            {
+                                                label: '活动简介文字颜色',
+                                                name: 'ready_desc_font_color',
+                                                type: 'colorPicker',
+                                                default: '#333333',
+                                                col: 2,
+                                            }
+                                        ],
+                                    },
+                                    {
+                                        label: '进行中',
+                                        components: [
+                                            {
+                                                label: '日期文字颜色',
+                                                name: 'start_date_font_color',
+                                                type: 'colorPicker',
+                                                default: '#ffffff',
+                                                col: 2,
+                                            },
+                                            {
+                                                label: '日期背景颜色',
+                                                name: 'start_date_bg_color',
+                                                type: 'colorPicker',
+                                                default: '#CCCCCC',
+                                                col: 2,
+                                            },
+                                            {
+                                                label: '活动名称文字颜色',
+                                                name: 'start_title_font_color',
+                                                type: 'colorPicker',
+                                                default: '#333333',
+                                                col: 2,
+                                            },
+                                            {
+                                                label: '活动简介文字颜色',
+                                                name: 'start_desc_font_color',
+                                                type: 'colorPicker',
+                                                default: '#333333',
+                                                col: 2,
+                                            }
+                                        ],
+                                    },
+                                    {
+                                        label: '已结束',
+                                        components: [
+                                            {
+                                                label: '日期文字颜色',
+                                                name: 'end_date_font_color',
+                                                type: 'colorPicker',
+                                                default: '#ffffff',
+                                                col: 2,
+                                            },
+                                            {
+                                                label: '日期背景颜色',
+                                                name: 'end_date_bg_color',
+                                                type: 'colorPicker',
+                                                default: '#CCCCCC',
+                                                col: 2,
+                                            },
+                                            {
+                                                label: '活动名称文字颜色',
+                                                name: 'end_title_font_color',
+                                                type: 'colorPicker',
+                                                default: '#333333',
+                                                col: 2,
+                                            },
+                                            {
+                                                label: '活动简介文字颜色',
+                                                name: 'end_desc_font_color',
+                                                type: 'colorPicker',
+                                                default: '#333333',
+                                                col: 2,
+                                            }
+                                        ],
+                                    },
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        moreConfig: [],
+        beforeSubmit: 'beforeSubmit'
+    }
+%}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+{# 引入自定义函数 #}
+<script>
+{% include 'form.js' %}
+</script>

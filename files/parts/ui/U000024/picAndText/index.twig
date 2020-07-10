@@ -1,0 +1,37 @@
+
+<div class="geshop-component-box component-drag" id="U000024_{{pageInstanceId}}"  data-gid="U000024" data-key="U000024" data-id="{{ pageInstanceId }}" attr="nav_flag">
+	{% if data.imgSrcLeft !='' or data.imgSrcRight !='' or data.titleText !='' %}
+	<div style="{% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}
+		height:{{ data.height|default(100) }}px;
+		background-color:{{ data.bgColor }};
+		width:100%;
+		overflow: hidden;
+		text-align:center;">
+		<img src="{{ data.imgSrcLeft }}" 
+			style="display:inline-block;
+			vertical-align:middle;
+			height:{{ data.height|default(100) }}px;">
+		</img>
+		<a href="{{ data.viewHref }}"
+		 style="display:inline-block;
+			text-align:center;
+			font-family:{{ data.fontFamily }};
+			line-height:{{ data.height|default(100) }}px;
+			{% if data.viewHref %}cursor: pointer;{% else%} cursor:default; {% endif %}
+			font-size:{% if data.titleFont %}{{ data.titleFont }}{% else %} 24 {% endif %}px;
+			color:{% if data.titleColor %}{{ data.titleColor }}{% else %} #333333{% endif %};
+			font-weight:{% if data.titleWeight %}{{ data.titleWeight|default('normal') }}{% endif %};
+			padding-left:{{ data.textMargin|default(20) }}px;
+			padding-right:{{ data.textMargin|default(20) }}px;">
+			{% if data.titleText %}{{ data.titleText }}{% endif %}
+		</a>
+		<img src="{{ data.imgSrcRight }}"
+			style="display:inline-block;
+			vertical-align:middle;
+			height:{{ data.height|default(100) }}px;">
+		</img>
+	</div>
+	{% else %}
+		<img src="{{ data.default.picandtext }}" style="height:{{ data.height|default(100) }}px;display:block;margin:0 auto;"></img>
+	{% endif %}
+</div>

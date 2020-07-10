@@ -1,0 +1,90 @@
+<div class='design-form design-form-component design-form-visible'>
+    <h3 class='component-form-title'>Banner 组件
+        <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+            <i class="el-icon-close"></i>
+        </a>
+    </h3>
+    <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+    <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+        <div class="layui-tab">
+            <ul class="layui-tab-title">
+                <li class="layui-this">模板选择</li>
+                <li>配置</li>
+            </ul>
+            <div class="layui-tab-content layui-tab-content-parent">
+                <div class="layui-tab-item layui-show">
+                    <style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+					{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+                </div>
+                <div class="layui-tab-item">
+                    <div class="layui-carousel" id="form_carousel">
+                        <div carousel-item="carousel-item">
+                            <div>
+                                <fieldset class="layui-elem-field">
+                                    <legend>常用配置</legend>
+                                    <div class="layui-field-box">
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label public-data">图片地址</label>
+                                            <div class="layui-input-block">
+                                                <a href="javascript:;" class="js_openResource design-open-resource">
+                                                    <i class="layui-icon">&#xe64a;</i>
+                                                </a>
+                                                <input type="text" name="imgSrc" autocomplete="off" class="layui-input" value="{{ data.imgSrc }}" data-height="imgHeight" data-public-tag="true">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label public-data">图片高度(px)</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="imgHeight" autocomplete="off" class="layui-input" value="{{ data.imgHeight|default(500) }}" data-public-tag="true">
+                                            </div>
+                                        </div>
+										<div class="layui-form-item">
+											<label class="layui-form-label public-data">跳转地址</label>
+											<div class="layui-input-block">
+												<input type="text" name="imgURL" autocomplete="off" class="layui-input" value="{{ data.imgURL is not null ? data.imgURL : null }}" data-public-tag="true">
+											</div>
+										</div>
+                                    </div>
+                                </fieldset>
+                                <div class="text-right">
+                                    <button type="button" id="js_moreConfig" class="layui-btn layui-btn-normal layui-btn-sm">更多配置</button>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="layui-tab layui-tab-vertical">
+                                    <ul class="layui-tab-title">
+                                        <li class="layui-this">基础设置</li>
+                                    </ul>
+                                    <div class="layui-tab-content">
+                                        <div class="layui-tab-item layui-show">
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">上边距(px)</label>
+                                                <div class="layui-input-block">
+                                                    <input type="text" name="boxMarginTop" autocomplete="off" class="layui-input" value="{{ data.boxMarginTop|default(0) }}">
+                                                </div>
+                                            </div>
+                                            <div class="layui-form-item">
+                                                <label class="layui-form-label">下边距(px)</label>
+                                                <div class="layui-input-block">
+                                                    <input type="text" name="boxMarginBottom" autocomplete="off" class="layui-input" value="{{ data.boxMarginBottom|default(0) }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <button type="button" id="js_baseConfig" class="layui-btn layui-btn-normal layui-btn-sm">基础配置</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+    <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+    <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>

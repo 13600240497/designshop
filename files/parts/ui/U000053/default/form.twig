@@ -1,0 +1,157 @@
+{% set downBorderSArr = [
+	{name:'无',value:'none'},
+	{name:'实线',value:'solid'},
+	{name:'虚线',value:'dashed'},
+	{name:'点状',value:'dotted'},
+	{name:'双线',value:'double'},
+	{name:'继承上级',value:'inherit'},
+]%}
+
+{%
+	set pageData = {
+		downBgC:data.downBgC is not null?data.downBgC:'#ffffff',
+		downBorderC:data.downBorderC is not null?data.downBorderC:'#FD9E62',
+		downFtC:data.downFtC is not null?data.downFtC:'#666666',
+		downCl:data.downCl is not null?data.downCl:'#666666',
+		downTimeBgC:data.downTimeBgC is not null?data.downTimeBgC:'transparent',
+
+	}
+%}
+
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>倒计时组件
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+  <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+		<div class="layui-tab"  id="gs_component_countdown">
+			<ul class="layui-tab-title">
+				<li class="layui-this">模板选择</li>
+				<li>样式设置</li>
+			</ul>
+			<div class="layui-tab-content layui-tab-content-parent">
+					<div class="layui-tab-item layui-show">
+						<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+						{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				</div>
+				<div class="layui-tab-item">
+					<div class="layui-carousel" id="form_carousel">
+						<div carousel-item>
+							<div>
+								<fieldset class="layui-elem-field">
+									<legend>常用配置</legend>
+									{# 剩余秒数,倒计时状态0,1,2 未开始,已开始,已结束 #}
+										<input type="hidden" name="left_time" value="{{data.left_time}}">
+										<input type="hidden" name="count_textStatus" value="{{data.count_textStatus}}" data-public-tag="true">
+										<input type="hidden" name="serverTime" value="{{serverTime}}" data-public-tag="true">
+										<input type="hidden" name="dataStartTime" value="{{data.dataStartTime}}" data-public-tag="true">
+										<input type="hidden" name="dataEndTime" value="{{data.dataEndTime}}" data-public-tag="true">
+
+										<div class="layui-field-box">
+											<div class="layui-form-item">
+												<label class="layui-form-label public-data">生效时间</label>
+												<div class="layui-input-block"><input class="layui-input down-timestamp" type="text" name="downDateRange" value="{{data.downDateRange}}" data-public-tag="true">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">整体背景颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="downBgC">
+														<div style="background-color: {{ pageData.downBgC }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="downBgC" autocomplete="off" value="{{ pageData.downBgC }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">文案颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="downCl">
+														<div style="background-color: {{ pageData.downCl }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="downCl" autocomplete="off" value="{{ pageData.downCl }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">倒计时背景颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="downTimeBgC">
+														<div style="background-color: {{ pageData.downTimeBgC }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="downTimeBgC" autocomplete="off" value="{{ pageData.downTimeBgC }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">倒计时字体颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="downFtC">
+														<div style="background-color: {{ pageData.downFtC }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="downFtC" autocomplete="off" value="{{ pageData.downFtC }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label public-data">预热文案</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="downBfText" value="{{data.downBfText|default('Coming soon')}}" data-public-tag="true">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label public-data">进行文案</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="downIngText" value="{{data.downIngText|default('Hot sale')}}" data-public-tag="true">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label public-data">结束文案</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="downAfText" value="{{data.downAfText|default('Ends')}}" data-public-tag="true">
+												</div>
+											</div>
+										</div>
+								</fieldset>
+								<div class="text-right">
+									<button type="button" id="js_moreConfig" class="layui-btn layui-btn-normal layui-btn-sm">更多配置</button>
+								</div>
+							</div>
+
+							<div>
+								<div class="layui-tab layui-tab-vertical">
+									<ul class="layui-tab-title">
+											<li class="layui-this">文案设置</li>
+									</ul>
+
+									<div class="layui-tab-content">
+										<div class="layui-tab-item layui-show">
+											<div class="layui-form-item">
+												<label class="layui-form-label">活动阶段字体大小(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="downFtS" value="{{data.downFtS|default(26)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">活动时间字体大小(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="downTimeFtS" value="{{data.downTimeFtS|default(24)}}">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="text-right">
+									<button type="button" id="js_baseConfig" class="layui-btn layui-btn-normal layui-btn-sm">基础配置</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+  </div>
+</div>
+
+
+<div class="layui-form-item geshop-form-operation">
+	<button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+	<button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>
+{# count_down_formscript #}
+{{include ('@app/files/parts/temp/count_down_formscript.twig')}}

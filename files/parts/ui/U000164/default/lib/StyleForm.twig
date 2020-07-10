@@ -1,0 +1,204 @@
+<h4 class="column-title">常用配置<span>(此组件只适用于通栏)</span></h4>
+
+<div class="layui-row layui-col-space20">
+    <div class="layui-col-xs6">
+        <div class="layui-form-item">
+            {{
+                include ('lib/Input.twig', {
+                    'cmpt_label': '组件下边距(px)',
+                    'cmpt_name': 'boxMarginBottom',
+                    'cmpt_value': data.boxMarginBottom,
+                    'cmpt_default': '32'
+                })
+            }}
+        </div>
+    </div>
+    <div class="layui-col-xs6">
+        <div class="layui-form-item">
+            {{
+                include ('lib/ColorPicker2.twig', {
+                    'cmpt_label': '组件背景颜色',
+                    'cmpt_name': 'cmptBgColor',
+                    'cmpt_value': data.cmptBgColor,
+                    'cmpt_default': '#F8F8F8'
+                })
+            }}
+        </div>
+    </div>
+</div>
+
+
+{#  Floor 1 #}
+<h5 class="column-title">标题配置</h5>
+<div class="layui-form-item">
+    {{
+        include ('lib/ColorPicker2.twig', {
+            'cmpt_label': '背景颜色',
+            'cmpt_name': 'titleBgColor',
+            'cmpt_value': data.titleBgColor,
+            'cmpt_default': '#EDEDED'
+        })
+    }}
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">背景图片</label>
+    <div class="layui-input-block">
+        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+        <input class="layui-input" type="text" name="titleBgImg" value="{{data.titleBgImg|default('')}}">
+    </div>
+</div>
+
+<div class="layui-form-item">
+    {{
+        include ('lib/Input.twig', {
+            'cmpt_label': '文案',
+            'cmpt_name': 'titleText',
+            'cmpt_value': data.titleText,
+            'cmpt_default': 'Points exchange products'
+        })
+    }}
+</div>
+
+<div class="layui-form-item">
+    {{
+        include ('lib/ColorPicker2.twig', {
+            'cmpt_label': '文本文案颜色',
+            'cmpt_name': 'titleFontColor',
+            'cmpt_value': data.titleFontColor,
+            'cmpt_default': '#333333'
+        })
+    }}
+</div>
+
+
+{# Floor 2 #}
+<h5 class="column-title">商品内容配置</h5>
+
+<div class="layui-form-item">
+    <label class="form-item-label">积分图片<span>（请上传宽高为20x20px的尺寸图片）</span></label>
+    <div class="layui-input-block">
+        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+        <input class="layui-input" type="text" name="bpIcon" value="{{data.bpIcon|default('')}}" data-valid-width="bpIconWidth" data-valid-height="bpIconHeight">
+        <input type="hidden" class="Unwanted" value="20" name="bpIconWidth"></input>
+        <input type="hidden" class="Unwanted" value="20" name="bpIconHeight"></input>
+    </div>
+</div>
+
+<div class="layui-form-item">
+    {{
+        include ('lib/ColorPicker2.twig', {
+            'cmpt_label': '商品售价和积分文本颜色',
+            'cmpt_name': 'goodsSalePriceFontColor',
+            'cmpt_value': data.goodsSalePriceFontColor,
+            'cmpt_default': '#FA386A'
+        })
+    }}
+</div>
+
+<div class="layui-row layui-col-space20">
+    <div class="layui-col-xs6">
+        <div class="layui-form-item">
+            {{
+                include ('lib/ColorPicker2.twig', {
+                    'cmpt_label': '库存提示背景颜色',
+                    'cmpt_name': 'goodsLeftBgColor',
+                    'cmpt_value': data.goodsLeftBgColor,
+                    'cmpt_default': '#d8d8d8'
+                })
+            }}
+        </div>
+    </div>
+    <div class="layui-col-xs6">
+        <div class="layui-form-item">
+            {{
+                include ('lib/ColorPicker2.twig', {
+                    'cmpt_label': '库存提示文本颜色',
+                    'cmpt_name': 'goodsLeftFontColor',
+                    'cmpt_value': data.goodsLeftFontColor,
+                    'cmpt_default': '#666666'
+                })
+            }}
+        </div>
+    </div>
+</div>
+
+<div class="layui-form-item">
+    {{
+        include ('lib/Input.twig', {
+            'cmpt_label': '兑换按钮文案',
+            'cmpt_name': 'goodsBtnText',
+            'cmpt_value': data.goodsBtnText,
+            'cmpt_default': 'Redeem Now'
+        })
+    }}
+</div>
+
+<div class="layui-row layui-col-space20">
+    <div class="layui-col-xs6">
+        <div class="layui-form-item">
+            {{
+                include ('lib/ColorPicker2.twig', {
+                    'cmpt_label': '兑换按钮背景颜色',
+                    'cmpt_name': 'goodsBtnBgColor',
+                    'cmpt_value': data.goodsBtnBgColor,
+                    'cmpt_default': '#333333'
+                })
+            }}
+        </div>
+    </div>
+    <div class="layui-col-xs6">
+        <div class="layui-form-item">
+            {{
+                include ('lib/ColorPicker2.twig', {
+                    'cmpt_label': '兑换按钮文本颜色',
+                    'cmpt_name': 'goodsBtnFontColor',
+                    'cmpt_value': data.goodsBtnFontColor,
+                    'cmpt_default': '#FFFFFF'
+                })
+            }}
+        </div>
+    </div>
+</div>
+
+
+<h5 class="column-title">查看更多按钮配置</h5>
+
+<div class="layui-row layui-col-space20">
+    <div class="layui-col-xs6">
+        <div class="layui-form-item">
+            {{
+                include ('lib/ColorPicker2.twig', {
+                    'cmpt_label': '按钮背景颜色',
+                    'cmpt_name': 'viewmoreBgColor',
+                    'cmpt_value': data.viewmoreBgColor,
+                    'cmpt_default': ''
+                })
+            }}
+        </div>
+    </div>
+    <div class="layui-col-xs6">
+        <div class="layui-form-item">
+            {{
+                include ('lib/ColorPicker2.twig', {
+                    'cmpt_label': '按钮边框颜色',
+                    'cmpt_name': 'viewmoreBdColor',
+                    'cmpt_value': data.viewmoreBdColor,
+                    'cmpt_default': '#333333'
+                })
+            }}
+        </div>
+    </div>
+    <div class="layui-col-xs6">
+        <div class="layui-form-item">
+            {{
+                include ('lib/ColorPicker2.twig', {
+                    'cmpt_label': '按钮文本颜色',
+                    'cmpt_name': 'viewmoreFontColor',
+                    'cmpt_value': data.viewmoreFontColor,
+                    'cmpt_default': '#333333'
+                })
+            }}
+        </div>
+    </div>
+</div>

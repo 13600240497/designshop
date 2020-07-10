@@ -1,0 +1,318 @@
+// base
+
+.geshop-U000201-modal2-share {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  max-width: 450px;
+  //transform: translate(-50%, -109px);
+  min-width: 300px;
+  height: 218px;
+ /* margin-top: -109px;
+  margin-left: -45%;*/
+  background-color: transparent !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  margin: auto;
+
+  .addthis_toolbox {
+    font-size: 0;
+
+    > a {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      box-sizing: border-box;
+      border-radius: 100%;
+      margin: 52px 10px;
+
+      img {
+        display: block;
+        width: 32px;
+        height: 32px;
+        padding: 9px;
+      }
+
+      &.addthis_button_facebook {
+        background-color: #395997;
+      }
+
+      &.addthis_button_twitter {
+        background-color: #1C98E6;
+      }
+
+      &.addthis_button_messenger {
+        background-color: #006FF7;
+      }
+
+      &.addthis_button_pinterest {
+        background-color: #B71117;
+      }
+
+      &.addthis_button_gmail {
+        background-color: #F14336;
+      }
+
+    }
+  }
+
+  .addthis_toolbox, .U000201-modal2-cancel-btn {
+    border-radius: 13px;
+    background-color: #ffffff;
+  }
+
+  .U000201-modal2-cancel-btn {
+    height: 52px;
+    line-height: 52px;
+    margin-top: 11px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+}
+
+.geshop-U000201-modal2 {
+  // -------------------------------------------------------------------------
+  // 装修界面部分样式特殊处理
+  &.is-edit {
+    .nav-container {
+      display: block;
+      position: static;
+      float: left;
+      transform: none;
+    }
+  }
+
+  .share-btn {
+    position: fixed;
+    right: 32px;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.5);
+    bottom: 115 / 667 * 100%;
+    box-sizing: border-box;
+    border-radius: 100%;
+    line-height: normal;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+
+    > img {
+      display: block;
+      width: 16px;
+      height: 16px;
+      padding: 12px;
+    }
+  }
+
+  .layer-share {
+    display: none;
+  }
+
+
+  // -------------------------------------------------------------------------
+  // 公用样式
+  font-family: Lato, Arial, sans-serif;
+
+  .top-img {
+    vertical-align: middle;
+    max-width: 100%;
+  }
+
+  .bottom-img {
+    // 底部的图片垂直对齐只能是baseline，否则整个导航会在chrome有白边，很诡异，没找到原因
+    vertical-align: baseline;
+    max-width: 100%;
+  }
+
+  .nav-container {
+    display: none;
+    position: fixed;
+    z-index: 201;
+    text-align: center;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav-list {
+    position: relative;
+
+    //white-space: nowrap;
+  }
+
+  .nav-item-text {
+    color: #000;
+    background-color: #d8d8d8;
+    cursor: pointer;
+    word-break: break-word;
+  }
+
+  /*&.is-not-mobile .nav-item-text:hover,*/
+
+  .nav-item-text.active {
+    color: #fff;
+    background-color: #999;
+  }
+}
+
+
+/**
+* 垂直导航：分为顶部图片，中部内容，底部图片
+* 1、整个导航垂直居中，距离屏幕右边30px。
+* 2、导航宽度由顶部图片，中部内容，底部图片最大值决定。
+* 3、顶部图片，中部内容，底部图片在导航栏中水平居中。
+* 4、中部内容的宽度是由导航菜单内容+导航菜单左右边距中最大的那个决定，而且最终所有导航菜单的宽度要一样。
+* 5、顶部图片和底部图片的宽高度都是未知的。
+* 6、综上所述，只能用table来实现，未想到其他更简单的方案。
+*/
+/* 大于等于1366px是垂直导航栏 */
+@media screen and (min-width: 1366px) {
+  .share-btn {
+    display: none;
+  }
+
+  .geshop-U000201-modal2 {
+    .nav-container {
+      top: 50%;
+      transform: translateY(-50%);
+      right: 30px;
+    }
+
+    .cont-box {
+      overflow: hidden;
+
+      &.qr-top {
+        border-radius:10px 10px 0 0;
+      }
+
+      &.qr-bot {
+        border-radius:0 0 10px 10px;
+      }
+
+      .qrcode-wrap {
+        .qr-desc {
+          max-width: 166px;
+          text-align: center;
+          margin: 12px auto;
+          font-size: 14px;
+        }
+
+        .qrcode-img {
+          margin: 12px auto;
+          display: block;
+        }
+
+        .share-list {
+          text-align: center;
+          font-size: 0;
+          margin: 12px auto;
+
+          > a {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            box-sizing: border-box;
+            padding: 8px;
+            margin: 2px 4px;
+            line-height: normal;
+
+            img {
+              width: 100%;
+            }
+
+            &.addthis_button_facebook:hover {
+              background-color: #395997;
+            }
+
+            &.addthis_button_twitter:hover {
+              background-color: #006FF7;
+            }
+
+            &.addthis_button_messenger:hover {
+              background-color: #B71117;
+            }
+
+            &.addthis_button_pinterest:hover {
+              background-color: #1C98E6;
+            }
+
+            &.addthis_button_gmail:hover  {
+              background-color: #F14336;
+            }
+
+          }
+        }
+      }
+    }
+
+    .nav-list {
+      display: table;
+      margin: 0 auto;
+      //border-radius: 10px;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .nav-item {
+      display: table-row;
+    }
+
+    /*// 兼容ie
+    .nav-item:first-child .nav-item-text {
+        border-radius: 10px 10px 0 0;
+    }
+
+    // 兼容ie
+    .nav-item:last-child .nav-item-text {
+        border-radius: 0 0 10px 10px;
+    }*/
+
+    .nav-item-text {
+      display: table-cell;
+      font-size: 16px;
+    }
+  }
+}
+
+/* 小于等于1366px是垂直导航栏 */
+@media screen and (max-width: 1365px) {
+  .geshop-U000201-modal2 {
+    .nav-container {
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #d8d8d8;
+    }
+
+    .share-btn {
+      display: block;
+    }
+
+    .qrcode-wrap,
+    .top-img-container,
+    .bottom-img-container {
+      display: none;
+    }
+
+    .nav-list {
+      display: inline-block;
+      white-space: nowrap;
+      font-size: 0;
+    }
+
+    .nav-item {
+      display: inline-block;
+      padding-left: 5px;
+
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+
+    .nav-item-text {
+      height: 50px;
+      line-height: 50px;
+      padding: 0 20px;
+      font-size: 14px;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+<style>
+	.layui-form-space{
+		margin-bottom:16px !important;
+	}
+</style>
+
+
+<div class="layui-form-item layui-form-space">
+	<label class="layui-form-label">默认商品显示数量 <span>(*建议输入3的倍数，不超过100)</span></label>
+	<div class="layui-input-block">
+		<input class="layui-input" type="text" name="defaultGoodsCount" autocomplete="off" value="{{data.defaultGoodsCount}}">
+		{# <input type="text" name="defaultGoodsCount" autocomplete="off" class="layui-input" value="{{ data.defaultGoodsCount }}" placeholder="" data-public-tag="" onkeyup="value = value.replace(/[^\\d{1,}\\d{1,}|\\d{1,}]/g,'')"> #}
+	</div>
+</div>
+
+<div class="layui-form-item layui-form-space">
+	<label class="layui-form-label">固定商品显示数量 <span>(*建议输入3的倍数，不超过100)</span></label>
+	<div class="layui-input-block">
+		<input class="layui-input" type="text" name="fixedGoodsCount" autocomplete="off" value="{{data.fixedGoodsCount}}">
+	</div>
+</div>
+
+<div class="layui-form-item layui-form-space" >
+	<label class="layui-form-label">商品数据SKU</label>
+	<div class="layui-input-block">
+		<textarea placeholder="请输入商品SKU，不同SKU用英文逗号隔开" class="layui-textarea js-valid-skus {% if data.goodsDataFrom|default('1') != '1' %}Unwanted{% endif %}" name="goodsSKU" data-public-tag="true">{{data.goodsSKU}}</textarea>
+	</div>
+</div>
+<div class="layui-form-item tab-add-btn" style="margin-top: 10px;">
+	<span class="el-button el-button--primary el-button--small" id="gs_getList" style="float:right">商品管理</span>
+</div>

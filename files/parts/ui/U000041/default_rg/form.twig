@@ -1,0 +1,467 @@
+{{ include ('@app/files/parts/temp/goods_manager.twig') }}
+
+{% set formData = {
+    id: 'U000041',
+    name: '商品列表tab组件',
+    theme: 'default_rg',
+    tabs: [
+        {
+            label: '商品数据',
+            components: [
+                {
+                    label: '页面显示信息配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '每行显示tab标签个数',
+                            name: 'row_show_tab_number',
+                            default: '4'
+                        },
+                        {
+                            label: '每页显示商品个数',
+                            desc: '(备注：不填写分页数量，每页默认显示20个, 建设不超过100个)',
+                            name: 'page_show_goods_number'
+                        },
+                        {
+                            label: '默认显示多少页',
+                            name: 'show_default_page',
+                            placeholder: '显示直接可看的页数',
+                            default: '10',
+                            col: 2
+                        },
+                        {
+                            label: '每个tab显示商品总数',
+                            name: 'tab_total_number',
+                            col: 2
+                        }
+                    ]
+                },
+                {
+                    label: '商品分类数据配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            type: 'diy',
+                            src: 'lib/goods.twig'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            label: '样式设置',
+            components: [
+                {
+                    label: '常用配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '导航是否吸顶',
+                            type: 'radio',
+                            default: 1,
+                            name: 'is_fixed',
+                            options: [
+                                { label: '是', value: '1' },
+                                { label: '否', value: '0' },
+                            ]
+                        },
+                        {
+                            type: 'stock-rg'
+                        },
+                        {
+                            label: '组件下边距',
+                            desc: '(px)',
+                            name: 'box_margin_bottom',
+                            default: 32,
+                            col: 2
+                        },
+                        {
+                            label: '组件背景颜色',
+                            name: 'box_bg_color',
+                            type: 'colorPicker',
+                            default: '#F8F8F8',
+                            col: 2
+                        }
+                    ]
+                },
+                {
+                    label: 'tab标签配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '整体tab背景颜色',
+                            name: 'tab_bg_color',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            col: 2
+                        },
+                        {
+                            label: '按钮高度',
+                            desc: '(px)',
+                            name: 'tab_btn_height',
+                            default: 30,
+                            col: 2
+                        },
+                        {
+                            label: '按钮背景颜色',
+                            name: 'tab_btn_bg_color',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            col: 2
+                        },
+                        {
+                            label: '按钮hover背景颜色',
+                            name: 'tab_btn_hover_bg_color',
+                            type: 'colorPicker',
+                            default: '#222222',
+                            col: 2
+                        },
+                        {
+                            label: '按钮字体颜色',
+                            name: 'tab_btn_font_color',
+                            type: 'colorPicker',
+                            default: '#222222',
+                            col: 2
+                        },
+                        {
+                            label: '按钮hover字体颜色',
+                            name: 'tab_btn_hover_font_color',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            col: 2
+                        },
+                        {
+                            label: '按钮边框颜色',
+                            name: 'tab_btn_border_color',
+                            type: 'colorPicker',
+                            default: '#222222',
+                            col: 2
+                        },
+                        {
+                            label: '按钮hover边框颜色',
+                            name: 'tab_btn_hover_border_color',
+                            type: 'colorPicker',
+                            col: 2
+                        },
+                        {
+                            label: '按钮圆角',
+                            desc: '(px)',
+                            name: 'tab_btn_radius_size',
+                            default: 2,
+                            col: 2
+                        },
+                        {
+                            label: '按钮字体大小',
+                            desc: '(px)',
+                            name: 'tab_btn_font_size',
+                            default: 14,
+                            col: 2
+                        }
+                    ]
+                },
+                {
+                    label: '商品信息配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '商品描边颜色',
+                            type: 'colorPicker',
+                            name: 'goods_info_border_color',
+                            default: '#FFFFFF',
+                            col: 2
+                        },
+                        {
+                            label: '商品圆角大小',
+                            name: 'goods_info_radius_size',
+                            default: 4,
+                            col: 2
+                        },
+                        {
+                            label: '本店售价颜色',
+                            name: 'shop_price_color',
+                            type: 'colorPicker',
+                            default: '#FA386A'
+                        },
+                        {
+                            label: '商品颜色规格图片是否显示',
+                            type: 'radio',
+                            default: 1,
+                            name: 'goods_color_img_or_show',
+                            options: [
+                                { label: '是', value: '1' },
+                                { label: '否', value: '0' },
+                            ]
+                        },
+                        {
+                            label: '营销信息是否显示',
+                            type: 'radio',
+                            default: 1,
+                            name: 'market_info_or_show',
+                            options: [
+                                { label: '是', value: '1' },
+                                { label: '否', value: '0' },
+                            ]
+                        }
+                    ]
+                },
+                {
+                    label: '折扣标配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            type: 'discount-rg'
+                        }
+                    ]
+                },
+                {
+                    label: '翻页配置项',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '箭头颜色',
+                            name: 'arr_color',
+                            type: 'colorPicker',
+                            default: '#222222',
+                            col: 2
+                        },
+                        {
+                            label: '文字默认颜色',
+                            name: 'arr_font_color',
+                            type: 'colorPicker',
+                            default: '#666666',
+                            col: 2
+                        },
+                        {
+                            label: '文字选中颜色',
+                            name: 'arr_check_font_color',
+                            type: 'colorPicker',
+                            default: '#222222',
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    beforeSubmit: 'onSubmit',
+    skuValidConfig: 'skuValidConfig',
+    apiParams: 'fn',
+    isAutoRefresh: 2
+} %}
+
+
+<script>
+    function fn() {
+        return { "isSync": 1 }
+    }
+    function skuValidConfig () {
+        return {
+            check_type: 'goods',
+            check_rules: 'GOODS_VALIDATE_SAME_SPU'
+        }
+    }
+
+    {#  自定义保存函数 #}
+    function onSubmit(progress) {
+        var navData = [];
+        var goodsData = [];
+        var status = 1;
+
+        $wrap.find('.wrap-config').each(function (index, item) {
+            var obj = {};
+            obj.navName = $(this).find('input[name="navName"]').val();
+
+            $(this).find('.list-group-item').each(function (childIndex, item) {
+                var obj2 = {};
+                obj2.goods = $(this).find('textarea[name="goodsSKU"]').val();
+                obj2.lists = $(this).find('textarea[name="goodsSKU"]').val();
+                obj2.catIds = $(this).find('textarea[name="catIds"]').val();
+                /* 是否异步数据 */
+                obj2.isAsync = 1;
+                obj2.key = index + '-' + childIndex;
+
+                /* ipsJson 获取IPS数据*/
+                var ipsJson = GESHOP_IPS.getIPSItemJson($(this));
+                obj2 = Object.assign({},obj2,ipsJson);
+                obj = Object.assign({},obj,obj2,ipsJson);
+
+                goodsData.push(obj2);
+            });
+            navData.push(obj)
+        });
+
+        $('.nav-list-arr').val(JSON.stringify(navData));
+        $('input[name=goodsSKU]').val(JSON.stringify(navData));
+
+        /**校验大于等于1整数**/
+        var rStatus = getValitorNumber($('input[name=row_show_tab_number]'));
+        var pStatus = getValitorNumber($('input[name=page_show_goods_number]'));
+        var dStatus = getValitorNumber($('input[name=show_default_page]'), '1');
+        var iStatus = getValitorNumber($('input[name=tab_total_number]'));
+
+        if (!rStatus || !pStatus || !dStatus || !iStatus) {
+            return false;
+        }
+
+        /** 分类ID去重 **/
+        $('textarea[name=catIds]').each(function (idx, item) {
+            getUnique(item, function (newArr, repeatList) {
+                if (repeatList.length > 0) {
+                    var text = repeatList.join(',') + ' 分类Id重复, 是否清空？';
+                    layer.confirm(text, {
+                        title: '提示',
+                        btn: ['否', '是'],
+                        area: '420px',
+                        icon: 3,
+                        skin: 'element-ui-dialog-class'
+                    }, function (index) {
+                        layer.close(index);
+                    }, function (index) {
+                        $(item).val(newArr.join(','));
+                        layer.close(index);
+                    });
+                    status = 0;
+                }
+            });
+        });
+        if (status == 1) {
+            progress.next();
+        }
+    }
+
+    function getUnique(target, callback) {
+        var val = $.trim($(target).val());
+
+        if (val.indexOf(',') !== -1) {
+            var idArr = val.split(',');
+            /*去重*/
+            var newArr = [];
+            var repeatList = [];
+            for (var i = 0; i < idArr.length; i++) {
+                var idItem = idArr[i];
+                if (newArr.indexOf(idItem) === -1) {
+                    newArr.push(idItem);
+                }else{
+                    if(repeatList.indexOf(idItem) === -1){
+                        repeatList.push(idItem);
+                    }
+                }
+            }
+
+            if( callback && typeof callback === 'function'){
+                callback(newArr, repeatList);
+            }
+        }
+        return ''
+    }
+
+    function getValitorNumber(target, type) {
+        var val = $.trim($(target).val());
+        if (val != '') {
+            if (type && type == 1) {
+                if (!/^([1-9][0-9]*)$/.test(val) || val < 3) {
+                    layer.msg('请输入为大于等于3的整数');
+                    $(target).val('');
+                    return false;
+                };
+            } else {
+                if (!/^([1-9][0-9]*)$/.test(val) || val < 1) {
+                    layer.msg('请输入为大于等于1的整数');
+                    $(target).val('');
+                    return false;
+                };
+            }
+        }
+        return true;
+    }
+
+    /**分类ID**/
+    $('textarea[name=catIds]').on('blur', function (e) {
+        var $this = $(e.target);
+        var val = $this.val();
+        if (val != '') {
+            {% verbatim %}
+                var reg = /^[\\d,]*$/;
+            {% endverbatim %}
+
+            if (val.indexOf(',') != -1) {
+                var arr = val.split(',');
+                var newArr = [];
+                var isVid = false;
+                for (var i =0; i<arr.length; i++) {
+                    var _val = $.trim(arr[i]);
+                    if (reg.test(_val) && _val > 0) {
+                        newArr.push(arr[i]);
+                    } else {
+                        isVid = true;
+                    }
+                }
+                if (isVid) {
+                    layer.confirm('商品分类ID,请输入大于等于1的整数', {
+                        title: '提示',
+                        btn: ['否', '是'],
+                        area: '420px',
+                        icon: 3,
+                        skin: 'element-ui-dialog-class'
+                    }, function (index) {
+                        layer.close(index);
+                    }, function (index) {
+                        $this.val(newArr.join(','));
+                        layer.close(index);
+                    });
+                };
+            } else {
+                if (!reg.test($.trim(val)) || val == 0) {
+                    layer.confirm('商品分类ID,请输入大于等于1的整数', {
+                        title: '提示',
+                        btn: ['否', '是'],
+                        area: '420px',
+                        icon: 3,
+                        skin: 'element-ui-dialog-class'
+                    }, function (index) {
+                        layer.close(index);
+                    }, function (index) {
+                        $this.val('');
+                        layer.close(index);
+                    });
+                };
+            }
+            return false;
+        }
+    });
+
+    var $form = $('#component_form');
+    var $nav = $form.find('.gs-form-nav');
+
+    $nav.on('click', '.layui-form-radio', function () {
+        var $this = $(this);
+        var $prev = $this.prev('.tabItemRadio');
+
+        if ($prev.prop('checked') == true) {
+            var $group = $this.parents('.goods-tab-lists');
+            var $sku = $group.find('textarea[name=goodsSKU]');
+            var $cateIds = $group.find('textarea[name=catIds]');
+            var $visible = $group.find('.goods-visible');
+            $sku.removeClass('js-valid-skus');
+            $cateIds.removeClass('js-valid-cateIds');
+
+            var _val = $prev.val();
+            switch (Number(_val)) {
+                case 1:
+                    /* sku */
+                    if (!($visible.find('textarea').hasClass('js-valid-skus'))) {
+                        $visible.find('textarea').addClass('js-valid-skus');
+                    }
+                    break;
+                case 3:
+                    /* 分类id */
+                    if (!($visible.find('textarea').hasClass('js-valid-cateIds'))) {
+                        $visible.find('textarea').addClass('js-valid-cateIds');
+                    }
+                    break;
+            }
+        }
+    });
+
+</script>
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

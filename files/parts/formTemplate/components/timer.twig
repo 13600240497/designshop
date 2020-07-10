@@ -1,0 +1,33 @@
+{%
+    set components = [
+        {
+            label: '文案',
+            name: 'timer_label',
+            default: 'Flash Sale',
+        },
+        {
+            label: '文字颜色',
+            name: 'timer_font_color',
+            default: '#333333',
+            type: 'colorPicker'
+        },
+        {
+            label: '倒计时背景颜色',
+            name: 'timer_span_bg_color',
+            default: '#333333',
+            type: 'colorPicker'
+        },
+        {
+            label: '倒计时文字颜色',
+            name: 'timer_span_font_color',
+            default: '#ffffff',
+            type: 'colorPicker'
+        },
+    ]
+%}
+<fieldset class="layui-elem-field">
+    <legend>倒计时配置</legend>
+    <div class="layui-field-box">
+        {{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}
+    </div>
+</fieldset>

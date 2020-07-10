@@ -1,0 +1,62 @@
+
+{% set remUnit = 75 %}
+
+{%
+    set pageData = {
+        couponId : data.couponId | default(''),
+        startText : data.startText | default('Coming Soon'),
+        getCouponText : data.getCouponText | default('Get now'),
+        couponTitle : data.couponTitle | default('CRAZY COUPON'),
+        countDown : data.countDown | default('1'),
+        couponBtnMarginTop: (data.couponBtnMarginTop|default(60))/remUnit,
+        couponTimerMarginTop: (data.couponTimerMarginTop|default(60))/remUnit,
+    }
+%}
+{# start wrap #}
+{{include ('@app/files/parts/ui/U000087/coupon1/style.twig')}} 
+{# end wrap #}
+<div data-key="U000087" data-id="{{ pageInstanceId }}" data-static-domain="{{staticDomain}}" data-gid="U000087" class="geshop-component-box component-drag gs-index-main">
+    <div data-module="U000087-1" data-box="coupon-{{ pageInstanceId }}-1" data-id="{{ pageInstanceId }}">
+        <input 
+            class="hide-info-input"
+            type="hidden"
+            startIn="{{ get_component_trans(lang,'start_in') }}"
+            endIn="{{ get_component_trans(lang,'end_in') }}"
+            successText="{{ get_component_trans(lang,'success_text') }}"
+            startText="{{ pageData.startText }}"
+            getCouponText="{{ pageData.getCouponText }}"
+            lang="{{ lang }}"
+            serverTime="{{ serverTime }}"
+            couponId="{{ pageData.couponId }}"
+            countDown="{{ pageData.countDown }}"
+            env="{{ data.isEditEnv }}"
+            staticDomain="{{staticDomain}}"
+        />
+        <div class="over-box">
+            <div class="over-box-table"><span>{{ get_component_trans(lang,'btn_ended') }}</span></div>
+        </div>
+        <div class="coupon-inset">
+            
+            <div class="coupon-body">
+                <div class="coupon-layout coupon-top">
+                    <div class="center-center">{{ pageData.couponTitle }}</div>
+                </div>
+                <div class="coupon-layout coupon-middle" style="{% if pageData.couponBtnMarginTop %}margin-top:{{pageData.couponBtnMarginTop}}rem;{% endif %}">
+                    <div class="center-center">
+                    <span class="coupon-text"></span>
+                    <span class="coupon-time-box">
+                        <strong class="time-line"></strong><i>:</i><strong class="time-line"></strong><i>:</i><strong class="time-line"></strong><i>:</i><strong class="time-line"></strong> 
+                    </span>
+                    </div>
+                </div>
+                <div class="coupon-layout coupon-bottom" style="{% if pageData.couponTimerMarginTop %}margin-top:{{pageData.couponTimerMarginTop}}rem;{% endif %}">
+                    <div class="center-center">
+                        <div class="coupon-btn inline-box btn__site-default" >{{ pageData.getCouponText }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="clear: both;"></div>
+

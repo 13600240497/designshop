@@ -1,0 +1,138 @@
+<input type="hidden" class="Unwanted"  name="sku_selector_parent" value=".radio-tab-group">
+
+{% set formData = {
+    id: 'U000031',
+    name: '商品列表',
+    theme: 'rg_quick_buy',
+    tabs: [
+        {
+            label: '商品设置',
+            components: [
+            {
+                label: '商品设置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '数据配置',
+                    type: 'goods-manager',
+                    ipsMethodsArr: ['1','2'],
+                    ipsDefault:'2',
+                    ipsAutoLimitClose:true
+                }
+            ]
+            }
+        ]
+        },
+            {
+                label: '样式设置',
+                components: [
+                    {
+                        label: '常用配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件上边距 (PX)',
+                                name: 'box_margin_top',
+                                default: 0,
+                                col: 2,
+                            },
+                            {
+                                label: '组件下边距 (PX)',
+                                name: 'box_margin_bottom',
+                                default: 16,
+                                col: 2,
+                            },
+
+                        ]
+                    },
+                    {
+                        label: '商品配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '营销信息是否显示',
+                                type: 'radio',
+                                default: 1,
+                                name: 'marketing_is_show',
+                                options: [
+                                    { label: '是', value: '1' },
+                                    { label: '否', value: '0' },
+                                ]
+                            },
+                            {
+                                label: '商品标题是否显示',
+                                type: 'radio',
+                                default: 1,
+                                name: 'title_is_show',
+                                options: [
+                                    { label: '是', value: '1' },
+                                    { label: '否', value: '0' },
+                                ]
+                            },
+                            {
+                                label: '本店售价颜色',
+                                name: 'shop_price_color',
+                                type: 'colorPicker',
+                                default: '#FA386A',
+                            },
+                        ]
+                    },
+                    {
+                        label: '折扣配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '折扣标显示方式',
+                                type: 'radio',
+                                default: 1,
+                                name: 'discount_type',
+                                options: [
+                                    { label: '**%OFF', value: '1' },
+                                    { label: '-**%', value: '0' },
+                                ]
+                            },
+                            {
+                                label: '折扣背景颜色',
+                                name: 'discount_bg_color',
+                                type: 'colorPicker',
+                                default: '#EA5455',
+                                col: 2
+                            },
+                            {
+                                label: '折扣文本颜色',
+                                name: 'discount_font_color',
+                                type: 'colorPicker',
+                                default: '#FFFFFF',
+                                col: 2
+                            },
+                            {
+                                label: '背景图片',
+                                name: 'discount_bg_image',
+                                type: 'image',
+                                default: '' ,
+                            },
+                        ]
+                    },
+                ]
+            }
+    ],
+    skuValidConfig: 'skuValidConfig'
+} %}
+
+<script>
+
+    {#  自定义保存函数 #}
+
+    {# 自定义校验函数 #}
+    function skuValidConfig () {
+        return {
+            check_type: 'goods',
+            check_rules: 'GOODS_VALIDATE_SAME_SPU'
+        }
+    }
+
+
+</script>
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

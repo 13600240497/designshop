@@ -1,0 +1,9 @@
+{
+  "fields": {
+    "boxMarginBottom": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "fontColorActive": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "fontColorBtn": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "bgColorBtn": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "borderColorBtn": { "is_public": "0", "is_m": "0", "is_app": "0" }
+  }
+}

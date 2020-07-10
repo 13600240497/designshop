@@ -1,0 +1,238 @@
+<style>
+    .layui-col-xs6 .layui-form-label {
+        white-space: nowrap;
+    }
+</style>
+{{ include ('@app/files/parts/temp/goods_manager.twig') }}
+
+{% set formData = {
+    id: 'U000254',
+    name: '智能tab商品列表',
+    theme: 'template1',
+    tabs: [
+        {
+            label: '商品数据',
+            components: [
+            {
+                type: 'pagination-zf'
+            },
+            {
+                type: 'page-order'
+            },
+            {
+                label: '商品分类数据配置',
+                type: 'fieldset',
+                components:[
+                {
+                    type: 'tab_goods_id',
+                    formID: '#U000254-template1',
+                    componentData: {
+                    limitNum: 100,
+                    limitTip: '新增分类配置最多100个'
+                    }
+                }
+            ]
+            }
+        ]
+        },
+        {
+            label: '样式配置',
+            components: [
+            {
+                label: '整体组件设置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '导航是否吸顶',
+                    type: 'radio',
+                    default: 0,
+                    name: 'is_fixed',
+                    options: [
+                    { label: '是', value: 1 },
+                    { label: '否', value: 0 },
+                ]
+                },
+                {
+                    label: '组件下边距',
+                    desc: '(px)',
+                    name: 'box_margin_bottom',
+                    default: 32,
+                    col: 2
+                },
+                {
+                    label: '组件背景颜色',
+                    name: 'box_bg_color',
+                    type: 'colorPicker',
+                    default: '#F8F8F8',
+                    col: 2
+                }
+            ]
+            },
+            {
+                label: 'tab标签配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '整体tab背景颜色',
+                    name: 'tab_bg_color',
+                    type: 'colorPicker',
+                    default: '#F8F8F8',
+                    col: 2
+                },
+                {
+                    label: '单个tab宽度（px）',
+                    name: 'tab_label_width',
+                    default: 212,
+                    col: 2
+                },
+                {
+                    label: 'tab之间间距和行距（px）',
+                    name: 'tab_label_padding',
+                    default: 23
+                },
+                {
+                    label: '默认tab按钮背景颜色',
+                    name: 'tab_label_bg_color',
+                    type: 'colorPicker',
+                    default: '#FFFFFF',
+                    col: 2
+                },
+                {
+                    label: 'hover/选中背景颜色',
+                    name: 'tab_label_select_bg_color',
+                    type: 'colorPicker',
+                    default: '#333333',
+                    col: 2
+                },
+                {
+                    label: '默认tab字体颜色',
+                    name: 'tab_label_text_color',
+                    type: 'colorPicker',
+                    default: '#333333',
+                    col: 2
+                },
+                {
+                    label: 'hover/选中字体颜色',
+                    name: 'tab_label_select_text_color',
+                    type: 'colorPicker',
+                    default: '#FFFFFF',
+                    col: 2
+                },
+                {
+                    label: '默认tab边框颜色',
+                    name: 'tab_label_border_color',
+                    type: 'colorPicker',
+                    default: '#333333',
+                    col: 2
+                },
+                {
+                    label: 'hover/选中tab边框颜色',
+                    name: 'tab_label_select_border_color',
+                    type: 'colorPicker',
+                    default: '#333333',
+                    col: 2
+                },
+                {
+                    label: '左右切换箭头颜色',
+                    name: 'tab_arrow_color',
+                    type: 'colorPicker',
+                    default: '#333333',
+                },
+            ]
+            },
+            {
+                label: '销售价',
+                type: 'shop-price'
+            },
+            {
+                label: '折扣标配置',
+                type: 'discount-zf-new',
+            }
+        ]
+        }
+    ],
+    moreConfig: [
+        {
+            label: '高级配置',
+            type: 'collapse',
+            items: [
+            {
+                label: '快速购买按钮（Quick View）',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '文案',
+                    name: 'view_text',
+                    default: '+ Quick View'
+                },
+                {
+                    label: '文字颜色',
+                    name: 'view_color',
+                    type: 'colorPicker',
+                    default: '#333333',
+                    col: 2,
+                },
+                {
+                    label: '背景颜色',
+                    name: 'view_bg_color',
+                    type: 'colorPicker',
+                    default: '#FFFFFF',
+                    col: 2,
+                }
+            ]
+            },
+            {
+                label: '分页配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '默认文字颜色',
+                    name: 'page_text_color',
+                    type: 'colorPicker',
+                    default: '#333333',
+                    col: 2,
+                },
+                {
+                    label: '选中文字颜色',
+                    name: 'page_select_color',
+                    type: 'colorPicker',
+                    default: '#FFFFFF',
+                    col: 2,
+                },
+                {
+                    label: '默认边框颜色',
+                    name: 'page_border_color',
+                    type: 'colorPicker',
+                    default: '#DDDDDD',
+                    col: 2,
+                },
+                {
+                    label: '选中背景颜色',
+                    name: 'page_select_bg_color',
+                    type: 'colorPicker',
+                    default: '#333333',
+                    col: 2,
+                },
+            ]
+            }
+        ]
+        }
+    ],
+    beforeSubmit: 'onSubmit'
+} %}
+
+
+<script>
+
+{#  自定义保存函数 #}
+function onSubmit (progress) {
+    tab_goods_fn.saveTabInfo(function () {
+        progress.next();
+    });
+}
+
+
+</script>
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

@@ -1,0 +1,25 @@
+<div class="geshop-layout-box layout-drag geshop-container geshop-gb-component ui-{{ pageInstanceId }}" data-key="L000041" id="{{pageInstanceId}}" style="
+	{% if customData.background_color %}background-color: {{ customData.background_color }};{% endif %}
+	{% if customData.background_img %}background-image: url({{ customData.background_img }}); background-position: center top; background-repeat: no-repeat;{% endif %}
+">
+	<style>
+    /*背景图*/
+.geshop-gb-component.ui-{{ pageInstanceId }}{
+{% if customData.base_box_bgImage %}
+	background-image:url({{ customData.base_box_bgImage }});
+{% endif %}
+{% if customData.component_bg_value %}
+{{ customData.component_bg_value }}
+{% endif %}
+}
+</style>
+
+<div class="geshop-row gb_wrapper_common">
+		<div class="geshop-col-6" data-position="1">
+			<div class="component-drop">{{ data[1] }}</div>
+		</div>
+		<div class="geshop-col-6" data-position="2">
+			<div class="component-drop">{{ data[2] }}</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,84 @@
+{%
+	set pageData = {
+		soldout:languages.SOLDOUT[lang],
+		shopnow:languages.SHOPNOW[lang],
+
+	}
+%}
+<div class="geshop-component-box component-drag geshop-U000190-default geshop-U000190-default-{{ pageInstanceId }}" data-key="U000190" data-id="{{ pageInstanceId }}">
+	<!-- embed stylesheet begin -->
+	<style type="text/css">
+		{{ include('style.twig') }}
+	</style>
+	<!-- embed stylesheet end -->
+	<input type="hidden" name="editEnv" value="{{data.isEditEnv}}"/>
+	<ul class="goods-list clearfix">
+		{% for key,item in data.goodsInfo|default(0..3) %}
+			<li>
+				<div class="goods-item js_logsss_browser js_logsss_event_ps"
+					data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }"
+					data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'},'skuinfo':{'sku':'{{ item.goods_sn }}','pam':'0','pc':'{{ item.catid }}','k':'{{ item.warecode }}'} }">
+					{{ include ('@app/files/parts/twigs/indexs/basics/goods-discount.twig',
+						{ options: { 
+								value: item.discount | default(20),
+								isShow: data.isDiscountVis | default(1),
+								isDiscountStyle: data.isDiscountStyle  | default(1)
+							}
+						}
+					) }}
+					{{ include ('@app/files/parts/twigs/indexs/basics/goods-picture.twig',
+								{ options: { 
+										goodsImg: item.goods_img|default(data.default.good),
+										urlTitle: item.url_title,
+										goodsSku: item.goods_sn,
+										goodsNum: item.goods_number | default(1),
+										isOnSale: item.is_on_sale | default(1),
+										lang:{
+											soldout: pageData.soldout,
+											shopnow: pageData.shopnow
+										}
+									}
+								}
+					) }}
+
+					{{ include ('@app/files/parts/twigs/indexs/basics/goods-title.twig',
+								{ options: { 
+										goodsTitle: item.goods_title | default('Plus Size Mesh Panel Snowflak…'),
+										urlTitle: item.url_title
+									}
+								}
+					) }}
+					<div class="price-style1">
+						{% if data.newUserPrice == 1%}
+								{% set goodPrice = item.new_user_price %}
+						{% else %}
+								{% set goodPrice = item.shop_price %}
+						{% endif %}
+						<span style="font-size: {{data.shopPriceTitleFontSize | default(16) }}px;">{{data.shopPriceCopywrite | default('New User Price')}}:</span>
+						{{ include ('@app/files/parts/twigs/indexs/basics/goods-sale-price.twig',
+								{ options: { 
+										value: goodPrice | default('22.99')
+									}
+								})
+						}}
+					</div>
+	
+					{% if data.isOriginalPriceVis | default(1) == 1 %} 
+					<div class="price-style2">
+						<span class="geshop-marketprice-title">{{data.originalPriceCopywrite | default('Market Price')}} : </span>
+						{{ include ('@app/files/parts/twigs/indexs/basics/goods-market-price.twig', { options: { 
+								value: item.market_price | default('44.99'),
+								isVis: data.isOriginalPriceVis | default(1)
+						}})}}
+					</div>
+					{% endif %}
+					{{ include ('@app/files/parts/twigs/indexs/basics/goods-promotions.twig',
+						{ options: { 
+								value: item.promotions
+						}})
+					}}
+				</div>
+			</li>
+		{% endfor %}
+	</ul>
+</div>

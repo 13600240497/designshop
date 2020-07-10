@@ -1,0 +1,43 @@
+<div class="gs-goodsWrap">
+    <p class="geshop-goods-discount">50%</p>
+
+    {{ include ('goodsDiscount.twig',
+        { options: { value: 58}}
+    ) }}
+
+    {{ include ('goodsImg.twig',
+        { options: { goodsUrl: 'https://www.dresslily.com/elf-baby-plush-christmas-shelf-product5082977.html',
+                     imgUrl: 'https://gloimg.drlcdn.com/L/pdm-product-pic/Clothing/2016/12/15/goods-img-list/1515692078519056381.JPG'
+                    }}
+    ) }}
+
+    {{ include ('goodsTitle.twig',
+        { options: { 
+            goodsTitle: 'Simple Love Shape Wool-like Carpet'
+          }
+        }
+    ) }}
+
+    
+    <p>
+      {{ include ('goodsMarketPrice.twig',
+          { options: { 
+              value: '59.99'
+            }
+          }
+      ) }}
+      {{ include ('goodsShopPrice.twig',
+          { options: { 
+              value: '29.99'
+            }
+          }
+      ) }}
+    </p>
+    {{ include ('goodsPromotion.twig',
+          { options: { 
+              value: '(72% OFF)'
+            }
+          }
+    ) }}
+    
+</div>

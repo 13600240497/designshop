@@ -1,0 +1,105 @@
+{#基础配置#}
+<div class="defaultSet">
+    {{ include ('@app/files/parts/common/components/tips.twig',{options:{type:'Tab',label:'常用配置',}}) }}
+
+    {{ include ('@app/files/parts/common/components/input.twig',
+        { options: { label:'组件下边距(px)',name:'boxMarginBottom',value:pageData.boxMarginBottom ,full:true}}
+    ) }}
+
+    {{ include ('@app/files/parts/common/components/input.twig',
+        { options: { label:'背景图片',name:'boxBackgroundImg',value:pageData.boxBackgroundImg ,full:true,imgPrefix:true}}
+    ) }}
+    {{ include ('@app/files/parts/common/components/input.twig',
+        { options: { label:'背景颜色',name:'boxBackgroundColor',value:pageData.boxBackgroundColor ,full:true,colorPrefix:true}}
+    ) }}
+
+    {{ include ('@app/files/parts/common/components/tips.twig',{options:{type:'Tab',label:'标题配置',}}) }}
+
+    {{ include ('@app/files/parts/common/components/input.twig',
+        { options: { label:'标题文案',name:'boxTitleTxt',value:pageData.boxTitleTxt ,full:true}}
+    ) }}
+
+    {{ include ('@app/files/parts/common/components/input.twig',
+        { options: { label:'标题文字颜色',name:'boxTitleColor',value:pageData.boxTitleColor ,full:true,colorPrefix:true}}
+    ) }}
+
+
+    {{ include ('@app/files/parts/common/components/tips.twig',{options:{type:'Tab',label:'规则说明配置',}}) }}
+
+    {{ include ('@app/files/parts/common/components/input.twig',
+        { options: { label:'规则文案',name:'ruleTxt',value:pageData.ruleTxt ,full:true}}
+    ) }}
+
+    <div class="layui-row layui-col-space20">
+        <div class="layui-col-md6">
+            {{ include ('@app/files/parts/common/components/input.twig',
+                { options: { label:'文字颜色',name:'ruleColor',value:pageData.ruleColor ,full:true,colorPrefix:true}}
+            ) }}
+        </div>
+        <div class="layui-col-md6">
+            {{ include ('@app/files/parts/common/components/input.twig',
+                { options: { label:'背景颜色',name:'ruleBackgroundColor',value:pageData.ruleBackgroundColor ,full:true,colorPrefix:true}}
+            ) }}
+
+        </div>
+    </div>
+
+    {{ include ('@app/files/parts/common/components/tips.twig',{options:{type:'Tab',label:'规则弹窗配置',}}) }}
+
+
+    {{ include ('@app/files/parts/common/components/textarea.twig',
+        { options: { label:'规则内容',name:'popRuleTxt',value:pageData.popRuleTxt ,full:true,}}
+    ) }}
+
+
+
+
+    {{ include ('@app/files/parts/common/components/tips.twig',{options:{type:'Tab',label:'My Points模块配置',}}) }}
+
+    {{ include ('@app/files/parts/common/components/input.twig',
+        { options: { label:'背景图片',name:'MyPointsBackgroundImg',value:pageData.MyPointsBackgroundImg ,full:true,imgPrefix:true}}
+    ) }}
+
+    {{ include ('@app/files/parts/common/components/input.twig',
+        { options: { label:'文字颜色',name:'MyPointsTxtColor',value:pageData.MyPointsTxtColor ,full:true,colorPrefix:true}}
+    ) }}
+
+    {{ include ('@app/files/parts/common/components/tips.twig',{options:{type:'Tab',label:'领取积分模块配置',}}) }}
+	
+		{{ include ('@app/files/parts/common/components/input.twig',
+			{ options: { label:'积分状态图片高度',name:'SignImgBoxHeight',value:pageData.SignImgBoxHeight ,full:true}}
+		) }}
+	
+    {{ include ('@app/files/parts/common/components/tab.twig',{options:{list:[
+        {
+            title:'未签到',
+            content:include ('./form/components/unSign.twig')
+        },
+        {
+            title:'已签到',
+            content:include ('./form/components/signIn.twig')
+        }
+    ],}}) }}
+</div>
+
+{#高级配置#}
+<div class="moreSet" style="display: none;">
+
+    {{ include ('@app/files/parts/common/components/tips.twig',{options:{type:'Tab',label:'高级配置',}}) }}
+
+    {{ include ('@app/files/parts/common/components/shrink.twig',{options:{title:'基础配置',content:include ('./form/components/moreBasics.twig')}}) }}
+
+    {{ include ('@app/files/parts/common/components/shrink.twig',{options:{title:'My Points模块配置',content:include ('./form/components/morePoints.twig'),hide:true}}) }}
+
+    {{ include ('@app/files/parts/common/components/shrink.twig',{options:{title:'领取积分模块配置',content:include ('./form/components/moreIntegral.twig'),hide:true}}) }}
+
+    {{ include ('@app/files/parts/common/components/shrink.twig',{options:{title:'弹窗配置',content:include ('./form/components/morePopConfirm.twig'),hide:true}}) }}
+
+
+
+</div>
+
+{#高级配置按钮#}
+{{ include ('@app/files/parts/common/components/moreSetBtn.twig',{ options: { label:'高级配置',}}) }}
+
+

@@ -1,0 +1,92 @@
+.wrap-U000120_default .item-price{
+  padding: 8px 0 16px 0;
+}
+.wrap-U000120_default .goodStatus {
+  font-weight: bold;
+}
+
+.wrap-U000120_default .geshop-tabs>li.active {
+  font-weight: bold;
+}
+
+.wrap-U000120_default .shop-price {
+  font-weight: bold;
+}
+
+.gs-model-120 .free-text{
+  background: #FA386A!important;
+}
+
+.gs-model-120 .shop-price strong {
+  color: #FA386A;
+}
+
+.size-title,.color-title{
+  margin-bottom: 3px;
+}
+.select-size{
+  margin-top: 12px;
+}
+.select-color{
+
+  margin:12px 0 22px;
+}
+
+.gs-model-120 .model-right .add-bag{
+  background:#FA386A;
+}
+
+.gs-model-120 .model-right .selected-color{
+  width:40px;
+  height:40px;
+  border:2px solid #FA386A;
+}
+.gs-model-120 .model-right .selected-size{
+  min-width:40px;
+  width: auto;
+  height:40px;
+  border:2px solid #FA386A;
+}
+.gs-model-120 .size-item,.gs-model-120 .color-item{
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+
+.gs-add-goods .layui-layer-close:hover span{
+  background-color: #FA386A;
+}
+
+.gs-model-120 .add-bag{
+  font-family:TrebuchetMS-Bold;
+}
+
+.wrap-U000120_default .gs-img .logsss_event{
+  background:#fff;
+}
+
+.wrap-U000120_default [data-gid="gs-goods-rwDefult"] .gs-img .logsss_event {
+  background: #EDEDED;
+}
+.wrap-U000120_default  .giftviewBox{min-height:412px;}
+.wrap-U000120_default  .gs-img{
+	display: block;
+	width: 270px;
+    height: 250px;
+    position: relative;
+  }
+  .wrap-U000120_default  .gs-img a{
+	display: block; width: 100%; height: 100%; overflow: hidden; position: relative;
+  }
+  /* .wrap-U000120_default  .gs-img a:before{
+	content: '';
+	display:inline-block;
+	width: 1px;
+	height: 100%;
+	vertical-align: middle;margin-left: -1px;
+
+  } */
+  .wrap-U000120_default  .gs-img img{max-width: 100%; max-height: 100%; height: 100%;}

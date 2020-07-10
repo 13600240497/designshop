@@ -1,0 +1,488 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+
+{% if data.colNum == '1'%}
+    {% set colClass = liCol[0] %}
+{% elseif data.colNum == '2' %}
+    {% set colClass = liCol[1] %}
+{% elseif data.colNum == '3' %}
+    {% set colClass = liCol[2] %}
+{% elseif data.colNum == '4' %}
+    {% set colClass = liCol[3] %}
+{% elseif data.colNum == '5' %}
+    {% set colClass = liCol[4] %}
+{% else %}
+    {% set colClass = liCol[3] %}
+{% endif %}
+
+{% set goodsData = {
+	boxMarginBottom:data.boxMarginBottom|default(32),
+	marginTop:data.marginTop|default(0),
+	boxBgC:data.boxBgC is not null?data.boxBgC:'#F8F8F8',
+	tabBgc:data.tabBgc is not null?data.tabBgc:'#D8D8D8',
+	tabTextColor:data.tabTextColor is not null?data.tabTextColor:'#FFFFFF',
+	tabTextColorCheck:data.tabTextColorCheck is not null?data.tabTextColorCheck:'#333333',
+	tagWidth:data.tagWidth|default(40),
+	tagHeight:data.tagHeight|default(48),
+	rankTextColor:data.rankTextColor is not null?data.rankTextColor:'#FFFFFF',
+	salePicTextColor:data.salePicTextColor is not null?data.salePicTextColor:'#333333',
+	salePicColorHover:data.salePicColorHover is not null?data.salePicColorHover:'#333333',
+	disBgc:data.disBgc is not null?data.disBgc:'#B8BEC4',
+	disTextColor:data.disTextColor is not null?data.disTextColor:'#FFFFFF',
+	btnWidth:data.btnWidth|default(200),
+	btnHeight:data.btnHeight|default(38),
+	btnBgcColor:data.btnBgcColor is not null?data.btnBgcColor:'#333333',
+	btnTextColor:data.btnTextColor is not null?data.btnTextColor:'#FFFFFF',
+	btnBgcColorHover:data.btnBgcColorHover is not null?data.btnBgcColorHover:'#333333',
+	btnTextColorHover:data.btnTextColorHover is not null?data.btnTextColorHover:'#FFFFFF',
+	rankArea:data.rankArea|default(0),
+	goodsBorderColorHover:data.goodsBorderColorHover is not null?data.goodsBorderColorHover:'#FFFFFF',
+	goodsShadowColorHover:data.goodsShadowColorHover is not null?data.goodsShadowColorHover:'#D9D9D9',
+	salePriceSize:data.salePriceSize|default(22),
+	btnText:data.btnText|default('SNAP UP >'),
+	btnTextSize:data.btnTextSize|default(22),
+	btnBorderColor:data.btnBorderColor is not null?data.btnBorderColor:'#333333',
+	btnBorderColorHover:data.btnBorderColorHover is not null?data.btnBorderColorHover:'#333333',
+	btnBorderSize:data.btnBorderSize|default(1),
+	iconWidth:data.iconWidth is not null?data.iconWidth:40,
+	iconHeight:data.iconHeight is not null?data.iconHeight:48,
+	iconFirstImg:data.iconFirstImg is not null?data.iconFirstImg:'',
+	iconSecondImg:data.iconSecondImg is not null?data.iconSecondImg:'',
+	iconThirdImg:data.iconThirdImg is not null?data.iconThirdImg:'',
+	iconOtherImg:data.iconOtherImg is not null?data.iconOtherImg:'',
+	iconOtherTextColor:data.iconOtherTextColor is not null?data.iconOtherTextColor:'#ffffff',
+	leaderBoardIconPosition:data.leaderBoardIconPosition is not null?data.leaderBoardIconPosition:1,
+	goodsNum:data.goodsNum|default(10)
+} %}
+
+<div class="geshop-component-box component-drag geshop-leaderboard-async-list warp-{{ pageInstanceId }}  {% if data.tabFixed==1 %} js_gs_tab_wrap_fixed {% endif %}" data-gid="U000109_newProductList" data-key="U000109" data-id="{{ pageInstanceId }}" data-static-domain="{{staticDomain}}" data-code="{{siteCode}}"
+	style="margin-top: {{ goodsData.marginTop }}px; margin-bottom:{{ goodsData.boxMarginBottom}}px;">
+	<style type="text/css">
+		.warp-{{ pageInstanceId }} .buy-now a:hover {
+			border:{{ goodsData.btnBorderSize }}px solid {{ goodsData.btnBorderColorHover }} !important;
+			color:{{ goodsData.btnTextColorHover }} !important;
+			border-radius: 18px;
+		{% if data.btnBgImgHover is not empty %}
+			background-image:url('{{data.btnBgImgHover}}') !important;
+		{% endif %}
+			background-color:{{ goodsData.btnBgcColorHover }} !important;
+		}
+
+		.warp-{{ pageInstanceId }} .gs-goodsWrap li:hover {
+			border: 1px solid {{ goodsData.goodsBorderColorHover }};
+			box-shadow: 0 0 10px {{ goodsData.goodsShadowColorHover }};
+		}
+
+		{% for item in data.goodsIds %}
+			.warp-{{ pageInstanceId }}.goods-nav-name .swiper-slide-{{ pageInstanceId }}-{{ loop.index }}:hover a {
+			{% if item.checkIco is not empty %}
+				background:url('{{item.checkIco}}') no-repeat 0 0/100% 100% !important;
+			{% endif %}
+			}
+		{% endfor %}
+
+		{% for item in data.goodsIds %}
+			.warp-{{ pageInstanceId }} .gs-tab-wrap .swiper-container .swiper-slide-{{ pageInstanceId }}-{{ loop.index }}.current a {
+			{% if item.checkIco is not empty %}
+				background:url('{{item.checkIco}}') no-repeat 0 0/100% 100% !important;
+			{% endif %}
+			}
+		{% endfor %}
+
+		.warp-{{ pageInstanceId }} .goods-nav-name li:hover span {
+			color:{{ goodsData.tabTextColorCheck }} !important;
+		}
+
+		.warp-{{ pageInstanceId }} .gs-tab-wrap .swiper-container .swiper-slide.current span {
+			color:{{ goodsData.tabTextColorCheck }} !important;
+		}
+
+		.warp-{{ pageInstanceId }} .goods-item .gs-tag {
+		{% if data.rankIconOne is not empty %}
+			background:url('{{ data.rankIconOne }}') no-repeat 0 0/100% 100% !important;
+		{% endif %}
+		}
+		.warp-{{ pageInstanceId }} .gs-tab-box, .warp-{{ pageInstanceId }} .gs-tab-wrap-fixbox-Pic,.warp-{{ pageInstanceId }} .gs-tab-wrap{
+			height: {{ data.tabHeight | default(90)}}px;
+		}
+
+		.warp-{{ pageInstanceId }}  .geshop-tab-btn{
+			height: {{ data.tabHeight | default(90)}}px;
+		}
+
+	</style>
+
+	<input type="hidden" class="pagesize" value="{{ goodsData.goodsNum|default(10)}}"/>
+
+	{% if data.bannerImg != '' %}
+	<div class="gs-banner">
+		<span  class="gs-banner-bg">
+			<img class="gs-bgc-pic" src="{{ data.bannerImg }}">
+		</span>
+	</div>
+	{% else %}
+	<div class="gs-banner" style="height:200px;background-color:#EDEDED;position:relative;">
+		<span  class="gs-banner-bg">
+			<img src="{{ data.default.view }}" class="gs-default-view">
+		</span>
+	</div>
+	{% endif %}
+  <div class="geshop-content" style="background-color:{{ goodsData.boxBgC }};">
+		<div class="gs-tab">
+			<div class="gs-tab-wrap">
+				<div class="gs-tab-box" style="background-color:{{ goodsData.tabBgc }};{% if data.tabBgcImg is not empty %}background:url('{{data.tabBgcImg}}')no-repeat 0 0/100% 100%;{% endif %}border-radius:45px;">
+					<a class="geshop-tab-btn pre-btn" id="pre-button">
+						{% if data.leftArrowImg | trim | length > 0 %}
+						<img src="{{ data.leftArrowImg }}" width="{{ data.leftArrowImgWidth }}" height="{{ data.leftArrowImgHeight }}">
+						{% else %}
+						<span class="side-icon icon-img-left"></span>
+						{% endif %}
+					</a>
+					{# {% if data.goodsIds|length > 6 %} #}
+					<div class="swiper-container" style="max-width:1070px;width:auto;">
+						<ul class="gs-tab-label goods-nav-name swiper-wrapper" style="float:left;height:{{ data.tabHeight ?? 90 }}px;line-height:{{ data.tabHeight ?? 90 }}px;">
+						{% if data.goodsIds != '' %}
+							{% for item in data.goodsIds %}
+							<li class="swiper-slide swiper-slide-{{ pageInstanceId }}-{{ loop.index }}" data-asyncdata-id="{{ item.cateid }}" style="background-color:{{goodsData.tabBgc}};" style="float:left;">
+								<a href="javascript:;;" style="{% if item.defaultIco is not empty %}background:url('{{ item.defaultIco }}') no-repeat 0 0/100% 100%;{% endif %}"></a>
+								<span style="color:{{ goodsData.tabTextColor }};font-size: {{data.tabFontSize ?? 14}}px;">{{ item.category }}</span>
+							</li>
+							{% endfor %}
+						{% else %}
+							{% for item in data.goodsIds|default(0..5)%}
+							<li class="swiper-slide swiper-slide-{{ pageInstanceId }}-{{ loop.index }}" data-asyncdata-id="{{ item.cateid }}">
+								<a href="javascript:;;" style="background:url('{{ data.default.round }}') no-repeat 0 0/100% 100%;"></a>
+								<span style="color:{{ goodsData.tabTextColor }};">All Sale</span>
+							</li>
+							{% endfor %}
+						{% endif %}
+						</ul>
+					</div>
+					{# {% else %}
+					<div class="swiper-container" style="width:auto;">
+						<ul class="gs-tab-label goods-nav-name swiper-wrapper">
+						{% if data.goodsIds != '' %}
+							{% for item in data.goodsIds %}
+							<li class="swiper-slide swiper-slide-{{ pageInstanceId }}-{{ loop.index }}" data-asyncdata-id="{{ item.cateid }}" style="background-color:{{goodsData.tabBgc}};">
+								<a href="javascript:;;" style="background:url('{{ item.defaultIco }}') no-repeat 0 0/100% 100%;"></a>
+								<span style="color:{{ goodsData.tabTextColor }};">{{ item.category }}</span>
+							</li>
+							{% endfor %}
+						{% else %}
+							{% for item in data.goodsIds|default(0..5)%}
+							<li class="swiper-slide swiper-slide-{{ pageInstanceId }}-{{ loop.index }}" data-asyncdata-id="{{ item.cateid }}">
+								<a href="javascript:;;" style="background:url('{{ data.default.round }}') no-repeat 0 0/100% 100%;"></a>
+								<span style="color:{{ goodsData.tabTextColor }};">All Sale</span>
+							</li>
+							{% endfor %}
+						{% endif %}
+						</ul>
+					</div>
+					{% endif %} #}
+					<a class="geshop-tab-btn next-btn" id="next-button">
+						{% if data.rightArrowImg | trim | length > 0 %}
+						<img src="{{ data.rightArrowImg }}" width="{{ data.rightArrowImgWidth }}" height="{{ data.rightArrowImgHeight }}">
+						{% else %}
+						<span class="side-icon icon-img-right"></span>
+						{% endif %}
+					</a>
+				</div>
+			</div>
+			<div class="gs-tab-content" style="padding-top:20px;">
+				<div class="gs-tab-item gs-goodsWrap {% if loop.index0 == 0%}gs-tab-show{% endif %}">
+					<ul class="leader-board-container" style="background-color:{{ goodsData.boxBgC }};">
+					</ul>
+				</div>
+			</div>
+		</div>
+  </div>
+	<script type="text/html" class="pc-leader-board-template">
+			<%# if(d.goodsInfo.length > 0){ %>
+				<%# $.each(d.goodsInfo, function(index, item){ %>
+				<li class="goods-item">
+					<div class="component-self-goodBox">
+						<div class="component-self-goodWrap">
+							<div class="gs-img" data-editEnv="{{ data.isEditEnv }}">
+								<a href="<% item.url_title %>" style="height:{{data.default.lazyHeight}}px;" class="logsss_event"
+									data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'<% item.goods_sn %>','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+									<img  src="<% item.goods_img %>">
+								</a>
+							</div>
+							<div class="gs-goods-info">
+								<div class="gs-desc">
+										{% if data.goodsActive|default(1) == '1' %}
+											<a href="<% item.url_title %>" class="logsss_event"
+												data-logsss-event-value="{'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'<% item.goods_sn %>','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'}}">
+												<span class="item-name"><% item.goods_title %></span>
+											</a>
+										{% endif %}
+										<p class="item-price">
+											<span class="shop-price">
+												<span class="my_shop_price" data-orgp="<% item.shop_price %>" style="font-size:{{ goodsData.salePriceSize }}px;color:{{ goodsData.salePicTextColor }};">
+												$<% item.shop_price %></span>
+											</span>
+											<del class="market-price">
+												<span class="my_shop_price js_market_wrap" data-orgp="<% item.market_price %>">$<% item.market_price %></span>
+											</del>
+											<P class="sale-discount">
+												<a style="background-color:{{goodsData.disBgc}};color:{{goodsData.disTextColor}};">
+													<%# if(d.lang == 'en'){ %>
+														<strong><% item.sale_number %></strong> Pieces Sold After <strong><% item.sale_days ? item.sale_days : 0 %></strong> Days Released
+													<%# }else if(d.lang == 'fr'){ %>
+														<strong><% item.sale_number %></strong> pièces vendues après <strong><% item.sale_days ? item.sale_days : 0 %></strong> jours de sortie
+													<%# }else if(d.lang == 'es'){ %>
+														<strong><% item.sale_number %></strong> prendas vendidas después de <strong><% item.sale_days ? item.sale_days : 0 %></strong> días desde su lanzamiento
+													<%# }else if(d.lang == 'de'){ %>
+														Nach <strong><% item.sale_days ? item.sale_days : 0 %></strong> Tagen werden <strong><% item.sale_number %></strong> Stücke verkauft
+													<%# }else if(d.lang == 'pt'){ %>
+														<strong><% item.sale_number %></strong> peças vendidas após <strong><% item.sale_days ? item.sale_days : 0 %></strong> dias lançados
+													<%# }else if(d.lang == 'it'){ %>
+														<strong><% item.sale_number %></strong> Pezzo Venduti Dopo <strong><% item.sale_days ? item.sale_days : 0 %></strong> giorni dal Lancio
+													<%# }else{ %>
+														<strong><% item.sale_number %></strong> Pieces Sold After <strong><% item.sale_days ? item.sale_days : 0 %></strong> Days Released
+													<%# } %>
+												</a>
+											</P>
+										</p>
+								</div>
+								<div class="gs-desc-hover" style="display:none;">
+									<p class="item-price-hover">
+											<span class="shop-price">
+												<span class="my_shop_price" data-orgp="<% item.shop_price %>" style="font-size:{{ goodsData.salePriceSize }}px;color:{{ goodsData.salePicColorHover }};">
+												$<% item.shop_price %></span>
+											</span>
+											<del class="market-price">
+												<span class="my_shop_price js_market_wrap" data-orgp="<% item.market_price %>">$<% item.market_price %></span>
+											</del>
+										<P class="buy-now">
+											<a href="<% item.url_title %>"
+											style="background-color:{{ goodsData.btnBgcColor }};
+											color:{{ goodsData.btnTextColor }};
+											width:{{ goodsData.btnWidth }}px;
+											height:{{ goodsData.btnHeight }}px;
+											line-height:{{ goodsData.btnHeight }}px;
+											font-size:{{ goodsData.btnTextSize }}px;
+											{% if data.btnBgImg  is not empty %}
+											background-image:url('{{ data.btnBgImg }}');
+											{% endif %}
+											border: {{ goodsData.btnBorderSize }}px solid {{ goodsData.btnBorderColor }};">
+												{{ goodsData.btnText }}
+											</a>
+										</P>
+									</p>
+								</div>
+
+							<%# if(index == 0){ %>
+							{% if goodsData.iconFirstImg %}
+								<span class="ranking-icon" style="
+									{% if goodsData.iconFirstImg  is not empty %}background-image:url({{ goodsData.iconFirstImg }});{% endif %}
+									{% if goodsData.iconWidth %}width:{{goodsData.iconWidth}}px;{% endif %}
+									{% if goodsData.iconHeight %}height:{{goodsData.iconHeight}}px;{% endif %}
+									{% if goodsData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+								"></span>
+							{% else %}
+								<span class="ranking-icon" style="
+									background-image:url({{ data.default.rankingFirst }});
+									width:{{goodsData.iconWidth}}px;
+									height:{{goodsData.iconHeight}}px;
+									{% if goodsData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+								"></span>
+							{% endif %}
+							<%# } %>
+
+							<%# if(index == 1){ %>
+							{% if goodsData.iconSecondImg %}
+								<span class="ranking-icon" style="
+									{% if goodsData.iconSecondImg is not empty %}background-image:url({{ goodsData.iconSecondImg }});{% endif %}
+									{% if goodsData.iconWidth %}width:{{goodsData.iconWidth}}px;{% endif %}
+									{% if goodsData.iconHeight %}height:{{goodsData.iconHeight}}px;{% endif %}
+									{% if goodsData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+								"></span>
+							{% else %}
+								<span class="ranking-icon" style="
+									background-image:url({{ data.default.rankingSecond }});
+									width:{{goodsData.iconWidth}}px;
+									height:{{goodsData.iconHeight}}px;
+									{% if goodsData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+								"></span>
+							{% endif %}
+							<%# } %>
+
+							<%# if(index == 2){ %>
+							{% if goodsData.iconThirdImg %}
+								<span class="ranking-icon" style="
+									{% if goodsData.iconThirdImg is not empty %}background-image:url({{ goodsData.iconThirdImg }});{% endif %}
+									{% if goodsData.iconWidth %}width:{{goodsData.iconWidth}}px;{% endif %}
+									{% if goodsData.iconHeight %}height:{{goodsData.iconHeight}}px;{% endif %}
+									{% if goodsData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+								"></span>
+							{% else %}
+								<span class="ranking-icon" style="
+									background-image:url({{ data.default.rankingThird }});
+									width:{{goodsData.iconWidth}}px;
+									height:{{goodsData.iconHeight}}px;
+									{% if goodsData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+								"></span>
+							{% endif %}
+							<%# } %>
+
+							<%# if(index > 2){ %>
+							{% if goodsData.iconOtherImg %}
+								<span class="ranking-icon" style="
+									{% if goodsData.iconOtherImg is not empty %}background-image:url({{ goodsData.iconOtherImg }});{% endif %}
+									{% if goodsData.iconWidth %}width:{{goodsData.iconWidth}}px;{% endif %}
+									{% if goodsData.iconHeight %}height:{{goodsData.iconHeight}}px;{% endif %}
+									{% if goodsData.iconOtherTextColor %}color:{{goodsData.iconOtherTextColor}};{% endif %}
+									{% if goodsData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+									{% if goodsData.leaderBoardOtherFontSize %}font-size:{{goodsData.leaderBoardOtherFontSize}}px;{% endif %}
+								"><% index+1 %></span>
+							{% else %}
+								<span class="ranking-icon" style="
+									background-image:url({{ data.default.rankingOther }});
+									width:{{goodsData.iconWidth}}px;
+									height:{{goodsData.iconHeight}}px;
+									color:{{goodsData.iconOtherTextColor}};
+									{% if goodsData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+									{% if goodsData.leaderBoardOtherFontSize %}font-size:{{goodsData.leaderBoardOtherFontSize}}px;{% endif %}
+								"><% index+1 %></span>
+							{% endif %}
+							<%# } %>
+						</div>
+					</div>
+				</li>
+				<%# }); %>
+			<%# }else{ %>
+				<%# $.each(Array(10), function(index){ %>
+					<li class="goods-item">
+						<div class="component-self-goodBox">
+							<div class="component-self-goodWrap">
+								<div class="gs-img">
+									<a href="" style="height:{{data.default.lazyHeight}}px;background-color:#EDEDED;" class="logsss_event">
+										<img src="{{data.default.clothes}}" style="max-width: 100%;max-height:100%;">
+									</a>
+								</div>
+								<div class="gs-goods-info">
+									<div class="gs-desc">
+											<a href="" class="logsss_event">
+												<span class="item-name">Heart Print Asymmetric …</span>
+											</a>
+											<p class="item-price">
+												<span class="shop-price">
+													<span class="my_shop_price">$0.00</span>
+												</span>
+												<del class="market-price">
+													<span class="my_shop_price js_market_wrap">$0.00</span>
+												</del>
+												<P class="sale-discount">
+													<a style="background-color:{{goodsData.disBgc}};color:{{goodsData.disTextColor}};">
+														<span>5200 Pieces Sold after 11 days released</span>
+													</a>
+												</P>
+											</p>
+									</div>
+									<div class="gs-desc-hover" style="display:none;">
+										<p class="item-price-hover">
+												<span class="shop-price">
+													<span class="my_shop_price" style="font-size:{{goodsData.salePriceSize}}px;">
+													$0.00</span>
+												</span>
+												<del class="market-price">
+													<span class="my_shop_price js_market_wrap">$0.00</span>
+												</del>
+											<P class="buy-now">
+												<a href=""
+												style="background-color:{{ goodsData.btnBgcColor }};
+											color:{{ goodsData.btnTextColor }};
+											width:{{ goodsData.btnWidth }}px;
+											height:{{ goodsData.btnHeight }}px;
+											line-height:{{ goodsData.btnHeight }}px;
+											font-size:{{ goodsData.btnTextSize }}px;
+												{% if data.btnBgImg is not empty %}background-image:url('{{ data.btnBgImg }}');{% endif %}
+											border: {{ goodsData.btnBorderSize }}px solid {{ goodsData.btnBorderColor }};">
+													{{data.btnText|default('SNAP UP >')}}
+												</a>
+											</P>
+										</p>
+									</div>
+								</div>
+								<%# if(index == 0){ %>
+								{% if goodsData.iconFirstImg %}
+									<span class="ranking-icon" style="
+										{% if goodsData.iconFirstImg is not empty %}background-image:url({{ goodsData.iconFirstImg }});{% endif %}
+										{% if goodsData.iconWidth %}width:{{goodsData.iconWidth}}px;{% endif %}
+										{% if goodsData.iconHeight %}height:{{goodsData.iconHeight}}px;{% endif %}
+										{% if goodsData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+									"></span>
+								{% else %}
+									<span class="ranking-icon" style="
+									background-image:url({{ data.default.rankingFirst }});
+									width:{{goodsData.iconWidth}}px;
+									height:{{goodsData.iconHeight}}px;
+									{% if goodsData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+									"></span>
+								{% endif %}
+								<%# } %>
+
+								<%# if(index == 1){ %>
+								{% if goodsData.iconSecondImg %}
+									<span class="ranking-icon" style="
+										{% if goodsData.iconSecondImg is not empty %}background-image:url({{ goodsData.iconSecondImg }});{% endif %}
+										{% if goodsData.iconWidth %}width:{{goodsData.iconWidth}}px;{% endif %}
+										{% if goodsData.iconHeight %}height:{{goodsData.iconHeight}}px;{% endif %}
+										{% if goodsData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+									"></span>
+								{% else %}
+									<span class="ranking-icon" style="
+										background-image:url({{ data.default.rankingSecond }});
+										width:{{goodsData.iconWidth}}px;
+										height:{{goodsData.iconHeight}}px;
+										{% if goodsData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+									"></span>
+								{% endif %}
+								<%# } %>
+
+								<%# if(index == 2){ %>
+								{% if goodsData.iconThirdImg %}
+									<span class="ranking-icon" style="
+										{% if goodsData.iconThirdImg is not empty %}background-image:url({{ goodsData.iconThirdImg }});{% endif %}
+										{% if goodsData.iconWidth %}width:{{goodsData.iconWidth}}px;{% endif %}
+										{% if goodsData.iconHeight %}height:{{goodsData.iconHeight}}px;{% endif %}
+										{% if goodsData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+									"></span>
+								{% else %}
+									<span class="ranking-icon" style="
+										background-image:url({{ data.default.rankingThird }});
+										width:{{goodsData.iconWidth}}px;
+										height:{{goodsData.iconHeight}}px;
+										{% if goodsData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+									"></span>
+								{% endif %}
+								<%# } %>
+
+								<%# if(index > 2){ %>
+								{% if goodsData.iconOtherImg %}
+									<span class="ranking-icon" style="
+										{% if goodsData.iconOtherImg is not empty %}background-image:url({{ goodsData.iconOtherImg }});{% endif %}
+										{% if goodsData.iconWidth %}width:{{goodsData.iconWidth}}px;{% endif %}
+										{% if goodsData.iconHeight %}height:{{goodsData.iconHeight}}px;{% endif %}
+										{% if goodsData.iconOtherTextColor %}color:{{goodsData.iconOtherTextColor}};{% endif %}
+										{% if goodsData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+										{% if goodsData.leaderBoardOtherFontSize %}font-size:{{goodsData.leaderBoardOtherFontSize}}px;{% endif %}
+									"><% index+1 %></span>
+								{% else %}
+									<span class="ranking-icon" style="
+										background-image:url({{ data.default.rankingOther }});
+										width:{{goodsData.iconWidth}}px;
+										height:{{goodsData.iconHeight}}px;
+										color:{{goodsData.iconOtherTextColor}};
+										{% if goodsData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+										{% if goodsData.leaderBoardOtherFontSize %}font-size:{{goodsData.leaderBoardOtherFontSize}}px;{% endif %}
+									"><% index+1 %></span>
+								{% endif %}
+								<%# } %>
+							</div>
+						</div>
+					</li>
+				<%# }); %>
+			<%# } %>
+	</script>
+</div>

@@ -1,0 +1,9 @@
+.result-tips{
+  height:64px;
+  line-height:64px;
+  font-size:12px;
+  color: #fff;
+  text-align: center;
+  font-family: '微软雅黑';
+  background: rgba(0,0,0,.6);
+}

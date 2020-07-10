@@ -1,0 +1,248 @@
+/* 新增按钮 */
+
+#goods_tab .tab-add-btn {
+  // position: absolute;
+  bottom: -77px;
+  left: 20px;
+  margin-top: 16px;
+}
+
+#goods_layer_table+.layui-form {
+  display: none !important;
+}
+
+#goods_layer .layui-form {
+  padding-bottom: 40px;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+#goods_layer .layui-table-box,
+#goods_layer .layui-table-view {
+  overflow: hidden;
+}
+
+#goods_layer .layui-icon {
+  cursor: pointer;
+  margin: 2px 5px;
+  display: inline-block;
+}
+
+#goods_layer .layui-icon-prev,
+#goods_layer .layui-icon-next {
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+}
+
+#goods_layer td[data-field="goods_img"] .layui-table-cell {
+    height: 49px;
+    text-align: center;
+}
+
+#goods_layer td[data-field="goods_img"] .layui-table-cell img {
+    max-width: 100%;
+    width: 49px;
+}
+
+#goods_layer tbody tr {
+  height: 60px;
+}
+
+/* 删除按钮 */
+
+#goods_layer_wrap .layui-layer-btn2 {
+  float: left;
+}
+
+.goods-fr {
+  float: right;
+}
+
+#gs_goods_add {
+  width: 80%;
+  margin: 50px auto;
+}
+
+/* gs_goods fixed 悬浮操作 */
+
+#goods_layer .layui-table-fixed-r {
+  right: -1px !important;
+}
+
+#goods_layer input::-webkit-outer-spin-button,
+#goods_layer input::-webkit-inner-spin-button {
+  -webkit-appearance: textfield;
+}
+
+#goods_layer input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* 选品系统 */
+
+.goods-hide {
+  display: none;
+}
+
+.goods-visible {
+  display: block !important;
+}
+
+.gs-select-box {
+  display: inline-block; // width: 100px;
+  width: 100%;
+  height: 38px;
+  line-height: 38px;
+  border: 1px solid #e4e7ed;
+  padding: 0 10px;
+}
+
+.gs-select-item-wraper {
+  margin-left: 10px;
+  margin-bottom: 10px;
+  width: 320px;
+}
+
+.gs-tab-select-content.gs-select-automatic-content {
+  margin-left: 10px;
+}
+
+.gs-tab-select-wraper .gs-select-item .select-item {
+  margin: 0 auto;
+  width: 288px;
+}
+.gs-tab-select-wraper .gs-select-item .geshop-third-value {
+  margin-top: 16px;
+}
+.gs-tab-select-wraper .sku-select-input {
+  width: 288px;
+}
+.gs-tab-select-wraper .gs-tab-title {
+  padding-left: 20px;
+}
+.gs-tab-select-wraper .gs-tab-title .gs-tab-title-item {
+  width: 40%;
+  float: left;
+  text-align: center;
+  padding: 5px 0;
+  border-bottom: 2px solid #eee;
+  cursor: pointer;
+}
+
+.gs-tab-select-wraper .gs-tab-title .gs-tab-title-item.gs-tab-this {
+  border-color: #409EFF;
+}
+
+.gs-tab-select-wraper .gs-tab-select-item {
+  display: none;
+}
+
+.gs-tab-select-wraper .gs-tab-select-item.gs-tab-show {
+  display: block;
+}
+
+.gs-select-item-wraper .gs-select-level3-wraper {
+  border: 1px solid #E6E6E6;
+  border-radius: 4px;
+  padding: 2px 6px 16px;
+  box-sizing: border-box;
+}
+
+.gs-select-item-wraper .select2-container {
+  width: 288px !important;
+}
+
+.gs-block {
+  display: block;
+  padding: 10px 0;
+}
+
+.gs-select-box.layui-hide+.select2-container {
+  display: none;
+}
+
+.select2-container {
+  margin-right: 5px; 
+  /* box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1); */
+  width: 320px !important;
+  margin-bottom: 10px;
+}
+
+#goods_tab .select2-container {
+  width: 100% !important;
+  max-width: 160px;
+}
+
+.gs-tab-select-wraper .select2-container{
+    width: 100% !important;
+}
+
+.gs-tab-select-wraper .gs-select-item-wraper, .gs-tab-select-wraper .select-item{
+    max-width:100%;
+}
+
+.select2-container--open .select2-dropdown {
+  -webkit-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+  border: 1px solid #e4e7ed;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: #f5f7fa;
+  color: #606266;
+}
+
+.select2-container--default .select2-results__option[aria-selected=true] {
+  background-color: #f5f7fa;
+  color: #606266;
+}
+
+.select2-container .select2-selection--single {
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #e4e7ed;
+}
+
+.select2-container .select2-selection--single>span {
+  height: 40px !important;
+  line-height: 40px !important;
+}
+
+/* 活动组件样式过渡处理 */
+
+.gs-lable-block {
+  margin: 10px 0 10px 20px;
+  display: block;
+}
+
+.gs-lable-block+.layui-input-block,
+.class-manage,
+.row-lists-content .layui-input-block {
+  margin-left: 20px
+}
+
+.gs-tips {
+  font-size: 12px;
+  color: #9E9E9E;
+}
+
+/* OBS选品 */
+
+.goods-data-wrapper textarea,
+.goods-data-wrapper .select2-container {
+  width: 96% !important;
+}
+
+.goods-data-wrapper .tab-add-btn {
+  width: 96%;
+}
+
+/* ips 选品*/
+.radio-tab-group >.radio-tab-group{
+    width: auto;
+    margin: 0;
+}
+
+.gs-select-item-wraper .gs-select-item .layui-input{
+    max-width:100%;
+}

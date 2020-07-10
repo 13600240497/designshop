@@ -1,0 +1,258 @@
+
+{%
+	set pageData = {
+				price_ft_weight:data.price_ft_weight|default(0),
+				base_bg_shadow:data.base_bg_shadow|default(1),
+    lang:data.lang|default('en'),
+		back_bgcolor:data.back_bgcolor is not null?data.back_bgcolor:'#fd9e62',
+		back_font_color:data.back_font_color is not null?data.back_font_color:'#ffffff',
+		item_bgcolor:data.item_bgcolor is not null?data.item_bgcolor:'#fd9e62',
+		font_color:data.font_color is not null?data.font_color:'#f7f7f7',
+
+    scan_code_isShow:data.scan_code_isShow|default(1),
+    scan_code_position:data.scan_code_position|default(1),
+    share_area_isShow:data.share_area_isShow|default(1),
+  	nav_bgc:data.nav_bgc is not null?data.nav_bgc:'#D8D8D8',
+  	nav_bgc_hover:data.nav_bgc_hover is not null?data.nav_bgc_hover:'#999999',
+  	nav_ftc:data.nav_ftc is not null?data.nav_ftc:'#333333',
+  	nav_ftc_hover:data.nav_ftc_hover is not null?data.nav_ftc_hover:'#ffffff',
+    nav_radius:data.nav_radius|default(4),
+    nav_border_isShow:data.nav_border_isShow|default(1),
+    nav_border_size:data.nav_border_size|default(1),
+    nav_border_color:data.nav_border_color is not null?data.nav_border_color:'transparent',
+    nav_border_hover_c:data.nav_border_hover_c is not null?data.nav_border_hover_c:'transparent',
+    position:data.position|default('left'),
+		nav_share_color:data.nav_share_color is not null?data.nav_share_color:'#333333',
+  	nav_share_bgc:data.nav_share_bgc is not null?data.nav_share_bgc:'#D8D8D8',
+  	nav_share_hover_bgc:data.nav_share_hover_bgc is not null?data.nav_share_hover_bgc:'#999999',
+	  nav_share_hover_c:data.nav_share_hover_c is not null?data.nav_share_hover_c:'',
+  	scan_code_bgc:data.scan_code_bgc is not null?data.scan_code_bgc:'#D8D8D8',
+  	scan_code_ftc:data.scan_code_ftc is not null?data.scan_code_ftc:'#333333',
+
+    nav_top:data.nav_top|default(0),
+    nav_left:data.nav_left|default(0),
+    nav_right:data.nav_right|default(0),
+    nav_fontSize:data.nav_fontSize|default(14),
+    nav_item_w:data.nav_item_w|default(200),
+    nav_item_h:data.nav_item_h|default(40),
+    nav_item_margin:data.nav_item_margin|default(8),
+    headPic_isShow:data.headPic_isShow|default(1),
+    headPic_w:data.headPic_w|default(200),
+    headPic_h:data.headPic_h|default(130),
+    headPic_margin_bot:data.headPic_margin_bot|default(0),
+    goTop_w:data.goTop_w|default(200),
+    goTop_h:data.goTop_h|default(40),
+  	goTop_bgc:data.goTop_bgc is not null?data.goTop_bgc:'#D8D8D8',
+  	goTop_bgc_hover:data.goTop_bgc_hover is not null?data.goTop_bgc_hover:'#999999',
+    goTop_fontsize:data.goTop_fontsize|default(14),
+		goTop_text:data.goTop_text is not null?data.goTop_text:'TOP',
+		goTop_text_color:data.goTop_text_color is not null?data.goTop_text_color:'#333333',
+	}
+%}
+<div class="geshop-component-box component-drag clearfix U000142 ui-U000142_default geshop-gb-component ui-{{ pageInstanceId }}" data-key="U000142" data-id="{{ pageInstanceId }}" data-staticDomain="{{staticDomain}}"  data-isEditEnv="{{data.isEditEnv}}" >
+  <!-- embed stylesheet begin -->
+  <style type="text/css">
+    .U000142[data-id="{{ pageInstanceId }}"] .component-nav-vertical-item:hover,
+    .U000142[data-id="{{ pageInstanceId }}"] .vertical-current {
+      background-color: {{ pageData.nav_bgc_hover | default('#999') }}!important;
+      color:{{pageData.nav_ftc_hover| default('#fff') }} !important;
+      border-color:{{pageData.nav_border_hover_c| default('transparent') }} !important;
+    }
+		.U000142[data-id="{{ pageInstanceId }}"][data-iseditenv="1"] .component-nav-vertical-item.to-top{
+			position: relative;
+			bottom: 0;
+		}
+		.U000142[data-id="{{ pageInstanceId }}"] .component-nav-vertical-item.to-top{
+			bottom:-{{pageData.goTop_h+pageData.nav_item_margin}}px;
+		}
+    .U000142[data-id="{{ pageInstanceId }}"] .component-nav-vertical-item.to-top:hover {
+      background-color: transparent !important;
+    }
+		.U000142[data-id="{{ pageInstanceId }}"] .share-icon{
+			color:{{ pageData.nav_share_color }};
+		}
+    .U000142[data-id="{{ pageInstanceId }}"] .share-icon:hover{
+      background-color:{{pageData.nav_share_hover_bgc}} !important;
+			color:{{pageData.nav_share_hover_c}} !important;
+    }
+    .U000142[data-id="{{ pageInstanceId }}"] .goTop-btn:hover{
+      background-color:{{pageData.goTop_bgc_hover}} !important;
+    }
+
+  .U000142[data-id="{{ pageInstanceId }}"] .share-area a{
+    background:{{pageData.nav_share_bgc}};
+
+  }
+  .U000142[data-id="{{ pageInstanceId }}"] .scan-code-text{
+    color:{{pageData.scan_code_ftc}}!important;
+  }
+		/*顶部*/
+		.geshop-gb-component.ui-{{ pageInstanceId }} .goTop-btn{
+			color:{{ pageData.goTop_text_color }};
+		}
+		/*二维码*/
+		.geshop-gb-component.ui-{{ pageInstanceId }} .scan-code{
+		{% if data.scan_code_bgImage %}
+			background:url({{ data.scan_code_bgImage }}) no-repeat center center/contain;
+		{% endif  %}
+		}
+
+.geshop-gb-component.ui-{{ pageInstanceId }} .share-box .gs-iconfont{
+	color:inherit;
+}
+
+
+      /*背景图*/
+.geshop-gb-component.ui-{{ pageInstanceId }} .gb_wrapper_common{
+{% if data.base_box_bgImage %}
+	background-image:url({{ data.base_box_bgImage }});
+{% endif %}
+{% if data.component_bg_value %}
+{{ data.component_bg_value }}
+{% endif %}
+}
+/*动态价格粗细*/
+.geshop-gb-component.ui-{{ pageInstanceId }} .gs-shop-price strong,.geshop-gb-component.ui-{{ pageInstanceId }} .gs-sale-price{
+{% if pageData.price_ft_weight == '1' %}
+	font-weight:bold !important;
+{% else %}
+	font-weight:normal !important;
+{% endif %}
+}
+/*投影*/
+{% if pageData.base_bg_shadow == '0'%}
+.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item,.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item_tag {
+	box-shadow: none !important;
+}
+
+{% else %}
+.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item,.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item_tag {
+	box-shadow: 0px 0px 10px {{data.base_bg_shadow_color|default('#CCCCCC')}} !important;
+	-webkit-box-shadow: 0px 0px 10px {{data.base_bg_shadow_color|default('#CCCCCC')}} !important;
+}
+
+{% endif %}
+</style>
+  <!-- embed stylesheet end -->
+  <nav class="component-vertical-nav gb_wrapper_common"  data-color="{{pageData.scan_code_ftc}}" style="
+    {% if data.isEditEnv %}
+        {% if pageData.position %} float:{{pageData.position}}; {% endif %};
+    {% else %}
+        {% if pageData.position %} {{pageData.position}}: 0; {% endif %};
+            margin-top: {{ pageData.nav_top }}px;
+        {% if pageData.position and pageData.position == 'left' %}
+            margin-left: {{ pageData.nav_left }}px;
+        {% elseif pageData.position and pageData.position == 'right' %}
+            margin-right: {{ pageData.nav_right }}px;
+        {% else %}
+            margin-left: {{ pageData.nav_left }}px;
+        {% endif %};
+    {% endif %}
+  ">
+    <div class="nav-decorate top-pic bg-format" style="display: block;">
+      {% if pageData.headPic_isShow == '1' %}
+      <p style="
+        margin-left: auto;
+        margin-right: auto;
+        background-image:
+        {% if data.head_bgimg %}
+        url({{ data.head_bgimg}});
+        {% else %}
+        url({{staticDomain}}/resources/images/gb/u000142/head-banner.png);
+        {% endif %}
+        background-size:cover;
+        background-position:center;
+        width: {{ pageData.headPic_w }}px;
+        height: {{ pageData.headPic_h }}px;
+        margin-bottom: {{ pageData.headPic_margin_bot | default(0) }}px;
+      "></p>
+      {% endif %}
+    </div>
+    <ul id="nav-vertical-ul" class="clearfix bg-format" data-isedit="{{data.isEditEnv}}">
+      {% if data.navData %}
+        {% if pageData.scan_code_isShow == '1' and pageData.scan_code_position =='1' %}
+          <li class="scan-code" style="background-color:{{pageData.scan_code_bgc}};">
+            <p class="scan-code-text">{{ gb_component_trans(lang, 'dowload_free_app')|default('Download Free APP') }}</p>
+            <img src=" {{ staticDomain }}/resources/images/gb/u000142/app-download.png" style="vertical-align: middle"/>
+            <p class="scan-code-text">{{ gb_component_trans(lang, 'enjoy_app-exclusive_deals')|default('Enjoy APP-Exclusive Deals') }}</p>
+
+          </li>
+        {% endif %}
+        {% for id,item in data.navData %}
+          {% if id in data.nav_menu %}
+            <li class="component-nav-vertical-item bg-format" data-id="{{ id }}" style="
+              margin: {{ pageData.nav_item_margin | default(5) }}px auto;
+              {% if data.nav_bgimg%} background-image: url('{{ data.nav_bgimg }}');{% endif %}
+              background-color: {{ pageData.nav_bgc }};
+              color:{{pageData.nav_ftc}};
+              border-radius: {{ pageData.nav_radius }}px;
+              width:{{pageData.nav_item_w}}px;
+              height:{{pageData.nav_item_h}}px;
+              line-height:{{pageData.nav_item_h}}px;
+              {% if pageData.nav_border_isShow == 1 %}
+              border:{{pageData.nav_border_size}}px solid {{pageData.nav_border_color}};
+              {% endif %}
+              text-align:center;
+            ">
+              <strong style="
+              font-size: {{ data.nav_fontSize | default(14) }}px;
+              ">{{ item }}</strong>
+            </li>
+          {% endif %}
+        {% endfor %}
+        {% if pageData.scan_code_isShow == '1' and pageData.scan_code_position =='0' %}
+           <li class="scan-code" style="background-color:{{pageData.scan_code_bgc}};">
+               <p class="scan-code-text">{{ gb_component_trans(lang, 'dowload_free_app')|default('Download Free APP') }}</p>
+               <img src=" {{ staticDomain }}/resources/images/gb/u000142/app-download.png" style="vertical-align: middle"/>
+               <p class="scan-code-text">{{ gb_component_trans(lang, 'enjoy_app-exclusive_deals')|default('Enjoy APP-Exclusive Deals') }}</p>
+          </li>
+        {% endif %}
+        {% if pageData.share_area_isShow == '1' %}
+          <li class="share-area" style="width:{{pageData.nav_item_w}}px;">
+            {# <div class="share-box"><a href="javascript:;" class="share-icon gb-share js-btnIntroShareFB" data-sharer="facebook" title="facebook"><img src=" {{ staticDomain }}/resources/images/gb/u000142/fb.png"/></a></div>
+            <div class="share-box"><a href="javascript:;" class="share-icon gb-share js-btnIntroShareTT" data-sharer="twitter" title="twitter" ><img src=" {{ staticDomain }}/resources/images/gb/u000142/twitter.png"/></a></div>
+            <div class="share-box"><a href="javascript:;" class="share-icon gb-share js-btnIntroShareGl" data-sharer="googleplus" title="Google+" ><img src=" {{ staticDomain }}/resources/images/gb/u000142/google.png"/></a></div>
+            <div class="share-box"><a href="javascript:;" class="share-icon gb-share js-btnIntroShareVK" data-sharer="vk" title="VKontakte" ><img src=" {{ staticDomain }}/resources/images/gb/u000142/vk.png"/></a></div>  #}
+            {# <div class="share-box"><a href="javascript:;" class="share-icon gb-share js-btnIntroShareVK" data-sharer="vk" title="VKontakte" style="background-color:{{pageData.nav_share_bgc}};"><img src=" {{ staticDomain }}/resources/images/gb/u000142/vk.png"/></a></div>  #}
+            {# <a href="javascript:;" class="share-icon gb-share js-btnIntroShareVK" data-sharer="vk" title="VKontakte" style="background-color:{{pageData.nav_share_bgc}};"><img src=" {{ staticDomain }}/resources/images/gb/u000142/vk.png"/></a> #}
+            {# <a href="javascript:;" class="share-icon gb-share js-btnIntroShareVK" data-sharer="vk" title="VKontakte" style="background-color:{{pageData.nav_share_bgc}};"><img src=" {{ staticDomain }}/resources/images/gb/u000142/vk.png"/></a> #}
+          </li>
+        {% endif %}
+        <li class="component-nav-vertical-item to-top">
+          <div class="goTop-btn" style="
+            width:{{pageData.goTop_w}}px;
+            height:{{pageData.goTop_h}}px;
+            line-height:{{pageData.goTop_h}}px;
+            border-radius: {{ pageData.nav_radius }}px;
+            {% if data.goTop_btn%} background-image: url({{ data.goTop_btn }});{% endif %}
+            background-color:{{pageData.goTop_bgc}};
+            font-size:{{pageData.goTop_fontsize}}px;
+          ">{{ pageData.goTop_text }}</div>
+        </li>
+      {% else %}
+        {% for item in (0..1) %}
+          <li class="component-nav-vertical-item bg-format" style="
+            margin: {{ pageData.nav_item_margin | default(5) }}px 0 {{ pageData.nav_item_margin | default(5) }}px 0;
+            {% if data.nav_bgimg%} background-image: url('{{ data.nav_bgimg }}');{% endif %}
+            background-color: {{ pageData.nav_bgc }};
+            color:{{pageData.nav_ftc}};
+            border-radius: {{ pageData.nav_radius }}px;
+            width:{{pageData.nav_item_w}}px;
+            height:{{pageData.nav_item_h}}px;
+            line-height:{{pageData.nav_item_h}}px;
+            {% if pageData.nav_border_isShow == 1 %}
+            border:{{pageData.nav_border_size}}px solid {{pageData.nav_border_color}};
+            {% endif %}
+            text-align:center;
+          ">
+            <strong style="
+            font-size: {{ data.nav_fontSize | default(14) }}px;
+            ">请配置导航数据</strong>
+          </li>
+        {% endfor %}
+      {% endif %}
+    </ul>
+  </nav>
+</div>
+
+

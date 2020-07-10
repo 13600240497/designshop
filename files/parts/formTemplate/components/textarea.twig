@@ -1,0 +1,15 @@
+<div class="layui-form-item {{ componentData.extendClass | default('') }}">
+    <label class="layui-form-label {% if componentData.public %} public-data {% endif %}">
+        {{ componentData.label }}
+        <span>{{ componentData.desc }}</span>
+    </label>
+    <div class="layui-input-block">
+        <textarea
+            name="{{ componentData.name }}" 
+            class="layui-textarea" 
+            row="{{ componentData.row | default(4) }}"
+            placeholder="{{ componentData.placeholder | default('') }}" 
+            autocomplete="off" 
+            data-public-tag="{{ componentData.public }}">{{ componentData.value | nl2br | replace({'<br />': '&#13;'}) }}</textarea>
+    </div>
+</div>

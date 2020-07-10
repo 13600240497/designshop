@@ -1,0 +1,72 @@
+		{# 倒计时 #}
+		{# start wrap #}
+{% if count_type == 'banner'%}
+	<span class="gs-time-inner"
+	style="position:absolute;
+	width:{{pageData.maskWidth}};
+	height:{{pageData.maskHeight}}{{suffix}};
+	{% if pageData.maskTop|abs > 0 %}
+		top:{{pageData.maskTop}}{{suffix}};
+	{% else %}
+		top:{{pageData.maskTop}};
+	{% endif %}
+	{% if pageData.maskBottom|abs > 0 %}
+		bottom:{{pageData.maskBottom}}{{suffix}};
+	{% else %}
+		bottom:{{pageData.maskBottom}};
+	{% endif %}
+
+	{% if pageData.maskRight|abs > 0 %}
+		right:{{pageData.maskRight}}{{suffix}};
+	{% else %}
+		right:{{pageData.maskRight}};
+	{% endif %}
+
+	{% if pageData.maskLeft|abs > 0 %}
+		left:{{pageData.maskLeft}}{{suffix}};
+	{% else %}
+		left:{{pageData.maskLeft}};
+	{% endif %}
+	{% if pageData.countdownCenter == '1' %} margin:0 auto;{% endif %}
+	{% if data.countDownMaskActive|default('1') == '1' %}	background-color:{{data.downBgC|default('#ffffff')}}; {% endif %}
+	opacity:{{(data.maskOpacity|default('80')/100)}};
+	border-radius:{{pageData.maskRadius}}{{suffix}};
+	font-size:{{pageData.maskFtS}}{{suffix}};
+	display: table;
+	line-height:{{pageData.maskFtS*1.5}}{{suffix}};
+	">
+{% else %}
+	<span class="gs-time-inner" style="height:auto;line-height:{{pageData.downFtS*1.5}}{{suffix}}">
+{% endif %}
+		{% if count_type == 'banner'%}
+		<div style="display:table-cell;vertical-align: middle;">
+		{% else %}
+		<div>
+		{% endif %}
+			{# <i class="icon-clock-black"></i> #}
+			<div class="gs-down-text" style="
+			{# color:{{data.downCl|default('#666666')}}; #}
+			font-size:{{pageData.downFtS}}{{suffix}};
+			vertical-align: middle;
+			{% if count_type == 'banner' or device_type == 'mobile'%}margin:0;display:block;{% endif %}">
+				{% if pageData.count_textStatus == 0%}
+					{{pageData.downBfText}}:
+				{% elseif pageData.count_textStatus == 1%}
+					{{pageData.downIngText}}:
+				{% else %}
+					{{pageData.downAfText}}:
+				{% endif %}
+			</div>
+				<input type="hidden" name="serverTime" value="{{serverTime}}" data-start-time="{{item.dataStartTime}}" data-end-time="{{item.dataEndTime}}" data-textObj="{{pageData.downBfText}},{{pageData.downIngText}},{{pageData.downAfText}}"
+				data-dayobj="{{pageData.yesterday}},{{pageData.today}},{{pageData.tomorrow}}">
+				<span class="gs_component_countDown" data-left-time="0"
+				style="color:{{data.downCl|default('#666666')}};
+				font-size:{{pageData.downFtS}}{{suffix}};
+				vertical-align: middle;
+				font-weight: bold;
+				">
+				{# <strong>00 day(S)</strong> #}
+				<em>00</em>:<em>00</em>:<em>00</em>:<em>00</em></span>
+		</div>
+	</span>
+		{# end wrap #}

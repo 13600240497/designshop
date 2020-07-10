@@ -1,0 +1,11 @@
+.layui-tab-item legend,h3{
+  padding-left: 25px;
+  font-size: 16px;
+  margin-top: 20px;
+  display: block;
+  font-weight: bold;
+}
+
+.share-data{
+  padding: 0 25px;
+}

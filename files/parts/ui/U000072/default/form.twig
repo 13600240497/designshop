@@ -1,0 +1,159 @@
+<h3 class="component-form-title">
+  <span>自定义广告</span>
+  <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close"><i class="el-icon-close"></i></a>
+</h3>
+
+{{include ('@app/htdocs/resources/template/pc/templateList/index.twig')}}
+
+<div class="component-form-setting-item component-form-configure-item">
+  <h4 class="title">常用设置</h4>
+  <div class="layui-field-box">
+		{{include ('@app/files/parts/formModules/userGroupItem.twig')}}
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 上边距(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="marginTop" autocomplete="off" class="layui-input" value="{{ data.marginTop | default(0) }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 下边距(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="marginBottom" autocomplete="off" class="layui-input" value="{{ data.marginBottom | default(0) }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 左边距(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="marginLeft" autocomplete="off" class="layui-input" value="{{ data.marginLeft | default(0) }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 右边距(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="marginRight" autocomplete="off" class="layui-input" value="{{ data.marginRight | default(0) }}">
+      </div>
+    </div>
+  </div>
+  <h4 class="title">广告图设置</h4>
+  <div class="layui-field-box">
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 图片宽度(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="ImgWidth" autocomplete="off" class="layui-input" value="{{ data.ImgWidth }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 图片高度(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="ImgHeight" autocomplete="off" class="layui-input" value="{{ data.ImgHeight }}">
+      </div>
+    </div>
+    <div class="geshop-first-value">
+      <a href="javascript:;" class="img_openResource" style="width: 78px; font-size: 32px; line-height: 30px;">
+        <span>
+          <img src="/resources/images/carousel-image/add.png">
+          <i style="display:none" class="hover-item">更 换</i>
+        </span>
+      </a>
+      <input type="text" lay-verify="required" autocomplete="off" class="layui-input select-img" name="imgSrc" style="margin-left: 2px;" value="{{ data.imgSrc }}">
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 图片跳转链接</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="link" autocomplete="off" class="layui-input" value="{{ data.link }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 图片描述(Alt)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="imgAlt" autocomplete="off" class="layui-input" value="{{ data.imgAlt }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 位置信息</label>
+      <div class="layui-input-block">
+        <input type="radio" name="imgAlign" value="left" title="居左" {% if data.imgAlign == 'left' %} checked{% endif %}>
+        <input type="radio" name="imgAlign" value="center" title="居中" {% if data.imgAlign != 'left' and data.imgAlign != 'right' %} checked{% endif %}>
+        <input type="radio" name="imgAlign" value="right" title="居右" {% if data.imgAlign == 'right' %} checked{% endif %}>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="gs-lable-block">链接是否打开新窗口</label>
+      <div class="layui-input-block">
+        <input type="radio" name="target_active" data-public-tag="true" value="1" title="是" {% if data.target_active == '1' %} checked="checked" {% endif %}>
+        <input type="radio" name="target_active" data-public-tag="true" value="0" title="否" {% if data.target_active|default(0) == '0' %} checked="checked" {% endif %}>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <span type="button" class="layui-btn layui-btn-normal" id="img_submit">提交</span>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm" style="display: none;">提交</button>
+</div>
+
+<script>
+  $('body').on('change', '.select-img', function () {
+    var target = $(this);
+    var picAddress = $.trim(target.val());
+    var verifyWidth = $('#component_form [name=ImgWidth]').val();
+    var verifyHeight = $('#component_form [name=ImgHeight]').val();
+    
+    if (picAddress.length == 0) {
+      return false;
+    }
+
+    var originalImg = new Image();
+    originalImg.src = picAddress;
+    
+    originalImg.onload = function () {
+      var originalWidth = originalImg.width;
+      var originalHeight = originalImg.height;
+      
+      if (originalWidth != verifyWidth || originalHeight != verifyHeight) {
+        target.val('');
+        layer.msg('请添加正确尺寸的图片');
+      }
+    };
+  });
+  $('body').on('mouseenter', '.img_openResource', function () {
+    var $url =  $(this).find('img').attr("src");
+
+    if ($url == "/resources/images/carousel-image/add.png") {
+      return;
+    }
+
+    $(this).addClass('add-link-item');
+    $(this).find('img').addClass('add-img-item');
+    $(this).find($('i')).css("display", "block");
+  });
+  $('body').on('mouseleave', '.img_openResource', function () {
+    $(this).find($('i')).css("display", "none");
+    $(this).removeClass('add-link-item');
+    $(this).find('img').removeClass('add-img-item');
+  });
+  var bannerTimer = setInterval(function () {
+    var bannerArr = [];
+    $('.select-img').each(function (i) {
+      bannerArr.push($(this).val());
+      bannerArr.filter(function(item, index, arr) {
+        return arr.indexOf(item) === index;
+      });
+
+      var bannerBoolean = bannerArr.some(function(item) {
+        return Boolean(item) == true;
+      });
+
+      if (bannerBoolean) {
+        $('input[name=ImgWidth],input[name=ImgHeight]').prop('disabled', true).css({backgroundColor:'#f8f8f8'});
+      } else {
+        $('input[name=ImgWidth],input[name=ImgHeight]').prop('disabled', false).css({backgroundColor:'#ffffff'});
+        bannerArr.length = 0;
+      }
+    });
+  }, 1000);
+  $('#img_submit').on('click', function() {
+    $(this).next('button').trigger('click');
+  });
+</script>

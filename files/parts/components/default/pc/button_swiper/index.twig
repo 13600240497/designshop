@@ -1,0 +1,16 @@
+{# 
+    swiper 插件的前后按钮
+    
+ #}
+
+
+{# 输出定制化 stylesheet #}
+{% if style is not empty %}
+
+{# 输出HTMl段落 #}
+{% else %}
+    <div class="geshop-components-default-button-swiper button-swiper-{{ pageInstanceId }}">
+        <div class="button-swiper-prev"><i></i></div>
+        <div class="button-swiper-next"><i></i></div>
+    </div>
+{% endif %}

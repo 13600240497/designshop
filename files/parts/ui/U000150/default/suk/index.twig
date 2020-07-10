@@ -1,0 +1,125 @@
+{% set pageData = {
+    activeFontColor:data.activeFontColor is not null ? data.activeFontColor:'#FFFFFF',
+}%}
+<div data-key="U000150" data-id="{{ pageInstanceId }}" data-static-domain="{{staticDomain}}" data-gid="U000150" class="geshop-component-box component-drag gs-index-main rgindex-pc-tab" style="margin-top: {{ data.marginTop | default(0) }}px;">
+    <div class="geshop swiper-container geshop-index-goods">
+        <div class="tab-container tab-swipe">
+            <style type="text/css">
+                [data-id="{{ pageInstanceId }}"] .tab-swipe .nav-container ul li.current {
+                    color: {{pageData.activeFontColor ?? '#ffffff'}};
+                    background-color: {{ data.activeBgColor ?? '#222222' }};
+                }
+
+                [data-id="{{ pageInstanceId }}"] .tab-swipe .nav-container ul li {
+                    font-size: {{data.titleFontSize ?? 24 }}px;
+                    color: {{data.navFontColor | default('#222222')}};
+                }
+            </style>
+            {% if data.goodsInfo|json_encode() != '[{"label":"","lists":[]}]' and data.goodsInfo|json_encode() != 'null' %}
+            <div class="nav-container" style="{% if data.titleActive == '1' %} display:none;  {% endif %} ">
+                <i class="left-btn none"></i>
+                <div class="nav-con-ul">
+                    <ul class="clearfix">
+                        {% for item in data.navList %}
+                            <li class="site-font-bold">{{item.categoryName}}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <i class="right-btn none"></i>
+            </div>
+
+            <div class="goods-list-swipe">
+                <i class="goods-pre-btn"></i>
+                {% for key, content in data.goodsInfo | default(0..3) %}
+
+                    <div class="goods-scroll">
+                        <ul class="clearfix geshop swiper-wrapper">
+                            {% for item in content.lists %}
+                                <li class="goods-item-black swiper-slide">
+                                    <div class="goods-img">
+                                        <a href="{{item.url_title}}" class="hover-img logsss_event" data-logsss-event-value="{ 'pm':'mp','p':'p-{{ pageId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+                                            {% if data.isEditEnv == '1' and data.goodsInfo %}
+                                                <img class="swiper-lazy" src="{{item.goods_img|default(data.default.good)}}" style="max-width: 100%;max-height:100%;">
+                                            {% elseif  data.isEditEnv == '0' and data.goodsInfo %}
+                                                <img class="swiper-lazy" src="{{data.default.lazyImg|default(data.default.good)}}" data-src="{{item.goods_img|default(data.default.good)}}" style="max-width: 100%;max-height:100%;" data-logsss-browser-value="{ 'pm':'mp','p':'p-{{ pageId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+
+                                            {% else %}
+                                                <img class="swiper-lazy" src="{{data.default.good}}" style="max-width: 100%;max-height:100%;">
+                                            {% endif %}
+                                        </a>
+                                    </div>
+                                    {% if item.goods_title | length > 1 %}
+                                        <p id='pro-name'>
+                                            <a href="{{item.url_title}}" title="{{item.goods_title}}" class="logsss_event" data-logsss-event-value="{ 'pm':'mp','p':'p-{{ pageId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">{{item.goods_title|default("请添加描述")}}</a>
+                                        </p>
+                                        <p id='pro-price'>
+                                            <strong id="new-price" class="my_shop_price" style="color: {{data.saleFontColor ?? '#FA386A'}}" data-orgp="{{item.shop_price}}">${{item.shop_price}}</strong>&nbsp;
+                                            {% if item.market_price - item.shop_price > 0 %}
+                                            <del id="old-price" class="my_shop_price my_old_price js_market_wrap"  data-orgp="{{item.market_price}}">${{item.market_price}}</del>
+                                            {% endif %}
+                                        </p>
+                                    {% else %}
+                                        <p id='pro-name' class="hover-title">
+                                            <a href="{{item.url_title}}" title="{{item.goods_title}}">{{item.goods_title|default("请添加描述")}}</a>
+                                        </p>
+                                        <p id='pro-price' class="hover-price">
+                                            <strong  class="my_shop_price" data-orgp="{{item.shop_price}}">{{item.shop_price}}</strong>
+                                        {% if item.market_price - item.shop_price > 0 %}
+                                            <del class="my_shop_price my_old_price js_market_wrap" data-orgp="{{item.market_price}}">{{item.market_price}}</del>
+                                        {% endif %}
+                                        </p>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
+                <i class="goods-next-btn"></i>
+            </div>
+            {% else %}
+            <div class="nav-container" style="{% if data.titleActive == '1' %} display:none;  {% endif %} ">
+                <i class="left-btn none"></i>
+                <div class="nav-con-ul">
+                    <ul class="clearfix">
+                        {% for index,item in [1,2,3,4,5,6] %}
+                            <li class="site-font-bold">Category{{index+1}}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <i class="right-btn none"></i>
+            </div>
+            <div class="goods-list-swipe">
+                <i class="goods-pre-btn"></i>
+                {% for key, content in [1,2,3,4,5] %}
+                    <div class="goods-scroll">
+                        <ul class="clearfix geshop swiper-wrapper">
+                            {% for item in [1,2,3,4,5] %}
+                                <li class="goods-item-black  swiper-slide">
+                                    <div class="goods-img">
+                                        <a href="{{item.url_title}}" class="hover-img logsss_event" data-logsss-event-value="{ 'pm':'mp','p':'p-{{ pageId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+                                            {# <img class="" data-original="{{item.goods_img|default(data.default.good)}}" src="{{item.goods_img|default(data.default.good)}}" style="width: 250px; height: 250px;" data-logsss-browser-value="{ 'pm':'mp','p':'p-{{ pageId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }"> #}
+                                        <img class="swiper-lazy" src="{{data.default.good}}" style="max-width: 100%;max-height:100%;">
+                                        </a>
+                                    </div>
+
+                                        <p id='pro-name' class="hover-title">
+                                            <a href="{{item.url_title}}" title="{{item.goods_title}}">{{item.goods_title|default("This is the descript")}}</a>
+                                        </p>
+                                        <p class="hover-price">
+                                            <span class="my_shop_price my_shop_price_demo site-bold-strict">$0.00</span>
+                                            <del class="my_shop_price my_old_price">$0.00</del>
+                                        </p>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                {% endfor %}
+                <i class="goods-next-btn"></i>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

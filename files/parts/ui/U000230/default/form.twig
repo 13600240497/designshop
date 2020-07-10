@@ -1,0 +1,156 @@
+{% set formData = {
+    id: 'U000230',
+    name: '热图组件',
+    theme: 'modal1',
+    tabs: [
+
+            {
+                label: '样式设置',
+                components: [
+                    {
+                        label: '常用配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                type: 'platData-dl',
+                                componentsData:[
+                                    {
+                                        label: '组件上边距(px)',
+                                        name: 'box_margin_top',
+                                        default: 0,
+                                        col: 2
+                                    },
+                                    {
+                                        label: '组件下边距(px)',
+                                        name: 'box_margin_bottom',
+                                        default: 0,
+                                        col: 2
+                                    },
+                                    {
+                                        label: '链接是否打开新窗口',
+                                        desc: '',
+                                        name: 'is_open_new',
+                                        filter: 'is_open_new',
+                                        type: 'radio',
+                                        options: [
+                                        { label: '是', value: '_blank' },
+                                        { label: '否', value: '_self' }
+                                    ],
+                                        default: '_blank' ,
+                                        default_m: '_self'
+                                    }
+                                ]
+                            },
+                            {
+                                label: '图片描述',
+                                desc: '(alt属性)',
+                                name: 'base_img_alt',
+                                default: '',
+                            },
+                            {
+                                label: '热区图片',
+                                desc: '(建议宽高750px * 300px)',
+                                name: 'base_img_m',
+                                type: 'image',
+                                default: '',
+                                isshow: 'dl-app',
+                            },
+                            {
+                                type: 'diy',
+                                src: 'hotM/m.twig',
+                                isshow: 'dl-app',
+                            },
+                            {
+                                type: 'tab',
+                                isshow: 'dl-web',
+                                items: [
+                                    {
+                                        label: 'PC',
+                                        components: [
+                                            {
+                                                label: '热区图片(PC)',
+                                                desc: '(注：图片的宽度根据组件的宽度而定)',
+                                                name: 'base_img_pc',
+                                                type: 'image',
+                                                default: '',
+                                            },
+                                            {
+                                                type: 'diy',
+                                                src: 'hotPC/pc.twig',
+                                            },
+                                        ]
+                                    },
+                                    {
+                                        label: 'IPAD',
+                                        components: [
+                                            {
+                                                label: '热区图片(IPAD)',
+                                                desc: '(注：图片的宽度根据组件的宽度而定)',
+                                                name: 'base_img_pad',
+                                                type: 'image',
+                                                default: '',
+                                            },
+                                            {
+                                                type: 'diy',
+                                                src: 'hotIpd/ipad.twig',
+                                            },
+                                        ]
+                                    },
+                                    {
+                                        label: 'M',
+                                        components: [
+                                            {
+                                                label: '热区图片(M)',
+                                                desc: '(注：图片的宽度根据组件的宽度而定)',
+                                                name: 'base_img_m',
+                                                type: 'image',
+                                                default: '',
+                                            },
+                                            {
+                                                type: 'diy',
+                                                src: 'hotM/m.twig',
+                                            }
+                                        ]
+                                    },
+                                ]
+                            }
+                        ]
+                    },
+                ]
+            }
+        ],
+    beforeSubmit: 'onSubmit'
+
+} %}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+<script>
+
+
+
+
+    {#  自定义保存函数 #}
+    function onSubmit(progress) {
+        var imgSrc = $("input[name='base_img_pc']").val() || null;
+        var img = $("input[name='areas_pc']").attr('data-src');
+        if (img != imgSrc) {
+            $("input[name='areas_pc']").val(0);
+        }
+
+        var imgSrc1 = $("input[name='base_img_m']").val() || null;
+        var img1 = $("input[name='areas_m']").attr('data-src');
+        if (img1 != imgSrc1) {
+            $("input[name='areas_m']").val(0);
+        }
+
+        var imgSrc2 = $("input[name='base_img_pad']").val() || null;
+        var img2 = $("input[name='areas_pad']").attr('data-src');
+        if (img2 != imgSrc2) {
+            $("input[name='areas_pad']").val(0);
+        }
+        progress.next()
+    }
+
+</script>

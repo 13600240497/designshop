@@ -1,0 +1,101 @@
+@background_color_1: #ededed;
+@background_color_2: #fff;
+.geshop-component-body {
+    overflow: hidden;
+    text-align: center;
+
+    .clearfix {
+        &:after {
+            content: "";
+            height: 0;
+            line-height: 0;
+            display: block;
+            visibility: hidden;
+            clear: both;
+        }
+    }
+
+    .list__box {
+        width: 9.36rem;
+        display: flex;
+        justify-content: space-between;
+        flex-flow: row wrap;
+        margin: 12/37.5rem 12/37.5rem 8/37.5rem;
+    }
+    // 3列
+    .li-col-3{
+        .list_item{
+            width: 111/37.5rem;
+        }
+        .item_image{
+            height: 148/37.5rem;
+        }
+        &:after{
+            content: "";
+            width: 111/37.5rem;
+        }
+    }
+
+    .list_item {
+        width: 172/37.5rem;
+        margin-bottom: 8/37.5rem;
+        overflow:hidden;
+        background-color: #fff;
+    }
+
+    .edit-style {
+        .proImg {
+            background: url('https://geshoptest.s3.amazonaws.com/uploads/1BWrycf2QRuG0dMZLtP5Hg4mqlUxaeYS.png') center center no-repeat;
+            background-color: @background_color_1;
+        }
+    }
+
+    .item_image {
+        position:relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 230/37.5rem;
+        overflow: hidden;
+
+        img {
+            display: block;
+            height: 100%;
+            margin: 0 auto;
+        }
+    }
+    .item_content{
+        padding-top:8/37.5rem;
+        padding-bottom:12/37.5rem;
+    }
+
+    .item_more_less {
+        margin-bottom: 32/75rem;
+    }
+
+    .view_more {
+        display: flex;
+        justify-content: center;
+        width: 330/75rem;
+        height: 72/75rem;
+        border-radius: 2/75rem;
+        text-align: center;
+        margin: auto;
+        white-space: nowrap;
+        overflow: hidden;
+        cursor: pointer;
+        & span {
+            font-size: 28/75rem;
+            line-height: 72/75rem;
+            width: 100%;
+        }
+    }
+
+    .gs_like_loading {
+        width: 100%;
+        height: 2.666667rem;
+        background: url("https://uidesign.rglcdn.com/RG/image/z_promo/20190311_8431/loading_tm.gif") no-repeat center center;
+        background-size: 1rem 1rem;
+    }
+}

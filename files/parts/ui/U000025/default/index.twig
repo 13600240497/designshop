@@ -1,0 +1,15 @@
+<div class="geshop-component-box component-drag" data-key="U000025" data-id="{{ pageInstanceId }}" style="
+    {% if data.boxMarginTop %} margin-top: {{ data.boxMarginTop }}px;{% endif %}
+    {% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}
+">
+    <div style="
+        background-image: url({% if data.imgSrc %}{{ data.imgSrc }}{% else %} {{ data.default.banner }}{% endif %});
+        background-position: center;
+        background-repeat: no-repeat;
+        height: {{ data.imgHeight | default(500) }}px;
+    ">
+        {% if data.imgURL %}
+            <a href="{{data.imgURL}}" style="display:block;width:100%;height:100%"></a>
+        {% endif %}
+    </div>
+</div>

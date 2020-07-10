@@ -1,0 +1,139 @@
+<div class="radio-tab-true">
+    <div class="layui-form-item">
+        <label>商品数据</label>
+        <div class="layui-input-block">
+            <input type="radio" name="goodsDataFrom" lay-filter="goodsDataFrom" value="2" title="选品系统" {% if data.goodsDataFrom == '2' %} checked="checked" {% endif %}>
+            <input type="radio" name="goodsDataFrom" lay-filter="goodsDataFrom" value="1" title="商品SKU" {% if data.goodsDataFrom == '1' or data.goodsDataFrom is empty %} checked="checked" {% endif %}>
+        </div>
+    </div>
+    <div class="radio-tab-group">
+        <div class="goods-hide {% if data.goodsDataFrom|default('1') == '2' %}goods-visible{% endif %}" data-target="goodsDataFrom-2">
+            {# 选品系统手动自动方式 start #}
+            {{include ('@app/files/parts/temp/goods_manager.twig')}}
+            {{include ('@app/files/parts/temp/choose_products_tpl.twig')}}
+            {# 选品系统手动自动方式 end #}
+        </div>
+        <div class="goods-hide {% if data.goodsDataFrom|default('1') == '1' %}goods-visible{% endif %}" data-target="goodsDataFrom-1">
+            <div class="layui-form-item" >
+                {# <label class="layui-form-label public-data">商品SKU</label> #}
+                <label class="gs-label-block gs-label-blank"></label>
+                <div class="layui-input-block">
+                    <textarea class="layui-textarea js-valid-skus"
+						name="goodsSKU"
+						placeholder="请输入商品编号（SKU ID），编号与编号间用英文逗号隔开"
+						data-public-tag="true">{{data.goodsSKU}}</textarea>
+                </div>
+                <span style="margin: 10px 0 10px 110px; display: block; color: #bbb;">"商品SKU"不可重复</span>
+            </div>
+            <div class="layui-form-item tab-add-btn">
+                <span class="layui-btn layui-btn-normal layui-btn-sm" id="gs_getList" style="float:right">商品管理</span>
+            </div>
+        </div>
+    </div>
+</div>
+{{include ('@app/files/parts/temp/choose_products_form_js.twig')}}
+<script>
+/* 提交 */
+function goods_manager_submit(next) {
+
+	$(".gs-select-box").each(function(index){
+		$('input[name=gsSelectLevel'+ index +']').val($(this).val());
+	});
+
+	var goodsDataFrom = $('input[name=goodsDataFrom]:checked').val();
+	var ipsMethods = $('input[name=ipsMethods]:checked').val();
+	var gsSelectLevel2 = $('input[name=gsSelectLevel2]').val();
+	var gsSelectLevel5 = $('input[name=gsSelectLevel5]').val();
+	var act_arr = [];
+	var act_auto_methods = { level1: {}, level2: {}, level3: {} };
+	var act_methods = { level0: {}, level1: {}, level2: {} ,ipsSkus:''};
+	var actid_required_status = false;
+
+	if(goodsDataFrom == '2' && ipsMethods == '2' && (!gsSelectLevel2 || gsSelectLevel2 == '0')){
+		layer.msg('请选择三级活动信息');
+		return false;
+	} else if (goodsDataFrom == '2' && ipsMethods == '1' && (!gsSelectLevel5 || gsSelectLevel5 == '0')) {
+		layer.msg('请选择三级活动信息');
+		return false;
+	}
+
+	/* 自动方式 */
+	if (ipsMethods == 1) {
+		$('.gs-select-item-wraper').find('.gs-select-item').each(function(index, item) {
+			var act_obj = {};
+			var act_id = $(item).find('.gs-select-box').find('option:checked').val();
+			var act_name = $(item).find('.gs-select-box').find('option:checked').text();
+			var sku_num = $(item).find('.sku-select-input').val().trim();
+			/* 三级活动信息必选 */
+			if (act_id == '0') {
+				actid_required_status = true;
+			}
+			act_obj.id = act_id;
+			act_obj.name = act_name;
+			act_obj.sku_num = sku_num || 0;
+			act_arr.push(act_obj);
+		});
+		act_auto_methods.level1.id = $('.gs-select-level3').find('option:checked').val();
+		act_auto_methods.level1.name = $('.gs-select-level3').find('option:checked').text();
+		act_auto_methods.level2.id = $('.gs-select-level4').find('option:checked').val();
+		act_auto_methods.level2.name = $('.gs-select-level4').find('option:checked').text();
+		act_auto_methods.level3 = act_arr;
+		$('input[name=ipsAutoInfo]').val(JSON.stringify(act_auto_methods));
+		{# $('input[name=ipsGoodsSKU],textarea[name=goodsSKU]').val(''); #}
+		/*清空手动选品*/
+		$('input[name=ipsInfo]').val('');
+		$('input[name=gsSelectLevel0]').val('');
+		$('input[name=gsSelectLevel1]').val('');
+		$('input[name=gsSelectLevel2]').val('');
+	}else if(ipsMethods == 2){
+		act_methods.level0.id = $('.gs-select-level0').find('option:checked').val();
+		act_methods.level0.name = $('.gs-select-level0').find('option:checked').text();
+
+		act_methods.level1.id = $('.gs-select-level1').find('option:checked').val();
+		act_methods.level1.name = $('.gs-select-level1').find('option:checked').text();
+		act_methods.level2.id = $('.gs-select-level2').find('option:checked').val();
+		act_methods.level2.name = $('.gs-select-level2').find('option:checked').text();
+		act_methods.ipsSkus = $('input[name="ipsGoodsSKU"]').val();
+		$('input[name=ipsInfo]').val(JSON.stringify(act_methods));
+		/*清空自动选品*/
+		$('input[name=ipsAutoInfo]').val('');
+	}else if(ipsMethods == 3){
+		var sku = $("[name=ips_auto_sku]").val();
+		var ips_activity_child_id = $("[name=ips_activity_child_id]").val();
+		if(goodsDataFrom == 2 && !sku){layui.layer.msg('请添加SKU！');return false;}
+		$('input[name="ipsGoodsSKU"]').val(sku);
+		$('input[name=ipsFilterInfo]').val(JSON.stringify({"ips_auto_sku":sku,"ips_activity_child_id":ips_activity_child_id }));
+		$('input[name=ipsAutoInfo]').val('');
+		$('input[name=ipsInfo]').val('')
+	}else if(ipsMethods == 4){
+		var sku = $("[name=ips_manual_sku]").val();
+		if(goodsDataFrom == 2 && !sku){layui.layer.msg('请添加SKU！');return false;}
+		$('input[name="ipsGoodsSKU"]').val(sku);
+		$('input[name=ipsFilterInfo]').val(JSON.stringify({"ips_manual_sku":sku }));
+		$('input[name=ipsAutoInfo]').val('');
+		$('input[name=ipsInfo]').val('')
+	}
+
+	/* 如果选择的是商品SKU */
+	if (goodsDataFrom == '1') {
+		actid_required_status = false;
+	}
+
+	if (actid_required_status) {
+		layer.msg('请选择三级活动信息');
+		return false;
+	}
+
+    next();
+};
+
+$(function() {
+	/* 新版本 form 表单提交容错代码 */
+	if (typeof window.before_submit_queue === "object") {
+		before_submit_queue.push(goods_manager_submit);
+		before_submit_queue.push(function(next) {
+			next();
+		});
+	}
+});
+</script>

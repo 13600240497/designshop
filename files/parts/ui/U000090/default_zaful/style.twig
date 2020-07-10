@@ -1,0 +1,51 @@
+.geshop-U000090-{{ pageInstanceId }} {
+    background-color: {{ data.box_bg_color | default('#f8f8f8') }};
+    background-image: url('{{ data.bgImage }}');
+    margin-bottom: {{ data.boxMarginBottom | default('40') }}px;
+}
+
+.geshop-U000090-{{ pageInstanceId }} span.ranking-icon {
+    width: {{ data.iconWidth }}px;
+    height: {{ data.iconHeight }}px;
+    {% if data.leaderBoardIconPosition == 2 %}
+        right: 5px;
+    {% else %}
+        left: 5px;
+    {% endif %}
+}
+
+.geshop-U000090-{{ pageInstanceId }} span.ranking-icon[data-index="0"] {
+    background-image: url('{{ pageData.iconFirstImg }}');
+}
+
+.geshop-U000090-{{ pageInstanceId }} span.ranking-icon[data-index="1"] {
+    background-image: url('{{ pageData.iconSecondImg }}');
+}
+
+.geshop-U000090-{{ pageInstanceId }} span.ranking-icon[data-index="2"] {
+    background-image: url('{{ pageData.iconThirdImg }}');
+}
+
+.geshop-U000090-{{ pageInstanceId }} span.ranking-icon[data-index="3"] {
+    background-image: url('{{ pageData.iconOtherImg }}');
+    font-size: {{ pageData.leaderBoardOtherFontSize }}px;
+}
+
+.geshop-U000090-{{ pageInstanceId }} .product-selling-point {
+    color: {{ data.leaderBoardTextColor }};
+    background-color: {{ data.btnBgColor }};
+    border-color: {{ data.btnDefaultBorderColor }};
+}
+
+{%
+    include geshop.default.pc.shop_price with { style: {
+        'color': data.shop_price_color
+    }}
+%}
+
+{%
+    include geshop.default.pc.button_buy with { style: {
+        'color': data.buyTextColor,
+        'background-color': data.buyBtnTextBgColor
+    }}
+%}

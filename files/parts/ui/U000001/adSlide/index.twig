@@ -1,0 +1,64 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+
+{% if data.colNum == '1'%}
+    {% set colClass = liCol[0] %}
+{% elseif data.colNum == '2' %}
+    {% set colClass = liCol[1] %}
+{% elseif data.colNum == '3' %}
+    {% set colClass = liCol[2] %}
+{% elseif data.colNum == '4' %}
+    {% set colClass = liCol[3] %}
+{% elseif data.colNum == '5' %}
+    {% set colClass = liCol[4] %}
+{% else %}
+    {% set colClass = liCol[3] %}
+{% endif %}
+
+{% set goodsData = {
+	goodsBgc:data.goodsBgc is not null?data.goodsBgc:'#ffffff',
+	goodsBdC:data.goodsBdC is not null?data.goodsBdC:'#FD9E62',
+	goodsFtC:data.goodsFtC is not null?data.goodsFtC:'#333',
+	buyHeight:data.buyHeight|default(40),
+	buyRadius:data.buyRadius|default(0),
+	buyFtS:data.buyFtS|default(20),
+	buyBgC:data.buyBgC is not null?data.buyBgC:'#fdcf65',
+	buyBorderC:data.buyBorderC is not null?data.buyBorderC:'#fdcf65',
+	buyBorderW:data.buyBorderW|default('0'),
+	priceC:data.priceC is not null?data.priceC:'#FD6462',
+	priceFt:data.priceFt|default('20'),
+	discountOffsetT:data.discountOffsetT|default('-10'),
+	discountOffsetR:data.discountOffsetR|default('-10'),
+	discountRadius:data.discountRadius|default('50'),
+	discountFtC:data.discountFtC,
+	discountBgc:data.discountBgc is not null?data.discountBgc:'#FD6462',
+	colNum:data.colNum|default('3'),
+	AdAreaClassC:data.AdAreaClassC is not null?data.AdAreaClassC:'#666',
+	AdAreaC:data.AdAreaC is not null?data.AdAreaC:'#000',
+	AdAreaDisccountC:data.AdAreaDisccountC is not null?data.AdAreaDisccountC:'#000',
+	AdAreaViewFtC:data.AdAreaViewFtC is not null?data.AdAreaViewFtC:'#ffffff',
+	AdAreaViewBgc:data.AdAreaViewBgc is not null?data.AdAreaViewBgc:'#333333',
+} %}
+
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+        {# [data-id="{{ pageInstanceId }}"] .component-self-goodWrap:hover, [data-id="{{ pageInstanceId }}"] .current {
+            border-color:{{goodsData.goodsBdC|default('transparent')}};
+        } #}
+				[data-gid="U000001_adSlide"][data-id="{{ pageInstanceId }}"] .gs-btn-area a:hover{
+					background-color:{{ data.buyHoverBgc|default('#ff4933')}} !important;
+					border-color:{{ data.buyHoverBgc|default('#ff4933')}} !important;
+				}
+
+    </style>
+    <!-- embed stylesheet end -->
+
+<div class="geshop-component-box component-drag clearfix" data-gid="U000001_adSlide" data-key="U000001" data-id="{{ pageInstanceId }}" data-static-domain="{{staticDomain}}">
+    <div class="geshop-col-12" style="
+		{% if data.boxMarginTop|default(20) %}margin-top: {{ data.boxMarginTop|default(20) }}px;{% endif %}
+		{% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}
+    ">
+			{{include ('@app/htdocs/resources/template/pc/goodsList/adSlide/index.twig')}}
+    </div>
+</div>
+
+

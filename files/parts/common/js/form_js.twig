@@ -1,0 +1,57 @@
+<script>
+    $(function () {
+        var laydate = layui.laydate;
+
+        $('.dateTime').on('click', '.startTime,.endTime', function (e) {
+            var $this = this;
+            laydate.render({
+                elem: $($this)[0],
+                min: 0,
+                type: 'datetime',
+                show: true,
+                trigger: 'click',
+                done: function (value) {
+                    setTimeout(function () {
+                        var startTime = Date.parse($($this).parent().find('.startTime').val());
+                        var endtTime = Date.parse($($this).parent().find('.endTime').val());
+                        if (startTime && endtTime) {
+                            if (startTime >= endtTime) {
+                                $($this).parent().find('.startTime').val('');
+                                $($this).parent().find('.endTime').val('');
+                                layer.msg('开始时间不能大于结束时间', {time: 5000});
+                                return false;
+                            }
+                        }
+                    }, 0);
+                }
+            });
+        });
+
+        $('.layui-row').on('click', '.moreSetBtn', function () {
+            var defaultSet = $(this).parents('.content').find('.defaultSet');
+            var moreSet = $(this).parents('.content').find('.moreSet');
+            if (defaultSet.is(":hidden")) {
+                defaultSet.show();
+                moreSet.hide();
+                $(this).text('高级配置 >');
+            } else {
+                defaultSet.hide();
+                moreSet.show();
+                $(this).text('基础配置 >');
+            }
+            $(this).parents('.layui-tab-content-parent').scrollTop(0);
+        });
+
+        $('.layui-row.shrink').on('click', '.tit', function () {
+            var cont = $(this).parent().find('.cont');
+            if (cont.is(":hidden")) {
+                $(this).find('i').html('&#xe61a;');
+                cont.show();
+            } else {
+                $(this).find('i').html('&#xe602;');
+                cont.hide();
+            }
+        });
+    });
+
+</script>

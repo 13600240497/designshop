@@ -1,0 +1,188 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+{% set suffix='px'%}
+
+{% if data.colNum == '1'%}
+    {% set colClass = liCol[0] %}
+{% elseif data.colNum == '2' %}
+    {% set colClass = liCol[1] %}
+{% elseif data.colNum == '3' %}
+    {% set colClass = liCol[2] %}
+{% elseif data.colNum == '4' %}
+    {% set colClass = liCol[3] %}
+{% elseif data.colNum == '5' %}
+    {% set colClass = liCol[4] %}
+{% else %}
+    {% set colClass = liCol[3] %}
+{% endif %}
+
+{#
+300/145 2.06
+250/170 1.29
+ #}
+{% set siteCodeOp = {
+	baseWidthDefault: siteCode == 'zf-pc'?1260:1200,
+	baseImgWidth:siteCode == 'rw-pc'?170:145,
+	baseImgHeight:siteCode == 'rw-pc'?170/(data.default.lazyWidth/data.default.lazyHeight):145/(data.default.lazyWidth/data.default.lazyHeight)
+}%}
+
+{# tab_bothBdType 1,2,3 直角,圆角,半圆 #}
+{% set goodsData = {
+	goodsBgc:data.goodsBgc is not null?data.goodsBgc:'#ffffff',
+	goodsBdC:data.goodsBdC is not null?data.goodsBdC:'#E33194',
+	goodsBdC_normal:data.goodsBdC_normal is not null?data.goodsBdC_normal:'#F3F1F1',
+	goodsFtC:data.goodsFtC is not null?data.goodsFtC:'#333',
+	buyHeight:data.buyHeight|default(34),
+	buyRadius:data.buyRadius|default(20),
+	buyFtS:data.buyFtS|default(14),
+	buyBorderC:data.buyBorderC is not null?data.buyBorderC:'#E33194',
+	buyBorderW:data.buyBorderW|default('0'),
+	discountOffsetT:data.discountOffsetT|default('-7'),
+	discountOffsetR:data.discountOffsetR|default('-7'),
+	discountOffsetL:data.discountOffsetL|default('-7'),
+	discountRadius:data.discountRadius|default('50'),
+	discountTop:data.discountTop|default(0),
+	discountType:data.discountType|default(1),
+	discountArea:data.discountArea|default(0),
+	colNum:3,
+	baseWidth:data.baseWidth|default(siteCodeOp.baseWidthDefault),
+	gsInnerPadding:data.gsInnerPadding|default(8),
+	boxMarginBottom:data.boxMarginBottom|default(24),
+
+	baseBgC:data.baseBgC is not null?data.baseBgC:'',
+	goodsBdC_normal:data.goodsBdC_normal is not null?data.goodsBdC_normal:'#F3F1F1',
+	goodsBdC:data.goodsBdC is not null?data.goodsBdC:'#F3F1F1',
+	priceFt:data.priceFt|default(24),
+	priceC:data.priceC is not null?data.priceC:'#000000',
+	discountWidth:data.discountWidth|default(50),
+	discountHeight:data.discountHeight|default(50),
+	discountFtS:data.discountFtS|default(14),
+	discountOffFtS:data.discountOffFtS|default(14),
+	discountFtC:data.discountFtC is not null?data.discountFtC:'#ffffff',
+	discountBgc:data.discountBgc is not null?data.discountBgc:'#333333',
+	buyText:data.buyText|default( get_component_trans(lang,'btn_buy_now') ),
+	buyFtC:data.buyFtC is not null?data.buyFtC:'#FFFFFF',
+	buyBgC:data.buyBgC is not null?data.buyBgC:'#000000',
+} %}
+
+{% set pageData = {
+	downFtS:data.downFtS|default(20),
+	downTextC:data.downTextC|default('#ffffff'),
+	downBfText:data.downStarts|default( get_component_trans(lang,'down_starts') ),
+	downIngText:data.downEnds|default( get_component_trans(lang,'down_ends') ),
+	downAfText:data.downAfText|default( get_component_trans(lang,'already_ended') ),
+	yesterday: get_component_trans(lang,'yesterday'),
+	today: get_component_trans(lang,'today'),
+	tomorrow: get_component_trans(lang,'tomorrow'),
+
+	headerTitleFtS:data.headerTitleFtS|default(40),
+	headerTitle:data.headerTitle|default('FLASH SALE'),
+	downStarts:data.downStarts|default( get_component_trans(lang,'down_starts') ),
+	downEnds:data.downEnds|default( get_component_trans(lang,'down_ends') ),
+	downAfText:data.downAfText|default( get_component_trans(lang,'already_ended') ),
+	downTitleFtS:data.downTitleFtS|default(14),
+	downC:data.downC is not null?data.downC:'#000000',
+	downStatusC:data.downStatusC is not null?data.downStatusC:'#000000',
+	downTimeBgC:data.downTimeBgC is not null?data.downTimeBgC:'#000000',
+	downTextC:data.downTextC is not null?data.downTextC:'#ffffff',
+	downCl:data.downTimeBgC|default('#000000'),
+	tab_ingBgc:'#D0D0D0',
+	goodsLimitNumC:data.goodsLimitNumC is not null?data.goodsLimitNumC:'#D0D0D0',
+	goodsLimitTextC:data.goodsLimitTextC is not null?data.goodsLimitTextC:'#333',
+}
+%}
+
+{% set liLength = ( data.goodsSKUSort|default(0..3))|length %}
+{% set liVis = liLength>4?4:liLength %}
+{% set liWidth = (goodsData.baseWidth - 350)/liVis %}
+{% set liLength = ( data.goodsSKUSort|default(0..3))|length %}
+{% set sizeSacle = 20/38 %}
+{% set sizeWidth = 38 %}
+{% set sizeHeight = 40 %}
+
+
+<div class="geshop-component-box component-drag component-sync clearfix" data-gid="U000118_zaful" data-key="U000118" data-id="{{ pageInstanceId }}"
+	data-editenv="{{data.isEditEnv}}" data-static-domain="{{staticDomain}}" data-vis="{{liLength}}" data-lang="{{lang}}"
+	style="{% if data.boxMarginTop %}margin-top: {{ data.boxMarginTop }}px;{% endif %}
+				 {% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}">
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+        [data-id="{{ pageInstanceId }}"][data-gid="U000118_zaful"] .component-self-goodWrap:hover, [data-id="{{ pageInstanceId }}"] .current {
+            border-color:{{goodsData.goodsBdC|default('transparent')}} !important;
+        }
+
+        [data-id="{{ pageInstanceId }}"][data-gid="U000118_zaful"] .component-self-goodWrap{
+            border-color:{{goodsData.goodsBdC_normal|default('transparent')}} !important;
+        }
+
+				[data-gid="U000118_zaful"][data-id="{{ pageInstanceId }}"] .gs-tab_going{
+					background-color:{{pageData.tab_ingBgc}} ;
+					color:{{pageData.tab_ingTextC}};
+    			border-color: {{pageData.tab_ingBdC}} !important;
+				}
+				[data-gid="U000118_zaful"][data-id="{{ pageInstanceId }}"] .bd-main li {
+    			border-color: {{pageData.tab_soonBdC}};
+				}
+
+				[data-gid="U000118_zaful"][data-id="{{ pageInstanceId }}"] [data-class='gs-tab-already']{
+					background-color:{{pageData.tab_ingBgc}};
+					color:{{pageData.tab_ingTextC}};
+    			border-color: {{pageData.tab_ingBdC}} !important;
+				}
+				[data-gid="U000118_zaful"][data-id="{{ pageInstanceId }}"] [data-class='gs-tab-end']{
+					background-color:{{pageData.tab_endBgc}};
+					color:{{pageData.tab_endTextC}};
+    			border-color: {{pageData.tab_endBdC}} !important;
+				}
+
+				[data-gid="U000118_zaful"][data-id="{{ pageInstanceId }}"] [data-class='gs-tab-soon']{
+					background-color:{{pageData.tab_soonBgc}};
+					color:{{pageData.tab_soonTextC}};
+    			border-color: {{pageData.tab_soonBdC}} !important;
+				}
+				[data-gid="U000118_zaful"][data-id="{{ pageInstanceId }}"] .gs-tab_select{
+						border-width:1px;
+						border-color:{{pageData.tab_ingBgc}} !important;
+				}
+				[data-gid="U000118_zaful"][data-id="{{ pageInstanceId }}"] .gs-option .prev,[data-gid="U000118_zaful"][data-id="{{ pageInstanceId }}"] .gs-option .next{
+					background-color:{{pageData.tab_soonBgc}}
+				}
+
+				[data-gid="U000118_zaful"][data-id="{{ pageInstanceId }}"] .gs-time-inner{
+					color:{{pageData.downTextC}};
+				}
+				[data-gid="U000118_zaful"][data-id="{{ pageInstanceId }}"] .gs_component_countDown em{
+					font-size:{{pageData.downFtS}}{{suffix}};
+					{# width:{{sizeWidth}}{{suffix}}; #}
+					height:{{sizeHeight}}{{suffix}};
+					line-height:{{sizeHeight}}{{suffix}};
+					min-width:30px;
+					padding:0 5px;
+					border-color:{{pageData.downTextC}};
+					color:{{pageData.downTextC}};
+					background: {{data.downTimeBgC|default('#000000')}};
+				}
+
+
+    </style>
+    <!-- embed stylesheet end -->
+
+    <div class="geshop-col-12" style="">
+
+			<div class="gs-goods-singleTab gs-goodsWrap" data-skus="{{data.goodsSKUList}}" data-isEditEnv="{{data.isEditEnv}}" data-tplStatus="0"
+				data-start-time="{{data.dataStartTime}}" data-end-time="{{data.dataEndTime}}"
+				data-interfaceDomain="{{interfaceDomain}}"
+				data-killLeftVisible="{{data.killLeftVisible}}""
+				style="width:{{goodsData.baseWidth}}{{suffix}};margin:auto;
+			 {% if data.baseFtFa %}font-family:{{data.baseFtFa}};{% endif %}">
+				{# start wrap #}
+
+				{{include ('@app/files/parts/temp/count_down_zaful.twig')}}
+
+				{# end wrap #}
+				{{include ('@app/htdocs/resources/template/pc/goodsList_sync/killZaful/index.twig')}}
+			</div>
+
+			{# {{include ('@app/htdocs/resources/template/pc/goodsList/default/index.twig')}} #}
+    </div>
+</div>
+

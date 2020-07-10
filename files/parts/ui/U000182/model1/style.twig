@@ -1,0 +1,83 @@
+<!-- embed stylesheet begin -->
+<style type="text/css">
+    .geshop-U000182-model1-{{ pageInstanceId }}{
+      background-color: {{data.componentBgColor |default('#f8f8f8')}};
+      margin-bottom: {{data.box_margin_bottom | default(32)}}px;
+      overflow: hidden;
+    } 
+    
+    .geshop-U000182-model1-{{ pageInstanceId }} .geshop-goods-discount {
+        position:absolute;
+        z-index: 1;
+        display:flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        text-align: center;
+        line-height: {{data.offFontSize | default(12)}}px;
+        font-size: {{data.offFontSize | default(15)}}px;
+        width: {{ data.discountwidth | default(50) }}px;
+        height: {{ data.discountHeight | default(50) }}px;
+        background-color: {{ data.discountBgColor | default('#000') }} ;
+        color: {{ data.discountFontColor | default('#fff') }} ;
+        {% if data.discountBgImg %}
+          background-image: url({{ data.discountBgImg }});
+          border-radius: 0%;
+        {% else %}
+          border-radius: 50%;
+        {% endif %}
+        right: {{data.discountLeft | default(5)}}px;
+        top: {{data.discountTop | default(2)}}px;
+        background-size: 100% 100%;
+      }
+      .geshop-U000182-model1-{{ pageInstanceId }} .geshop-goods-discount p{
+          width: {{ data.discountwidth }}px;
+          line-height: 17px;
+          margin: 0 0 0 {{data.discountTextLeft | default(0)}}px;
+
+      }
+      .geshop-U000182-model1-{{ pageInstanceId }} .geshop-goods-discount p.geshop-goods-discount-offtext{
+        font-size: {{data.offFontSize | default(15)}}px;
+      }
+      .geshop-U000182-model1-{{ pageInstanceId }} .geshop-goods-discount p.geshop-goods-discount-value{
+        font-size: {{data.discountFontSize | default(15)}}px;
+        margin-top: {{data.discountTextTop | default(0)}}px;
+        font-family: LatoBold;
+      }
+      .geshop-U000182-model1-{{ pageInstanceId }} .geshop-goods-img .shop-now-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: {{data.shopNowFontColor | default('#000000')}};
+        font-size: {{data.shopNowFontSize | default(16) }}px;
+        opacity: 0.75;
+        background-color: {{data.btnBgColor | default('#ffffff')}};
+        width: 100%;
+        height: 100%;
+        display: none;
+        border-color: {{data.btnBorderColor | default('#000')}};
+        border-style: solid;
+        border-width: 2px;
+        box-sizing: border-box;
+      }
+      .geshop-U000182-model1-{{ pageInstanceId }} .geshop-goods-img .shop-now-container .shop-now-text{
+          color: {{data.shopNowFontColor | default('#000000') }};
+          font-size: {{data.shopNowFontSize | default(16) }}px;
+      }
+      .geshop-U000182-model1-{{ pageInstanceId }} .geshop-goods-img a .inner-wrapper .bag-img{
+        background-image: url({{data.shopIconImg | default('https://geshoptest.s3.amazonaws.com/uploads/OmoKtEqZh8027cfkU56VTJaYi1WSIXRQ.png')}});
+        width: 22px;
+        height: 22px;
+        background-size: 100% 100%;
+        display: inline-block;
+      }
+      .geshop-U000182-model1-{{ pageInstanceId }} .goods-item .geshop-goods-shopprice {
+        color: {{ data.shopPriceBgColor | default('#FF4545') }};
+        font-size: {{data.shopPriceFontSize|default(22)}}px;
+      }
+      .geshop-U000182-model1-{{ pageInstanceId }} .goods-item .geshop-goods-promotions-more > em {
+        color: {{data.saleInfoFontColor}};
+      }
+</style>
+<!-- embed stylesheet end -->

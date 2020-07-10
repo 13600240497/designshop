@@ -1,0 +1,35 @@
+{# 专题页/落地页 埋点 pagePoint #}
+
+{% if pageData.page_point_type|default('activityPage') ==  'activityPage' %}
+	{% set pagePoint = {
+		wrapLink: 'track-goodsItem',
+		goodLink: 'track-goodsLink',
+		prodLink:''
+	}%}
+{% elseif pageData.page_point_type ==  'landPage' %}
+		{% set pagePoint = {
+		wrapLink: 'subjectGoodItem',
+		goodLink: 'js-link',
+		prodLink:'showProd'
+	}%}
+{% else %}
+	{% set pagePoint = {
+		wrapLink: 'track-goodsItem',
+		goodLink: 'track-goodsLink',
+		prodLink:''
+	}%}
+{% endif %}
+
+{# 商品图片配置 #}
+{% set img_common_height = data.goods_img_one == '0' ? '225px' : '322px'%}
+<a href="{{item.url_title}}" target="_special" class="{{pagePoint.goodLink}} {% if item.goods_img|default('') == '' %}has-cloth-not{% endif %} {% if data.goods_img_one == '1' %}gs-goods-item-common{% endif %}">
+	{% if data.isEditEnv == '1' and data.goodsInfo %}
+		<img class="js-lazyload" src="{{item.goods_img}}" style="width:225px;height:{{img_common_height}};" data-lazy="{{item.goods_img}}" >
+	{% elseif data.isEditEnv == '0' and data.goodsInfo %}
+		<img class="js-lazyload" src="{{data.default.good_gb}}" style="width:225px;height:{{img_common_height}};" data-lazy="{{item.goods_img}}" title="{{item.goods_title}}" alt="{{item.goods_title}}">
+	{% else %}
+		<img class="gs-default-clothes" src="{{data.default.clothes}}" class="gs-default-clothes" style="width:225px;height:{{img_common_height}};">
+	{% endif %}
+
+	<i class="gs-goods-status"><span>{{gb_component_trans(lang , 'sold_out' )}}</span></i>
+</a>

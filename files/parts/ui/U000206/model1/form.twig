@@ -1,0 +1,414 @@
+{# 基础配置 #}
+{%
+    set styleTabData = {
+        label: '样式配置',
+        components: [
+            {
+                label: '时间显示节点设置',
+                type: 'fieldset',
+                components: [
+                    {
+                        name: 'time_show_type',
+                        default: 'day',
+                        type: 'radio',
+                        options: [
+                            { label: '显示到天', value: 'day' },
+                            { label: '显示到秒', value: 'seconds' }
+                        ],
+                        public: false
+                    }
+                ]
+            },
+            {
+                label: '常用配置',
+                type: 'fieldset',
+                components: [
+                    {
+                        label: '组件上边距(px)',
+                        type: 'input',
+                        name: 'box_margin_top',
+                        default: '0',
+                        col: 2,
+                    },
+                    {
+                        label: '组件下边距(px)',
+                        type: 'input',
+                        name: 'comp_padding_bottom',
+                        default: '32',
+                        col: 2,
+                    },
+                    {
+                        label: '时间设置(北京时间)',
+                        type: 'diy',
+                        startName: 'start_time',
+                        endName: 'end_time',
+                        src: 'form/DateRange.twig',
+                    },
+                ],
+            },
+            {
+                isshow: 'dl-web',
+                label: 'Banner配置',
+                type: 'fieldset',
+                components: [
+                    {
+                        type: 'tab',
+                        items: [
+                            {
+                                label: 'PC',
+                                components: [
+                                    {
+                                        label: '图片',
+                                        desc: '(宽度建议1920px，高度建议480px)',
+                                        type: 'image',
+                                        name: 'pc_banner',
+                                        default: '',
+                                    },
+                                    {
+                                        type: 'diy',
+                                        name: 'pc_banner_width',
+                                        src: 'form/Hidden.twig',
+                                        default: '1920',
+                                    },
+                                    {
+                                        type: 'diy',
+                                        name: 'pc_banner_height',
+                                        src: 'form/Hidden.twig',
+                                        default: '480',
+                                    },
+                                ],
+                            },
+                            {
+                                label: 'PAD',
+                                components: [
+                                    {
+                                        label: '图片',
+                                        desc: '(宽度建议1024px，高度建议480px)',
+                                        type: 'image',
+                                        name: 'pad_banner',
+                                        default: '',
+                                    },
+                                    {
+                                        type: 'diy',
+                                        name: 'pad_banner_width',
+                                        src: 'form/Hidden.twig',
+                                        default: '1024',
+                                    },
+                                    {
+                                        type: 'diy',
+                                        name: 'pad_banner_height',
+                                        src: 'form/Hidden.twig',
+                                        default: '480',
+                                    },
+                                ],
+                            },
+                            {
+                                label: 'M',
+                                components: [
+                                    {
+                                        label: '图片',
+                                        desc: '(宽度建议750px，高度建议480px)',
+                                        type: 'image',
+                                        name: 'm_banner',
+                                        default: '',
+                                    },
+                                    {
+                                        type: 'diy',
+                                        name: 'm_banner_width',
+                                        src: 'form/Hidden.twig',
+                                        default: '750',
+                                    },
+                                    {
+                                        type: 'diy',
+                                        name: 'm_banner_height',
+                                        src: 'form/Hidden.twig',
+                                        default: '480',
+                                    },
+                                ],
+                            },
+                        ],
+                    },
+                ],
+            },
+            {
+                isshow: 'dl-app',
+                label: 'Banner图片',
+                desc: '(宽度建议750px，高度建议480px)',
+                type: 'image',
+                name: 'm_banner',
+                default: '',
+            },
+            {
+                isshow: 'dl-app',
+                type: 'diy',
+                name: 'm_banner_width',
+                src: 'form/Hidden.twig',
+                default: '750',
+            },
+            {
+                isshow: 'dl-app',
+                type: 'diy',
+                name: 'm_banner_height',
+                src: 'form/Hidden.twig',
+                default: '480',
+            },
+            {
+                label: '倒计时区域配置',
+                type: 'fieldset',
+                components: [
+                    {
+                        label: '遮盖背景颜色',
+                        type: 'colorPicker',
+                        name: 'cd_container_bcolor',
+                        default: '#ffffff',
+                    },
+                    {
+                        label: '倒计时模块背景/数字点颜色',
+                        type: 'colorPicker',
+                        name: 'cd_value_bcolor',
+                        default: '#333333',
+                    },
+                    {
+                        label: '倒计时文案文字颜色',
+                        type: 'colorPicker',
+                        name: 'cd_title_fcolor',
+                        default: '#333333',
+                    },
+                    {
+                        label: '倒计时数字文字颜色',
+                        type: 'colorPicker',
+                        name: 'cd_value_fcolor',
+                        default: '#ffffff',
+                    },
+                    {
+                        label: '预热文案',
+                        type: 'input',
+                        name: 'before_title',
+                        default: 'Comming Soon',
+                    },
+                    {
+                        label: '进行文案',
+                        type: 'input',
+                        name: 'started_title',
+                        default: 'End In',
+                    },
+                    {
+                        label: '结束文案',
+                        type: 'input',
+                        name: 'ended_title',
+                        default: 'Already Ended',
+                    },
+                ],
+            },
+        ],
+    }
+%}
+
+{# 高级配置 #}
+{%
+    set moreConfig = [
+        {
+            label: '高级配置',
+            type: 'collapse',
+            items: [
+                {
+                    label: '遮罩层配置',
+                    components: [
+                        {
+                            label: '遮罩透明度（%）',
+                            type: 'input',
+                            name: 'cd_container_opacity',
+                            default: '100',
+                        },
+                    ],
+                },
+                {
+                    label: '倒计时配置',
+                    components: [
+                        {
+                            isshow: 'dl-web',
+                            type: 'tab',
+                            items: [
+                                {
+                                    label: 'PC',
+                                    components: [
+                                        {
+                                            label: '上边距(px)',
+                                            type: 'input',
+                                            name: 'pc_cd_container_padding_top',
+                                            default: '40'
+                                        },
+                                        {
+                                            label: '文本区域宽度(px)',
+                                            type: 'input',
+                                            name: 'pc_cd_container_width',
+                                            default: '260',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '文本区域高度(px)',
+                                            type: 'input',
+                                            name: 'pc_cd_container_height',
+                                            default: '94',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '文本文字大小',
+                                            type: 'input',
+                                            name: 'pc_cd_font_size',
+                                            default: '20',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '数字文字上边距(px)',
+                                            type: 'input',
+                                            name: 'pc_cd_padding_top',
+                                            default: '8',
+                                            col: 2
+                                        },
+                                    ],
+                                },
+                                {
+                                    label: 'PAD',
+                                    components: [
+                                        {
+                                            label: '上边距(px)',
+                                            type: 'input',
+                                            name: 'pad_cd_container_padding_top',
+                                            default: '40',
+                                        },
+                                        {
+                                            label: '文本区域宽度(px)',
+                                            type: 'input',
+                                            name: 'pad_cd_container_width',
+                                            default: '260',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '文本区域高度(px)',
+                                            type: 'input',
+                                            name: 'pad_cd_container_height',
+                                            default: '94',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '文本文字大小',
+                                            type: 'input',
+                                            name: 'pad_cd_font_size',
+                                            default: '20',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '数字文字上边距(px)',
+                                            type: 'input',
+                                            name: 'pad_cd_padding_top',
+                                            default: '8',
+                                            col: 2,
+                                        },
+                                    ],
+                                },
+                                {
+                                    label: 'M',
+                                    components: [
+                                        {
+                                            label: '上边距(px)',
+                                            type: 'input',
+                                            name: 'm_cd_container_padding_top',
+                                            default: '40',
+                                        },
+                                        {
+                                            label: '文本区域宽度(px)',
+                                            type: 'input',
+                                            name: 'm_cd_container_width',
+                                            default: '200',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '文本区域高度(px)',
+                                            type: 'input',
+                                            name: 'm_cd_container_height',
+                                            default: '84',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '文本文字大小',
+                                            type: 'input',
+                                            name: 'm_cd_font_size',
+                                            default: '15',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '数字文字上边距(px)',
+                                            type: 'input',
+                                            name: 'm_cd_padding_top',
+                                            default: '4',
+                                            col: 2,
+                                        },
+                                    ],
+                                },
+                            ],
+                        },
+                        {
+                            isshow: 'dl-app',
+                            label: '上边距(px)',
+                            type: 'input',
+                            name: 'm_cd_container_padding_top',
+                            default: '40',
+                        },
+                        {
+                            isshow: 'dl-app',
+                            label: '文本区域宽度(px)',
+                            type: 'input',
+                            name: 'm_cd_container_width',
+                            default: '200',
+                            col: 2,
+                        },
+                        {
+                            isshow: 'dl-app',
+                            label: '文本区域高度(px)',
+                            type: 'input',
+                            name: 'm_cd_container_height',
+                            default: '84',
+                            col: 2,
+                        },
+                        {
+                            isshow: 'dl-app',
+                            label: '文本文字大小',
+                            type: 'input',
+                            name: 'm_cd_font_size',
+                            default: '15',
+                            col: 2,
+                        },
+                        {
+                            isshow: 'dl-app',
+                            label: '数字文字上边距(px)',
+                            type: 'input',
+                            name: 'm_cd_padding_top',
+                            default: '4',
+                            col: 2,
+                        },
+                    ],
+                },
+            ],
+        },
+    ]
+%}
+
+
+{# 表单配置 #}
+{%
+    set formData = {
+        id: 'U000206',
+        name: 'D网倒计时组件',
+        theme: 'model1',
+        tabs: [ styleTabData ],
+        moreConfig: moreConfig,
+        onSubmit: 'U000206_submit',
+    }
+%}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+{# 个性化脚本 #}
+{{ include ('form/script.twig') }}

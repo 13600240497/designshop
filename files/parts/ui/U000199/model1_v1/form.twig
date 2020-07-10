@@ -1,0 +1,45 @@
+{% set formData = {
+    id: 'U000199',
+    name: 'Banner组件',
+    theme: 'model1_v1',
+    tabs: [
+        {
+            label: '样式配置',
+            components: [
+            {
+                label: '组件上边距',
+                desc: '(px)',
+                name: 'boxMarginTop',
+                default: '0',
+            },
+            {
+                label: '组件下边距',
+                desc: '(px)',
+                name: 'boxMarginBottom',
+                default: '32',
+            },
+            {
+                label: 'Banner图片',
+                name: 'imgSrc',
+                type: 'image'
+            },
+            {
+                label: '跳转链接',
+                name: 'imgURL',
+                default: '',
+            },
+        ]
+        }
+    ],
+    beforeSubmit: 'onSubmit'
+
+} %}
+
+    {# 引入渲染函数 #}
+    {{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+<script>
+function onSubmit (progress) {
+    progress.next();
+};
+</script>

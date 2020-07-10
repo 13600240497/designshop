@@ -1,0 +1,60 @@
+{% set unit = 'px' %}
+{% set devicePixelRatio = 1 %}
+{% set calc = 1 %}
+{% set pageData = {
+    marginBottom: data.marginBottom | default(0),
+    textFontSize: data.textFontSize | default(24),
+    numbersFontSize: data.numbersFontSize | default(24),
+    gridRadius: data.gridRadius | default(2),
+    gridWidth: data.gridWidth | default(54),
+    gridHeight: data.gridHeight | default(54),
+    cmptHeight: data.cmptHeight | default(80),
+}
+%}
+
+<style>
+
+    .multi-dateRange[data-key="U000053"] [data-style-key="numbers-u000053-{{pageInstanceId}}"] {
+        height: {{pageData.cmptHeight}}{{unit}} !important;
+        line-height: {{pageData.cmptHeight}}{{unit}} !important;
+    }
+
+    .multi-dateRange[data-key="U000053"] [data-style-key="numbers-u000053-{{pageInstanceId}}"] .multi-dateRange-numbers label {
+        width: {{ pageData.gridWidth }}{{unit}} !important;
+        height: {{ pageData.gridHeight }}{{unit}} !important;
+        line-height: {{ pageData.gridHeight }}{{unit}} !important;
+        border-radius: {{ pageData.gridRadius }}{{unit}} !important;
+    }
+</style>
+
+
+<div data-key="U000053"
+    data-id="{{ pageInstanceId }}"
+    data-gid="component-countdown"
+    class="geshop-component-box component-drag clearfix multi-dateRange"
+    style="margin-bottom: {{pageData.marginBottom}}{{unit}};">
+    
+    <input type="hidden" name="textFontSize" value="{{pageData.textFontSize}}">    
+    <input type="hidden" name="gridRadius" value="{{pageData.gridRadius}}">    
+    <input type="hidden" name="numbersFontSize" value="{{pageData.numbersFontSize}}">
+    <input type="hidden" name="isEditEnv" value="{{ data.isEditEnv }}">
+    
+    <div data-source>{{ data.dataSet | json_encode | raw }}</div>
+
+    {% for key, item in data.dataSet | default([""]) %}
+        <div class="multi-dateRange-inner" data-key="{{ item.key }}" data-style-key="numbers-u000053-{{pageInstanceId}}">
+            <div class="multi-dateRange-text" data-text="{{item.text2|default('Hot Sale')}},{{item.text2|default('Hot Sale')}},{{item.text2|default('Hot Sale')}}">
+                <span></span>
+            </div>
+            <div class="multi-dateRange-numbers">
+                <label>00</label>
+                <span>:</span>
+                <label>00</label>
+                <span>:</span>
+                <label>00</label>
+                <span>:</span>
+                <label>00</label>
+            </div>
+        </div>
+    {% endfor %}
+</div>

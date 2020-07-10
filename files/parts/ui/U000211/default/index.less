@@ -1,0 +1,47 @@
+.geshop-U000211-default {
+    position: relative;
+    display: block;
+    .geshop-U000211-default-wrapper {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+
+        // 默认的图片
+        div.geshop-U000211-default-wrapper-preview {
+            width: 100%;
+            height: 100%;
+            background-size: auto;
+            background-position: center;
+            background-color: #EDEDED;
+            background-repeat: no-repeat;
+        }
+        .default-image-box {
+            cursor: default;
+        }
+        .default-image-box.ing {
+            cursor: pointer;
+        }
+        // 用户配置的图片
+        img {
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
+        // 预约按钮
+        button {
+            position: absolute;
+            box-sizing: border-box;
+            font-size: 14px;
+            border: none;
+            &.default {
+                color: #fff;
+                cursor: default;
+                background-color: #333;
+            }
+        }
+        #editEnvButton {
+            display: none;
+        }
+    }
+}

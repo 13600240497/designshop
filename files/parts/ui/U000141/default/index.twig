@@ -1,0 +1,157 @@
+{% spaceless %}
+
+{#站点兼容#}
+{% set siteData = {
+    price_color: 'rg' in siteCode ? '#FA386A' : null
+} %}
+
+<div
+    class="geshop-component-box component-drag wrap-U000141-default wrap-{{ pageInstanceId }}"
+    data-key="U000141"
+    data-id="{{ pageInstanceId }}"
+    data-static-domain="{{staticDomain}}"
+    data-soldoutText="{{ get_component_trans(lang,'sold_out') }}"
+    data-goodsBtnText="{{ data.goodsBtnText | default('BUY NOW') }}"
+    data-moreText="{{ data.more_text | default('View More >>') }}"
+    data-goodsSalePriceFontColor="{{ data.goodsSalePriceFontColor | default(siteData.price_color|default('#333333')) }}"
+    data-defaultImg="{{ data.default.clothes3x4 }}">
+    <div class="geshop-flash-sale-block" style="display: none;">
+        <p class="geshop-flash-sale-header">
+            <span class="geshop-flash-sale-title">{{ get_component_trans(lang,'flash_sale') }}</span>
+            <span class="geshop-flash-sale-time">
+                <span class="geshop-flash-sale-number js_geshopFlashSaleDay">00</span>
+                <span class="geshop-flash-sale-time-separator">:</span>
+                <span class="geshop-flash-sale-number js_geshopFlashSaleHour">00</span>
+                <span class="geshop-flash-sale-time-separator">:</span>
+                <span class="geshop-flash-sale-number js_geshopFlashSaleMinute">00</span>
+                <span class="geshop-flash-sale-time-separator">:</span>
+                <span class="geshop-flash-sale-number js_geshopFlashSaleSecond">00</span>
+            </span>
+        </p>
+
+        <div class="geshop-flash-sale-body swiper-container">
+            <div class="gehsop-flash-sale-inner-body js_geshopFlashSaleBody swiper-wrapper">
+                
+                {% if data.more_href is not empty and data.isViewmoreVis == 1 %}
+                <div class="geshop-flash-sale-item swiper-slide">
+                    <a class="geshop-flash-sale-more js_geshopFlashSaleMore" href="{{ data.more_href | default('javascript:;') }}">{{ data.more_text | default('View More >>') }}</a>
+                </div>
+                {% endif %}
+            </div>
+            <!-- Add Scrollbar -->
+            <div class="swiper-scrollbar"></div>
+        </div>
+
+    </div>
+    <script>
+        var FLASHDATA_{{ pageInstanceId }} = {
+			goodsSKU: '{{ data.goodsSKU }}',
+			dataRange: '{{ data.dataRange }}',
+			startDate: '{{ data.startDate }}',
+			endDate: '{{ data.endDate }}',
+			isEditEnv: '{{ data.isEditEnv }}',
+			langCode: '{{ lang }}',
+			languages: '{{ languages | json_encode | raw }}'
+        }
+    </script>
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+        .wrap-{{ pageInstanceId }} {
+            background-color: {{ data.cmptBgColor | default('#ffffff') }};
+            margin-bottom: {{ ((data.boxMarginBottom | default(16)) / 75) | number_format(3, '.') }}rem;
+            min-height:7rem;
+        }
+
+       .wrap-{{ pageInstanceId }} .geshop-flash-sale-header {
+            background-color: {{ data.titleBgColor | default('#EDEDED') }};
+            height: {{ (data.titleHeight|default('100'))/75~'rem' }};
+            line-height: {{ (data.titleHeight|default('100'))/75~'rem' }};
+            color: {{ data.titleFontColor | default('#333333') }};
+            {% if data.titleBgImg is not empty %}
+                background-image: url({{ data.titleBgImg }});
+            {% endif %}
+        }
+
+       .wrap-{{ pageInstanceId }} .geshop-flash-sale-title {
+            font-size: {{ data.titleFontSize | default('36')/75~'rem' }};
+      }
+
+       .wrap-{{ pageInstanceId }} .geshop-flash-sale-price-market {
+            color: {{ data.goodsMarketPriceFontColor|default('#999999') }};
+        }
+
+        {# 折扣 #}
+       .wrap-{{ pageInstanceId }} .geshop-flash-sale-discount {
+            width: {{ (data.discountWidth|default(80))/75~'rem' }};
+            height: {{ (data.discountHeight|default(80))/75~'rem' }};
+            color: {{ data.discountFontColor|default('#ffffff') }};
+            font-size: {{ (data.discountFontSize2|default(24))/75~'rem' }};
+            {% if data.discountImg %}
+                background-image: url({{ data.discountImg }});
+            {% else %}
+                border-radius: {{ (data.discountHeight|default(80))/75~'rem' }};
+                background-color: {{ data.discountBgColor|default('#333333') }};
+            {% endif %}
+        }
+       .wrap-{{ pageInstanceId }} .geshop-flash-sale-discount span {
+            font-size: {{ (data.discountFontSize|default(26))/75~'rem' }};
+        }
+
+        {# 倒计时 #}
+       .wrap-{{ pageInstanceId }} .geshop-flash-sale-number {
+            min-width: {{ (data.titleCounterWidth|default(48))/75~'rem' }};
+            height: {{ (data.titleCounterHeight | default(56))/75~'rem' }};
+            line-height: {{ (data.titleCounterHeight | default(56))/75~'rem' }};
+            font-size: {{ (data.titleCounterFontSize | default('30'))/75~'rem' }};
+            color: {{ data.titleCounterFontColor | default('#FFFFFF') }};
+            background-color: {{ data.titleCounterBgColor | default('#333333') }};
+            border-radius: {{ (data.titleCounterRadius|default(4))/75~'rem' }};
+        }
+       .wrap-{{ pageInstanceId }} .geshop-flash-sale-time-separator {
+            font-size: {{ (data.titleCounterFontSize | default('30'))/75~'rem' }};
+            color: {{ data.titleCounterBgColor | default('#333333') }};
+        }
+
+        {# 进度条 #}
+        .wrap-{{ pageInstanceId }} .geshop-flash-sale-left-total {
+            background: {{ data.goodsProcessBgColor1 | default('#ededed') }};
+        }
+        .wrap-{{ pageInstanceId }} .geshop-flash-sale-left-still {
+            background: {{ data.goodsProcessBgColor2 | default('#D0D0D0') }};
+        }
+
+        {# 购买按钮 #}
+        .wrap-{{ pageInstanceId }} .geshop-flash-sale-link {
+            color: {{ data.goodsBtnFontColor | default('#FFFFFF') }};
+            width: {{ (data.goodsBtnWidth | default(254))/75~'rem' }};
+            height: {{ (data.goodsBtnHeight | default(60))/75~'rem' }};
+            line-height: {{ (data.goodsBtnHeight | default(60))/75~'rem' }};
+            font-size: {{ (data.goodsBtnFontSize | default(28))/75~'rem' }};
+            {% if data.goodsBtnBgImg %}
+                background-image: url({{ data.goodsBtnBgImg }});
+            {% else %}
+                background-color: {{ data.goodsBtnBgColor | default('#333333') }};
+            {% endif %}
+        }
+
+        {# 更多 #}
+        .wrap-{{ pageInstanceId }} .geshop-flash-sale-more {
+            color: {{ data.more_FontColor | default('#333333') }};
+            background-color: {{ data.more_bgColor | default('#ededed') }};
+            font-size: {{ (data.more_FontSize|default(26))/75~'rem' }};
+        }
+
+        .geshop-flash-sale-price-sale .my_shop_price {
+            color: {{ data.goodsSalePriceFontColor | default(siteData.price_color|default('#333333')) }};
+        }
+
+        .wrap-{{ pageInstanceId }} .geshop-flash-sale-left-number {
+            color: {{ data.goodsLeftFontColor | default('#333333') }};
+        }
+
+
+    </style>
+    <!-- embed stylesheet end -->
+</div>
+{% endspaceless %}
+

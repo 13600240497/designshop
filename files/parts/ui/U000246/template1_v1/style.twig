@@ -1,0 +1,91 @@
+{% set root = '#U000246_'~pageInstanceId %}
+{% set classSpace = '.geshop-component-body' %}
+{% set body = root~' '~classSpace %}
+
+{# 三端共有样式 #}
+{{ body }}{
+margin-top: {{ data.box_margin_top|default(0) }}px;
+margin-bottom: {{ data.box_margin_bottom|default(0) }}px;
+}
+
+{# 库存 #}
+{{ body }} .item_stock span{
+color: {{ data.stock_tip_font_color|default('#000000') }};
+}
+
+{# 优惠券信息 #}
+{{ body }} .list_item{
+    width:{{ data.item_bg_width|default(389) }}px;
+    height:{{ data.item_bg_height|default(176) }}px;
+    {% if data.item_bgImage %}
+        background-image:url({{ data.item_bgImage }});
+    {% endif %}
+}
+
+{{ body }} .btn-group-state{
+    margin-top:{{ data.stock_btn_padding|default(16) }}px;
+}
+
+{{ body }} .btn-group-state .btn-item{
+    border-radius:{{ data.item_btn_radius|default(2) }}px;
+}
+
+{{ body }} .coupon-info-group{
+    bottom: {{ data.item_offset_bottom|default(52) }}px;
+}
+
+{# 优惠券按钮 #}
+{{ body }} .btn-group-state .state-all-claimed{
+    background-color: {{ data.btn_ended_bg_color|default('#999999') }};
+    color: {{ data.btn_ended_font_color|default('#FFFFFF') }};
+}
+
+{{ body }} .btn-group-state .state-can{
+    background-color: {{ data.btn_could_bg_color|default('#000000') }};
+    color: {{ data.btn_could_font_color|default('#FFFFFF') }};
+}
+
+
+{# 弹窗 #}
+{{ body }} .integral_title{
+    font-size:24px;
+}
+{{ body }} .dia-coupon-getting .getting-main{
+    background-color:{{ data.dialog_bg_color|default('#FFFFFF') }};
+    color:{{ data.dialog_font_color|default('#222222') }};
+}
+
+{{ body }} .dia-coupon-getting .btn-sure{
+    background-color: {{ data.dialog_btn_bg_color|default('#222222') }};
+    color: {{ data.dialog_btn_font_color|default('#FFFFFF') }};
+}
+
+{{ body }} .dia-coupon-getting .integral_title{
+color:{{ data.dialog_score_color|default('#FF4545') }};
+}
+
+{# 积分不足弹窗 #}
+{{ body }} .dia-coupon-noEnough .noEnough-main{
+    background-color:{{ data.dialog_bg_color_not|default('#FFFFFF') }};
+    color:{{ data.dialog_font_color_not|default('#222222') }};
+}
+{{ body }} .dia-coupon-noEnough .noEnough-main a{
+color:{{ data.dialog_font_color_not|default('#222222') }};
+}
+
+{{ body }} .dia-coupon-noEnough .btn-sure{
+background-color: {{ data.dialog_btn_bg_color_not|default('#222222') }};
+color: {{ data.dialog_btn_font_color_not|default('#FFFFFF') }};
+}
+
+{{ body }} .dia-coupon-noEnough .integral_title{
+color:{{ data.dialog_score_color_not|default('#FF4545') }};
+}
+
+{# pc 端 #}
+{{ body }}.geshop_dl_pc .list_wrap, {{ body }}.geshop_dl_pad .list_wrap{
+    text-align:{{ data.coupon_position|default('left') }};
+}
+
+{{ include('style-pad.twig') }}
+{{ include('style-m.twig') }}

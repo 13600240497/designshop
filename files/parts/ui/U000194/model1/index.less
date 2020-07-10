@@ -1,0 +1,96 @@
+[data-gid="U000194_default"] {
+    @import '../../../temp/gb/css/index_default_m.less';
+    .gb_wrapper_common {
+        padding: 50px 96px ! important;
+        .gb-list-imglist-box{
+            width: 1000px;
+            min-height: 208px;
+            margin: 0 auto;
+            overflow: auto;
+            zoom: 1;
+            .gb-list-imglist{
+                width: 328px;
+                height: 208px;
+                float:left;
+                margin: 0 8px 8px 0;
+                &:nth-child(3n){
+                    margin-right:0;
+                }
+                .gb-list-product-box {
+                    position: relative;
+                    width: 328px;
+                    height: 208px;
+                    background-color: #fff;
+                    padding: 24px 20px 15px;
+                    box-sizing:border-box;
+                    ul {
+                        margin-right: -6px;
+                        width: 294px;
+                        height: 126px;
+                        li {
+                            float: left;
+                            width: 92px;
+                            height: 92px;
+                            margin: 0 6px 6px 0;
+                            & > a {
+                                display: block;
+                                width: 92px;
+                                height: 92px;
+                                img {
+                                    display: block;
+                                    width: 92px;
+                                    height: 92px;
+                                }
+                            }
+                            .gs-goods-price {
+                                width:92px;
+                                height:34px;
+                                overflow:hidden;
+                                .gs-shop-price {
+                                    display:block;
+                                    width:92px;
+                                    height:34px;
+                                    & > strong {
+                                       display:block;
+                                       width:100%;
+                                       height:100%;
+                                       text-align: center;
+                                       text-overflow: clip;
+                                       white-space: nowrap;
+                                       overflow: hidden;
+                                       font-size: 16px !important;
+                                       line-height: 34px;
+                                   }
+                                }
+                            }
+                        }
+                    }
+                    .view-more-btn {
+                        position: absolute;
+                        height:36px;
+                        bottom: 15px;
+                        left: 50%;
+                        max-width: 288px;
+                        transform: translateX(-50%);
+                        background-color: #FF8A00;
+                        padding: 0 30px;
+                        box-sizing: border-box;
+                        span {
+                            display:block;
+                            line-height: 36px;
+                            font-size: 16px !important;
+                            max-width: 228px;
+                            text-overflow: clip;
+                            white-space: nowrap;
+                            overflow: hidden;
+                        }
+                    }
+                }
+            }
+        }
+       .box-hidden {
+           display: none;
+        }
+    }
+    
+}

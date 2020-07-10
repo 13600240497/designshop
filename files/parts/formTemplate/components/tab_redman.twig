@@ -1,0 +1,434 @@
+{% set components=[
+    {
+        label: '自定义图片',
+        name: 'image_url',
+        type:'image',
+        default: '',
+    }
+] %}
+{% set componentConfig = {
+    image_tips: platform == 'pc' ? '建议宽280px,高373px' : '建议宽344px,高460px'
+} %}
+{# rg tab红人据配置 #}
+<style>
+    .layui-elem-field > h3 {
+        display: inline-block;
+        float: left;
+    }
+
+    .goods__tab--wrap fieldset.layui-elem-field.tab-fid {
+        text-align: right;
+        margin: 16px 0;
+    }
+
+    .second-list .list-group-item {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0 16px 13px;
+        margin: 13px auto;
+        height: auto;
+        background: rgba(254, 254, 254, 1);
+        border-radius: 4px;
+        border: 1px solid rgba(230, 230, 230, 1);
+    }
+
+    .second-list .list-group-item .select-item {
+        margin-left: 0px !important;
+    }
+
+    .second-list .list-group-item .gs-tab-title .layui-form-radio {
+        margin-right: 0px !important;
+
+    }
+
+    .goods__tab--wrap .layui-form-item {
+        margin: 16px auto;
+    }
+
+    .goods__tab--wrap .layui-form-item .layui-form-radio {
+        margin-right: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    .wrap-config.hide {
+        display: none;
+    }
+
+    /*.second-list .layui-form-item > .layui-form-label span {*/
+    /*    color: #000 !important;*/
+    /*}*/
+</style>
+
+<section class="goods__tab--wrap">
+
+    <input type="hidden" class="Unwanted" name="sku_selector_parent" value=".radio-tab-group">
+    {# tab 数据#}
+    <input type="hidden" name="navList" value='{{ json_encode_no_unicode(data.navList | default({})) }}'>
+
+    {#    <input type="hidden"#}
+    {#           class="nav-list-arr"#}
+    {#           name="navList"#}
+    {#           value='{{ json_encode_no_unicode(data.navList | default({})) }}' data-public-tag="true">#}
+
+    {% if data.navList %}
+        {% set list =  data.navList %}
+    {% else %}
+        {% set list = [{ "catLink":"","image_url":"","goodsSKU":""}] %}
+    {% endif %}
+
+    <div class="nav-form-wrap">
+        {% for i,item in list %}
+            <div class="wrap-config">
+                <div class="second-list">
+                    <p>商品<span class="tab_key">{{ i + 1 }}</span></p>
+                    <div class="list-group-item">
+                        <div class="layui-row layui-col-space20">
+                            <div class="layui-col-xs12 " filter="" name="filter">
+                                <div class="layui-form-item "><label class="layui-form-label "> 自定义图片 <span>({{ componentConfig.image_tips }})</span>
+                                    </label>
+                                    <div class="layui-input-block">
+                                        <a href="javascript:;"
+                                           class="js_openResource design-open-resource">
+                                            <i class="layui-icon">&#xe64a;</i>
+                                        </a>
+                                        <input type="text" name="image_url"
+                                               autocomplete="off"
+                                               class="layui-input Unwanted" value="{{ item.image_url }}"
+                                               data-public-tag=""
+                                               data-width="0" data-height="0">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {# {{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}#}
+                        <div class="layui-form-item">
+                            <label class="layui-form-label tab-hd">图片跳转链接</label>
+                            <div class="layui-input-block">
+                                <input type="text"
+                                       name="catLink"
+                                       autocomplete="off"
+                                       class="layui-input Unwanted"
+                                       value="{{ item.catLink }}"/>
+                            </div>
+                        </div>
+                        <!--商品数据-->
+                        <div class="layui-form-item">
+                            <div class="goods-form-table">
+                                <div class="goods-tab-lists">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">商品sku</label>
+                                    </div>
+                                    <div class="radio-tab-group">
+                                        <div class="layui-form-item">
+                                            {# <label class="layui-form-label public-data">商品SKU</label> #}
+                                            <label class="gs-label-block gs-label-blank"></label>
+                                            <div class="layui-input-block">
+                                            <textarea class="layui-textarea js-valid-skus"
+                                                      name="goodsSKU"
+                                                      placeholder="请输入商品编号（SKU ID），编号与编号间用英文逗号隔开"
+                                                      data-public-tag="true">{{ item.goodsSKU }}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item tab-add-btn">
+                                            <span class="layui-btn layui-btn-normal layui-btn-sm" id="gs_getList"
+                                                  style="float:right">商品管理</span>
+                                        </div>
+                                        {#                                        {% include '@app/files/parts/temp/tab_ips_form.twig' with{'tabItem':item,ipsMethodsArr: ['1','2']} %}#}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--操作按钮-->
+                <fieldset class="layui-elem-field tab-fid">
+                    <span class="img-btn f-delete">
+                          <i class='icon-delete'></i>
+                          <b class="tips">删除</b>
+                    </span>
+                    <span class="img-btn f-up class-close">
+                          <i class='icon-up'></i>
+                          <b class="tips">上移</b>
+                    </span>
+
+                    <span class="img-btn f-down class-close">
+                          <i class='icon-down'></i>
+                          <b class="tips">下移</b>
+                    </span>
+                    <span class="img-btn f-add class-close">
+                          <i class='icon-add'></i>
+                        <b class="tips">新增</b>
+                    </span>
+                </fieldset>
+
+            </div>
+        {% endfor %}
+    </div>
+
+</section>
+
+<!--拷贝-->
+<div class="wrap-config hide">
+    <div class="second-list">
+        <p>商品<span class="tab_key">1</span></p>
+        <div class="list-group-item">
+            <div class="layui-row layui-col-space20">
+                <div class="layui-col-xs12 " filter="" name="filter">
+                    <div class="layui-form-item "><label class="layui-form-label "> 自定义图片 <span>({{ componentConfig.image_tips }})</span>
+                        </label>
+                        <div class="layui-input-block">
+                            <a href="javascript:;"
+                               class="js_openResource design-open-resource">
+                                <i class="layui-icon">&#xe64a;</i>
+                            </a>
+                            <input type="text" name="image_url"
+                                   autocomplete="off"
+                                   class="layui-input Unwanted" value="{{ item.image_url }}"
+                                   data-public-tag=""
+                                   data-width="0" data-height="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label tab-hd">图片跳转链接</label>
+                <div class="layui-input-block">
+                    <input type="text"
+                           name="catLink"
+                           autocomplete="off"
+                           class="layui-input Unwanted"
+                           value="{{ item.catLink }}"/>
+                </div>
+            </div>
+            <!--商品数据-->
+            <div class="layui-form-item">
+                <div class="goods-form-table">
+                    <div class="goods-tab-lists">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">商品sku</label>
+                        </div>
+                        <div class="radio-tab-group">
+                            <div class="layui-form-item">
+                                {# <label class="layui-form-label public-data">商品SKU</label> #}
+                                <label class="gs-label-block gs-label-blank"></label>
+                                <div class="layui-input-block">
+                                    <textarea class="layui-textarea js-valid-skus"
+                                              name="goodsSKU"
+                                              placeholder="请输入商品编号（SKU ID），编号与编号间用英文逗号隔开"
+                                              data-public-tag="true"></textarea>
+                                </div>
+                            </div>
+                            <div class="layui-form-item tab-add-btn">
+                                <span class="layui-btn layui-btn-normal layui-btn-sm" id="gs_getList"
+                                      style="float:right">商品管理</span>
+                            </div>
+
+                            {#                            {% include '@app/files/parts/temp/tab_ips_form.twig' with{'tabItem':{},ipsMethodsArr: ['1','2']} %}#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--操作按钮-->
+    <fieldset class="layui-elem-field tab-fid">
+        <span class="img-btn f-delete">
+              <i class='icon-delete'></i>
+              <b class="tips">删除</b>
+        </span>
+        <span class="img-btn f-up class-close">
+              <i class='icon-up'></i>
+              <b class="tips">上移</b>
+        </span>
+
+        <span class="img-btn f-down class-close">
+              <i class='icon-down'></i>
+              <b class="tips">下移</b>
+        </span>
+        <span class="img-btn f-add class-close">
+              <i class='icon-add'></i>
+            <b class="tips">新增</b>
+        </span>
+    </fieldset>
+
+</div>
+
+
+<script>
+/* 初始化删除等标签的显示和隐藏 */
+var $wrap = $('{{ formID }}').find('.nav-form-wrap');
+var $hdWrap = $('{{ formID }}').find('.goods__tab--wrap');
+/*限制tab个数*/
+var limitNum = {{ componentData.limitNum }} || null;
+var limitTip = '{{ componentData.limitTip }}' || '';
+
+/* 组件初始化 */
+$(function () {
+    var $id = $('{{ formID }}');
+    var $tab = $('.goods__tab--wrap', $id).parents('.layui-tab:eq(0)');
+});
+
+/*一级图标的显示隐藏*/
+function showIcon () {
+    upNum();
+
+    /*一级图标操作容器个数*/
+    var len = $wrap.find('.tab-fid').length;
+    if (len > 1) {
+        $wrap.find('.tab-fid').each(function (index) {
+            if (index == 0) {
+                $(this).find('.img-btn').hide();
+                $(this).find('.f-down').show();
+                $(this).find('.f-add').show();
+                $(this).find('.f-delete').show();
+            } else {
+                $(this).find('.img-btn').show();
+                if (index == len - 1) {
+                    $(this).find('.f-down').hide();
+                }
+            }
+        });
+    } else {
+        $wrap.find('.tab-fid').find('.img-btn').hide();
+        $wrap.find('.tab-fid').find('.f-add').show();
+    }
+}
+
+
+/*更新一级导航的数字 tab{x}*/
+function upNum () {
+    $wrap.find('.tab_key').each(function (index) {
+        $(this).text(index + 1);
+    });
+}
+
+/*更新Tab数量*/
+function updateNavNum (value) {
+    $hdWrap.find('input[name="tab_num"]').val(value);
+}
+
+/* 新增一级分类 */
+function addOne () {
+    var clone = $('.wrap-config.hide').clone(true);
+    $wrap.append(clone);
+    $wrap.find('.wrap-config.hide').removeClass('hide');
+    showIcon();
+    updateNavNum($wrap.find('.wrap-config').length);
+}
+
+/*一级图标的显示隐藏*/
+showIcon();
+
+/* 新增一级分类 */
+$wrap.on('click', '.f-add', function (e) {
+    e.stopPropagation();
+    /*限制增加数量*/
+    if (limitNum && $('.wrap-config', $wrap).length >= limitNum) {
+        layui.layer.msg(limitTip);
+        return false;
+    }
+    addOne();
+});
+
+/* 下移分类 */
+$wrap.on('click', '.f-down,.s-down', function (e) {
+    e.stopPropagation();
+    var $tr = "";
+    if ($(this).hasClass('f-down')) {
+        $tr = $(this).parents('.wrap-config:eq(0)');
+    } else {
+        $tr = $(this).parents('.list-group-item:eq(0)');
+    }
+    var $trNext = $tr.next();
+    if (0 != $trNext.length) {
+        $trNext.after($tr);
+        showIcon();
+    }
+});
+
+/* 上移分类 */
+$wrap.on('click', '.f-up,.s-up', function (e) {
+    e.stopPropagation();
+    var $tr = "";
+    if ($(this).hasClass('f-up')) {
+        $tr = $(this).parents('.wrap-config:eq(0)');
+    } else {
+        $tr = $(this).parents('.list-group-item:eq(0)');
+    }
+    var $trPrev = $tr.prev();
+    if (0 != $trPrev.length) {
+        $trPrev.before($tr);
+        showIcon();
+    }
+});
+
+/* 删除分类 */
+$wrap.on('click', '.f-delete,.s-delete', function (e) {
+    var $tr = "";
+    if ($(this).hasClass('f-delete')) {
+        $tr = $(this).parents('.wrap-config:eq(0)');
+    } else {
+        $tr = $(this).parents('.list-group-item:eq(0)');
+    }
+    layer.confirm('是否删除该分类?', {
+        title: '提示',
+        btn: ['否', '是'],
+        area: '420px',
+        icon: 3,
+        skin: 'element-ui-dialog-class'
+    }, function (index) {
+        layer.close(index);
+    }, function (index) {
+        $tr.remove();
+        layer.close(index);
+        showIcon();
+        updateNavNum($wrap.find('.wrap-config').length);
+    });
+
+});
+
+function getTabInfo () {
+    var result = [];
+    $('.list-group-item', $wrap).each(function (index, element) {
+        var image_url = $(element).find('input[name=image_url]').val();
+        var goodsSKU = $(element).find('[name=goodsSKU]').val();
+        if (image_url || goodsSKU) {
+            result.push({
+                image_url: image_url,
+                catLink: $(element).find('input[name=catLink]').val(),
+                goodsSKU: goodsSKU
+            });
+        }
+
+    });
+    return result;
+}
+
+/**
+ * 获取tab数组对象
+ * @param callback
+ */
+function saveTabInfo (callback) {
+    var $id = $('{{ formID }}');
+    var result = getTabInfo();
+    $hdWrap.find('input[name=navList]').val(JSON.stringify(result));
+
+    callback && callback();
+}
+
+if (!tabRedmanFn) {
+    var tabRedmanFn = (function (my) {
+
+        /**
+         * 获取tab数据
+         * @type {saveTabInfo}
+         */
+        my.saveTabInfo = saveTabInfo;
+        return my;
+    }({}));
+}
+</script>

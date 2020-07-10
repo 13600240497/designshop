@@ -1,0 +1,61 @@
+
+
+<div class="geshop-component-box component-drag geshop-U000213-default geshop-U000213-default-{{ pageInstanceId }}" data-key="U000213" data-id="{{ pageInstanceId }}">
+	{{ include('style.twig') }}
+
+    <input type="hidden" name="isEditEnv" value={{ data.isEditEnv }}>
+    <div class="layer-share">
+        <div class="share-content">
+            <input type="hidden" name="shareData" value="{{shareData.place|json_encode()}}">
+            <input type="hidden" name="share_data_img" value="{{data.share_data_img}}">
+            <input type="hidden" name="share_data_title" value="{{data.share_data_title}}">
+            <input type="hidden" name="share_data_desc" value="{{data.share_data_desc}}">
+            <input type="hidden" name="share_data_link" value="{{data.share_data_link}}">
+
+            <span class="dib vm addthis_toolbox clearfix">
+                {% if data.share_data %}
+                   {% for shareItem in data.share_data  %}
+                      {% if shareItem == 'FB' %}
+                        <a class="addthis_button_facebook" target="_blank" href="javascript:void(0)" title="Facebook" >
+                          <img src="https://geshopimg.logsss.com/uploads/SF0CGlxjHn9guWAJt7i6YvKyspOz3mMN.png ">
+                        </a>
+                      {% elseif shareItem == 'Twitter' %}
+                        <a class="addthis_button_twitter" title="Twitter"  href="javascript:void(0)">
+                          <img src="https://geshopimg.logsss.com/uploads/QrTM27CExjzOGAD408YeplNWuLKnqydZ.png  ">
+                        </a>
+                      {% elseif shareItem == 'Messenger' %}
+                        <a class="addthis_button_messenger" title="messenger"  href="javascript:void(0)" >
+                          <img src="https://geshopimg.logsss.com/uploads/zWb0TyoCePRJhdMQAtk6lDwjL4cNOiBK.png  ">
+                        </a>
+                      {% elseif shareItem == 'Pinterest' %}
+                        <a class="addthis_button_pinterest" title="pinterest"  href="javascript:void(0)" >
+                          <img src="https://geshopimg.logsss.com/uploads/8CgT5LZtsuM7AhNXDxUb6HEQS9WY2a1r.png  ">
+                        </a>
+                      {% endif %}
+                  {% endfor %}
+                {% else %}
+                   <a class="addthis_button_facebook" href="javascript:void(0)"  title="Facebook" >
+                    <img src="https://geshopimg.logsss.com/uploads/SF0CGlxjHn9guWAJt7i6YvKyspOz3mMN.png ">
+                  </a>
+                  <a class="addthis_button_twitter" title="Twitter"  href="javascript:void(0)" >
+                    <img src="https://geshopimg.logsss.com/uploads/QrTM27CExjzOGAD408YeplNWuLKnqydZ.png  ">
+                  </a>
+                  <a class="addthis_button_messenger" title="messenger"  href="javascript:void(0)" >
+                    <img src="https://geshopimg.logsss.com/uploads/zWb0TyoCePRJhdMQAtk6lDwjL4cNOiBK.png  ">
+                  </a>
+                  <a class="addthis_button_pinterest" title="pinterest"  href="javascript:void(0)">
+                    <img src="https://geshopimg.logsss.com/uploads/8CgT5LZtsuM7AhNXDxUb6HEQS9WY2a1r.png  ">
+                  </a>
+                {% endif %}
+            </span>
+            <a href="javascript:void (0)" class="cancel-btn">{{ get_component_trans(lang, 'cancel') }}</a>
+        </div>
+    </div>
+    {% if data.isEditEnv == 0 %}
+        <button class="share-btn">
+            <img src="https://geshopimg.logsss.com/uploads/R64E1K9GoDtCZ2yQVi0srqIUHjYbmTvh.png">
+        </button>
+    {% endif %}
+
+</div>
+

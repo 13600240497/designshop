@@ -1,0 +1,29 @@
+<div class="layui-row layui-col-space20">
+
+    <div class="layui-col-md6"  >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'单个积分图片宽度(px)',name:'IntegralBlockItemWidth',value:pageData.IntegralBlockItemWidth ,full:true,}}
+        ) }}
+    </div>
+    <div class="layui-col-md6" >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'单个积分图片高度(px)',name:'IntegralBlockItemHeight',value:pageData.IntegralBlockItemHeight ,full:true,}}
+        ) }}
+    </div>
+
+
+
+    <div class="layui-col-md6"  >
+
+
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'单个积分图右间距(px)',name:'IntegralBlockItemMarginRight',value:pageData.IntegralBlockItemMarginRight ,full:true,}}
+        ) }}
+    </div>
+    <div class="layui-col-md6" >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'文字内上边距(px)',name:'IntegralBlockItemTxtPaddingTop',value:pageData.IntegralBlockItemTxtPaddingTop ,full:true,}}
+        ) }}
+    </div>
+
+</div>

@@ -1,0 +1,81 @@
+{# 产品库存 #}
+
+{% set goodLimit = {
+	activity_number :item.activity_number|default(0),
+	activity_volume_number:item.activity_volume_number|default(0),
+	activity_number_left:item.activity_number|number_format - item.activity_volume_number|number_format
+}%}
+
+<div class="gs-goods-limit" style="width: 100%;margin: 0.1333rem auto 0.32rem;height: 0.42667rem;position: relative;text-align: center;line-height: 0.42667rem;">
+			<%#
+				var kill_number = parseInt(item.activity_number);
+        var left_persent = (function (activity_number_left, activity_number) {
+              var sold_persent = 0;
+
+              if (activity_number_left - 0 >= activity_number - 0) {
+                sold_persent = 100;
+              } else {
+                sold_persent = ((activity_number_left - 0) / (activity_number - 0)) * 100;
+                sold_persent.toFixed(2);
+              }
+
+              return sold_persent;
+        })(item.activity_number_left || 0, item.activity_number || 0);
+				var langLeft = "{{get_component_trans(lang,'left')}}";
+				var itemKillLeft = item.activity_number_left;
+				var langKillLeftValue = langLeft.replace('XX','<b>'+item.activity_number_left+'</b>');
+				var volume_persent = item.kill_volume_number/item.activity_number;
+        var sold_persent = (function (activity_volume_number, activity_number) {
+              var sold_persent = 0;
+
+              if (activity_volume_number - 0 >= activity_number - 0) {
+                sold_persent = 100;
+              } else {
+                sold_persent = ((activity_volume_number - 0) / (activity_number - 0)) * 100;
+                sold_persent.toFixed(2);
+              }
+
+              return parseInt(sold_persent,10);
+        })(item.activity_volume_number || 0, item.activity_number || 0);
+
+        if(item.goodsLimitsTextType == 1){ %>
+        <span class="goods-limit-tips_left" style="z-index: 9;position: absolute;color: #fff;left: 50%;transform: translateX(-50%);width:100%;">
+          <b style="{% if goodsData.goodsLimitsTextColor %}color:{{goodsData.goodsLimitsTextColor}};{% endif %}">
+            <% sold_persent %>%
+          </b>
+          <span style="
+            {# {% if goodsData.soldFtS %}font-size:{{goodsData.soldFtS}}px;{% endif %} #}
+            {% if goodsData.goodsLimitsTextColor %}color:{{goodsData.goodsLimitsTextColor}};{% endif %}
+          ">{{get_component_trans(lang,sold)}}</span>
+        </span>
+        <span class="process-bar" style="
+          {% if goodsData.goodsLimitsTotalBgColor %}background-color:{{goodsData.goodsLimitsTotalBgColor}};{% endif %}
+          display: block;height: 0.42667rem;-webkit-border-radius: 10px;border-radius: 10px;width: 100%;position: absolute;right: 0;bottom: 0;margin: auto;width: 100%;
+        ">
+          <em class="process-inner"
+            style="{% if goodsData.goodsLimitsSoldBgColor %}background-color:{{goodsData.goodsLimitsSoldBgColor}};{% endif %}
+            width:<% sold_persent %>%;
+            height: 0.42667rem;display: block;top: 0;border-radius: 10px;
+            "></em>
+        </span>
+        <%# } else if(item.goodsLimitsTextType == 0) { %>
+        <span class="goods-limit-tips_left" style="z-index: 9;position: absolute;color: #fff;left: 50%;transform: translateX(-50%);width:100%;">
+          <span style="
+            {# {% if goodsData.soldFtS %}font-size:{{goodsData.soldFtS}}px;{% endif %} #}
+            {% if goodsData.goodsLimitsTextColor %}color:{{goodsData.goodsLimitsTextColor}};{% endif %}
+          "><% langKillLeftValue %></span>
+        </span>
+        <span class="process-bar" style="
+          {% if goodsData.goodsLimitsTotalBgColor %}background-color:{{goodsData.goodsLimitsTotalBgColor}};{% endif %}
+          display: block;height: 0.42667rem;-webkit-border-radius: 10px;border-radius: 10px;width: 100%;position: absolute;right: 0;bottom: 0;margin: auto;width: 100%;
+        ">
+          <em class="process-inner"
+            style="{% if goodsData.goodsLimitsRemainBgColor %}background-color:{{goodsData.goodsLimitsRemainBgColor}};{% endif %}
+            width:<% left_persent %>%;
+            height: 0.42667rem;display: block;top: 0;border-radius: 10px;
+            "></em>
+        </span>
+				<%# }%>
+
+</div>
+

@@ -1,0 +1,124 @@
+{% set left_number =  (item.stock_num- item.activityStock)>0?(item.stock_num - item.activityStock):0 %}
+{% set goodsStatus =  left_number == 0 and data.goodsInfo and pageData.limit_active!='1'? 'good_soldOut' :'goodsBuyPro'%}
+{% set isLimitGoods = pageData.down_active == '1' ? 'is_goods_limit' : 'not_goods_limit'%}
+	{# 专题页/落地页 埋点 pagePoint #}
+
+	{% if pageData.page_point_type|default('activityPage') ==  'activityPage' %}
+		{% set pagePoint = {
+			wrapLink: 'track-goodsItem',
+			goodLink: 'track-goodsLink'
+		}%}
+
+	{% elseif pageData.page_point_type ==  'landPage' %}
+			{% set pagePoint = {
+			wrapLink: 'subjectGoodItem',
+			goodLink: 'js-link'
+		}%}
+	{% else %}
+		{% set pagePoint = {
+			wrapLink: 'track-goodsItem',
+			goodLink: 'track-goodsLink'
+		}%}
+
+	{% endif %}
+
+
+<li class="gs-list-item_tag gs-list-item--m gs-subjectGoodItem {{pagePoint.wrapLink}} {{goodsStatus}} {{isLimitGoods}} {{isHide}}">
+    {# 倒计时 #}
+    <div class="gs-gb-timer" style="{% if pageData.down_active != '1' %} display: none; {% endif %}">
+        <p class="gs-goods-time--m gs-google-time" style="background-color: {{ pageData.time_limit_bgc }};color: {{ pageData.time_limit_ftc }};">
+            {# <em class="icon-clock"></em> #}
+            <span class="gs-goodsRushDown" data-begin="{{item.startTime}}" data-end="{{item.endTime}}" data-stock="{{item.stock_num}}">{{gb_component_trans(lang , 'ends_in' )}}: 00:00:00:00</span>
+        </p>
+    </div>
+    
+    <div class="item-content">
+        <div class="gs-goods-wrap--m">
+        
+            {# 商品图片配置 #}
+			{{ include ('@app/files/parts/temp/gb/common/default_m/goodImg.twig') }}
+
+            {# 折扣标配置 #}
+			{{ include ('@app/files/parts/temp/gb/common/default_m/goodDiscount.twig') }}
+
+            {# 服务标 #}
+			{{ include ('@app/files/parts/temp/gb/common/default_m/goodLabel.twig') }}
+        </div>
+
+        <div class="gs-goods-desc--m">
+            {# 促销码 #}
+            <div class="discountBlock {% if pageData.coupon_limt_num == 0 %} setBlockHeight {% endif %}" data-clipboard-text="{{ item.couponCode|default('XMWATCH2809') }}">
+                {% if (pageData.coupon_limt_num == '1') %}
+                    <p class="discountBlock_leftNum" style="color: {{ pageData.coupon_number_ftc }}; font-size: {{ pageData.surplus_coupon_fts }};">{{item.leftCount|default('146')}} <strong style="color: {{ pageData.coupon_left_ftc }}">coupon left </strong></p>
+                {% endif %}
+
+                {# <p class="discountBlock_code" style="font-size: {{ pageData.surplus_couponCode_fts }}">{{item.couponCode|default('XMWATCH2809')}} </p> #}
+                
+                {% if pageData.is_show_copy == 1 %}
+                    <a href="javascript:;" class="discountBlock_copy" data-code="{{gb_component_trans(lang , 'copy')}}">Copy To Use</a>
+                {% endif %}
+            </div>
+
+            <div class="gs-goods-title">
+                <a href="{{ item.url_title }}">{{ item.goods_title|default('Xiaomi Youpin CIGA Automatic Mechanical Watch') }}</a>
+            </div>
+
+            {# 默认商品组件本店售价状态 #}
+            {% if pageData.sale_price_isShow == '1' and data.goodsInfo == [] %}
+                <del class="gs-market-price">$0.00</del>
+            {% endif %}
+
+            {# 本店售价 #}
+            {% if item.discount > 0 %}
+                {% if data.sale_price_isShow == '1' %}
+                    {% if item.market_price|default('0.00') and item.shop_price|default('0.00') != item.market_price|default('0.00') and item.shop_price|default('0.00') < item.market_price|default('0.00') %}
+                        <del class="gs-market-price js-currency" data-currency="{{ item.market_price }}">
+                            ${{ item.market_price|default('0.00') }}
+                        </del>
+                    {% endif %}
+                {% endif %}
+            {% else %}
+                {% if (data.goodsInfo|default([]))|length > 0 %}
+                    {% if data.sale_price_isShow != '0' %}
+                        <del class="gs-market-price"></del>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+
+            {# Coupon after #}
+            <p class="after_coupon_cont">
+                <span class="after_coupon-tile after-text"> {{gb_component_trans(lang , 'after_coupon' )}}:</span>
+            </p>
+
+            <p class="gs-goods-price--m">
+                <span class="gs-shop-price">
+                    <span class="js-currency after_coupon-price gs-sale-price" style="
+                    display: block;" data-currency="{{item.shop_price}}">${{ item.shop_price|default(279.51) }}</span>
+                </span>
+            </p>
+        </div>
+
+        {# 商品购买配置 #}
+		{{ include ('@app/files/parts/temp/gb/common/default_m/goodBuy.twig') }}
+
+        {# <div class="gs-goods-buy--m {% if item.stock_num <= 0 and data.goodsInfo %} soldOut_btn {% endif %}">
+            <a href="{{item.url_title}}" class="track-goodsLink buyLink gs-gooditem-btn" target="_special" #}
+				{#style="#}
+                {#color: {{ pageData.buy_ftc }};#}
+                {#font-size: {{ pageData.buy_fts }};#}
+                {#background-color: {{ pageData.buy_bgc }};" #} 
+				{# data-app="product" data-app-sku="{{item.web_goods_sn}}" data-app-wcode="{{item.wh_code}}">
+
+                {% if item.stock_num == 0  and data.goodsInfo %}
+                    {{gb_component_trans(lang , 'sold_out')}}
+                {% else %}
+                    {{ data.buy_text|default(gb_component_trans(lang , 'buy_now' )) }}
+                {% endif %}
+            </a>
+        </div> #}
+
+        {# <span class="gs-gooditem-addCard js-addCart" data-sku="{{ item.goods_sku }}" data-warehousecode="{{item.wh_code}}" data-qty="1" >
+            <i class="icon-cart"></i>
+        </span> #}
+    </div>
+</li>

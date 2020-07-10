@@ -1,0 +1,199 @@
+{% set ipsMethodDefault = ipsDefault|default('2') %}
+{% set ips_form_info = {
+	ips_auto_sku_label : data.ipsFilterInfo.ips_auto_sku ? '修改规则':'添加规则',
+	ips_manual_sku_label : data.ipsFilterInfo.ips_manual_sku ? '修改商品':'添加商品',
+	ips_radio_disabled : (data.ipsMethods == '3' or data.ipsMethods == '4') ? true:false
+} %}
+
+
+<div class="gs-tab-select-wraper" data-ipsMethods="{% if data.ipsMethods|default('2') == '1' %}1{% else %}2{% endif %}">
+	<ul class="gs-tab-title">
+		<div class="layui-input-block ips-input-block" style="margin-left:0;">
+			{% if ipsMethodsArr %}
+				{% for item in ipsMethodsArr %}
+					{% if item == '2' %}
+						<input type="radio" name="ipsMethods" lay-filter="ipsMethods" value="2" title="手动" {% if data.ipsMethods|default(ipsMethodDefault) == '2' %} checked="checked" {% endif %} {% if ips_form_info.ips_radio_disabled %} disabled="disabled" {% endif %}>
+					{% elseif item == '1' %}
+						<input type="radio" name="ipsMethods" lay-filter="ipsMethods" value="1" title="自动" {% if data.ipsMethods|default(ipsMethodDefault) == '1' %} checked="checked" {% endif %} {% if ips_form_info.ips_radio_disabled %} disabled="disabled" {% endif %}>
+					{% elseif item == '3' %}
+						<input type="radio" name="ipsMethods" lay-filter="ipsMethods" value="3" title="规则添加（自动）" {% if data.ipsMethods|default(ipsMethodDefault) == '3' %} checked="checked" {% endif %} {% if ips_form_info.ips_radio_disabled %} disabled="disabled" {% endif %}>
+					{% elseif item == '4' %}
+						<input type="radio" name="ipsMethods" lay-filter="ipsMethods" value="4" title="筛选器添加（手动）" {% if data.ipsMethods|default(ipsMethodDefault) == '4' %} checked="checked" {% endif %} {% if ips_form_info.ips_radio_disabled %} disabled="disabled" {% endif %}>
+					{% endif %}
+				{% endfor %}
+			{% else %}
+				<input type="radio" name="ipsMethods" lay-filter="ipsMethods" value="2" title="手动" {% if data.ipsMethods == '2' or data.ipsMethods is empty %} checked="checked" {% endif %} {% if ips_form_info.ips_radio_disabled %} disabled="disabled" {% endif %}>
+				<input type="radio" name="ipsMethods" lay-filter="ipsMethods" value="1" title="自动" {% if data.ipsMethods == '1' %} checked="checked" {% endif %} {% if ips_form_info.ips_radio_disabled %} disabled="disabled" {% endif %}>
+			{% endif %}
+
+		</div>
+	</ul>
+	<div class="gs-tab-select-content gs-select-automatic-content" style="margin-bottom:50px">
+		<div class="gs-tab-select-item goods-hide {% if data.ipsMethods|default(ipsMethodDefault) == '2' %}goods-visible{% endif %}">
+			<div class="layui-form-item">
+				<input type="hidden" name="gsSelectLevel0" value="{{ data.gsSelectLevel0 }}">
+				<input type="hidden" name="gsSelectLevel1" value="{{ data.gsSelectLevel1 }}">
+				<input type="hidden" name="gsSelectLevel2" value="{{ data.gsSelectLevel2 }}">
+				<input type="hidden" name="ipsInfo" value='{% if data.ipsInfo is not empty %}{{ json_encode_no_unicode(data.ipsInfo) }}{% endif %}'>
+
+				<div class="select-item">
+					<label class="gs-block">一级活动信息</label>
+					<select class="gs-select-box gs-select-box-first gs-select-level0" data-activity-id="{{ data.gsSelectLevel0 | default(0) }}" data-level="0" lay-ignore placeholder="请输入活动名称" data-searchplaceholder="搜索分类">
+						<option value="{% if data.ipsInfo.level0.id is not empty %}{{ data.ipsInfo.level0.id }}{% else %}{{ data.gsSelectLevel0  | default(0) }}{% endif %}">{% if data.ipsInfo.level0.name is not empty %}{{ data.ipsInfo.level0.name }}{% else %}{{ data.gsSelectLevel0| default('请选择活动') }}{% endif %}</option>
+
+					</select>
+				</div>
+				<div class="select-item">
+					<label class="gs-block">二级活动信息</label>
+					<select class="gs-select-box gs-select-box-second gs-select-level1" data-parent-activity-id="{{ data.gsSelectLevel0 |default(0) }}" data-activity-id="{{ data.gsSelectLevel1 | default(0) }}" data-level="1" lay-ignore placeholder="请输入活动名称">
+						<option value="{% if data.ipsInfo.level1.id is not empty %}{{ data.ipsInfo.level1.id }}{% else %}{{ data.gsSelectLevel1  | default(0) }}{% endif %}">{% if data.ipsInfo.level1.name is not empty %}{{ data.ipsInfo.level1.name }}{% else %}{{ data.gsSelectLevel1| default('请选择活动') }}{% endif %}</option>
+					</select>
+				</div>
+				<div class="select-item ">
+					<label class="gs-block">三级活动信息</label>
+					<select class="gs-select-box gs-select-box-third gs-select-level2" data-parent-activity-id="{{ data.gsSelectLevel1 | default(0) }}" data-activity-id="{{ data.gsSelectLevel2  | default(0) }}" data-level="2" lay-ignore placeholder="请输入活动名称">
+						<option value="{% if data.ipsInfo.level2.id is not empty %}{{ data.ipsInfo.level2.id }}{% else %}{{ data.gsSelectLevel2  | default(0) }}{% endif %}">{% if data.ipsInfo.level1.name is not empty %}{{ data.ipsInfo.level2.name }}{% else %}{{ data.gsSelectLevel2| default('请选择活动') }}{% endif %}</option>
+					</select>
+				</div>
+			</div>
+			<div class="layui-form-item tab-add-btn">
+				<input type="hidden" class="goods-sku-data" value="{{ data.ipsInfo.ipsSkus }}" name="ipsGoodsSKU" data-from="ips" data-public-tag="false">
+				<span class="el-button el-button--primary el-button--small class-manage" data-from="ips" data-goodsType="normal" data-public-tag="false" style="float:right">商品管理</span>
+			</div>
+
+		</div>
+		<div class="gs-tab-select-item goods-hide {% if data.ipsMethods|default(ipsMethodDefault) == '1' %}goods-visible{% endif %}">
+			<div class="layui-form-item ">
+				{# <input type="hidden" class="Unwanted" name="gsSelectLevel3" value="{{data.gsSelectLevel3}}">
+        <input type="hidden" class="Unwanted" name="gsSelectLevel4" value="{{data.gsSelectLevel4}}">
+        <input type="hidden" class="Unwanted" name="gsSelectLevel5" value="{{data.gsSelectLevel5}}"> #}
+				<input type="hidden" name="gsSelectLevel3" value="{{ data.gsSelectLevel3 }}">
+				<input type="hidden" name="gsSelectLevel4" value="{{ data.gsSelectLevel4 }}">
+				<input type="hidden" name="gsSelectLevel5" value="{{ data.gsSelectLevel5 }}">
+				<input type="hidden" name="ipsAutoInfo" data-public-tag="false" value='{% if data.ipsAutoInfo is not empty %}{{ json_encode_no_unicode(data.ipsAutoInfo) }}{% endif %}'>
+				<input type="hidden" name="thirdAutoSelectInfo" data-public-tag="false" value='{% if data.thirdAutoSelectInfo is not empty %}{{ json_encode_no_unicode(data.thirdAutoSelectInfo) }}{% endif %}'>
+				<div class="select-item">
+					<label class="gs-block">一级活动信息</label>
+					<select class="gs-select-box gs-select-box-first gs-select-level3" data-level="3" data-activity-id="{{ data.ipsAutoInfo.level1.id | default(0) }}" lay-ignore placeholder="请输入活动名称" data-searchplaceholder="搜索分类">
+						<option value="{{ data.ipsAutoInfo.level1.id | default(0) }}">{{ data.ipsAutoInfo.level1.name | default('请选择活动') }}</option>
+					</select>
+				</div>
+				<div class="select-item ">
+					<label class="gs-block">二级活动信息</label>
+					<select class="gs-select-box gs-select-box-second gs-select-level4" data-level="4" data-parent-activity-id="{{ data.ipsAutoInfo.level1.id | default(0) }}" data-activity-id="{{ data.ipsAutoInfo.level2.id | default(0) }} " lay-ignore placeholder="请输入活动名称">
+						<option value="{{ data.ipsAutoInfo.level2.id | default(0) }}">{{ data.ipsAutoInfo.level2.name | default('请选择活动') }}</option>
+					</select>
+				</div>
+				<div class="gs-select-item-wraper ">
+					{% if data.ipsAutoInfo is not empty and data.ipsAutoInfo is not null %}
+						{% for item in data.ipsAutoInfo.level3 %}
+							<div class="gs-select-item">
+								<label class="gs-block act-title-label">活动<span class="title-index">{{ loop.index }}</span></label>
+								<div class="gs-select-level3-wraper">
+									<div class="select-item">
+										<label class="gs-block">三级活动信息</label>
+										<select class="gs-select-box gs-select-box-third gs-select-level{{ loop.index + 5 }}" data-level="5" data-parent-activity-id="{{ data.ipsAutoInfo.level2.id | default(0) }}" data-activity-id="{{ item.id | default(0) }} " lay-ignore placeholder="请输入活动名称">
+											<option value="{{ item.id | default(0) }}">{{ item.name | default('请选择活动') }}</option>
+											{# {% if data.thirdAutoSelectInfo %}
+                      {% for it in data.thirdAutoSelectInfo %}
+                      <option value="{{ it.activity_child_id }}">{{ it.activity_child_title }}</option>
+                      {% endfor %}
+                      {% endif %} #}
+										</select>
+									</div>
+									<div class="select-item {% if ipsAutoLimitClose %} layui-hide {% endif %}">
+										<label class="gs-block">SKU显示数量</label>
+										<input class="layui-input sku-select-input" type="number" name="" value="{{ item.sku_num | default('') }}">
+									</div>
+								</div>
+								<div class="geshop-third-value mr-10">
+                  <span class="img-btn class-up">
+                    <i class='icon-up'></i>
+                    <b class="tips">上移</b>
+                  </span>
+									<span class="img-btn class-down">
+                    <i class='icon-down'></i>
+                    <b class="tips">下移</b>
+                  </span>
+									<span class="img-btn class-close">
+                    <i class='icon-delete' data=""></i>
+                    <b class="tips">删除</b>
+                  </span>
+									<span class="img-btn class-add-ips">
+                    <i class='icon-add'></i>
+                    <b class="tips">新增</b>
+                  </span>
+								</div>
+							</div>
+						{% endfor %}
+					{% else %}
+						<div class="gs-select-item">
+							<label class="gs-block act-title-label">活动<span class="title-index">1</span></label>
+							<div class="gs-select-level3-wraper">
+								<div class="select-item">
+									<label class="gs-block">三级活动信息</label>
+									<select class="gs-select-box gs-select-box-third gs-select-level5" data-level="5" data-parent-activity-id="{{ data.ipsAutoInfo.level2.id | default(0) }}" data-activity-id="0" lay-ignore placeholder="请输入活动名称">
+										<option value="0">请选择活动</option>
+									</select>
+								</div>
+								<div class="select-item {% if ipsAutoLimitClose %} layui-hide {% endif %}">
+									<label class="gs-block">SKU显示数量</label>
+									<input class="layui-input sku-select-input" type="number" name="" value="">
+								</div>
+							</div>
+							<div class="geshop-third-value mr-10">
+                <span class="img-btn class-up">
+                  <i class='icon-up'></i>
+                  <b class="tips">上移</b>
+                </span>
+								<span class="img-btn class-down">
+                  <i class='icon-down'></i>
+                  <b class="tips">下移</b>
+                </span>
+								<span class="img-btn class-close">
+                  <i class='icon-delete' data=""></i>
+                  <b class="tips">删除</b>
+                </span>
+								<span class="img-btn class-add-ips">
+                  <i class='icon-add'></i>
+                  <b class="tips">新增</b>
+                </span>
+							</div>
+						</div>
+					{% endif %}
+
+				</div>
+
+			</div>
+		</div>
+		<input type="hidden" name="ipsFilterInfo" data-public-tag="false" value='{% if data.ipsFilterInfo is not empty %}{{ json_encode_no_unicode(data.ipsFilterInfo) }}{% endif %}'>
+		<input type="hidden" name="ips_activity_child_id" class="Unwanted" value="{{ data.ipsFilterInfo.ips_activity_child_id }}">
+		<div class="gs-tab-select-item goods-hide {% if data.ipsMethods|default(ipsMethodDefault) == '3' %}goods-visible{% endif %}">
+			<div class="layui-form-item" >
+				{# <label class="layui-form-label public-data">商品SKU</label> #}
+				<label class="gs-label-block gs-label-blank"></label>
+				<div class="layui-input-block">
+					<textarea placeholder="提示：点击添加规则会跳转到ips的筛选器页面，配置完成后会同步sku进行显示" class="layui-textarea ips-message-input js-valid-skus Unwanted" name="ips_auto_sku" data-public-tag="false" data-skuvalid="true">{{data.ipsFilterInfo.ips_auto_sku}}</textarea>
+				</div>
+			</div>
+			<div class="layui-form-item tab-add-btn" style="text-align: right;margin-top: 10px;" data-filter='{"ips_type":"rule","type":"single"}'>
+				<span class="layui-btn layui-btn-normal layui-btn-sm ips-rule-manage" id="ips_add_rule">{{ ips_form_info.ips_auto_sku_label }}</span>
+				<span class="layui-btn layui-btn-normal layui-btn-sm ips-good-manage" data-from="ips">商品管理</span>
+			</div>
+		</div>
+
+		<div class="gs-tab-select-item goods-hide {% if data.ipsMethods|default(ipsMethodDefault) == '4' %}goods-visible{% endif %}">
+			<div class="layui-form-item" >
+				{# <label class="layui-form-label public-data">商品SKU</label> #}
+				<label class="gs-label-block gs-label-blank"></label>
+				<div class="layui-input-block">
+					<textarea placeholder="提示：点击添加规则会跳转到ips的筛选器页面，配置完成后会同步sku进行显示" class="layui-textarea ips-message-input js-valid-skus Unwanted" name="ips_manual_sku" data-public-tag="false" data-skuvalid="true">{{data.ipsFilterInfo.ips_manual_sku}}</textarea>
+				</div>
+			</div>
+			<div class="layui-form-item tab-add-btn" style="text-align: right;margin-top: 10px;" data-filter='{"ips_type":"sku","type":"single"}'>
+				<span class="layui-btn layui-btn-normal layui-btn-sm ips-rule-manage" id="ips_add_sku">{{ ips_form_info.ips_manual_sku_label }}</span>
+				<span class="layui-btn layui-btn-normal layui-btn-sm ips-good-manage" data-from="ips">商品管理</span>
+			</div>
+		</div>
+	</div>
+</div>

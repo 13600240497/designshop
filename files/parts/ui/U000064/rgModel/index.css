@@ -1,0 +1,147 @@
+.wrap-U000064-rgModel {
+  overflow: hidden;
+  /* compoment layout class list */
+}
+
+.clearfix:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+.wrap-U000064-rgModel.m-swiper-goods{
+  min-height: 6.98rem;
+  margin: 0 10px;
+}
+
+.wrap-U000064-rgModel #pro-name {
+  height: 0.53rem;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 3.3rem;
+  text-align: center;
+  margin: 0.053rem auto 0;
+  font-size: 0.34rem;
+}
+
+
+.wrap-U000064-rgModel .swiper-container{
+  display: none;
+  overflow: initial;
+  margin-top: 0.62rem;
+  margin-bottom: 0.3rem;
+}
+.wrap-U000064-rgModel .swiper-container .swiper-wrapper{
+  
+}
+.wrap-U000064-rgModel .swiper-container .swiper-wrapper .swiper-slide{
+  position: relative;
+  top: -0.3rem;
+  width: 4rem;
+  transform: scale(0.9);
+  transition: all 0.3s;
+  margin: 0 0%;
+  height: 7.28rem;
+  background-color: #fff;
+  box-shadow:0px 2px 8px 0px rgba(0,0,0,0.2);
+  
+}
+
+.wrap-U000064-rgModel .swiper-container .swiper-wrapper .swiper-slide.swiper-slide-active{
+  top: 0.26rem;
+  transform: scale(1.2);
+  background: #fff;
+  z-index: 99;
+  height: 6.18rem;
+  width: 3.73rem;
+}
+.wrap-U000064-rgModel .swiper-container .swiper-wrapper .swiper-slide.swiper-slide-active .mask{
+  background: transparent;
+}
+
+.wrap-U000064-rgModel .swiper-container .swiper-wrapper .swiper-slide.swiper-slide-active .goods-img{
+  height: 4.6rem;
+}
+
+
+
+.wrap-U000064-rgModel.m-swiper-goods .goods-img{
+  height: 5.4rem;
+  overflow: hidden;
+  position: relative;
+}
+.wrap-U000064-rgModel.m-swiper-goods .goods-img img{
+  width: 3.22rem;
+  height: auto;
+  vertical-align: top;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+.wrap-U000064-rgModel.m-swiper-goods #pro-price { 
+  text-align: center;
+  margin-top: 0.13rem;
+}
+.wrap-U000064-rgModel.m-swiper-goods .my_shop_price,.wrap-U000064-rgModel.m-swiper-goods .my_shop_price_demo{
+  font-size: 0.4rem;
+  font-weight: 300;
+  color: #333;
+}
+.wrap-U000064-rgModel.m-swiper-goods .my_old_price{
+  font-size: 0.3rem;
+  color: #999;
+  font-weight: normal;
+}
+.wrap-U000064-rgModel.m-swiper-goods .nav-container ul{
+  transition: all 0.3s;
+  -webkit-overflow-scrolling: touch;
+  /* position: relative; */
+}
+
+.wrap-U000064-rgModel.m-swiper-goods .nav-container ul li{
+  text-align: center;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  height: 20px;
+  white-space: normal;
+  overflow: hidden;
+  display: inline-block;
+  padding: 0 0.38rem;
+
+}
+.wrap-U000064-rgModel.m-swiper-goods .nav-container ul li:active{
+  background: #fff;
+}
+
+.wrap-U000064-rgModel.m-swiper-goods .nav-container ul {
+  transition: all 1s;
+  white-space: nowrap;
+  overflow: scroll;
+}
+::-webkit-scrollbar {
+  display: none;
+  }
+.wrap-U000064-rgModel.m-swiper-goods .nav-container ul.center {
+  display: flex;
+  justify-content: center;
+}
+
+.color-gray{
+  color: #999;
+}
+.layui-panel{
+  border: solid 1px #E6E6E6;
+  padding: 0.4rem;
+  margin-bottom: 15px;
+  margin-top: 0.4rem;
+}
+.layui-row.item-gap .layui-input{
+  width: 90%;
+}

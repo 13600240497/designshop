@@ -1,0 +1,48 @@
+
+{% set suffix ='rem'%}
+{% set remUnit = 75 %}
+{%
+    set pageData = {
+				price_ft_weight:data.price_ft_weight|default(1),
+				base_bg_shadow:data.base_bg_shadow|default(0),
+        lang:data.lang|default('en'),
+		video_width: '%' in data.video_width|default('100%')? data.video_width|default('100%'): (data.video_width|default(565))/remUnit~suffix,
+		video_height: '%' in data.video_height|default('100%')? data.video_height|default('100%'): (data.video_height|default(455))/remUnit~suffix,
+        com_video_width:data.com_video_width|default(565)/remUnit~suffix,
+        com_video_height:data.com_video_height|default(455)/remUnit~suffix,
+        padding_top:data.padding_top|default(0)/remUnit~suffix,
+        padding_left:data.padding_left|default(0)/remUnit~suffix,
+        padding_right:data.padding_right|default(0)/remUnit~suffix,
+        base_magin_bottom:data.base_magin_bottom|default(32)/remUnit~suffix,
+    }
+%}
+<div class="geshop-component-box component-drag geshop-gb-component ui-{{ pageInstanceId }}" data-key="U000157" data-id="{{ pageInstanceId }}">
+    <div style="text-align: center;
+        width: {{ pageData.com_video_width }};
+        height: {{ pageData.com_video_height }};
+        padding-top: {{ pageData.padding_top  }};
+        {# padding-bottom: {{ data.padding_bottom | default(0) / 37.5 }}rem; #}
+		{# padding-left: {{ pageData.padding_left}}; #}
+        {# padding-right: {{ pageData.padding_right }}; #}
+		margin-bottom: {{ pageData.base_magin_bottom }};
+        margin-left: {{ pageData.padding_left }};
+        margin-right: {{ pageData.padding_right }};
+    ">
+    {% if data.video_code %}
+    <iframe type="text/html" style=""
+        width="{{ pageData.video_width }}"
+        height="{{ pageData.video_height }}"
+        src="https://www.youtube.com/embed/{{ data.video_code }}";
+        frameborder="0" allowfullscreen style="max-width:100%;">
+    </iframe>
+    {% else %}
+    <p style="background-image: url({{ data.default.videoGB }});
+        background-position: center;
+        background-repeat: no-repeat;
+        display:block;
+        width: {{ pageData.video_width }};
+        height: {{ pageData.video_height }};
+		max-width:100%;"></p>
+    {% endif %}
+    </div>
+</div>

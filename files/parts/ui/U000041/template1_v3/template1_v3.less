@@ -1,0 +1,160 @@
+.geshop-U000041-template1_v3 {
+  width: 1200px;
+  margin: 0 auto;
+
+  .gs-tab {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .gs-tab-label {
+    display: block;
+    font-size: 0;
+    position: relative;
+
+    li {
+      display: inline-block;
+      margin-left: 16px;
+      text-align: center;
+      border-radius: 24px 24px 0 0;
+      cursor: pointer;
+
+
+      > span {
+        display: block;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        //position: absolute;
+        right: 0;
+      }
+    }
+  }
+
+  .gs-tab-content {
+
+    .gs-tab-item {
+      display: none;
+
+      &.on {
+        display: block;
+      }
+
+      > ul {
+        display: block;
+        font-size: 0;
+        width: 1200 - 32px;
+        margin: 0 auto;
+        padding-top: 24px;
+        padding-bottom: 8px;
+
+        li.list-item {
+          display: inline-block;
+          width: 276px;
+          height: 496px;
+          margin: 0 8px 16px;
+          font-size: 14px;
+          color: #333333;
+          position: relative;
+          background-color: #FFFFFF;
+          overflow: hidden;
+          vertical-align: top;
+          box-sizing: border-box;
+          transition: all .2s linear;
+
+          .list-item-img {
+            position: relative;
+          }
+
+          &:hover {
+            transform: translateY(-10px);
+          }
+
+          .item-img {
+            width: 276px;
+            height: 368px;
+            position: relative;
+            display: block;
+            overflow: hidden;
+
+            .geshop-zaful-image-good, a {
+              display: flex;
+              height: 100%;
+              justify-content: center;
+            }
+
+            img {
+              display: block;
+              width: 100%;
+            }
+
+          }
+
+          .item-info-box {
+            padding:0 12px 12px;
+            .item-title {
+              display: block;
+              width:100%;
+              height:20px;
+              font-size:14px;
+              line-height:20px;
+              margin: 12px auto 4px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+
+            .item-shop-price {
+              height:30px;
+              font-size:22px;
+              line-height:30px;
+            }
+          }
+
+          .buy-content {
+            max-width: 100%;
+            border-radius: 100px 0px 0px 0px;
+            padding: 11px 0;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            font-size:16px;
+            transform: translate3d(90px,0,0);
+            transition: all 0.3s cubic-bezier(0.455, 0.03, 0.215, 1) 0s;
+
+            &:hover {
+              transform: translate3d(0,0,0);
+              span {
+                width: auto;
+                min-width: 90px;
+                max-width: 170px;
+              }
+            }
+
+            border-radius: 100px 0px 0px 0px;
+            img {
+              width: 32px;
+              margin: 0 16px 0 32px;
+              vertical-align: middle;
+            }
+            span {
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              display: inline-block;
+              vertical-align: middle;
+              width: 90px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

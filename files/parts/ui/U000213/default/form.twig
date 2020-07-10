@@ -1,0 +1,92 @@
+<style>{{ include ('form.css') }}</style>
+
+{%
+
+set formData = {
+    id: 'U000213',
+    name: '分享配置',
+    theme: 'default',
+    tabs: [
+        {
+            label: '内容设置',
+            components: [
+                {
+                    type: 'diy',
+                    src: 'lib/data.twig'
+                }
+            ]
+        },
+        
+        {
+            label: '样式配置',
+            components: [
+                {
+                    label: '分享内容配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '分享图标圆角(px)',
+                            name: 'share_icon_br',
+                            default: 50,
+                            public: false,
+                        },
+                        {
+                            label: 'Facebook背景颜色',
+                            type: 'colorPicker',
+                            name: 'fb_bgColor',
+                            default: 'linear-gradient(180deg,rgba(57,89,151,1) 0%,rgba(57,89,151,1) 100%)',
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: 'Pinterest背景颜色',
+                            type: 'colorPicker',
+                            name: 'pt_bgColor',
+                            default: 'linear-gradient(180deg,rgba(202,33,39,1) 0%,rgba(183,17,23,1) 100%)',
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: 'Twitter背景颜色',
+                            type: 'colorPicker',
+                            name: 'tt_bgColor',
+                            default: 'linear-gradient(180deg,rgba(29,156,235,1) 0%,rgba(29,156,235,1) 100%)',
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: 'Messnger背景颜色',
+                            type: 'colorPicker',
+                            name: 'ms_bgColor',
+                            default: 'linear-gradient(180deg,rgba(2,161,247,1) 0%,rgba(0,111,247,1) 100%)',
+                            public: false,
+                            col: 2
+                        },
+                    ]
+                }
+                
+            ]
+        }
+    ],
+    onSubmit: 'onSubmit'
+}
+
+%}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+<script>
+    
+
+    {#  自定义保存函数 #}
+    function onSubmit(progress) {
+         var shareArr = [];
+        $('#U000213-default input.share_data:checked').each(function(index,element){
+        var $val = $(this).val();
+        shareArr.push($val);
+        });
+
+        $('input[name=share_data]').val(JSON.stringify(shareArr));
+        progress.next()
+    };
+</script>  

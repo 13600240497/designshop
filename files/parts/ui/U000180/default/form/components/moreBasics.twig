@@ -1,0 +1,13 @@
+
+<div class="layui-row layui-col-space20">
+    <div class="layui-col-md12">
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'组件上边距(px)',name:'boxMarginTop',value:pageData.boxMarginTop ,full:true,}}
+        ) }}
+    </div>
+    <div class="layui-col-md12">
+    {{ include ('@app/files/parts/common/components/input.twig',
+        { options: { label:'rules按钮圆角大小(格式：上 右 下 左)',name:'ruleButtonBorderRadius',value:pageData.ruleButtonBorderRadius ,full:true,}}
+    ) }}
+    </div>
+</div>

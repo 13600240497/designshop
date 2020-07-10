@@ -1,0 +1,23 @@
+{#/**
+*@author: 任贸华
+*@date: 2018/11/24 16:31:41
+*@desc: radio组件
+* @param {string} full 是否通栏显示input
+* @param {string} name 参数名
+* @param {string} value 参数值
+* @param {string} label input标题
+*/#}
+{% if options %}
+    <div class="layui-form-item">
+        <label class="{% if options.full %}gst-label-block{% else %}layui-form-label{% endif %} {{ options.labelClass|default('') }}">{{ options.label }}</label>
+        <div class="layui-input-block">
+            {% for obj in options.list %}
+                <input type="radio" name={{ options.name }} value={{ obj.value }}
+                       title={{ obj.title }} {% if data.discountActive == obj.value %} checked="checked" {% endif %}>
+            {% endfor %}
+        </div>
+    </div>
+
+{% else %}
+    {{ include ('@app/files/parts/common/components/argsErrors.twig') }}
+{% endif %}

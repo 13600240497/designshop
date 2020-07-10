@@ -1,0 +1,218 @@
+{% set suffix = 'px' %}
+{% set pageForm = {
+	base_bg_width: 1200,
+	base_bg_color: '#FFFFFF',
+	base_box_bgImage: '',
+	component_bg_value:'',
+	component_bg_repeat:'',
+	component_bg_position:'',
+	base_box_radius: 0,
+	base_box_border_active:0,
+	base_box_border_width:0,
+	base_box_border_color:'',
+	
+	discount_bgc:'#FF8A00',
+	discount_ftc:'#FFFFFF',
+	discount_height:'50',
+	discount_width:'50',
+	discount_bgImage:'',
+	discount_fts:'16',
+	discount_off_fts:'12',
+	discount_right:'10',
+	discount_top:'10',
+	
+	buy_bgc:'#FF8A00',
+	buy_hover_bgc:'#FCC556',
+	buy_ftc:'#FFFFFF',
+	buy_hover_ftc:'#FFFFFF',
+	buy_bg_image:'',
+	
+	buy_cart_bgc:'#CC0000',
+	buy_cart_hover_bgc:'#E00101',
+	buy_cart_color:'#FFFFFF',
+	buy_cart_hover_color:'#FFFFFF',
+	
+	base_bg_shadow:'0',
+	base_bg_shadow_color:'#000000',
+	base_bg_shadow_color_rgb:'0,0,0',
+	goods_shadow_active:'0',
+	goods_shadow_color:'',
+	goods_shadow_color_rgb:'0,0,0',
+	
+	view_more_ftc:'#333333',
+	view_more_hover_ftc:'#333333',
+	view_more_fts:'20',
+	
+	price_color:'#f30240',
+	price_fts:'22',
+	price_ft_weight:'0',
+	
+} %}
+
+{% set pageData = pageForm|merge(public|default({}))|merge(private|default({})) %}
+
+
+{#公共商品组件配置#}
+
+{#组件背景#}
+#geshop-page-content .geshop-component-goods {
+width: {{ pageData.base_bg_width }}{{ suffix }};
+{% if pageData.base_box_bgImage %}
+	background-image:url({{ pageData.base_box_bgImage }});
+{% endif %}
+	background-color: {{ pageData.base_bg_color }};
+{% if pageData.component_bg_value %}
+	{{ pageData.component_bg_value }}
+{% endif %}
+border-radius: {{ pageData.base_box_radius }}{{ suffix }};
+{% if pageData.base_box_border_active == '1' %}
+	border-width: {{ pageData.base_box_border_width }}{{ suffix }};
+	border-color: {{ pageData.base_box_border_color }};
+	border-style: solid;
+{% endif %}
+margin-left: auto;
+margin-right: auto;
+max-width:100%;
+box-sizing: border-box;
+}
+
+
+{#组件折扣#}
+#geshop-page-content .geshop-component-goods .gs-goods-discount {
+background-color: {{ pageData.discount_bgc }};
+{% if pageData.discount_bgImage %}
+	background: url({{ pageData.discount_bgImage }}) no-repeat center center/contain;
+	border-radius:0 !important;
+{% endif %}
+color: {{ pageData.discount_ftc }};
+width: {{ pageData.discount_width }}{{ suffix }};
+height: {{ pageData.discount_height }}{{ suffix }};
+top: {{ pageData.discount_top }}{{ suffix }};
+right: {{ pageData.discount_right }}{{ suffix }};
+}
+
+#geshop-page-content .geshop-component-goods .gs-goods-discount .inner{
+display:inline-block;
+vertical-align: middle;
+}
+
+
+#geshop-page-content .geshop-component-goods .gs-goods-discount:after{
+content: '';
+display: inline-block;
+width: 0;
+height: 100%;
+vertical-align: middle;
+}
+
+
+
+#geshop-page-content .geshop-component-goods .gs-goods-discount .curtoff-box {
+font-size: {{ pageData.discount_fts }}{{ suffix }};
+margin:0 !important;
+}
+
+#geshop-page-content .geshop-component-goods .gs-goods-discount .curtoff-text {
+font-size: {{ pageData.discount_off_fts }}{{ suffix }};
+}
+
+#geshop-page-content .geshop-component-goods .gs-goods-discount .curtoff-box strong {
+font-weight:normal;
+}
+
+{#组件按钮#}
+#geshop-page-content .geshop-component-goods .buyLink {
+color: {{ pageData.buy_ftc }};
+{% if pageData.buy_bg_image %}
+	background: url({{ pageData.buy_bg_image }}) no-repeat center center/contain;
+{% endif %}
+background-color: {{ pageData.buy_bgc }};
+}
+
+#geshop-page-content .geshop-component-goods .buyLink:hover {
+background-color: {{ pageData.buy_hover_bgc }};
+color: {{ pageData.buy_hover_ftc }};
+}
+
+#geshop-page-content .geshop-component-goods .buyLinkSpan {
+	color: {{ pageData.buy_ftc }};
+}
+
+#geshop-page-content .geshop-component-goods .buyLinkSpan:hover {
+	color: {{ pageData.buy_hover_ftc }};
+}
+
+
+{#组件购物车#}
+#geshop-page-content .geshop-component-goods .js-addCart {
+background-color: {{ pageData.buy_cart_bgc }};
+color: {{ pageData.buy_cart_color }};
+}
+
+#geshop-page-content .geshop-component-goods .js-addCart:hover {
+background-color: {{ pageData.buy_cart_hover_bgc }};
+color: {{ pageData.buy_cart_hover_color }};
+}
+
+#geshop-page-content .geshop-component-goods .js-addCart .icon-cart{
+color: inherit;
+}
+
+{#组件投影#}
+#geshop-page-content .geshop-component-goods {
+{% if pageData.base_bg_shadow == '1' %}
+	box-shadow: 0px 0px 10px rgba({{ pageData.base_bg_shadow_color_rgb }},0.2);
+	-webkit-box-shadow: 0px 0px 10px rgba({{ pageData.base_bg_shadow_color_rgb }},0.2);
+	{#box-shadow: 0px 0px 10px {{ pageData.base_bg_shadow_color }};#}
+	{#-webkit-box-shadow: 0px 0px 10px {{ pageData.base_bg_shadow_color }};#}
+{% else %} box-shadow: none;
+{% endif %}
+}
+
+#geshop-page-content .geshop-component-goods .gs-list-item, #geshop-page-content .geshop-component-goods .gs-list-item_tag {
+{% if pageData.goods_shadow_active == '1' %}
+	box-shadow: 0px 0px 10px rgba({{ pageData.goods_shadow_color_rgb }},0.2);
+	-webkit-box-shadow: 0px 0px 10px rgba({{ pageData.goods_shadow_color_rgb }},0.2);
+	{#box-shadow: 0px 0px 10px {{ pageData.goods_shadow_color }};#}
+	{#-webkit-box-shadow: 0px 0px 10px {{ pageData.goods_shadow_color }};#}
+{% else %} box-shadow: none;
+{% endif %}
+}
+
+{#组件View more#}
+#geshop-page-content .geshop-component-goods .view-more-box{
+width: 1000px;
+margin: 0 auto;
+position: relative;
+text-align: right;
+padding-bottom: 12px;
+height: auto;
+}
+#geshop-page-content .geshop-component-goods .view-more-box .view-more,#geshop-page-content .geshop-component-goods .view-more-btn{
+	color:{{ pageData.view_more_ftc }};
+	font-size:{{ pageData.view_more_fts }}{{ suffix }};
+}
+
+#geshop-page-content .geshop-component-goods .view-more-box .view-more:hover,#geshop-page-content .geshop-component-goods .view-more-btn:hover{
+	color:{{ pageData.view_more_hover_ftc }}
+}
+
+{#组件价格#}
+#geshop-page-content .geshop-component-goods .gs-shop-price {
+color:{{ pageData.price_color }};
+font-size:{{ pageData.price_fts }}{{ suffix }};
+{% if pageData.price_ft_weight == '1' %}
+	font-weight: bold;
+{% else %}
+	font-weight: normal;
+{% endif %}
+}
+
+#geshop-page-content .geshop-component-goods .gs-shop-price .js-currency{
+font-size:inherit;
+{% if pageData.price_ft_weight == '1' %}
+	font-weight: bold;
+{% else %}
+	font-weight: normal;
+{% endif %}
+}

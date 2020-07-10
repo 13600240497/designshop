@@ -1,0 +1,366 @@
+{{ include ('@app/files/parts/temp/goods_manager.twig') }}
+
+{#{% set lang_buy_now = data.buy_text|default(get_component_trans(lang, 'btn_buy_now')) %}#}
+
+{% set lang_buy_now = data.buy_text|default( languages.btn_buy_now[lang] ) %}
+
+{% set formData = {
+    id: 'U000182',
+    name: '轮播商品列表',
+    theme: 'template2_v2',
+    tabs: [
+        {
+            label: '数据设置',
+            components: [
+            {
+                label: '商品数据',
+                type: 'goods-manager',
+                ipsMethodsArr: ['1','2','3','4'],
+                beforeSubmit: 'beforeSubmit'
+            },
+            {
+                label: '左侧图片配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '跳转链接',
+                    name: 'img_links',
+                    default: '',
+                    public: false,
+                },
+            ]
+            },
+            {
+                type: 'fieldset',
+                isshow: 'dl-web',
+                components: [
+                {
+                    type: 'tab',
+                    items: [
+                    {
+                        label: 'PC/PAD',
+                        components: [
+                        {
+                            label: '图片是否显示',
+                            name: 'pc_img_is_show',
+                            type: 'radio',
+                            default: '1',
+                            options: [
+                            { label: '是', value: '1' },
+                            { label: '否', value: '0' },
+                        ],
+                            public: false
+                        },
+                        {
+                            label: '图片链接',
+                            desc: '(建议上传宽273px,高454px的图片)',
+                            name: 'pc_link_image',
+                            type: 'image'
+                        }
+                    ]
+                    },
+                    {
+                        label: 'M',
+                        components: [
+                        {
+                            label: '图片是否显示',
+                            name: 'm_img_is_show',
+                            type: 'radio',
+                            default: '1',
+                            options: [
+                            { label: '是', value: '1' },
+                            { label: '否', value: '0' },
+                        ],
+                            public: false
+                        },
+                        {
+                            label: '图片链接',
+                            desc: '(建议上传宽710px,高320px的图片)',
+                            name: 'm_link_image',
+                            type: 'image'
+                        }
+                    ]
+                    },
+                ]
+                },
+            ],
+            },
+            {
+                type: 'fieldset',
+                isshow: 'dl-app',
+                components: [
+                {
+                    label: '图片是否显示',
+                    name: 'm_img_is_show',
+                    type: 'radio',
+                    default: '1',
+                    options: [
+                    { label: '是', value: '1' },
+                    { label: '否', value: '0' },
+                ],
+                    public: false
+                },
+                {
+                    label: '图片链接',
+                    desc: '(建议上传宽710px,高320px的图片)',
+                    name: 'm_link_image',
+                    type: 'image'
+                }
+            ],
+            },
+        ],
+        },
+        {
+            label: '样式设置',
+            components: [
+            {
+                label: '常用配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '组件背景颜色',
+                    name: 'box_bg_color',
+                    type: 'colorPicker',
+                    default: '#F8F8F8',
+                },
+                {
+                    label: '本店售价文字颜色',
+                    name: 'shop_price_color',
+                    type: 'colorPicker',
+                    default: '#ff4545',
+                },
+                {
+                    label: '购买按钮背景颜色',
+                    name: 'buy_bg_color',
+                    type: 'colorPicker',
+                    default: '#000000',
+                    col: 2,
+                },
+                {
+                    label: '购买按钮文字颜色',
+                    name: 'buy_text_color',
+                    type: 'colorPicker',
+                    default: '#ffffff',
+                    col: 2,
+                },
+                {
+                    label: '按钮文案',
+                    name: 'buy_text',
+                    default: lang_buy_now,
+                    public: false,
+                },
+            ]
+            },
+            {
+                label: '折扣标',
+                type: 'discount-dl'
+            },
+            {
+                type: 'fieldset',
+                isshow: 'dl-web',
+                components: [
+                {
+                    type: 'tab',
+                    brief: true,
+                    items: [
+                    {
+                        label: 'PC',
+                        components: [
+                        {
+                            label: '组件上边距',
+                            name: 'box_margin_top',
+                            default: 0,
+                            col: 2,
+                        },
+                        {
+                            label: '组件下边距',
+                            name: 'box_margin_bottom',
+                            default: 32,
+                            col: 2,
+                        },
+
+                        {
+                            label: '轮播切换左图标',
+                            name: 'swiper_left_image',
+                            type: 'image'
+                        },
+                        {
+                            label: '轮播切换右图标',
+                            name: 'swiper_right_image',
+                            type: 'image'
+                        },
+                        {
+                            label: '购买按钮鼠标滑过背景颜色',
+                            name: 'buy_hover_bg_color',
+                            type: 'colorPicker',
+                            default: '#000000',
+                        },
+                        {
+                            label: '购买按钮鼠标滑过文字颜色',
+                            name: 'buy_hover_text_color',
+                            type: 'colorPicker',
+                            default: '#ffffff',
+                        },
+                    ]
+                    },
+                    {
+                        label: 'PAD',
+                        components: [
+                        {
+                            label: '组件上边距',
+                            name: 'box_pad_margin_top',
+                            default: 0,
+                            col: 2,
+                        },
+                        {
+                            label: '组件下边距',
+                            name: 'box_pad_margin_bottom',
+                            default: 32,
+                            col: 2,
+                        },
+                    ]
+                    },
+                    {
+                        label: 'M',
+                        components: [
+                        {
+                            label: '组件上边距',
+                            name: 'box_m_margin_top',
+                            default: 0,
+                            col: 2,
+                        },
+                        {
+                            label: '组件下边距',
+                            name: 'box_m_margin_bottom',
+                            default: 20,
+                            col: 2,
+                        },
+                        {
+                            label: '商品标题是否显示',
+                            name: 'title_is_show',
+                            type: 'radio',
+                            default: '1',
+                            options: [
+                            { label: '是', value: '1' },
+                            { label: '否', value: '0' },
+                        ],
+                            public: false
+                        },
+                        {
+                            label: '市场价是否显示',
+                            name: 'price_is_show',
+                            type: 'radio',
+                            default: '1',
+                            options: [
+                            { label: '是', value: '1' },
+                            { label: '否', value: '0' },
+                        ],
+                            public: false
+                        },
+                        {
+                            label: '购买按钮是否显示',
+                            name: 'buy_is_show',
+                            type: 'radio',
+                            default: '1',
+                            options: [
+                            { label: '是', value: '1' },
+                            { label: '否', value: '0' },
+                        ],
+                            public: false
+                        },
+                    ]
+                    },
+                ]
+                },
+            ],
+            },
+            {
+                type: 'fieldset',
+                isshow: 'dl-app',
+                components: [
+                {
+                    label: '组件上边距',
+                    name: 'box_m_margin_top',
+                    default: 0,
+                    col: 2,
+                },
+                {
+                    label: '组件下边距',
+                    name: 'box_m_margin_bottom',
+                    default: 20,
+                    col: 2,
+                },
+
+                {
+                    label: '折扣标宽度',
+                    name: 'discount_m_width',
+                    default: 40,
+                    col: 2,
+                },
+                {
+                    label: '折扣标高度',
+                    name: 'discount_m_height',
+                    default: 40,
+                    col: 2,
+                },
+                {
+                    label: '折扣标背景图片',
+                    name: 'discount_m_bg_image',
+                    type: 'image'
+                },
+                {
+                    label: '商品标题是否显示',
+                    name: 'title_is_show',
+                    type: 'radio',
+                    default: '1',
+                    options: [
+                    { label: '是', value: '1' },
+                    { label: '否', value: '0' },
+                ],
+                    public: false
+                },
+                {
+                    label: '市场价是否显示',
+                    name: 'price_is_show',
+                    type: 'radio',
+                    default: '1',
+                    options: [
+                    { label: '是', value: '1' },
+                    { label: '否', value: '0' },
+                ],
+                    public: false
+                },
+                {
+                    label: '购买按钮是否显示',
+                    name: 'buy_is_show',
+                    type: 'radio',
+                    default: '1',
+                    options: [
+                    { label: '是', value: '1' },
+                    { label: '否', value: '0' },
+                ],
+                    public: false
+                },
+            ],
+            },
+        ]
+        }
+    ],
+    isAutoRefresh: 1,
+    skuValidConfig: 'skuValidConfig'
+
+} %}
+
+
+<script>
+
+{# 自定义校验函数 #}
+function skuValidConfig () {
+    return {
+        check_type: 'goods',
+        check_rules: 'GOODS_VALIDATE_STOCK'
+    }
+}
+</script>
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

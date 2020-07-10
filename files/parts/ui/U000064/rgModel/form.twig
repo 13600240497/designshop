@@ -1,0 +1,313 @@
+{{include ('@app/files/parts/temp/goods_manager.twig')}}
+<div class='design-form design-form-component design-form-visible'>
+    <h3 class='component-form-title'>TAB商品列表(轮播)组件配置
+        <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+            <i class="el-icon-close"></i>
+        </a>
+    </h3>
+
+    {{include ('@app/htdocs/resources/template/pc/templateList/index.twig')}}
+
+    <div class="component-form-configure-item component-form-setting-item" style="padding:0px 40px 40px 40px !important;">
+        <p class="geshop-title" style="margin-top:0">
+            <strong>常用配置</strong>(此组件只适用于通栏)</p>
+        <div class="layui-form-item">
+            <label class="form-label-item">
+                <span class="layui-badge-dot layui-bg-orange "></span>
+                组件下边距(PX)</label>
+            <div class="layui-input-block rest-input">
+                <input type="text" name="marginBottom" autocomplete="off" class="layui-input" value="{{ data.marginBottom | default(16) }}">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="form-label-item">
+                <span class="layui-badge-dot layui-bg-orange "></span>
+                组件背景颜色
+            </label>
+            <div class="layui-input-block">
+                <div class="color-picker-selector" data-hidden-name="background_color">
+                    <div style="background-color: {{ data.background_color | default('#FFFFFF') }};"></div>
+                </div>
+                <input type="text" class="layui-input" name="background_color" autocomplete="off" value="{{ data.background_color | default('#FFFFFF')}}">
+            </div>
+        </div>
+
+        <div class="layui-form-item tab-list">
+            <label class="form-label-item">
+                <span class="layui-badge-dot layui-bg-orange "></span>
+                Tab商品配置
+            </label>
+            <input type="hidden" name="navList">
+            {% for key, item in data.navList | default(['']) %}
+                <div class="layui-from layui-panel">
+                    <div class="layui-form-item">
+                        <label class="form-label-item">
+                            <span class="layui-badge-dot layui-bg-orange" name="category-label"></span>
+                            标题名称
+                        </label>
+                        <div class="layui-input-block rest-input">
+                            <input type="text" name="categoryName" autocomplete="off" class="layui-input" value="{{item.categoryName}}">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="form-label-item" style="margin-top:0">
+                            <span class="layui-badge-dot layui-bg-orange "></span>
+                            商品SKU<span class="color-gray">(建议输入3的倍数)</span></label>
+                        <div class="layui-input-block rest-input">
+                            <textarea placeholder="请输入商品SKU，每个SKU用英文逗号隔" autocomplete="off" class="layui-textarea" name='goodsSKU' value="{{item.goodsSKU}}">{{item.goodsSKU}}</textarea>
+                        </div>
+                        <span class="el-button el-button--primary el-button--small class-manage" data-from="tabs" style="float:right">商品管理</span>
+                    </div>
+
+                    <div class="geshop-third-value">
+                        <span class="img-btn">
+                            <i class='icon-up'></i>
+                            <b class="tips">上移</b>
+                        </span>
+                        <span class="img-btn">
+                            <i class='icon-down'></i>
+                            <b class="tips">下移</b>
+                        </span>
+                        <span class="img-btn">
+                            <i class='icon-delete'></i>
+                            <b class="tips">删除</b>
+                        </span>
+                    </div>
+
+                </div>
+                
+
+            {% endfor %}
+
+        </div>
+        <div class="layui-form-item tab-add-btn ">
+            <span class="el-button el-button--primary el-button--small" id="img_tab_add">新增分类</span>
+        </div>
+
+        <div class="img-table">
+            <input type="hidden" data-public-tag="true" name="goodsSKU">
+
+            <h4>商品内容配置</h4>
+            <div class="layui-form-item">
+                <label class="form-label-item">
+                    <span class="layui-badge-dot layui-bg-orange "></span>
+                    Tab字体大小(PX)
+                </label>
+                <div class="layui-input-block rest-input">
+                    <input type="text" name="titleFontSize" autocomplete="off" class="layui-input" value="{{data.titleFontSize  | default(28)}}">
+                </div>
+            </div>
+
+            <div class="layui-row item-gap">
+                <div class="layui-col-md6">
+                    <div class="layui-form-item">
+                        <label class="form-label-item">
+                            <span class="layui-badge-dot layui-bg-orange "></span>
+                            默认Tab文字颜色
+                        </label>
+                        <div class="layui-input-block">
+                            <div class="color-picker-selector" data-hidden-name="navFontColor">
+                                <div style="background-color: {{ data.navFontColor| default('#666666') }};"></div>
+                            </div>
+                            <input type="text" class="layui-input" name="navFontColor" autocomplete="off" value="{{ data.navFontColor | default('#666666') }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md6">
+                    <div class="layui-form-item">
+                        <label class="form-label-item">
+                            <span class="layui-badge-dot layui-bg-orange "></span>
+                            选中Tab文字颜色
+                        </label>
+                        <div class="layui-input-block">
+                            <div class="color-picker-selector" data-hidden-name="activeFontColor">
+                                <div style="background-color: {{ data.activeFontColor | default('#333333')}};"></div>
+                            </div>
+                           <input type="text" class="layui-input" name="activeFontColor" autocomplete="off" value="{{ data.activeFontColor | default('#333333') }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="layui-form-item">
+                <label class="form-label-item">
+                    <span class="layui-badge-dot layui-bg-orange "></span>
+                    销售价文字颜色
+                </label>
+                <div class="layui-input-block">
+                    <div class="color-picker-selector" data-hidden-name="saleFontColor">
+                        <div style="background-color: {{ data.saleFontColor| default('#FA386A') }};"></div>
+                    </div>
+                    <input type="text" class="layui-input" name="saleFontColor" autocomplete="off" value="{{ data.saleFontColor | default('#FA386A') }}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="layui-form-item geshop-form-operation">
+    <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+    <span type="button" class="layui-btn layui-btn-normal" id="img_submit">提交</span>
+    <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm" data-tag="1" style='display:none'>提交</button>
+</div>
+
+<style>
+    .geshop-form-content {
+        padding-left: 20px;
+    }
+    .geshop-title {
+        font-size: 16px;
+        color: #333333;
+        margin-top: 16px;
+    }
+    .label-form-item {
+        font-size: 14px;
+        color: #333333;
+    }
+    .rest-input {
+        margin-left: 0;
+        margin-top: 5px;
+    }
+    .add-form-button span {
+        display: block;
+        width: 116px;
+        height: 36px;
+        border-radius: 4px;
+        background: #34A8FF;
+        text-align: center;
+        line-height: 36px;
+        font-size: 14px;
+        color: #FFFFFF;
+        cursor: pointer;
+        margin-top: 8px;
+    }
+    .img-btn {
+        display: inline-block;
+        position: relative;
+        width: 24px;
+        height: 24px;
+        line-height: 12px;
+        padding: 6px 0;
+        box-sizing: border-box;
+        text-align: center;
+        border-radius: 50%;
+        background: rgba(16,93,149,0.4);
+        margin: 0 2px;
+    }
+    .img-btn:hover {
+        background: #105D95;
+    }
+    .img-btn i {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background-repeat: no-repeat;
+    }
+
+    .icon-close {
+        z-index: 1000;
+        right: 21px;
+    }
+
+    .img-table {
+        padding-bottom: 63px;
+    }
+</style>
+<script>
+
+    $('#img_submit').on('click', function () {
+        var navData = [];
+        var pass = true;
+        $('.layui-panel').each(function (index, element) {
+            var self = $(this);
+            var $categoryName = self.find('input[name=categoryName]').val();
+            var $goodsSKU = self.find('textarea[name=goodsSKU]').val();
+            if ($goodsSKU) {
+                navData.push({categoryName: $categoryName, goodsSKU: $goodsSKU});
+            }
+        });
+        $('input[name=navList]').val(JSON.stringify(navData));
+
+        var goodsArr = [];
+        $('.layui-panel textarea[name=goodsSKU]').each(function (index, element) {
+            var $val = $(this).val();
+            var goodsArrLength = $val.split(',').length;
+            if(goodsArrLength < 3){
+                pass = false;
+            }
+            var $label = $(this).parents().find('input[name=categoryName]').val();
+            goodsArr.push({"label": $label, "lists": $val});
+        });
+        if (goodsArr.length > 0) {
+            $('.img-table input[name=goodsSKU]').val(JSON.stringify(goodsArr));
+        } else {
+            $('.img-table input[name=goodsSKU]').val("");
+        }
+
+        if(!pass){
+            layer.msg('每个SKU数量必须大于三个');
+            return;
+        }
+
+        $(this).next('button').trigger('click');
+    });
+
+    $('body').on('click', '.icon-up', function () {
+        var target = $(this).closest('.layui-panel');
+
+        if (target.prev('.layui-panel').length > 0) {
+            target.prev('.layui-panel').before(target.clone());
+            target.remove();
+        }
+    });
+    $('body').on('click', '.icon-down', function () {
+        var target = $(this).closest('.layui-panel');
+
+        if (target.next('.layui-panel').length > 0) {
+            target.next('.layui-panel').after(target.clone());
+            target.remove();
+        }
+    });
+    $('body').on('click', '.icon-delete', function () {
+        var skuEditLength = $('.layui-panel').length;
+        if(skuEditLength <= 1 ){
+            layer.msg('最后一个数据无法删除');
+        }else{
+
+            var target = $(this).closest('.layui-panel');
+            layui.layer.confirm('数据删除，将无法恢复，确定删除？', {
+                btn: [
+                    '取消', '确定'
+                ],
+                area: '420px',
+                skin: 'element-ui-dialog-class',
+                icon: 3,
+                title: '提示'
+            }, function (index) {
+                layui.layer.close(index)
+            }, function (index) {
+                target.remove();
+            })
+        }
+        
+
+    });
+
+    var flagIndex = 1;
+    var $tabList = $('.tab-list');
+    $('#img_tab_add').on('click', function () {
+        var skuFormCount = $('.layui-panel').length;
+        if(skuFormCount > 20){
+            layer.msg('最多只能添加20个Tab');
+            return;
+        }
+        flagIndex++;
+        var clone = $('.layui-panel:last', $tabList).clone();
+        clone.find('input[name=imgSrc]').attr('name', flagIndex);
+        clone.find('input[name=categoryName]').val('');
+        clone.find('textarea[name=goodsSKU]').val('');
+        $($tabList).append(clone);
+    });
+</script>

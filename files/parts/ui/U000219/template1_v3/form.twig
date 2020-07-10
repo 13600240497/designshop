@@ -1,0 +1,157 @@
+{%
+
+    set formData = {
+        id: 'U000219',
+        name: '自定义价格配置项',
+        theme: 'template1_v3',
+        tabs: [
+            {
+                label: '商品数据',
+                components: [
+                    {
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '商品数据',
+                                type: 'goods-manager',
+                                beforeSubmit: 'beforeSubmit'
+                            },
+                            {
+                                label: '默认显示商品个数',
+                                name: 'show_goods_number'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                label: '样式配置',
+                components: [
+                    {
+                        label: '常用配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件上边距(px)',
+                                name: 'margin_top',
+                                default: '0',
+                                col: 2
+                            },
+                            {
+                                label: '组件下边距(px)',
+                                name: 'margin_bottom',
+                                default: '40',
+                                col: 2
+                            },
+                            {
+                                label: '组件背景圆角大小(px)',
+                                name: 'bg_radius_size',
+                                default: '12',
+                                col: 2
+                            },
+                            {
+                                label: '单个商品圆角大小(px)',
+                                name: 'goods_radius_size',
+                                default: '12',
+                                col: 2
+                            },
+                            {
+                                label: '背景颜色',
+                                name: 'box_bg_color',
+                                type: 'colorPicker',
+                                default: ''
+                            }
+                        ]
+                    },
+                    {
+                        label: '价格标签配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '第一行文案',
+                                name: 'price_first_content',
+                                default: 'New User Price:'
+                            },
+                            {
+                                label: '文字大小(px)',
+                                name: 'price_font_size',
+                                default: '24'
+                            },
+                            {
+                                label: '文案文字和价格文字颜色',
+                                name: 'shop_price_color',
+                                type: 'colorPicker',
+                                default: '#333333'
+                            },
+                            {
+                                label: '第二行文案',
+                                name: 'price_second_content',
+                                default: 'Market Price:'
+                            },
+                            {
+                                label: '文案文字和价格文字颜色',
+                                name: 'price_second_font_color',
+                                type: 'colorPicker',
+                                default: '#999999'
+                            },
+                            {
+                                label: '市场价是否划掉',
+                                name: 'is_show_del',
+                                type: 'radio',
+                                default: 2,
+                                options: [
+                                    { label: '是', value: 1 },
+                                    { label: '否', value: 2 }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        type: 'discount-zf'
+                    },
+                    {
+                        label: 'View More/Less配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '按钮背景颜色',
+                                type: 'colorPicker',
+                                name: 'view_more_bg_color',
+                                default: '#333333',
+                                col: 2
+                            },
+                            {
+                                label: '按钮字体颜色',
+                                type: 'colorPicker',
+                                name: 'view_more_font_color',
+                                default: '#ffffff',
+                                col: 2
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        isAutoRefresh: 1
+    }
+%}
+
+<script>
+    function onSubmit(progress) {
+        var $input = $('input[name=show_goods_number]'),
+            _val = $.trim($input.val());
+
+        if (_val != '') {
+            if (!/^([1-9][0-9]*)$/.test(_val) || _val <= 1) {
+                layer.msg('请输入为大于1的整数');
+                $input.val('');
+                return false;
+            };
+        }
+
+        progress.next();
+    }
+</script>
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

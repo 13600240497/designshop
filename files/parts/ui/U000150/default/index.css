@@ -1,0 +1,179 @@
+[data-gid="U000150"] {
+  overflow: hidden;
+  /* compoment layout class list */
+}
+/*.tab-container {*/
+/*  background-color: #f8f8f8;*/
+/*}*/
+[data-gid="U000150"] .tab-swipe #pro-price {
+  margin-bottom: 8px;
+}
+.clearfix:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+
+[data-gid="U000150"] .tab-swipe #pro-name {
+  height: 24px;
+  line-height: 1.2;
+  overflow: hidden;
+  margin-top: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 200px;
+  text-align: center;
+  margin: 10px auto 0;
+}
+
+
+.tab-swipe .layui-panel{
+  border: solid 1px #E6E6E6;
+  padding: 15px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+[data-gid="U000150"] .tab-swipe{
+  width: 1200px;
+  margin: 0 auto;
+}
+[data-gid="U000150"] .tab-container{
+  width: 1200px;
+  margin: 0 auto;
+}
+[data-gid="U000150"] .tab-container .goods-list-swipe ul{
+  /* display: none; */
+  transition: all 1s;
+}
+[data-gid="U000150"] .tab-container .goods-list-swipe ul li{
+    float: left
+    width: 277px!important;
+    margin-bottom: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+[data-gid="U000150"] .tab-swipe #pro-price {
+
+}
+[data-gid="U000150"] .tab-swipe .my_shop_price,[data-gid="U000150"] .tab-swipe .my_shop_price_demo{
+  font-size: 20px;
+  font-weight: 700;
+}
+
+[data-gid="U000150"] .tab-swipe .my_old_price{
+  font-size: 12px;
+}
+[data-gid="U000150"] .tab-swipe .goods-img{
+  height: 346px;
+  overflow: hidden;
+  position: relative;
+}
+[data-gid="U000150"] .tab-swipe .goods-img img{
+  width: 260px;
+  height: auto;
+  vertical-align: top;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+[data-gid="U000150"] .tab-swipe .nav-container{
+  position: relative;
+  margin: 20px 0;
+}
+[data-gid="U000150"] .tab-swipe .nav-container .nav-con-ul {
+  width: 1100px;
+  margin: 0 auto;
+  overflow: hidden;
+  height: 55px;
+  line-height: 55px;
+}
+[data-gid="U000150"] .tab-swipe .nav-container ul li{
+  margin: 0 0 10px;
+  text-align: center;
+  width: 220px;
+  float: left;
+  cursor: pointer;
+  font-size: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+
+[data-gid="U000150"] .tab-container .goods-list-swipe ul li {
+  background-color: #ffffff;
+}
+[data-gid="U000150"] .tab-swipe .nav-container ul {
+  overflow: hidden;
+  transition: all 1s;
+  margin: 0 auto;
+}
+[data-gid="U000150"] .tab-swipe .goods-list-swipe{
+  position: relative;
+}
+[data-gid="U000150"] .tab-swipe .nav-container i,.tab-swipe .goods-list-swipe i{
+  position: absolute;
+  background-repeat: no-repeat;
+  top: -18px;
+  width: 28px;
+  height: 28px;
+  z-index: 100;
+  font-size: 0;
+  line-height: 0;
+  border: none;
+  border-top-right-radius: 32px;
+  border-bottom-right-radius: 32px;
+  display: inline-block;
+  cursor: pointer;
+}
+[data-gid="U000150"] .tab-swipe .goods-list-swipe i{
+  top: 150px;
+}
+[data-gid="U000150"] .tab-swipe .goods-list-swipe .goods-scroll{
+  width: 1108px;
+  margin: 0 auto;
+  overflow: hidden;
+  display: none;
+}
+[data-gid="U000150"] .tab-swipe .nav-container i.left-btn,.goods-list-swipe i.goods-pre-btn{
+  background-image: url(../../../resources/images/rg-pc/arrow_left2.1.png);
+}
+[data-gid="U000150"] .tab-swipe .nav-container i.right-btn,.goods-list-swipe i.goods-next-btn{
+  background-image: url(../../../resources/images/rg-pc/arrow_right2.1.png);
+  right: 0;
+}
+[data-gid="U000150"] .tab-swipe .nav-container i.right-btn,[data-gid="U000150"] .tab-swipe .nav-container i.left-btn {
+  background-position: 50% 50%;
+  height: 100%;
+  top: 0;
+  width: 50px;
+}
+
+[data-gid="U000150"] .tab-swipe .nav-container i.left-btn{
+  background-image: url(https://geshoptest.s3.amazonaws.com/uploads/hk8LdesBx7FRa0SoPyOtpWqIXAKTEZ12.png);
+}
+[data-gid="U000150"] .tab-swipe .nav-container i.right-btn{
+  background-image: url(https://geshoptest.s3.amazonaws.com/uploads/xApLveEPr3OJoaThBI0ik6scQYlq1w29.png);
+  right: 0;
+}
+
+[data-gid="U000150"] .tab-swipe .nav-container i{
+  top: 7px;
+}
+.img-table{
+  margin-top: 20px;
+}
+[data-gid="U000150"] .tab-swipe .nav-container i.left-btn,.tab-swipe .nav-container i.right-btn{
+  display: none;
+}
+[data-gid="U000150"] .goods-list-swipe i.goods-next-btn{
+  /* right: -2px; */
+}

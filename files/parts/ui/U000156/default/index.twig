@@ -1,0 +1,40 @@
+{% set suffix = 'px'%}
+{%
+    set pageData = {
+				price_ft_weight:data.price_ft_weight|default(0),
+				base_bg_shadow:data.base_bg_shadow|default(1),
+            lang:data.lang|default('en'),
+			video_width: '%' in data.video_width|default('100%')? data.video_width|default('100%'): (data.video_width|default('100%'))~suffix,
+			video_height: '%' in data.video_height|default('100%')? data.video_height|default('100%'): (data.video_height|default('100%'))~suffix,
+    }
+%}
+<div class="geshop-component-box component-drag geshop-gb-component ui-{{ pageInstanceId }}" data-key="U000156" data-id="{{ pageInstanceId }}">
+    <div style="text-align: center;
+        width: {{ data.com_video_width | default(565) ~suffix }};
+        height: {{ data.com_video_height | default(455) ~suffix }};
+        padding-top: {{ data.padding_top | default(0) }}px;
+        {# padding-bottom: {{ data.padding_bottom | default(0) }}px; #}
+        padding-left: initial;
+        padding-right: initial;
+		margin-bottom:{{data.base_magin_bottom|default(32)}}px;
+        margin-left: {{ data.padding_left | default(0) }}px;
+        margin-right: {{ data.padding_right | default(0) }}px;
+    ">
+        {% if data.video_code %}
+        <iframe type="text/html"
+            width="{{ pageData.video_width }}"
+            height="{{ pageData.video_height }}"
+            src="https://www.youtube.com/embed/{{ data.video_code }}"
+            frameborder="0" allowfullscreen style="max-width:100%;">
+        </iframe>
+        {% else %}
+        <p style="background-image: url({{ data.default.videoGB }});
+            background-position: center;
+            background-repeat: no-repeat;
+            width: {{ pageData.video_width }};
+            height: {{ pageData.video_height }};
+			max-width:100%;
+            display: inline-block;"></p>
+        {% endif %}
+    </div>
+</div>

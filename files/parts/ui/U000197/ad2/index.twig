@@ -1,0 +1,11 @@
+<div class="geshop-component-box component-drag geshop-container" data-key="U000197" data-id="{{ pageInstanceId }}" style="{% if data.boxMarginTop %}margin-top: {{ data.boxMarginTop }}px;{% endif %}">
+	<div class="geshop-row" style="width: 1200px; margin-left: auto; margin-right: auto;
+    {% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}
+  ">
+		{% if data.isEditEnv == 1 %}
+      {{ include('edit.twig') }}
+    {% else %}
+      {{ include('product.twig') }}
+    {% endif %}
+	</div>
+</div>

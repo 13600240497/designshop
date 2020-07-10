@@ -1,0 +1,17 @@
+{
+  "fields": {
+    "goodsDataSource": { "is_public": "1", "is_m": "0", "is_app": "1" },
+    "boxMarginBottom": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "bgColor": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "goodsQuantity": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "iconFirstImg": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "iconSecondImg": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "iconThirdImg": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "iconOtherImg": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "iconOtherTextColor": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "priceTextFontSize": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "priceDefaultTextColor": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "leaderBoardTextColor": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "btnBgColor": { "is_public": "0", "is_m": "0", "is_app": "1" }
+  }
+}

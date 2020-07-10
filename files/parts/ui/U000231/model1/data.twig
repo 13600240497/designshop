@@ -1,0 +1,120 @@
+<section>
+    <div class="slider-list-setting component-form-setting-ite component-form-configure-item">
+    	<h4 class="column-title">基础配置</h4>
+		<div class="layui-tab layui-tab-brief">
+			
+			<div class="layui-tab layui-tab-brief">
+				<ul class="layui-tab-title">
+					<li class="layui-this">PC+PAD</li>
+					<li>M</li>
+				</ul>
+                
+				<div class="layui-tab-content">
+                    {# for pc+pad #}
+					<div class="layui-tab-item layui-show" data-type="pc_pad">
+                        <div class="layui-block">    
+                            <div class="layui-form-item">
+                                <label class="layui-form-label" style="margin-bottom: 4px;">广告图片</label>
+                                <div class="layui-input-block">
+                                    <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                                    <input class="layui-input Unwanted slider-img" type="text" name="pc_pad_img" value="{{ data.pc_pad_img }}">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="margin-top: 10px;">
+                                <label class="form-item-label">图片宽度</label>
+                                <div class="layui-input-block" style="margin-top: 5px;">
+                                    <input type="text" name="pc_pad_width" class="Unwanted layui-input"  type="text" value="{{ data.pc_pad_width|default('850') }}">
+                                </div>
+                            </div>
+                        </div> 
+					</div>
+
+                    {# for m #}
+					<div class="layui-tab-item" data-type="m">
+                        <div class="layui-block">    
+                            <div class="layui-form-item">
+                                <label class="layui-form-label" style="margin-bottom: 4px;">广告图片</label>
+                                <div class="layui-input-block">
+                                    <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                                    <input class="layui-input Unwanted slider-img" type="text" name="for_m_img" value="{{ data.for_m_img }}">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="margin-top: 10px;">
+                                <label class="form-item-label">图片宽度</label>
+                                <div class="layui-input-block" style="margin-top: 5px;">
+                                    <input type="text" name="for_m_width" class="Unwanted layui-input"  type="text" value="{{ data.for_m_width|default('335') }}">
+                                </div>
+                            </div>
+                        </div>	
+					</div>
+				</div>
+			</div>
+
+            {# 样式配置 #}
+            <h4 class="column-title column-style-title">样式配置</h4>
+            <div class="layui-tab layui-tab-brief">
+                <ul class="layui-tab-title">
+					<li class="layui-this">PC</li>
+                    <li>PAD</li>
+					<li>M</li>
+				</ul>
+
+                <div class="layui-tab-content">
+                    {# for pc style #}
+					<div class="layui-tab-item layui-show" data-type="pc_style">
+                        <div class="layui-form-item" style="margin-top: 10px;">
+                            <label class="form-item-label">组件上边距(px)</label>
+                            <div class="layui-input-block" style="margin-top: 5px;">
+                                <input type="text" name="box_pc_pad_margin_top" class="Unwanted layui-input"  type="text" value="{{ data.box_pc_pad_margin_top|default('0') }}">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item" style="margin-top: 10px;">
+                            <label class="form-item-label">组件下边距(px)</label>
+                            <div class="layui-input-block" style="margin-top: 5px;">
+                                <input type="text" name="box_pc_margin_bottom" class="Unwanted layui-input"  type="text" value="{{ data.box_pc_margin_bottom|default('20') }}">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    {# for pad style #}
+                    <div class="layui-tab-item" data-type="pad_style">
+                         <div class="layui-form-item" style="margin-top: 10px;">
+                            <label class="form-item-label">组件上边距(px)</label>
+                            <div class="layui-input-block" style="margin-top: 5px;">
+                                <input type="text" name="box_pc_pad_margin_top" class="Unwanted layui-input"  type="text" value="{{ data.box_pc_pad_margin_top|default('0') }}">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item" style="margin-top: 10px;">
+                            <label class="form-item-label">组件下边距(px)</label>
+                            <div class="layui-input-block" style="margin-top: 5px;">
+                                <input type="text" name="box_pad_margin_bottom" class="Unwanted layui-input"  type="text" value="{{ data.box_pad_margin_bottom|default('20') }}">
+                            </div>
+                        </div>
+                    </div>
+
+                    {# for m style #}
+                    <div class="layui-tab-item" data-type="m_style">
+                         <div class="layui-form-item" style="margin-top: 10px;">
+                            <label class="form-item-label">组件上边距(px)</label>
+                            <div class="layui-input-block" style="margin-top: 5px;">
+                                <input type="text" name="box_m_margin_top" class="Unwanted layui-input"  type="text" value="{{ data.box_m_margin_top|default('0') }}">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item" style="margin-top: 10px;">
+                            <label class="form-item-label">组件下边距(px)</label>
+                            <div class="layui-input-block" style="margin-top: 5px;">
+                                <input type="text" name="box_m_margin_bottom" class="Unwanted layui-input"  type="text" value="{{ data.box_m_margin_bottom|default('20') }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</div>
+    </div>
+</section>

@@ -1,0 +1,53 @@
+{% set space = '#U000110_'~pageInstanceId %}
+{% set body =  space~' .geshop-U000110-rg_template1_v1' %}
+
+{{ body }} {
+    margin-bottom: {{ data.box_margin_bottom ?? 16/37.5 }}rem;
+    background-color: {{ data.box_bg_color ?? '#F8F8F8' }};
+}
+
+{{ body }} .goods-list li {
+    border-radius: {{ data.goods_border_radius ?? 2/37.5 }}rem;
+    border: 1px solid {{ data.hover_border_color | default('#FFFFFF') }};
+}
+
+{{ body }} .gs-banner {
+    {% if (data.is_show ?? 1) == 0 %}
+        display : none;
+    {% endif %}
+}
+
+
+{{ body }} .top-swiper-container, {{ body }} .fixed,{{ body }} .nav-top {
+    background-color: {{ data.tb_bg_color ?? '#222222' }};
+}
+
+{{ body }} .nav-item {
+    color: {{ data.tb_bg_color_off ?? '#999999' }};
+}
+
+{{ body }} .nav-item.on {
+    color: {{ data.tb_bg_color_on ?? '#FFFFFF' }};
+}
+
+
+{{ body }} .icon_rank.icon-1 {
+    background: url("{{ data.icon_rank_1 ?: 'https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/rankingFirst.png' }}") 0 0 no-repeat;
+}
+
+{{ body }} .icon_rank.icon-2 {
+    background: url("{{ data.icon_rank_2 ?: 'https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/rankingSecond.png' }}") 0 0 no-repeat;
+}
+
+{{ body }} .icon_rank.icon-3{
+    background: url("{{ data.icon_rank_3 ?: 'https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/rankingThird.png' }}") 0 0 no-repeat;
+}
+
+{{ body }} .icon_rank.icon-other {
+    color: {{ data.rank_color ?? '#FFFFFF' }};
+    background: url("{{ data.icon_rank_other ?: 'https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/rankingOther.png' }}") 0 0 no-repeat;
+}
+
+{{ body }} .promot-info {
+    color: {{ data.font_color ?? '#222222' }};
+}

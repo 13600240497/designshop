@@ -1,0 +1,13 @@
+.U000082-hot-wrap-box{
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.U000082-hot-wrap-box .wrap-cont{
+    position: relative;
+    width: 1920px;
+    left: 50%;
+    /* transform: translateX(-50%); */
+    margin-left: -960px;
+}

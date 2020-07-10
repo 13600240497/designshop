@@ -1,0 +1,41 @@
+
+{% set components = [
+    {
+        label: '折扣标显示方式',
+        type: 'radio',
+        default: 0,
+        name: 'discount_type',
+        options: [
+        { label: '-**%', value: 0 },
+        { label: '**%OFF', value: 1 },
+    ]
+    },
+    {
+        label: '折扣背景颜色',
+        name: 'discount_bg_color',
+        type: 'colorPicker',
+        default: '#FA386A',
+        col: 2
+    },
+    {
+        label: '折扣文本颜色',
+        name: 'discount_font_color',
+        type: 'colorPicker',
+        default: '#FFFFFF',
+        col: 2
+    },
+    {
+        label: '背景图片',
+        name: 'discount_bg_image',
+        type: 'image',
+        default: '' ,
+    },
+]%}
+
+{# 合并当前端的配置项 #}
+<fieldset class="layui-elem-field">
+    <legend>折扣标配置</legend>
+    <div class="layui-field-box">
+        {{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}
+    </div>
+</fieldset>

@@ -1,0 +1,64 @@
+[data-gid="U000061"] {
+  overflow:hidden;
+  /* compoment layout class list */
+  .clearfix:after {
+    content: "";
+    height: 0;
+    line-height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+  }
+  .g-w990 {
+    width: 990px;
+  }
+  .text-center{
+    text-align: center;
+  }
+  .geshop-component-box {
+    overflow: hidden;
+  }
+  .geshop-panel {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .layui-form-label {
+    white-space: nowrap;
+  }
+	//倒计时
+		.gs-time-inner{
+			height:32px;
+			line-height: 32px;
+			font-size: 14px;
+			font-weight: 500;
+			letter-spacing: 1px;
+			color: #333333;
+			margin-left: -20px;
+			padding:5px 0;
+			display: block;
+			text-align: center;
+			.icon-clock-black{
+				display: inline-block;
+				vertical-align: top;
+				margin-right: 5px;
+				// margin-top: 5px;
+				background-image: url(../../../resources/images/view/icon-block-black.png);
+				background-repeat: no-repeat;
+				width: 32px;
+				height: 32px;
+				background-position: 0 0;
+			}
+			.gs-down-text{
+				display:inline-block;
+				margin-right:15px;
+			}
+		}
+		.gs_component_countDown{
+			em{
+				font-style: normal;
+				padding:4px;
+			}
+		}
+}

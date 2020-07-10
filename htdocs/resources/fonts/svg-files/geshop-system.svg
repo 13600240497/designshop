@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>svg_系統組件_24x24</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="切圖" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="SVG" transform="translate(-192.000000, -168.000000)" fill="#333333" fill-rule="nonzero">
+            <g id="svg_系統組件_24x24" transform="translate(192.000000, 168.000000)">
+                <g id="folder" transform="translate(1.000000, 1.000000)">
+                    <path d="M8.79270375,3 L7.23567056,0.0251095169 L0.00825129351,0.0251095169 L0.00825129351,22.0202281 L22,22.0202281 L22,3 L8.79270375,3 Z M6.64053356,2.02999097 L8.33427403,5.02824951 L19.5,5.02824951 L20,5.02824951 L20,8.02650805 L2.01310067,8.02650805 L2,2.02999097 L6.64053356,2.02999097 Z M2.01310067,20 L2.01310067,10 L20,10 L20.0082513,20.0251095 L2.01310067,20 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

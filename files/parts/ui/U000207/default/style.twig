@@ -1,0 +1,213 @@
+<!-- embed stylesheet begin -->
+<style type="text/css">
+    {% set classRoot = '.geshop-U000207-default-'~pageInstanceId~' .geshop-saleBox' %}
+    {#  上下间距样式导入  #}
+    {% include '@app/files/parts/formTemplate/components/margin-dl-style.twig' with{'space':classRoot} %}
+    {{ classRoot }}
+    {
+        margin-left: auto;
+        margin-right: auto;
+        background:{{ data.box_bgColor ?? '#F8F8F8' }};
+        border-radius: {{ data.box_borderRadius ?? 0 }}px;
+    }
+
+
+    {{ classRoot }}
+    .gs-time-inner .icon-clock-black {
+        {% if data.title_icon == null %}
+            background-image: url("../../../resources/images/view/icon-block-black2.png");
+        {% else %}
+            background-image: url("{{ data.title_icon }}")
+        {% endif %}
+    }
+
+    {{ classRoot }}
+    .gs-time-inner .gs-down-text {
+        color: {{ data.time_titleColor ?? '#000000' }};
+        font-size: {{ data.time_title_fontSize ?? 24 }}px;
+    }
+
+    {{ classRoot }}
+    .gs-time-inner .gs_component_countDown > span em {
+        color: {{ data.time_color ?? '#FFFFFF' }};
+        background: {{ data.time_bgColor ?? '#000000' }};
+        font-size: {{ data.time_fontSize ?? 24 }}px;
+    }
+
+    {{ classRoot }}
+    .gs-time-inner .gs-down-title span {
+        color: {{ data.title_color ?? '#000000' }};
+        font-size: {{ data.title_fontSize ?? 34 }}px;
+    }
+
+    {{ classRoot }}
+    .gs-goods-wrap .goods-cont .goods-list > li .list-img a .goods-priceOff-tips {
+        background-color: {{ data.price_bgColor ?? '#000000' }};
+        color: {{ data.price_color ?? '#FFFFFF' }};
+        {% if data.price_bg  %}
+            border-radius: 0;
+            background-color: transparent;
+            background-size: contain;
+            background-image: url("{{ data.price_bg }}");
+        {% endif %}
+        top: {{ data.discount_top ?? 0 }}px;
+        right: {{ data.discount_right ?? 0 }}px;
+        font-size: {{ data.discount_fontSize ?? 15 }}px;
+        width: {{ data.price_width ?? 50 }}px;
+        height: {{ data.price_height ?? 50 }}px;
+    }
+
+    {{ classRoot }}
+    .gs-goods-wrap .goods-cont .goods-list > li .list-img a .goods-priceOff-tips span {
+        right: {{  data.discount_text_right ?? 0 }}px;
+    }
+
+    {{ classRoot }}
+    .gs-goods-wrap .goods-cont .goods-list > li .list-img a .goods-priceOff-tips span:first-child {
+        margin-top: {{ data.discount_text_top ?? 10 }}px;
+    }
+
+    {{ classRoot }}
+    .gs-goods-wrap .goods-cont .goods-list > li .list-img a .goods-priceOff-tips.mt10 span:first-child {
+        margin-top: {{ data.discount_text_top ?? 10 }}px;
+    }
+
+    {{ classRoot }}
+    .gs-time-inner .gs-down-text {
+
+    }
+    {{ classRoot }}
+    .gs-time-inner .gs_component_countDown>span {
+        color: {{ data.time_bgColor ?? '#000000' }};
+        font-size: {{ data.time_fontSize ?? 22 }}px;
+    }
+
+
+    /* 平板 */
+    @media screen and (max-width: 1215px) and (min-width: 768px) {
+    {{ classRoot }}
+        .gs-goods-wrap .goods-cont .goods-list > li .list-img a .goods-priceOff-tips {
+            top: {{ data.discount_top_pad ?? 0 }}px;
+            right: {{ data.discount_right_pad ?? 0 }}px;
+            font-size: {{ data.discount_fontSize_pad ?? 15 }}px;
+        }
+
+    {{ classRoot }}
+        .gs-goods-wrap .goods-cont .goods-list > li .list-img a .goods-priceOff-tips span {
+            right: {{  data.discount_text_right_pad ?? 0 }}px;
+        }
+
+    {{ classRoot }}
+        .gs-goods-wrap .goods-cont .goods-list > li .list-img a .goods-priceOff-tips span:first-child {
+            margin-top: {{ data.discount_text_top_pad ?? 10 }}px;
+        }
+    {{ classRoot }}
+        .gs-goods-wrap .goods-cont .goods-list > li .list-img a .goods-priceOff-tips.mt10 span:first-child {
+            margin-top: {{ data.discount_text_top_pad ?? 10 }}px;
+        }
+
+    {{ classRoot }}
+        .gs-time-inner .gs-down-title span {
+            font-size: {{ data.title_fontSize_pad ?? 34 }}px;
+        }
+    {{ classRoot }}
+        .gs-time-inner .gs-down-text {
+            font-size: {{ data.time_title_fontSize_pad  ?? 24 }}px;
+        }
+    {{ classRoot }}
+        .gs-time-inner .gs_component_countDown > span em {
+            font-size: {{ data.time_fontSize_pad ?? 22 }}px;
+        }
+    {{ classRoot }}
+        .gs-time-inner .gs_component_countDown>span {
+            font-size: {{ data.time_fontSize ?? 22 }}px;
+        }
+    }
+
+
+
+    /* M 端*/
+    @media screen and (max-width: 767px) {
+    {{ classRoot }} {
+        margin-bottom: {{ data.box_margin_bottom ?? 16 }}px;
+        border-radius: {{ data.box_borderRadius_m ?? 0 }}px;
+    }
+    {{ classRoot }}
+        .gs-goods-wrap .goods-cont .goods-list > li .list-img a .goods-priceOff-tips {
+            top: {{ data.discount_top_m ?? 0 }}px;
+            right: {{ data.discount_right_m ?? 0 }}px;
+            font-size: {{ data.discount_fontSize_m ?? 14 }}px;
+        }
+
+    {{ classRoot }}
+        .gs-goods-wrap .goods-cont .goods-list > li .list-img a .goods-priceOff-tips span {
+            right: {{  data.discount_text_right_m ?? 0 }}px;
+        }
+
+    {{ classRoot }}
+        .gs-goods-wrap .goods-cont .goods-list > li .list-img a .goods-priceOff-tips span:first-child {
+            margin-top: {{ data.discount_text_top_m ?? 11 }}px;
+        }
+    {{ classRoot }}
+        .gs-goods-wrap .goods-cont .goods-list > li .list-img a .goods-priceOff-tips.mt10 span:first-child {
+            margin-top: {{ data.discount_text_top_m ?? 11 }}px;
+        }
+
+    {{ classRoot }}
+        .gs-time-inner .gs-down-title span {
+            font-size: {{ data.title_fontSize_m  ?? 22 }}px;
+        }
+    {{ classRoot }}
+        .gs-time-inner .gs-down-text {
+            font-size: {{ data.time_title_fontSize_m  ?? 18 }}px;
+        }
+    {{ classRoot }}
+        .gs-time-inner .gs_component_countDown > span em {
+            font-size: {{ data.time_fontSize_m ?? 18 }}px;
+        }
+    {{ classRoot }}
+        .gs-time-inner .gs_component_countDown>span {
+            font-size: {{ data.time_fontSize ?? 18 }}px;
+        }
+    }
+
+
+    /* other */
+    {{ classRoot }}
+    .gs-goods-wrap .goods-cont .goods-list > li .gs-goods-limit .goods-limit-tips_left {
+        color: {{ data.stock_color ?? '#000000' }};
+    }
+
+    {{ classRoot }}
+    .gs-goods-wrap .goods-cont .goods-list > li .gs-goods-limit .process-bar {
+        background-color: {{ data.stock_bgColor ?? '#EDEDED' }};
+    }
+
+    {{ classRoot }}
+    .gs-goods-wrap .goods-cont .goods-list > li .gs-goods-limit .process-bar .process-inner {
+        background-color: {{ data.stock_sale_bgColor ?? '#D0D0D0' }};
+    }
+
+    {{ classRoot }}
+    .gs-goods-wrap .goods-cont .goods-list > li .goods-price .shop-price {
+        color: {{ data.sale_color ?? '#FF4545' }}
+    }
+
+    {{ classRoot }}
+    .gs-goods-wrap .goods-cont .goods-list > li .list-img a .shop-now-container {
+        background-color: {{ data.goods_bgColor ?? '#FFFFFF' }};
+        border:2px solid {{ data.goods_bdColor ?? '#000000' }};
+    }
+
+    {{ classRoot }}
+    .gs-goods-wrap .goods-cont .goods-list > li .list-img a .shop-now-container .inner-wrapper .shop-now-text {
+        color: {{ data.shop_color ?? '#000000' }};
+        font-size: {{ data.shop_fontSize ?? 16 }}px;
+    }
+
+    {{ classRoot }}
+    .dl-has-rrp-tag {
+        text-decoration: line-through;
+    }
+</style>
+<!-- embed stylesheet end -->

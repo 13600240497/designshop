@@ -1,0 +1,162 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+
+{% if data.colNum == '1'%}
+    {% set colClass = liCol[0] %}
+{% elseif data.colNum == '2' %}
+    {% set colClass = liCol[1] %}
+{% elseif data.colNum == '3' %}
+    {% set colClass = liCol[2] %}
+{% elseif data.colNum == '4' %}
+    {% set colClass = liCol[3] %}
+{% elseif data.colNum == '5' %}
+    {% set colClass = liCol[4] %}
+{% else %}
+    {% set colClass = liCol[3] %}
+{% endif %}
+
+{% set pageData = {
+	goodsBgc:data.goodsBgc is not null?data.goodsBgc:'#ffffff',
+	goodsBdC:data.goodsBdC is not null?data.goodsBdC:'#FD9E62',
+	goodsFtC:data.goodsFtC is not null?data.goodsFtC:'#333',
+	buyHeight:data.buyHeight|default(40),
+	buyRadius:data.buyRadius|default(20),
+	buyFtS:data.buyFtS|default(16),
+	buynow_bg_color:data.buynow_bg_color is not null?data.buynow_bg_color:'#FD9E62',
+	buyBorderC:data.buyBorderC is not null?data.buyBorderC:'#FD9E62',
+	buyBorderW:data.buyBorderW|default('0'),
+	priceC:data.priceC is not null?data.priceC:'#FD6462',
+	priceFt:data.priceFt|default('20'),
+	discountOffsetT:data.discountOffsetT|default('-10'),
+	discountOffsetR:data.discountOffsetR|default('-10'),
+	discountRadius:data.discountRadius|default('50'),
+	discount_font_color:data.discount_font_color,
+	discount_bg_color:data.discount_bg_color is not null?data.discount_bg_color:'#FD6462',
+	colNum:data.colNum|default('4')
+} %}
+
+<div class="geshop-component-box component-drag clearfix" data-gid="U000001_default" data-key="U000001" data-id="{{ pageInstanceId }}">
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+        [data-id="{{ pageInstanceId }}"] .component-self-goodWrap:hover, [data-id="{{ pageInstanceId }}"] .current {
+            border-color:{{pageData.goodsBdC|default('transparent')}};
+        }
+    </style>
+    <!-- embed stylesheet end -->
+
+    <div class="geshop-col-12" style="
+		{% if data.boxMarginTop %}margin-top: {{ data.boxMarginTop }}px;{% endif %}
+		{% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}
+    ">
+        <div class="gs-goodsWrap" style="width:{{data.baseWith|default(1200)}}px;
+				{% if data.baseBgC%}background-color:{{data.baseBgC}};{% endif %}">
+       {# <div class="geshop-panel" style="font-size:{{data.titleFs}}px;color:{{data.titleFtC}};background:url({{data.titleBgImg}}) no-repeat 0 0/100% 100%;height:{{data.titleH |default(80)}}px;line-height:{{data.titleH |default(80)}}px">{{data.goodsListTitle}}</div> #}
+            <ul class="clearfix" style="padding-right:{{ data.gsPadding|default(10)}}px;padding-top:{{data.gsMarginBottom|default('10')}}px;">
+            {% for key,item in data.goodsInfo|default(0..3) %}
+                <li class="{{colClass}} goods-item" style="{% if pageData.colNum %}width:{{100/pageData.colNum}}%;{% endif %}" data-test="{{data.gsPadding}}">
+                    <div class="component-self-goodBox" style="margin-bottom:{{data.gsMarginBottom|default('10')}}px;
+                    padding-left:{{ data.gsPadding|default(10)}}px">
+											<div class="component-self-goodWrap" style="{% if pageData.goodsBgc %}background-color:{{pageData.goodsBgc}}{% endif %};
+											padding:{{data.gsInnerPadding|default(20)}}px;
+											{% if data.gsRadius%}border-radius:{{data.gsRadius}}px;{% endif %}">
+                          <div class="gs-img" data-editEnv="{{data.isEditEnv}}">
+                            <a href="{{item.url_title|default('javascript:;')}}" style="height:{{data.default.lazyHeight}}px;">
+                              {% if data.isEditEnv == '1' and data.goodsInfo %}
+                                <img  src="{{item.goods_img|default(data.default.good)}}"style="max-width: 100%;max-height:100%;">
+                              {% elseif  data.isEditEnv == '0' and data.goodsInfo %}
+                                <img class="lazyload" src="{{data.default.lazyImg|default(data.default.good)}}" data-original="{{item.goods_img|default(data.default.good)}}" style="max-width: 100%;max-height:100%;">
+                              {% else %}
+                                <img  src="{{data.default.good}}" style="max-width: 100%;max-height:100%;">
+                              {% endif %}
+															{# 上架状态 #}
+															{% if data.goodsLimitActive == '1' and item.activity_number == activity_volume_number %}
+																<span class="goodStatus">SOLD OUT</span>
+															{% endif %}
+                            </a>
+                            {% if data.discount_show|default(1) == '1' %}
+														<div class="discont-wrap discont-curtoff google-sprite text-center" style="{% if data.discount_bg_image %}background:url({{data.discount_bg_image}}) no-repeat 0 0/100% 100%;{% endif %}
+														{% if pageData.discount_font_color %}color:{{pageData.discount_font_color}};{% endif %}
+														{% if pageData.discount_bg_color %} background-color:{{pageData.discount_bg_color}} {% endif %};
+														width:{{data.discountWidth|default(60)}}px;
+														height:{{data.discountHeight|default(60)}}px;
+														{% if pageData.discountOffsetT %}top:{{pageData.discountOffsetT}}px;{% endif %}
+														{% if pageData.discountOffsetR %}right:{{pageData.discountOffsetR}}px;{% endif %}
+														border-radius:{{pageData.discountRadius}}px;">
+															<div class="gs-curtoff-wrap">
+																<div class="curtoff-box" style="top:{{data.discountTop|default('6')}}px;left:{{data.discountLeft|default('0')}}px;">
+																	<strong style="font-size:{{data.discountFtS|default(18)}}px">{{item.discount}}%</strong>
+																	{% if data.discountSuffix|default('1') == '1' %}<br/>OFF{% endif %}
+																</div>
+															</div>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="gs-desc">
+                            {% if data.goodsActive|default(1) == '1' %}
+                                <a href="{{item.url_title|default('javascript:;')}}">
+                                    <span class="item-name" style="{% if pageData.goodsFtC %}color:{{pageData.goodsFtC}};{% endif %}{% if data.goodsFtS %}font-size:{{data.goodsFtS}}px;{% endif %}">{{item.goods_title|default('这里输入商品名称这里输入商品名称')}}</span>
+                                </a>
+                            {% endif %}
+
+                            <p class="item-price">
+                                {% if data.priceActive|default(1) == '1' and item.shop_price %}
+                                <span class="shop-price"><span class="my_shop_price" data-orgp="{{item.shop_price}}" style="{% if pageData.priceC %}color:{{pageData.priceC}};{% endif %}{% if pageData.priceFt %}font-size:{{pageData.priceFt}}px;{% endif %}">${{item.shop_price}}</span></span>
+                                {% endif %}
+
+                                {% if data.marketActive|default(1) == '1' and item.market_price %}
+                                <del class="market-price"><span class="my_shop_price" data-orgp="{{item.market_price}}"
+																style="{% if data.marketPriceFt %}font-size:{{data.marketPriceFt}}px;{% endif %}
+																{% if data.marketPriceC %}color:{{data.marketPriceC}};{% endif %}
+																">${{item.market_price}}</span></del>
+                                {% endif %}
+                            </p>
+
+														{# 商品倒计时 #}
+														{% if data.goodsTimeActive|default(1) == '1' %}
+														<span class="promotion-time-inner">
+														{% if item.left_time and item.left_time>=0 %}
+															<i class="icon-clock-black"></i>
+															<span class="gs_countDown" data-left-time="{{item.left_time}}"><strong>00 day(S)</strong>00:00:00</span>
+														{% endif %}
+														</span>
+														{% endif %}
+
+														{% if data.goodsLimitActive|default(0) == '1' %}
+															{{include ('@app/files/parts/temp/goods_limit.twig')}}
+														{% endif %}
+                        </div>
+												{% if data.buyActive|default(1) == '1' %}
+                        <div class="gs-btn-area text-center">
+                            <a href="{{item.url_title|default('javascript:;')}}" class="gs-btn btn-primary {% if data.goodsLimitActive == '1' and item.activity_number == activity_volume_number %}buyLink{% endif %}"
+														style="{% if pageData.buynow_bg_color %}background-color:{{pageData.buynow_bg_color}};{% endif %}{% if data.buynow_font_color %}color:{{data.buynow_font_color}};{% endif %}
+														{% if pageData.buyFtS %}font-size:{{pageData.buyFtS}}px;{% endif %}
+                            {% if data.buyBgImg %}background:url({{data.buyBgImg}}) no-repeat 0 0/100% 100%;border:none;{% endif %}
+														{% if pageData.buyRadius %}border-radius:{{pageData.buyRadius}}px;{% endif %};
+														{% if data.buyWidth %}width:{{data.buyWidth}}px;{% endif %}
+														{% if pageData.buyHeight %}height:{{pageData.buyHeight}}px;line-height:{{pageData.buyHeight}}px;{% endif %}
+														{% if pageData.buyBorderC %}border-color:{{pageData.buyBorderC}};{% endif %}
+														border-width:{{pageData.buyBorderW|default('0')}}px;
+														{% if data.buyBorderS %}border-style:{{data.buyBorderS}};{% endif %}">{{data.buyText|default("BUY NOW")}}</a>
+                        </div>
+												{% endif %}
+
+                      </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <!-- {% if data.seeMoreActive|default(1) == '1' %}
+        <div class="gs-more-btn gs-btn-area text-center" style="{% if data.seeMoreMargin %}margin-top:{{data.seeMoreMargin - data.gsMarginBottom}}px;margin-bottom:{{data.seeMoreMargin}}px{% endif %}">
+            <a href="{{data.seeMoreLk|default('javascript:;')}}" class="gs-btn btn-middle"
+            style="{% if data.seeMoreBgC %}background-color:{{data.seeMoreBgC}};{% endif %}
+            {% if data.seeMoreFtC %}color:{{data.seeMoreFtC}};{% endif %}
+            {% if data.seeMoreFtS %}font-size:{{data.seeMoreFtS}}px;{% endif %}
+            {% if data.seeMoreRadius %}border-radius:{{data.seeMoreRadius}}px;{% endif %}
+            {% if data.seeMorePadding %}padding-left:{{data.seeMorePadding}}px;padding-right:{{data.seeMorePadding}}px;{% endif %}">
+              {{data.seeMoreText|default('see more')}}
+            </a>
+        </div>
+        {% endif %} -->
+        </div>
+    </div>
+</div>
+

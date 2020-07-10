@@ -1,0 +1,64 @@
+{
+    "fields": {
+        "viewText": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "textColor": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "marginTop": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "marginBottom": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "goodsSKU": {
+            "is_public": "1",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "titleLink": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "titleImgSrc": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "titleLinkHoverColor": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "titleLinkColor": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "titleLinkText": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "titleText": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "communityRgDefaultList": {
+            "is_public": "1",
+            "is_m": "0",
+            "is_app": "0"
+        }
+    },
+}

@@ -1,0 +1,47 @@
+
+[data-module="U000087-2"]{
+    position: relative;
+    background-size:cover;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+[data-module="U000087-2"] .inline-box{
+    display:inline-block;
+}
+[data-module="U000087-2"] .coupon-body{
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    line-height:normal;
+    position:relative;
+    z-index:1;
+}
+[data-module="U000087-2"] .snowberg-png{
+    position:absolute;
+    left:50%;
+    top:50%;
+    background-size: 100% 100%;
+}
+[data-module="U000087-2"] .coupon-body .coupon-top .coupon-discount{
+    font-weight:500;
+}
+[data-module="U000087-2"] .coupon-body .coupon-middle{
+    word-break: break-all;
+}
+[data-module="U000087-2"] .coupon-body .coupon-layout{
+    width:100%;
+    text-align:center;
+}
+[data-module="U000087-2"] .coupon-body .coupon-layout .center-center{
+    vertical-align: middle;
+}
+/* 按钮默认状态 */
+[data-module="U000087-2"] .coupon-body .coupon-layout .coupon-btn{
+    cursor: pointer;
+    color: #fff;
+    background-color : #dddddd;
+}
+
+[data-module="U000087-2"] .coupon-body .coupon-bottom .center-center{
+    vertical-align: bottom;
+}

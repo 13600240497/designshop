@@ -1,0 +1,35 @@
+{% set space = '#U000209_'~pageInstanceId %}
+{% set body =  space~' .geshop_u000209_default_rg_body' %}
+
+
+{{ body }} {
+    margin-bottom: {{ (data.box_margin_bottom | default('32'))/75 }}rem;
+    background-color:{{ data.box_bg_color | default('#F8F8F8') }};
+}
+
+{{ body }} .nav_tab .swiper-container {
+    background-color:{{ data.tab_bg_color | default('#FFFFFF') }};
+}
+
+{{ body }} .nav_tab .swiper-slide {
+    color: {{ data.tab_btn_font_color | default('#222222') }};
+    font-size: {{ (data.tab_btn_font_fize | default('28'))/75 }}rem;
+}
+{{ body }} .nav_tab .swiper-slide.is_check {
+    background-color: {{ data.tab_btn_hover_bg_color | default('#222222') }}!important;
+    color: {{ data.tab_btn_hover_font_color | default('#FFFFFF') }}!important;
+}
+
+{# 商品样式 #}
+{{ body }} .goods_list_wrap li {
+    border: 1px solid {{ data.goods_info_border_color | default('#FFFFFF') }};
+    border-radius:{{ (data.goods_info_radius_size | default('4'))/75 }}rem;
+}
+
+{# view more样式 #}
+{{ body }} .view_more{
+    border: 1px solid {{ data.view_more_border_color | default('#FFFFFF') }};
+    border-radius:{{ (data.view_more_radius_size | default('2'))/75 }}rem;
+    color: {{ data.view_more_font_color | default('#FFFFFF') }};
+    background-color:{{ data.view_more_bg_color | default('#222222') }};
+}

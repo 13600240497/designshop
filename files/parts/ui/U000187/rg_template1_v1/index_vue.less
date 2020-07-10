@@ -1,0 +1,188 @@
+.U0000187_lottery_wrap {
+  &.lang-fr {
+    .cont {
+      background: url("./images/bg-fr.png") 0 0 no-repeat;
+    }
+    .lottery-box .btn-start {
+      background: url("./images/btn-start-fr.png") 0 0 no-repeat;
+    }
+    .lottery-box .lottery-content {
+      background: url("./images/lottery-fr.png") 0 0 no-repeat;
+    }
+  }
+  .cont {
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+    background: url("./images/bg.png") 0 0 no-repeat;
+    height: 580px;
+  }
+
+
+  .member-wrap {
+    position: absolute;
+    top: 354px;
+    left: 76px;
+    font-size: 16px;
+    color: #0a0a0a;
+    > p, span{
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      display: block;
+      line-height: 15px;
+      text-transform: uppercase;
+    }
+    > span {
+      text-decoration: underline;
+      cursor: pointer;
+      &:hover {
+        color: #FA386A;
+      }
+    }
+    p {
+      margin-bottom: 13px;
+      > span {
+        display: inline-block;
+        color: #FA386A;
+      }
+    }
+  }
+
+  .lottery-box {
+    position: absolute;
+    width: 490px;
+    height: 490px;
+    top: 50px;
+    left: 412px;
+
+    .lot-top {
+      background: url("./images/lottTop.png") 0 0 no-repeat;
+      width: 66px;
+      height: 74px;
+      position: absolute;
+      z-index: 2;
+      left: 212px;
+      top: -26px;
+    }
+
+    .lottery-content {
+      background: url("./images/lottery.png") 0 0 no-repeat;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+
+    .btn-start {
+      background: url("./images/btn-start.png") 0 0 no-repeat;
+      width: 182px;
+      height: 182px;
+      margin: auto;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      cursor: pointer;
+    }
+  }
+
+  .lottery-user-list {
+    position: absolute;
+    z-index: 2;
+    top: 57px;
+    right: 49px;
+    box-sizing: border-box;
+    background-image: url("./images/list-bg.png");
+    background-position:0 0;
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    .titel {
+      font-family: Rubik-Medium;
+      font-size: 14px;
+      height: 12px;
+      line-height: 12px;
+      color: #FA386A;
+      text-transform: uppercase;
+      text-align: center;
+      margin-top: 39px;
+    }
+
+    .user-list-wrap {
+      padding-top: 14px;
+      padding-bottom: 44px;
+      position: relative;
+      margin: 0 auto;
+      overflow: hidden;
+      box-sizing: border-box;
+
+      width: 100%;
+      height: 100%;
+
+      .list-wrap {
+        height: 144px;
+        overflow: hidden;
+        border-radius: 42px 42px 70px 70px;
+      }
+
+      li {
+        border-bottom:1px solid #FCDCE5;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        margin-left: 5px;
+        padding-left: 38px;
+        margin-right: 5px;
+        padding-right: 25px;
+        font-size: 12px;
+        box-sizing: border-box;
+
+
+        .info {
+          color: #999999;
+          margin-bottom: 5px;
+          span:first-child {
+            margin-right: 21px;
+          }
+        }
+        .desc {
+          color: #222222;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .dialog-cont {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background:rgba(0,0,0,0.4);
+    left: 0;
+    top: 0;
+    display: none;
+    &.on {
+      display: block;
+    }
+
+    .dia-wrap {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .btn-close {
+      background: url("./images/close.png") 0 0 no-repeat;
+      width: 38px;
+      height: 37px;
+      position: absolute;
+      right: -18px;
+      top: -18px;
+      cursor: pointer;
+    }
+  }
+
+}

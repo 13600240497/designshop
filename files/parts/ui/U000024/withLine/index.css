@@ -1,0 +1,24 @@
+.geshop-component-title .gs-titlt-contant {
+	position:relative;
+}
+.geshop-component-title .gs-titlt-contant::before {
+  content: '';
+  display: block;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #e5e5e5;
+  position: absolute;
+  top: 50%;
+}
+.geshop-component-title .gs-titlt-contant span {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  background: #ffffff;
+  padding-left: 45px;
+  padding-right: 45px;
+}
+.geshop-component-title .gs-titlt-spacing {
+	width: 100%;
+}

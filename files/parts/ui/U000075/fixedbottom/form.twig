@@ -1,0 +1,203 @@
+<style>{{ include ('form.css') }}</style>
+
+{%
+
+set formData = {
+    id: 'U000075',
+    name: '自定义广告配置',
+    theme: 'default',
+    tabs: [
+        {
+            label: '数据配置',
+            components: [
+                {
+                    type: 'diy',
+                    src: 'lib/data-setting.twig'
+                }
+            ]
+        },
+        
+        {
+            label: '样式配置',
+            components: [
+                {
+                    label: '按钮配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '按钮文案',
+                            name: 'btn_text',
+                            default: "TODAY'S DEALS",
+                            public: false,
+                        },
+                        {
+                            label: '按钮文字颜色',
+                            name: 'btn_fontColor',
+                            default: '#000000',
+                            type: 'colorPicker',
+                            public: false,
+                        },
+                        {
+                            label: '展开图标',
+                            name: 'dropdown_image',
+                            desc:'建议上传20px*20px的图片',
+                            type: 'image',
+                            public: false,
+                        },
+                        {
+                            label: '关闭图标',
+                            name: 'close_image',
+                            desc:'建议上传20px*20px的图片',
+                            type: 'image',
+                            public: false,
+                        },
+                        {
+                            label: '背景图片',
+                            name: 'btn_bgImage',
+                            type: 'image',
+                            public: false,
+                        },
+                        {
+                            label: '背景颜色',
+                            name: 'btn_bgColor',
+                            type: 'colorPicker',
+                            default: '#EDEDED',
+                            public: false
+                        }
+                    ]
+                },
+                {
+                    label: '广告区域配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '背景颜色',
+                            name: 'ad_bgColor',
+                            type: 'colorPicker',
+                            default: '#f8f8f8',
+                            public: false,
+                        },
+                        {
+                            label: '背景图片',
+                            name: 'ad_bgImage',
+                            type: 'image',
+                            public: false,
+                        },
+                        {
+                            label: '非当前原点颜色',
+                            type: 'colorPicker',
+                            name: 'pagination_bgcolor',
+                            default: '#EDEDED',
+                            public: false,
+                        },
+                        {
+                            label: '当前圆点颜色',
+                            type: 'colorPicker',
+                            name: 'pagination_active_bgcolor',
+                            public: false,
+                            default: '#000000'
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    onSubmit: 'onSubmit'
+}
+
+%}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+<script>
+$(function() {
+    var $imgTable = $('.img-body');
+    
+     var flagIndex =  $('.img-body .img-item').length;
+    $('.component-form-setting-ite').on('click','.add-class',function(e){
+        var clone = $('.img-item:first-child',$imgTable).clone();
+        flagIndex++;
+        clone.find('input.ad-img').val('');
+        clone.find('input.img-link').val('');
+        clone.find('input.ad-img').attr('name', flagIndex);
+        clone.find('.img-title').html('图片'+flagIndex);
+        $('.img-body').append(clone);
+        layui.form.render('radio');
+        initItemIndex();
+    });
+
+  $('body').on('click','.icon-up',function () {
+    var target = $(this).closest('.img-item');
+    if (target.prev('.img-item').length > 0) {
+      target.prev('.img-item').before(target.clone());
+      target.remove();
+      initItemIndex();
+    }
+  });
+  $('body').on('click', '.icon-down', function () {
+    var target = $(this).closest('.img-item');
+    
+    if (target.next('.img-item').length > 0) {
+      target.next('.img-item').after(target.clone());
+      target.remove();
+      initItemIndex();
+    }
+  });
+  $('body').on('click', '.icon-delete', function () {
+
+    var imgLen = $('.img-body .img-item').length;
+    if (imgLen == 1){
+        layui.layer.msg('最后一项不能删除');
+    }else{
+        var target = $(this).closest('.img-item');
+        layui.layer.confirm('确认删除吗？', {
+            btn: ['取消', '确定'],
+            area: '420px',
+            skin: 'element-ui-dialog-class',
+            icon: 3,
+            title: '提示'
+        }, function (index) {
+            layui.layer.close(index);
+        }, function (index) {
+            target.remove();
+            initItemIndex();
+        });
+    }
+
+      
+  });
+
+    function initItemIndex(){
+        $('.img-item').each(function(index){
+            var $this = $(this);
+            var listNum = index + 1;
+            $this.find('.img-title').html('图片'+listNum);
+            $this.find('input.ad-img').attr('name','ad-img'+listNum+'');
+        });
+    }
+
+    
+});
+
+{#  自定义保存函数 #}
+    function onSubmit(progress) {
+        var imgList = [];
+        $('.img-body .img-item').each(function(){
+            if($(this).find('input.ad-img').val()){
+                var imgObj = {
+                    imgUrl: $(this).find('input.ad-img').val(),
+                    imgLink: $(this).find('input.img-link').val()
+                };
+                imgList.push(imgObj);
+            }
+            
+        });
+        if(imgList.length > 0){
+          $('input[name="imgList"]').val(JSON.stringify(imgList)); 
+        }else{
+          $('input[name="imgList"]').val(imgList); 
+        }
+        
+        progress.next();
+    }
+</script>  

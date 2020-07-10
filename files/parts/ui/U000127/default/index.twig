@@ -1,0 +1,233 @@
+
+{% set remUnit = 37.5 %}
+{%
+	set pageData = {
+		componentHeight:(data.componentHeight is not null?data.componentHeight:70)/remUnit,
+		boxMarginBottom:(data.boxMarginBottom is not null?data.boxMarginBottom:32)/remUnit,
+		bgColor:data.bgColor is not null?data.bgColor:'#f5f5f5',
+		bgImage:data.bgImage is not null?data.bgImage:'',
+		bannerImage:data.bannerImage is not null?data.bannerImage:'',
+
+		hasEndedTimeDateBgColor:data.hasEndedTimeDateBgColor is not null?data.hasEndedTimeDateBgColor:'#dbdee0',
+		hasEndedTimeDateTextColor:data.hasEndedTimeDateTextColor is not null?data.hasEndedTimeDateTextColor:'#ffffff',
+		hasEndedActivityNameColor:data.hasEndedActivityNameColor is not null?data.hasEndedActivityNameColor:'#c4c4c4',
+		hasEndedActivityDescColor:data.hasEndedActivityDescColor is not null?data.hasEndedActivityDescColor:'#c4c4c4',
+
+    hasStartedTimeDateBgColor:data.hasStartedTimeDateBgColor is not null?data.hasStartedTimeDateBgColor:'#b8bec4',
+		hasStartedTimeDateTextColor:data.hasStartedTimeDateTextColor is not null?data.hasStartedTimeDateTextColor:'#ffffff',
+		hasStartedActivityNameColor:data.hasStartedActivityNameColor is not null?data.hasStartedActivityNameColor:'#2d2d2d',
+		hasStartedActivityDescColor:data.hasStartedActivityDescColor is not null?data.hasStartedActivityDescColor:'#2d2d2d',
+
+    hasNotStartedTimeDateBgColor:data.hasNotStartedTimeDateBgColor is not null?data.hasNotStartedTimeDateBgColor:'#dbdee0',
+		hasNotStartedTimeDateTextColor:data.hasNotStartedTimeDateTextColor is not null?data.hasNotStartedTimeDateTextColor:'#ffffff',
+		hasNotStartedActivityNameColor:data.hasNotStartedActivityNameColor is not null?data.hasNotStartedActivityNameColor:'#c4c4c4',
+		hasNotStartedActivityDescColor:data.hasNotStartedActivityDescColor is not null?data.hasNotStartedActivityDescColor:'#c4c4c4',
+		
+		defaultDateImage:data.defaultDateImage is not null?data.defaultDateImage:'',
+		defaultHoverDateImage:data.defaultHoverDateImage is not null?data.defaultHoverDateImage:'',
+
+		defaultRaidersImage:data.defaultRaidersImage is not null?data.defaultRaidersImage:'',
+		defaultRaidersLink:data.defaultRaidersLink is not null?data.defaultRaidersLink:'',
+		notCurrentActivityImg:data.notCurrentActivityImg is not null?data.notCurrentActivityImg:'',
+		currentActivityImg:data.currentActivityImg is not null?data.currentActivityImg:'',
+		activityDateTimeTitleFontSize:data.activityDateTimeTitleFontSize is not null?data.activityDateTimeTitleFontSize:20,
+	}
+%}
+
+<div class="geshop-component-box component-drag geshop-time-line-container wrap-U000127-default wrap-{{ pageInstanceId }}" data-gid="U000127" data-key="U000127" data-id="{{ pageInstanceId }}" data-editEnv="{{data.isEditEnv}}" data-static-domain="{{ staticDomain }}" attr="nav_flag">
+  {% if data.dateTimeArrs|length %}
+  <div class="header-timeline-container" style="
+    margin-bottom:{{ pageData.boxMarginBottom }}rem;
+    height:{{ pageData.componentHeight }}rem;
+    background-color: {{ pageData.bgColor }};
+    {% if pageData.bgImage %}background-image: url({{ pageData.bgImage }});background-repeat:no-repeat;background-position:left top;background-size:cover;{% endif %}
+
+  ">
+    <div class="inner-fixed-container tc">
+      {% if pageData.bannerImage %}
+      <div class="timeline-logo" style="
+        background-image:url({{pageData.bannerImage}});
+      "></div>
+      {% else %}
+      <div class="default-timeline-logo"></div>
+      {% endif %}
+      <div class="timeline-list-wrapper header-timeline-item swiper-container" id="js_top_timeline" style="height:{{ pageData.componentHeight }}rem;overflow-y:hidden;">
+        <ul class="swiper-wrapper">
+          {% for dateItem in data.dateTimeArrs %}
+          <li data-starttime="{{ dateItem.dateStartTime }}" data-endtime="{{ dateItem.dateEndTime }}" data-index={{ loop.index }} class="swiper-slide">
+            {# <p class="header-timeline-date">{{ (dateItem.dateStartTime)|date("m.d") }} - {{ (dateItem.dateEndTime)|date("m.d") }}</p> #}
+            <p class="header-timeline-date">00.00 - 00.00</p>
+            <p class="header-timeline-title site-bold-strict">{{ dateItem.activityName }}</p>
+            <p class="header-timeline-discount">{{ dateItem.activityDesc }}</p>
+            <i class="arrow"></i>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {# 攻略页 #}
+      {% if pageData.defaultRaidersImage %}
+      <div class="header-sale-guide header-timeline-item" style="background-image:url({{ pageData.defaultRaidersImage }});background-size:cover;">
+        <a target="{{ data.defaultLinkTarget }}" {% if pageData.defaultRaidersLink %}href="{{ pageData.defaultRaidersLink }}"{% endif %} target="_blank" style="display:block;width:100%;height:100%;"></a>
+      </div>
+{#      {% else %}#}
+{#      <div class="header-sale-guide header-timeline-item" style="background-color: #EDEDED;color: #333;padding-top: 10px;box-sizing:border-box;">#}
+{#        <img width="42" height="32" src="{{ data.default.view }}" />#}
+{#        <p class="site-bold-strict" style="font-weight:bold;margin-top:0.106rem;">攻略页</p>#}
+{#      </div>#}
+      {% endif %}
+    </div>
+  </div>
+  {% else %}
+  <div class="header-timeline-container" data-is-default-view="1" style="background-color:#F5F5F5;height:1.8667rem;margin-bottom:{{ pageData.boxMarginBottom }}rem;">
+    <div class="inner-fixed-container tc">
+      <div style="width:1.8667rem;height:1.8667rem;float:left;background-image:url({{data.default.view}});background-size: 1.12rem 0.8533rem;background-repeat:no-repeat;background-position:center center;background-color:#EDEDED;"></div>
+      <div class="timeline-list-wrapper timeline-default-list-wrapper header-timeline-item swiper-container" id="js_top_timeline">
+        <ul class="swiper-wrapper default-swiper-wrapper">
+          {% for item in [1,2,3,4,5] %}
+          <li class="swiper-slide">
+            <p class="header-timeline-date">6.20-6.30</p>
+            <p class="header-timeline-title site-bold-strict">BOTTOMS</p>
+            <p class="header-timeline-discount">$7 OFF $49</p>
+            <i class="arrow"></i>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div  class="default-header-item">
+        <img width="42" height="32" src="{{ data.default.view }}" />
+        <p class="site-bold-strict">攻略页</p>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  <!-- embed stylesheet begin -->
+  {% if data.isEditEnv == 1 %}
+    <style type="text/css">
+      .wrap-{{ pageInstanceId }} .header-timeline-container {
+        margin: 0px;
+      }
+      .wrap-{{ pageInstanceId }} .timeline-list-wrapper li .header-timeline-title {
+        font-family: OpenSans-Bold;
+        margin: 0.1067rem 0 0.1067rem;
+      }
+      .wrap-{{ pageInstanceId }} .timeline-list-wrapper li {
+        color: #bf2333;
+        display: inline-block;
+        padding: 0.05rem 0.3rem 0.16rem 0.213rem;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        width: auto!important;
+        position: relative;
+        height: 1.8667rem;
+      }
+      .wrap-{{ pageInstanceId }} .timeline-list-wrapper li .header-timeline-title,
+      .wrap-{{ pageInstanceId }} .timeline-list-wrapper li .header-timeline-date {
+        font-family: OpenSans-Bold;
+      }
+      .wrap-{{ pageInstanceId }} .timeline-list-wrapper li .header-timeline-date {
+        line-height: 0.426rem;
+      }
+      .wrap-{{ pageInstanceId }} .timeline-list-wrapper li .header-timeline-title {
+        line-height: 0.32rem;
+      }
+    </style>
+  {% endif %}
+  <style type="text/css">
+    .wrap-{{ pageInstanceId }} .timeline-list-wrapper li+li .arrow {
+      {% if pageData.notCurrentActivityImg %}
+      background-image: url({{ pageData.notCurrentActivityImg }});
+      {% endif %}
+    }
+    .wrap-{{ pageInstanceId }} .timeline-list-wrapper li.active+li .arrow {
+      {% if pageData.currentActivityImg %}
+      background-image: url({{ pageData.currentActivityImg }});
+      {% endif %}
+    }
+    .wrap-{{ pageInstanceId }} .default-header-item {
+      display: inline-block;
+      width:1.8667rem;
+      height:1.8667rem;
+      text-align: center;
+      background-color:#EDEDED;
+      font-size: 12px;
+      font-weight: bold;
+      padding-top: 10px;
+      box-sizing: border-box;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 1;
+    }
+    .wrap-{{ pageInstanceId }} .default-header-item p{
+      margin-top: 0.106rem;
+    }
+    .wrap-{{ pageInstanceId }} .timeline-default-list-wrapper li .header-timeline-date {
+      background-color: #000000;
+      color: #FFFFFF;
+    }
+    .wrap-{{ pageInstanceId }} .default-swiper-wrapper .header-timeline-title {
+      font-weight: bold;
+    }
+    .wrap-{{ pageInstanceId }} .default-swiper-wrapper .header-timeline-title,
+    .wrap-{{ pageInstanceId }} .default-swiper-wrapper .header-timeline-discount {
+      color: #000000;
+    }
+    .wrap-{{ pageInstanceId }} .timeline-default-list-wrapper li+li:before {
+      background-image: url({{ staticDomain }}/resources/images/icon/time-default-arrow.png);
+      background-repeat: no-repeat;
+      background-position: center center;
+      width: 12px;
+      height: 18px;
+    }
+    .wrap-{{ pageInstanceId }} .default-timeline-logo {
+      width: 1.8667rem;
+      height: 1.8667rem;
+      float: left;
+      background-image:url({{data.default.view}});
+      background-size: 1.12rem 0.8533rem;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-color: #EDEDED;
+    }
+    .wrap-{{ pageInstanceId }} .timeline-list-wrapper li.hasEndedClass .header-timeline-date {
+      background-color: {{ pageData.hasEndedTimeDateBgColor }};
+      color: {{ pageData.hasEndedTimeDateTextColor }};
+    }
+    .wrap-{{ pageInstanceId }} .timeline-list-wrapper li.hasEndedClass .header-timeline-title {
+      color: {{ pageData.hasEndedActivityNameColor }};
+    }
+    .wrap-{{ pageInstanceId }} .timeline-list-wrapper li.hasEndedClass .header-timeline-discount {
+      color: {{ pageData.hasEndedActivityDescColor }};
+    }
+
+    .wrap-{{ pageInstanceId }} .timeline-list-wrapper li.active .header-timeline-date {
+      background-color: {{ pageData.hasStartedTimeDateBgColor }};
+      color: {{ pageData.hasStartedTimeDateTextColor }};
+    }
+    .wrap-{{ pageInstanceId }} .timeline-list-wrapper li.active .header-timeline-title {
+      color: {{ pageData.hasStartedActivityNameColor }};
+    }
+    .wrap-{{ pageInstanceId }} .timeline-list-wrapper li.active .header-timeline-discount {
+      color: {{ pageData.hasStartedActivityDescColor }};
+    }
+
+    .wrap-{{ pageInstanceId }} .timeline-list-wrapper li.hasNotStartClass .header-timeline-date {
+      background-color: {{ pageData.hasNotStartedTimeDateBgColor }};
+      color: {{ pageData.hasNotStartedTimeDateTextColor }};
+    }
+    .wrap-{{ pageInstanceId }} .timeline-list-wrapper li.hasNotStartClass .header-timeline-title {
+      color: {{ pageData.hasNotStartedActivityNameColor }};
+    }
+    .wrap-{{ pageInstanceId }} .timeline-list-wrapper li.hasNotStartClass .header-timeline-discount {
+      color: {{ pageData.hasNotStartedActivityDescColor }};
+    }
+    {% set swiperWidth =  pageData.defaultRaidersImage ? '6.2667rem' : '8rem' %}
+    .wrap-{{ pageInstanceId }}  .timeline-list-wrapper{
+      max-width: {{ swiperWidth }};
+    }
+
+
+  </style>
+  <!-- embed stylesheet end -->
+</div>

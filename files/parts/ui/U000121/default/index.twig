@@ -1,0 +1,68 @@
+{% set pageData = {
+	height:data.height is not null?data.height:100,
+	viewPaddingTB:data.viewPaddingTB|default(0),
+	viewPaddingLR:data.viewPaddingLR|default(0),
+	titleWidth:data.titleWidth is not null?data.titleWidth:400,
+	titleHeight:data.titleHeight is not null?data.titleHeight:60,
+	viewBorderC:data.viewBorderC is not null?data.viewBorderC:'#FD9E62',
+}%}
+<div class="geshop-component-box component-drag" data-gid="U000121" data-key="U000121" data-id="{{ pageInstanceId }}" attr="nav_flag">
+	<div class="gs-title-wrap" style="
+		{% if data.boxMarginTop %}margin-top: {{ data.boxMarginTop }}px;{% endif %}
+		{% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}
+		{% if data.boxPaddingTop %}padding-top: {{ data.boxPaddingTop }}px;{% endif %}
+		{% if data.boxPaddingBottom %}padding-bottom: {{ data.boxPaddingBottom }}px;{% endif %}
+		padding-top: {{ data.boxPaddingTop | default(30) }}px;
+		padding-bottom: {{ data.boxPaddingBottom | default(30) }}px;
+		{# {% if pageData.height %}height:{{ pageData.height }}px;{% endif %} #}
+			{% if data.imgSrc is not empty%}
+			background-image: url({% if data.imgSrc %}{{ data.imgSrc }}{% else %}{% endif %});
+			{% endif %}
+		background-position: center;
+		background-repeat: no-repeat;
+		background-color:{% if data.bgColor %}{{ data.bgColor }}{% endif %};
+		text-align:center;
+		width:100%;
+		overflow: hidden;
+	">
+		<div class="gs-title-box">
+			<p style="
+				display:block;
+				font-size:{% if data.titleFont %}{{ data.titleFont }}{% else %} 16{% endif %}px;
+				color:{% if data.titleColor %}{{ data.titleColor }}{% else %} #333333{% endif %};
+				font-weight:{% if data.titleWeight %}{{ data.titleWeight }}{% else %} bold{% endif %};
+				{% if pageData.titleWidth %}width:{{pageData.titleWidth}}px;{% endif %}
+				{# {% if pageData.titleHeight %}height:{{pageData.titleHeight}}px;line-height:{{pageData.titleHeight}}px;{% endif %} #}
+				line-height:1.5;
+				margin-left:auto;
+				margin-right:auto;
+				{% if data.titleBgIis not empty %}background:url('{{data.titleBgI}}') no-repeat center center/100%;{% endif %}
+				{# margin-top:
+				{% if data.titleFont %}
+					{% if data.height %}{{ data.height / 2 - data.titleFont / 2 }}{% else %}{{ 40 - data.titleFont / 2 }}{% endif %}px
+				{% else %}
+					{% if data.height %}{{ data.height / 2 - 8 }}{% else %}32{% endif %}px
+				{% endif %}; #}
+			">
+				{% if data.titleText %}{{ data.titleText }}{% else %}请设置导航标题{% endif %}
+			</p>
+			{% if data.isShow is not defined or data.isShow == 1 %}
+			<a href="{{ data.viewHref }}" style="
+				{% if data.viewHref %}cursor: pointer;{% else%} cursor:default; {% endif %}
+				font-size:{% if data.viewFont %}{{ data.viewFont }}{% else %} 12{% endif %}px;
+				color:{% if data.viewColor %}{{ data.viewColor }}{% else %} #333333{% endif %};
+				font-weight:{% if data.viewWeight %}{{ data.viewWeight }}{% else %} normal{% endif %};
+				margin-top:{{data.viewMarginT|default(0)}}px;
+				display:inline-block;
+				{% if data.viewRadius %}border-radius:{{data.viewRadius}}px;{% endif %}
+				{% if data.viewBgColor %}background-color:{{data.viewBgColor}};{% endif %}
+				{% if data.viewMarginT %}margin-top:{{data.viewMarginT}}px;{% endif %}
+				padding:{{pageData.viewPaddingTB}}px {{pageData.viewPaddingLR}}px {{pageData.viewPaddingTB}}px {{pageData.viewPaddingLR}}px;
+				{% if pageData.viewBorderC %}border-color:{{pageData.viewBorderC}};{% endif %}
+				border-width:{{data.viewBorderW|default('0')}}px;
+				{% if data.viewBorderS %}border-style:{{data.viewBorderS}};{% endif %}
+			">{% if data.viewText %}{{ data.viewText }}{% else %}View More{% endif %}</a>
+			{% endif %}
+		</div>
+	</div>
+</div>

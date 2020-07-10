@@ -1,0 +1,78 @@
+<script type="text/html" class="rank-other-goods-tpl" data-tplid="{{ pageInstanceId }}">
+    <%# if (d && d.length) { %>
+    <ul class="other-goods clearfix">
+        <%# for (var i = 0, len = d.length; i < len; i++) {
+                var good = d[i];
+        %>
+        <li class="js_logsss_browser js_logsss_event_ps rank-good other-good"
+            data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'<% good.goods_sn %>','cporder':'{{ layoutIndex }}','rank':'<% i %>'} }"
+            data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'<% good.goods_sn %>','cporder':'{{ layoutIndex }}','rank':'<% i %>'},'skuinfo':{'sku':'<% good.goods_sn %>','pam':'1','pc':'<% good.cateid %>','k':'<% good.warehousecode %>'} }"
+        >
+            <div class="rank-good-inner clearfix">
+                <div class="rank-good-img-container">
+                    <a class="js_logsss_click_delegate_ps rank-good-img-link" href="<% good.url_title %>">
+                        <img class="js_rank_lazy rank-good-img" src="https://geshopcss.logsss.com/imagecache/geshop/resources/images/dl/loading.gif" data-original="<% good.goods_img %>" data-sku="<% good.goods_sn %>">
+                        <div class="rank-shop">
+                            <div class="rank-shop-inner">
+                                <i class="rank-bag-img"></i>
+                                <div class="rank-shop-text">{{ languages.shopnow[lang] }} </div>
+                            </div>
+                        </div>
+                        <%# if (good.discount) { %>
+                        <div class="rank-cutoff">
+                            {% if formData.cutoff_image %}
+                            <img class="rank-cutoff-img" src="{{ formData.cutoff_image }}">
+                            {% endif %}
+                            {% if formData.cutoff_type == 1 %}
+                            <div class="rank-cutoff-content"><div class="rank-cutoff-value"><% good.discount %>%</div><div class="rank-cutoff-label">OFF</div></div>
+                            {% else %}
+                            <div class="rank-cutoff-content">-<span><% good.discount %>%</span></div>
+                            {% endif%}
+                        </div>
+                        <%# } %>
+                    </a>
+                    <%# if (good.is_on_sale != 1 && good.goods_number != 0) { %>
+                    <div class="rank-good-sold-out"></div>
+                    <%# } %>
+                </div>
+                <div class="rank-good-other">
+                    <a href="<% good.url_title %>" target="_blank" class="js_logsss_click_delegate_ps rank-good-title"><% good.goods_title %></a>
+                    <div class="rank-good-price-container">
+                        <span class="rank-good-price my-shop-price" data-orgp="<% good.shop_price %>"><span class="icon">$</span><% good.shop_price %></span>
+                        <span class="rank-good-market-price my-shop-price dl-has-rrp-tag" data-orgp="<% good.market_price %>"><span class="icon">$</span><% good.market_price %></span>
+                    </div>
+                    <div class="rank-good-promotion <% (good.promotion_list && good.promotion_list.length > 1) ? 'has-more' : '' %> <% (!good.promotion_list || good.promotion_list.length === 0) ? 'rank-good-promotion-empty' : '' %>">
+                        <div class="rank-good-promotion-text-container"><div class="rank-good-promotion-text"><% (good.promotion_list && good.promotion_list.length > 0) ? good.promotion_list[0] : '&nbsp;' %></div></div>
+                        <%# if (good.promotion_list && good.promotion_list.length > 1) { %>
+                        <div class="rank-good-promotion-more">
+                            <%# for (var j = 0, jlen = good.promotion_list.length; j < jlen; j++) { %>
+                            <div class="rank-good-promotion-more-text"><% good.promotion_list[j] %></div>
+                            <%# } %>
+                        </div>
+                        <%# } %>
+                    </div>
+                    <!--评论 goods_grade-->
+                    <div class="grade_box">
+                        <%# if(good.goods_reviews > 0) { %>
+                        <div class="grade-bar-l">
+                            <div class="grade-bar grade-top">
+                                {% for i in range(0, 4) %}
+                                    <span class="iconfont">&#xe685;</span>
+                                {% endfor %}
+                            </div>
+                            <div class="grade-bar grade-bot" style="width:<% (good.goods_grade /5)*100 %>%">
+                                {% for i in range(0, 4) %}
+                                    <span class="iconfont">&#xe685;</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="grade-bar-r"><% good.goods_reviews %> {{ languages.reviews[lang] }}</div>
+                        <%# } %>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <%# } %>
+    </ul>
+    <%# } %>
+</script>

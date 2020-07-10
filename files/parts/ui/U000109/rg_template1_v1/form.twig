@@ -1,0 +1,251 @@
+{%
+    set formData = {
+        id: 'U000109',
+        name: '排行榜组件',
+        theme: 'rg_template1_v1',
+        tabs: [
+            {
+                label: '数据配置',
+                components: [
+                    {
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '商品数据来源',
+                                type: 'radio',
+                                name: 'goods_type',
+                                default: 1,
+                                options: [
+                                    { label: '新品榜', value: 1 },
+                                    { label: '热卖榜', value: 2 },
+                                    { label: '折扣榜', value: 3 }
+                                ]
+                            },
+                            {
+                                label: '商品分类数据配置',
+                                type: 'fieldset',
+                                components: [
+                                    {
+                                        label: '每个tab显示商品个数',
+                                        desc: '（*最多显示100个商品）',
+                                        name: 'tab_num',
+                                        default: ''
+                                    },
+                                ]
+                            },
+                            {
+                                type: 'diy',
+                                src: 'tabs.twig'
+                            },
+                        ]
+                    }
+                ]
+            },
+            {
+                label: '样式配置',
+                components: [
+                    {
+                        label: '基础配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '下边距（px）',
+                                name: 'box_margin_bottom',
+                                default: '32',
+                                col: 2
+                            },
+                            {
+                                label: '组件背景颜色',
+                                name: 'box_bg_color',
+                                type: 'colorPicker',
+                                default: '#F8F8F8',
+                                col: 2
+                            }
+                        ]
+                    },
+                    {
+                        label: '导航是否吸顶',
+                        type: 'radio',
+                        name: 'is_fixed',
+                        default: 1,
+                        options: [
+                            { label: '是', value: 1 },
+                            { label: '否', value: 0 },
+                        ]
+                    },
+                    {
+                        label: 'Banner图片配置',
+                        desc: '(建议上传高度为200px图片)',
+                        name: 'banner_img',
+                        type: 'image',
+                        default: ''
+                    },
+                    {
+                            label: 'Banner图片是否显示',
+                            type: 'radio',
+                            name: 'is_show',
+                            default: 1,
+                            options: [
+                            { label: '是', value: 1 },
+                            { label: '否', value: 0 },
+                        ]
+                    },
+                    {
+                        label: '商品配置',
+                        type: 'fieldset',
+                        components:[
+                        {
+                            type: 'stock-rg'
+                        }
+                    ]
+                    },
+                    {
+                        label: 'tab样式配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '背景颜色',
+                                name: 'tb_bg_color',
+                                type: 'colorPicker',
+                                default: '#D8D8D8',
+                                col: 2
+                            },
+                            {
+                                label: '未选中文字颜色',
+                                name: 'tb_bg_color_off',
+                                type: 'colorPicker',
+                                default: '#FFFFFF',
+                                col: 2
+                            },
+                            {
+                                label: '选中文字颜色',
+                                name: 'tb_bg_color_on',
+                                type: 'colorPicker',
+                                default: '#333333',
+                            },
+                        ]
+                    },
+                    {
+                        type: 'border-style-rg',
+                    },
+                    {
+                        label: '排行榜图标配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '图标宽度(px)',
+                                name: 'img_width',
+                                default: '40',
+                                col: 2
+                            },
+                            {
+                                label: '图标高度(px)',
+                                name: 'img_height',
+                                default: '48',
+                                col: 2
+                            },
+                            {
+                                label: '第一名图标',
+                                type: 'image',
+                                name: 'icon_rank_1',
+                                default: ''
+                            },
+                            {
+                                label: '第二名图标',
+                                type: 'image',
+                                name: 'icon_rank_2',
+                                default: ''
+                            },
+                            {
+                                label: '第三名图标',
+                                type: 'image',
+                                name: 'icon_rank_3',
+                                default: ''
+                            },
+                            {
+                                label: '其它名次图标',
+                                name: 'icon_rank_other',
+                                type: 'image',
+                                default: ''
+                            },
+                            {
+                                label: '其它榜文字颜色',
+                                name: 'rank_color',
+                                type: 'colorPicker',
+                                default: '#FFFFFF',
+                            }
+                        ]
+                    },
+                    {
+                        type: 'shop-price-rg',
+                    },
+                    {
+                        label: '新品/热卖/折扣信息配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '字体颜色',
+                                name: 'font_color',
+                                type: 'colorPicker',
+                                default: '#222222',
+                            },
+                        ]
+                    },
+                    {
+                        label: '购买按钮设置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '按钮文字颜色',
+                                name: 'buy_color',
+                                type: 'colorPicker',
+                                default: '#FFFFFF',
+                                col: 2
+                            },
+                            {
+                                label: '按钮背景颜色',
+                                name: 'buy_bg_color',
+                                type: 'colorPicker',
+                                default: '#333333',
+                                col: 2
+                            },
+                            {
+                                label: '按钮文案',
+                                name: 'buy_text',
+                                default: 'SNAP UP',
+                            },
+                        ]
+                    },
+                ]
+            }
+        ],
+        skuValidConfig: 'skuValidConfig',
+        beforeSubmit: 'onSubmit',
+    }
+%}
+
+
+<script>
+    {# 自定义校验函数 #}
+    function skuValidConfig () {
+        return {
+            check_type: 'category',
+            check_rules: 'CATEGORY_VALIDATE_EXITS',
+            ignore_cateIds: '0'
+        };
+    }
+    function onSubmit(progress) {
+        var navData = [];
+        $wrap.find('.wrap-config').each(function (index, item) {
+            var obj = {};
+            obj.tab_name = $(this).find('input[name="tab_name"]').val();
+            obj.tab_id = $(this).find('input[name="tab_id"]').val();
+            navData.push(obj);
+        });
+        $('.nav-list-arr').val(JSON.stringify(navData));
+        progress.next();
+    }
+</script>
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

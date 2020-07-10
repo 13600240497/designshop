@@ -1,0 +1,13 @@
+{% set space = '#U000001_'~pageInstanceId %}
+{% set body =  space~' .geshop_U000001_rg_default_v3_wrapper' %}
+
+{{ body }} {
+    margin-bottom: {{ data.box_margin_bottom | default(32) }}px;
+}
+
+{{ body }} li {
+    border-radius: {{ data.goods_border_radius | default(4) }}px;
+    border-color: {{ data.hover_bdColor | default('#FFFFFF') }};
+}
+
+{{ include ('@app/files/parts/formTemplate/components/siteParam-rg.twig', {'root': space}) }}

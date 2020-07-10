@@ -1,0 +1,158 @@
+.geshop-U000164-default-v3 {
+    width: 1198px;
+    margin: 0 auto;
+    overflow: hidden !important;
+
+    // 组件-产品列表区域
+    .geshop-BP-good-list {
+        padding: 24px 24px 8px 24px;
+        > ul {
+            display: block;
+            width: 1200px;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            font-size: 0px;
+            > li {
+                position: relative;
+                display: inline-block;
+                width: 275px;
+                margin: 0 16px 16px 0 !important;
+                box-sizing: border-box;
+                border: solid 1px #fff;
+                -webkit-transition: .5s;
+                transition: .5s;
+                &:nth-child(4n) {
+                    margin-right: 0;
+                }
+            }
+        }
+    } // end 产品列表区域
+
+    // JS 渲染模版
+    .geshop-BP-good-template {
+        display: none;
+    } // end
+
+    // 组件－查看更多
+    .geshop-BP-viewmore {
+        text-align: center;
+        padding-bottom: 30px;
+        a {
+            min-width: 160px;
+            display: inline-block;
+            height: 40px;
+            line-height: 38px;
+            border: solid 1px #333;
+            border-radius: 40px;
+            text-align: center;
+            color: #333;
+            font-size: 16px;
+            box-sizing: border-box;
+            padding: 0 16px;
+        }
+    } // end
+
+    // 单个产品的样式
+    div.BP-goods-block {
+        display: block;
+        padding: 11px;
+        background: #fff;
+
+        // 产品图片区域
+        .BP-goods-img {
+            display: block;
+            position: relative;
+            width: 252px;
+            height: 336px;
+            overflow: hidden;
+        }
+
+        // 产品名字
+        .BP-goods-title {
+            display: block;
+            height: 20px;
+            font-size: 14px;
+            color: #333;
+            line-height: 20px;
+            margin: 12px 0 4px 0;
+            overflow: hidden;
+            a {
+                display: block;
+                height: 100%;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+        }
+
+        // 产品价格和积分
+        .BP-goods-price {
+            font-size: 22px;
+            height: 30px;
+            line-height: 30px;
+            vertical-align: middle;
+            > * {
+                vertical-align: middle;
+            }
+            // 积分icon
+            .BP-goods-icon {
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                overflow: hidden;
+                vertical-align: middle;
+                img {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        } // end
+
+        // 其他信息
+        .BP-goods-other {
+            margin-top: 5px;
+            height:20px;
+            font-size:14px;
+            line-height:20px;
+            color: #999;
+        } //  end
+
+        // 库存剩余
+        .BP-goods-left {
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            right: 0px;
+            display: block;
+            width: 100%;
+            height: 24px;
+            line-height: 24px;
+            background: #fff;
+            opacity: .9;
+            color: #666;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        // 兑换按钮
+        .BP-goods-buynow {
+            margin-top: 15px;
+            margin-bottom: 4px;
+            button, a {
+                display: block;
+                width: 251px;
+                height: 40px;
+                line-height: 40px;
+                background: #333;
+                color: #fff;
+                text-align: center;
+                border: none;
+                font-size: 16px;
+                border-radius: 40px;
+            }
+        }
+    } // end 产品列表
+    
+}

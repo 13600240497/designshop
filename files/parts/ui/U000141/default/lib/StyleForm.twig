@@ -1,0 +1,184 @@
+<h4 class="column-title">常用配置<span>(此组件只适用于通栏)</span></h4>
+
+<div class="layui-form-item">
+    <label class="form-item-label">组件下边距(px)</label>
+    <div class="layui-input-block">
+        <input type="text" name="boxMarginBottom" autocomplete="off" class="layui-input" value="{{ data.boxMarginBottom | default(16) }}">
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">组件背景颜色</label>
+    <div class="layui-input-block">
+        {{
+            include ('lib/ColorPicker.twig', {
+                'cmpt_name': 'cmptBgColor',
+                'cmpt_value': data.cmptBgColor,
+                'cmpt_default': '#ffffff'
+            })
+        }}
+    </div>
+</div>
+
+{#  #}
+<h5 class="column-title">标题配置</h5>
+
+<div class="layui-form-item">
+    <label class="form-item-label">整体背景颜色</label>
+    <div class="layui-input-block">
+        {{
+            include ('lib/ColorPicker.twig', {
+                'cmpt_name': 'titleBgColor',
+                'cmpt_value': data.titleBgColor,
+                'cmpt_default': '#EDEDED'
+            })
+        }}
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">整体背景图片</label>
+    <div class="layui-input-block">
+        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+        <input class="layui-input" type="text" name="titleBgImg" value="{{data.titleBgImg|default('')}}">
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">整体背景高度(px)</label>
+    <div class="layui-input-block">
+        <input type="text" name="titleHeight" autocomplete="off" class="layui-input" value="{{ data.titleHeight | default(100) }}">
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">标题文字颜色</label>
+    <div class="layui-input-block">
+        {{
+            include ('lib/ColorPicker.twig', {
+                'cmpt_name': 'titleFontColor',
+                'cmpt_value': data.titleFontColor,
+                'cmpt_default': '#333333'
+            })
+        }}
+    </div>
+</div>
+
+<div class="layui-row layui-col-space20">
+    <div class="layui-col-xs6">
+        <div class="layui-form-item">
+            <label class="form-item-label">倒计时文字颜色</label>
+            <div class="layui-input-block">
+                {{
+                    include ('lib/ColorPicker.twig', {
+                        'cmpt_name': 'titleCounterFontColor',
+                        'cmpt_value': data.titleCounterFontColor,
+                        'cmpt_default': '#FFFFFF'
+                    })
+                }}
+            </div>
+        </div>
+    </div>
+    <div class="layui-col-xs6">
+        <div class="layui-form-item">
+            <label class="form-item-label">倒计时背景颜色</label>
+            <div class="layui-input-block">
+                {{
+                    include ('lib/ColorPicker.twig', {
+                        'cmpt_name': 'titleCounterBgColor',
+                        'cmpt_value': data.titleCounterBgColor,
+                        'cmpt_default': '#333333'
+                    })
+                }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{#  #}
+<h5 class="column-title">商品内容配置</h5>
+
+<div class="layui-form-item">
+    <label class="form-item-label">销售价文字颜色</label>
+    <div class="layui-input-block">
+        {{
+            include ('lib/ColorPicker.twig', {
+                'cmpt_name': 'goodsSalePriceFontColor',
+                'cmpt_value': data.goodsSalePriceFontColor,
+                'cmpt_default': siteData.price_color|default('#333333')
+            })
+        }}
+    </div>
+</div>
+
+<div class="layui-row layui-col-space20">
+    <div class="layui-col-xs6">
+        <div class="layui-form-item">
+            <label class="form-item-label">折扣标文字颜色</label>
+            <div class="layui-input-block">
+                {{
+                    include ('lib/ColorPicker.twig', {
+                        'cmpt_name': 'discountFontColor',
+                        'cmpt_value': data.discountFontColor,
+                        'cmpt_default': '#FFFFFF'
+                    })
+                }}
+            </div>
+        </div>
+    </div>
+    <div class="layui-col-xs6">
+        <div class="layui-form-item">
+            <label class="form-item-label">折扣标背景颜色</label>
+            <div class="layui-input-block">
+                {{
+                    include ('lib/ColorPicker.twig', {
+                        'cmpt_name': 'discountBgColor',
+                        'cmpt_value': data.discountBgColor,
+                        'cmpt_default': '#333333'
+                    })
+                }}
+            </div>
+        </div>
+    </div>
+    <div class="layui-col-xs6">
+        <div class="layui-form-item">
+            <label class="form-item-label">按钮文字颜色</label>
+            <div class="layui-input-block">
+                {{
+                    include ('lib/ColorPicker.twig', {
+                        'cmpt_name': 'goodsBtnFontColor',
+                        'cmpt_value': data.goodsBtnFontColor,
+                        'cmpt_default': '#FFFFFF'
+                    })
+                }}
+            </div>
+        </div>
+    </div>
+    <div class="layui-col-xs6">
+        <div class="layui-form-item">
+            <label class="form-item-label">按钮背景颜色</label>
+            <div class="layui-input-block">
+                {{
+                    include ('lib/ColorPicker.twig', {
+                        'cmpt_name': 'goodsBtnBgColor',
+                        'cmpt_value': data.goodsBtnBgColor,
+                        'cmpt_default': '#333333'
+                    })
+                }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">剩余库存条颜色</label>
+    <div class="layui-input-block">
+        {{
+            include ('lib/ColorPicker.twig', {
+                'cmpt_name': 'goodsProcessBgColor2',
+                'cmpt_value': data.goodsProcessBgColor2,
+                'cmpt_default': '#D0D0D0'
+            })
+        }}
+    </div>
+</div>

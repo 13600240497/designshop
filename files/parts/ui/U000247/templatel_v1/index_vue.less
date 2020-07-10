@@ -1,0 +1,278 @@
+.U000247_lottery_wrap {
+	max-width: 1200px;
+	margin: 0 auto;
+
+	*{
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
+		-webkit-font-smoothing: subpixel-antialiased;
+		//z-index: 1
+	}
+	.cont {
+
+		width: 1074px;
+		margin: 0 auto;
+		color: #ffffff;
+		font-size: 0;
+		position: relative;
+	}
+
+	// 转盘背景
+
+	.lottery-box {
+		display: inline-block;
+		vertical-align: top;
+		position: relative;
+
+
+		.lottery-content {
+			width: 452px;
+			height: 452px;
+		}
+
+		.btn-start {
+			-webkit-tap-highlight-color:rgba(0,0,0,0);
+			width: 196px;
+			height: 196px;
+			position: absolute;
+			margin: auto;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			cursor: pointer;
+		}
+	}
+
+	// 规则
+	.btn-rule {
+		position: absolute;
+		width: 63px;
+		height: 63px;
+		border-radius: 0px 0px 32px 32px;
+		text-align: center;
+		line-height: 63px;
+		cursor: pointer;
+		z-index: 2;
+	}
+
+	// 剩余抽奖次数
+	.merber {
+		position: absolute;
+	}
+
+	// 用户列表
+	.lottery-user-list {
+		display: inline-block;
+		vertical-align: top;
+		position: relative;
+		overflow: hidden;
+		.act-comming {
+			font-size: 20px;
+			color: #000000;
+			text-align: center;
+			margin-top: 160px;
+
+			.down-time {
+				font-size: 48px;
+				margin-top: 23px;
+				font-weight: bold
+			}
+		}
+		.titel {
+			font-weight: 900;
+			text-align: center;
+		}
+	}
+
+	// 中奖用户列表
+	.user-list-wrap {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		padding: 0 28px;
+		height: 288px;
+		overflow: hidden;
+
+		.list-wrap {
+			height: 100%;
+			//background: #00F7DE;
+			.user-list {
+				display: block;
+
+				li {
+					display: block;
+					height: 48px;
+					line-height: 48px;
+					font-size: 0;
+					box-sizing: border-box;
+					padding: 0 16px;
+
+					> p {
+						display: inline-block;
+						vertical-align: middle;
+						text-align: left;
+						//text-indent: 25px;
+						width: 49%;
+						> span {
+							display: block;
+							width: 100%;
+							text-overflow: ellipsis;
+							overflow: hidden;
+							white-space: nowrap;
+						}
+						/*&.desc {
+							span {
+								text-align: right;
+							}
+						}*/
+						&.desc {
+							padding-left: 4px;
+						}
+					}
+
+					&:nth-child(odd) {
+						background-color: #F2F2F2;
+					}
+				}
+			}
+		}
+	}
+	.dialog-cont {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		z-index: 9999;
+		background: rgba(0, 0, 0, 0.4);
+		left: 0;
+		top: 0;
+		//display: none;
+		text-align: center;
+
+		&.on {
+			display: block;
+		}
+		&:after {
+			content: '';
+			display: inline-block;
+			width: 0;
+			height: 100%;
+			vertical-align: middle;
+		}
+
+		.dia-wrap {
+			text-align: left;
+			display: inline-block;
+			vertical-align: middle;
+			/*position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);*/
+			.inner {
+				width: 570px;
+				height: auto;
+				background: rgba(255, 255, 255, 1);
+				text-align: center;
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+				padding: 40px;
+				color: #222222;
+				border-radius:20px;
+			}
+
+		}
+
+	}
+
+}
+@media (max-width: 767px) {
+	.U000247_lottery_wrap {
+		overflow: hidden;
+		.cont {
+			width: 100%;
+			text-align: center;
+		}
+
+		.lottery-box {
+			.lottery-content {
+				width: 636/2px;
+				height: 636/2px;
+			}
+			.btn-start {
+				width: 268/2px;
+				height: 268/2px;
+			}
+		}
+		.lottery-user-list {
+			.act-comming {
+				font-size: 16px;
+				color: #000000;
+				text-align: center;
+				margin-top: 50px;
+				.down-time {
+					font-size: 32px;
+					margin-top: 12px;
+					font-weight: bold
+				}
+			}
+		}
+
+		// 规则
+		.btn-rule {
+			-webkit-transform: scale(64/80);
+			-moz-transform: scale(64/80);
+			-ms-transform: scale(64/80);
+			-o-transform: scale(64/80);
+			transform: scale(64/80);
+			-webkit-transform-origin: 0 0;
+			-moz-transform-origin: 0 0;
+			-ms-transform-origin: 0 0;
+			-o-transform-origin: 0 0;
+			transform-origin: 0 0;
+		}
+
+		// 剩余抽奖次数
+		.merber {
+			position: initial;
+		}
+
+		.user-list-wrap {
+			padding: 0 18px;
+			height: 85px;
+
+			.list-wrap .user-list li {
+				height: 28px;
+				line-height: 28px;
+				padding:0 6px;
+			}
+
+
+		}
+		.dialog-cont .dia-wrap .inner {
+			width: 300px;
+			padding: 20px 0;
+		}
+		.user-list-wrap .list-wrap .user-list li > p.desc {
+			padding-left: 4px;
+			text-align: right;
+		}
+	}
+}
+/*
+@media (max-width: 1023px) {
+	.U000247_lottery_wrap {
+		overflow: visible;
+		height: auto;
+		.cont {
+			left: inherit;
+			width: 100%;
+			text-align: center;
+			//width: 1024px;
+		}
+		.lottery-box .lottery-content {
+
+		}
+	}
+
+}*/

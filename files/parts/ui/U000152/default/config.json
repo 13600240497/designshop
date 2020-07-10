@@ -1,0 +1,33 @@
+{
+  "name": "pc goodsList",
+  "version": "v1.0.0.1",
+  "fields": {
+    "boxMarginBottom": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "componentBgColor": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "productsNum": { "is_public": "1", "is_m": "1", "is_app": "0" },
+    "goodsID": { "is_public": "1", "is_m": "1", "is_app": "0" },
+    "goodsIDnum": { "is_public": "1", "is_m": "1", "is_app": "0" },
+    "tabSelectedBgColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "tabUnselectedBgColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "tabSelectedTextColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "tabUnselectedTextColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "tabStockBarTotalColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "tabStockBarLavelColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "tabPriceTextColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "tabSellTextColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "tabSelloutBgColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "tabSelloutTextColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "tabFontSize": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "tabSelectBgurl": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "tabunSelectBgurl": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "itemBgColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "titleBgColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "marketPriceFontColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "marketPriceFontsize": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "sellOutFontsize": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "shopTitleColor" : { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "purchasePriceTextColor" : { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "purchasePriceText" : { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "shopTitleColor" : { "is_public": "0", "is_m": "1", "is_app": "0" }
+  }
+}

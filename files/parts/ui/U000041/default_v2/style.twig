@@ -1,0 +1,31 @@
+[data-id="{{ pageInstanceId }}"] .component-self-goodWrap:hover, [data-id="{{ pageInstanceId }}"] .current {
+    border-color:{{ data.goodsBdC | default('none') }};
+}
+
+.geshop-U000041-default-0227-{{ pageInstanceId }} .gs-tab-label .current span {
+    color: {{ data.tabFtCA | default('#333333') }} !important;
+    background: {{ data.tabBgCA | default('#d8d8d8') }} !important;
+}
+
+
+{%
+    include geshop.default.pc.shop_price with { style: {
+        'color': data.priceC
+    }}
+%}
+
+{%
+    include geshop.default.pc.discount_float with { style: {
+        'color': data.discountFtC,
+        'background-color': data.discountBgc,
+        'background-image': data.discountBgImg
+    }}
+%}
+
+{%
+    include geshop.default.pc.button_buy_animate with { style: {
+        'color': data.buyFtC,
+        'background-color': data.buyBgC,
+        'background-image': data.buyBgImg
+    }}
+%}

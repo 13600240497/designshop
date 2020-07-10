@@ -1,0 +1,73 @@
+.wrap-U000058_fullScreen.gs-index-main{
+  margin-left:auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.wrap-U000058_fullScreen .swiper-button-prev{
+  position: absolute;
+  top: 50%;
+  margin-top: -40px;
+  left: 0;
+  z-index: 1;
+  width: 40px;
+  height: 80px;
+  text-align: center;
+  background-color: #fff;
+}
+.wrap-U000058_fullScreen .swiper-button-prev::after{
+  content: '';
+  display: inline-block;
+  margin-top: 29px;
+  background-image:url('../../../resources/images/carousel-image/common_icon.png');
+  background-position: -2px -24px;
+  width: 12px;
+  height: 21px;
+  font-size: 0;
+}
+.wrap-U000058_fullScreen .swiper-button-next{
+  position: absolute;
+  top: 50%;
+  margin-top: -40px;
+  right: 0;
+  z-index: 1;
+  width: 40px;
+  height: 80px;
+  text-align: center;
+  background-color: #fff;
+}
+.wrap-U000058_fullScreen .swiper-button-next::after{
+  content: '';
+  display: inline-block;
+  margin-top: 29px;
+  background-image: url('../../../resources/images/carousel-image/common_icon.png');
+  background-position: -2px -48px;
+  width: 12px;
+  height: 21px;
+  font-size: 0;
+}
+.wrap-U000058_fullScreen  .geshop-swiper-slide a{
+  display:block; width:100%;
+}
+.wrap-U000058_fullScreen  .geshop-swiper-slide .ge-banner-img{
+  width:100%;
+}
+.wrap-U000058_fullScreen .swiper-container-horizontal>.swiper-pagination {
+  bottom: 50px;
+}
+.wrap-U000058_fullScreen .swiper-pagination-bullet{
+  width: 40px;
+  height: 3px;
+  display: inline-block;
+  background:rgba(255,255,255,.4);
+  filter: alpha(opacity=85);
+  border-radius:0%;
+  background-color: #fff;
+}
+
+.wrap-U000058_fullScreen .swiper-pagination-bullet-active{
+  background-color: #fff;
+  -webkit-transition: rgba(255,255,255,1) 1 linear;
+  -moz-transition: rgba(255,255,255,1) 1 linear;
+  transition: rgba(255,255,255,1) 1 linear;
+}

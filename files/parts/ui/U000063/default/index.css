@@ -1,0 +1,124 @@
+[data-gid="U000063_default"] .index-community {
+	margin: 30px auto;
+	height: 190px;
+	overflow: hidden;
+	width: 1240px;
+}
+[data-gid="U000063_default"] .index-community .community-item {
+	position: relative;
+	display: block;
+	float: left;
+	margin-right: 20px;
+	width: 190px;
+	height: 190px;
+}
+[data-gid="U000063_default"] .index-community .community-item.last-child{
+	margin-right: 0;
+}
+
+[data-gid="U000063_default"] .index-community .community-item:hover p{
+	display: block;
+}
+[data-gid="U000063_default"] .index-community p {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	padding-top: 50px;
+	text-align: center;
+	filter: alpha(opacity=85);
+	background-color: #ffffff;
+	background-color: rgba(255, 255, 255, .85);
+}
+
+[data-gid="U000063_default"] .index-community span {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background-image: url('../../../resources/images/carousel-image/common_icon.png');
+	background-position: -106px -81px;
+}
+
+[data-gid="U000063_default"] .index-community a {
+	display: inline-block;
+	margin-top: 10px;
+	border: 2px solid #2d2d2d;
+	padding: 0 25px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 14px;
+	color: #2d2d2d;
+	font-family: 'OpenSans-Semibold';
+	text-decoration: none;
+}
+
+[data-gid="U000063_default"] .geshop-form-content {
+	padding-left: 20px;
+}
+
+[data-gid="U000063_default"] .geshop-title {
+	font-size: 16px;
+	color: #333333;
+	margin-top: 16px;
+}
+
+[data-gid="U000063_default"] .label-form-item {
+	font-size: 14px;
+	color: #333333;
+}
+
+[data-gid="U000063_default"] .rest-input {
+	margin-left: 0px;
+	margin-top: 5px;
+}
+
+[data-gid="U000063_default"] .add-form-button span {
+	display: block;
+	width: 116px;
+	height: 36px;
+	background: #34A8FF;
+	text-align: center;
+	line-height: 36px;
+	font-size: 14px;
+	color: #FFFFFF;
+	cursor: pointer;
+	margin-top: 54px;
+}
+
+[data-gid="U000063_default"] .img-btn {
+	display: inline-block;
+	position: relative;
+	width: 24px;
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	border-radius: 50%;
+	background: rgba(16, 93, 149, 0.4);
+	margin: 0 2px;
+}
+
+[data-gid="U000063_default"] .img-btn i {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	background-repeat: no-repeat;
+}
+
+[data-gid="U000063_default"] .icon-up {
+	background-image: url('../../../resources/images/carousel-image/up.png');
+}
+
+[data-gid="U000063_default"] .icon-down {
+	background-image: url('../../../resources/images/carousel-image/down.png');
+}
+
+[data-gid="U000063_default"] .icon-delete {
+	background-image: url('../../../resources/images/carousel-image/delete.png');
+}
+
+[data-gid="U000063_default"] .icon-close {
+	z-index: 1000;
+	right: 21px;
+}

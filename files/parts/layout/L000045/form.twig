@@ -1,0 +1,52 @@
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>布局
+    <a href="javascript:;" class="design-form-close js_closeDesignForm gb-icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+    <div class="layui-tab">
+        <ul class="layui-tab-title">
+            <li class="layui-this">样式设置</li>
+        </ul>
+        <div class="layui-tab-content layui-tab-content-parent">
+            <div class="layui-tab-item layui-show">
+                {#<div class="layui-form-item">
+                    <label class="layui-form-label">背景图片</label>
+                    <div class="layui-input-block">
+                        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                        <input type="text" name="background_img" autocomplete="off" class="layui-input" value="{{ customData.background_img }}">
+                    </div>
+                </div>#}
+                <div class="layui-form-item">
+                    <label class="layui-form-label">背景颜色</label>
+                    <div class="layui-input-block">
+                        <div class="color-picker-selector" data-hidden-name="background_color"><div style="background-color: {{ customData.background_color }};"></div></div>
+                        <input type="text" class="layui-input" name="background_color" autocomplete="off" value="{{ customData.background_color }}">
+                    </div>
+                </div>
+											{# 组件背景图 #}
+											<div class="layui-form-item class-bg-group">
+												<label class="layui-form-label">组件背景图片</label>
+												<div class="layui-input-block">
+													<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+													<input class="layui-input component_bg" type="text" name="base_box_bgImage" value="{{customData.base_box_bgImage}}">
+													<input type="hidden" name="component_bg_value" value="{{ customData.component_bg_value }}">
+													<input type="hidden" name="component_bg_repeat" value="{{ customData.component_bg_repeat }}">
+													<input type="hidden" name="component_bg_position" value="{{ customData.component_bg_position }}">
+													<span class="el-button el-button--primary el-button--small el-button--blue class-background"  style="float:right">设置</span>
+												</div>
+											</div>
+            
+
+
+            </div>
+        </div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+    <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+    <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>
+</div>

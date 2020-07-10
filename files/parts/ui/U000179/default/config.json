@@ -1,0 +1,204 @@
+{
+	"fields": {
+		"boxMarginBottom": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"boxBackgroundImg": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"boxBackgroundColor": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"boxTitleTxt": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"boxTitleColor": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"ruleTxt": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"ruleColor": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"ruleBackgroundColor": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"popRuleTxt": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"MyPointsBackgroundImg": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"MyPointsTxtColor": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"UnSignIntegralStateImg": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"UnSignIntegralNumColor": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"UnSignIntegralDayColor": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"UnSignBackgroundImg": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"UnSignButtonTxtColor": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"UnSignButtonBackgroundColor": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"UnSignButtonTxt": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"SignIntegralStateImg": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"SignIntegralNumColor": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"SignIntegralDayColor": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"SignBackgroundImg": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"SignButtonTxtColor": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"SignButtonBackgroundColor": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"SignButtonTxt": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"boxMarginTop": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"ruleButtonBorderRadius": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"MyPointsIntegralTxtSize": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"MyPointsButtonTxtSize": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"MyPointsButtonBorderRadius": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"IntegralBlockItemWidth": {
+			"is_public": "0",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"IntegralBlockItemMarginRight": {
+			"is_public": "0",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"IntegralBlockItemtxtSize": {
+			"is_public": "0",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"IntegralBlockItemTxtPaddingTop": {
+			"is_public": "0",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"popConfirmButtonTxt": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"popConfirmTxtColor": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"popConfirmButtonTxtColor": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"popConfirmButtonBackgroundColor": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"popConfirmButtonBackgroundImg": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		},
+		"popConfirmBackgroundImg": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "0"
+		}
+	}
+}

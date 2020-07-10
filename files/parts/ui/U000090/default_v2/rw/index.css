@@ -1,0 +1,17 @@
+
+.wrap-U000090-default .leader-board-container {
+	height: 442px;
+}
+
+.wrap-U000090-default .leader-board-container .leader-board-content-item,
+.wrap-U000090-default .leader-board-container .leader-board-aside-link,
+.wrap-U000090-default .leader-board-container .leader-board-aside-link img,
+.wrap-U000090-default .swiper-container {
+  height: 397px;
+}
+
+.wrap-U000090-default .leader-board-container .leader-board-content-item .slide-item-image,
+.wrap-U000090-default .leader-board-container .leader-board-content-item .default-slide-view {
+	height: 256px;
+}
+

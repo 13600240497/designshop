@@ -1,0 +1,115 @@
+{# 秒杀内容设置 #}
+<div id="killTabWrap">
+    {% if data.goodsSKU is null %}
+        <input type="hidden" name="goodsSKU" value="[]" data-public-tag="true">
+    {% else %}
+        <input type="hidden" name="goodsSKU" value='{{json_encode_no_unicode(data.goodsSKU|default('')) }}' data-public-tag="true">
+    {% endif %}
+    <ul class="layui-hide tab-template">
+        <li class="goods-tab-item">
+            <div class="layui-form-item">
+                <div class="form-item-label">分类</div>
+                <div class="layui-input-block">
+                    <input class="layui-input Unwanted" name="label" value="">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="form-item-label">商品sku</div>
+                <div class="layui-input-block">
+                    <textarea
+                    cols="30"
+                    rows="3"
+                    class="layui-textarea Unwanted"
+                    name="goodsSKU"
+                    data-from="sku"
+                    placeholder="请输入商品SKU，每个SKU用英文逗号隔"></textarea>
+                </div>
+            </div>
+            <div class="geshop-third-value tab-add-btn">
+                <span class="el-button el-button--primary el-button--small class-manage" style="float:left; margin-left: 0px;">商品管理</span>
+                <span class="img-btn"><i class='icon-delete'></i><b class="tips">删除</b></span>
+            </div>
+        </li>
+    </ul>
+    <ul class="tab-lists-wrap" style="list-style:none;">
+        {% for tabItem in data.goodsSKU|default([""]) %}
+        <li class="goods-tab-item">
+            <div class="layui-form-item">
+                <div class="form-item-label">分类</div>
+                <div class="layui-input-block">
+                <input class="layui-input Unwanted" name="label" data-public-tag="true" value="{{ tabItem.label | default('') }}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="form-item-label">商品sku</div>
+                <div class="layui-input-block">
+                    <textarea
+                    cols="30"
+                    rows="3"
+                    class="layui-textarea Unwanted"
+                    name="goodsSKU"
+                    data-from="sku"
+                    placeholder="请输入商品SKU，每个SKU用英文逗号隔">{{ tabItem.lists | default('') }}</textarea>
+                </div>
+            </div>
+            <div class="geshop-third-value tab-add-btn">
+                <span class="el-button el-button--primary el-button--small class-manage" style="float:left; margin-left: 0px;">商品管理</span>
+                <span class="img-btn">
+                    <i class='icon-delete'></i>
+                    <b class="tips">删除</b>
+                </span>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="layui-form-item tab-add-btn" style="margin-top: 20px;">
+        <span class="el-button el-button--primary el-button--small" id="gs_tab_add">新增秒杀模块</span>
+    </div>
+</div>
+
+<script>
+$(function(){
+
+    function initIndex() {
+        $('.tab-lists-wrap li').each(function(){
+            var index = parseInt($(this).index()) + 1;
+            $(this).find('.loop-index').text(index)
+        })
+    }
+
+    var $goodsTable = $('#killTabWrap');
+
+    $('#gs_tab_add').on('click',function(){
+        var clone = $('.tab-template li',$goodsTable).clone();
+        $('.tab-lists-wrap',$goodsTable).append(clone);
+        initIndex();
+    });
+
+    $('body').on('click', '.icon-delete', function () {
+        var target = $(this).closest('li');
+        layer.confirm('是否删除该满赠数据?', {
+            icon: 3,
+            title: '提示'
+        }, function (index) {
+            target.remove();
+            initIndex();
+            layer.close(index);
+        }); 
+    });
+
+
+    function createTab() {
+
+    }
+})
+</script>
+
+
+<style>
+#killTabWrap .goods-tab-item {
+    border: solid 1px #E6E6E6;
+    padding: 16px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+</style>

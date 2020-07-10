@@ -1,0 +1,514 @@
+{%
+	set pageData = {
+		componentBgColor:data.componentBgColor is not null?data.componentBgColor:'#F8F8F8',
+
+		tabSelectedBgColor:data.tabSelectedBgColor is not null?data.tabSelectedBgColor:'#333333',
+		tabUnselectedBgColor:data.tabUnselectedBgColor is not null?data.tabUnselectedBgColor:'#D8D8D8',
+
+		tabSelectedTextColor:data.tabSelectedTextColor is not null?data.tabSelectedTextColor:'#ffffff',
+		tabUnselectedTextColor:data.tabUnselectedTextColor is not null?data.tabUnselectedTextColor:'#ffffff',
+
+		tabStockBarTotalColor:data.tabStockBarTotalColor is not null?data.tabStockBarTotalColor:'#EDEDED',
+		tabStockBarLavelColor:data.tabStockBarLavelColor is not null?data.tabStockBarLavelColor:'#D0D0D0',
+
+		tabPriceTextColor:data.tabPriceTextColor is not null?data.tabPriceTextColor:'#333333',
+		tabSellTextColor:data.tabSellTextColor is not null?data.tabSellTextColor:'#333333',
+
+		tabSelloutBgColor:data.tabSelloutBgColor is not null?data.tabSelloutBgColor:'#ffffff',
+		tabSelloutTextColor:data.tabSelloutTextColor is not null?data.tabSelloutTextColor:'#333333',
+		tabFontSize:data.tabFontSize is not null?data.tabFontSize:26,
+		titleBgColor:data.titleBgColor is not null?data.titleBgColor:'#333333',
+		marketPriceFontColor:data.marketPriceFontColor is not null?data.marketPriceFontColor:'#333333',
+		marketPriceFontsize:data.marketPriceFontsize is not null?data.marketPriceFontsize: 24,
+		sellOutFontsize:data.sellOutFontsize is not null?data.sellOutFontsize:32,
+		itemBgColor:data.itemBgColor is not null?data.itemBgColor:'#ffffff',
+	}
+%}
+
+
+{{include ('@app/files/parts/temp/goods_manager.twig')}}
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>加价购组件配置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+  <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+		<div class="layui-tab">
+			<ul class="layui-tab-title">
+				<li class="layui-this">模板选择</li>
+				<li>商品设置</li>
+				<li>样式设置</li>
+			</ul>
+			<div class="layui-tab-content layui-tab-content-parent">
+				<div class="layui-tab-item layui-show">
+					<div class="layui-form-item">
+						<label class="layui-form-label">模板选择</label>
+						<div class="layui-input-block">
+							{% for item in data.templates.list %}
+							<input type="radio" name="tpl_id" value="{{ item.id }}" lay-filter="templateId" title="{{ item.name }}"{% if item.id == data.templates.selected %} checked{% endif %}>
+							{% if item.pic|length > 0 %}
+							<p><img alt="{{ item.name }}" src="{{ item.pic }}" width="120"></p>
+							{% endif %}
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			 	<div class="layui-tab-item" id="tabsConfig">
+					<legend style="margin: 0 0 20px 0;">Tab分类数据</legend>
+					<div class="layui-form-item">
+						<div class="gs-lable-block">Tab显示商品数量(建议产品数量4的倍数,不超过100)</div>
+						<div class="layui-input-block">
+							<input type="text" name="productsNum" autocomplete="off" class="layui-input" value="{{ data.productsNum | default(4) }}">
+						</div>
+					</div>
+					<div class="goods-tab-lists radio-tab-true" id="dataIDs">
+						<div id="goodsIDs"> <input type="hidden" name="goodsID" id="goodsIDInput">
+						{% for item in data.goodsID |default([{name : '',ids:''},{name : '',ids:''}])%}
+							<div class="goods-tab-item goods-tab-item{{loop.index}}">
+								<div class="goods-tab-box">
+									<div class="gs-lable-block title-index">分类{{ loop.index }}</span></div>
+									<div class="layui-input-block">
+										<input class="layui-input title-name Unwanted" data-ids="true"  autocomplete="off"  value="{{item.name}}">
+									</div>
+								</div>
+								<div class="goods-tab-box">
+									<div class="gs-lable-block">商品数据ID</div>
+									<div class="layui-input-block">
+										<input class="layui-input goodsIDitem Unwanted" data-ids="true"  autocomplete="off"  value="{{item.ids}}">
+									</div>
+								</div>
+								<div class="geshop-third-value mr-10">
+									<span class="img-btn class-up">
+										<i class='icon-up'></i>
+										<b class="tips">上移</b>
+									</span>
+									<span class="img-btn class-down">
+										<i class='icon-down'></i>
+										<b class="tips">下移</b>
+									</span>
+									<span class="img-btn class-close">
+										<i class='icon-delete' data="{{key+1}}"></i>
+										<b class="tips" >删除</b>
+									</span>
+									<span class="img-btn class-add">
+										<i class='icon-add'></i>
+										<b class="tips">新增</b>
+									</span>
+								</div>
+							</div>
+						{% endfor %}
+						</div>
+					</div>
+				</div>
+				<div class="layui-tab-item">
+					<div class="layui-carousel" id="form_carousel">
+						<div carousel-item>
+							<div>
+								<fieldset class="layui-elem-field">
+									<legend>常用配置</legend>
+									<div class="layui-form-item">
+										<div class="gs-lable-block">组件下边距(px)</div>
+										<div class="layui-input-block">
+											<input type="text" name="boxMarginBottom" autocomplete="off" class="layui-input" value="{{ data.boxMarginBottom | default(32) }}">
+										</div>
+									</div>
+									<div class="layui-form-item">
+										<div class="gs-lable-block">组件背景颜色</div>
+										<div class="layui-input-block">
+											<div class="color-picker-selector" data-hidden-name="componentBgColor">
+												<div style="background-color: {{ pageData.componentBgColor }};"></div>
+											</div>
+											<input type="text" class="layui-input" name="componentBgColor" autocomplete="off" value="{{ pageData.componentBgColor }}">
+										</div>
+									</div>
+								</fieldset>
+								<fieldset class="layui-elem-field">
+									<legend>Banner图片配置</legend>
+									<div class="layui-form-item">
+										<label class="gs-lable-block">Banner图片(建议上传高度为150px)</label>
+										<div class="layui-input-block">
+											<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+											<input type="text" name="bannerBackgroundImage" autocomplete="off" class="layui-input" value="{{ data.bannerBackgroundImage }}">
+										</div>
+									</div>
+								</fieldset>
+								<fieldset class="layui-elem-field">
+									<legend>Tab样式配置</legend>
+									<ul>
+										<li class="list-tab-item">
+											<div class="layui-form-item">
+												<div class="gs-lable-block">选中Tab背景颜色</div>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="tabSelectedBgColor">
+														<div style="background-color: {{ pageData.tabSelectedBgColor }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="tabSelectedBgColor" autocomplete="off" value="{{ pageData.tabSelectedBgColor }}">
+												</div>
+											</div>
+										</li>
+										<li class="list-tab-item">
+											<div class="layui-form-item">
+												<div class="gs-lable-block">未选中Tab背景颜色</div>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="tabUnselectedBgColor">
+														<div style="background-color: {{ pageData.tabUnselectedBgColor }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="tabUnselectedBgColor" autocomplete="off" value="{{ pageData.tabUnselectedBgColor }}">
+												</div>
+											</div>
+										</li>
+									</ul>
+									<ul>
+										<li class="list-tab-item">
+											<div class="layui-form-item">
+												<div class="gs-lable-block">选中Tab文字颜色</div>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="tabSelectedTextColor">
+														<div style="background-color: {{ pageData.tabSelectedTextColor }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="tabSelectedTextColor" autocomplete="off" value="{{ pageData.tabSelectedTextColor }}">
+												</div>
+											</div>
+										</li>
+										<li class="list-tab-item">
+											<div class="layui-form-item">
+												<div class="gs-lable-block">未选中Tab文字颜色</div>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="tabUnselectedTextColor">
+														<div style="background-color: {{ pageData.tabUnselectedTextColor }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="tabUnselectedTextColor" autocomplete="off" value="{{ pageData.tabUnselectedTextColor }}">
+												</div>
+											</div>
+										</li>
+									</ul>
+								</fieldset>
+								<fieldset class="layui-elem-field">
+									<legend>商品信息设置</legend>
+									<div class="layui-form-item">
+										<div class="gs-lable-block">加价购名文案</div>
+										<div class="layui-input-block">
+											<input type="text" name="purchasePriceText" autocomplete="off" class="layui-input" value="{{ data.purchasePriceText | default('Now Only') }}">
+										</div>
+									</div>
+									<div class="layui-form-item">
+										<div class="gs-lable-block">加价购文字颜色</div>
+										<div class="layui-input-block">
+											<div class="color-picker-selector" data-hidden-name="purchasePriceTextColor">
+												<div style="background-color: {{ data.purchasePriceTextColor | default('#333333')}};"></div>
+											</div>
+											<input type="text" class="layui-input" name="purchasePriceTextColor" autocomplete="off" value="{{ data.purchasePriceTextColor | default('#333333') }}">
+										</div>
+									</div>
+								</fieldset>
+								<div class="text-right">
+									<button type="button" id="js_moreConfig" class="layui-btn layui-btn-normal layui-btn-sm">更多配置</button>
+								</div>
+							</div>
+							<div>
+								<div class="layui-tab layui-tab-vertical">
+									<ul class="layui-tab-title">
+										{# <li class="layui-this">标题常用配置</li> #}
+										<li class="layui-this">Tab配置</li>
+										<li>商品信息配置</li>
+										<li>购买按钮配置</li>
+									</ul>
+									<div class="layui-tab-content">
+										<div class="layui-tab-item layui-show">
+											<div class="layui-form-item">
+												<label class="layui-form-label">Tab左箭头背景图</label>
+												<div class="layui-input-block">
+													<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+													<input type="text" name="tabLeftIcon" autocomplete="off" class="layui-input" value="{{ data.tabLeftIcon }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">Tab右箭头背景图</label>
+												<div class="layui-input-block">
+													<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+													<input type="text" name="tabRightIcon" autocomplete="off" class="layui-input" value="{{ data.tabRightIcon }}">
+												</div>
+											</div>
+											{# 标题设置 #}
+											<div class="layui-form-item">
+												<label class="layui-form-label">Tab高度(px)</label>
+												<div class="layui-input-block">
+													<input type="text" name="tabHeadHeight" autocomplete="off" class="layui-input" value="{{ data.tabHeadHeight | default(60) }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">Tab文字大小(px)</label>
+												<div class="layui-input-block">
+													<input type="text" name="tabFontSize" autocomplete="off" class="layui-input" value="{{ pageData.tabFontSize }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">选中Tab背景图片</label>
+												<div class="layui-input-block">
+													<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+													<input type="text" name="tabSelectBgurl" autocomplete="off" class="layui-input" value="{{ data.tabSelectBgurl }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">未选中Tab背景图片</label>
+												<div class="layui-input-block">
+													<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+													<input type="text" name="tabunSelectBgurl" autocomplete="off" class="layui-input" value="{{ data.tabunSelectBgurl }}">
+												</div>
+											</div>
+										</div>
+										<div class="layui-tab-item">
+											<div class="layui-form-item">
+												<label class="layui-form-label">单品背景颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="itemBgColor">
+														<div style="background-color: {{ pageData.itemBgColor }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="itemBgColor" autocomplete="off" value="{{ pageData.itemBgColor }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">市场价文字颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="marketPriceFontColor">
+														<div style="background-color: {{ pageData.marketPriceFontColor }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="marketPriceFontColor" autocomplete="off" value="{{ pageData.marketPriceFontColor }}">
+												</div>
+											</div>
+
+											<div class="layui-form-item">
+												<label class="layui-form-label">商品标题字体颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="shopTitleColor">
+														<div style="background-color: {{ data.shopTitleColor | default('#333333') }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="shopTitleColor" autocomplete="off" value="{{ data.shopTitleColor | default('#333333') }}">
+												</div>
+											</div>
+
+											<div class="layui-form-item">
+												<label class="layui-form-label">加价购文字大小(px)</label>
+												<div class="layui-input-block">
+													<input type="text" name="purchasePriceTextSizeize" autocomplete="off" class="layui-input" value="{{ data.purchasePriceTextSizeize | default(20) }}">
+												</div>
+											</div>
+										</div>
+
+										<div class="layui-tab-item">
+											<div class="layui-form-item">
+												<label class="layui-form-label">背景颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="btnBgColor">
+														<div style="background-color: {{ data.btnBgColor | default('#333333') }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="btnBgColor" autocomplete="off" value="{{ data.btnBgColor | default('#333333') }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">文字颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="btnFontColor">
+														<div style="background-color: {{ data.btnFontColor | default('#ffffff') }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="btnFontColor" autocomplete="off" value="{{ data.btnFontColor | default('#ffffff') }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">加价购文字大小(px)</label>
+												<div class="layui-input-block">
+													<input type="text" name="btnFontSize" autocomplete="off" class="layui-input" value="{{ data.btnFontSize | default(16) }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">按钮高度(px)</label>
+												<div class="layui-input-block">
+													<input type="text" name="btnHeight" autocomplete="off" class="layui-input" value="{{ data.btnHeight | default(40) }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">按钮文案</label>
+												<div class="layui-input-block">
+													<input type="text" name="btnText" autocomplete="off" class="layui-input" value="{{ data.btnText | default('Buy Now') }}">
+												</div>
+											</div>
+										</div>
+										{# 商品end #}
+									</div>
+								</div>
+								<div class="text-right">
+									<button type="button" id="js_baseConfig" class="layui-btn layui-btn-normal layui-btn-sm">基础配置</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+	<button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+	<button type="button" class="layui-btn layui-btn-normal " id="img_submit">提交</button>
+  	<button type="button" class="layui-btn layui-btn-normal js_submitDesignForm" style='display:none' >提交</button>
+</div>
+<script>
+$(function(){
+	var idIndex =$(".goods-tab-item").length;
+	var $dataIDs = $('#dataIDs');
+	var $tabsConfig = $('#tabsConfig');
+	var $productsNum = $tabsConfig.find('input[name="productsNum"]');
+	$('#img_submit').on('click',function(){
+		{# tab显示的商品数量 #}
+		var num = parseInt($productsNum.val());
+		var errText;
+		if(!num){
+			errText = '请输入商品数量';
+		}else{
+			if(num > 100){
+				errText = '输入商品数量不能超过100';
+			}
+		}
+
+		if(errText){
+			layer.msg(errText, { time: 5000 });
+			return;
+		}
+		var goodsIDArr = [];
+		var _ids,_name;
+		$tabsConfig.find('.goods-tab-item').each(function(index,el){
+			if(errText)return;
+			_ids = $(el).find('.goodsIDitem').val().trim();
+			_name = $(el).find('.title-name').val().trim();
+			if(_ids && _name){
+				goodsIDArr.push({
+					ids : _ids,
+					name : _name,
+				})
+			}else{
+				if(_ids || _name){
+					_name && (errText = '请填写分类名称');
+					_ids && (errText = '请填写分类ID');
+				}
+			}
+		});
+		if(!goodsIDArr.length){
+			errText = '请填写分类';
+		}
+		if(errText){
+			layer.msg(errText, { time: 5000 });
+			return;
+		}
+		$('#goodsIDInput').val(JSON.stringify(goodsIDArr));
+		$(this).next('button').trigger('click');
+	});
+	/*新增分类 */
+	$("#dataIDs").on('click','.goods-tab-item .class-add',function(e){
+		e.stopPropagation();
+		var $item = $(this).parents('.goods-tab-item'),$tmp = $item.clone().find('input').val('').end();
+		$item.after($tmp);
+		initItemIndex();
+	});
+
+	/*删除 */
+	$("#dataIDs").on('click','.goods-tab-item .class-close',function(e){
+		if($tabsConfig.find('.goods-tab-item').length  === 1){
+			layer.msg('最后一组数据不能删除', { time: 5000 });
+			return;
+		}
+		var $item = $(this).parents('.goods-tab-item');
+		if(!$item.find('.goodsIDitem').val().trim() && !$item.find('.title-name').val().trim()){
+			$item.remove();
+			return;
+		}
+		layer.confirm('删除当前数据不可恢复，确定是否删除?',{icon:3,title:'提示'},function(index){
+			$item .remove();
+			layer.closeAll();
+			initItemIndex();
+		});
+	});
+
+	/*下移 */
+	$("#dataIDs").on('click','.goods-tab-item .class-down',function(e){
+		 var $this = $('this'),
+		$tr = $(this).parents('.goods-tab-item:eq(0)'),
+		$trNext = $tr.next();
+        if (0 != $trNext.length) {
+            $trNext.after($tr);
+        }
+		initItemIndex();
+	});
+	/*上移 */
+	$("#dataIDs").on('click','.goods-tab-item .class-up',function(e){
+		 var $this = $('this'),
+		$tr = $(this).parents('.goods-tab-item:eq(0)'),
+		$trPrev = $tr.prev();
+		if(0 != $trPrev.length){
+			$trPrev.before($tr);
+		}
+		initItemIndex();
+	});
+
+	function initItemIndex(){
+		$dataIDs.find('.goods-tab-item').each(function(index){
+			$(this).find('.title-index').text('分类' + (index + 1));
+		})
+	}
+	var _inputFirm = function _inputFirm($input,text){
+		$input.val('');
+        var _index = layer.confirm(text || '优惠券ID错误，请正确填写优惠券ID', {
+              btn: ['取消', '确定'],
+              area: '420px',
+              icon: 3,
+              skin: 'element-ui-dialog-class'
+        },function(){
+            $input.focus();
+            layer.close(_index);
+        },function(){
+            $input.focus();
+        });
+    };
+/*$this.addClass('errorborser')  */
+	$("#dataIDs").on('blur','.goodsIDitem',function(){
+		var $this = $(this);
+		var lang = typeof GESHOP_LANG != 'undefined' ? GESHOP_LANG : 'en';
+		var _val = $(this).val().trim();
+		if(!_val)return;
+		var params = {
+			lang: lang,
+			activityid: _val,
+			pageno: 1,
+			pagesize: 20,
+			pipeline: (typeof GESHOP_PIPELINE != 'undefined' ? GESHOP_PIPELINE : '')
+		};
+		var url = GESHOP_INTERFACE.increasebuylist.url;
+		var content = {content: JSON.stringify(params)};
+		$.ajax({
+			url: url,
+			type: 'GET',
+			dataType: 'jsonp',
+			data: content,
+			success: function(res) {
+				if(res.code==0){
+					if(!res.data.activityInfo.id) {
+						_inputFirm($this,'请输入正确的id');
+						$this.attr('data-ids',false);
+					} else{
+						$this.attr('data-ids',true);
+					}
+				}else{
+					_inputFirm($this,'请输入正确的id');
+					$this.attr('data-ids',false);
+				}
+			},error:function(){
+				_inputFirm($this,'请输入正确的id');
+				$this.attr('data-ids',false);
+
+			}
+		});
+	});
+})
+</script>

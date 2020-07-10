@@ -1,0 +1,98 @@
+{# M #}
+@media screen and (max-width: 767px){
+{{ class_box }}{
+border-radius: {{ data.component_border_radius_m | default(0) }}px;
+}
+
+{{ class_box }} .nav-list li{
+font-size: {{ data.nav_fontsize_m | default(18) }}px;
+width: {{ data.nav_width_m | default(172) }}px;
+height: {{ data.nav_height_m | default(44) }}px;
+border-radius: {{ data.nav_borderRadius_m | default(2) }}px;
+}
+
+{{ class_box }} .nav-list li span{
+line-height: {{ (data.nav_height_m|default(44) - 4 ) | default(40) }}px;
+}
+
+
+{{ class_box }} .geshop-goods-discount{
+margin-top: {{ data.discount_mt_m ?? 0 }}px;
+right: {{ data.discount_ml_m ?? 0 }}px;
+}
+
+
+{# 普通价配置 #}
+        {{ class_box }} .normal-price .geshop-goods-shopprice .price-label{
+font-size: {{ data.fl_label_fontSize_0_m ?? 16 }}px;
+color: {{ data.fl_label_fontColor_0_m ?? '#333333' }};
+}
+{{ class_box }} .normal-price .geshop-goods-shopprice  .my-shop-price{
+font-size: {{ data.fl_price_fontSize_0_m ?? 16 }}px;
+color: {{ data.fl_text_fontColor_0_m ?? '#ff4545' }};
+}
+
+{{ class_box }} .normal-price .geshop-goods-market-price .price-label{
+font-size: {{ data.cl_label_fontSize_0_m ?? 14 }}px;
+color: {{ data.cl_label_fontColor_0_m ?? '#999999' }};
+}
+{{ class_box }} .normal-price .geshop-goods-market-price .my-shop-price{
+font-size: {{ data.cl_price_fontSize_0_m ?? 14 }}px;
+color: {{ data.cl_text_fontColor_0_m ?? '#999999' }};
+}
+
+{# 新人价配置 #}
+        {{ class_box }} .newuser-price .geshop-goods-shopprice .price-label{
+font-size: {{ data.fl_label_fontSize_1_m ?? 16 }}px;
+color: {{ data.fl_label_fontColor_1_m ?? '#333333' }};
+}
+{{ class_box }} .newuser-price .geshop-goods-shopprice  .my-shop-price{
+font-size: {{ data.fl_price_fontSize_1_m ?? 16 }}px;
+color: {{ data.fl_text_fontColor_1_m ?? '#ff4545' }};
+}
+
+{{ class_box }} .newuser-price .geshop-goods-market-price .price-label{
+font-size: {{ data.cl_label_fontSize_1_m ?? 14 }}px;
+color: {{ data.cl_label_fontColor_1_m ?? '#999999' }};
+}
+{{ class_box }} .newuser-price .geshop-goods-market-price .my-shop-price{
+font-size: {{ data.cl_price_fontSize_1_m ?? 14 }}px;
+color: {{ data.cl_text_fontColor_1_m ?? '#333333' }};
+}
+
+{# app价配置 #}
+        {{ class_box }} .app-price .geshop-goods-shopprice .price-label{
+font-size: {{ data.fl_label_fontSize_2_m ?? 16 }}px;
+color: {{ data.fl_label_fontColor_2_m ?? '#333333' }};
+}
+{{ class_box }} .app-price .geshop-goods-shopprice  .my-shop-price{
+font-size: {{ data.fl_price_fontSize_2_m ?? 16 }}px;
+color: {{ data.fl_text_fontColor_2_m ?? '#ff4545' }};
+}
+
+{{ class_box }} .app-price .geshop-goods-market-price .price-label{
+font-size: {{ data.cl_label_fontSize_2_m ?? 14 }}px;
+color: {{ data.cl_label_fontColor_2_m ?? '#999999' }};
+}
+{{ class_box }} .app-price .geshop-goods-market-price .my-shop-price{
+font-size: {{ data.cl_price_fontSize_2_m ?? 14 }}px;
+color: {{ data.cl_text_fontColor_2_m ?? '#333333' }};
+}
+
+    {{ class_box }} .geshop-goods-discount{
+    {% if data.m_discount_bgImage %}
+        background-image: url({{ data.m_discount_bgImage }});
+        border-radius:0;
+    {% endif %}
+        font-size: {{ data.m_discount_fontSize ?? 14 }}px;
+    }
+
+    {{ class_box }} .geshop-goods-discount p:first-child  {
+        padding-top: {{ data.m_discount_pt ?? 0 }}px;
+    }
+
+    {{ class_box }} .geshop-goods-discount p{
+        padding-left: {{ data.m_discount_pl ?? 0 }}px;
+    }
+}
+{# M emd #}

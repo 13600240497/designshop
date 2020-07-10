@@ -1,0 +1,32 @@
+Arguments: 
+  D:\Apocalyps\nodejs\node.exe D:\Apocalyps\nodejs\node_global\node_modules\yarn\bin\yarn.js run build
+
+PATH: 
+  C:\ProgramData\Oracle\Java\javapath;D:\Apocalyps\RailsInstaller\Ruby2.1.0\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;D:\Apocalyps\RailsInstaller\Git\cmd;D:\Apocalyps\nodejs\;D:\Apocalyps\VM\Vagrant\bin;;D:\Work Soft\Microsoft VS Code\bin;C:\Users\wuxingtao\AppData\Roaming\npm;D:\Apocalyps\nodejs\node_global\
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  8.10.0
+
+Platform: 
+  win32 x64
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Couldn't find a package.json file in "D:\\project\\data\\www\\geshop"
+      at new MessageError (D:\Apocalyps\nodejs\node_global\node_modules\yarn\lib\cli.js:186:110)
+      at D:\Apocalyps\nodejs\node_global\node_modules\yarn\lib\cli.js:40048:15
+      at Generator.next (<anonymous>)
+      at step (D:\Apocalyps\nodejs\node_global\node_modules\yarn\lib\cli.js:98:30)
+      at D:\Apocalyps\nodejs\node_global\node_modules\yarn\lib\cli.js:109:13
+      at <anonymous>

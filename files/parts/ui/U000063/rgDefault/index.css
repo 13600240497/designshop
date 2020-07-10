@@ -1,0 +1,353 @@
+
+[data-gid="U000063_rg_default"] .w1200 {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+[data-gid="U000063_rg_default"] .ins-banner .l-part{
+	width: 200px;
+	float: left;
+}
+
+[data-gid="U000063_rg_default"] .ins-banner .r-part{
+	width: 1000px;
+	float: left;
+}
+
+[data-gid="U000063_rg_default"] .ins-banner li{
+	position: relative;
+	float: left;
+	width: 200px;
+	height: 200px;
+	overflow: hidden;
+}
+
+[data-gid="U000063_rg_default"] .ins-banner li.first-photo{
+	width: 400px;
+	height: 400px;
+}
+
+[data-gid="U000063_rg_default"] .ins-banner li img{
+	width: 100%;
+}
+
+[data-gid="U000063_rg_default"] .ins-banner li .ins-shade{
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.7);
+	opacity: 0;
+	filter: alpha(opacity=0);
+	transition: all .3s;
+}
+[data-gid="U000063_rg_default"] .ins-banner li .ins-shade:hover{
+	opacity: 1;
+}
+
+[data-gid="U000063_rg_default"] .ins-banner .shade-content{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 80%;
+	height: 100px;
+	margin-top: -42px;
+	margin-left: -40%;
+	text-align: center;
+}
+
+[data-gid="U000063_rg_default"] .ins-banner .shade-content .ins-icon{
+	display: block;
+	width: 42px;
+	height: 42px;
+	background-image: url(../../../resources/images/rg-pc/sprite.png);
+    background-repeat: no-repeat;
+    background-position: -99px -5px;
+    margin: 0 auto;
+}
+
+[data-gid="U000063_rg_default"] .ins-banner .shade-content .view-it{
+	border: 2px solid #fff;
+	font-size: 16px;
+	padding: 10px 20px;
+	line-height: 18px;
+	color: #fff;
+	display: inline-block;
+	margin-top: 16px;
+	box-sizing: border-box;
+}
+[data-gid="U000063_rg_default"] .ins-banner .shade-content .view-it span{
+    display: -webkit-box;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+[data-gid="U000063_rg_default"] .ins-banner header{
+	border-top: 1px solid #ddd;
+	margin: 64px 0 22px;
+	text-align: center;
+}
+
+[data-gid="U000063_rg_default"] .ins-banner header h3{
+	color: #333;
+	font-size: 38px;
+	line-height: 1;
+	position: relative;
+	margin-top: -24px;
+	display: inline-block;
+	background: #fff;
+	padding: 0 38px;
+}
+
+[data-gid="U000063_rg_default"] .ins-banner p{
+	padding-top: 10px;
+	font-size: 16px;
+	color: #666;
+}
+[data-gid="U000063_rg_default"] .ins-banner p i{
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	vertical-align: bottom;
+	margin-right: 10px;
+	text-align: center;
+}
+[data-gid="U000063_rg_default"] .ins-banner p i img{
+	height: 100%;
+	display: block;
+}
+
+/* 此处样式是layer弹出层的， 不在组件里。 所以没办法用组件id限制。 有冲突查到这里，还望做下兼容。 */
+
+.layui-layer-page .layui-layer-content{
+	overflow: inherit!important;
+}
+
+.resetWH{
+	width: 22px!important;
+	height: 22px!important;
+}
+
+/* view it dialog css */
+.view-it-dialog {
+	background: #fff;
+	display: none;
+	position: relative;
+	padding: 50px;
+}
+
+/* .js_viewIt_alert {
+	background-image: url('../../../resources/layui/lay/modules/theme/default/loading-0.gif');
+	background-repeat: no-repeat;
+	background-position: center center;
+} */
+
+.view-it-dialog .close-btn {
+	display: block;
+	width: 12px;
+	height: 12px;
+	right: 16px;
+	top: 16px;
+	position: absolute;
+	background: url(../../../resources/images/icon/rw-icon.png) no-repeat;
+	cursor: pointer;
+	background-position: -248px -359px
+}
+
+.view-it-dialog .close-btn:hover {
+	opacity: .8
+}
+
+.view-it-dialog .prev {
+	position: absolute;
+	top: 256px;
+	font-size: 0;
+	left: -95px;
+	background-image: url(../../../resources/images/rg-pc/sprite.png);
+    background-repeat: no-repeat;
+    width: 17px;
+    height: 30px;
+    background-position: -5px -5px;
+}
+
+.view-it-dialog .next {
+	position: absolute;
+	top: 256px;
+	font-size: 0;
+	right: -95px;
+	background-image: url(../../../resources/images/rg-pc/sprite.png);
+    background-repeat: no-repeat;
+    width: 17px;
+    height: 30px;
+    background-position: -32px -5px;
+}
+
+.view-it-dialog .dialog-box {
+	font-size: 0;
+	line-height: 1;
+	white-space: nowrap
+}
+
+.view-it-dialog .left {
+	width: 400px;
+	height: 400px;
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 40px
+}
+
+.view-it-dialog .left .img-wrap {
+	width: 400px;
+	height: 400px;
+	overflow: hidden;
+	display: block;
+	text-align: center
+}
+
+.view-it-dialog .left .img-wrap:hover img {
+	opacity: .8
+}
+
+.view-it-dialog .left .img-wrap img {
+	height: 400px;
+}
+
+.view-it-dialog .right {
+	width: 250px;
+	display: inline-block;
+	vertical-align: top
+}
+
+.view-it-dialog .right h2 {
+	font-size: 30px;
+	text-align: center;
+	margin-bottom: 10px;
+	line-height: 1;
+	height: 30px;
+	color: #333;
+}
+
+.view-it-dialog .right .img-wrap {
+	display: block;
+	width: 250px;
+	height: 250px;
+	overflow: hidden;
+	text-align: center;
+	border: 1px solid #ddd;
+}
+
+
+.view-it-dialog .right .img-wrap img {
+	height: 100%
+}
+
+.view-it-dialog .right .goods-title {
+	display: block;
+	color: #666;
+    font-size: 14px;
+    line-height: 20px;
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 10px 0;
+}
+
+.view-it-dialog .right .goods-title:hover {
+	color: #ea5455
+}
+
+.view-it-dialog .right .goods-price {
+	text-align: center
+}
+
+.view-it-dialog .right .goods-price .new-price {
+	font-size: 18px;
+	color: #333;
+	font-weight: 700;
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 10px;
+}
+
+.view-it-dialog .right .goods-price .old-price {
+	font-size: 16px;
+	color: #999;
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 2px;
+}
+
+.view-it-dialog .right .buy-now {
+	text-align: center;
+	margin-top: 24px
+}
+
+.view-it-dialog .right .buy-now a {
+	color: #fff;
+    background: #ea5455;
+    border: none;
+    font-size: 16px;
+    font-weight: 700;
+    width: 160px;
+    text-align: center;
+    height: 33px;
+    line-height: 33px;
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 0;
+    display: block;
+}
+
+.view-it-dialog .right .buy-now a:hover {
+	opacity: 0.9;
+}
+
+.view-it-dialog .bottom {
+	margin-top: 10px;
+	line-height: 1
+}
+
+.view-it-dialog .bottom span {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 8px;
+	cursor: pointer;
+}
+
+.view-it-dialog .bottom .title {
+	font-size: 14px;
+	color: #888;
+	margin-right: 14px;
+	height: 20px;
+	line-height: 20px;
+	font-family: AvenirLTStd_Book
+}
+
+.view-it-dialog .bottom .fb-icon {
+	background-image: url(../../../resources/images/rg-pc/sprite.png);
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    background-position: -59px -5px;
+}
+
+
+.view-it-dialog .bottom .twitter-icon {
+	background-image: url(../../../resources/images/rg-pc/sprite.png);
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    background-position: -45px -45px;
+}
+
+
+.view-it-dialog .bottom .pinterest-icon {
+	background-image: url(../../../resources/images/rg-pc/sprite.png);
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    background-position: -5px -45px;
+}

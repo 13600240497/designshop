@@ -1,0 +1,235 @@
+{%
+	set pageData = {
+		componentHeight:data.componentHeight is not null?data.componentHeight:104,
+		boxMarginBottom:data.boxMarginBottom is not null?data.boxMarginBottom:32,
+		bgColor:data.bgColor is not null?data.bgColor:'#f5f5f5',
+		bgImage:data.bgImage is not null?data.bgImage:'',
+		bannerImage:data.bannerImage is not null?data.bannerImage:'',
+
+		hasEndedTimeDateBgColor:data.hasEndedTimeDateBgColor is not null?data.hasEndedTimeDateBgColor:'#dbdee0',
+		hasEndedTimeDateTextColor:data.hasEndedTimeDateTextColor is not null?data.hasEndedTimeDateTextColor:'#ffffff',
+		hasEndedActivityNameColor:data.hasEndedActivityNameColor is not null?data.hasEndedActivityNameColor:'#c4c4c4',
+		hasEndedActivityDescColor:data.hasEndedActivityDescColor is not null?data.hasEndedActivityDescColor:'#c4c4c4',
+
+    hasStartedTimeDateBgColor:data.hasStartedTimeDateBgColor is not null?data.hasStartedTimeDateBgColor:'#b8bec4',
+		hasStartedTimeDateTextColor:data.hasStartedTimeDateTextColor is not null?data.hasStartedTimeDateTextColor:'#ffffff',
+		hasStartedActivityNameColor:data.hasStartedActivityNameColor is not null?data.hasStartedActivityNameColor:'#2d2d2d',
+		hasStartedActivityDescColor:data.hasStartedActivityDescColor is not null?data.hasStartedActivityDescColor:'#2d2d2d',
+
+    hasNotStartedTimeDateBgColor:data.hasNotStartedTimeDateBgColor is not null?data.hasNotStartedTimeDateBgColor:'#dbdee0',
+		hasNotStartedTimeDateTextColor:data.hasNotStartedTimeDateTextColor is not null?data.hasNotStartedTimeDateTextColor:'#ffffff',
+		hasNotStartedActivityNameColor:data.hasNotStartedActivityNameColor is not null?data.hasNotStartedActivityNameColor:'#c4c4c4',
+		hasNotStartedActivityDescColor:data.hasNotStartedActivityDescColor is not null?data.hasNotStartedActivityDescColor:'#c4c4c4',
+		
+		defaultDateImage:data.defaultDateImage is not null?data.defaultDateImage:'',
+		defaultHoverDateImage:data.defaultHoverDateImage is not null?data.defaultHoverDateImage:'',
+		dateTimeTitle:data.dateTimeTitle is not null?data.dateTimeTitle:'',
+		dateTimeImage:data.dateTimeImage is not null?data.dateTimeImage:'',
+		defaultRaidersImage:data.defaultRaidersImage is not null?data.defaultRaidersImage:'',
+		defaultRaidersLink:data.defaultRaidersLink is not null?data.defaultRaidersLink:'',
+		notCurrentActivityImg:data.notCurrentActivityImg is not null?data.notCurrentActivityImg:'',
+		currentActivityImg:data.currentActivityImg is not null?data.currentActivityImg:'',
+		activityDateTimeTitleFontSize:data.activityDateTimeTitleFontSize is not null?data.activityDateTimeTitleFontSize:20,
+	}
+%}
+{% if data.isEditEnv == 1 %}
+	<style type="text/css">
+		[data-gid="U000119"][data-id="{{ pageInstanceId }}"] .header-timeline-container {
+			margin: 50px 95px;
+		}
+		[data-gid="U000119"][data-id="{{ pageInstanceId }}"] .timeline-list-wrapper li .header-timeline-title {
+			font-family: OpenSans-Bold;
+			margin: 8px 0 3px;
+		}
+    [data-gid="U000119"][data-id="{{ pageInstanceId }}"] .timeline-list-wrapper li .header-timeline-title {
+      font-family: OpenSans-Bold;
+      font-weight: bold;
+    }
+    [data-gid="U000119"][data-id="{{ pageInstanceId }}"] .timeline-list-wrapper li .header-timeline-date {
+      font-family: OpenSans-Bold;
+    }
+	</style>
+{% endif %}
+<style type="text/css">
+  [data-gid="U000119"][data-id="{{ pageInstanceId }}"] .timeline-list-wrapper li+li .arrow {
+    {% if pageData.notCurrentActivityImg %}
+    background-image: url({{ pageData.notCurrentActivityImg }});
+    {% endif %}
+  }
+  [data-gid="U000119"][data-id="{{ pageInstanceId }}"] .timeline-list-wrapper li.active+li .arrow {
+    {% if pageData.currentActivityImg %}
+    background-image: url({{ pageData.currentActivityImg }});
+    {% endif %}
+  }
+  [data-gid="U000119"][data-id="{{ pageInstanceId }}"] .default-header-item {
+    display: inline-block;
+    width:104px;
+    height:104px;
+    text-align: center;
+    background-color:#EDEDED;
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 10px;
+    box-sizing: border-box;
+  }
+  [data-gid="U000119"][data-id="{{ pageInstanceId }}"] .default-header-item p{
+    margin-top: 12px;
+  }
+  [data-gid="U000119"][data-id="{{ pageInstanceId }}"] .timeline-default-list-wrapper li .header-timeline-date {
+    background-color: #B8BEC4;
+    color: #FFFFFF;
+  }
+  [data-gid="U000119"][data-id="{{ pageInstanceId }}"] .default-swiper-wrapper .header-timeline-title {
+    font-weight: bold;
+  }
+  [data-gid="U000119"][data-id="{{ pageInstanceId }}"] .default-swiper-wrapper .header-timeline-title,
+  [data-gid="U000119"][data-id="{{ pageInstanceId }}"] .default-swiper-wrapper .header-timeline-discount {
+    color: #000000;
+  }
+  {# [data-gid="U000119"][data-id="{{ pageInstanceId }}"] .timeline-list-wrapper li+li:before {
+    background-image: url({{ staticDomain }}/resources/images/icon/time-red-arrow.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 12px;
+    height: 18px;
+  }
+  [data-gid="U000119"][data-id="{{ pageInstanceId }}"] .timeline-default-list-wrapper li+li:before {
+    background-image: url({{ staticDomain }}/resources/images/icon/time-default-arrow.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 12px;
+    height: 18px;
+  } #}
+  [data-gid="U000119"][data-id="{{ pageInstanceId }}"] .default-timeline-logo {
+    width:110px;
+    height:110px;
+    display:inline-block;
+    background-image:url({{data.default.view}});
+    background-size: 67px 51px;
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-color:#EDEDED;
+  }
+  [data-gid="U000119"][data-id="{{ pageInstanceId }}"] .timeline-list-wrapper li.hasEndedClass .header-timeline-date {
+    background-color: {{ pageData.hasEndedTimeDateBgColor }};
+    color: {{ pageData.hasEndedTimeDateTextColor }};
+  }
+  [data-gid="U000119"][data-id="{{ pageInstanceId }}"] .timeline-list-wrapper li.hasEndedClass .header-timeline-title {
+    color: {{ pageData.hasEndedActivityNameColor }};
+  }
+  [data-gid="U000119"][data-id="{{ pageInstanceId }}"] .timeline-list-wrapper li.hasEndedClass .header-timeline-discount {
+    color: {{ pageData.hasEndedActivityDescColor }};
+  }
+
+  [data-gid="U000119"][data-id="{{ pageInstanceId }}"] .timeline-list-wrapper li.active .header-timeline-date {
+    background-color: {{ pageData.hasStartedTimeDateBgColor }};
+    color: {{ pageData.hasStartedTimeDateTextColor }};
+  }
+  [data-gid="U000119"][data-id="{{ pageInstanceId }}"] .timeline-list-wrapper li.active .header-timeline-title {
+    color: {{ pageData.hasStartedActivityNameColor }};
+  }
+  [data-gid="U000119"][data-id="{{ pageInstanceId }}"] .timeline-list-wrapper li.active .header-timeline-discount {
+    color: {{ pageData.hasStartedActivityDescColor }};
+  }
+
+  [data-gid="U000119"][data-id="{{ pageInstanceId }}"] .timeline-list-wrapper li.hasNotStartClass .header-timeline-date {
+    background-color: {{ pageData.hasNotStartedTimeDateBgColor }};
+    color: {{ pageData.hasNotStartedTimeDateTextColor }};
+  }
+  [data-gid="U000119"][data-id="{{ pageInstanceId }}"] .timeline-list-wrapper li.hasNotStartClass .header-timeline-title {
+    color: {{ pageData.hasNotStartedActivityNameColor }};
+  }
+  [data-gid="U000119"][data-id="{{ pageInstanceId }}"] .timeline-list-wrapper li.hasNotStartClass .header-timeline-discount {
+    color: {{ pageData.hasNotStartedActivityDescColor }};
+  }
+  [data-gid="U000119"][data-id="{{ pageInstanceId }}"] .timeline-promotion-container:hover {
+    background-image: url({{ pageData.defaultHoverDateImage }}) !important;
+  }
+</style>
+<div class="geshop-component-box component-drag geshop-time-line-container" data-gid="U000119" data-key="U000119" data-id="{{ pageInstanceId }}" data-editEnv="{{data.isEditEnv}}" data-static-domain="{{ staticDomain }}" attr="nav_flag">
+  {% if data.dateTimeArrs|length %}
+  <div class="header-timeline-container" style="
+    margin-bottom:{{ pageData.boxMarginBottom }}px;
+    height:{{ pageData.componentHeight }}px;
+    background-color: {{ pageData.bgColor }};
+    {% if pageData.bgImage %}background-image: url({{ pageData.bgImage }});background-repeat:no-repeat;background-position:left top;background-size:cover;{% endif %}
+
+  ">
+    <div class="inner-fixed-container tc">
+      {% if pageData.bannerImage %}
+      <div class="timeline-logo" style="
+        background-image:url({{pageData.bannerImage}});
+      "></div>
+      {% else %}
+      <div class="default-timeline-logo"></div>
+      {% endif %}
+      {# <div class="timeline-logo header-timeline-item">618/ 4th Anniv.</div> #}
+      <div class="timeline-list-wrapper header-timeline-item swiper-container" id="js_top_timeline">
+        <ul class="swiper-wrapper">
+          {% for dateItem in data.dateTimeArrs %}
+          <li data-starttime="{{ dateItem.dateStartTime }}" data-endtime="{{ dateItem.dateEndTime }}" data-index={{ loop.index }} class="swiper-slide">
+            {# <p class="header-timeline-date">{{ (dateItem.dateStartTime)|date("m.d") }} - {{ (dateItem.dateEndTime)|date("m.d") }}</p> #}
+            <p class="header-timeline-date">00.00 - 00.00</p>
+            <p class="header-timeline-title site-bold-strict">{{ dateItem.activityName }}</p>
+            <p class="header-timeline-discount">{{ dateItem.activityDesc }}</p>
+            <i class="arrow"></i>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {# 活动日历 #}
+      {% if pageData.defaultDateImage %}
+      <div class="timeline-promotion-container header-timeline-item" style="{% if pageData.dateTimeImage == '' and pageData.defaultDateImage == '' and pageData.defaultHoverDateImage == '' %}display:none;{% endif %}background-image:url({{ pageData.defaultDateImage }})">
+        <div class="timeline-prototion-calendar-content">
+          <h3 style="font-size:{{ pageData.activityDateTimeTitleFontSize }}px;">{{ pageData.dateTimeTitle }}</h3>
+          <img src="{% if pageData.dateTimeImage %}{{ pageData.dateTimeImage }}{% endif %}" alt="">
+        </div>
+      </div>
+      {% else %}
+      <div class="timeline-promotion-container header-timeline-item" style="{% if pageData.dateTimeImage == '' and pageData.defaultDateImage == '' and pageData.defaultHoverDateImage == '' %}display:none;{% endif %}background-color: #EDEDED;color: #333;padding-top: 10px;box-sizing:border-box;">
+        <img width="67" height="51" src="{{ data.default.view }}" />
+        <p class="site-bold-strict" style="font-weight:bold;margin-top:12px;">活动日历</p>
+      </div>
+      {% endif %}
+      {# 攻略页 #}
+      {% if pageData.defaultRaidersImage %}
+      <div class="header-sale-guide header-timeline-item" style="background-image:url({{ pageData.defaultRaidersImage }});background-size:cover;">
+        <a target="{{ data.defaultLinkTarget }}" {% if pageData.defaultRaidersLink %}href="{{ pageData.defaultRaidersLink }}"{% endif %} target="_blank" style="display:block;width:100%;height:100%;"></a>
+      </div>
+{#      {% else %}#}
+{#      <div class="header-sale-guide header-timeline-item" style="background-color: #EDEDED;color: #333;padding-top: 10px;box-sizing:border-box;">#}
+{#        <img width="67" height="51" src="{{ data.default.view }}" />#}
+{#        <p class="site-bold-strict" style="font-weight:bold;margin-top:12px;">攻略页</p>#}
+{#      </div>#}
+      {% endif %}
+      
+    </div>
+  </div>
+  {% else %}
+  <div class="header-timeline-container" data-is-default-view="1" style="background-color:#F5F5F5;height:104px;">
+    <div class="inner-fixed-container tc">
+      <div style="width:110px;height:110px;float:left;background-image:url({{data.default.view}});background-size: 67px 51px;background-repeat:no-repeat;background-position:center center;background-color:#EDEDED;"></div>
+      <div class="timeline-list-wrapper timeline-default-list-wrapper header-timeline-item swiper-container" id="js_top_timeline">
+        <ul class="swiper-wrapper default-swiper-wrapper">
+          {% for item in [1,2,3,4,5,6,7] %}
+          <li class="swiper-slide">
+            <p class="header-timeline-date">06.20-06.30</p>
+            <p class="header-timeline-title site-bold-strict">BOTTOMS</p>
+            <p class="header-timeline-discount">$7 OFF $49</p>
+            <i class="arrow"></i>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="default-header-item">
+        <img width="67" height="51" src="{{ data.default.view }}" />
+        <p class="site-bold-strict">活动日历</p>
+      </div>
+      <div  class="default-header-item">
+        <img width="67" height="51" src="{{ data.default.view }}" />
+        <p class="site-bold-strict">攻略页</p>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>

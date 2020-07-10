@@ -1,0 +1,375 @@
+{%
+set formData = {
+    id: 'U000247',
+    name: '转盘组件',
+    theme: 'templatel_v1',
+    tabs: [
+        {
+            label: '规则配置',
+            components: [
+                {
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '规则ID',
+                            desc: '(ELF系统中小游戏规则ID)',
+                            name: 'rule_id',
+                        },
+                        {
+                            label: '转盘奖品数',
+                            name: 'prize_amount',
+                            type: 'input',
+                            disabled: true,
+                        },
+                        {
+                            type: 'diy',
+                            src: './temp/input-actcode.twig'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            label: '样式配置',
+            components: [
+                {
+                    label: '转盘组件配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            type: 'platData-dl',
+                            componentsData:[
+                                {
+                                    label: '组件背景图片（建议宽1200px，高530px)',
+                                    type: 'image',
+                                    name: 'box_bg',
+                                    default: '',
+                                },
+                                {
+                                    label: '背景颜色',
+                                    type: 'colorPicker',
+                                    name: 'box_bg_color',
+                                    default: '#131523',
+                                },
+                                {
+                                    label: '组件高度（px）',
+                                    name: 'box_bg_h',
+                                    default: 530,
+                                    default_m: 562,
+                                    col: 2
+                                },
+                                {
+                                    label: '组件上边距（px）',
+                                    name: 'box_margin_top',
+                                    default: 0,
+                                    default_m: 0,
+                                    col: 2
+                                },
+                            ]
+                        }
+                    ]
+                },
+                {
+                    label: '转盘规则',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '规则文案',
+                            desc: '请勿回车换行（双引号 需改为单引号），换行格式如下文换行用p标签包裹',
+                            name: 'rule_content',
+                            type: 'textarea',
+                            default: '<p>1、If you sign in you have an opportunty to Spin the Lucky Wheel and get a GIFTS</p> <p>2、Placing 1 paid order the you can spin the lucky wheel 1 times！（Limit：3 per day）</p><p>3、Want another chance to win ？ Just share our game！（Limit：1 per day）</p>',
+                            row: 4,
+                        },
+                    ]
+                },
+                {
+                    label: '转盘图片配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            type: 'platData-dl',
+                            componentsData:[
+                                {
+                                    label: '转盘图片（建议宽452px，高452px)',
+                                    type: 'image',
+                                    name: 'lottery_bg',
+                                    default: '',
+                                },
+                                {
+                                    label: '指针图片（建议宽196px ，高196px)',
+                                    type: 'image',
+                                    name: 'start_bg',
+                                    default: '',
+                                },
+                                {
+                                    label: '转盘上边距（px）',
+                                    name: 'lott_margin_top',
+                                    default: 20,
+                                    default_m: 10,
+                                    col: 2
+                                },
+                                {
+                                    label: '转盘左边距（px）',
+                                    name: 'lott_margin_left',
+                                    col: 2,
+                                    default: 34,
+                                    default_m: 0,
+                                },
+                            ]
+                        },
+                        {
+                            label: '中奖名单',
+                            type: 'fieldset',
+                            components: [
+                                {
+                                    label: '名单标题颜色',
+                                    type: 'colorPicker',
+                                    name: 'utitle_color',
+                                    default: '#000000',
+                                    col: 2
+                                },
+                                {
+                                    label: '中奖者名单文字颜色',
+                                    type: 'colorPicker',
+                                    name: 'u_color',
+                                    default: '#000000',
+                                    col: 2
+                                },
+                                {
+                                    type: 'platData-dl',
+                                    componentsData:[
+                                        {
+                                            label: '是否展示中奖者名单',
+                                            name: 'show_list',
+                                            type: 'radio',
+                                            default: 'show',
+                                            options: [
+                                                { label: '是', value: 'show' },
+                                                { label: '否', value: 'hide' },
+                                            ],
+                                        },
+                                        {
+                                            label: '名单背景图片（建议宽513px ，高475px)',
+                                            type: 'image',
+                                            name: 'user_list_bg',
+                                            default: '',
+                                        },
+                                        {
+                                            label: '名单宽度（px)',
+                                            name: 'user_list_w',
+                                            default: 513,
+                                            default_m: 300,
+                                            col: 2
+                                        },
+                                        {
+                                            label: '名单高度（px)',
+                                            name: 'user_list_h',
+                                            default: 475,
+                                            default_m: 184,
+                                            col: 2
+                                        },
+                                        {
+                                            label: '名单标题文字大小（px)',
+                                            name: 'utitle_font',
+                                            default: 26,
+                                            default_m: 14,
+                                            col: 2
+                                        },
+                                        {
+                                            label: '中奖者文字大小（px)',
+                                            name: 'u_font',
+                                            default: 16,
+                                            default_m: 12,
+                                            col: 2
+                                        },
+                                        {
+                                            label: '名单上边距（px)',
+                                            name: 'user_margin_top',
+                                            default: 40,
+                                            default_m: 20,
+                                            col: 2
+                                        },
+                                        {
+                                            label: '名单左边距（px)',
+                                            name: 'user_margin_left',
+                                            default: 56,
+                                            default_m: 0,
+                                            col: 2
+                                        },
+                                        {
+                                            label: '名单标题上边距',
+                                            name: 'utitle_margin_top',
+                                            default: 60,
+                                            default_m: 30,
+                                            col: 2
+                                        },
+                                        {
+                                            label: '名单标题下边距',
+                                            name: 'utitle_margin_bottom',
+                                            default: 24,
+                                            default_m: 16,
+                                            col: 2
+                                        },
+                                    ]
+                                }
+                            ]
+                        },
+                    ]
+                },
+                {
+                    label: '规则按钮',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '按钮文字颜色',
+                            type: 'colorPicker',
+                            name: 'rule_color',
+                            default: '#16A5F7',
+                            col: 2
+                        },
+                        {
+                            label: '按钮背景颜色',
+                            type: 'colorPicker',
+                            name: 'rule_bg_color',
+                            default: '#0a2251',
+                            col: 2
+                        },
+                        {
+                            type: 'platData-dl',
+                            componentsData:[
+                                {
+                                    label: '文字大小（px）',
+                                    name: 'rule_font',
+                                    default: 12,
+                                    default_m: 12,
+                                },
+                                {
+                                    label: '上边距（px）',
+                                    name: 'rule_top',
+                                    default: 0,
+                                    default_m: 0,
+                                    col: 2
+                                },
+                                {
+                                    label: '左边距（px）',
+                                    name: 'rule_left',
+                                    default: 20,
+                                    default_m: 10,
+                                    col: 2
+                                },
+                            ]
+                        },
+                    ]
+                },
+                {
+                    label: '抽奖次数',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '文案颜色',
+                            type: 'colorPicker',
+                            name: 'chances_color',
+                            default: '#16A5F7',
+                            col: 2
+                        },
+                        {
+                            label: '剩余次数颜色',
+                            type: 'colorPicker',
+                            name: 'chances_span_color',
+                            default: '#FFFFFF',
+                            col: 2
+                        },
+                        {
+                            type: 'platData-dl',
+                            componentsData:[
+                                {
+                                    label: '文字大小（px）',
+                                    name: 'chances_font',
+                                    default: 18,
+                                    default_m: 12,
+                                },
+                                {
+                                    label: '上边距（px）',
+                                    name: 'chances_margin_top',
+                                    default: 36,
+                                    default_m: 10,
+                                    col: 2
+                                },
+                                {
+                                    label: '左边距（px）',
+                                    name: 'chances_margin_left',
+                                    default: 174,
+                                    default_m: 0,
+                                    col: 2
+                                },
+                            ]
+                        },
+                    ]
+                },
+                {
+                    label: '分享配置',
+                    type: 'fieldset',
+                    isshow: 'dl-web',
+                    components: [
+                        {
+                            type: 'diy',
+                            src: './temp/share.twig'
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    onSubmit: 'onSubmit',
+}
+%}
+
+<script>
+    {#  自定义保存函数 #}
+    function onSubmit(progress) {
+        var $box = $('#U000247-templatel_v1');
+        var id = $box.find('input[name="rule_id"]').val();
+        var _clearInput = function () {
+            $box.find('input[name="prize_amount"]').val('');
+            $box.find('input[name="act_code"]').val('');
+            $box.find('input[name="rule_id"]').val('');
+        };
+
+        if (id) {
+            var shareArr = [];
+            $('#U000247-templatel_v1 input.share_data:checked').each(function(index,element){
+                var $val = $(this).val();
+                shareArr.push($val);
+            });
+            $('#U000247-templatel_v1 input[name=share_data]').val(JSON.stringify(shareArr));
+            var _url = GESHOP_INTERFACE.elf_webgame_get_activity.url;
+           /* var _url = 'http://www.elf.com.geshop.php5.egomsl.com/api/webgame-api/get-activity';*/
+            var website = GESHOP_SITECODE ? GESHOP_SITECODE.split('-')[0] : '';
+            var pipeline_code = website + (GESHOP_LANG == 'fr' ? GESHOP_LANG : '');
+            $.ajax({
+                type: 'GET',
+                dataType: 'jsonp',
+                url: _url,
+                data: { website: website.toUpperCase(), act_id: id, pipeline_code: pipeline_code.toUpperCase() },
+                success :function(res){
+                    if (res.status === 200) {
+                        $box.find('input[name="prize_amount"]').val(res.data.prize_count);
+                        $box.find('input[name="act_code"]').val(res.data.act_code);
+                        progress.next()
+                    } else {
+                        GS_GOODS_UTILS.showConfirm(id +' ID不存在或已过期，是否清空规则ID？',function(){
+                            _clearInput();
+                        });
+                    }
+                }
+            })
+        } else {
+            layer.msg('请填写规则ID');
+            _clearInput();
+        }
+    };
+</script>
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+

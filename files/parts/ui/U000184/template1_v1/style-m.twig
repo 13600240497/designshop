@@ -1,0 +1,24 @@
+{# m #}
+@media screen and (max-width: 767px){
+
+{{ root }}{
+margin-top: {{ data.box_margin_top_m|default(0) }}px;
+margin-bottom: {{ data.box_margin_bottom_m|default(0) }}px;
+margin-left: {{ data.box_margin_left_m|default(0) }}px;
+margin-right: {{ data.box_margin_right_m|default(0) }}px;
+}
+
+{#{{ classRoot }} .banner__img--box img{
+width: {{ data.img_width_m|default(375) }}px;
+height: {{ data.img_height_m|default(180) }}px;
+}#}
+{{ classRoot }} .mask,{{ classRoot }} .banner__img--box img{
+    border-radius: {{ data.mask_radius_m|default(0) }}px;
+}
+
+    {{ classRoot }} .time-bg{
+    width: {{ data.font_w_m ?? 110 }}px;
+    height: {{ data.font_w_m ?? 110 }}px;
+    line-height: {{ data.font_w_m ?? 110 }}px;
+    }
+}

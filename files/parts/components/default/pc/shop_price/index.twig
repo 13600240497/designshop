@@ -1,0 +1,33 @@
+{#
+    销售价
+    @params value               价格，默认0.00
+    @style
+ #}
+
+{# 站点区分 #}
+
+{% set siteData = {
+    color: 'rg' in siteCode ? '#FA386A' : '#3333333',
+    fontSize: 'rg' in siteCode ? '18px' : '22px',
+    fontClass: 'rg' in siteCode ? 'site-bold-strict' : '',
+} %}
+
+{# 输出HTML #}
+{% if params is not null %}
+    <div class="geshop-components-default-label-shop-price label-shop-price-{{ pageInstanceId }}">
+        <span>{{ params.text ?: '' }}</span><span class="my_shop_price my-shop-price {{ siteData.fontClass }}" data-orgp="{{ params.value | default('0.00') }}">${{ params.value | default('0.00') }}</span>
+    </div>
+{% endif %}
+
+
+{# 定制样式 #}
+{% if style is not null %}
+
+    .label-shop-price-{{ pageInstanceId }} {
+        font-size: {{ siteData.fontSize }};
+        color: {{ style.color ?? siteData.color }}
+    }
+    .label-shop-price-{{ pageInstanceId }} .my-shop-price{
+        font-family: Rubik-Medium,Arial;
+    }
+{% endif %}

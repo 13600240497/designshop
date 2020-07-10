@@ -1,0 +1,39 @@
+{{ include ('@app/files/parts/common/components/input.twig',
+    { options: { label:'积分状态图片',name:'UnSignIntegralStateImg',value:pageData.UnSignIntegralStateImg ,full:true,imgPrefix:true}}
+) }}
+
+{{ include ('@app/files/parts/common/components/input.twig',
+    { options: { label:'积分数文字颜色',name:'UnSignIntegralNumColor',value:pageData.UnSignIntegralNumColor ,full:true,colorPrefix:true}}
+) }}
+
+{{ include ('@app/files/parts/common/components/input.twig',
+    { options: { label:'积分累计天数文字颜色',name:'UnSignIntegralDayColor',value:pageData.UnSignIntegralDayColor ,full:true,colorPrefix:true}}
+) }}
+
+{{ include ('@app/files/parts/common/components/input.twig',
+    { options: { label:'按钮背景图片',name:'UnSignBackgroundImg',value:pageData.UnSignBackgroundImg ,full:true,imgPrefix:true}}
+) }}
+
+
+<div class="layui-row layui-col-space20">
+    <div class="layui-col-md6">
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'按钮文字颜色',name:'UnSignButtonTxtColor',value:pageData.UnSignButtonTxtColor ,full:true,colorPrefix:true}}
+        ) }}
+    </div>
+    <div class="layui-col-md6">
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'按钮背景颜色',name:'UnSignButtonBackgroundColor',value:pageData.UnSignButtonBackgroundColor ,full:true,colorPrefix:true}}
+        ) }}
+    </div>
+</div>
+
+{{ include ('@app/files/parts/common/components/input.twig',
+    { options: { label:'按钮文字',name:'UnSignButtonTxt',value:pageData.UnSignButtonTxt ,full:true }}
+) }}
+
+
+
+
+
+

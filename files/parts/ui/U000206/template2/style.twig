@@ -1,0 +1,49 @@
+{% set box = '#U000206_'~pageInstanceId %}
+{{ box }} {
+    background-color:{{ data.box_bg_colo ?? '#FFFFFF' }};
+    margin-bottom:{{ data.box_margin_bottom ?? 32 }}px;
+    margin-top:{{ data.box_margin_top ?? 0 }}px;
+}
+
+{{ box }} .countdowm-box {
+    padding: {{ data.cd_margin_bt ?? 20 }}px 0;
+}
+
+{{ box }} .cd_text {
+    font-size:{{ data.text_size ?? 24 }}px;
+    color:{{ data.cd_title_fcolor ?? '#000000' }};
+}
+
+{{ box }} .geshop-dl-timer {
+    font-size:{{ data.num_size ?? 20 }}px;
+    color:{{ data.cd_value_bcolor ?? '#000000' }};
+}
+
+{{ box }} .timer-spiner {
+    background-color:{{ data.cd_value_bcolor ?? '#000000' }};
+    color:{{ data.cd_value_fcolor ?? '#FFFFFF' }};
+    border-radius: {{ data.cd_radius ?? 2 }}px;
+}
+
+@media (max-width: 767px) {
+    {{ box }} {
+        margin-bottom:{{ data.box_margin_bottom_m ?? 32 }}px;
+        margin-top:{{ data.box_margin_top_m ?? 0 }}px;
+    }
+
+    {{ box }} .countdowm-box {
+        padding: {{ data.cd_margin_bt_m ?? 8 }}px 0;
+    }
+
+    {{ box }} .cd_text {
+        font-size:{{ data.text_size_m ?? 18 }}px;
+    }
+
+    {{ box }} .geshop-dl-timer {
+        font-size:{{ data.num_size_m ?? 18 }}px;
+    }
+
+    {{ box }} .timer-spiner {
+        border-radius: {{ data.cd_radius_m ?? 2 }}px;
+    }
+}

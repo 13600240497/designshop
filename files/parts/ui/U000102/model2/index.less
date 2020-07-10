@@ -1,0 +1,226 @@
+.ui-U000102_model2 {
+	overflow: hidden;
+	li {
+		list-style: none;
+	}
+	.pdb-10{
+		padding-bottom:10px;
+	}
+	.gb_goodsWrap {
+		position: relative;
+		padding: 10px;
+		line-height: 1;
+		box-sizing: border-box;
+	}
+	.gb_price1 {
+		font-size: 12px;
+		margin: 0 10px;
+	}
+	.gb_price2 {
+		font-size: 18px;
+		line-height: 1;
+	}
+	.gs-shop-price{
+		margin-bottom: 2px;
+		display: block;
+		.js-currency{
+			padding:0 10px;
+		}
+	}
+	.price-before{
+		font-size:14px;
+	}
+	//购买按钮
+	.gb_single_footer{
+		margin:10px 0 0;
+	}
+	.gb_buy {
+		cursor: pointer;
+		display: inline-block;
+		height: 30px;
+		line-height: 30px;
+		padding: 0 5px;
+		border-radius: 2px;
+		white-space: nowrap;
+		text-align: center;
+		box-sizing: border-box;
+		overflow: hidden;
+	}
+	.gb_cart {
+		float: left;
+		display: inline-block;
+		height: 30px;
+		line-height: 30px;
+		padding: 0 10px;
+		margin-right: 10px;
+		color: #FFFFFF;
+		font-size: 12px;
+		cursor: pointer;
+		text-align: center;
+		border-radius: 4px;
+		box-sizing: border-box;
+	}
+	.gb_goodsName {
+		text-align: left;
+		font-size: 14px;
+		margin: 0 10px 10px 0;
+		line-height:1.4;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+	}
+	.gb_leftInfo {
+		height: 100%;
+		width: 120px;
+		float: left;
+	}
+	.gb_rightInfo {
+		position: relative;
+		height: 100%;
+		width: 235px;
+		padding-right: 10px;
+		float: right;
+		overflow: hidden;
+		//min-height: 128px;
+		box-sizing: border-box;
+	}
+	.gb_endTime {
+		margin: 8px 0;
+	}
+	.gb_times em {
+		margin-right: 8px;
+	}
+	.gb_contents {
+		word-wrap: break-word;
+		padding-left: 8px;
+		margin-bottom: 3px;
+		max-height: 32px;
+		position: relative;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		line-height: 1.3;
+	}
+	.gb_contents::after {
+		content: "";
+		width: 4px;
+		height: 4px;
+		border-radius: 2px;
+		position: absolute;
+		left: 0px;
+		top: 9px;
+		margin-top: -3px;
+		background: #FF8A00;
+	}
+
+	.gb_stylenone {
+		//margin: 0 10px;
+		overflow: hidden;
+	}
+	.gb_main {
+		padding: 0 !important;
+		margin: 10px 0;
+		height: auto !important;
+		overflow: hidden;
+	}
+	.gb_imgBox {
+		margin: 0 auto;
+		width: 100px;
+		height:100px;
+		a{
+			width:100%;
+			height:100%;
+		}
+	}
+	.gb_imgBox img {
+		width: 100%;
+		height: 100%;
+	}
+	/* 售空 */
+	.gb_imgBox>a {
+		display: block;
+	}
+	.gs-goods-status {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+		width: 80px;
+		height: 80px;
+		display: inline-block;
+		padding: 20px 10px;
+		font-size: 20px;
+		line-height: 20px;
+		color: #fff;
+		text-align: center;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		visibility: visible;
+		background: rgba(0, 0, 0, .6);
+		border-radius: 50%;
+		font-style: normal;
+		display: none;
+		white-space: normal;
+		word-break: break-word;
+	}
+	.good_soldOut {
+		.gs-goods-status {
+			display: block;
+		}
+		.gs-link{
+			pointer-events: none;
+		}
+	}
+	.gb_after_coupon {
+		font-size: 12px;
+		margin-bottom: 4px;
+	}
+	.gb_copy {
+		padding: 0 6px;
+	}
+	.gb_coupon_box {
+		margin: 8px 0;
+	}
+
+	//flash sale
+	.gb_flash_sale{
+		font-size: 12px;
+		padding: 2px 8px;
+		margin-right: 4px;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.gb_goodsName_text{
+		vertical-align: middle;
+	}
+
+	// 服务标
+	@import '../../../temp/gb/css/good_label_m.less';
+	//评分
+	@import '../../../temp/gb/css/rating.less';
+	.gs-icon-star{
+		font-size: 12px;
+	}
+	.gbStarGrade_count{
+		font-size: 12px;
+	}
+}
+
+.ui-U000102_model2 .good_dealEnded .buyLink,
+.ui-U000102_model2 .cart_good_soldOut,
+.ui-U000102_model2 .good_soldOut .buyLink {
+	background-color: #999 !important;
+	color: #fff !important;
+	pointer-events: none;
+	cursor: default;
+}
+
+li {
+	list-style: none;
+}

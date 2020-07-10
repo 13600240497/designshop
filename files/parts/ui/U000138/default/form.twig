@@ -1,0 +1,267 @@
+<style>
+	{{ include ('@app/files/parts/ui/u000053/multi/form.css') }}
+</style>
+
+
+
+<div class='design-form design-form-component design-form-visible'>
+  	<h3 class='component-form-title'>倒计时组件
+    	<a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+      		<i class="el-icon-close"></i>
+    	</a>
+  	</h3>
+  	<blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+	{#  #}
+	<div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+		<div class="layui-tab" id="gs_component_countdown">
+			<ul class="layui-tab-title">
+				<li class="layui-this">模板选择</li>
+				<li>样式设置</li>
+			</ul>
+			<div class="layui-tab-content layui-tab-content-parent">
+				<div class="layui-tab-item layui-show">
+						<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+						{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				</div>
+				<div class="layui-tab-item">
+					<div class="layui-carousel" id="form_carousel">
+						<div carousel-item>
+							<div data-key="U000053">
+								<div class="normal-setting">
+									<h4>常用配置<span> (此组件只适用于通栏)</span></h4>
+									<div class="layui-form-item">
+										<label class="layui-form-label">下边距(px)</label>
+										<div class="layui-input-block">
+											<input class="layui-input" type="text" name="marginBottom" value="{{ data.marginBottom|default(0)}}">
+										</div>
+									</div>							
+								</div>
+								{# 剩余秒数,倒计时状态0,1,2 未开始,已开始,已结束 #}
+								<input type="hidden" name="serverTime" value="{{serverTime}}" data-public-tag="true">
+								<input type="hidden" name="dataSet" value="{{ data.dataSet | json_encode() }}" data-public-tag="true" tag="数据集合">
+								
+
+								<div id="tab-for-dataSet2" class="layui-tab layui-tab-mode2">
+									<ul class="layui-tab-title">
+										{% for key, item in data.dataSet | default([""]) %}
+											{% if key == 0 %}
+												<li data-key="0">基础</li>
+											{% else %}
+												<li data-key="{{item.key}}">
+													<span class="tab-item">时段{{ key+1 }}</span >
+													<i class="layui-icon layui-icon-close" data-key="{{item.key}}"></i>
+												</li>
+											{% endif %}
+										{% endfor %}
+									</ul>
+									{#  #}
+									<div class="li-add"> 
+										<a href="javascript:;" class="layui-btn-add" data-type="tabAdd">+</a>
+									</div>
+									{#  #}
+									<div class="layui-tab-content">
+										{% for key, dataRow in data.dataSet | default([""]) %}
+										{% if key == 0 %}
+											{% set randomId = 0 %}
+										{% else %}
+											{% set randomId = dataRow.key %}
+										{% endif %}
+											<div class="layui-tab-item" data-key="{{dataRow.key|default(0)}}">
+												<div class="layui-form-item">
+													<label class="layui-form-label">时间设置</label>
+													<div class="layui-input-block">
+														{% if dataRow.startTimeFormate %}
+															<input class="layui-input down-timestamp" type="text" name="downDateRange{{randomId}}" value="{{ dataRow.startTimeFormate }} - {{ dataRow.endTimeFormate }}">
+														{% else %}
+															<input class="layui-input down-timestamp" type="text" name="downDateRange{{randomId}}" value="">
+														{% endif %}
+													</div>
+												</div>
+												<div class="layui-form-item">
+													<label class="layui-form-label">整体背景颜色</label>
+													<div class="layui-input-block">
+														<div class="color-picker-selector" data-hidden-name="bgColor{{randomId}}">
+															<div style="background-color: {{ dataRow.bgColor | default("#ffffff") }};"></div>
+														</div>
+														<input type="text" class="layui-input" name="bgColor{{randomId}}" autocomplete="off" value="{{dataRow.bgColor|default("#ffffff")}}">
+													</div>
+												</div>
+												<div class="layui-form-item">
+													<label class="layui-form-label">文案颜色</label>
+													<div class="layui-input-block">
+														<div class="color-picker-selector" data-hidden-name="textColor{{randomId}}">
+															<div style="background-color: {{ dataRow.textColor | default("#333333") }};"></div>
+														</div>
+														<input type="text" class="layui-input" name="textColor{{randomId}}" autocomplete="off" value="{{dataRow.textColor|default("#333333")}}">
+													</div>
+												</div>
+												<div class="layui-form-item">
+													<label class="layui-form-label">倒计时背景颜色</label>
+													<div class="layui-input-block">
+														<div class="color-picker-selector" data-hidden-name="gridBgColor{{randomId}}">
+															<div style="background-color: {{dataRow.gridBgColor|default("#333333")}};"></div>
+														</div>
+														<input type="text" class="layui-input" name="gridBgColor{{randomId}}" autocomplete="off" value="{{dataRow.gridBgColor|default("#333333")}}">
+													</div>
+												</div>
+												<div class="layui-form-item">
+													<label class="layui-form-label">倒计时字体颜色</label>
+													<div class="layui-input-block">
+														<div class="color-picker-selector" data-hidden-name="gridTextColor{{randomId}}">
+															<div style="background-color: {{ dataRow.gridTextColor | default("#ffffff") }};"></div>
+														</div>
+														<input type="text" class="layui-input" name="gridTextColor{{randomId}}" autocomplete="off" value="{{ dataRow.gridTextColor | default("#ffffff") }}">
+													</div>
+												</div>
+												{# <div class="layui-form-item">
+													<label class="layui-form-label">预热文案</label>
+													<div class="layui-input-block">
+														<input class="layui-input" type="text" name="text1{{randomId}}" value="{{dataRow.text1|default('Comming soon')}}">
+													</div>
+												</div> #}
+												<div class="layui-form-item">
+													<label class="layui-form-label">进行文案</label>
+													<div class="layui-input-block">
+														<input class="layui-input" type="text" name="text2{{randomId}}" value="{{dataRow.text2|default('Hot sale')}}">
+													</div>
+												</div>
+												{# <div class="layui-form-item">
+													<label class="layui-form-label">结束文案</label>
+													<div class="layui-input-block">
+														<input class="layui-input" type="text" name="text3{{randomId}}" value="{{dataRow.text3|default('Ends')}}">
+													</div>
+												</div> #}
+											</div>
+										{% endfor %}
+									</div>
+									{# template #}
+									<div data-template style="display:none">
+										<div class="layui-form-item">
+											<label class="layui-form-label">时间设置</label>
+											<div class="layui-input-block">
+												<input class="layui-input down-timestamp" type="text" name="downDateRange{replaceKey}" value="">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">整体背景颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="bgColor{replaceKey}">
+													<div style="background-color: #ffffff;"></div>
+												</div>
+												<input type="text" class="layui-input" name="bgColor{replaceKey}" autocomplete="off" value="#ffffff">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">文案颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="textColor{replaceKey}">
+													<div style="background-color: #333333;"></div>
+												</div>
+												<input type="text" class="layui-input" name="textColor{replaceKey}" autocomplete="off" value="#333333">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">倒计时背景颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="gridBgColor{replaceKey}">
+													<div style="background-color: #333333;"></div>
+												</div>
+												<input type="text" class="layui-input" name="gridBgColor{replaceKey}" autocomplete="off" value="#333333">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">倒计时字体颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="gridTextColor{replaceKey}">
+													<div style="background-color: #ffffff;"></div>
+												</div>
+												<input type="text" class="layui-input" name="gridTextColor{replaceKey}" autocomplete="off" value="#ffffff">
+											</div>
+										</div>
+										{# <div class="layui-form-item">
+											<label class="layui-form-label">预热文案</label>
+											<div class="layui-input-block">
+												<input class="layui-input" type="text" name="text1{replaceKey}" value="Comming soon">
+											</div>
+										</div> #}
+										<div class="layui-form-item">
+											<label class="layui-form-label">进行文案</label>
+											<div class="layui-input-block">
+												<input class="layui-input" type="text" name="text2{replaceKey}" value="Hot sale">
+											</div>
+										</div>
+										{# <div class="layui-form-item">
+											<label class="layui-form-label">结束文案</label>
+											<div class="layui-input-block">
+												<input class="layui-input" type="text" name="text3{replaceKey}" value="Ends">
+											</div>
+										</div> #}
+									</div>
+									{# end template #}
+								</div>
+								<div class="text-center">
+									<button type="button" id="js_moreConfig" class="layui-btn layui-btn-normal layui-btn-sm">高级配置</button>
+								</div>
+							</div>
+							<div>
+								<div class="layui-tab layui-tab-vertical">
+									<ul class="layui-tab-title">
+										<li class="layui-this">高级设置</li>
+									</ul>
+									<div class="layui-tab-content">
+										<div class="layui-tab-item layui-show">
+											<div class="layui-form-item">
+												<label class="layui-form-label">标题文案文字大小(px)</label>
+												<div class="layui-input-block">
+													<input type="text" name="textFontSize" autocomplete="off" class="layui-input" value="{{data.textFontSize|default(24)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">倒计时文字大小(px)</label>
+												<div class="layui-input-block">
+													<input type="text" name="numbersFontSize" autocomplete="off" class="layui-input" value="{{data.numbersFontSize|default(24)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">倒计时背景宽度(px)</label>
+												<div class="layui-input-block">
+													<input type="text" name="gridWidth" autocomplete="off" class="layui-input" value="{{data.gridWidth|default(54)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">倒计时背景高度(px)</label>
+												<div class="layui-input-block">
+													<input type="text" name="gridHeight" autocomplete="off" class="layui-input" value="{{data.gridHeight|default(54)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">倒计时圆角(px)</label>
+												<div class="layui-input-block">
+													<input type="text" name="gridRadius" autocomplete="off" class="layui-input" value="{{data.gridRadius|default(2)}}">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="text-center">
+									<button type="button" id="js_baseConfig" class="layui-btn layui-btn-normal layui-btn-sm">基础配置</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{#  #}
+	<div class="layui-form-item geshop-form-operation">
+		<button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+		<button type="button" class="layui-btn layui-btn-normal" id="custom_submit">提交</button>
+		<button type="button" class="layui-btn layui-btn-normal js_submitDesignForm" style="display:none;">提交</button>
+	</div>
+</div>
+
+<script>
+	{% include "@app/files/parts/ui/u000053/multi/lib/AutoTab.js" %}
+	{% include "@app/files/parts/ui/u000053/multi/form.js" %}
+</script>

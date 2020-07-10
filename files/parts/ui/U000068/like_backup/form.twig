@@ -1,0 +1,92 @@
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>异步商品列表
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+
+  {{include ('@app/htdocs/resources/template/pc/templateList/index.twig')}}
+
+  <div class="component-form-configure-item component-form-setting-item">
+    <h4 class="title" style="margin-top:0">常用配置</h4>
+
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 组件下边距(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="componentMarginBottom" autocomplete="off" class="layui-input" value="{{ data.componentMarginBottom | default(32) }}">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 商品数据来源</label>
+      <div class="layui-input-block">
+        <input type="radio" name="goodsFromType" value="0" title="人工智能接口调用"{% if data.goodsFromType|default('0') == '0' %} checked{% endif %}>
+      </div>
+    </div>
+    
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 销售价文字大小(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="saleFontSize" autocomplete="off" class="layui-input" value="{{ data.saleFontSize | default(28) }}">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 销售价文字颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="salePriceColor"><div style="background-color: {{ data.salePriceColor|default('#666') }};"></div></div>
+        <input type="text" class="layui-input" name="salePriceColor" autocomplete="off" value="{{ data.salePriceColor|default('#666') }}">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 折扣文字大小(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="offFontSize" autocomplete="off" class="layui-input" value="{{ data.offFontSize | default(28) }}">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 折扣文字颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="offColor"><div style="background-color: {{ data.offColor|default('#333') }};"></div></div>
+        <input type="text" class="layui-input" name="offColor" autocomplete="off" value="{{ data.offColor|default('#333') }}">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> SEE MORE文字大小(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="smFontSize" autocomplete="off" class="layui-input" value="{{ data.smFontSize | default(28) }}">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> SEE MORE文字颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="smColor"><div style="background-color: {{ data.smColor|default('#333') }};"></div></div>
+        <input type="text" class="layui-input" name="smColor" autocomplete="off" value="{{ data.smColor|default('#333') }}">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> SEE MORE边框颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="smBorderColor"><div style="background-color: {{ data.smBorderColor|default('#333') }};"></div></div>
+        <input type="text" class="layui-input" name="smBorderColor" autocomplete="off" value="{{ data.smBorderColor|default('#333') }}">
+      </div>
+    </div>
+
+    <div class="layui-form-item" style="padding-bottom: 80px;">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> SEE MORE 交互类型</label>
+      <div class="layui-input-block">
+        <input type="radio" name="smInteraction" value="0" title="跳转页面"{% if data.goodsFromType|default('0') == '0' %} checked{% endif %}>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>

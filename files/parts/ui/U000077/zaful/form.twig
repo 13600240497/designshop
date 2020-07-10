@@ -1,0 +1,144 @@
+<h3 class='component-form-title'>推荐分类商品
+  <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+    <i class="el-icon-close"></i>
+  </a>
+</h3>
+{# <blockquote class="component-form-quote">切换模板后, 未包含 <span class="layui-badge-dot layui-bg-orange"></span> 标识的配置数据将被重置</blockquote> #}
+{{include ('@app/htdocs/resources/template/pc/templateList/index.twig')}}
+
+<div class="component-form-setting-item component-form-advanced-item">
+  <h4 class="title"><i class="layui-icon back" id="js_advanced_baseConfig">&#xe603;</i>高级设置</h4>
+  <div class="layui-collapse advanced-setting-container">
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 按钮字体颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="fontColorBtn"><div style="background-color: {{ data.fontColorBtn | default('#000000') }};"></div></div>
+        <input type="text" class="layui-input" name="fontColorBtn" autocomplete="off" value="{{ data.fontColorBtn | default('#000000') }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 按钮背景颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="bgColorBtn"><div style="background-color: {{ data.bgColorBtn | default('#ffffff') }};"></div></div>
+        <input type="text" class="layui-input" name="bgColorBtn" autocomplete="off" value="{{ data.bgColorBtn | default('#ffffff') }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 按钮边框颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="borderColorBtn"><div style="background-color: {{ data.borderColorBtn | default('#000000') }};"></div></div>
+        <input type="text" class="layui-input" name="borderColorBtn" autocomplete="off" value="{{ data.borderColorBtn | default('#000000') }}">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="component-form-setting-item component-form-configure-item">
+    <h4 class="title">常用配置</h4>
+    <div class="layui-field-box">
+        <div class="layui-form-item">
+            <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 下边距(px)</label>
+            <div class="layui-input-block">
+                <input type="text" name="boxMarginBottom" autocomplete="off" class="layui-input" value="{{ data.boxMarginBottom | default(0) }}">
+            </div>
+        </div>
+    </div>
+    <h4 class="title">数据来源</h4>
+    <div class="layui-field-box">
+        {{ include ('/lib/GoodsManage.twig') }}
+    </div>
+    <h4 class="title">Tab标题设置</h4>
+    <div class="ayui-field-box">
+        <div class="layui-form-item">
+            <label class="form-item-label">
+                <span class="layui-badge-dot layui-bg-orange"></span> 默认文字颜色
+            </label>
+            <div class="layui-input-block">
+                {{
+                    include ('lib/ColorPicker.twig', {
+                        'cmpt_name': 'fontColorCommon',
+                        'cmpt_value': data.fontColorCommon,
+                        'cmpt_default': '#2D2D2D'
+                    })
+                }}
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 选中状态颜色</label>
+            <div class="layui-input-block">
+                {{
+                    include ('lib/ColorPicker.twig', {
+                        'cmpt_name': 'fontColorActive',
+                        'cmpt_value': data.fontColorActive,
+                        'cmpt_default': '#2D2D2D'
+                    })
+                }}
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="form-item-label">默认标题大小(px)</label>
+            <div class="layui-input-block">
+                <input type="text" name="fontSizeCommon" autocomplete="off" class="layui-input" value="{{ data.fontSizeCommon | default(32) }}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="form-item-label">选中标题大小(px)</label>
+            <div class="layui-input-block">
+                <input type="text" name="fontSizeActive" autocomplete="off" class="layui-input" value="{{ data.fontSizeActive | default(44) }}">
+            </div>
+        </div>
+    </div>
+    <h4 class="title">商品内容配置</h4>
+    <div class="ayui-field-box">
+        <div class="layui-form-item">
+            <label class="form-item-label">销售价颜色</label>
+            <div class="layui-input-block">
+                {{
+                    include ('lib/ColorPicker.twig', {
+                        'cmpt_name': 'priceColor',
+                        'cmpt_value': data.priceColor,
+                        'cmpt_default': '#2D2D2D'
+                    })
+                }}
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix">
+        {# <a href="javascript:;" id="js_moreConfig" style="color:#1E9FFF">高级设置</a> #}
+    </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+    <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+    <span type="button" class="layui-btn layui-btn-normal" id="gs_submit">提交</span>
+	<button type="button" class="layui-btn layui-btn-normal js_submitDesignForm" style="display:none">提交</button>
+</div>
+
+
+<script>
+
+$('#gs_submit').on('click',function(){
+	var goodsArr = [];
+	var skuValidArr = 0;
+	/*是否显示已结束秒杀*/
+	var currentTime= new Date().getTime();
+
+	$('#killTabWrap .tab-lists-wrap li.goods-tab-item').each(function(index, element){
+		var $val = $(element).find('[name="goodsSKU"].Unwanted').val();
+        var $title = $(element).find('[name="label"].Unwanted').val();
+		/*sku数量校验*/
+		var skuArr = $val.split(',');
+        goodsArr.push({
+            "label": $title,
+            "lists": $val,
+        });
+	});
+
+	$('#killTabWrap input[name=goodsSKU]:eq(0)').val(JSON.stringify(goodsArr));
+
+	$(this).next('button').trigger('click');
+});
+
+
+</script>

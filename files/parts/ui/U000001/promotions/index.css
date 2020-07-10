@@ -1,0 +1,61 @@
+/* .activity-component-from-item .layui-tab-vertical .layui-tab-title {
+  width: 115px !important;
+} */
+
+.layui-form-select .layui-edge {
+  right: 20px;
+}
+
+.layui-layer.layui-layer-iframe.layer-anim {
+  border-radius: 5px !important;
+}
+
+.gs-default-clothes {
+  width:140px!important;
+  height:124px!important;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  display: block;
+}
+
+.gs-off-more {
+  width: 190px;
+  height: 100%;
+  /*margin-top: 3px;*/
+  position: absolute;
+  z-index: 5;
+}
+
+.gs-off-text:not(:first-child) {
+  display: none;
+}
+
+.gs-off-text {
+  width: 190px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.gs-discount-box{
+  line-height: normal;
+}
+.gs-off-more:hover {
+  cursor: pointer;
+}
+
+.line-border {
+  padding: 10px;
+  height: auto;
+  border: 1px solid #EDEDED;
+  background-color: #ffffff;
+}
+
+.line-border .gs-off-text {
+  display: block;
+  overflow: auto;
+  text-overflow: clip;
+  white-space: normal;
+}

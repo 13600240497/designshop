@@ -1,0 +1,34 @@
+{
+	"fields": {
+		"imgItem": {
+			"is_public": "1",
+			"is_m": "1",
+			"is_app": "1"
+		},
+		"imgSrc": {
+			"is_public": "1",
+			"is_m": "1",
+			"is_app": "1"
+		},
+		"imgUrl": {
+			"is_public": "1",
+			"is_m": "1",
+			"is_app": "1"
+		},
+		"imgHeight": {
+			"is_public": "1",
+			"is_m": "0",
+			"is_app": "1"
+		},
+		"boxMarginTop": {
+			"is_public": "0",
+			"is_m": "0",
+			"is_app": "1"
+		},
+		"boxMarginBottom": {
+			"is_public": "0",
+			"is_m": "0",
+			"is_app": "1"
+		}
+	}
+}

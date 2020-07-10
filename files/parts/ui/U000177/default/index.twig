@@ -1,0 +1,372 @@
+{%
+	set pageData = {
+		height:data.height is not null?data.height:200,
+		boxMarginBottom:data.boxMarginBottom is not null?data.boxMarginBottom:40,
+		bgColor:data.bgColor is not null?data.bgColor:'#ffffff',
+		leftSideImage:data.leftSideImage is not null?data.leftSideImage:'',
+		jumpLink:data.jumpLink is not null?data.jumpLink:'##',
+		iconWidth:data.iconWidth is not null?data.iconWidth:40,
+		iconHeight:data.iconHeight is not null?data.iconHeight:48,
+		iconFirstImg:data.iconFirstImg is not null?data.iconFirstImg:'',
+		iconSecondImg:data.iconSecondImg is not null?data.iconSecondImg:'',
+		iconThirdImg:data.iconThirdImg is not null?data.iconThirdImg:'',
+		iconOtherImg:data.iconOtherImg is not null?data.iconOtherImg:'',
+		iconOtherTextColor:data.iconOtherTextColor is not null?data.iconOtherTextColor:'#ffffff',
+
+		priceDefaultTextColor:data.priceDefaultTextColor is not null?data.priceDefaultTextColor:'#333333',
+		priceHoverTextColor:data.priceHoverTextColor is not null?data.priceHoverTextColor:'#333333',
+		
+		btnBgColor:data.btnBgColor is not null?data.btnBgColor:'#ffecec',
+		leaderBoardTextColor:data.leaderBoardTextColor is not null?data.leaderBoardTextColor:'#ff5058',
+		
+		buyText:data.buyText is not null?data.buyText:'SNAP UP &gt;',
+		buyTextColor:data.buyTextColor is not null?data.buyTextColor:'#ffffff',
+		buyBtnTextBgColor:data.buyBtnTextBgColor is not null?data.buyBtnTextBgColor:'#fd953c',
+
+		leaderBoardIconPosition:data.leaderBoardIconPosition is not null?data.leaderBoardIconPosition:1,
+		goodsItemHoverShadowColor:data.goodsItemHoverShadowColor is not null?data.goodsItemHoverShadowColor:'#f78e7d',
+		btnSwitchColor:data.btnSwitchColor is not null?data.btnSwitchColor:'#ffffff',
+
+		goodsDataSource:data.goodsDataSource is not null?data.goodsDataSource:0,
+		cateId: data.cateId is not null?data.cateId:0,
+		priceTextFontSize:data.priceTextFontSize is not null?data.priceTextFontSize:20,
+		btnDefaultBorderColor:data.btnDefaultBorderColor is not null?data.btnDefaultBorderColor:'transparent',
+		
+		buyTextFontSize:data.buyTextFontSize is not null?data.buyTextFontSize:20,
+		buyBtnDefaultBorderColor:data.buyBtnDefaultBorderColor is not null?data.buyBtnDefaultBorderColor:'transparent',
+		btnHoverBorderColor:data.btnHoverBorderColor is not null?data.btnHoverBorderColor:'transparent',
+		leaderBoardOtherFontSize:data.leaderBoardOtherFontSize is not null?data.leaderBoardOtherFontSize:18,
+	}
+%}
+
+
+
+{% if data.isEditEnv == 1 %}
+	<style type="text/css">
+		[data-gid="U000177"][data-id="{{ pageInstanceId }}"] .leader-board-container .goods-price {
+			font-family: OpenSans-Bold;
+		}
+	</style>
+{% endif %}
+
+
+
+<div 
+	class="geshop-component-box component-drag geshop-leaderboard-async wrap-U000177-default wrap-{{ pageInstanceId }} js-geshop-ga-click js-geshop-ga-view" 
+	data-gid="U000177" 
+	data-key="U000177" 
+	data-id="{{ pageInstanceId }}" 
+	data-static-domain="{{ staticDomain }}" 
+	attr="nav_flag" 
+	geshop-component-name="{{ data.ga_name }}">
+	<div class="leader-board-container js-leader-board-container-U000177" data-asyncdata-id="{{ pageData.goodsDataSource }}" data-editEnv="{{data.isEditEnv}}" data-sitedomain="{{ siteDomain }}" data-cate-id="{{ pageData.cateId }}" style="
+	
+		{% if pageData.boxMarginBottom %}margin-bottom: {{ pageData.boxMarginBottom }}px;{% endif %}
+		{% if pageData.bgColor %}background-color: {{ pageData.bgColor }};{% endif %}
+	">
+	{# layui tempate container start #}
+	
+	 <div style="height:100%; background:url(https://geshopimg.logsss.com/uploads/K016no8NLPkfFRXZ5IEsv4OJrl7VD3Wm.gif) no-repeat center center; "></div>
+	{# layui tempate container end #}
+	</div>
+	{# layui template start #}
+	<script type="text/html" class="pc-leader-board-template">
+		<div class="leader-board-aside-link">
+			{% if data.isEditEnv == '1' and pageData.leftSideImage %}
+				<a  href="{{ pageData.jumpLink }}" target="_blank">
+					<img class="" 
+						src="{{ pageData.leftSideImage }}" 
+						alt="{{ pageData.jumpLink }}"
+					/>
+				</a>
+			
+		
+			{% elseif  data.isEditEnv == '0' and pageData.leftSideImage %}
+				{% if pageData.jumpLink %}
+					<a href="{{ pageData.jumpLink }}" {% if data.isOpenNew == 1 %}target="_blank"{% endif %}>
+						<img class="js_gdexp_lazy js-geshopImg-lazyload js_gbexp_lazy" 
+							src="{{ data.default.lazyImg }}" 
+							data-original="{{ pageData.leftSideImage }}" 
+							alt="{{ pageData.jumpLink }}"
+						/>
+					</a>
+				{% else %}
+					<img class="" 
+							src="{{ pageData.leftSideImage }}" 
+							alt="{{ pageData.jumpLink }}"
+						/>
+			{% endif %}
+		
+			{% else %}
+			<div style="background-color:#EDEDED;width:100%;height:100%;background-image:url({{ data.default.view }});background-repeat:no-repeat;background-position:center center;background-size:120px 94px;"></div>
+			{% endif %}
+		</div>
+		<div class="swiper-parent-container">
+		<div class="swiper-container">
+			<ul class="swiper-wrapper">
+				<%# if(d.goodsInfo.length > 0){ %>
+					<%#  $.each(d.goodsInfo, function(index, item){ %>
+					<li class="swiper-slide leader-board-content-item">
+						<a href="<% item.url_title %>" 
+							target="_blank" 
+							class="logsss_event swiper-slide-item-imgwrap"
+							title="<% item.goods_title %>"
+							data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'<% item.goods_sn %>','cporder':'{{ layoutIndex }}','rank':'<% index %>'},'skuinfo':{'sku':'<% item.goods_sn %>','pam':'0','pc':'<% item.cateid %>','k':'<% item.warehousecode %>'} }"
+						>
+							<img class="swiper-lazy slide-item-image" 
+								src="{{ data.default.lazyImg }}"
+								data-src="<% item.goods_img %>" 
+								alt="<% item.goods_title %>" 
+								data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'<% item.goods_sn %>','cporder':'{{ layoutIndex }}','rank':'<% index %>'} }"
+							/>
+						</a>
+						<p class="product-desc"><% item.goods_title %></p>
+						<p class="product-price {% if pageData.priceHoverTextColor %}price-hover{% endif %}">
+							<span class="goods-price my_shop_price" style="{% if pageData.priceTextFontSize %}font-size: {{ pageData.priceTextFontSize }}px;{% endif %}" data-orgp="<% item.shop_price %>" data-sku="<% item.goods_sn %>" data-bz="<% item.shop_price %>" orgp="<% item.shop_price %>">$<% item.shop_price %></span>
+							<span class="market-price my_shop_price js_market_wrap" data-orgp="<% item.market_price %>" data-bz="<% item.market_price %>">$<% item.market_price %></span>
+						</p>
+						
+						<p class="product-selling-point" style="
+							{% if pageData.btnBgColor %}background-color: {{ pageData.btnBgColor }};{% endif %}
+							{% if pageData.leaderBoardTextColor %}color: {{ pageData.leaderBoardTextColor }};{% endif %}
+							{% if pageData.btnDefaultBorderColor %}border-color:{{ pageData.btnDefaultBorderColor }};{% endif %}
+						">
+						<%# if(d.type == 1){ %>
+							<%# if(d.lang == 'en'){ %>
+								<strong><% item.sale_number %></strong> Pieces Sold After <strong><% item.sale_days ? item.sale_days : 0 %></strong> Days Released
+							<%# }else if(d.lang == 'fr'){ %>
+								<strong><% item.sale_number %></strong> pièces vendues après <strong><% item.sale_days ? item.sale_days : 0 %></strong> jours de sortie
+							<%# }else if(d.lang == 'es'){ %>
+								<strong><% item.sale_number %></strong> prendas vendidas después de <strong><% item.sale_days ? item.sale_days : 0 %></strong> días desde su lanzamiento
+							<%# }else if(d.lang == 'de'){ %>
+								Nach <strong><% item.sale_days ? item.sale_days : 0 %></strong> Tagen werden <strong><% item.sale_number %></strong> Stücke verkauft
+							<%# }else if(d.lang == 'pt'){ %>
+								<strong><% item.sale_number %></strong> peças vendidas após <strong><% item.sale_days ? item.sale_days : 0 %></strong> dias lançados
+							<%# }else if(d.lang == 'it'){ %>
+								<strong><% item.sale_number %></strong> Pezzo Venduti Dopo <strong><% item.sale_days ? item.sale_days : 0 %></strong> giorni dal Lancio
+							<%# }else if(d.lang == 'ru'){ %>
+								<strong><% item.sale_number %></strong> Штук(ов) уже продали, через <strong><% item.sale_days ? item.sale_days : 0 %></strong> дней не в запасе
+							<%# }else{ %>
+								<strong><% item.sale_number %></strong> Pieces Sold After <strong><% item.sale_days ? item.sale_days : 0 %></strong> Days Released
+							<%# } %>
+						<%# }else if(d.type == 2){ %>
+							<%# if(d.lang == 'en'){ %>
+								Already Sold <strong><% item.sale_number %></strong> Pieces
+							<%# }else if(d.lang == 'fr'){ %>
+								<strong><% item.sale_number %></strong> pièces vendues
+							<%# }else if(d.lang == 'es'){ %>
+								Ya se han vendido <strong><% item.sale_number %></strong> piezas
+							<%# }else if(d.lang == 'de'){ %>
+								<strong><% item.sale_number %></strong> Stücke werden bereits verkauft
+							<%# }else if(d.lang == 'pt'){ %>
+								Já Vendi <strong><% item.sale_number %></strong> Peças
+							<%# }else if(d.lang == 'it'){ %>
+								<strong><% item.sale_number %></strong> Pezzi Sono Stati Venduti
+							<%# }else if(d.lang == 'ru'){ %>
+								<strong><% item.sale_number %></strong> Штук(ов) уже продали
+							<%# }else{ %>
+								Already Sold <strong><% item.sale_number %></strong> Pieces
+							<%# } %>
+						<%# }else if(d.type == 3){ %>
+							<%# if(d.lang == 'en'){ %>
+								<strong><% item.discount %></strong>% OFF
+							<%# }else if(d.lang == 'fr'){ %>
+								<strong><% item.discount %></strong>% de réduction
+							<%# }else if(d.lang == 'es'){ %>
+								<strong><% item.discount %></strong>% de descuento
+							<%# }else if(d.lang == 'de'){ %>
+								<strong><% item.discount %></strong>% Rabatt
+							<%# }else if(d.lang == 'pt'){ %>
+								<strong><% item.discount %></strong>% de desconto
+							<%# }else if(d.lang == 'it'){ %>
+								Sconto del <strong><% item.discount %></strong>%
+							<%# }else{ %>
+								<strong><% item.discount %></strong>% OFF
+							<%# } %>
+						<%# } %>
+						</p>
+
+						<p class="buy-now none">
+							<a href="<% item.url_title %>" target="_blank" class="link-snap-up" style="
+								{% if pageData.buyBtnTextBgColor %}background-color: {{ pageData.buyBtnTextBgColor }};{% endif %}
+								{% if pageData.buyTextColor %}color: {{ pageData.buyTextColor }};{% endif %}
+								{% if pageData.buyTextFontSize %}font-size: {{ pageData.buyTextFontSize }}px;{% endif %}
+							">{% if pageData.buyText %}{{ pageData.buyText }}{% endif %}</a>
+						</p>
+
+						<%# if(index == 0){ %>
+						{% if pageData.iconFirstImg %}
+							<span class="ranking-icon" style="
+								{% if pageData.iconFirstImg %}background-image:url({{ pageData.iconFirstImg }});{% endif %}
+								{% if pageData.iconWidth %}width:{{pageData.iconWidth}}px;{% endif %}
+								{% if pageData.iconHeight %}height:{{pageData.iconHeight}}px;{% endif %}
+								{% if pageData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+							"></span>
+						{% else %}
+							<span class="ranking-icon" style="
+								background-image:url({{ data.default.rankingFirst }});
+								width:{{pageData.iconWidth}}px;
+								height:{{pageData.iconHeight}}px;
+								{% if pageData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+							"></span>
+						{% endif %}
+						<%# } %>
+
+						<%# if(index == 1){ %>
+						{% if pageData.iconSecondImg %}
+							<span class="ranking-icon" style="
+								{% if pageData.iconSecondImg %}background-image:url({{ pageData.iconSecondImg }});{% endif %}
+								{% if pageData.iconWidth %}width:{{pageData.iconWidth}}px;{% endif %}
+								{% if pageData.iconHeight %}height:{{pageData.iconHeight}}px;{% endif %}
+								{% if pageData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+							"></span>
+						{% else %}
+							<span class="ranking-icon" style="
+								background-image:url({{ data.default.rankingSecond }});
+								width:{{pageData.iconWidth}}px;
+								height:{{pageData.iconHeight}}px;
+								{% if pageData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+							"></span>
+						{% endif %}
+						<%# } %>
+
+						<%# if(index == 2){ %>
+						{% if pageData.iconThirdImg %}
+							<span class="ranking-icon" style="
+								{% if pageData.iconThirdImg %}background-image:url({{ pageData.iconThirdImg }});{% endif %}
+								{% if pageData.iconWidth %}width:{{pageData.iconWidth}}px;{% endif %}
+								{% if pageData.iconHeight %}height:{{pageData.iconHeight}}px;{% endif %}
+								{% if pageData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+							"></span>
+						{% else %}
+							<span class="ranking-icon" style="
+								background-image:url({{ data.default.rankingThird }});
+								width:{{pageData.iconWidth}}px;
+								height:{{pageData.iconHeight}}px;
+								{% if pageData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+							"></span>
+						{% endif %}
+						<%# } %>
+
+						<%# if(index > 2){ %>
+						{% if pageData.iconOtherImg %}
+							<span class="ranking-icon" style="
+								{% if pageData.iconOtherImg %}background-image:url({{ pageData.iconOtherImg }});{% endif %}
+								{% if pageData.iconWidth %}width:{{pageData.iconWidth}}px;{% endif %}
+								{% if pageData.iconHeight %}height:{{pageData.iconHeight}}px;{% endif %}
+								{% if pageData.iconOtherTextColor %}color:{{pageData.iconOtherTextColor}};{% endif %}
+								{% if pageData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+								{% if pageData.leaderBoardOtherFontSize %}font-size:{{pageData.leaderBoardOtherFontSize}}px;{% endif %}
+							"><% index+1 %></span>
+						{% else %}
+							<span class="ranking-icon" style="
+								background-image:url({{ data.default.rankingOther }});
+								width:{{pageData.iconWidth}}px;
+								height:{{pageData.iconHeight}}px;
+								color:{{pageData.iconOtherTextColor}};
+								{% if pageData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+								{% if pageData.leaderBoardOtherFontSize %}font-size:{{pageData.leaderBoardOtherFontSize}}px;{% endif %}
+							"><% index+1 %></span>
+						{% endif %}
+						<%# } %>
+					</li>
+					<%# }); %>
+				<%# }else{ %>
+					<%# $.each(Array(3), function(index){ %>
+					<li class="swiper-slide leader-board-content-item">
+						<div class="default-slide-view" style="background-image:url({{ data.default.clothes }});"></div>
+						<p class="product-desc">Description name of commodity infor…</p>
+						<p class="product-price"><span class="goods-price my_shop_price" data-orgp="0.00" data-sku="" data-bz="0.00" orgp="0.00">$0.00</span><span class="market-price my_shop_price" data-orgp="0.00" data-bz="0.00">$0.00</span></p>
+						<p class="product-selling-point" style="background-color:#EDEDED;color:#333333;">
+							<strong>5200</strong> Pieces Sold After <strong>11</strong> Days Released
+						</p>
+						<p class="buy-now none">
+							<a href="#" target="_blank" class="link-snap-up">SNAP UP &gt;</a>
+						</p>
+
+						<%# if(index == 0){ %>
+						<span class="ranking-icon" style="
+							background-image:url({{ data.default.rankingFirst }});
+							width:{{pageData.iconWidth}}px;
+							height:{{pageData.iconHeight}}px;
+							{% if pageData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+						"></span>
+						<%# } %>
+
+						<%# if(index == 1){ %>
+						<span class="ranking-icon" style="
+							background-image:url({{ data.default.rankingSecond }});
+							width:{{pageData.iconWidth}}px;
+							height:{{pageData.iconHeight}}px;
+							{% if pageData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+						"></span>
+						<%# } %>
+
+						<%# if(index == 2){ %>
+						<span class="ranking-icon" style="
+							background-image:url({{ data.default.rankingThird }});
+							width:{{pageData.iconWidth}}px;
+							height:{{pageData.iconHeight}}px;
+							{% if pageData.leaderBoardIconPosition == 2 %}right:5px;{% else %}left:5px;{% endif %}
+						"></span>
+						<%# } %>
+					</li>
+					<%# }); %>
+				<%# } %>
+			</ul>
+		</div>
+		<div class="swiper-button-next swiper-button-black" style="background-color:{{ pageData.btnSwitchColor }}"></div>
+		<div class="swiper-button-prev swiper-button-black" style="background-color:{{ pageData.btnSwitchColor }}"></div>
+		</div>
+	</script>
+	{# layui template end #}
+
+	<!-- embed stylesheet begin -->
+	{% if data.isEditEnv == 1 %}
+	<style type="text/css">
+		.wrap-{{ pageInstanceId }} .leader-board-container {
+			
+		}
+	</style>
+	{% endif %}
+	
+	<style type="text/css">
+		{% if pageData.priceDefaultTextColor %}
+			.wrap-{{ pageInstanceId }} .leader-board-container .leader-board-content-item .product-price .goods-price {
+				color: {{ pageData.priceDefaultTextColor }};
+			}
+		{% endif %}
+		{% if pageData.priceHoverTextColor is not empty%}
+	
+			.wrap-{{ pageInstanceId }} .leader-board-container .leader-board-content-item:hover .product-price.price-hover .goods-price {
+				color: {{ pageData.priceHoverTextColor }};
+			}
+
+		{% endif %}
+		{% if pageData.goodsItemHoverShadowColor is not empty %}
+		
+			.wrap-{{ pageInstanceId }} .leader-board-container .leader-board-content-item:hover {
+				-webkit-box-shadow: 0 0 10px {{ pageData.goodsItemHoverShadowColor }};
+				box-shadow: 0 0 10px {{ pageData.goodsItemHoverShadowColor }};
+			}
+
+		{% endif %}
+		{% if pageData.btnHoverBorderColor  is not empty%}
+	
+			.wrap-{{ pageInstanceId }} .leader-board-container .link-snap-up:hover {
+				border-color: {{ pageData.btnHoverBorderColor }};
+			}
+		
+		{% endif %}
+		{% if pageData.buyBtnDefaultBorderColor is not empty %}
+		
+			.wrap-{{ pageInstanceId }} .leader-board-container .link-snap-up {
+				border-color: {{ pageData.buyBtnDefaultBorderColor }};
+			}
+		
+		{% endif %}
+	</style>
+	<!-- embed stylesheet end -->
+</div>
+
+

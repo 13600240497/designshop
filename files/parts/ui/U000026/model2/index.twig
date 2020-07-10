@@ -1,0 +1,19 @@
+ <div class="geshop-component-box component-drag" data-key="U000026" data-gid="U000026_model2" data-id="{{ pageInstanceId }}">
+    <div style="
+		{% if data.boxMarginTop %}margin-top: {{ data.boxMarginTop / 75 | number_format(3, '.') }}rem;{% endif %}
+		{% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom / 75 | number_format(3, '.') }}rem;{% endif %}
+    ">
+        <img style="display: block;
+            width: {% if data.imgWidth %}{{ data.imgWidth / 75 | number_format(3, '.') }}rem{% else %}100%{% endif %};
+            {% if data.imgHeight %}height: {{ data.imgHeight / 75 | number_format(3, '.') }}rem;{% endif %}
+        " class="initImgSrc" src="{% if data.default.banner %}{{data.default.banner }}{% else %} {{ data.default.banner }}{% endif %}">
+
+    	<div style="display:none" class="js_geshopTimeZoneBanner">
+            {% for item in data.imgItem %}
+                {{item.start_time}} - {{item.end_time}}&{{item.imgSrc}}#
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+

@@ -1,0 +1,32 @@
+{
+  "fields": {
+    "bgColor": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "titleText": { "is_public": "1", "is_m": "1", "is_app": "1" },
+    "titleColor": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "viewColor": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "viewBorderC": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "viewText": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "viewHref": { "is_public": "1", "is_m": "1", "is_app": "1" },
+    "boxMarginTop": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "boxMarginBottom": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "boxPaddingTop": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "boxPaddingBottom": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "height": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "imgSrc": { "is_public": "1", "is_m": "1", "is_app": "1" },
+    "titleWidth": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "titleHeight": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "titleFont": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "titleWeight": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "titleBgI": { "is_public": "1", "is_m": "1", "is_app": "1" },
+    "viewFont": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "viewWeight": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "viewBgColor": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "viewRadius": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "viewMarginT": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "viewPaddingTB": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "viewPaddingLR": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "viewBorderW": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "viewBorderS": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "isShow": { "is_public": "0", "is_m": "1", "is_app": "1" }
+  }
+}

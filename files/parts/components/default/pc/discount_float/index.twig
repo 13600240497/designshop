@@ -1,0 +1,63 @@
+{#
+    浮动折扣标， 目前只有 PC 商品列表6个新模版在用，其余都不再使用，统一使用 VUE
+    @params value               折扣值
+    @style type                 折扣类型，默认1
+    @style background-color     背景颜色
+    @style background-image     背景图片
+    @style color               折扣值文字颜色
+    @style width                宽度
+    @style height                高度
+    @style top                  上浮动像素
+    @style right                右浮动像素
+    @style font_top             文字上偏移
+    @style font_right           文字右偏移
+ #}
+
+
+{# 输出HTML #}
+{% if params is not null %}
+    {# 设定 type 默认值为1 #}
+    {% if params.type is null or params.type is empty %}
+        {% set params = params | merge({ 'type': 1 }) %}
+    {% endif %}
+    {% if data.discount_show is defined  %}
+        {% set show = data.discount_show %}
+    {% else %}
+        {% set show = 1 %}
+    {% endif %}
+    {# 少于等于0的不展示 #}
+    {% if params.value > 0 and show == 1 %}
+        <div class="geshop-components-default-discount-float discount-float-{{ pageInstanceId }}">
+            {% if params.type == 1 %}
+                <label>{{ params.value | default('0') }}%<br><i>OFF</i></label>
+            {% else %}
+                <label>-{{ params.value | default('0') }}%</label>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endif %}
+
+{# 定制样式 #}
+{% if style is not null %}
+
+    .discount-float-{{ pageInstanceId }} {
+        width: {{ data.discount_width | default(50) }}px;
+        height: {{ data.discount_height | default(50) }}px;
+        right: {{ data.discount_right | default(0) }}px;
+        top: {{ data.discount_top | default(0) }}px;
+        color: {{ style.color | default('#fff') }};
+        {% if style['background-image'] is not null and style['background-image'] != '' %}
+            background-image: url('{{ style['background-image'] }}');
+            background-size: 100% 100%;
+            border-radius: 0px;
+        {% else %}
+            background-color: {{ style['background-color'] | default('#333') }};
+        {% endif %}
+    }
+
+    .discount-float-{{ pageInstanceId }} > label {
+        top: {{ data.discount_font_top | default(11) }}px;
+        right: {{ data.discount_font_right | default(9) }}px;
+    }
+
+{% endif %}

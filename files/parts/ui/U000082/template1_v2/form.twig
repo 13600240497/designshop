@@ -1,0 +1,80 @@
+{% set formData = {
+    id: 'U000215',
+    name: '热图',
+    theme: 'modal1',
+    tabs: [
+
+            {
+                label: '样式设置',
+                components: [
+                    {
+                        label: '常用配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '是否新窗口打开',
+                                name: 'href_target',
+                                default: 0,
+                                type: 'radio',
+                                options: [
+                                    {
+                                        label: '是',
+                                        value: 1,
+                                    },
+                                    {
+                                        label: '否',
+                                        value: 0,
+                                    }
+                                ]
+                            },
+                            {
+                                label: '上边距',
+                                desc: '(px)',
+                                name: 'box_margin_top',
+                                default: 0,
+                            },
+                            {
+                                label: '下边距',
+                                desc: '(px)',
+                                name: 'box_margin_bot',
+                                default: 0,
+                            },
+                            {
+                                label: '热区图片',
+                                name: 'base_img',
+                                type: 'image',
+                                default: '',
+                            },
+                            {
+                                type: 'diy',
+                                src: 'area.twig'
+                            }
+                        ]
+                    },
+                ]
+            }
+        ],
+    beforeSubmit: 'onSubmit'
+
+} %}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+<script>
+
+
+
+
+    {#  自定义保存函数 #}
+    function onSubmit(progress) {
+        var imgSrc = $("input[name='base_img']").val() || null;
+        var img = $("input[name='areas']").attr('data-src');
+        if (img != imgSrc) {
+            /* 判断当前图片否为同一张 */
+            $("input[name='areas']").val(0);
+        }
+        progress.next()
+    }
+
+</script>

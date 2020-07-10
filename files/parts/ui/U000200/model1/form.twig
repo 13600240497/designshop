@@ -1,0 +1,121 @@
+<div class='design-form design-form-component design-form-visible'>
+    <h3 class='component-form-title'>Banner组件设置
+        <a href="javascript:;" class="design-form-close js_closeDesignForm gb-icon-close">
+            <i class="el-icon-close"></i>
+        </a>
+    </h3>
+    <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+    <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+        <div class="layui-tab">
+            <ul class="layui-tab-title">
+                <li class="layui-this">模板选择</li>
+                <li>样式设置</li>
+            </ul>
+            <div class="layui-tab-content layui-tab-content-parent">
+                <div class="layui-tab-item layui-show">
+						<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+						{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				</div>
+                <div class="layui-tab-item">
+                    <div class="layui-carousel" id="form_carousel">
+                        <div carousel-item="carousel-item">
+                            <div>
+                                <fieldset class="layui-elem-field">
+                                    <legend>常用配置</legend>
+                                    <div class="layui-field-box">
+                                        <div class="layui-form-item">
+											<label class="layui-form-label public-data" style="color:#333">上边距(px)</label>
+											<div class="layui-input-block">
+												<input type="text" name="base_magin_top" autocomplete="off" class="layui-input" value="{{ data.base_magin_top }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label public-data" style="color:#333">下边距(px)</label>
+											<div class="layui-input-block">
+												<input type="text" name="base_magin_bottom" autocomplete="off" class="layui-input" value="{{ data.base_magin_bottom|default(32) }}">
+											</div>
+										</div>
+                                        <div class="layui-form-item" data-get-img-width="0">
+                                            <label class="layui-form-label public-data" style="color:#333">图片地址</label>
+                                            <div class="layui-input-block">
+                                                <a href="javascript:;" class="js_openResource design-open-resource">
+                                                    <i class="layui-icon">&#xe64a;</i>
+                                                </a>
+                                                <input type="text" name="imgSrc" autocomplete="off" class="layui-input" value="{{ data.imgSrc }}" data-height="imgHeight" data-width="imgWidth" data-public-tag="true">
+                                            </div>
+                                        </div>
+										<div class="layui-form-item">
+											<label class="layui-form-label public-data" style="color:#333">跳转地址</label>
+											<div class="layui-input-block">
+												<input type="text" name="imgURL" autocomplete="off" class="layui-input" value="{{ data.imgURL is not null ? data.imgURL : null }}" data-public-tag="true">
+											</div>
+										</div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label public-data" style="color:#333">图片宽度(px)</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="imgWidth" autocomplete="off" class="layui-input" value="{{ data.imgWidth|default('') }}" data-public-tag="true">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label public-data" style="color:#333">图片高度(px)</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="imgHeight" autocomplete="off" class="layui-input" value="{{ data.imgHeight|default('') }}" data-public-tag="true">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label public-data" style="color:#333">图片标题</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="imgTitle" autocomplete="off" class="layui-input" value="{{ data.imgTitle|default('') }}" data-public-tag="true">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label public-data" style="color:#333">图片描述</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="imgText" autocomplete="off" class="layui-input" value="{{ data.imgText|default('') }}" data-public-tag="true">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item geshop-form-operation" style="margin-bottom:0">
+            <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+            <span type="button" class="layui-btn layui-btn-normal" id="gs_submit">提交</span>
+	        <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm layui-hide">提交</button>
+            {# <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button> #}
+        </div>
+<script>
+$('input[name=imgSrc]').on('blur', function () {
+    var value = $(this).val();
+    if (value) {
+        var image = new Image();
+        image.src = value;
+        image.onload = function () {
+            $('input[name=imgWidth]').val(image.width);
+            $('input[name=imgHeight]').val(image.height);
+        };
+    };
+});
+$('#gs_submit').on('click', function () {
+    var value = $('input[name=imgSrc]').val();
+    var imgWidth = $('[name=imgWidth]').val();
+    var imgHeight = $('[name=imgHeight]').val();
+    if (imgWidth && imgHeight && value) {
+        $(this).next('button').trigger('click');
+        return;
+    } 
+    if (value) {
+        var image = new Image();
+        image.src = value;
+        image.onload = function () {
+            $('input[name=imgWidth]').val(image.width);
+            $('input[name=imgHeight]').val(image.height);
+            $(this).next('button').trigger('click');
+        };
+    };
+})
+</script>    

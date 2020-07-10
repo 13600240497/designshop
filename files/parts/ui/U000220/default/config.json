@@ -1,0 +1,298 @@
+{
+    "fields": {
+        "pc_show_logo": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pc_show_calendar": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pc_show_raiders": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pc_dateTimeArrs": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pad_show_logo": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pad_show_calendar": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pad_show_raiders": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pad_dateTimeArrs": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "m_show_logo": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "m_show_calendar": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "m_show_raiders": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "m_dateTimeArrs": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "box_margin_top": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "box_margin_bottom": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "box_bg_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pc_bg_image": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pc_logo_image": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pc_calendar_image": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pc_calendar_hover_image": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pc_calendar_hover_pop_image": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pc_raiders_image": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pc_calendar_title": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pc_calendar_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pc_calendar_size": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pc_raiders_link": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pc_timezone_image": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pad_bg_image": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pad_logo_image": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pad_calendar_image": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pad_calendar_dialog_image": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pad_raiders_image": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pad_calendar_title": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pad_calendar_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pad_calendar_size": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pad_raiders_link": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pad_timezone_image": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "m_bg_image": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "m_logo_image": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "m_calendar_image": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "m_calendar_dialog_image": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "m_raiders_image": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "m_calendar_title": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "m_calendar_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "m_calendar_size": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "m_raiders_link": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "m_timezone_image": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "ready_date_font_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "ready_date_bg_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "ready_title_font_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "ready_desc_font_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "start_date_font_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "start_date_bg_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "start_title_font_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "start_desc_font_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "end_date_font_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "end_date_bg_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "end_title_font_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "end_desc_font_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "box_margin_top": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "box_margin_bottom": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "box_margin_top_m": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "box_margin_bottom_m": { "is_public": "1", "is_m": "1", "is_app": "1" }
+    }
+}

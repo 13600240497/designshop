@@ -1,0 +1,27 @@
+{% set siteData = {
+	font_weight: 'rg' in siteCode ? 'normal' : 'bold',
+	fontFamily: 'rg' in siteCode ? 'Rubik-Medium' : null
+} %}
+
+<div class="geshop-component-box component-drag" id="U000024_{{pageInstanceId}}"  data-gid="U000024" data-key="U000024" data-id="{{ pageInstanceId }}" attr="nav_flag">
+	<div style="
+		{% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}
+		height:{{data.height|default(100)}}px;
+		background-color:{% if data.bgColor %}{{ data.bgColor }}{% endif %};
+		width:100%;
+		overflow: hidden;
+	">
+		<a href="{{ data.viewHref|default('javascript:;') }}" style="
+			display:block;
+			font-family:{{ data.fontFamily|default(siteData.fontFamily) }};
+			line-height:{{data.height|default(100)}}px;
+			text-align:{{ data.titlePlace|default('center')}};
+			{% if data.viewHref %}cursor: pointer;{% else %} cursor:default; {% endif %}
+			font-size:{{ data.titleFont|default(24) }}px;
+			color:{% if data.titleColor %}{{ data.titleColor }}{% else %} #333333 {% endif %};
+			font-weight:{% if data.titleWeight %}{{ data.titleWeight }}{% else %} normal {% endif %};
+		">
+			{% if data.titleText %}{{ data.titleText }}{% else %}请设置导航标题{% endif %}
+		</a>
+	</div>
+</div>

@@ -1,0 +1,135 @@
+@padding_content: 8/37.5rem 12/37.5rem;
+
+.geshop-U000178-rg_template_v1-body {
+    line-height: normal;
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .list-wrap {
+        padding-left: 7.5/37.5rem;
+        padding-right: 7.5/37.5rem;
+        padding-bottom: 8/37.5rem;
+        padding-top: 12/37.5rem;
+    }
+
+    .goods-list-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        overflow: hidden;
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+    }
+
+    // 商品列表
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .list-item {
+        position: relative;
+        text-align: left;
+        flex-shrink: 0;
+        width: 111 / 37.5rem;
+        margin-left: 4.5 / 37.5rem;
+        margin-right: 4.5 / 37.5rem;
+        margin-bottom: 8/37.5rem;
+        background-color: #fff;
+        overflow: hidden;
+        box-sizing: border-box;
+
+        .geshop-components-default-image-goods {
+            height: 148 / 37.5rem;
+        }
+    }
+
+    .item-img {
+        position: relative;
+        height: 148 / 37.5rem;
+
+        a {
+            overflow: hidden;
+            display: block;
+        }
+    }
+
+    // 商品信息
+    .item-info-box {
+        padding: @padding_content;
+        color: #222222;
+    }
+
+    // 价格
+    .geshop-shop-price {
+        font-size: 0 !important;
+        margin-bottom: 4/37.5rem;
+    }
+
+    .item_shop {
+        display: inline-block;
+
+        .my_shop_price {
+            font-size: 16/37.5rem;
+        }
+    }
+
+    .visible-hidden {
+        visibility: hidden;
+    }
+
+    .ranking-icon {
+        display: inline-block;
+        position: absolute;
+        width: 26/37.5rem;
+        height: 29/37.5rem;
+        top: 7/37.5rem;
+        line-height: 29/37.5rem;
+        text-align: center;
+        font-size: 18/37.5rem;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .item_sell_point {
+        font-size: 11/37.5rem;
+    }
+
+    // 整体背景
+    &.is-whole {
+        .list-wrap {
+            padding-left: 24 / 75rem;
+            padding-top: 24 / 75rem;
+            padding-bottom: 12/37.5rem;
+        }
+
+        .goods-list-wrap {
+            padding-left: 8/37.5rem;
+            padding-right: 8/37.5rem;
+            padding-top: 12/37.5rem;
+            padding-bottom: 4/37.5rem;
+            width: 352/37.5rem;
+            background-color: #FFFFFF;
+        }
+
+        .list-item {
+            width: 104 / 37.5rem;
+            margin-left: 4 / 37.5rem;
+            margin-right: 4 / 37.5rem;
+            margin-bottom: 8 / 37.5rem;
+        }
+
+        .geshop-components-default-image-goods {
+            height: 138 / 37.5rem;
+        }
+    }
+}

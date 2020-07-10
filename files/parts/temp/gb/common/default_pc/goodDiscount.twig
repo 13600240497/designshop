@@ -1,0 +1,23 @@
+{# 折扣标配置 #}
+						{% if pageData.discount_active == '1' and item.discount > 0 and item.market_price > item.shop_price %}
+							<div class="gs-goods-discount">
+								<div class="inner">
+								<span class="curtoff-box">
+									<strong>{{ item.discount|number_format }}%</strong>
+								</span>
+									<span class="curtoff-text">{{ pageData.discount_off_text|default('OFF') }}</span>
+								</div>
+							</div>
+						{% endif %}
+
+						{% if pageData.discount_active == '1' and (data.goodsInfo|default([]))|length == 0 %}
+							<div class="gs-goods-discount">
+								<div class="inner">
+								<span class="curtoff-box">
+									<strong>20%</strong>
+								</span>
+									<span class="curtoff-text">{{ pageData.discount_off_text|default('OFF') }}</span>
+								</div>
+							
+							</div>
+						{% endif %}

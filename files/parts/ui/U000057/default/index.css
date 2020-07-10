@@ -1,0 +1,25 @@
+.wrap-U000057_default .free_tips {
+	margin: .427rem;
+	background-color: #000;
+	border: 1px solid #000;
+	position: relative;
+	height: .96rem;
+	line-height: .96rem;
+	overflow: hidden;
+	font-size: .373rem;
+
+	text-align: center;
+}
+.wrap-U000057_default .free_tips .free_tipsList {
+	color: #fff;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+.wrap-U000057_default .free_tips i {
+	font-style: normal;
+	display: inline-block;
+	vertical-align: middle;
+}

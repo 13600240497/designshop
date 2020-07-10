@@ -1,0 +1,47 @@
+{% set remUnit = 37.5 %}
+
+{% set pageData = {
+	buyBgC:data.buyBgC is not null?data.buyBgC:'#FD9E62',
+	buyBorderC:data.buyBorderC is not null?data.buyBorderC:'#FD9E62',
+	goodsBgc:data.goodsBgc|default('#ffffff'),
+	buyHeight:(data.buyHeight|default(40))/remUnit,
+	buyWidth:(data.buyWidth|default(240))/remUnit,
+	buyMarginT:(data.buyMarginT|default(10))/remUnit,
+	buyMarginB:(data.buyMarginB|default(10))/remUnit,
+	buyMarginL:(data.buyMarginL|default(10))/remUnit,
+	buyMarginR:(data.buyMarginR|default(10))/remUnit,
+	buyRadius:data.buyRadius|default(2),
+	buyFtS:(data.buyFtS|default(16))/remUnit,
+	buyFtW:data.buyFtW|default(100),
+	buyBorderW:data.buyBorderW|default('0'),
+} %}
+
+<div class="geshop-component-box component-drag clearfix" data-gid="U000045" data-key="U000045" data-id="{{ pageInstanceId }}">
+	<!-- embed stylesheet begin -->
+	<style type="text/css">
+		[data-gid="U000045"] .component-self-goodWrap:hover, [data-gid="U000045"] .current {
+			border-color:{% if data.goodsBdC %}{{data.goodsBdC}}!important;{% endif %}
+		}
+	</style>
+  <!-- embed stylesheet end -->
+	<div class="geshop-col-12" style="
+	{% if data.boxMarginTop %}margin-top: {{ data.boxMarginTop/remUnit }}rem;{% endif %}
+	{% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom/remUnit }}rem;{% endif %}">
+		<div class="gs-btn-area text-center" style="margin:{{pageData.buyMarginT}}rem {{pageData.buyMarginR}}rem {{pageData.buyMarginB}}rem {{pageData.buyMarginL}}rem;">
+			<a href="{{data.buyLink|default('javascript:;')}}" target="_blank"
+			   class="gs-btn btn-primary {% if pageData.buyFtW == 'bold' %}site-bold-strict{% endif %}"
+			   style="{% if pageData.buyBgC %}background-color:{{pageData.buyBgC}};{% endif %}{% if data.buyFtC %}color:{{data.buyFtC}};{% endif %}
+			{% if pageData.buyFtS %}font-size:{{pageData.buyFtS}}rem;{% endif %}
+			{% if pageData.buyFtW %}font-weight:{{pageData.buyFtW}};{% endif %}
+			{% if data.buyBgImg %}background:url({{data.buyBgImg}}) no-repeat 0 0/100% 100%;border:none;{% endif %}
+			{% if pageData.buyRadius %}border-radius:{{pageData.buyRadius}}px;{% endif %};
+			{% if pageData.buyWidth %}width:{{pageData.buyWidth}}rem;{% endif %}
+			{% if pageData.buyHeight %}height:{{pageData.buyHeight}}rem;line-height:{{pageData.buyHeight}}rem;{% endif %}
+			{% if pageData.buyBorderC %}border-color:{{pageData.buyBorderC}};{% endif %}
+			border-width:{{pageData.buyBorderW|default('0')}}px;
+			{% if data.buyBorderS %}border-style:{{data.buyBorderS}};{% endif %}">
+					{{data.buyText|default("Button")}}
+			</a>
+		</div>
+	</div>
+</div>

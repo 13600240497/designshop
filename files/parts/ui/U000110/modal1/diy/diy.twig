@@ -1,0 +1,214 @@
+{{include ('@app/files/parts/temp/goods_manager.twig')}}
+{# 商品数据列表 #}
+<div class="layui-table goods-form-table">
+    <input type="hidden" name="goodsIds" data-public-tag="true" value='{{ json_encode_no_unicode(data.goodsIds ?? []) }}'>
+    <div class="goods-tab-item tab-template layui-hide">
+        <div class="goods-tab-box">
+            <div class="layui-form-item">
+                <div class="gs-lable-block">Tab<span class="gs-tab-index"></span>分类</div>
+                <div class="layui-input-block">
+                    <input class="layui-input tab-item-label goods-category Unwanted" name="category">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="gs-lable-block">商品数据<span class="gs-tab-index"></span>ID</div>
+                <div class="layui-input-block">
+                    <input class="layui-input tab-item-label goods-cateid Unwanted" name="cateid" type="text">
+                </div>
+            </div>
+        </div>
+        <div class="geshop-third-value">
+														<span class="img-btn class-up">
+															<i class='icon-up'></i>
+															<b class="tips">上移</b>
+														</span>
+            <span class="img-btn class-down">
+															<i class='icon-down'></i>
+															<b class="tips">下移</b>
+														</span>
+            <span class="img-btn class-close">
+															<i class='icon-delete'></i>
+															<b class="tips">删除</b>
+														</span>
+            <span class="img-btn class-add">
+															<i class='icon-add'></i>
+															<b class="tips">新增</b>
+														</span>
+        </div>
+    </div>
+    <div class="goods-tab-lists">
+        {% for key,goodsItem in data.goodsIds|default(0..0) %}
+            <div class="goods-tab-item">
+                <div class="goods-tab-box">
+                    <div class="layui-form-item">
+                        <div class="gs-lable-block">Tab<span class="gs-tab-index">{{ loop.index }}</span>分类</div>
+                        <div class="layui-input-block">
+                            <input class="layui-input tab-item-label goods-category Unwanted" name="category"
+                                   type="text" value="{{ goodsItem.category }}">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="gs-lable-block">商品数据<span class="gs-tab-index">{{ loop.index }}</span>ID</div>
+                        <div class="layui-input-block">
+                            <input class="layui-input tab-item-label goods-cateid Unwanted" name="cateid" type="text"
+                                   value="{{ goodsItem.cateid }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="geshop-third-value">
+																<span class="img-btn class-up">
+																	<i class='icon-up'></i>
+																	<b class="tips">上移</b>
+																</span>
+                    <span class="img-btn class-down">
+																	<i class='icon-down'></i>
+																	<b class="tips">下移</b>
+																</span>
+                    <span class="img-btn class-close">
+																	<i class='icon-delete'></i>
+																	<b class="tips">删除</b>
+																</span>
+                    <span class="img-btn class-add">
+																	<i class='icon-add'></i>
+																	<b class="tips">新增</b>
+																</span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="layui-form-item tab-add-btn layui-hide" style="margin-left: 20px;">
+        <span class="el-button el-button--primary el-button--small" id="gs_tab_add">新增</span>
+    </div>
+</div>
+{# 商品数据end #}
+<script>
+
+    /*radio list render*/
+    function ipsRadioInit() {
+        $('.goods-form-table .goods-tab-lists .radio-tab-group').each(function (index, element) {
+            var $radio = $(element).find('.tabItemRadio');
+            var $radioName = 'skuFrom' + index;
+            $radio.attr({ 'name': $radioName, 'lay-filter': $radioName });
+            if ($('input[name=' + $radioName + ']:checked').length === 0) {
+                $('input[name=' + $radioName + '][value=1]').prop('checked', true)
+            }
+
+            var $tr = $(element).closest('tr');
+            var skuFrom = $('input[name=' + $radioName + ']:checked').val();
+            if (skuFrom == '2') {
+                $tr.find('.class-manage').addClass('layui-hide');
+            } else {
+                $tr.find('.class-manage').removeClass('layui-hide');
+            }
+
+
+            layui.form.render();
+            layui.form.on('radio(' + $radioName + ')', function (data) {
+                var value = Number(data.value);
+                $(element).find("[data-target=skuFrom-" + value + "]").addClass('goods-visible').siblings().removeClass('goods-visible');
+                if (value == '2') {
+                    $tr.find('.class-manage').addClass('layui-hide');
+                } else {
+                    $tr.find('.class-manage').removeClass('layui-hide');
+                }
+            })
+        });
+    };
+
+    $(function () {
+        ipsRadioInit();
+        GsSelect.initSelectFirstGroup();
+        $('.radio-tab-true').find('.radio-tab-group').each(function (index, element) {
+            /*GsSelect.initSelectFirst($(element));*/
+
+            $(".gs-select-box", $(element)).each(function (index) {
+                var val = $('input[name=gsSelectLevel' + index + ']', $(element)).val();
+                if (val) {
+                    $(this).val(val);
+                }
+
+            });
+        });
+
+
+        var $goodsTable = $('.goods-form-table');
+        $("#component_form").off('click');
+
+        function addOne() {
+            var clone = $('.tab-template', $goodsTable).clone();
+            clone.removeClass('tab-template layui-hide');
+            $('.goods-tab-lists', $goodsTable).append(clone);
+            ipsRadioInit();
+            GsSelect.initSelect($('.radio-tab-true .goods-tab-item:last'));
+            GsSelect.initSelectFirst($('.radio-tab-true .goods-tab-item:last'));
+        }
+
+        function initItemIndex() {
+            $('.goods-tab-lists').find('.goods-tab-item').each(function (index) {
+                var $this = $(this);
+                $this.find('.gs-tab-index').text(index + 1);
+            })
+        }
+
+        /*删除分类 */
+        $('body').on('click', '.goods-form-table .class-close', function () {
+            var target = $(this).closest('.goods-tab-item'),
+                cate = target.find('.goods-category').val(),
+                cateid = target.find('.goods-cateid').val(),
+                checkIco = target.find('.goods-checkIco').val(),
+                defaultIco = target.find('.goods-defaultIco').val();
+
+            if (cate || cateid || checkIco || defaultIco) {
+                layui.layer.confirm('删除当前数据不可恢复，确定是否删除？', {
+                    btn: ['否', '是'],
+                    area: '420px',
+                    icon: 3,
+                    skin: 'element-ui-dialog-class'
+                }, function (index) {
+                    layui.layer.close(index)
+                }, function (index) {
+                    target.remove();
+                });
+            } else {
+                target.remove();
+            }
+        });
+
+        /*新增分类 */
+        $("#component_form").on('click.addTab', '.goods-tab-lists .class-add', function (e) {
+            e.stopPropagation();
+            addOne();
+            initItemIndex();
+        });
+
+        $('#gs_tab_add').on('click', function () {
+            var clone = $('.tab-template', $goodsTable).clone();
+            clone.removeClass('tab-template layui-hide');
+            $('.goods-tab-lists', $goodsTable).append(clone);
+            ipsRadioInit();
+            GsSelect.initSelect($('.radio-tab-true tr:last'));
+            GsSelect.initSelectFirst($('.radio-tab-true tr:last'));
+        });
+        /*移动分类 */
+        $("#component_form").on('click', '.goods-form-table .class-down', function (e) {
+            var $this = $('this'),
+                $tr = $(this).parents('.goods-tab-item:eq(0)'),
+                $trNext = $tr.next();
+            if (0 != $trNext.length) {
+                $trNext.after($tr);
+            }
+            initItemIndex();
+
+        });
+        $("#component_form").on('click', '.goods-form-table .class-up', function (e) {
+            var $this = $('this'),
+                $tr = $(this).parents('.goods-tab-item:eq(0)'),
+                $trPrev = $tr.prev();
+            if (0 != $trPrev.length) {
+                $trPrev.before($tr);
+            }
+            initItemIndex();
+        });
+
+    });
+</script>

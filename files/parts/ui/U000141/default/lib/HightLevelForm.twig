@@ -1,0 +1,239 @@
+<h4 class="column-title"><i class="layui-icon back" id="js_advanced_baseConfig">&#xe603;</i>高级设置</h4>
+
+<div class="layui-collapse">
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">标题配置</h2>
+        <div class="layui-colla-content layui-show">
+            <div class="layui-row layui-col-space20">
+                <div class="layui-col-xs6">
+                    <div class="layui-form-item">
+                        <label class="form-item-label">标题文字大小(px)</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="titleFontSize" autocomplete="off" class="layui-input" value="{{ data.titleFontSize | default(36) }}">
+                        </div>
+                    </div>
+                </div>   
+                <div class="layui-col-xs6">
+                    <div class="layui-form-item">
+                        <label class="form-item-label">倒计时文字大小(px)</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="titleCounterFontSize" autocomplete="off" class="layui-input" value="{{ data.titleCounterFontSize | default(30) }}">
+                        </div>
+                    </div>
+                </div> 
+                <div class="layui-col-xs6">
+                    <div class="layui-form-item">
+                        <label class="form-item-label">倒计时背景宽度(px)</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="titleCounterWidth" autocomplete="off" class="layui-input" value="{{ data.titleCounterWidth | default(48) }}">
+                        </div>
+                    </div>
+                </div> 
+                <div class="layui-col-xs6">
+                    <div class="layui-form-item">
+                        <label class="form-item-label">倒计时背景高度(px)</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="titleCounterHeight" autocomplete="off" class="layui-input" value="{{ data.titleCounterHeight | default(56) }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="form-item-label">倒计时圆角(px)</label>
+                <div class="layui-input-block">
+                    <input type="text" name="titleCounterRadius" autocomplete="off" class="layui-input" value="{{ data.titleCounterRadius | default(4) }}">
+                </div>
+            </div>  
+        </div>
+    </div>
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">商品内容样式配置</h2>
+        <div class="layui-colla-content layui-show">
+            <div class="layui-form-item">
+                <label class="form-item-label">原价文字颜色</label>
+                <div class="layui-input-block">
+                    {{
+                        include ('lib/ColorPicker.twig', {
+                            'cmpt_name': 'goodsMarketPriceFontColor',
+                            'cmpt_value': data.goodsMarketPriceFontColor,
+                            'cmpt_default': '#999999'
+                        })
+                    }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">折扣标配置</h2>
+        <div class="layui-colla-content layui-show">
+            <div class="layui-form-item">
+                <label class="form-item-label">折扣标背景图片</label>
+                <div class="layui-input-block">
+                    <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                    <input class="layui-input" type="text" name="discountImg" value="{{data.discountImg|default('')}}">
+                </div>
+            </div>
+            <div class="layui-row layui-col-space20">
+                <div class="layui-col-xs6">
+                    <div class="layui-form-item">
+                        <label class="form-item-label">折扣标宽度(px)</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="discountWidth" autocomplete="off" class="layui-input" value="{{ data.discountWidth | default(80) }}">
+                        </div>
+                    </div>
+                </div>            
+                <div class="layui-col-xs6">
+                    <div class="layui-form-item">
+                        <label class="form-item-label">折扣标高度(px)</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="discountHeight" autocomplete="off" class="layui-input" value="{{ data.discountHeight | default(80) }}">
+                        </div>
+                    </div>
+                </div>             
+            </div>
+            <div class="layui-row layui-col-space20">
+                <div class="layui-col-xs6">
+                    <div class="layui-form-item">
+                        <label class="form-item-label">折扣文字大小(px)</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="discountFontSize" autocomplete="off" class="layui-input" value="{{ data.discountFontSize | default(26) }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-xs6">
+                    <div class="layui-form-item">
+                        <label class="form-item-label">OFF文字大小(px)</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="discountFontSize2" autocomplete="off" class="layui-input" value="{{ data.discountFontSize2 | default(24) }}">
+                        </div>
+                    </div>
+                </div>         
+            </div>
+        </div>
+    </div>
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">库存条配置</h2>
+        <div class="layui-colla-content layui-show">
+            <div class="layui-form-item">
+                <label class="form-item-label">总库存条颜色</label>
+                <div class="layui-input-block">
+                    {{
+                        include ('lib/ColorPicker.twig', {
+                            'cmpt_name': 'goodsProcessBgColor1',
+                            'cmpt_value': data.goodsProcessBgColor1,
+                            'cmpt_default': '#ededed'
+                        })
+                    }}
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="form-item-label">库存文字颜色</label>
+                <div class="layui-input-block">
+                    {{
+                        include ('lib/ColorPicker.twig', {
+                            'cmpt_name': 'goodsLeftFontColor',
+                            'cmpt_value': data.goodsLeftFontColor,
+                            'cmpt_default': '#333333'
+                        })
+                    }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">按钮配置</h2>
+        <div class="layui-colla-content layui-show">
+            <div class="layui-form-item">
+                <label class="form-item-label">文案</label>
+                <div class="layui-input-block">
+                    <input type="text" name="goodsBtnText" autocomplete="off" class="layui-input" value="{{ data.goodsBtnText | default('BUY NOW') }}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="form-item-label">背景图片</label>
+                <div class="layui-input-block">
+                    <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                    <input class="layui-input" type="text" name="goodsBtnBgImg" value="{{data.goodsBtnBgImg|default('')}}">
+                </div>
+            </div>
+            <div class="layui-row layui-col-space20">
+                <div class="layui-col-xs6">
+                    <div class="layui-form-item">
+                        <label class="form-item-label">宽度(px)</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="goodsBtnWidth" autocomplete="off" class="layui-input" value="{{ data.goodsBtnWidth | default('254') }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-xs6">
+                    <div class="layui-form-item">
+                        <label class="form-item-label">高度(px)</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="goodsBtnHeight" autocomplete="off" class="layui-input" value="{{ data.goodsBtnHeight | default('60') }}">
+                        </div>
+                    </div>
+                </div>         
+            </div>
+            <div class="layui-form-item">
+                <label class="form-item-label">文字大小(px)</label>
+                <div class="layui-input-block">
+                    <input type="text" name="goodsBtnFontSize" autocomplete="off" class="layui-input" value="{{ data.goodsBtnFontSize | default(28) }}">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">“更多”配置</h2>
+        <div class="layui-colla-content layui-show">
+            <div class="layui-form-item">
+                <label class="form-item-label">是否显示View more</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="isViewmoreVis" value="1" title="是"{% if data.isViewmoreVis|default('1') == '1' %} checked{% endif %}>
+                    <input type="radio" name="isViewmoreVis" value="0" title="否"{% if data.isViewmoreVis|default('1') == '0' %} checked{% endif %}>
+                </div>
+            </div> 
+            <div class="layui-form-item">
+                <label class="form-item-label">文案</label>
+                <div class="layui-input-block">
+                    <input type="text" name="more_text" autocomplete="off" class="layui-input" value="{{ data.more_text | default('View More >>') }}">
+                </div>
+            </div>
+            <div class="layui-row layui-col-space20">
+                <div class="layui-col-xs6">
+                    <div class="layui-form-item">
+                        <label class="form-item-label">背景颜色</label>
+                        <div class="layui-input-block">
+                            {{
+                                include ('lib/ColorPicker.twig', {
+                                    'cmpt_name': 'more_bgColor',
+                                    'cmpt_value': data.more_bgColor,
+                                    'cmpt_default': '#ededed'
+                                })
+                            }}
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-xs6">
+                    <div class="layui-form-item">
+                        <label class="form-item-label">文字颜色</label>
+                        <div class="layui-input-block">
+                            {{
+                                include ('lib/ColorPicker.twig', {
+                                    'cmpt_name': 'more_FontColor',
+                                    'cmpt_value': data.more_FontColor,
+                                    'cmpt_default': '#333333'
+                                })
+                            }}
+                        </div>
+                    </div>
+                </div>         
+            </div>
+            <div class="layui-form-item">
+                <label class="form-item-label">文案文字大小(px)</label>
+                <div class="layui-input-block">
+                    <input type="text" name="more_FontSize" autocomplete="off" class="layui-input" value="{{ data.more_FontSize | default(26) }}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

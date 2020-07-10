@@ -1,0 +1,229 @@
+{%
+set formData = {
+    id: 'U000211',
+    name: '预约提醒配置',
+    theme: 'default',
+    tabs: [
+        {
+            label: '数据配置',
+            components: [
+                {
+                    label: '预约内容配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '图片宽度 (PX)',
+                            name: 'width',
+                            default: '386',
+                            col: 2
+                        },
+                        {
+                            label: '图片高度 (PX)',
+                            name: 'height',
+                            default: '386',
+                            col: 2
+                        },
+                        {
+                            label: '展示图片',
+                            name: 'image',
+                            type: 'image',
+                            data_width: data.width,
+                            data_height: data.height
+                        },
+                        {
+                            label: '活动时间',
+                            name: 'book_time',
+                            type: 'dataRangePicker',
+                        },
+                        {
+                            label: '跳转链接',
+                            name: 'book_link'
+                        }
+                    ]
+                },
+                {
+                    label: '提醒内容设置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '预约活动关键描述',
+                            name: 'book_desc',
+                            placeholder: '建议填写预约活动的SEO标题'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            label: '样式配置',
+            components: [
+                {
+                    label: '常用配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '组件上边距 (PX)',
+                            name: 'margin_top',
+                            default: '0',
+                            col: 2
+                        },
+                        {
+                            label: '组件下边距 (PX)',
+                            name: 'margin_bottom',
+                            default: '32',
+                            col: 2
+                        },
+                        {
+                            label: '组件位置',
+                            name: 'position',
+                            type: 'radio',
+                            default: 'center',
+                            options: [
+                                { label: '左', value: 'left' },
+                                { label: '中', value: 'center' },
+                                { label: '右', value: 'right' }
+                            ]
+                        },
+                        {
+                            label: '按钮宽度(PX)',
+                            name: 'button_width',
+                            default: '124',
+                            col: 2
+                        },
+                        {
+                            label: '按钮高度(PX)',
+                            name: 'button_height',
+                            default: '40',
+                            col: 2
+                        },
+                        {
+                            label: '按钮下偏移 (PX)',
+                            name: 'button_bottom',
+                            default: '20',
+                            col: 2
+                        },
+                        {
+                            label: '按钮右偏移 (PX)',
+                            name: 'button_right',
+                            default: '20',
+                            col: 2
+                        },
+                        {
+                            label: '未开始文字颜色',
+                            name: 'button_color_ready',
+                            default: '#FFFFFF',
+                            type: 'colorPicker',
+                            col: 2
+                        },
+                        {
+                            label: '按钮背景颜色',
+                            name: 'button_bgColor_ready',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            type: 'colorPicker',
+                            col: 2
+                        },
+                        {
+                            label: '预约文字颜色',
+                            name: 'button_color_able',
+                            default: '#FFFFFF',
+                            type: 'colorPicker',
+                            col: 2
+                        },
+                        {
+                            label: '按钮背景颜色',
+                            name: 'button_bgColor_able',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            type: 'colorPicker',
+                            col: 2
+                        },
+                        {
+                            label: '已预约文字颜色',
+                            name: 'button_color_booked',
+                            default: '#FFFFFF',
+                            type: 'colorPicker',
+                            col: 2
+                        },
+                        {
+                            label: '按钮背景颜色',
+                            name: 'button_bgColor_booked',
+                            type: 'colorPicker',
+                            default: '#cccccc',
+                            type: 'colorPicker',
+                            col: 2
+                        },
+                        {
+                            label: '进行中文字颜色',
+                            name: 'button_color_ing',
+                            default: '#FFFFFF',
+                            type: 'colorPicker',
+                            col: 2
+                        },
+                        {
+                            label: '按钮背景颜色',
+                            name: 'button_bgColor_ing',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            type: 'colorPicker',
+                            col: 2
+                        },
+                        {
+                            label: '已结束文字颜色',
+                            name: 'button_color_ended',
+                            default: '#FFFFFF',
+                            type: 'colorPicker',
+                            col: 2
+                        },
+                        {
+                            label: '按钮背景颜色',
+                            name: 'button_bgColor_ended',
+                            type: 'colorPicker',
+                            default: '#cccccc',
+                            type: 'colorPicker',
+                            col: 2
+                        },
+                        {
+                            label: '按钮图片',
+                            name: 'button_image',
+                            type: 'image'
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    moreConfig: [],
+    beforeSubmit: 'beforeSubmit'
+}
+%}
+ 
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+<script>
+
+
+$(function() {
+    /* 切换图片，获取宽和高的回调 */ 
+    $('#component_form input[name="image"]').on('change', function() {
+        var width = $(this).attr('data-width');
+        var height = $(this).attr('data-height');
+        $('#component_form').find('input[name="width"]').val(width);
+        $('#component_form').find('input[name="height"]').val(height);
+    });
+
+    $('#component_form input[name="image"]').on('blur', function () {
+        var $this = $(this);
+        var value = $this.val();
+        if (value) {
+            var image = new Image();
+            image.src = value;
+            image.onload = function () {
+                $('#component_form').find('input[name="width"]').val(image.width);
+                $('#component_form').find('input[name="height"]').val(image.height);
+            };   
+        }
+    });
+});
+</script>

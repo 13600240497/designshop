@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>svg_16x16_move</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="切圖" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="SVG" transform="translate(-174.000000, -24.000000)" fill="#333333" fill-rule="nonzero">
+            <g id="svg_16x16_move" transform="translate(176.000000, 26.000000)">
+                <polygon id="Shape" points="6 0 3.42857143 2.57142857 5 2.57142857 5 5 2.57142857 5 2.57142857 3.42857143 0 6 2.57142857 8.57142857 2.57142857 7 5 7 5 9.42857143 3.42857143 9.42857143 6 12 8.57142857 9.42857143 7 9.42857143 7 7 9.42857143 7 9.42857143 8.57142857 12 6 9.42857143 3.42857143 9.42857143 5 7 5 7 2.57142857 8.57142857 2.57142857"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

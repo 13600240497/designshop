@@ -1,0 +1,48 @@
+{#/**
+*@author: 任贸华
+*@date: 2018/11/24 16:31:41
+*@desc: 商品分类组件  (加价购组件预览)
+* @param {string} data  数组 [{a:1}]
+*/#}
+{% if options %}
+    <div class="goods-tab-lists radio-tab-true" id="dataIDs">
+        <div id="goodsIDs"> <input type="hidden" name="goodsID" id="goodsIDInput">
+            {% for item in options.data |default([{name : '',ids:''},{name : '',ids:''}])%}
+                <div class="goods-tab-item goods-tab-item{{loop.index}}">
+                    <div class="goods-tab-box">
+                        <div class="gs-lable-block title-index">分类{{ loop.index }}</span></div>
+                        <div class="layui-input-block">
+                            <input class="layui-input title-name Unwanted" data-ids="true"  autocomplete="off"  value="{{item.name}}">
+                        </div>
+                    </div>
+                    <div class="goods-tab-box">
+                        <div class="gs-lable-block">商品数据ID</div>
+                        <div class="layui-input-block">
+                            <input class="layui-input goodsIDitem Unwanted" data-ids="true"  autocomplete="off"  value="{{item.ids}}">
+                        </div>
+                    </div>
+                    <div class="geshop-third-value mr-10">
+									<span class="img-btn class-up">
+										<i class='icon-up'></i>
+										<b class="tips">上移</b>
+									</span>
+                        <span class="img-btn class-down">
+										<i class='icon-down'></i>
+										<b class="tips">下移</b>
+									</span>
+                        <span class="img-btn class-close">
+										<i class='icon-delete' data="{{key+1}}"></i>
+										<b class="tips" >删除</b>
+									</span>
+                        <span class="img-btn class-add">
+										<i class='icon-add'></i>
+										<b class="tips">新增</b>
+									</span>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% else %}
+    {{include ('@app/files/parts/common/components/argsErrors.twig')}}
+{% endif %}

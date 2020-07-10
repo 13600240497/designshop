@@ -1,0 +1,73 @@
+{% set classSpace = '.geshop-U000211-default-'~pageInstanceId %}
+
+{{ classSpace }} {
+    width: {{ data.width|default(386) }}px;
+    height: {{ data.height|default(386) }}px;
+    margin-top: {{ data.margin_top|default(0) }}px;
+    margin-bottom: {{ data.margin_bottom|default(32) }}px;
+    {% if data.position == 'left' %}
+        margin-left: 0;
+        margin-right: auto;
+    {% elseif data.position == 'right' %}
+        margin-left: auto;
+        margin-right: 0;
+    {% else %}
+        margin-left: auto;
+        margin-right: auto;
+    {% endif %}
+}
+
+{# 默认的预览图 #}
+{% if data.default.view %}
+{{ classSpace }} .geshop-U000211-default-wrapper-preview {
+    background-image: url('{{ data.default.view }}');
+}
+{% endif %}
+
+{{ classSpace }} button {
+    border: none;
+    outline: none;
+    width: {{ data.button_width|default(124) }}px;
+    height: {{ data.button_height|default(40) }}px;
+    right: {{ data.button_right|default(20) }}px;
+    bottom: {{ data.button_bottom|default(20) }}px;
+    {% if data.button_image %}
+        background-image: url('{{ data.button_image }}');
+    {% endif %}
+}
+
+
+{{ classSpace }} button.ready {
+    color: {{ data.button_color_ready|default('#ffffff') }};
+    background-color: {{ data.button_bgColor_ready|default('#333') }};
+}
+
+{{ classSpace }} button.canbook {
+    color: {{ data.button_color_able|default('#ffffff') }};
+    background-color: {{ data.button_bgColor_able|default('#333') }};
+}
+
+{# 预约中的按钮 #}
+{{ classSpace }} button.booking {
+    cursor: pointer;
+    color: {{ data.button_color_ing|default('#ffffff') }};
+    background-color: {{ data.button_bgColor_ing|default('#333') }};
+}
+
+{# 活动结束的按钮 #}
+{{ classSpace }} button.ended {
+    cursor: default;
+    color: {{ data.button_color_ended|default('#ffffff') }};
+    background-color: {{ data.button_bgColor_ended|default('#cccccc') }};
+}
+
+{# 已预约的按钮 #}
+{{ classSpace }} button.booked {
+    cursor: default;
+    color: {{ data.button_color_booked|default('#ffffff') }};
+    background-color: {{ data.button_bgColor_booked|default('#cccccc') }};
+}
+
+
+
+

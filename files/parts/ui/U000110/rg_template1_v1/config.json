@@ -1,0 +1,31 @@
+{
+    "fields": {
+        "goods_type": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "tab_num": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "navList": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "box_margin_bottom": { "is_public": "1", "is_m": "1", "is_app": "10" },
+        "box_bg_color": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "stock_urgent": {"is_public": "0", "is_m": "1", "is_app": "1"},
+
+        "is_fixed": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "banner_img": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "img_width": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "img_height": { "is_public": "1", "is_m": "1", "is_app": "1" },
+
+
+        "is_show": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "tb_bg_color": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "tb_bg_color_off": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "tb_bg_color_on": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "goods_border_radius": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "hover_border_color": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "icon_rank_1": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "icon_rank_2": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "icon_rank_3": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "icon_rank_other": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "rank_color": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "shop_price_color": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "font_color": { "is_public": "1", "is_m": "1", "is_app": "1" }
+
+    }
+}

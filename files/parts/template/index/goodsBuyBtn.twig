@@ -1,0 +1,10 @@
+{#/**
+  *@author: 胡明
+  *@date: 2018/12/19 17:05:00
+  *@desc: dresslily商品购买按钮组件
+*/#}
+{% if options %}
+  <a href="{{options.goodsUrl}}" class="geshop-goods-buybtn">{{options.btnText}}</a>
+{% else %}
+  {{ include ('@app/files/parts/common/components/argsErrors.twig') }}
+{% endif %}

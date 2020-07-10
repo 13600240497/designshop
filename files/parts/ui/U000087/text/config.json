@@ -1,0 +1,32 @@
+{
+  "fields": {
+    "boxMarginBottom": { "is_public": "0", "is_m": "0",  "is_app": "1" },
+    "height": { "is_public": "0", "is_m": "0",  "is_app": "1" },
+    "paddingTopBottom": { "is_public": "0", "is_m": "0",  "is_app": "1" },
+    "bgImage": { "is_public": "0", "is_m": "0",  "is_app": "1" },
+    "textTitle": { "is_public": "1", "is_m": "0",  "is_app": "1" },
+    "textCode": { "is_public": "1", "is_m": "0",  "is_app": "1" },
+    "copyBtnIsVisible": { "is_public": "0", "is_m": "0",  "is_app": "1" },
+    "discountLeftText": { "is_public": "0", "is_m": "0",  "is_app": "1" },
+    "discountMainText": { "is_public": "0", "is_m": "0",  "is_app": "1" },
+    "discountMainTextFize": { "is_public": "0", "is_m": "0",  "is_app": "1" },
+    "discountTextFize": { "is_public": "0", "is_m": "0",  "is_app": "1" },
+    "discountRightTopText": { "is_public": "0", "is_m": "0",  "is_app": "1" },
+    "discountRightBottomText": { "is_public": "0", "is_m": "0",  "is_app": "1" },
+    "bgColor": { "is_public": "0", "is_m": "0",  "is_app": "1" },
+    "discountTextColor": { "is_public": "0", "is_m": "0",  "is_app": "1" },
+    "discountTextMarginTop": { "is_public": "0", "is_m": "0",  "is_app": "1" },
+    "codeTextMarginTop": { "is_public": "0", "is_m": "0",  "is_app": "1" },
+    "codeTextFontSize": { "is_public": "0", "is_m": "0",  "is_app": "1" },
+    "codeTextColor": { "is_public": "0", "is_m": "0",  "is_app": "1" },
+    "btnfontSize": { "is_public": "0", "is_m": "0",  "is_app": "1" },
+    "btnWidth": { "is_public": "0", "is_m": "0",  "is_app": "1" },
+    "btnHeight": { "is_public": "0", "is_m": "0",  "is_app": "1" },
+    "copyCodeText": { "is_public": "0", "is_m": "0",  "is_app": "1" },
+    "copyCodeTextColor": { "is_public": "0", "is_m": "0",  "is_app": "1" },
+    "copyCodeBgColor": { "is_public": "0", "is_m": "0",  "is_app": "1" },
+    "copyCodeVisitedText": { "is_public": "0", "is_m": "0",  "is_app": "0" },
+    "copyCodeVisitedTextColor": { "is_public": "0", "is_m": "0",  "is_app": "0" },
+    "copyCodeVisitedBgColor": { "is_public": "0", "is_m": "0",  "is_app": "0" }
+  }
+}

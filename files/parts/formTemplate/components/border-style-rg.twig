@@ -1,0 +1,24 @@
+
+{% set components = [
+    {
+        label: '商品圆角大小',
+        name: 'goods_border_radius',
+        default: '2',
+        col: 2
+    },
+    {
+        label: '商品描边颜色',
+        name: 'hover_border_color',
+        default: '#FFFFFF',
+        type: 'colorPicker',
+        col: 2
+    }
+]%}
+
+{# 合并当前端的配置项 #}
+<fieldset class="layui-elem-field">
+    <legend>商品配置</legend>
+    <div class="layui-field-box">
+        {{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}
+    </div>
+</fieldset>

@@ -1,0 +1,12 @@
+{# 自定义组件：导航菜单选择 #}
+<div class="layui-form-item" pane="">
+    <label class="form-item-label">{{ componentData.label }}</label>
+    <div class="layui-input-block">
+    {% if componentData.items %}
+        {% for id,item in componentData.items %}
+        <input type="checkbox" name="{{ componentData.name }}" value="{{ id }}" lay-skin="primary" title="{{ item }}" {% if id in componentData.value %} checked {% endif %}><br>
+        {% endfor %}
+    {% endif %}
+    </div>
+    <input type="checkbox" lay-filter="check_all" data-name="{{ componentData.name }}" lay-skin="primary" title="全选">
+</div>

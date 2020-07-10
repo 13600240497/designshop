@@ -1,0 +1,14 @@
+
+
+
+<div class="geshop index-banner">
+  {% for item in data.goodsInfo %}
+    {% for inner in item.lists %}
+    <a href="{{ inner.url_title }}" class="gs-img logsss_event" style="display: block; float: left; width: 295px; height: 400px;"
+      data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ inner.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+      <img class="js_gdexp_lazy js-geshopImg-lazyload js_gbexp_lazy" data-original="{{ item.label }}" src="{{data.default.lazyImg|default(data.default.good)}}" style="width: 295px; height: 400px;"
+        data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ inner.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+    </a>
+    {% endfor %}
+  {% endfor %}
+</div>

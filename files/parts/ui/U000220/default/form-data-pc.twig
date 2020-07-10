@@ -1,0 +1,44 @@
+<div class="data_time_setting" data-for="pc">
+
+    {# 最终的JSO数据 #}
+    <input type="hidden" name="pc_dateTimeArrs" />
+
+    {# JS模版 #}
+    {% include 'form-data-template.twig' %}
+
+    {# PHP遍历数据 #}
+    <ul class="datatime-lists-wrap">
+        {% for dateTimeItem in data.pc_dateTimeArrs|default(0..0) %}
+        <li>
+            <div class="layui-form-item">
+                <div class="gs-lable-block">活动<span class="loop-index">{{loop.index}}</span>日期</div>
+                <div class="layui-input-block">
+                    <input class="layui-input down-timestamp Unwanted" type="text" value="{{ dateTimeItem.timeRange }}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="gs-lable-block">活动<span class="loop-index">{{loop.index}}</span>名称</div>
+                <div class="layui-input-block">
+                    <input class="layui-input activity-name Unwanted" name="activityName" value="{{dateTimeItem.activityName}}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="gs-lable-block">活动<span class="loop-index">{{loop.index}}</span>简介文案</div>
+                <div class="layui-input-block">
+                    <input class="layui-input activity-desc Unwanted" name="activityDesc" value="{{dateTimeItem.activityDesc}}">
+                </div>
+            </div>
+            <div class="geshop-third-value tab-add-btn" style="padding-right:10px;">
+                <span class="img-btn delete-datetime-item">
+                    <i class='icon-delete'></i>
+                    <b class="tips">删除</b>
+                </span>
+                <span class="img-btn add-datetime-item">
+                    <i class='icon-add'></i>
+                    <b class="tips">增加</b>
+                </span>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

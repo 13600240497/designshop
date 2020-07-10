@@ -1,0 +1,17 @@
+{#商品列表前置广告图
+应用：普通商品2，抢购商品2
+#}
+<li class="gs-list-item gs-list-item-ad" style="{% if liWidth %}width:{{liWidth}}px;{% endif %}">
+	<div class="item-content" style="background-color: #EDEDED;">
+		<a  {% if data.good_ad_href %}href="{{ data.good_ad_href }}"{% endif %} class="{% if data.good_ad_img|default('') == '' %}has-cloth-not{% endif %}">
+			
+			{% if data.isEditEnv == '1' and data.good_ad_img %}
+				<img class="js-lazyload" src="{{ data.good_ad_img }}" style="max-width: 100%;max-height:100%;" data-lazy="{{ data.good_ad_img }}" >
+			{% elseif data.isEditEnv == '0' and data.good_ad_img %}
+				<img class="js-lazyload" src="{{ data.default.goodsBlank }}" data-lazy="{{ data.good_ad_img }}">
+			{% else %}
+				<img class="gs-default-clothes" src="{{ data.default.good_ad }}" style="max-width: 100%;max-height:100%;width:100px !important;height:78px !important;">
+			{% endif %}
+		</a>
+	</div>
+</li>

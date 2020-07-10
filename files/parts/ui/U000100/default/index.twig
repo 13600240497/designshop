@@ -1,0 +1,189 @@
+{% set suffix ='rem'%}
+{% set remUnit = 75 %}
+{%
+	set pageData = {
+		price_ft_weight:data.price_ft_weight|default(1),
+		base_bg_shadow:data.base_bg_shadow|default(0),
+		lang:data.lang|default('en'),
+		base_magin_top:(data.base_magin_top|default(32)/remUnit)|number_format(3, '.')~suffix,
+		base_magin_bottom:(data.base_magin_bottom|default(32)/remUnit)|number_format(3, '.')~suffix,
+	    base_bgc: data.base_bgc is not null ? data.base_bgc: "#F8F8F8",
+	    price_ftc: data.price_ftc is not null ? data.price_ftc: "#f30240",
+	    discount_active: data.discount_active|default(1),
+	    discount_bgc: data.discount_bgc is not null ? data.discount_bgc: "#FF8A00",
+	    discount_ftc: data.discount_ftc is not null ? data.discount_ftc: "#FFFFFF",
+	    price_fts:(data.price_fts|default(32)/remUnit)|number_format(3, '.')~suffix ,
+	    discount_right:(data.discount_right|default(10)/remUnit)|number_format(3, '.')~suffix ,
+	    discount_top:(data.discount_top|default(10)/remUnit)|number_format(3, '.')~suffix ,
+	    discount_width:(data.discount_width|default(70)/remUnit)|number_format(3, '.')~suffix ,
+	    discount_height:(data.discount_height|default(70)/remUnit)|number_format(3, '.')~suffix ,
+	    discount_bgImage: data.discount_bgImage is not null ? data.discount_bgImage,
+	    discount_fts:(data.discount_fts|default(16)/remUnit)|number_format(3, '.')~suffix ,
+	    discount_off_fts:(data.discount_off_fts|default(12)/remUnit)|number_format(3, '.')~suffix ,
+	    app_vip_img: data.app_vip_img is not null ? data.app_vip_img,
+	    app_vip_link: data.app_vip_link is not null ? data.app_vip_link,
+	    market_active: data.market_active|default(1),
+		mt:(data.discount_height|default(70)/remUnit*13/35)|number_format(3, '.')~suffix ,
+
+		view_more_ftc:data.view_more_ftc is not null ? data.view_more_ftc : "#333333",
+		view_more_bgc:data.view_more_bgc is not null ? data.view_more_bgc : "#FFFFFF",
+		view_more_text:data.view_more_text,
+		view_less_text:data.view_less_text,
+		view_more_border_color:data.view_more_border_color is not null ? data.view_more_border_color : "#333333",
+		view_more_fts:(data.view_more_fts|default(24)/remUnit)|number_format(3, '.'),
+		view_more_radius:(data.view_more_radius|default(4)/remUnit)|number_format(3, '.')~suffix,
+
+		view_all_ftc:data.view_all_ftc is not null ? data.view_all_ftc : "#333333",
+		view_all_text:data.view_all_text,
+		view_all_link:data.view_all_link|default(""),
+		view_all_fts:(data.view_all_fts|default(28)/remUnit)|number_format(3, '.'),
+		view_all_weight:data.view_all_weight|default(0),
+		view_all_active:data.view_all_active|default(1),
+		server_label_active:data.server_label_active|default(0),
+		goods_img_one:data.goods_img_one|default(0),
+	}
+
+%}
+
+
+
+<div class="geshop-component-box component-drag geshop-component-goods geshop-gb-component ui-{{ pageInstanceId }}" data-gid="U000100" data-key="U000100" data-id="{{ pageInstanceId }}" data-static-domain="{{staticDomain}}">
+	{# embed stylesheet begin #}
+    <style type="text/css">
+			.geshop-gb-component.ui-{{ pageInstanceId }}{
+				margin-top: {{ pageData.base_magin_top }};
+				margin-bottom: {{ pageData.base_magin_bottom }};
+			}
+        {# 折扣标 #}
+		[data-gid=U000100] .goodsFloor .goodsFloor_content .subjectGoodList-appVip .subjectGoodItem .gs-goods-discount{
+			color:{{pageData.discount_ftc}};
+			width:{{pageData.discount_width}};
+			height:{{pageData.discount_height}};
+			{#top:{{pageData.discount_top}};#}
+			{#right:{{pageData.discount_right}};#}
+			{% if pageData.discount_bgImage %}
+				background:url({{pageData.discount_bgImage}}) no-repeat center center/100% 100%;
+				border-radius:0;
+			{% else %}
+				background-color:{{pageData.discount_bgc}};
+				border-radius: 50%;
+			{% endif %}
+			line-height:{{pageData.mt}} !important;
+		}
+
+		{# view 按钮样式 #}
+		[data-gid="U000100"][data-id="{{ pageInstanceId }}"] .view-more{
+				min-height:{{2 * pageData.view_all_fts}}rem;
+		}
+		[data-gid="U000100"][data-id="{{ pageInstanceId }}"] .view-more-btn{
+			margin-top:{{pageData.view_all_fts - pageData.view_more_fts}}rem;
+			color:{{pageData.view_more_ftc}};
+			background-color:{{pageData.view_more_bgc}};
+			line-height: {{ pageData.view_all_fts - pageData.view_more_fts > 0 ? 1.5 * pageData.view_all_fts : 1.5 * pageData.view_more_fts }}rem;
+			font-size:{{pageData.view_more_fts}}rem;
+			border-radius: {{pageData.view_more_radius}};
+			border: 1px solid {{pageData.view_more_border_color}};
+		}
+		[data-gid="U000100"][data-id="{{ pageInstanceId }}"] .view-all-btn{
+			color:{{pageData.view_all_ftc}};
+			line-height: {{ pageData.view_all_fts - pageData.view_more_fts > 0 ? 1.5 * pageData.view_all_fts : 1.5 * pageData.view_more_fts }}rem;
+			font-size:{{pageData.view_all_fts}}rem;
+			{% if pageData.view_all_weight %}
+			font-weight: bold;
+			{% endif %}
+		}
+</style>
+    {# embed stylesheet end #}
+
+	<div class="gb_wrapper_common goodsFloor" style="padding:.2667rem;">
+		<div class="goodsFloor_content">
+	        <ul class="subjectGoodList-appVip gb-list-default" style="margin-bottom:-.2667rem;" data-shownum ="{{data.defaultGoodsCount}}">
+	        	{# 宣传图片 #}
+				<li class="subjectGoodItem gs-list-item" style="{% if pageData.goods_img_one == '1' %}height:8.0rem{% endif %}">
+					<a class="" style="background: url({% if pageData.app_vip_img %} {{ pageData.app_vip_img }} {% else %} {{ data.default.picture }} {% endif %}) 0 0 no-repeat; background-size:100% 100%;display: block;height: 100%; position: relative;" href="{{ pageData.app_vip_link }}" target="_special">
+					</a>
+				</li>
+				{% for key,item in data.goodsInfo|default(0..0)%}
+					{% set left_number =  item.stock_num == 0 ? 0 : item.stock_num %}
+					{% set goodsStatus =  left_number == 0 and data.goodsInfo ? 'good_soldOut' :''%}
+					{% set isHide = ((key+1) > data.defaultGoodsCount and data.defaultGoodsCount > 0) ? 'isHide' : "" %}
+					<li class="subjectGoodItem gs-good-label-box gs-list-item {{ goodsStatus }} {{isHide}}" style="{% if pageData.goods_img_one == '1' %}height:8.0rem{% endif %}" data-track-key="{{item.goods_sn}}" data-keyIndex="{{key}}">
+						{# 折扣标 #}
+						{% if pageData.discount_active == "1" and item.discount > 0  %}
+							<div class="gs-goods-discount--m">
+							<div class="inner">
+								<span class="curtoff-box">
+									<strong>{{item.discount|number_format}}%</strong>
+								</span>
+								<span class="curtoff-text">OFF</span>
+							</div>
+							</div>
+						{% endif %}
+						{% if pageData.discount_active == '1' and data.goodsInfo is null %}
+							<div class="gs-goods-discount--m">
+								<div class="inner">
+									<span class="curtoff-box">
+									<strong>20%</strong>
+								</span>
+									<span class="curtoff-text">OFF</span>
+								</div>
+
+							</div>
+						{% endif %}
+						{# 商品信息 #}
+						<div class="goodInfoContainer ">
+							{% set img_common_height = pageData.goods_img_one == '0'?'4.16rem':'5.55rem' %}
+							{# 图片、标题 #}
+							<a class="goodInfoLink track-goodsLink" href="{{item.url_title}}" target="_special" data-app="product" data-app-sku="{{item.web_goods_sn}}" data-app-wcode="{{item.wh_code}}">
+								{% if data.isEditEnv == '1' and data.goodsInfo %}
+									<img class="goodImg js-lazyload" src="{{item.goods_img}}" style="width:4.16rem;height:{{img_common_height}};" data-lazy="{{item.goods_img}}" >
+								{% elseif data.isEditEnv == '0' and data.goodsInfo %}
+									<img class="goodImg js-lazyload" src="{{data.default.good}}" style="width:4.16rem;height:{{img_common_height}};" data-lazy="{{item.goods_img}}" title="{{item.goods_title}}" alt="{{item.goods_title}}">
+								{% else %}
+									<img class="goodImg" style="width:4.16rem;height:{{img_common_height}};" src="{{data.default.clothes}}">
+								{% endif %}
+								<span class="goodDescript">{{item.goods_title|default('20 LED Outdoor Wireless Solar Light')}}</span>
+								<i class="gs-goods-status"><span>{{gb_component_trans(lang , 'sold_out')}}</span></i>
+							</a>
+							{# 服务标 #}
+							{% set labelBottom = 1.5 %}
+							{% set labelLeft = 0.213 %}
+							{{include ('@app/files/parts/temp/gb/common/default_m/goodLabel.twig')}}
+
+							{# 商品本店售价 #}
+							<p class="gs-goods-price--m">
+								{% if item.discount > 0 %}
+									{% if pageData.market_active == '1' %}
+										{% if item.market_price|default('0.00') and item.shop_price|default('0.00') != item.market_price|default('0.00') and item.shop_price|default('0.00') < item.market_price|default('0.00') %}
+											<del class="gs-market-price js-currency" data-currency="{{item.market_price}}" data-wrap="0" data-round="2">${{item.market_price}}</del>
+										{% endif %}
+									{% endif %}
+								{% endif %}
+
+								{% if item.shop_price > 0 %}
+									<span class="gs-shop-price">
+										<strong class="js-currency" data-currency="{{item.shop_price}}" data-wrap="0" data-round="2">${{item.shop_price}}</strong>
+									</span>
+								{% endif %}
+
+								{# 装修价格 #}
+								{% if pageData.discount_active == '1' and data.goodsInfo == [] %}
+									{% if pageData.market_active == '1' %}
+									<del class="gs-market-price js-currency" data-currency="0.00" data-wrap="0" data-round="2">$0.00</del>
+									{% endif %}
+									<span class="gs-shop-price">
+										<strong class="js-currency" data-currency="0.00" data-wrap="0" data-round="2">$0.00</strong>
+									</span>
+								{% endif %}
+							</p>
+						</div>
+					</li>
+				{% endfor %}
+	    	</ul>
+			{# view 按钮 #}
+			{{include ('@app/files/parts/temp/gb/common/default_m/goodMoreBtn.twig')}}
+
+	    </div>
+
+	</div>
+</div>

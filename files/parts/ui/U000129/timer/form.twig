@@ -1,0 +1,281 @@
+{% set buyBorderSArr = [
+{name:'无',value:'none'},
+{name:'实线',value:'solid'},
+{name:'虚线',value:'dashed'},
+{name:'点状',value:'dotted'},
+{name:'双线',value:'double'},
+{name:'继承上级',value:'inherit'},
+]%}
+<script src="/resources/template/goods/index.js?v=2018082201"></script>
+<h3 class="component-form-title">
+<span>优惠券组件配置</span>
+<a href="javascript:;" class="design-form-close js_closeDesignForm icon-close"><i class="el-icon-close"></i></a>
+</h3>
+{{include ('@app/htdocs/resources/template/pc/templateList/index.twig')}}
+<div id="gs_component_countdown" class="component-form-setting-item component-form-configure-item" data-gid="U000129_timer" style="padding-bottom: 40px;">
+    <p class="geshop-title" style="margin-top: 10px;font-weight: bold;">常用配置</p>
+    <div class="layui-form-item gs-inline-layout-left">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 组件下边距(px)</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="componentMarginBottom" autocomplete="off" value="{{data.componentMarginBottom|default(32)}}">
+        </div>
+    </div>
+    <div class="layui-form-item gs-inline-layout-right">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 背景颜色</label>
+        <div class="layui-input-block">
+            <div class="color-picker-selector" data-hidden-name="componentBgColor"><div style="background-color: {{data.componentBgColor|default('#ededed')}};"></div></div>
+            <input type="text" class="layui-input" name="componentBgColor" autocomplete="off" value="{{data.componentBgColor|default('#ededed')}}">
+        </div>
+    </div>
+    <div class="layui-form-item gs-inline-layout-left">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 组件宽度(px)</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="componentWidth" autocomplete="off" value="{{data.componentWidth|default(592)}}">
+        </div>
+    </div>
+    <div class="layui-form-item gs-inline-layout-right">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 组件高度(px)</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="componentHeight" autocomplete="off" value="{{data.componentHeight|default(300)}}">
+        </div>
+    </div>
+    <p style="padding-bottom: 20px;font-size: 12;color: #999;"> (Tips: 建议不要设置组件高度小于300px的值 ) </p>
+    <div class="layui-form-item">
+        <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 组件位置</label>
+        <div class="layui-input-block">
+            <input type="radio" name="componentPos" value="left" title="左"{% if data.componentPos|default('center') == 'left' %} checked{% endif %}>
+            <input type="radio" name="componentPos" value="center" title="中"{% if data.componentPos|default('center') == 'center' %} checked{% endif %}>
+            <input type="radio" name="componentPos" value="right" title="右"{% if data.componentPos|default('center') == 'right' %} checked{% endif %}>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 背景图片 尺寸为组件宽*高</label>
+        <div class="layui-input-block">
+            <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+            <input type="text" name="componentBgImg" autocomplete="off" class="layui-input" value="{{data.componentBgImg}}">
+        </div>
+    </div>
+
+    <p class="geshop-title" style="margin-top: 30px;font-weight: bold;">优惠券数据输入配置</p>
+    <div class="layui-form-item">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 优惠券ID</label>
+        <div class="layui-input-block">
+            <input id="js_couponIdForm" type="text" class="layui-input" name="couponId" autocomplete="off" value="{{data.couponId}}">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 优惠券标题</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="textCouponTit" autocomplete="off" value="{{data.textCouponTit|default('CRAZY COUPON')}}">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 即将开始按钮文案 (此按钮用灰btn颜色)</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="textComingSoon" autocomplete="off" value="{{data.textComingSoon|default('COMING SOON')}}">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 领取按钮文案</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="textGetNow" autocomplete="off" value="{{data.textGetNow|default('GET NOW')}}">
+        </div>
+    </div>
+
+    <p class="geshop-title" style="margin-top: 30px;font-weight: bold;">优惠券标题配置</p>
+    <div class="layui-form-item gs-inline-layout-left">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 标题文字大小(px)</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="titFontSize" autocomplete="off" value="{{data.titFontSize|default(40)}}">
+        </div>
+    </div>
+    <div class="layui-form-item gs-inline-layout-right">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 标题文字颜色</label>
+        <div class="layui-input-block">
+            <div class="color-picker-selector" data-hidden-name="titColor"><div style="background-color: {{data.titColor|default('#333')}};"></div></div>
+            <input type="text" class="layui-input" name="titColor" autocomplete="off" value="{{data.titColor|default('#333')}}">
+        </div>
+    </div>
+    
+    <p class="geshop-title" style="margin-top: 30px;font-weight: bold;">优惠券按钮配置</p>
+    <div class="layui-form-item gs-inline-layout-left">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 按钮文字大小(px)</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="btnFontSize" autocomplete="off" value="{{data.btnFontSize|default(16)}}">
+        </div>
+    </div>
+    <div class="layui-form-item gs-inline-layout-right">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 按钮背景颜色</label>
+        <div class="layui-input-block">
+            <div class="color-picker-selector" data-hidden-name="btnBgColor"><div style="background-color: {{data.btnBgColor|default('#333')}};"></div></div>
+            <input type="text" class="layui-input" name="btnBgColor" autocomplete="off" value="{{data.btnBgColor|default('#333')}}">
+        </div>
+    </div>
+    <div class="layui-form-item gs-inline-layout-left">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 按钮文字颜色</label>
+        <div class="layui-input-block">
+            <div class="color-picker-selector" data-hidden-name="btnColor"><div style="background-color: {{data.btnColor|default('#fff')}};"></div></div>
+            <input type="text" class="layui-input" name="btnColor" autocomplete="off" value="{{data.btnColor|default('#fff')}}">
+        </div>
+    </div>
+    <div class="layui-form-item gs-inline-layout-right">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 按钮圆角大小(px)</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="btnRadius" autocomplete="off" value="{{data.btnRadius|default(0)}}">
+        </div>
+    </div>
+
+    <p class="geshop-title" style="margin-top: 30px;font-weight: bold;">倒计时配置</p>
+    <div class="layui-form-item">
+        <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 倒计时是否显示</label>
+        <div class="layui-input-block">
+            <input type="radio" name="timerVis" value="show" title="是"{% if data.timerVis|default('show') == 'show' %} checked{% endif %}>
+            <input type="radio" name="timerVis" value="hidden" title="否"{% if data.timerVis|default('show') != 'show' %} checked{% endif %}>
+        </div>
+    </div>
+    <div class="layui-form-item gs-inline-layout-left">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 倒计时标题文字大小</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="timerTitFontSize" autocomplete="off" value="{{data.timerTitFontSize|default(20)}}">
+        </div>
+    </div>
+    <div class="layui-form-item gs-inline-layout-right">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 倒计时标题文字颜色</label>
+        <div class="layui-input-block">
+            <div class="color-picker-selector" data-hidden-name="timerTitColor"><div style="background-color: {{data.timerTitColor|default('#333')}};"></div></div>
+            <input type="text" class="layui-input" name="timerTitColor" autocomplete="off" value="{{data.timerTitColor|default('#333')}}">
+        </div>
+    </div>
+    <div class="layui-form-item gs-inline-layout-left">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 倒计时背景颜色</label>
+        <div class="layui-input-block">
+            <div class="color-picker-selector" data-hidden-name="timerBgColor"><div style="background-color: {{data.timerBgColor|default('#333')}};"></div></div>
+            <input type="text" class="layui-input" name="timerBgColor" autocomplete="off" value="{{data.timerBgColor|default('#333')}}">
+        </div>
+    </div>
+    <div class="layui-form-item gs-inline-layout-right">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 倒计时文字颜色</label>
+        <div class="layui-input-block">
+            <div class="color-picker-selector" data-hidden-name="timerTextColor"><div style="background-color: {{data.timerTextColor|default('#fff')}};"></div></div>
+            <input type="text" class="layui-input" name="timerTextColor" autocomplete="off" value="{{data.timerTextColor|default('#fff')}}">
+        </div>
+    </div>
+    <div class="layui-form-item gs-inline-layout-left">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 倒计时背景圆角</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="timerBgRadius" autocomplete="off" value="{{data.timerBgRadius|default(0)}}">
+        </div>
+    </div>
+    <div class="layui-form-item gs-inline-layout-right">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 倒计时文字大小</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="timerTextFontSize" autocomplete="off" value="{{data.timerTextFontSize|default(16)}}">
+        </div>
+    </div>
+
+    <div class="clearfix advanced-config">
+        <a href="javascript:;" id="js_moreConfig" style="color:#1E9FFF">高级配置 <i></i></a>
+    </div>
+</div>
+
+<div class="component-form-setting-item component-form-advanced-item" data-gid="U000129_timer">
+    <h4 class="title"><i class="layui-icon back" id="js_advanced_baseConfig">&#xe603;</i>返回</h4>
+    <div class="layui-collapse advanced-setting-container">
+        <p class="geshop-title" style="margin: 20px 0;padding-left: 20px;font-weight: bold;">高级配置</p>
+        <div class="layui-colla-item">
+            <h2 class="layui-colla-title">优惠券按钮配置</h2>
+            <div class="layui-colla-content layui-show">
+                
+                <div class="layui-form-item gs-inline-layout-left">
+                    <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 按钮左右内间距(px)</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" name="btnPadding" autocomplete="off" value="{{data.btnPadding|default(25)}}">
+                    </div>
+                </div>
+                <div class="layui-form-item gs-inline-layout-right">
+                    <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 按钮高度(px)</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" name="btnHeight" autocomplete="off" value="{{data.btnHeight|default(40)}}">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 背景图片</label>
+                    <div class="layui-input-block">
+                        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                        <input type="text" name="btnBgImg" autocomplete="off" class="layui-input" value="{{data.btnBgImg}}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-colla-item">
+            <h2 class="layui-colla-title">倒计时配置</h2>
+            <div class="layui-colla-content layui-show">
+                
+                <div class="layui-form-item gs-inline-layout-left">
+                    <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 背景宽度(px)</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" name="timerBgWidth" autocomplete="off" value="{{data.timerBgWidth|default(28)}}">
+                    </div>
+                </div>
+                <div class="layui-form-item gs-inline-layout-right">
+                    <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 背景高度(px)</label>
+                    <div class="layui-input-block">
+                        <input type="text" class="layui-input" name="timerBgHeight" autocomplete="off" value="{{data.timerBgHeight|default(28)}}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="layui-form-item geshop-form-operation">
+    <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+    <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>
+
+<script>
+    $(function() {        
+        function popEvent(msg, elem) {
+            var pop = layer.alert(msg, {
+                closeBtn: 0
+            }, function() {
+                layer.close(pop);
+                elem.val('');
+                elem.focus();
+            })
+        }
+
+        $('.js_submitDesignForm').click(function() {
+            var _this = $(this),
+                _couponId = $('#js_couponIdForm').val();
+            if (!_couponId) {
+                popEvent('优惠券ID不能为空！', _this);
+                return false;
+            };
+        });
+
+
+        $('#js_couponIdForm').blur(function() {
+            var _this = $(this),
+                _val = _this.val();
+            if (_val) {
+                $.ajax({
+                    url: GESHOP_INTERFACE.coupondetail.url,
+                    type: 'GET',
+                    dataType: 'jsonp',
+                    data: { 
+                        "content": JSON.stringify({
+                            "lang": GESHOP_LANG, 
+                            "couponid": _val,
+                            pipeline: (typeof GESHOP_PIPELINE != 'undefined' ? GESHOP_PIPELINE : '')
+                        })
+                    },
+                    success: function(res) {
+                        if (!res.data.couponInfo) {
+                            popEvent('当前优惠券ID填写错误！', _this);
+                        } 
+                    }
+                });
+            }
+        })
+    });
+</script>

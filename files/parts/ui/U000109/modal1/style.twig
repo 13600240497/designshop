@@ -1,0 +1,49 @@
+
+<style>
+
+
+    .geshop-U000109-modal1-{{ pageInstanceId }} .gs-goodsWrap li:hover {
+        border: 1px solid {{ goodsData.goodsBorderColorHover ?: '#000000' }};
+    }
+
+
+    .geshop-U000109-modal1-{{ pageInstanceId }} .goods-nav-name li:hover span {
+        color: {{ data.tabTextColorCheck }};
+    }
+
+    .geshop-U000109-modal1-{{ pageInstanceId }} .gs-tab-wrap .swiper-container .swiper-slide.current span {
+        color: {{ data.tabTextColorCheck }} !important;
+    }
+
+    .geshop-U000109-modal1-{{ pageInstanceId }} .goods-item .gs-tag {
+    {% if data.rankIconOne is not empty %}
+        background: url('{{ data.rankIconOne }}') no-repeat 0 0/100% 100% !important;
+    {% endif %}
+    }
+    .geshop-U000109-modal1-{{ pageInstanceId }}  .goods-list>li .btn-box span {
+        font-size: {{ data.btnTextSize ?: 16 }}px;
+    }
+    .geshop-U000109-modal1-{{ pageInstanceId }}  .goods-list>li .btn-box span.stand-show {
+        color: {{ data.disTextColor ?: '#FFFFFF' }};
+        background-color: {{ data.disBgc ?: '#999999' }};
+    }
+    .geshop-U000109-modal1-{{ pageInstanceId }}  .goods-list>li .btn-box span.hover-show {
+        color: {{ data.btnTextColor ?: '#FFFFFF' }};
+        background-color: {{ data.btnBgcColor ?: '#333333'}};
+    }
+
+    .geshop-U000109-modal1-{{ pageInstanceId }} .goods-list>li .ranking-icon {
+        width: {{ data.iconWidth ?: 40 }}px;
+        height: {{ data.iconHeight ?: 48 }}px;
+    }
+
+
+
+    {%
+        include geshop.default.pc.shop_price with { style: {
+            'color': data.salePicTextColor
+        }}
+    %}
+</style>
+
+

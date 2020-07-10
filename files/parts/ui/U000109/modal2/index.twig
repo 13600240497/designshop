@@ -1,0 +1,235 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+
+{% if data.colNum == '1'%}
+    {% set colClass = liCol[0] %}
+{% elseif data.colNum == '2' %}
+    {% set colClass = liCol[1] %}
+{% elseif data.colNum == '3' %}
+    {% set colClass = liCol[2] %}
+{% elseif data.colNum == '4' %}
+    {% set colClass = liCol[3] %}
+{% elseif data.colNum == '5' %}
+    {% set colClass = liCol[4] %}
+{% else %}
+    {% set colClass = liCol[3] %}
+{% endif %}
+
+{% set goodsData = {
+	boxMarginBottom:data.boxMarginBottom|default(32),
+	marginTop:data.marginTop|default(0),
+	boxBgC:data.boxBgC is not null?data.boxBgC:'#F8F8F8',
+	tabBgc:data.tabBgc is not null?data.tabBgc:'#D8D8D8',
+	tabTextColor:data.tabTextColor is not null?data.tabTextColor:'#FFFFFF',
+	tabTextColorCheck:data.tabTextColorCheck is not null?data.tabTextColorCheck:'#333333',
+	tagWidth:data.tagWidth|default(40),
+	tagHeight:data.tagHeight|default(48),
+	rankTextColor:data.rankTextColor is not null?data.rankTextColor:'#FFFFFF',
+	salePicTextColor:data.salePicTextColor is not null?data.salePicTextColor:'#333333',
+	salePicColorHover:data.salePicColorHover is not null?data.salePicColorHover:'#333333',
+	disBgc:data.disBgc is not null?data.disBgc:'#999999',
+	disTextColor:data.disTextColor is not null?data.disTextColor:'#FFFFFF',
+	btnWidth:data.btnWidth|default(200),
+	btnHeight:data.btnHeight|default(38),
+	btnBgcColor:data.btnBgcColor is not null?data.btnBgcColor:'#333333',
+	btnTextColor:data.btnTextColor is not null?data.btnTextColor:'#FFFFFF',
+	btnBgcColorHover:data.btnBgcColorHover is not null?data.btnBgcColorHover:'#333333',
+	btnTextColorHover:data.btnTextColorHover is not null?data.btnTextColorHover:'#FFFFFF',
+	rankArea:data.rankArea|default(0),
+	goodsBorderColorHover:data.goodsBorderColorHover is not null?data.goodsBorderColorHover:'#FFFFFF',
+	goodsShadowColorHover:data.goodsShadowColorHover is not null?data.goodsShadowColorHover:'#D9D9D9',
+	salePriceSize:data.salePriceSize|default(22),
+	btnText:data.btnText|default('SNAP UP'),
+	btnTextSize:data.btnTextSize|default(22),
+	btnBorderColor:data.btnBorderColor is not null?data.btnBorderColor:'#333333',
+	btnBorderColorHover:data.btnBorderColorHover is not null?data.btnBorderColorHover:'#333333',
+	btnBorderSize:data.btnBorderSize|default(1),
+	iconWidth:data.iconWidth is not null?data.iconWidth:40,
+	iconHeight:data.iconHeight is not null?data.iconHeight:48,
+	iconFirstImg:data.iconFirstImg is not null?data.iconFirstImg:'',
+	iconSecondImg:data.iconSecondImg is not null?data.iconSecondImg:'',
+	iconThirdImg:data.iconThirdImg is not null?data.iconThirdImg:'',
+	iconOtherImg:data.iconOtherImg is not null?data.iconOtherImg:'',
+	iconOtherTextColor:data.iconOtherTextColor is not null?data.iconOtherTextColor:'#ffffff',
+	leaderBoardIconPosition:data.leaderBoardIconPosition is not null?data.leaderBoardIconPosition:1,
+	goodsNum:data.goodsNum|default(10)
+} %}
+
+
+<div class="geshop-component-box component-drag geshop-leaderboard-async-list  geshop-U000109-modal2 geshop-U000109-modal2-{{ pageInstanceId }}  {% if data.tabFixed==1 %} js_gs_tab_wrap_fixed {% endif %}"  data-key="U000109" data-id="{{ pageInstanceId }}" data-static-domain="{{staticDomain}}" data-code="{{siteCode}}"
+	style="margin-top: {{ goodsData.marginTop }}px; margin-bottom:{{ goodsData.boxMarginBottom}}px;">
+	<!-- embed stylesheet begin -->
+	{{ include('style.twig') }}
+	<!-- embed stylesheet end -->
+
+	<input type="hidden" class="pagesize" value="{{ goodsData.goodsNum|default(10)}}"/>
+
+	{% if data.bannerImg != '' %}
+	<div class="gs-banner">
+		<span class="gs-banner-bg">
+			<img class="gs-bgc-pic" src="{{ data.bannerImg }}">
+		</span>
+	</div>
+	{% else %}
+	<div class="gs-banner" style="height:200px;background-color:#EDEDED;position:relative;">
+		<span class="gs-banner-bg">
+			<img src="{{ data.default.view }}" class="gs-default-view">
+		</span>
+	</div>
+	{% endif %}
+  <div class="geshop-content" style="background-color:{{ goodsData.boxBgC }};">
+		<div class="gs-tab">
+			<div class="gs-tab-wrap">
+				<div class="gs-tab-box" style="background-color:{{ goodsData.tabBgc }};{% if data.tabBgcImg is not empty %}background:url('{{data.tabBgcImg}}')no-repeat 0 0/100% 100%;{% endif %}">
+					<a class="geshop-tab-btn pre-btn" id="pre-button" style="background-color:{{ goodsData.tabBgc }};">
+						<span class="side-icon icon-img-left"></span>
+					</a>
+					{# {% if data.goodsIds|length > 6 %} #}
+					<div class="swiper-container">
+						<ul class="gs-tab-label goods-nav-name swiper-wrapper" style="float:left;">
+						{% if data.goodsIds[0].category != '' %}
+							{% for item in data.goodsIds %}
+								<li class="swiper-slide swiper-slide-{{ pageInstanceId }}-{{ loop.index }}"
+									data-asyncdata-id="{{ item.cateid }}"
+									style="background-color:{{ goodsData.tabBgc }};" style="float:left;">
+									<a href="javascript:;;"
+									   style="{% if item.defaultIco is not empty %}background:url('{{ item.defaultIco }}') no-repeat 0 0/100% 100%;{% endif %}">
+										<span style="color:{{ goodsData.tabTextColor }};">{{ item.category }}</span>
+									</a>
+								</li>
+							{% endfor %}
+						{% else %}
+							{% for item in (0..7) %}
+								<li class="swiper-slide swiper-slide-{{ pageInstanceId }}-{{ loop.index }}">
+									<a href="javascript:;;">
+										<span style="color:{{ goodsData.tabTextColor }};">All Sale{{ item }}</span>
+									</a>
+								</li>
+							{% endfor %}
+						{% endif %}
+						</ul>
+					</div>
+					<a class="geshop-tab-btn next-btn" id="next-button" style="background-color:{{ goodsData.tabBgc }};">
+						<span class="side-icon icon-img-right"></span>
+					</a>
+				</div>
+			</div>
+			<div class="gs-tab-content">
+				<div class="gs-tab-item gs-goodsWrap {% if loop.index0 == 0%}gs-tab-show{% endif %}">
+					<ul class="leader-board-container goods-list" style="background-color:{{ goodsData.boxBgC }};">
+					</ul>
+				</div>
+			</div>
+		</div>
+  </div>
+	<script type="text/html" class="pc-leader-board-template">
+			<%# if(d.goodsInfo.length > 0){ %>
+				<%# $.each(d.goodsInfo, function(index, item){ %>
+				<li>
+					<div class="geshop-U000109-modal2-list-img">
+						<a href="<% item.url_title %>" class="logsss_event"
+						   data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'<% item.goods_sn %>','cporder':'{{ layoutIndex }}','rank':'<% index %>'},'skuinfo':{'sku':'<% item.goods_sn %>','pam':'0','pc':'<% item.cateid %>','k':'<% item.warehousecode %>'} }"
+						>
+						<span data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'<% item.goods_sn %>','cporder':'{{ layoutIndex }}','rank':'<% index %>'} }">
+							 {% include geshop.default.pc.image_goods with { params: { src: "<% item.goods_img %>",lazy: data.isEditEnv != 1  }} %}
+						</span>
+
+						</a>
+					</div>
+
+					<div class="desc-box">
+						<div class="trans-box">
+							<div class="geshop-U000109-modal2-list-title">
+								<a href="<% item.url_title %>"><% item.goods_title %></a>
+							</div>
+							<div class="gs-shop-price">
+								{% include geshop.default.pc.shop_price with { params: { value: "<% item.shop_price %>" }} %}
+								{% include geshop.default.pc.market_price with { params: { value: "<% item.market_price %>" }} %}
+							</div>
+						</div>
+					</div>
+					<div class="btn-box">
+						{#<div class="stand-show-box">
+
+						</div>#}
+						<span class="stand-show">
+									<%# if(d.lang == 'en'){ %>
+									<% item.sale_number %> pcs sold
+								<%# }else if(d.lang == 'fr'){ %>
+									<% item.sale_number %> pièces vendus
+								<%# }else if(d.lang == 'es'){ %>
+									<% item.sale_number %> piezas vendidas
+								<%# }else if(d.lang == 'de'){ %>
+									<% item.sale_number %> Stücke verkauft
+								<%# }else if(d.lang == 'pt'){ %>
+									<% item.sale_number %> pcs vendidos
+								<%# }else if(d.lang == 'it'){ %>
+									<% item.sale_number %> pz. venduti
+								<%# }else{ %>
+									<% item.sale_number %> pcs sold
+								<%# } %>
+							</span>
+						<a href="<% item.url_title %>" class="btn-tran">
+							<span class="hover-show">{{ data.btnText|default('SNAP UP') }}</span>
+						</a>
+					</div>
+					<%# if(index == 0){ %>
+					<span class="ranking-icon"
+						  style="background-image: url('{{ goodsData.iconFirstImg ?: 'https://geshopimg.logsss.com/uploads/dYjSD7mRkobON2nWZagAf9rGLJsTwi3h.png' }}')"></span>
+					<%# } else if (index == 1){ %>
+					<span class="ranking-icon"
+						  style="background-image: url('{{ goodsData.iconSecondImg ?: 'https://geshopimg.logsss.com/uploads/LH5k8UDZxdBqE67Yo9XtGRgCQWIfzyhJ.png' }}')"></span>
+					<%# } else if (index == 2){ %>
+					<span class="ranking-icon"
+						  style="background-image: url('{{ goodsData.iconThirdImg ?: 'https://geshopimg.logsss.com/uploads/yparqCgv2YnZ1xe3uRP7iowMl8SAQBIN.png' }}')"></span>
+					<%# } else { %>
+					<span class="ranking-icon"
+						  style="background-image: url('{{ goodsData.iconOtherImg ?: 'https://geshopimg.logsss.com/uploads/rkgPzLI91s3mXYneJuhCDi6OUy275Bwx.png' }}');color: {{ data.iconOtherTextColor ?: '#ffffff' }}"><% index + 1 %></span>
+					<%# } %>
+				</li>
+				<%# }); %>
+			<%# }else{ %>
+				<%# $.each(Array(10), function(index){ %>
+					<li>
+						<div class="geshop-U000109-modal2-list-img">
+							<a href="#">
+								{% include geshop.default.pc.image_goods with { params: { src: 'https://geshopimg.logsss.com/uploads/nxQshzC1wXTYy8BmHD6GE39vLWjciKaR.png' }} %}
+							</a>
+						</div>
+						<div class="desc-box">
+							<div class="trans-box">
+								<div class="geshop-U000109-modal2-list-title">
+									<a href="#">Tie Front Long Sleeve Striped Romper</a>
+								</div>
+								<div class="gs-shop-price">
+									{% include geshop.default.pc.shop_price with { params: { }} %}
+									{% include geshop.default.pc.market_price with { params: {  }} %}
+								</div>
+							</div>
+						</div>
+						<div class="btn-box">
+							{#<div class="stand-show-box">
+
+							</div>#}
+							<span class="stand-show">8448 pcs sold</span>
+							<a href="#" class="btn-tran">
+								<span class="hover-show">{{ data.btnText|default('SNAP UP') }}</span>
+							</a>
+						</div>
+						<%# if(index == 0){ %>
+						<span class="ranking-icon"
+							  style="background-image: url('{{ goodsData.iconFirstImg ?: 'https://geshopimg.logsss.com/uploads/dYjSD7mRkobON2nWZagAf9rGLJsTwi3h.png' }}')"></span>
+						<%# } else if (index == 1){ %>
+						<span class="ranking-icon"
+							  style="background-image: url('{{ goodsData.iconSecondImg ?: 'https://geshopimg.logsss.com/uploads/LH5k8UDZxdBqE67Yo9XtGRgCQWIfzyhJ.png' }}')"></span>
+						<%# } else if (index == 2){ %>
+						<span class="ranking-icon"
+							  style="background-image: url('{{ goodsData.iconThirdImg ?: 'https://geshopimg.logsss.com/uploads/yparqCgv2YnZ1xe3uRP7iowMl8SAQBIN.png' }}')"></span>
+						<%# } else { %>
+						<span class="ranking-icon"
+							  style="background-image: url('{{ goodsData.iconOtherImg ?: 'https://geshopimg.logsss.com/uploads/rkgPzLI91s3mXYneJuhCDi6OUy275Bwx.png' }}');color: {{ data.iconOtherTextColor ?: '#ffffff' }}"><% index + 1 %></span>
+						<%# } %>
+					</li>
+				<%# }); %>
+			<%# } %>
+	</script>
+</div>

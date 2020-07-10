@@ -1,0 +1,12 @@
+{% set space = '#U000031_'~pageInstanceId %}
+{% set body =  space~' .geshop_u000031_rg_default_v3_body' %}
+
+{{ body }} {
+    margin-bottom: {{ (data.box_margin_bottom | default('32'))/37.5 }}rem;
+    background-color: {{ data.box_bg_color | default('#F8F8F8') }};
+}
+
+{{ body }} li {
+    border-radius: {{ (data.goods_border_radius | default('4'))/37.5 }}rem;
+    border: 1px solid {{ data.hover_bdColor | default('#FFFFFF') }};
+}

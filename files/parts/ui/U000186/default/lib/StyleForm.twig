@@ -1,0 +1,67 @@
+<h4 class="column-title">常用配置<span>此组件只适用于通栏</span></h4>
+{# 分端上下间距#}
+{{ include ('@app/files/parts/formTemplate/components/margin-dl.twig') }}
+
+<div class="layui-form-item">
+    <label class="form-item-label">组件背景颜色</label>
+    <div class="layui-input-block">
+        {{
+            include ('lib/ColorPicker.twig', {
+                'cmpt_name': 'bg_color',
+                'cmpt_value': data.bg_color,
+                'cmpt_default': '#333333'
+            })
+        }}
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">选中状态背景颜色</label>
+    <div class="layui-input-block">
+        {{
+            include ('lib/ColorPicker.twig', {
+                'cmpt_name': 'hover_color',
+                'cmpt_value': data.hover_color,
+                'cmpt_default': '#FFFFFF'
+            })
+        }}
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">默认状态文字颜色</label>
+    <div class="layui-input-block">
+        {{
+            include ('lib/ColorPicker.twig', {
+                'cmpt_name': 'font_color',
+                'cmpt_value': data.font_color,
+                'cmpt_default': '#FFFFFF'
+            })
+        }}
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">选中状态文字颜色</label>
+    <div class="layui-input-block">
+        {{
+            include ('lib/ColorPicker.twig', {
+                'cmpt_name': 'hover_font_color',
+                'cmpt_value': data.hover_font_color,
+                'cmpt_default': '#333333'
+            })
+        }}
+    </div>
+</div>
+
+<div class="layui-form-item" pane="">
+    <label class="form-item-label">可选导航菜单</label>
+    <div class="layui-input-block">
+    {% if data.navData %}
+    {% for id,item in data.navData %}
+    <input type="checkbox" name="nav_menu" value="{{ id }}" lay-skin="primary" title="{{ item }}" {% if id in data.nav_menu %} checked {% endif %}><br>
+    {% endfor %}
+    {% endif %}
+    </div>
+    <input type="checkbox" lay-filter="check_all" data-name="nav_menu" lay-skin="primary" title="全选">
+</div>

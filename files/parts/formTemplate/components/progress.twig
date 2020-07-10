@@ -1,0 +1,22 @@
+{%
+    set components = [
+        {
+            label: '总库存条颜色',
+            name: 'progress_total_color',
+            type: 'colorPicker',
+            default: '#EDEDED',
+        },
+        {
+            label: '剩余库存条颜色',
+            name: 'progress_left_color',
+            type: 'colorPicker',
+            default: '#333333',
+        },
+    ]
+%}
+<fieldset class="layui-elem-field">
+    <legend>库存条</legend>
+    <div class="layui-field-box">
+        {{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}
+    </div>
+</fieldset>

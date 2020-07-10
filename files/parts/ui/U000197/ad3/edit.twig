@@ -1,0 +1,33 @@
+<div class="geshop-col-4" style="text-align: left;">
+  {% if data.img1Src %}
+  <a href="{{ data.img1Href }}" style="display: block; width: {{ data.img1Width }}px; height: {{ data.img1Height }}px;">
+    <img style="display: block; vertical-align: top;" alt="{{ data.img1Alt }}" src="{{ data.img1Src }}" width="{{ data.img1Width }}" height="{{ data.img1Height }}">
+  </a>
+  {% else %}
+  <p style="border: 1px solid #dddddd; height: 64px; line-height: 64px; text-align: center; font-size: 16px; font-weight: bold; color: #dddddd;">
+    图一(图片宽度限为386px)
+  </p>
+  {% endif %}
+</div>
+<div class="geshop-col-4" style="text-align: center;">
+  {% if data.img2Src %}
+  <a href="{{ data.img2Href }}" style="display: block; width: {{ data.img2Width }}px; height: {{ data.img2Height }}px;">
+    <img style="display: block; vertical-align: top;" alt="{{ data.img2Alt }}" src="{{ data.img2Src }}" width="{{ data.img2Width }}" height="{{ data.img2Height }}">
+  </a>
+  {% else %}
+  <p style="border: 1px solid #dddddd; height: 64px; line-height: 64px; text-align: center; font-size: 16px; font-weight: bold; color: #dddddd;">
+    图二(图片宽度限为386px)
+  </p>
+  {% endif %}
+</div>
+<div class="geshop-col-4" style="text-align: right;">
+  {% if data.img3Src %}
+  <a href="{{ data.img3Href }}" style="display: block; width: {{ data.img3Width }}px; height: {{ data.img3Height }}px;">
+    <img style="display: block; vertical-align: top;" alt="{{ data.img3Alt }}" src="{{ data.img3Src }}" width="{{ data.img3Width }}" height="{{ data.img3Height }}">
+  </a>
+  {% else %}
+  <p style="border: 1px solid #dddddd; height: 64px; line-height: 64px; text-align: center; font-size: 16px; font-weight: bold; color: #dddddd;">
+    图三(图片宽度限为386px)
+  </p>
+  {% endif %}
+</div>

@@ -1,0 +1,86 @@
+{% set box = '#U000254_'~pageInstanceId~'.geshop-U000254-template1' %}
+{% set suffix = 'px' %}
+
+{{ box }}{
+    margin-bottom: {{ data.box_margin_bottom|default(32) }}{{ suffix }};
+    background-color: {{ data.box_bg_color|default('#F8F8F8') }};
+}
+
+{# 普通状态tab #}
+{{ box }} .fixed-wrap{
+    padding-top: {{ data.tab_label_padding |default(23) }}{{ suffix }};
+    min-height:{{ (data.tab_label_padding |default(23)) + 48 }}px;
+}
+{{ box }} .fixed-wrap,{{ box }} .tab-wrap{
+    background-color: {{ data.tab_bg_color|default('#F8F8F8') }};
+}
+{{ box }} .tab-nav-box{
+    padding-top: {{ 23 }}{{ suffix }};
+}
+
+{{ box }} .nav_tab .gs-tab-list{
+    width:{{ data.tab_label_width|default(212) }}{{ suffix }};
+    margin-bottom: {{ data.tab_label_padding |default(23) }}{{ suffix }};
+    margin-left: {{ (data.tab_label_padding |default(23))/2 }}{{ suffix }};
+    margin-right: {{ (data.tab_label_padding |default(23))/2 }}{{ suffix }};
+    background-color: {{ data.tab_label_bg_color|default('#FFFFFF') }};
+    color: {{ data.tab_label_text_color|default('#333333') }};
+    border-width: 1px;
+    border-style: solid;
+    border-color: {{ data.tab_label_border_color|default('#333333') }}
+}
+
+{{ box }} .gs-tab-list:hover,{{ box }} .nav_tab .gs-tab-list.current,{{ box }} .tab-nav-box .gs-tab-list.current{
+    background-color: {{ data.tab_label_select_bg_color|default('#333333') }} !important;
+    color: {{ data.tab_label_select_text_color|default('#FFFFFF') }} !important;
+    border-color: {{ data.tab_label_select_border_color|default('#333333') }} !important;
+}
+
+{# 吸顶tab #}
+{{ box }} .tab-nav-box{
+
+}
+
+{{ box }} .tab-nav-box .gs-tab-list{
+    width:{{ data.tab_label_width|default(212) }}{{ suffix }};
+    margin-bottom: {{ 23 }}{{ suffix }};
+    margin-right: {{ (data.tab_label_padding |default(23))/2 }}{{ suffix }};
+    background-color: {{ data.tab_label_bg_color|default('#FFFFFF') }};
+    color: {{ data.tab_label_text_color|default('#333333') }};
+    border-width: 1px;
+    border-style: solid;
+    border-color: {{ data.tab_label_border_color|default('#333333') }}
+}
+
+{# 切换按钮 #}
+{{ box }} .page_box .active{
+    color: {{ data.page_select_color|default('#FFFFFFF') }};
+    background-color: {{ data.page_select_bg_color|default('#333333') }};
+}
+
+{{ box }} .page_box li:hover{
+    border-color: {{ data.page_select_bg_color|default('#333333') }};
+}
+
+{{ box }} .swiper-button-next,{{ box }} .swiper-button-prev{
+    color: {{ data.tab_arrow_color|default('#333333') }};
+    opacity: .9;
+}
+
+{{ box }} .swiper-button-next:hover,{{ box }} .swiper-button-prev:hover{
+    opacity: 1;
+}
+
+{{ box }} .swiper-button-prev.swiper-button-disabled,{{ box }} .swiper-button-next.swiper-button-disabled{
+    opacity: 0.35;
+}
+
+
+{# quick view #}
+{{ box }} .item_view{
+    background-color: {{ data.view_bg_color|default('#FFFFFF') }};
+}
+
+{{ box }} .item_view span{
+    color: {{ data.view_color|default('#333333') }};
+}

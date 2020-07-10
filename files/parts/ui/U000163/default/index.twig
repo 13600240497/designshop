@@ -1,0 +1,255 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+{% set suffix='px'%}
+{% set remUnit = 75 %}
+
+{# tab_bothBdType 1,2,3 直角,圆角,半圆 #}
+{% set goodsData = {
+	goodsBgc:data.goodsBgc is not null?data.goodsBgc:'#ffffff',
+	goodsFtC:data.goodsFtC is not null?data.goodsFtC:'#333',
+	buyHeight:data.buyHeight|default(34),
+	buyRadius:data.buyRadius|default(20),
+	buyFtS:data.buyFtS|default(16),
+	buyBgC:data.buyBgC is not null?data.buyBgC:'#333333',
+	buyFtC:data.buyFtC is not null?data.buyFtC:'#ffffff',
+	buyBorderC:data.buyBorderC is not null?data.buyBorderC:'transparent',
+	buyBorderW:data.buyBorderW|default('0'),
+	buyText:data.buyText|default(get_component_trans(lang,'btn_buy_now')),
+	priceC:data.priceC is not null?data.priceC:'#333333',
+	priceFt:data.priceFt|default('20'),
+	discountWidth:(data.discountWidth|default(100))/remUnit,
+	discountHeight:(data.discountHeight|default(100))/remUnit,
+	discountOffsetT:(data.discountOffsetT|default('0'))/remUnit,
+	discountOffsetL:(data.discountOffsetL|default('0'))/remUnit,
+	discountRadius:data.discountRadius|default('50'),
+	discountBgColor:data.discountBgColor is not null?data.discountBgColor:'#333333',
+	discountTextC:data.discountTextC is not null?data.discountTextC:'#ffffff',
+
+	discountTop:(data.discountTop|default(0))/remUnit,
+	discountLeft:(data.discountLeft|default(0))/remUnit,
+	discountType:data.discountType|default(1),
+	discountArea:data.discountArea|default(0),
+	colNum:data.colNum|default('4'),
+	baseWidth:(data.baseWidth|default(750))/remUnit,
+	discountFtS:(data.discountFtS|default(28))/remUnit,
+	discountSymbolFts:(data.discountSymbolFts|default(26))/remUnit,
+	soldFtS:data.soldFtS|default(24),
+	soldTextC:data.soldTextC|default('#333333'),
+
+	goodsTitleC:data.goodsTitleC|default('#333333'),
+
+	goodsPriceTopRadius:(data.goodsPriceTopRadius|default(0))/remUnit,
+	goodsPriceBottomRadius:(data.goodsPriceBottomRadius|default(12))/remUnit,
+	goodsPriceTitleFts:(data.goodsPriceTitleFts|default(24))/remUnit,
+	goodsPriceFts:(data.goodsPriceFts|default(28))/remUnit,
+
+	hasNotStarted_prePriceBgC:data.hasNotStarted_prePriceBgC|default('#333333'),
+	hasNotStarted_prePriceBrC:data.hasNotStarted_prePriceBrC|default('#333333'),
+	hasNotStarted_prePriceTitle:data.hasNotStarted_prePriceTitle|default('Now'),
+	hasNotStarted_prePriceTC:data.hasNotStarted_prePriceTC|default('#FFFFFF'),
+
+	hasNotStarted_shopPriceBgC:data.hasNotStarted_shopPriceBgC|default('#FFFFFF'),
+	hasNotStarted_shopPriceBrC:data.hasNotStarted_shopPriceBrC|default('#333333'),
+	hasNotStarted_shopPriceTitle:data.hasNotStarted_shopPriceTitle|default('Upcoming'),
+	hasNotStarted_shopPriceTC:data.hasNotStarted_shopPriceTC|default('#333333'),
+
+	hasStarted_shopPriceBgC:data.hasStarted_shopPriceBgC|default('#333333'),
+	hasStarted_shopPriceBrC:data.hasStarted_shopPriceBrC|default('#333333'),
+	hasStarted_shopPriceTitle:data.hasStarted_shopPriceTitle|default('Now'),
+	hasStarted_shopPriceTC:data.hasStarted_shopPriceTC|default('#FFFFFF'),
+
+	hasStarted_marketPriceBgC:data.hasStarted_marketPriceBgC|default('#FFFFFF'),
+	hasStarted_marketPriceBrC:data.hasStarted_marketPriceBrC|default('#333333'),
+	hasStarted_marketPriceTitle:data.hasStarted_marketPriceTitle|default('Upcoming'),
+	hasStarted_marketPriceTC:data.hasStarted_marketPriceTC|default('#333333')
+
+} %}
+
+{% set pageData = {
+
+	tab_headerBgC:data.tab_headerBgC|default('#666666'),
+	tab_headerFtC:data.tab_headerFtC|default('#ffffff'),
+	tab_bothBdType:data.tab_bothBdType|default('1'),
+	tab_endBgc:data.tab_endBgc|default('#F6F6F6'),
+	tab_endTextC:data.tab_endTextC|default('#999999'),
+	tab_endBdC:data.tab_endBdC|default(''),
+	tab_ingBgc:data.tab_ingBgc|default('#999999'),
+	tab_ingTextC:data.tab_ingTextC|default('#FFFFFF'),
+	tab_ingBdC:data.tab_ingBdC|default('#999999'),
+	tab_soonBgc:data.tab_soonBgc|default('#F6F6F6'),
+	tab_soonTextC:data.tab_soonTextC|default('#FFFFFF'),
+	tab_soonBdC:data.tab_soonBdC|default('#D8D8D8'),
+	boxMarginBottom:(data.boxMarginBottom|default(16))/remUnit,
+	arrowBgC:data.arrowBgC|default('#333333'),
+	arrowLBgImg:data.arrowLBgImg|default(''),
+	arrowRBgImg:data.arrowRBgImg|default(''),
+
+	tab_selectBgc: data.tab_selectBgc,
+	tab_selectTextC:data.tab_selectTextC,
+	tab_selectBdC:data.tab_selectBdC,
+	tab_unselectBgc: data.tab_unselectBgc,
+	tab_unselectTextC:data.tab_unselectTextC,
+	tab_unselectBdC:data.tab_unselectBdC,
+
+	goodsMarginTop:data.goodsMarginTop|default(0),
+	goodsMarginBottom:data.goodsMarginBottom|default(20),
+
+	downFtS:data.downFtS|default(14),
+	downTextC:data.downTextC|default('#FFFFFF'),
+	downBfText:get_component_trans(lang,'coming_soon'),
+	downIngText:get_component_trans(lang,'on_going'),
+	downAfText:get_component_trans(lang,'already_ended'),
+	yesterday:get_component_trans(lang,'yesterday'),
+	today:get_component_trans(lang,'today'),
+	tomorrow:get_component_trans(lang,'tomorrow'),
+
+	titleNavText:data.titleNavText|default('Black Friday Low Price Forecast'),
+	fs_titleBgC:data.fs_titleBgC|default('#EDEDED'),
+	fs_titleHeight:(data.fs_titleHeight|default(120))/remUnit,
+	fs_titleBgImg:data.fs_titleBgImg,
+	fs_titleFtC:data.fs_titleFtC|default('#333333'),
+	fs_titleMarginBottom:(data.fs_titleMarginBottom|default(32))/remUnit,
+	fs_titleFtSize:(data.fs_titleFtSize|default(34))/remUnit,
+
+	goodsBRadius:(data.goodsBRadius|default(0))/remUnit,
+
+	goodsMarginLR:data.goodsMarginLR|default(20),
+	componentBgC:data.componentBgC|default('#F8F8F8'),
+
+}
+%}
+
+{%
+	set liWidth = (750 - 20 - pageData.goodsMarginLR*2)*0.5/remUnit
+%}
+
+<div class="geshop-component-box component-drag component-sync clearfix" data-gid="U000163_default" data-key="U000163" data-id="{{ pageInstanceId }}"
+	data-editenv="{{data.isEditEnv}}" data-static-domain="{{staticDomain}}" data-interfaceDomain="{{interfaceDomain}}" data-lang="{{lang}}">
+	<!-- embed stylesheet begin -->
+	<style type="text/css">
+		[data-gid="U000163_default"][data-id="{{ pageInstanceId }}"] .gs-tab-status {
+			background-color: {{pageData.tab_unselectBgc}};
+			color: {{pageData.tab_unselectTextC}};
+			border-color:{{pageData.tab_unselectBdC}};
+		}
+
+		[data-gid="U000163_default"][data-id="{{ pageInstanceId }}"] .gs-tab_select {
+				border-width:1px;
+				background-color: {{pageData.tab_selectBgc}} !important;
+				color: {{pageData.tab_selectTextC}} !important;
+				border-color:{{pageData.tab_selectBdC}} !important;
+		}
+
+		[data-gid="U000163_default"][data-id="{{ pageInstanceId }}"] [data-gid="gs-goods-rwDefult-tabspike"].gs-goodsWrap li {
+			margin-top: {{pageData.goodsMarginTop}}px;
+			margin-bottom: {{pageData.goodsMarginBottom}}px;
+		}
+
+		[data-gid="U000163_default"][data-id="{{ pageInstanceId }}"] .gs-option .prev,[data-gid="U000163_default"][data-id="{{ pageInstanceId }}"] .gs-option .next{
+			background-color:{{pageData.arrowBgC}};
+
+		}
+
+		[data-gid="U000163_default"][data-id="{{ pageInstanceId }}"] .gs-option .prev {
+			{% if pageData.arrowLBgImg %}background-image:url({{pageData.arrowLBgImg}});{% else %}background-image:url(/resources/images/icon/tabspike-arrow-left.png);{% endif %}
+		}
+
+		[data-gid="U000163_default"][data-id="{{ pageInstanceId }}"] .gs-option .next {
+			{% if pageData.arrowRBgImg %}background-image:url({{pageData.arrowRBgImg}});{% else %}background-image:url(/resources/images/icon/tabspike-arrow-right.png);{% endif %}
+		}
+
+		[data-gid="U000163_default"][data-id="{{ pageInstanceId }}"] .gs_component_countDown em{
+			font-size:{{pageData.downFtS}}{{suffix}};
+			line-height:{{sizeWidth}}{{suffix}};
+			color:{{pageData.downTextC}};
+			background: {{data.downTimeBgC|default('transparent')}};
+		}
+
+		[data-gid="U000163_default"][data-id="{{ pageInstanceId }}"] [data-gid="gs-goods-rwDefult-tabspike"] .goodStatus {
+			{% if data.isEditEnv == 1 %}
+			font-size: 18px;
+			{% endif %}
+		}
+
+		[data-gid="U000163_default"][data-id="{{ pageInstanceId }}"] .goods-item,
+		[data-gid="U000163_default"][data-id="{{ pageInstanceId }}"] .goods-item .component-self-goodWrap {
+			border-top-left-radius: {{ pageData.goodsBRadius }}rem;
+			-webkit-border-top-left-radius: {{ pageData.goodsBRadius }}rem;
+			-moz-border-top-left-radius: {{ pageData.goodsBRadius }}rem;
+			border-top-right-radius: {{ pageData.goodsBRadius }}rem;
+			-webkit-border-top-right-radius: {{ pageData.goodsBRadius }}rem;
+			-moz-border-top-right-radius: {{ pageData.goodsBRadius }}rem;
+			border-bottom-left-radius:{{goodsData.goodsPriceBottomRadius}}rem;
+			border-bottom-right-radius:{{goodsData.goodsPriceBottomRadius}}rem;
+		}
+
+		[data-gid="U000163_default"][data-id="{{ pageInstanceId }}"] .goods-item .component-self-goodWrap .gs-img img {
+			border-top-left-radius: {{ pageData.goodsBRadius }}rem;
+			-webkit-border-top-left-radius: {{ pageData.goodsBRadius }}rem;
+			-moz-border-top-left-radius: {{ pageData.goodsBRadius }}rem;
+			border-top-right-radius: {{ pageData.goodsBRadius }}rem;
+			-webkit-border-top-right-radius: {{ pageData.goodsBRadius }}rem;
+			-moz-border-top-right-radius: {{ pageData.goodsBRadius }}rem;
+		}
+
+		[data-gid="U000163_default"][data-id="{{ pageInstanceId }}"] .gs-goodsWrap li {
+			width:{{ liWidth }}rem;
+			margin-right: 0.266rem;
+			margin-bottom: 0.266667rem;
+		}
+
+		{% if siteCode|split('-')[0] == 'rw' %}
+		[data-gid="U000163_default"][data-id="{{ pageInstanceId }}"] .gs-img a {
+			height: {{ liWidth }}rem;
+		}
+		{% endif %}
+
+		[data-gid="U000163_default"][data-id="{{ pageInstanceId }}"] .goods-pre-promotion-item .price-btn {
+			{% if data.isEditEnv == 1 %}
+			padding: 0.1866rem 0.07rem;
+			{% endif %}
+			width:{{ liWidth*0.5 }}rem;
+			flex-direction: column;
+			display: flex;
+			display: -webkit-flex;
+			justify-content: space-between;
+			-webkit-justify-content: space-between;
+			-moz-justify-content: space-between;
+		}
+
+		[data-gid="U000163_default"][data-id="{{ pageInstanceId }}"] .gs-goods-inner-title {
+			padding: 0.5333333333333333rem {{ pageData.goodsMarginLR/remUnit }}rem;
+		}
+
+		[data-gid="U000163_default"][data-id="{{ pageInstanceId }}"] .discount-off {
+			background-color:{{ data.discount_bg_color | default('#FA386A')}};
+			color:{{ data.discount_font_color ?? '#FFFFFF'}};
+		{% if data.discount_bg_image is not empty %}
+			background-image: url({{ data.discount_bg_image }})
+		{% endif %}
+		}
+	</style>
+	<!-- embed stylesheet end -->
+
+	<div class="geshop-col-12">
+		<div class="gs-goods-tab" style="width:{{goodsData.baseWidth}}rem;margin-bottom:{{pageData.boxMarginBottom}}rem;background-color:{{pageData.componentBgC}}" data-isEditEnv="{{data.isEditEnv}}" data-killLeftVisible="{{data.tab_endShowActive}}" data-tplStatus="0" data-sitedomain="{{siteDomain}}">
+
+			<div class="gs-main" style="margin-top: 0.32rem;">
+
+				<p class="gs-goods-inner-title" style="
+					{% if pageData.fs_titleBgC %}background-color:{{ pageData.fs_titleBgC }};{% endif %}
+					{% if pageData.fs_titleHeight %}height:{{ pageData.fs_titleHeight }}rem;{% endif %}
+					{% if pageData.fs_titleBgImg %}background-image:url({{ pageData.fs_titleBgImg }});{% endif %}
+					{% if pageData.fs_titleFtC %}color:{{ pageData.fs_titleFtC }};{% endif %}
+					{% if pageData.fs_titleMarginBottom %}margin-bottom:{{ pageData.fs_titleMarginBottom }}rem;{% endif %}
+					{% if pageData.fs_titleFtSize %}font-size:{{ pageData.fs_titleFtSize }}rem;{% endif %}
+				"><span class="gs-goods-inner-text">{{ pageData.titleNavText }}</span></p>
+
+				<div class="gs-tab-content" style="width:{{ (750 - pageData.goodsMarginLR*2)/remUnit }}rem;margin:0 auto;">
+					<div class="gs-tab-item gs-goodsWrap" data-index="{{loop.index0}}" data-skus="{{data.goodsSKU}}" data-skuLimit="{{data.skuLimit}}">
+						{{include ('@app/htdocs/resources/template/m/goodsList_sync/prePromotionDefaultM/index.twig')}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

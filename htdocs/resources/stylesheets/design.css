@@ -1,0 +1,600 @@
+
+/* design page */
+body {
+    position: relative;
+}
+
+#app {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+.site-main-design {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.design-left-box {
+    width: 0;
+    overflow-x: hidden;
+    transition: width linear .3s;
+}
+
+.geshop-component-box.design-preview-box {
+    border-color: #3a8ee6;
+    height: 64px;
+    line-height: 64px;
+    color: #333333;
+}
+
+.design-preview-box p {
+    margin-left: 32px;
+}
+
+.design-preview-hidden {
+    display: none!important;
+}
+
+.design-left-box-visible {
+    width: 242px;
+}
+
+.design-left {
+    border-left: 1px solid #e1e1e1;
+    border-right: 1px solid #e1e1e1;
+    width: 240px;
+    height: 100%;
+}
+
+.design-left-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-top: 1px solid #e1e1e1;
+    border-bottom: 1px solid #e1e1e1;
+    height: 48px;
+    line-height: 48px;
+    font-size: 14px;
+    background-color: #f7f7f7;
+    text-indent: 1em;
+}
+
+.design-layout-box+.design-left-title {
+    margin-top: -1px;
+}
+
+.design-layout-box {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+}
+
+.design-layout-item {
+    border-bottom: 1px solid #e1e1e1;
+    padding: 10px 0;
+    text-align: center;
+    cursor: move;
+}
+
+.design-layout-item:nth-child(2n+1) {
+    border-right: 1px solid #e1e1e1;
+}
+
+.design-layout-icon {
+    display: inline-block;
+    height: 40px;
+    width: 108px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.design-layout-desc {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.design-model-box {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.design-model-item {
+    border-bottom: 1px solid #e1e1e1;
+    padding: 10px 0;
+    text-align: center;
+    cursor: move;
+}
+
+.design-model-item:nth-child(2n+1) {
+    border-right: 1px solid #e1e1e1;
+}
+
+.design-model-icon {
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.design-model-desc {
+    margin-top: 6px;
+    line-height: 12px;
+    font-size: 12px;
+}
+
+.design-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.geshop-drop-tip {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 101;
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 0;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    color: #333333;
+    text-align: center;
+}
+
+.geshop-drop-tip span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 4px;
+    padding: 0 20px;
+}
+
+.geshop-drop-tip-top-right span {
+    background-color: #67c23a;
+}
+
+.geshop-drop-tip-top-wrong span {
+    background-color: #f56c6c;
+}
+
+.geshop-drop-tip-bottom-right span {
+    background-color: #67c23a;
+}
+
+.geshop-drop-tip-bottom-wrong span {
+    background-color: #f56c6c;
+}
+
+.geshop-dragenter-tip-right {
+    border: 2px solid #67c23a !important;
+}
+
+.geshop-dragenter-tip-wrong {
+    border: 2px solid #f56c6c !important;
+}
+
+.geshop-draggable {
+    cursor: move;
+}
+
+.design-control {
+    position: fixed;
+    top: 60px;
+    right: 0;
+    left: 242px;
+    z-index: 200;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0!important;
+    padding: 3px 15px;
+    font-size: 16px;
+    border-top: 1px solid #e1e1e1;
+    border-bottom: 1px solid #e1e1e1;
+    line-height: 36px;
+    background-color: #ffffff;
+    transition: left linear .3s;
+}
+
+.design-control-full {
+    left: 0;
+}
+
+.design-control-title-box {
+    margin-top: 6px;
+    padding-right: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.design-control i {
+    font-size: 20px;
+}
+
+.design-control-title {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 15px;
+}
+
+.design-view {
+    flex: auto;
+    margin: 120px 20px 20px;
+    border: 1px dashed #e1e1e1;
+    padding-bottom: 60px;
+}
+
+.design-view-loading {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    background-image: url(../layui/css/modules/layer/default/loading-1.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.design-view .layout-drag,
+.design-view .component-drag {
+    position: relative;
+}
+
+.design-view .component-drag .component-drag-mask  {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .2)
+}
+
+.design-view .component-drop {
+    margin: 0 1px;
+    border: 1px dashed #e1e1e1;
+    min-height: 64px;
+}
+
+.design-box.component-drag .open-design-form {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 20px;
+    color: #333333;
+}
+
+.geshop-layout-box {
+    position: relative;
+    border: 3px dashed transparent;
+    padding: 3px 0;
+    margin: -5px -3px -11px;
+}
+
+.geshop-component-box {
+    position: relative;
+    border: 1px dashed #ffffff;
+}
+
+.geshop-layout-box:hover {
+    position: relative;
+    z-index: 100;
+    border: 3px dashed #3a8ee6;
+}
+
+.geshop-component-box:hover {
+    position: relative;
+    z-index: 100;
+    border: 1px dashed #3a8ee6;
+}
+
+.design-form {
+    position: fixed;
+    top: 135px;
+    right: -480px;
+    z-index: 101;
+    border: 1px solid #e1e1e1;
+    padding: 10px 15px 10px 15px;
+    width: 450px;
+    height: calc(100% - 157px);
+    overflow-y: auto;
+    transition: right linear .3s;
+    background-color: #ffffff;
+}
+
+.design-form-visible {
+    right: 0;
+}
+
+.design-form-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 24px;
+    color: #333333;
+}
+
+.geshop-form-operation {
+    border-top: 1px solid #e6e6e6;
+    padding-top: 15px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.design-operation-panel {
+    position: absolute;
+    top: -26px;
+    left: -1px;
+    z-index: 2;
+    border: 1px solid #3a8ee6;
+    padding-left: 10px;
+    height: 24px;
+    line-height: 24px;
+    background-color: #3a8ee6;
+    color: #ffffff;
+    /* white-space: nowrap; */
+}
+
+.design-component-operation-panel {
+    top: 0;
+}
+
+.design-operation-panel > span {
+    display: inline-block;
+    border-right: 1px solid #ffffff;
+    padding-right: 10px;
+}
+
+.design-operation-panel a {
+    margin: 0 3px;
+    line-height: 24px;
+    height: 24px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.design-operation-panel a:hover {
+    color: #333333;
+}
+
+.design-operation-panel a span {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.design-open-resource {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 38px;
+    height: 38px;
+    text-align: center;
+    line-height: 38px;
+    background-color: #e1e1e1;
+}
+
+.design-open-resource + .layui-input {
+    padding-left: 48px;
+}
+
+/* .geshop-resource-explorer {
+
+} */
+
+.geshop-resource-explorer-col {
+    position: relative;
+    border: 1px solid #ffffff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.geshop-resource-explorer-col:hover {
+    border: 1px solid #333333;
+}
+
+.geshop-resource-explorer-col:hover .geshop-resource-operate {
+    display: block;
+}
+
+.geshop-resource-explorer-col:hover .geshop-resource-operate a {
+    color: #ffffff;
+}
+
+.geshop-resource-explorer-title {
+    height: 16px;
+    line-height: 16px;
+    font-size: 12px;
+}
+
+.geshop-resource-operate {
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #333333;
+    color: #ffffff;
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+}
+
+.geshop-resource-operate a {
+    display: block;
+    font-size: 12px;
+    color: #ffffff;
+}
+
+.design-view .geshop-component-box .component-nav-fixed {
+    position: relative!important;
+    z-index: 0!important;
+}
+
+/* colorpicker 插件 */
+.colorpicker {
+    z-index: 20000000;
+}
+
+.color-picker-selector {
+	position: relative;
+	width: 36px;
+	height: 36px;
+	background: url(../colorpicker/images/select.png);
+	z-index:2;
+}
+.color-picker-selector div {
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 30px;
+	height: 30px;
+	background: url(../colorpicker/images/select.png) center;
+}
+
+.color-picker-selector + input{
+	position: absolute;
+	right: 0;
+	top: -1px;
+	width: 100%;
+	padding-left: 50px;
+	z-index: 1;
+}
+
+.colorpicker_submit {
+    border: 1px solid #ffffff;
+    padding: 0 9px;
+    background-image: none;
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 20px;
+    width: auto;
+    left: auto;
+    right: 12px;
+    border-radius: 3px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.color-picker-selector .transparent {
+    text-align: center;
+}
+
+.color-picker-selector .transparent:after {
+    content: '';
+    display: block;
+    margin-top: 4px;
+    margin-left: 4px;
+    width: 22px;
+    height: 22px;
+    background-image: url(../colorpicker/images/transparent.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.layui-form-label.public-data {
+    color: #409eff;
+}
+
+/* layui quote */
+.layui-quote-danger {
+    border-color: #FF5722;
+}
+
+.design-form .layui-elem-field.layui-field-title {
+    margin: 10px 0;
+}
+
+.design-form-layout .layui-tab-content-parent {
+    height: calc(100vh - 334px);
+    overflow-y: auto;
+}
+
+.design-form-component .layui-tab-content-parent {
+    height: calc(100vh - 396px);
+    overflow-y: auto;
+}
+
+.design-form .layui-tab-content-parent .layui-show {
+    height: 100%;
+}
+
+.layui-carousel, .layui-carousel>[carousel-item]>* {
+    background-color: #ffffff;
+}
+
+.layui-carousel, .layui-carousel>[carousel-item] > div {
+    overflow-y: auto;
+}
+
+.layui-tab-vertical {
+    float: left;
+    width: calc(100% - 2px);
+    border: 1px solid #e6e6e6;
+}
+
+.layui-tab-vertical .layui-tab-title {
+    float: left;
+    border-bottom: 0;
+    border-right: 1px solid #e6e6e6;
+    width: 120px;
+    height: 100%;
+}
+
+.layui-tab-vertical .layui-tab-title li {
+    display: block;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.layui-tab-vertical .layui-tab-title .layui-this:after {
+    left: auto;
+    right: -1px;
+    border: 0;
+    border-right: 1px solid #ffffff;
+}
+
+.layui-tab-vertical .layui-tab-content {
+    margin-left: -1px;
+    float: left;
+    border-left: 1px solid #e6e6e6;
+    width: 270px;
+}
+
+/* gs form表单验证 */
+
+.gs-form-valid .gs-required .layui-form-label{
+	position: relative;
+}
+
+.gs-form-valid .gs-required .layui-form-label:before{
+	content: '*';
+	color: #f56c6c;
+	margin-right: 4px;
+}

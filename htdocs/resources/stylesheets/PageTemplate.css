@@ -1,0 +1,131 @@
+.geshop-pagetpl-tit {
+  margin-bottom: 8px !important;
+}
+
+.geshop-pagetpl-title {
+  width: 88px;
+  font-size: 22px;
+  color: #3C4144;
+  line-height: 30px;
+}
+
+.geshop-pagetpl-btn {
+  background-color: #FFFFFF;
+  position: relative;
+  margin-bottom: 0;
+  padding-left: 24px;
+  padding-top: 16px;
+}
+
+.geshop-pagetpl-btn .el-form--inline .el-form-item {
+  margin-right: 13px;
+}
+
+.geshop-pagetpl-btn .el-form-item__content {
+  width: 160px;
+}
+
+.geshop-pagetpl-lists {
+  margin-bottom: 0px;
+}
+
+.geshop-pagetpl-lists .has-gutter th {
+  background-color: #f4f4f4 !important;
+  padding: 8px 0px !important;
+}
+
+.geshop-pagetpl-lists .el-table:first-child th {
+  margin-left: 48px !important;
+}
+ 
+.geshop-pagetpl-lists .el-table__row {
+  height: 80px !important;
+}
+
+.geshop-pagetpl-lists .el-table__row .el-table_1_column_10 .el-button,
+.geshop-pagetpl-lists .component-template-actionbar .el-button {
+  padding: 0px 0px;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.geshop-pagetpl-lists .icon-geshop-search:before {
+  font-size: 24px;
+}
+
+.geshop-pagetpl-lists .icon-geshop-search:hover {
+  background-color: #F4F4F4;
+  color: #409EFF;
+}
+
+/* 分页条开始 */
+.geshop-article-page .el-pagination {
+  background-color: #FFFFFF;
+  padding-top: 40px;
+}
+.geshop-article-page .el-pagination li {
+  line-height: 20px;
+  min-width:20px;
+  margin-left: 24px;
+}
+.geshop-article-page .el-pagination li.active {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #1E9FFF;
+  color: #FFFFFF;
+}
+.geshop-article-page .el-icon-arrow-right {
+  margin-top: -5px;
+}
+/* 分页条结束 */
+
+/* 查看模板开始 */
+.geshop-page-template .el-dialog__header {
+  line-height: 64px;
+  background: #1A233B;
+  padding: 0px 0px;
+}
+
+.geshop-page-template .el-dialog__header .el-dialog__title {
+  font-size: 18px;
+  color: #FFFFFF;
+  margin-left: 40px;
+  margin-top: 20px !important;
+}
+
+.geshop-page-template .el-dialog__header .el-dialog__close {
+  font-size: 24px;
+  color: #FFFFFF;
+}
+/* 查看模板结束 */
+
+
+.el-tooltip__popper.is-light {
+  border: none;
+  background: rgba(0,0,0,0.5) !important;
+  line-height: 20px;
+  font-size: 14px;
+  padding: 0px 6px 0px 6px;
+  color: #FFFFFF;
+  margin-top: 4px;
+}
+
+.el-tooltip__popper.is-light .popper__arrow {
+  display: none !important; 
+}
+.clearfix:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden
+}
+
+.clearfix {
+  display: inline-block
+}

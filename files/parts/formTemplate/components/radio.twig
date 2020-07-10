@@ -1,0 +1,16 @@
+<div class="layui-form-item {{ componentData.extendClass }}">
+    <label class="layui-form-label {% if componentData.public %} public-data {% endif %}">{{ componentData.label }}
+        <p><span class="desc">{{ componentData.desc }}</span></p></label>
+    <div class="layui-input-block">
+        {% for item in componentData.options %}
+            <input
+                type="radio"
+                name="{{ componentData.name }}"
+                lay-filter="{{ componentData.name }}"
+                value="{{ item.value }}"
+                title="{{ item.label }}"
+                data-public-tag="{{ componentData.public }}"
+                {% if item.value == componentData.value %} checked {% endif %}>
+        {% endfor %}
+    </div>
+</div>

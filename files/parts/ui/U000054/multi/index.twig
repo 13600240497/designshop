@@ -1,0 +1,57 @@
+{% set unit = 'rem' %}
+{% set devicePixelRatio = 2 %}
+{% set calc = 37.5 %}
+{% set pageData = {
+    marginBottom: (data.marginBottom | default(0))/calc/devicePixelRatio,
+    textFontSize: (data.textFontSize|default(36))/calc/devicePixelRatio,
+    numbersFontSize: (data.numbersFontSize|default(36))/calc/devicePixelRatio,
+    gridWidth: (data.gridWidth|default(60))/calc/devicePixelRatio,
+    gridHeight: (data.gridHeight|default(72))/calc/devicePixelRatio,
+    gridRadius: (data.gridRadius|default(4))/calc/devicePixelRatio,
+    cmptHeight: (data.cmptHeight | default(120))/calc/devicePixelRatio,
+}%}
+
+<style>
+    {% set nameSpace = '[data-key="U000054"][data-id="'~pageInstanceId~'"]' %}
+    {{ nameSpace }},  {{ nameSpace }} {
+        
+    }
+    .multi-dateRange[data-key="U000054"] [data-style-key="numbers-u000054-{{pageInstanceId}}"] {
+        height: {{ pageData.cmptHeight }}{{ unit }};
+        line-height: {{ pageData.cmptHeight }}{{ unit }};
+    }
+    .multi-dateRange[data-key="U000054"] [data-style-key="numbers-u000054-{{pageInstanceId}}"] .multi-dateRange-numbers label {
+        width: {{pageData.gridWidth}}{{unit}} !important;
+        height: {{pageData.gridHeight}}{{unit}} !important;
+        line-height: {{pageData.gridHeight}}{{unit}} !important;
+        border-radius: {{pageData.gridRadius}}{{unit}} !important;
+    }
+</style>
+
+
+<div data-key="U000054" data-id="{{ pageInstanceId }}" data-gid="component-countdown" class="geshop-component-box component-drag clearfix multi-dateRange" style="margin-bottom: {{pageData.marginBottom}}{{unit}};">
+    <input type="hidden" name="textFontSize" value="{{pageData.textFontSize}}">    
+    <input type="hidden" name="gridRadius" value="{{pageData.gridRadius}}">    
+    <input type="hidden" name="numbersFontSize" value="{{pageData.numbersFontSize}}">
+    <input type="hidden" name="unit" value="{{ unit }}">
+    <input type="hidden" name="isEditEnv" value="{{ data.isEditEnv }}">
+    
+    <div data-source style="display:none;">{{ data.dataSet | json_encode | raw }}</div>
+
+    {% for key, item in data.dataSet | default([""]) %}
+        <div class="multi-dateRange-inner" data-style-key="numbers-u000054-{{pageInstanceId}}" data-key="{{ item.key }}">
+            <div class="multi-dateRange-text" data-text="{{item.text2|default('Hot Sale')}},{{item.text2|default('Hot Sale')}},{{item.text2|default('Hot Sale')}}">
+                <span></span>
+            </div>
+            <div class="multi-dateRange-numbers">
+                <label>00</label>
+                <span>:</span>
+                <label>00</label>
+                <span>:</span>
+                <label>00</label>
+                <span>:</span>
+                <label>00</label>
+            </div>
+        </div>
+    {% endfor %}
+</div>

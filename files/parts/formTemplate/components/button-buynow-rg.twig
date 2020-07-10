@@ -1,0 +1,43 @@
+{%
+    set components = [
+        {
+            label: '背景颜色',
+            name: 'buynow_bg_color',
+            default: '#222222',
+            type: 'colorPicker'
+        },
+        {
+            label: '文字颜色',
+            name: 'buynow_font_color',
+            default: '#FFFFFF',
+            type: 'colorPicker'
+        },
+        {
+            label: '圆角大小',
+            name: 'buynow_radius',
+            default: 2
+        },
+        {
+            label: '是否显示',
+            name: 'buynow_show',
+            default: '1',
+            type: 'radio',
+            options: [
+                {
+                    label: '是',
+                    value: '1'
+                },
+                {
+                    label: '否',
+                    value: '0'
+                }
+            ]
+        }
+    ]
+%}
+<fieldset class="layui-elem-field">
+    <legend>Buy Now按钮</legend>
+    <div class="layui-field-box">
+        {{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}
+    </div>
+</fieldset>

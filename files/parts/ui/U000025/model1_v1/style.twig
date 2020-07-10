@@ -1,0 +1,8 @@
+ {% set classRoot = '.geshop-U000025-model1_v1-body-'~pageInstanceId~'' %}
+
+    {# 三端共有样式 #}
+    {{ classRoot }} {
+        margin-top:{{ data.boxMarginTop|default(0) }}px;
+        margin-bottom:{{ data.boxMarginBottom|default(32) }}px;
+    }
+

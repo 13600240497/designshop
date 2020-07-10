@@ -1,0 +1,286 @@
+{% set suffix='rem'%}
+{% set remUnit = 75 %}
+{%
+	set pageData = {
+				price_ft_weight:data.price_ft_weight|default(1),
+				base_bg_shadow:data.base_bg_shadow|default(0),
+		navigatWidth:(data.navigatWidth|default(480))/remUnit,
+		navigat_titleH:(data.navigat_titleH|default(150))/remUnit,
+		navigat_titleTextC:data.navigat_titleTextC|default('#333333'),
+		navigat_titleBgC:data.navigat_titleBgC|default('#d8d8d8'),
+		navigat_titleText:data.navigat_titleText is not null?data.navigat_titleText:'Magiga Helloween Deals',
+		navigat_titleFtS:(data.navigat_titleFtS|default(48))/remUnit,
+		navigat_border_raduis:(data.navigat_border_raduis|default(30))/remUnit,
+
+		part_titleFtS:(data.part_titleFtS|default(24))/remUnit,
+		part_borderC:data.part_borderC|default('#D8D8D8'),
+		part_Bgc:data.part_Bgc|default('#D8D8D8'),
+		part_HoverBgc:data.part_HoverBgc|default('#D8D8D8'),
+		part_TextC:data.part_TextC|default('#333333'),
+		part_HoverC:data.part_HoverC|default('#333333'),
+		part_distance:(data.part_distance|default(10))/remUnit,
+		part_height:(data.part_height|default(72))/remUnit,
+		
+
+		goTop_fts:(data.goTop_fts|default(28))/remUnit,
+		goTop_height:(data.goTop_height|default(80))/remUnit,
+		goTop_text:data.goTop_text|default('TOP'),
+		goTop_BgC:data.goTop_BgC|default('#D8D8D8'),
+		goTop_TextC:data.goTop_TextC|default('#333333'),
+		goTop_height:(data.goTop_height|default(80))/remUnit,
+		sideWidth:100/remUnit,
+		iconSize:28/remUnit,
+		navigat_headImg_height:(data.navigat_headImg_height|default(59))/remUnit,
+		navigat_headImg_width:(data.navigat_headImg_width|default(200))/remUnit,
+
+		hide_BgC:data.hide_BgC|default('#D8D8D8'),
+		hide_ftc:data.hide_ftc|default('#333333'),
+
+		qr_code_Bgc:data.qr_code_Bgc|default('#D8D8D8'),
+		qr_code_top:data.qr_code_top|default('Dowload Free APP'),
+		qr_code_footer:data.qr_code_footer|default('Enjoy APP-Exclusive Deals'),
+		qr_code_ftc:data.qr_code_ftc|default('#333333'),
+		
+	}
+%}
+{% set imgMaxHeight = pageData.navigatWidth/(pageData.navigat_headImg_width/pageData.navigat_headImg_height)%}
+{% set headerImgHeight = pageData.navigat_headImg_height > imgMaxHeight?imgMaxHeight:pageData.navigat_headImg_height %}
+{% set qrCodeDefault = staticDomain ~ '/resources/images/default/qrCode.png' %}
+
+{# {% edit = {
+	sideBtnRight:pageData.navigatWidth + 65,
+	sideBtnLeft:pageData.navigatWidth + 65
+}%} #}
+
+<style type="text/css">
+				[data-id="{{ pageInstanceId }}"][data-gid="U000168_default"] .geshop-page-content{
+				{% if data.base_box_bgc %}
+					background-color:{{ data.base_box_bgc }};
+				{% endif %}
+				}
+				[data-id="{{ pageInstanceId }}"][data-gid="U000168_default"] .geshop-page-part ul{
+					box-sizing:border-box;
+					-webkit-box-sizing: border-box;
+					overflow:hidden;
+				}
+				[data-id="{{ pageInstanceId }}"][data-gid="U000168_default"] .geshop-page-part li{
+					height:{{pageData.part_height}}rem;
+					margin:{{pageData.part_distance}}rem auto;
+					box-sizing:border-box;
+					-webkit-box-sizing: border-box;
+				}
+				[data-id="{{ pageInstanceId }}"][data-gid="U000168_default"] .geshop-page-part a{
+					display:inline-block;
+					height:{{pageData.part_height}}rem;
+					line-height:{{pageData.part_height}}rem;
+					background-color:{{pageData.part_Bgc}};
+					font-size:{{pageData.part_titleFtS}}rem!important;
+					border-color:{{pageData.part_borderC}};
+					margin-right:{{pageData.part_distance}}rem;
+					box-sizing:border-box;
+					-webkit-box-sizing: border-box;
+				}
+				{# [data-id="{{ pageInstanceId }}"][data-gid="U000168_default"] .geshop-page-part a:hover{
+					color:{{pageData.part_HoverC}};
+				}
+				[data-id="{{ pageInstanceId }}"][data-gid="U000168_default"] .geshop-page-goTop a:hover {
+					color:{{pageData.goTop_TextHoverC}};
+				} #}
+				[data-id="{{ pageInstanceId }}"][data-gid="U000168_default"] .geshop-statu-expand .geshop-page-navigator{
+					width:{{pageData.navigatWidth}}{{suffix}};
+					{% if data.isEditEnv == '0' %}
+						z-index:-1001;
+						opacity:0;
+					{% endif %}
+				}
+				[data-id="{{ pageInstanceId }}"][data-gid="U000168_default"] .side-btn{
+					{% if data.isEditEnv == '1' %}
+						/*bottom:0.7rem;*/
+					{% else %}
+						z-index:-1001;
+						opacity:0;
+					{% endif %}
+					width:{{pageData.sideWidth}}{{suffix}};
+					height:{{pageData.sideWidth}}{{suffix}};
+					border-radius:50%;
+					box-sizing:content-box;
+					background:{{pageData.hide_BgC}};
+					text-align:center;
+					line-height:{{pageData.sideWidth}}{{suffix}};
+				}
+				[data-id="{{ pageInstanceId }}"][data-gid="U000168_default"] .side-btn span{
+					margin: {{ ( pageData.sideWidth - pageData.iconSize ) / 2}}rem  auto 0 auto;
+				}
+				[data-id="{{ pageInstanceId }}"][data-gid="U000168_default"] .icon-img-left,[data-id="{{ pageInstanceId }}"][data-gid="U000168_default"] .icon-img-right{
+					width:{{pageData.iconSize}}{{suffix}};
+					height:{{pageData.iconSize}}{{suffix}};
+					border-color:{{pageData.part_TextC}};
+					box-sizing:content-box;
+					border-color:{{pageData.hide_ftc}};
+				}
+				{# [data-id="{{ pageInstanceId }}"][data-gid="U000168_default"] .geshop-statu-expand.geshop-navigator-right{
+					padding-left:40px;
+				}
+				[data-id="{{ pageInstanceId }}"][data-gid="U000168_default"] .geshop-statu-expand.geshop-navigator-left{
+					padding-right:40px;
+				} #}
+				{# 收缩 #}
+				{#[data-id="{{ pageInstanceId }}"][data-gid="U000168_default"] .geshop-statu-expand.geshop-navigator-right .side-btn{#}
+					{#right:{{ ( pageData.navigatWidth - pageData.sideWidth ) / 2}}{{suffix}};#}
+				{#}#}
+				{#[data-id="{{ pageInstanceId }}"][data-gid="U000168_default"] .geshop-statu-expand.geshop-navigator-left .side-btn{#}
+					{#left:{{ ( pageData.navigatWidth - pageData.sideWidth ) / 2}}{{suffix}};#}
+				{#}#}
+				[data-id="{{ pageInstanceId }}"][data-gid="U000168_default"] .geshop-statu-fold.geshop-navigator-right .side-btn{
+					right:-10px;
+				}
+				[data-id="{{ pageInstanceId }}"][data-gid="U000168_default"] .geshop-statu-fold.geshop-navigator-left .side-btn{
+					left:-10px;
+				}
+    /*背景图*/
+.geshop-gb-component.ui-{{ pageInstanceId }} .gb_wrapper_common{
+{% if data.base_box_bgImage %}
+	background-image:url({{ data.base_box_bgImage }});
+{% endif %}
+{% if data.component_bg_value %}
+{{ data.component_bg_value }}
+{% endif %}
+}
+</style>
+
+<div class="geshop-component-box component-drag geshop-gb-component ui-{{ pageInstanceId }}" data-key="U000168" data-gid="U000168_default" data-id="{{ pageInstanceId }}" data-editEnv="{{data.isEditEnv}}" data-hide-btn="{{data.hide_btn_Active|default(1)}}"
+	 style="{% if data.isEditEnv == '1' %}  padding-bottom:1.833rem; {% endif %}"
+>
+	<div class="geshop-navigator-wrapper {% if data.navigat_position|default(0) == '1'%} geshop-navigator-right {% else %} geshop-navigator-left {% endif %}
+		{% if data.hide_btn_Active|default(1) == 1 %}  geshop-statu-expand {% else %}     geshop-statu-fold{% endif %}
+		{% if data.isEditEnv == '1'%} edit-now{% endif %}
+	">
+		<div class="geshop-page-navigator text-center geshop-scrollbar"
+				style="
+			{% if data.isEditEnv %}
+						{% if data.navigat_position|default(0) == '1' %}
+							float:right;
+						{% else %}
+							float:left;
+						{% endif %}
+			{% else %}
+						{% if data.navigat_position|default(0) == '1' %}
+							right:0;
+						{% else %}
+							left:0;
+						{% endif %}
+			{% endif %}
+			"
+		>
+			<div class="geshop-page-content gb_wrapper_common" style="width:{{pageData.navigatWidth}}{{suffix}};"
+				data-margintop="{{ data.base_box_margin_top }}" >
+					{# {% if data.navigat_headImgActive|default('1') == '1' %}
+				<div class="geshop-page-header" style="height:{{headerImgHeight}}{{suffix}}">
+					<img class="lazyload" src="{{data.navigat_headImg|default(qrCodeDefault)}}">
+				</div>
+					{% endif %} #}
+				{% if data.navigat_active|default(1) == 1  %}
+				<div class="geshop-page-main"
+						style="height:{{pageData.navigat_titleH}}{{suffix}};
+						background-color:{{pageData.navigat_titleBgC}};
+						border-radius:{{pageData.navigat_border_raduis}}rem {{pageData.navigat_border_raduis}}rem 0 0;
+						color:{{pageData.navigat_titleTextC}};
+						font-size:{{pageData.navigat_titleFtS}}{{suffix}};
+						font-weight:{{data.titleWeight|default('normal')}};
+						{% if data.navigat_titleFtFa %}font-family:{{data.navigat_titleFtFa}};{% endif %}
+						{% if data.navigat_titleBgImg %}background:url('{{data.navigat_titleBgImg}}') no-repeat center center/100% 100%;{% endif %}
+						padding:20px;
+						-webkit-box-sizing: border-box;
+        				box-sizing: border-box;
+						">
+					<a {% if data.navigat_titleLink %} href="{{data.navigat_titleLink}}"{% endif %} style>
+							{% if data.navigat_titleTextActive|default(0) == '0' %}
+						<span style="">{{pageData.navigat_titleText}}</span>
+							{% endif %}
+					</a>
+				</div>
+				{% endif %}
+				<div class="geshop-page-part" style="
+						color:{{pageData.part_TextC}};
+						{% if data.part_titleFtFa %}font-family:{{data.part_titleFtFa}}{% endif %}
+					">
+					<ul>
+					{% if data.partsArr %}
+						{% for index,item in data.partsArr %}
+							<li data-index="{{index}}">
+								{% for key,partItem in item.colArr %}
+									{% if key < item.col %}
+										<a {% if partItem.link %}href="{{partItem.link}}"{% endif %}
+											style="width:{{(pageData.navigatWidth)/(item.col|default('1')) -  pageData.part_distance}}{{suffix}};
+											font-weight:{{data.part_Weight|default('normal')}};
+											font-size:{{pageData.part_titleFtS}}{{suffix}};
+											">{{partItem.text}}</a>
+									{% endif %}
+								{% endfor %}
+							</li>
+						{% endfor %}
+					{% else %}
+						<li style="width:100%;"><a style="width:100%;">这里是分类</a></li>
+						<li style="width:100%;"><a style="width:{{(pageData.navigatWidth)/2 - pageData.part_distance}}{{suffix}}">这里是分类</a><a style="width:{{(pageData.navigatWidth)/2 - pageData.part_distance}}{{suffix}}">这里是分类</a></li>
+						<li style="width:100%;"><a style="width:{{(pageData.navigatWidth)/3 - pageData.part_distance}}{{suffix}}">这里是分类</a><a style="width:{{(pageData.navigatWidth)/3 - pageData.part_distance}}{{suffix}}">这里是分类</a><a style="width:{{(pageData.navigatWidth)/3 - pageData.part_distance}}{{suffix}}">这里是分类</a></li>
+						<li style="width:100%;"><a style="width:{{(pageData.navigatWidth)/3 - pageData.part_distance}}{{suffix}}">这里是分类</a><a style="width:{{(pageData.navigatWidth)/3 - pageData.part_distance}}{{suffix}}">这里是分类</a><a style="width:{{(pageData.navigatWidth)/3 - pageData.part_distance}}{{suffix}}">这里是分类</a></li>
+						<li style="width:100%;"><a style="width:{{(pageData.navigatWidth)/3 - pageData.part_distance}}{{suffix}}">这里是分类</a><a style="width:{{(pageData.navigatWidth)/3 - pageData.part_distance}}{{suffix}}">这里是分类</a><a style="width:{{(pageData.navigatWidth)/3 - pageData.part_distance}}{{suffix}}">这里是分类</a></li>
+					{% endif %}
+					</ul>
+					{% if data.qr_code_Active|default(1) == '1' %}
+					<div class="geshop-join-app" style="background:{{pageData.qr_code_Bgc}};color:{{pageData.qr_code_ftc}};">
+						<p>{{pageData.qr_code_top}}</p>
+						<div class="geshop-qr-code">
+							<img class="lazyload" src="{{data.qr_code_img|default(qrCodeDefault)}}">
+						</div>
+						<p>{{pageData.qr_code_footer}}</p>
+					</div>
+					{% endif %}
+				</div>
+				{% if data.goTop_Active|default(1) == 1 %}
+				<div class="geshop-page-goTop" style="
+						margin-top:{{pageData.part_distance}}rem;
+						background-color:{{pageData.goTop_BgC}};
+						color:{{pageData.goTop_TextC}};
+						height:{{pageData.goTop_height}}{{suffix}};
+						font-size:{{pageData.goTop_fts}}{{suffix}};
+						{% if data.goTop_ftsFa %}font-family:{{data.goTop_ftsFa}}{% endif %}
+					">
+					<a>{{ gb_component_trans(lang, 'top')|default('TOP') }}</a>
+				</div>
+				{% endif %}
+				{# expend #}
+				<div class="side-btn" style="">
+					<div class="side-icon side-right">
+						<span class="icon-img-right"></span>
+						{# <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1536128963081" class="geshop-navigator-icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1036" xmlns:xlink="http://www.w3.org/1999/xlink" width="{{pageData.iconSize}}{{suffix}}" height="{{pageData.iconSize}}{{suffix}}"><defs><style type="text/css">    /*背景图*/
+.geshop-gb-component.ui-{{ pageInstanceId }} .gb_wrapper_common{
+{% if data.base_box_bgImage %}
+	background-image:url({{ data.base_box_bgImage }});
+{% endif %}
+{% if data.component_bg_value %}
+{{ data.component_bg_value }}
+{% endif %}
+}
+</style></defs><path d="M708.8 505.6l-440-440c-8-8-8-19.2 0-27.2v0c8-8 19.2-8 27.2 0l460.8 460.8c8 8 8 19.2 0 27.2v0c0 0-1.6 1.6-1.6 1.6l-459.2 457.6c-8 8-19.2 8-27.2 0v0c-8-8-8-19.2 0-27.2l440-440c3.2-3.2 3.2-9.6 0-12.8z" p-id="1037" fill="{{pageData.part_TextC}}"></path></svg> #}
+					</div>
+					<div class="side-icon side-left">
+						<span class="icon-img-left"></span>
+						{# <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1536136094708" class="geshop-navigator-icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2072" xmlns:xlink="http://www.w3.org/1999/xlink" width="{{pageData.iconSize}}{{suffix}}" height="{{pageData.iconSize}}{{suffix}}"><defs><style type="text/css">    /*背景图*/
+.geshop-gb-component.ui-{{ pageInstanceId }} .gb_wrapper_common{
+{% if data.base_box_bgImage %}
+	background-image:url({{ data.base_box_bgImage }});
+{% endif %}
+{% if data.component_bg_value %}
+{{ data.component_bg_value }}
+{% endif %}
+}
+</style></defs><path d="M315.2 505.6l440-440c8-8 8-19.2 0-27.2v0c-8-8-19.2-8-27.2 0l-460.8 459.2c-8 8-8 19.2 0 27.2v0c0 0 1.6 1.6 1.6 1.6l459.2 459.2c8 8 19.2 8 27.2 0v0c8-8 8-19.2 0-27.2l-440-440c-3.2-3.2-3.2-9.6 0-12.8z" p-id="2073" fill="{{pageData.part_TextC}}"></path></svg> #}
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>

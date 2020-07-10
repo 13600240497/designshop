@@ -1,0 +1,195 @@
+{% set suffix='rem'%}
+{% set remUnit = 37.5 %}
+{%
+	set pageData = {
+		navigatWidth:(data.navigatWidth|default(200))/remUnit,
+		navigat_titleH:(data.navigat_titleH|default(150))/remUnit,
+		navigat_titleTextC:data.navigat_titleTextC|default('#333333'),
+		navigat_titleBgC:data.navigat_titleBgC|default('#F5F7F9'),
+		navigat_titleText:data.navigat_titleText is not null?data.navigat_titleText:'主会场',
+		navigat_titleFtS:(data.navigat_titleFtS|default(16))/remUnit,
+		part_titleFtS:(data.part_titleFtS|default(14))/remUnit,
+		goTop_fts:(data.goTop_fts|default(14))/remUnit,
+		part_borderC:data.part_borderC|default('#F2F2F2'),
+		part_Bgc:data.part_Bgc|default('#ffffff'),
+		part_TextC:data.part_TextC|default('#333333'),
+		part_HoverC:data.part_HoverC|default('#999999'),
+		goTop_text:data.goTop_text|default('Top'),
+		goTop_BgC:data.goTop_BgC|default('#ffffff'),
+		goTop_TextC:data.goTop_TextC|default('#333333'),
+		goTop_TextHoverC:data.goTop_TextHoverC|default('#999999'),
+		goTop_height:(data.goTop_height|default(80))/remUnit,
+		iconSize:(12/remUnit),
+		navigat_headImg_height:(data.navigat_headImg_height|default(59))/remUnit,
+		navigat_headImg_width:(data.navigat_headImg_width|default(200))/remUnit,
+		component_show_always:data.component_show_always|default('0')
+	}
+%}
+{% set imgMaxHeight = pageData.navigatWidth/(pageData.navigat_headImg_width/pageData.navigat_headImg_height)%}
+{% set headerImgHeight = pageData.navigat_headImg_height > imgMaxHeight?imgMaxHeight:pageData.navigat_headImg_height %}
+
+{% set topDefault = staticDomain ~ '/resources/images/default/navigator-top.png' %}
+{# {% edit = {
+	sideBtnRight:pageData.navigatWidth + 65,
+	sideBtnLeft:pageData.navigatWidth + 65
+}%} #}
+
+<!-- embed stylesheet begin -->
+<style type="text/css">
+				[data-id="{{ pageInstanceId }}"][data-gid="U000089_default"] .geshop-page-part ul{
+					border-top:1px solid {{pageData.part_borderC}};
+				}
+				[data-id="{{ pageInstanceId }}"][data-gid="U000089_default"] .geshop-page-part li{
+					border-color:{{pageData.part_borderC}};
+				}
+				[data-id="{{ pageInstanceId }}"][data-gid="U000089_default"] .geshop-page-part a{
+					border-right: 1px solid {{pageData.part_borderC}};
+				}
+				[data-id="{{ pageInstanceId }}"][data-gid="U000089_default"] .geshop-page-part a:hover{
+					color:{{pageData.part_HoverC}};
+				}
+        [data-id="{{ pageInstanceId }}"][data-gid="U000089_default"] .geshop-page-goTop a:hover {
+            color:{{pageData.goTop_TextHoverC}};
+        }
+				[data-id="{{ pageInstanceId }}"][data-gid="U000089_default"] .geshop-statu-expand .geshop-page-navigator{
+					width:{{pageData.navigatWidth}}{{suffix}};
+					visibility: hidden;
+				}
+				[data-id="{{ pageInstanceId }}"][data-gid="U000089_default"] .side-btn{
+					width:{{pageData.iconSize}}{{suffix}};
+					height:{{pageData.iconSize}}{{suffix}};
+					box-sizing:content-box;
+					visibility: hidden;
+				}
+				[data-id="{{ pageInstanceId }}"][data-gid="U000089_default"] .icon-img-left,[data-id="{{ pageInstanceId }}"][data-gid="U000089_default"] .icon-img-right{
+					width:{{pageData.iconSize}}{{suffix}};
+					height:{{pageData.iconSize}}{{suffix}};
+					border-color:{{pageData.part_TextC}};
+					box-sizing:content-box;
+				}
+				{# [data-id="{{ pageInstanceId }}"][data-gid="U000089_default"] .geshop-statu-expand.geshop-navigator-right{
+					padding-left:40px;
+				}
+				[data-id="{{ pageInstanceId }}"][data-gid="U000089_default"] .geshop-statu-expand.geshop-navigator-left{
+					padding-right:40px;
+				} #}
+				[data-id="{{ pageInstanceId }}"][data-gid="U000089_default"] .geshop-statu-expand.geshop-navigator-right .side-btn{
+					right:{{pageData.navigatWidth}}{{suffix}};
+
+				}
+				[data-id="{{ pageInstanceId }}"][data-gid="U000089_default"] .geshop-statu-expand.geshop-navigator-left .side-btn{
+					left:{{pageData.navigatWidth}}{{suffix}};
+				}
+				[data-id="{{ pageInstanceId }}"][data-gid="U000089_default"] .geshop-statu-fold.geshop-navigator-right .side-btn{
+					right:0;
+				}
+				[data-id="{{ pageInstanceId }}"][data-gid="U000089_default"] .geshop-statu-fold.geshop-navigator-left .side-btn{
+					left:0;
+				}
+
+</style>
+<!-- embed stylesheet end -->
+
+{% set userGroupClass = "geshop_user_"~data.userGroupSelect|default(0)%}
+
+<div class="geshop-component-box component-drag" data-key="U000089" data-gid="U000089_default" data-id="{{ pageInstanceId }}" data-editEnv="{{data.isEditEnv}}">
+	<div class="geshop-navigator-wrapper {% if data.navigat_position|default(1) == '1'%} geshop-navigator-right {% else %} geshop-navigator-left {% endif %}
+		{% if data.isEditEnv == '1'%} edit-now geshop-statu-expand {% else %}geshop-statu-fold{% endif %}
+		{% if data.isEditEnv != '1' and pageData.component_show_always == '1' %} component-show-always{% endif %}
+	">
+		<div class="geshop-page-navigator text-center geshop-scrollbar"
+				style="
+			{% if data.isEditEnv %}
+						{% if data.navigat_position|default(1) == '1' %}
+							float:right;
+						{% else %}
+							float:left;
+						{% endif %}
+			{% else %}
+						{% if data.navigat_position|default(1) == '1' %}
+							right:0;
+						{% else %}
+							left:0;
+						{% endif %}
+			{% endif %}
+			"
+		>
+			<div class="geshop-page-content" style="width:{{pageData.navigatWidth}}{{suffix}};">
+					{% if data.navigat_headImgActive|default('1') == '1' %}
+				<div class="geshop-page-header" style="height:{{headerImgHeight}}{{suffix}}">
+					<img class="lazyload" src="{{data.navigat_headImg|default(topDefault)}}">
+				</div>
+					{% endif %}
+				<div class="geshop-page-main"
+						style="height:{{pageData.navigat_titleH}}{{suffix}};
+						background-color:{{pageData.navigat_titleBgC}};
+						color:{{pageData.navigat_titleTextC}};
+						font-size:{{pageData.navigat_titleFtS}}{{suffix}};
+						font-weight:{{data.titleWeight|default('normal')}};
+						{% if data.navigat_titleFtFa %}font-family:{{data.navigat_titleFtFa}};{% endif %}
+						{% if data.navigat_titleBgImg %}background:url('{{data.navigat_titleBgImg}}') no-repeat center center/100% 100%;{% endif %}
+						">
+					<a {% if data.navigat_titleLink %} href="{{data.navigat_titleLink}}"{% endif %} {% if data.openInNewWindow == 1 %}target="_blank"{% endif %} style>
+							{% if data.navigat_titleTextActive|default(0) == '0' %}
+						<span>{{pageData.navigat_titleText}}</span>
+							{% endif %}
+					</a>
+				</div>
+				<div class="geshop-page-part" style="
+						background-color:{{pageData.part_Bgc}};
+						color:{{pageData.part_TextC}};
+						{% if data.part_titleFtFa %}font-family:{{data.part_titleFtFa}}{% endif %}
+					">
+					<ul>
+					{% if data.partsArr %}
+						{% for index,item in data.partsArr %}
+							<li data-index="{{index}}">
+								{% for key,partItem in item.colArr %}
+									{% if key < item.col %}
+										<a {% if partItem.link %}href="{{partItem.link}}"{% endif %}
+											{% if data.openInNewWindow == 1 %}target="_blank"{% endif %}
+											style="width:{{(pageData.navigatWidth)/(item.col|default('1'))}}{{suffix}};
+											font-weight:{{data.part_Weight|default('normal')}};
+											font-size:{{pageData.part_titleFtS}}{{suffix}};
+											">{{partItem.text}}</a>
+									{% endif %}
+								{% endfor %}
+							</li>
+						{% endfor %}
+					{% else %}
+						<li style="width:100%;"><a style="width:{{(pageData.navigatWidth)/3}}{{suffix}}">分类</a><a style="width:{{(pageData.navigatWidth)/3}}{{suffix}}">分类</a><a style="width:{{(pageData.navigatWidth)/3}}{{suffix}}">分类</a></li>
+						<li style="width:100%;"><a style="width:{{(pageData.navigatWidth)/3}}{{suffix}}">分类</a><a style="width:{{(pageData.navigatWidth)/3}}{{suffix}}">分类</a><a style="width:{{(pageData.navigatWidth)/3}}{{suffix}}">分类</a></li>
+						<li style="width:100%;"><a style="width:{{(pageData.navigatWidth)/3}}{{suffix}}">分类</a><a style="width:{{(pageData.navigatWidth)/3}}{{suffix}}">分类</a><a style="width:{{(pageData.navigatWidth)/3}}{{suffix}}">分类</a></li>
+						<li style="width:100%;"><a style="width:{{(pageData.navigatWidth)/2}}{{suffix}}">分类</a><a style="width:{{(pageData.navigatWidth)/2}}{{suffix}}">分类</a></li>
+						<li style="width:100%;"><a>分类</a></li>
+					{% endif %}
+					</ul>
+				</div>
+				{% if data.goTop_Active|default(1) == 1 %}
+				<div class="geshop-page-goTop" style="
+						background-color:{{pageData.goTop_BgC}};
+						color:{{pageData.goTop_TextC}};
+						height:{{pageData.goTop_height}}{{suffix}};
+						font-size:{{pageData.goTop_fts}}{{suffix}};
+						{% if data.goTop_ftsFa %}font-family:{{data.goTop_ftsFa}}{% endif %}
+					">
+					<a>{{ pageData.goTop_text }}</a>
+				</div>
+				{% endif %}
+			</div>
+
+		</div>
+		<div class="side-btn" style="
+			background-color:{{pageData.part_Bgc}};">
+			<div class="side-icon side-right">
+				<span class="icon-img-right"></span>
+				{# <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1536128963081" class="geshop-navigator-icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1036" xmlns:xlink="http://www.w3.org/1999/xlink" width="{{pageData.iconSize}}{{suffix}}" height="{{pageData.iconSize}}{{suffix}}"><defs><style type="text/css"></style></defs><path d="M708.8 505.6l-440-440c-8-8-8-19.2 0-27.2v0c8-8 19.2-8 27.2 0l460.8 460.8c8 8 8 19.2 0 27.2v0c0 0-1.6 1.6-1.6 1.6l-459.2 457.6c-8 8-19.2 8-27.2 0v0c-8-8-8-19.2 0-27.2l440-440c3.2-3.2 3.2-9.6 0-12.8z" p-id="1037" fill="{{pageData.part_TextC}}"></path></svg> #}
+			</div>
+			<div class="side-icon side-left">
+				<span class="icon-img-left"></span>
+				{# <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1536136094708" class="geshop-navigator-icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2072" xmlns:xlink="http://www.w3.org/1999/xlink" width="{{pageData.iconSize}}{{suffix}}" height="{{pageData.iconSize}}{{suffix}}"><defs><style type="text/css"></style></defs><path d="M315.2 505.6l440-440c8-8 8-19.2 0-27.2v0c-8-8-19.2-8-27.2 0l-460.8 459.2c-8 8-8 19.2 0 27.2v0c0 0 1.6 1.6 1.6 1.6l459.2 459.2c8 8 19.2 8 27.2 0v0c8-8 8-19.2 0-27.2l-440-440c-3.2-3.2-3.2-9.6 0-12.8z" p-id="2073" fill="{{pageData.part_TextC}}"></path></svg> #}
+			</div>
+		</div>
+	</div>
+
+</div>

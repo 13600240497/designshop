@@ -1,0 +1,157 @@
+<!-- embed stylesheet begin -->
+<style type="text/css">
+	{% set class_sapce = '.geshop-U0000188-default.wrap_'~pageInstanceId %}
+    {% set unit = 'rem' %}
+
+    {{ class_sapce }} {
+        margin-top: {{ data.component_margin_top | default(0) / 75 ~ unit }};
+        margin-bottom: {{ data.component_margin_bottom | default(32) / 75 ~ unit }};
+        background-color: {{ data.component_bgColor | default('#F8F8F8') }};
+        {% if data.component_bgImage %}
+            background-image: url('{{ data.component_bgImage }}');
+        {% endif %}
+        background-size: 100%;
+    }
+
+    {# {{ class_sapce }} .geshop-188d-list-uname li span {
+        {% if data.isEditEnv == 1 %}
+        width: 2.0rem;
+        {% endif %}
+    } #}
+
+    {# 标题栏 #}
+    {{ class_sapce }} .geshop-188d-head {
+        top: {{ data.title_top | default(56) / 75 ~ unit }};
+        color: {{ data.title_color | default('#333333') }};
+        font-size: {{ data.title_fontsize | default(58) / 75 ~ unit }};
+    }
+
+    {# 规则按钮 #}
+    {{ class_sapce }} .geshop-188d-rule-btn {
+        top: {{ data.rule_btn_top | default(140) / 75 ~ unit }};
+        right: {{ data.rule_btn_right | default(0) / 75 ~ unit }};
+        color: {{ data.rule_btn_color | default('#333333') }};
+        background-color: {{ data.rule_btn_bgColor | default('#EDEDED') }};
+    }
+
+    {# 转盘 #}
+    {{ class_sapce }} .geshop-188d-turntable {
+        top: {{ data.turntable_top | default(229) / 75 ~ 'rem' }};
+    }
+
+    {# 指针配置 #}
+    {{ class_sapce }} .geshop-188d-pointer {
+        width: {{ 330 / 75 ~ unit }};
+        height: {{ 330 / 75 ~ unit }};
+        top: {{ data.pointer_top | default(197) / 75 ~ unit }};
+        color: {{ data.pointer_color | default('#333333') }};
+        left: 50%;
+        /*top: 50%;*/
+        transform: translate(-50%,0);
+        -webkit-transform: translate(-50%,0%);
+        -moz-transform: translate(-50%,0);
+    }
+
+    {{ class_sapce }} .geshop-188d-pointer .geshop-188d-pointer-text {
+        font-size: {{ data.pointer_fontsize | default(40) / 75 ~ unit }};
+    }
+
+    {# 抽奖次数配置 #}
+    {{ class_sapce }} .geshop-188d-spins {
+        top: {{ data.spins_top | default(136) / 75 ~ unit }};
+        left: {{ data.spins_left | default(255) / 75 ~ unit }};
+        color: {{ data.spins_color | default('#333333') }};
+        font-size: {{ data.spins_fontsize | default(32) / 75 ~ unit }};
+    }
+    {{ class_sapce }} .geshop-188d-spins span {
+        color: {{ data.spins_number_color | default('#333333') }};
+    }
+
+    {# 积分兑换 #}
+    {{ class_sapce }} .geshop-188d-points {
+        width: {{ data.points_width | default(750) / 75 ~ unit }};
+        top: {{ data.points_top | default(176) / 75 ~ unit }};
+        left: {{ data.points_left | default(0) / 75 ~ unit }};
+        color: {{ data.points_color | default('#333333') }};
+        font-size: {{ data.points_fontsize | default(24) / 75 ~ unit }};
+    }
+    {{ class_sapce }} .geshop-188d-points span {
+        color: {{ data.points_number_color | default('#333333') }};
+    }
+
+    {# 中奖名单 #}
+    {{ class_sapce }} .geshop-188d-list {
+        top: {{ data.list_top | default(959) / 75 ~ unit }};
+        width: {{ data.list_width | default(680) / 75 ~ unit }};
+        height: {{ data.list_height | default(72) / 75 ~ unit }};
+        margin: 0 auto;
+        {% if data.list_bgImage %}
+            background-image: url('{{ data.list_bgImage }}');
+            border-radius: 0;
+        {% else %}
+            background-color: {{ data.list_bgColor | default('#EDEDED') }};
+            border-radius: {{ 40 / 75 ~ unit }};
+        {% endif %}
+        border-color: {{ data.list_border_color | default('') }};
+    }
+    {{ class_sapce }} .geshop-188d-list-title {
+        top: {{ data.list_title_top | default(132) / 75 ~ unit }};
+        left: {{ data.list_title_left | default(847) / 75 ~ unit }};
+        color: {{ data.list_title_color | default('#333333') }};
+    }
+    {{ class_sapce }} .geshop-188d-list-uname {
+        color: {{ data.list_uname_color | default('#333333') }};
+    }
+
+    {# 分享 #}
+    {{ class_sapce }} .geshop-188d-share {
+        top: {{ data.share_top | default(1078) / 75 ~ unit }};
+        {# left: {{ data.share_left | default(944) / 75 ~ unit }}; #}
+        color: {{ data.share_title_color | default('#333333') }};
+        font-size: {{ data.share_title_fontsize | default(14) / 75 ~ unit }};
+        width: 100%;
+        text-align: center;
+    }
+
+    {# 分享app #}
+    {{ class_sapce }} .geshop-188d-app-share-btn {
+        width: {{ data.app_share_btn_w | default(515) / 75 ~ unit }};
+        height: {{ data.app_share_btn_h | default(104) / 75 ~ unit }};
+        background-color: {{ data.app_share_btn_bgColor | default('#EDEDED')}};
+        {% if data.app_share_btn_bgImage %}
+            background-image: url({{ data.app_share_btn_bgImage | default('')}});
+        {% endif %}
+        color: {{ data.app_share_btn_color | default('#333333')}};
+        font-size: {{ data.app_share_btn_fontsize | default(34)  / 75 ~ unit }};
+    }
+
+    {{ class_sapce }} .geshop-188d-dialog-rule p,
+    {{ class_sapce }} .geshop-188d-dialog-rule h2 {
+        color: {{ data.rule_content_color|default('#333333') }};
+    }
+
+    {{ class_sapce }} .geshop-188d-dialog-share .geshop-188d-dialog-container,
+    {{ class_sapce }} .geshop-188d-dialog-sku .geshop-188d-dialog-container,
+    {{ class_sapce }} .geshop-188d-dialog-other .geshop-188d-dialog-container {
+        {% if data.success_dialog_bgImage %}
+            background-image: url('{{ data.success_dialog_bgImage }}');
+        {% endif %}
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    {{ class_sapce }} .geshop-188d-dialog-share .geshop-188d-dialog-container .geshop-188d-dialog-body p,
+    {{ class_sapce }} .geshop-188d-dialog-sku .geshop-188d-dialog-container .geshop-188d-dialog-body p,
+    {{ class_sapce }} .geshop-188d-dialog-other .geshop-188d-dialog-container .geshop-188d-dialog-body p {
+        font-size: {{ data.success_dialog_fontsize|default(16) / 75 ~ unit }};
+        color: {{ data.success_dialog_color | default('#333333') }};
+    }
+
+    {{ class_sapce }} .geshop-188d-dialog-footer button {
+        background-color: {{ data.success_dialog_btn_bgColor|default('#333333') }};
+        color: {{ data.success_dialog_btn_color | default('#FFFFF') }};
+    }
+
+
+</style>
+<!-- embed stylesheet end -->

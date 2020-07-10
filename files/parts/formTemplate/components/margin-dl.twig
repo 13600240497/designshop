@@ -1,0 +1,166 @@
+{# DL 上组件下边距(px) 公共配置#}
+{% set components_normal = [
+    {
+        label: '组件上边距(px)',
+        name: 'box_margin_top_m',
+        default: 0,
+        col: 2,
+        isshow:'dl-app'
+    },
+    {
+        label: '组件下边距(px)',
+        name: 'box_margin_bottom_m',
+        default: 0,
+        col: 2,
+        isshow:'dl-app'
+    },
+    {
+        type:'tab',
+        isshow: 'dl-web',
+        items:[
+        {
+            label:'PC / PAD',
+            components:[
+            {
+                label: '组件上边距(px)',
+                name: 'box_margin_top',
+                default: 0,
+                col: 2
+            },
+            {
+                label: '组件下边距(px)',
+                name: 'box_margin_bottom',
+                default: 0,
+                col: 2
+            }
+        ]
+        },{
+            label:'M',
+            components:[
+                {
+                    label: '组件上边距(px)',
+                    name: 'box_margin_top_m',
+                    default: 0,
+                    col: 2
+                },
+                {
+                    label: '组件下边距(px)',
+                    name: 'box_margin_bottom_m',
+                    default: 0,
+                    col: 2
+                }
+            ]
+        }]
+    }
+] %}
+
+{% set components_hasRadius = [
+    {
+        label: '组件上边距(px)',
+        name: 'box_margin_top_m',
+        default: 0,
+        col: 2,
+        isshow:'dl-app'
+    },
+    {
+        label: '组件下边距(px)',
+        name: 'box_margin_bottom_m',
+        default: 0,
+        col: 2,
+        isshow:'dl-app'
+    },
+    {
+        label: '组件圆角(px)',
+        name: 'component_border_radius_m',
+        default: 0,
+        public: false,
+        isshow:'dl-app'
+    },
+    {
+        type:'tab',
+        isshow: 'dl-web',
+        items:[
+        {
+            label:'PC / PAD',
+            components:[
+            {
+                label: '组件上边距(px)',
+                name: 'box_margin_top',
+                default: 0,
+                col: 2
+            },
+            {
+                label: '组件下边距(px)',
+                name: 'box_margin_bottom',
+                default: 0,
+                col: 2
+            },
+            {
+                label: '组件圆角(px)',
+                name: 'component_border_radius',
+                default: 0,
+                public: false,
+            }
+        ]
+        },{
+            label:'M',
+            components:[
+                {
+                    label: '组件上边距(px)',
+                    name: 'box_margin_top_m',
+                    default: 0,
+                    col: 2
+                },
+                {
+                    label: '组件下边距(px)',
+                    name: 'box_margin_bottom_m',
+                    default: 0,
+                    col: 2
+                },
+                {
+                    label: '组件圆角(px)',
+                    name: 'component_border_radius_m',
+                    default: 0,
+                    public: false,
+                }
+            ]
+        }]
+    }
+] %}
+
+{% set components = dl_hasRadius ? components_hasRadius : components_normal %}
+<div class="component-margin-dl">
+    {{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}
+</div>
+<style>
+    /* 兼容老组件样式 */
+    .component-margin-dl .layui-form-item>.layui-form-label{
+        display: block;
+        width: 100%;
+        padding: 0 0 4px 0;
+        text-align: left;
+        float: none;
+        box-sizing: border-box;
+    }
+    .component-margin-dl .layui-row.layui-col-space20 .layui-tab{
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .component-margin-dl .layui-row.layui-col-space20 .layui-tab-content{
+        padding: 10px 0;
+    }
+    .component-margin-dl .layui-tab-content{
+        padding-bottom: 0 !important;
+    }
+    /* 兼容上下增加配置项*/
+    .component-margin-dl .layui-row.layui-col-space20:last-child> div[class*=layui-col]:first-child{
+        margin-top: 0 !important;
+    }
+    .component-margin-dl .layui-row.layui-col-space20:last-child> div[class*=layui-col]{
+        margin-bottom: 0 !important;
+    }
+    .component-margin-dl .layui-row.layui-col-space20 .layui-col-xs12{
+        margin-top: 16px;
+    }
+</style>
+

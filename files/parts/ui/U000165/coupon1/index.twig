@@ -1,0 +1,57 @@
+{%
+    set pageData = {
+        couponId : data.couponId | default(''),
+        startText : data.startText | default('Coming Soon'),
+        getCouponText : data.getCouponText | default('Get now'),
+        couponTitle : data.couponTitle | default('CRAZY COUPON'),
+        countDown : data.countDown | default('1'),
+    }
+%}
+{# start wrap #}
+{{include ('@app/files/parts/ui/U000165/coupon1/style.twig')}} 
+{# end wrap #}
+<div data-key="U000165" data-id="{{ pageInstanceId }}"  data-static-domain="{{staticDomain}}" data-gid="U000165" class="geshop-component-box component-drag gs-index-main" >
+    <div data-module="U000165-1" data-box="coupon-{{ pageInstanceId }}-1">
+        <input 
+            class="hide-info-input"
+            type="hidden"
+            startIn="{{ get_component_trans(lang,'start_in') }}"
+            endIn="{{ get_component_trans(lang,'end_in') }}"
+            successText="{{ get_component_trans(lang,'success_text') }}"
+            startText="{{ pageData.startText }}"
+            getCouponText="{{ pageData.getCouponText }}"
+            lang="{{ lang }}"
+            serverTime="{{ serverTime }}"
+            couponId="{{ pageData.couponId }}"
+            countDown="{{ pageData.countDown }}"
+            env="{{ data.isEditEnv }}"
+            staticDomain="{{staticDomain}}"
+        />
+        <div class="over-box">
+            <div class="over-box-table"><span>{{ get_component_trans(lang,'btn_ended') }}</span></div>
+        </div>
+        <div class="coupon-inset">
+            
+            <div class="coupon-body">
+                <div class="coupon-layout coupon-top">
+                    <div class="center-center">{{ pageData.couponTitle }}</div>
+                </div>
+                <div class="coupon-layout coupon-middle">
+                    <div class="center-center">
+                    <span class="coupon-text"></span>
+                    <span class="coupon-time-box">
+                        <strong class="time-line"></strong><i>:</i><strong class="time-line"></strong><i>:</i><strong class="time-line"></strong><i>:</i><strong class="time-line"></strong> 
+                    </span>
+                    </div>
+                </div>
+                <div class="coupon-layout coupon-bottom">
+                    <div class="center-center">
+                        <div class="coupon-btn inline-box" >{{ pageData.getCouponText }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="clear: both;"></div>
+

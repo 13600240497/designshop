@@ -1,0 +1,100 @@
+{%
+    set formData = {
+        id: 'U000001',
+        name: '商品列表-模板四',
+        theme: 'style4_v2',
+        tabs: [
+            {
+                label: '数据配置',
+                components: [
+                    {
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '商品数据',
+                                type: 'goods-manager',
+                                beforeSubmit: 'beforeSubmit'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                label: '样式配置',
+                components: [
+                    {
+                        label: '基础配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件下边距',
+                                name: 'box_margin_bottom',
+                                default: '32',
+                            },
+                            {
+                                label: '整体背景颜色',
+                                name: 'box_bg_color',
+                                default: '#fff',
+                                type: 'colorPicker'
+                            },
+                            {
+                                label: '商品描边',
+                                name: 'hover_bdColor',
+                                default: '#333333',
+                                type: 'colorPicker'
+                            }
+                        ]
+                    },
+                    {
+                        label: '折扣标',
+                        type: 'discount-zf',
+                    },
+                    {
+                        label: '销售价',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '文字颜色',
+                                name: 'shop_price_color',
+                                default: '#333',
+                                type: 'colorPicker'
+                            }
+                        ]
+                    },
+                    {
+                        label: '按钮',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '背景图片',
+                                name: 'buynow_bg_image',
+                                default: '',
+                                type: 'image'
+                            },
+                            {
+                                label: '背景颜色',
+                                name: 'buynow_bg_color',
+                                default: '#333',
+                                type: 'colorPicker'
+                            },
+                            {
+                                label: '文字颜色',
+                                name: 'buynow_font_color',
+                                default: '#fff',
+                                type: 'colorPicker'
+                            },
+                            {
+                                label: '圆角大小',
+                                name: 'buynow_radius',
+                                default: '35'
+                            }
+                        ]
+                    },
+                ]
+            }
+        ]
+    }
+%}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

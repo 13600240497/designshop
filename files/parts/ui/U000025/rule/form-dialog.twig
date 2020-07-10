@@ -1,0 +1,44 @@
+<div class="geshop-U000025-dialog geshop-U000025-dialog-rule">
+    <div class="geshop-U000025-dialog-mask"></div>
+    <div class="geshop-U000025-dialog-container">
+        <div class="geshop-U000025-dialog-close js-close-dialog">
+            <img src="{{ data.default.u000187_default_close }}" alt="">
+        </div>
+        <div class="geshop-U000025-dialog-body">
+            <h4>{{ data.btn_title }}</h4>
+            <div class="content">
+                {{ data.rule_title | nl2br }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+    {% set classRoot = '.geshop-U000025-rule-'~pageInstanceId~' .geshop-U000025-dialog-body' %}
+    {{ classRoot }} {
+        width: 640px;
+        background-color: {{ data.popup_bg_color|default('#FFFFFF') }};
+        {% if data.popup_bg_img_url %}
+            background: url({{ data.popup_bg_img_url }}) no-repeat top;
+        {% endif %}
+    }
+    {{ classRoot }} h4 {
+        font-size:30px;
+        height:35px;
+        line-height:35px;
+        color: #333333;
+        text-align: center;
+        padding: 17px 0px;
+    }
+    {{ classRoot }} .content {
+        padding: 23px 40px 37px 40px;
+        text-align: left;
+        line-height:28px;
+        font-size: {{ data.popup_title_size }}px;
+        color: {{ data.popup_font_color }};
+        min-height: 230px;
+        max-height: 556px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+</style>

@@ -1,0 +1,556 @@
+<style>
+  .banner-timezone-form-container .tab-item {
+    display: block;
+    float: left;
+    width: 50px;
+    height: 38px;
+    line-height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .banner-timezone-form-container .des-title {
+    font-size: 12px;
+    color: #9E9E9E;
+  }
+  .banner-timezone-form-container .banner_Banbox .layui-tab-content {
+    padding: 10px 0px;
+  }
+  .banner-timezone-form-container .banner_Banbox {
+    margin-top: 16px;
+  }
+  .banner-timezone-form-container .banner_Banbox .layui-tab-title li.layui-this {
+    background: #1E9FFF !important;
+    color: #fff;
+    font-size: 16px;
+    margin-right: 48px;
+    border: none !important;
+  }
+  .banner-timezone-form-container .banner_Banbox .layui-tab-title li.layui-this i {
+    color: #fff !important;
+  }
+  .banner-timezone-form-container .banner_Banbox .layui-tab-title li .layui-tab-close:hover {
+    border-radius: 2px;
+    background-color: #fff;
+    color: #c2c2c2;
+  }
+  .banner-timezone-form-container .banner_Banbox .layui-tab-title li.layui-this .layui-tab-close:hover {
+    border-radius: 2px;
+    background-color: #1E9FFF;
+    color: #fff;
+  }
+  .banner-timezone-form-container .banner_Banbox .layui-tab-title li {
+    font-size: 16px;
+    height: 40px;
+    padding: 0 5px;
+    margin-left: -50px;
+    background: #fff;
+    border: 1px solid #E6E6E6;
+    border-bottom: 0px solid;
+    max-width: 90px;
+    width: 85px;
+  }
+  .banner-timezone-form-container .banner_Banbox .layui-tab-title li.init {
+    margin-left: 0px !important;
+    background: #fff;
+  }
+  .banner-timezone-form-container .li-add {
+    width: 38px;
+    height: 39px !important;
+    line-height: 39px;
+    position: absolute;
+    text-align: center;
+    right: 12px;
+    font-size: 30px;
+    top: 0;
+    border: 1px solid #E6E6E6;
+    border-bottom: 0px solid #ddd;
+  }
+  .banner-timezone-form-container .li-add a {
+    display: block;
+    color: #1e9fff;
+  }
+  .banner-timezone-form-container .add-hover-item {
+    width: 100px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    font-size: 12px;
+    text-align: center;
+    position: absolute;
+    right: 12px;
+    top: -24px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 20px;
+  }
+  .banner-timezone-form-container .layui-tab {
+    position: relative;
+  }
+  .banner-timezone-form-container .img_openResource {
+    width: 38px !important;
+    height: 38px !important;
+    text-align: center !important;
+    line-height: 26px !important;
+    /* background-color: #e1e1e1; */
+  }
+  .banner-timezone-form-container .img_openResource i {
+    padding-left: 9px;
+  }
+  .banner-timezone-form-container .banner_Banbox .imgSrc {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .banner-timezone-form-container .banner_Banbox .js_openResource {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .banner-timezone-form-container .banner_Banbox .js_start_time,
+  .banner-timezone-form-container .banner_Banbox .js_end_time {
+    border: none;
+    text-align: center;
+  }
+  .banner-timezone-form-container .banner_Banbox .dateTime {
+    border: 1px solid #e6e6e6;
+  }
+</style>
+<div class='design-form design-form-component design-form-visible banner-timezone-form-container'>
+  <h3 class='component-form-title'>Banner 分时段配置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+  <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+    <div class="layui-tab">
+      <ul class="layui-tab-title">
+        <li class="layui-this">模板选择</li>
+        <li>样式设置</li>
+      </ul>
+      <div class="layui-tab-content layui-tab-content-parent">
+        <div class="layui-tab-item layui-show">
+          <style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+					{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+        </div>
+        <div class="layui-tab-item ">
+          <div class="layui-carousel5" id="form_carousel">
+            <div carousel-item>
+                <div class=" layui-form-item" style="padding-bottom: 170px !important;">
+                  <h4 class="title">
+                    常用配置
+                    <span class='des-title'>(活动Banner无时段替换,默认切换成基础配置）</span>
+
+                  </h4>
+                  <div class="img-table">
+                    <input type="hidden" name="imgItem">
+
+                    <div class="img-body">
+                      <div class="layui-form-item item-flag">
+                        <div class="rest-input">
+                          <div class="layui-form-item">
+                            <p style="margin:8px 0 5px 0;">
+                              上边距(px)
+                            </p>
+                            <input type="text" name="boxMarginTop" autocomplete="off" class="layui-input" value="{{ data.boxMarginTop | default(0) }}">
+                          </div>
+                          <div class="layui-form-item">
+                            <p style="margin:8px 0 5px 0;">
+                              下边距(px)
+                            </p>
+                            <input type="text" name="boxMarginBottom" autocomplete="off" class="layui-input" value="{{ data.boxMarginBottom | default(0) }}">
+                          </div>
+                          <div class="banner_Banbox">
+                            <div class="layui-tab"  lay-filter="demo"   style="width: 360px;">
+                              <ul class="layui-tab-title">
+                                {% for key, item in data.imgItem | default([""]) %}
+                                    {% if key ==0 %}
+                                      <li class="layui-this init " lay-id="{{key}}">
+                                        <span class="tab-item" style=" width: 100%;"> 基础</span >
+
+                                      </li>
+                                    {% endif %}
+                                    {% if key !=0 %}
+                                       <li  lay-id="{{key}}">
+                                        <span class="tab-item">{{item.name}}</span >
+                                        <i class="layui-icon layui-icon-close"></i>
+                                       </li>
+                                    {% endif %}
+                                {% endfor %}
+                              </ul>
+                              <div class="li-add" >
+                                <a href="javascript:;" class="layui-btn-add" data-type="tabAdd">+</a>
+                              </div>
+                              <div class="add-hover-item" style="display:none">添加按时段模块</div>
+
+                              <div class="layui-tab-content" >
+                                 {% for key, item in data.imgItem | default([""]) %}
+                                    {% if key == 0 %}
+                                      <div class="layui-tab-item layui-show">
+                                        <div class="Ban-item-warp">
+                                          <div class="layui-form-item ban-item" >
+                                            {# <div class="layui-form-item">
+                                              <p style="margin:8px 0 5px 0;">
+                                                样式名称
+                                              </p>
+                                              <input type="text" name="modelName"  autocomplete="off" class="layui-input Unwanted modelName"
+                                              placeholder="" maxlength="100" value="{{item.name}}">
+                                            </div>
+
+                                            <div class="layui-form-item">
+                                              <p style="margin:8px 0 5px 0;">
+                                                <span class="layui-badge-dot layui-bg-orange"></span>
+                                                时间设置
+                                              </p>
+                                              <input type="text" name="dateTime" autocomplete="off" class="layui-input dateTime" id="setDateTime{{key}}" placeholder="开始日期 - 结束日期"
+                                              value="{{item.time}}">
+
+                                            </div>   #}
+                                            {# <div class="layui-form-item">
+                                              <label class="layui-form-label">日历图片<span style="font-size:12px;">(建议图片尺寸900*400px)</span></label>
+                                              <div class="layui-input-block">
+                                                <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                                                <input type="text" name="dateTimeImage" autocomplete="off" class="layui-input" value="{{ data.dateTimeImage }}">
+                                              </div>
+                                            </div> #}
+
+                                            <div class="layui-form-item">
+                                              <label class="layui-form-label" style="float: none;padding-left:0;">Banner图片</label>
+                                              <div class="layui-input-block" style="margin-left:0;">
+                                                <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                                                <input type="text" name="imgSrc{{key}}" autocomplete="off" class="layui-input imgSrc" value="{{item.imgSrc}}" data-public-tag="true" />
+                                              </div>
+                                            </div>
+
+                                            {# <div class="layui-form-item">
+                                              <p style="margin:8px 0 5px 0;">
+                                                <span class="layui-badge-dot layui-bg-orange"></span>
+                                                Banner图片（请上传合适尺寸的广告）
+                                              </p>
+
+                                              <div class="geshop-first-value">
+                                                <a href="javascript:;" class="img_openResource js_openResource" style="margin-left: -87px">
+                                                  <i class="layui-icon">&#xe64a;</i>
+                                                  <span>
+                                                    <i style="display:none" class="hover-item">更 换</i>
+                                                  </span>
+                                                </a>
+                                                <input type="text" name="imgSrc{{key}}" autocomplete="off" class="layui-input imgSrc"  value="{{item.imgSrc}}" data-public-tag="true">
+                                              </div>
+                                            </div> #}
+                                        </div>
+                                      </div>
+                                    </div>
+                                    {% endif %}
+
+                                     {% if key !=0 %}
+
+                                      <div class="layui-tab-item">
+                                        <div class="Ban-item-warp">
+                                          <div class="layui-form-item ban-item" >
+                                            <div class="layui-form-item">
+                                              <p style="margin:8px 0 5px 0;">
+                                                样式名称
+                                              </p>
+                                              <input type="text" name="modelName"  autocomplete="off" class="layui-input Unwanted modelName"
+                                              placeholder="" maxlength="100" value="{{item.name}}">
+                                            </div>
+
+                                            <div class="layui-form-item">
+                                              <p style="margin:8px 0 5px 0;">
+                                                <span class="layui-badge-dot layui-bg-orange"></span>
+                                                时间设置
+                                              </p>
+                                              	<div class="dateTime" style="position:relative;width:345px">
+                                                  <span class="time-icon"></span>
+                                                  <input type="text" class="layui-input start-time js_start_time" style="display:inline;width:158px;border-right:none;" name="" id="add_times{{key}}"  placeholder="开始时间" autocomplete="off" value="{{item.startTime}}">
+                                                  <span class="time-split">至</span>
+                                                  <input type="text" class="layui-input end-time js_end_time" style="display:inline;width:165px;border-left:none;margin-left:-1px" id="add_timeE{{key}}" placeholder="结束时间" name="" autocomplete="off" value="{{item.endTime}}">
+                                                </div>
+                                            </div>
+                                            <div class="layui-form-item">
+                                              <label class="layui-form-label" style="float: none;padding-left:0;">Banner图片</label>
+                                              <div class="layui-input-block" style="margin-left:0;">
+                                                <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                                                <input type="text" name="imgSrc{{key}}" autocomplete="off" class="layui-input imgSrc" value="{{item.imgSrc}}" data-public-tag="true" />
+                                              </div>
+                                            </div>
+                                            {# <div class="layui-form-item">
+                                              <p style="margin:8px 0 5px 0;">
+                                                <span class="layui-badge-dot layui-bg-orange"></span>
+                                                Banner图片（请上传合适尺寸的广告）
+                                              </p>
+
+                                              <div class="geshop-first-value">
+                                                <a href="javascript:;" class="img_openResource js_openResource" style="margin-left: -87px">
+                                                  <i class="layui-icon">&#xe64a;</i>
+                                                  <span>
+                                                    <i style="display:none" class="hover-item">更 换</i>
+                                                  </span>
+                                                </a>
+
+                                                <input type="text" name="imgSrc{{key}}" autocomplete="off" class="layui-input imgSrc"  value="{{item.imgSrc}}" data-public-tag="true">
+                                              </div>
+                                            </div> #}
+                                        </div>
+                                      </div>
+                                      </div>
+
+                                    {% endif %}
+
+                                {% endfor %}
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation" style="margin-bottom:0">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm" >取消</button>
+  <button type="button" class="layui-btn layui-btn-normal " id="img_submit">提交</button>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm" style='display:none' >提交</button>
+</div>
+
+<script>
+
+ layui.use('element', function(){
+  var $ = layui.jquery ,element = layui.element;
+  var active = {
+    tabAdd: function(){
+      element.tabAdd('demo', {
+        title: '<span class="tab-item">模板'+itemIndex+'</span ><i class="layui-icon layui-icon-close"></i>'
+        ,content: "<div class='layui-form-item ban-item'>" +
+        "<div class='layui-form-item'>" +
+         "<p style='margin:8px 0 5px 0;'>" +
+           " 样式名称" +
+          "</p>" +
+          "<input type='text' name='modelName' autocomplete='off' class='layui-input Unwanted modelName' placeholder='' maxlength='100' value='模板" + itemIndex + "'>" +
+        "</div>" +
+
+        "<div class='layui-form-item'>" +
+          "<p style='margin:8px 0 5px 0;'>" +
+            "<span class='layui-badge-dot layui-bg-orange'></span> 时间设置" +
+          "</p>" +
+          '<div class="dateTime" style="position:relative;width:345px">' +
+            '<span class="time-icon"></span>' +
+            '<input type="text" class="layui-input start-time js_start_time" style="display:inline;width:158px;border-right:none;" name="" id="add_times' + itemIndex + '"  placeholder="开始时间" autocomplete="off" value="">' +
+            '<span class="time-split">至</span>' +
+            '<input type="text" class="layui-input end-time js_end_time" style="display:inline;width:165px;border-left:none;margin-left:-1px" id="add_timeE' + itemIndex + '" placeholder="结束时间" name="" autocomplete="off" value="">' +
+			    '</div>' +
+        "</div>" +
+
+        "<div class='layui-form-item'>"+
+          "<label class='layui-form-label' style='float:none;padding-left:0;'>Banner图片</label>"+
+          "<div class='layui-input-block' style='margin-left:0;'>"+
+            "<a href='javascript:;' class='js_openResource design-open-resource'><i class='layui-icon'>&#xe64a;</i></a>"+
+            "<input type='text' name='imgSrc" + itemIndex + "' autocomplete='off' class='layui-input imgSrc' value='{{item.imgSrc}}'  data-public-tag='true' />"+
+          "</div>"+
+        "</div>"+
+        /**
+        "<div class='layui-form-item'>"+
+          "<p style='margin:8px 0 5px 0;'>"+
+            "<span class='layui-badge-dot layui-bg-orange'></span> Banner图片（请上传合适尺寸的广告）"+
+          "</p>"+
+          "<div class='geshop-first-value'>"+
+            "<a href='javascript:;' class='img_openResource js_openResource' style='margin-left: -87px;display: block;float: left;'>"+
+              "<i class='layui-icon' style='padding-left: 0px; '>&#xe64a;</i>"+
+              "<span>"+
+                  "<i style='display:none' class='hover-item'>更 换</i>"+
+              "</span>"+
+            "</a>"+
+            "<input type='text' style='float: left; margin-left: -49px;' name='imgSrc" + itemIndex + "' autocomplete='off' class='layui-input imgSrc' value='{{item.imgSrc}}' data-public-tag='true'>"+
+          "</div>"+
+        "</div>"+
+        **/
+
+      "</div>"
+       ,id: itemIndex
+      })
+    }
+    ,tabDelete: function(layid){
+      element.tabDelete('demo', layid);
+    }
+  };
+  $('.layui-btn-add').on('click', function(){
+    if($('.banner_Banbox .layui-tab-title li').length ==6){
+      $('.layui-btn-add').css('color',"#E6E6E6 ");
+    }
+    if($('.banner_Banbox .layui-tab-title li').length >6){
+      $('.layui-btn-add').css('color',"#E6E6E6 ");
+      layui.layer.msg('当前最多添加6个模板！');
+      return;
+    }
+    var othis = $(this), type = othis.data('type');
+    active[type] ? active[type].call(this, othis) : '';
+    var layid =itemIndex;
+
+    element.tabChange('demo', layid);
+    var cheaedIndex=itemIndex;
+    laydate.render({
+      elem: '#add_times' + itemIndex,
+      min: 0,
+      type: 'datetime',
+      done: function (value) {
+        var start_time = Date.parse(new Date(value));
+        var end_time = Date.parse(new Date($('#add_timeE'+cheaedIndex).val()));
+        if (start_time >= end_time) {
+          layer.msg('开始时间不能大于结束时间', { time: 5000 });
+          return false;
+        }
+			}
+    });
+
+     laydate.render({
+      elem: '#add_timeE' + itemIndex,
+      min: 0,
+      type: 'datetime',
+      done: function (value) {
+        var end_time = Date.parse(new Date(value));
+        var start_time = Date.parse(new Date($('#add_times'+cheaedIndex).val()));
+        if (start_time >= end_time) {
+          layer.msg('开始时间不能大于结束时间', { time: 5000 });
+          return false;
+        }
+			}
+    });
+
+
+
+    itemIndex++;
+  });
+
+   $('.banner_Banbox .layui-tab-title').on('click', function(e){
+     if(e.target.localName == 'i'){
+       layer.confirm('亲。你删除该样式，样式将无法恢复哦？', {
+        btn: ['取消','确认']  ,
+        icon: 3,
+				skin: 'element-ui-dialog-class'
+      }, function(){
+        layer.closeAll();
+      }, function(){
+         var layId= $(e.target).parent().attr('lay-id');
+         active.tabDelete( layId);
+         $('.layui-btn-add').css('color',"#1E9FFF");
+
+      });
+     } ;
+  });
+
+});
+
+ var laydate=null;
+ var itemIndex=$('.banner_Banbox .tab-item').length;
+
+ if(itemIndex == 7){
+    $('.layui-btn-add').css('color',"#E6E6E6 ");
+ }
+
+  {# 日期选择初始化 #}
+  var initArr=[];
+  for(let i=0;i<itemIndex;i++){
+    initArr.push(i)
+  }
+  initArr.length=itemIndex;
+  layui.use('laydate', function(){
+    laydate = layui.laydate;
+    initArr.forEach(function(item,index){
+      var cheaedIndex=index;
+      laydate.render({
+        elem: '#add_times' + cheaedIndex,
+        min: 0,
+        type: 'datetime',
+        done: function (value,data) {
+          var start_time = Date.parse(new Date(value));
+          var end_time = Date.parse(new Date($('#add_timeE'+cheaedIndex).val()));
+          if (start_time >= end_time) {
+            layer.msg('开始时间不能大于结束时间', { time: 5000 });
+            return false;
+          }
+        }
+      });
+      laydate.render({
+        elem: '#add_timeE' + cheaedIndex,
+        min: 0,
+        type: 'datetime',
+        done: function (value) {
+          var end_time = Date.parse(new Date(value));
+          var start_time = Date.parse(new Date($('#add_times'+cheaedIndex).val()));
+          if (start_time >= end_time) {
+            layer.msg('开始时间不能大于结束时间', { time: 5000 });
+            return false;
+          }
+        }
+      });
+
+    }) ;
+
+  });
+
+  {# 提交验证#}
+  $('#img_submit').on('click',function(){
+    var startTimeArr = [];
+		var endTimeArr = [];
+    var timeE = '',timeS = '';
+    for(let i = 0,len =  $('.ban-item').find('.dateTime').length; i < len ; i++){
+      if($('.ban-item').find('.dateTime').eq(i).find('.js_start_time').val() == "" || $('.ban-item').find('.dateTime').eq(i).find('.js_end_time').val() == ""){
+        layui.layer.msg('请设置”模板*“的时间，不设置请先删除该tab页签');
+        return false;
+      }
+      timeS =  $('.ban-item').find('.dateTime').eq(i).find('.js_start_time').val();
+      timeE =  $('.ban-item').find('.dateTime').eq(i).find('.js_end_time').val();
+
+      var start_time = Date.parse(new Date(timeS));
+      var end_time = Date.parse(new Date(timeE));
+      if (start_time >= end_time) {
+        layer.msg('开始时间不能大于结束时间', { time: 5000 });
+        return false;
+      }
+      startTimeArr.push(timeS);
+      endTimeArr.push(timeE);
+    }
+    var begin = startTimeArr.sort();
+    var over = endTimeArr.sort();
+    for(var k=1;k<begin.length;k++){
+      if (begin[k] <= over[k-1]){
+        layui.layer.msg('此时间段已设置样式，请更换其他时间段');
+        return false;
+      }
+    }
+    var imgSrcArr = [];
+    $('.ban-item').each(function(index, element) {
+      var $name = $(this).find('.modelName').val();
+      var $startTime = $(this).find('.js_start_time').val();
+      var $endTime = $(this).find('.js_end_time').val();
+      var $imgSrc = $(this).find('.imgSrc').val();
+      imgSrcArr.push({
+        name: $name,
+        startTime: $startTime,
+        endTime: $endTime,
+        imgSrc: $imgSrc,
+				start_time: new Date($startTime).getTime(),
+				end_time: new Date($endTime).getTime(),
+      });
+    });
+    $('.img-table input[name=imgItem]').val(JSON.stringify(imgSrcArr));
+    $(this).next('button').trigger('click');
+
+  });
+  $(".li-add").hover(function(){
+    $(".add-hover-item").show();
+  },function(){
+  $(".add-hover-item").hide();
+  })
+
+</script>

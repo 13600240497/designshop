@@ -1,0 +1,57 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+
+{% if data.colNum == '1'%}
+    {% set colClass = liCol[0] %}
+{% elseif data.colNum == '2' %}
+    {% set colClass = liCol[1] %}
+{% elseif data.colNum == '3' %}
+    {% set colClass = liCol[2] %}
+{% elseif data.colNum == '4' %}
+    {% set colClass = liCol[3] %}
+{% elseif data.colNum == '5' %}
+    {% set colClass = liCol[4] %}
+{% else %}
+    {% set colClass = liCol[3] %}
+{% endif %}
+
+{% set goodsData = {
+	goodsBgc:data.goodsBgc is not null?data.goodsBgc:'#ffffff',
+	goodsBdC:data.goodsBdC is not null?data.goodsBdC:null,
+	goodsFtC:data.goodsFtC is not null?data.goodsFtC:'#333',
+	buyHeight:data.buyHeight,
+	buyRadius:data.buyRadius|default(30),
+	buyFtS:data.buyFtS|default(14),
+	buyBgC:data.buyBgC is not null?data.buyBgC:'#000',
+	buyBorderC:data.buyBorderC is not null?data.buyBorderC:'#FD9E62',
+	buyBorderW:data.buyBorderW|default('0'),
+	buyText:data.buyText|default('SHOP NOW'),
+	priceC:data.priceC is not null?data.priceC:'#333333',
+	priceFt:data.priceFt|default('24'),
+	marketPriceFt:data.marketPriceFt|default('16'),
+	discountOffsetT:data.discountOffsetT|default('-10'),
+	discountOffsetR:data.discountOffsetR|default('-10'),
+	discountRadius:data.discountRadius|default('50'),
+	discountFtC:data.discountFtC,
+	discountBgc:data.discountBgc is not null?data.discountBgc:'#333333',
+	colNum:data.colNum|default('4')
+} %}
+
+<div class="geshop-component-box component-drag clearfix" data-gid="U000001_zafulDefault" data-key="U000001" data-id="{{ pageInstanceId }}" data-static-domain="{{staticDomain}}">
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+        [data-gid="U000001_zafulDefault"][data-id="{{ pageInstanceId }}"] .component-self-goodWrap:hover, [data-gid="U000001_zafulDefault"][data-id="{{ pageInstanceId }}"] .current {
+            border-color:{{goodsData.goodsBdC|default('transparent')}} !important;
+        }
+    </style>
+    <!-- embed stylesheet end -->
+
+    <div class="geshop-col-12" style="
+		{% if data.boxMarginTop %}margin-top: {{ data.boxMarginTop }}px;{% endif %}
+		{% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}
+    ">
+        <div class="gs-goodsWrap" style="width:{{data.baseWith|default(1240)}}px;">
+					{{include ('@app/htdocs/resources/template/pc/goodsList/zafulDefault/index.twig')}}
+        </div>
+    </div>
+</div>
+

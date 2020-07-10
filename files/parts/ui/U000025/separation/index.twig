@@ -1,0 +1,60 @@
+
+<div class="geshop-component-box component-drag" data-key="U000025" data-id="{{ pageInstanceId }}">
+    <div class="gs-box" style="
+        margin: {{ data.boxMarginTop | default(0) }}px {{ data.boxMargRight | default(0) }}px {{ data.boxMarginBottom | default(0) }}px {{ data.boxMarginLeft | default(0) }}px;
+        background-image: url({{ data.imgSrc | default(data.default.banner) }});
+        background-position: center; background-repeat: no-repeat; position: relative; text-align: center;
+        width: {{ data.imgWidth }}px;
+        height: {{ data.imgHeight | default(500) }}px;">
+        <div style="position: absolute; top: {{ data.textAreaPositionTop | default(0) }}px; left: {{ data.textAreaPositionLeft | default(0) }}px; width: {{ data.textAreaWidth | default(200) }}px;">
+            <div style="
+                display: {{ data.enable1 | default('block') }};
+                text-align: center;
+                line-height: {{ data.fontSize1 | default(32) }}px;
+                font-size: {{ data.fontSize1 | default(32) }}px;
+                font-weight: {{ data.fontWeight1 | default('bold') }};
+                color: {{ data.color1 }};
+                margin-top: {{ data.marginTop1 | default(60) }}px;
+            ">
+                {% if data.imgSrc1 %}
+                <img alt="{{ data.text1 | default ('文案') }}" src="{{ data.imgSrc1 }}" width="{{ data.imgWidth1 }}" height="{{ data.imgHeight1 }}">
+                {% else %}
+                {{ data.text1 | default ('文案') }}
+                {% endif %}
+            </div>
+
+            <div style="
+                display: {{ data.enable2 | default('block') }};
+                text-align: center;
+                line-height: {{ data.fontSize2 | default(64) }}px;
+                font-size: {{ data.fontSize2 | default(64) }}px;
+                font-weight: {{ data.fontWeight2 | default('bold') }};
+                color: {{ data.color2 }};
+                margin-top: {{ data.marginTop2 | default(60) }}px;
+            ">
+                {% if data.imgSrc2 %}
+                <img alt="{{ data.text2 | default('文案') }}" src="{{ data.imgSrc2 }}" width="{{ data.imgWidth2 }}" height="{{ data.imgHeight2 }}">
+                {% else %}
+                {{ data.text2 | default('文案') }}
+                {% endif %}
+            </div> 
+
+            <a href="{{ data.linkUrl }}"
+                {% if data.isOpenNew == 1 %}target="_blank"{% endif %}
+                 style="
+                display: {{ data.enable3 | default('inline-block') }};
+                background-color: {{ data.bgColor3 | default('#ffffff') }};
+                border: {{ data.borderWidth3 | default(2) }}px solid {{ data.borderColor3 | default('#333333') }};
+                padding: {{ data.paddingTB3 | default(10) }}px {{ data.paddingLR3 | default(20) }}px;
+                font-size: {{ data.fontSize3 | default(16) }}px;
+                color: {{ data.color3 | default('#333333') }};
+                font-weight:{{ data.fontWeight3 | default('normal') }};
+                margin-top: {{ data.marginTop3 | default(60) }}px;
+            ">
+                {{ data.text3 | default('View More')}}
+            </a>
+        </div>
+    </div>
+</div>
+
+  

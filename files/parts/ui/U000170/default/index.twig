@@ -1,0 +1,50 @@
+{% set remUnit = 75 %}
+{% set suffix ='rem'%}
+
+{% set pageData = {
+				price_ft_weight:data.price_ft_weight|default(1),
+				base_bg_shadow:data.base_bg_shadow|default(0),
+	lang:data.lang|default('en'),
+	titleText:data.titleText|default('Please enter a title name'),
+    title_height:(data.title_height|default(80)/remUnit)|number_format(3, '.')~suffix,
+    title_width:(data.title_width|default(640)/remUnit)|number_format(3, '.')~suffix,
+    title_fts:(data.title_fts|default(32)/remUnit)|number_format(3, '.')~suffix,
+    title_radius:(data.title_radius|default(60)/remUnit)|number_format(3, '.')~suffix,
+	title_bgc:data.title_bgc is not null?data.title_bgc:'#D8D8D8',
+	title_ftc:data.title_ftc is not null?data.title_ftc:'#333333',
+	title_bdcolor:data.title_bdcolor is not null?data.title_bdcolor:'#D8D8D8',
+    title_bdwidth:(data.title_bdwidth|default(2)/remUnit)|number_format(3, '.')~suffix,
+    title_ftw:data.title_ftw|default(1),
+	base_bottom:(data.base_bottom|default(64)/remUnit)|number_format(3, '.')~suffix,
+    base_margin_top: (data.base_margin_top | default(0)/remUnit)|number_format(3, '.')~suffix,
+}%}
+<div class="geshop-component-box component-drag geshop-gb-component ui-{{ pageInstanceId }}" style="margin-top:{{ pageData.base_margin_top }}" data-gid="U000170" data-key="U000170" data-id="{{ pageInstanceId }}" attr="nav_flag">
+	<style>
+		/*背景图*/
+		.geshop-gb-component.ui-{{ pageInstanceId }} .gb_wrapper_common{
+		{% if data.component_bg_value %}
+		{{ data.component_bg_value }}
+		{% elseif data.base_box_bgImage %}
+			background:url({{ data.base_box_bgImage }}) no-repeat center center;
+		{% endif %}
+		}
+	</style>
+	<div class="gs-title-box" style="position:relative">
+		<h2 style="
+			display:block;
+			width:{{pageData.title_width}};
+			height:{{pageData.title_height}};
+			line-height:{{pageData.title_height}};
+			font-size:{{pageData.title_fts}};
+			font-weight:{{ pageData.title_ftw == '1' ? 'normal':'bold' }};
+			border-radius:{{pageData.title_radius}};
+			background-color:{{pageData.title_bgc}};
+			color:{{pageData.title_ftc}};
+			border:{{pageData.title_bdwidth}} solid {{pageData.title_bdcolor}};
+			text-align:center;
+			margin: 0 auto {{pageData.base_bottom}} auto;
+		">
+			{{pageData.titleText}}
+		</h2>
+	</div>
+</div>

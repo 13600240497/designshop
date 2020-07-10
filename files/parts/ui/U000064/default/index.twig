@@ -1,0 +1,35 @@
+<div data-key="U000064" data-id="{{ pageInstanceId }}" data-gid="U000064_mobile" data-static-domain="{{staticDomain}}" class="geshop-component-box component-drag gs-index-main wrap-U000064_mobile wrap-{{pageInstanceId}}">
+	<!-- embed stylesheet begin -->
+  	<style type="text/css">
+	.wrap-{{pageInstanceId}}{
+		margin-top: {{ (data.marginTop | default(15))/37.5 }}rem; margin-bottom: {{ (data.marginBottom | default(15))/37.5 }}rem;
+	}
+	</style>
+	<!-- embed stylesheet end -->
+	<div class="geshop-u000064-product-list">
+		<div class="product-list-outer swiper-container">
+		<div class="swiper-wrapper">
+				{% for content in data.goodsInfo | default(0..3) %} 
+						{% for item in content.lists %}
+				<div class="product-item swiper-slide">
+					
+					<a class="product-picture logsss_event_cl logsss_event" href="{{item.url_title|default('javascript:;')}}" data-logsss-gls
+						data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }"
+					>
+						<img class="swiper-lazy" src="{{data.default.lazyImg|default(data.default.good)}}" data-src="{{item.goods_img|default(data.default.good)}}" 
+							data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }"
+						>
+					</a>
+					<p class="product-price">
+						<strong class="bizhong" style="display: none;">USD</strong>
+						<span class="bz_icon" style="display: none;">$</span>
+						<span class="my_shop_price" data-orgp="{{ item.shop_price }}" style="visibility:visible;">${{ item.shop_price }}</span>
+					</p>
+				</div>
+				{% endfor %} 
+			{% endfor %}
+			</div>
+		</div>
+		<div class="swiper-scrollbar"></div>
+	</div>
+</div>

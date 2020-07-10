@@ -1,0 +1,257 @@
+{%
+	set pageData = {
+		navigatWidth:data.navigatWidth|default(340),
+		part_titleFtS:data.part_titleFtS|default(14),
+		goTop_fts:data.goTop_fts|default(14),
+    goTop_height:data.goTop_height|default(80),
+		part_borderC:data.part_borderC|default('#F2F2F2'),
+		part_Bgc:data.part_Bgc|default('#ffffff'),
+		part_TextC:data.part_TextC|default('#333333'),
+		part_HoverC:data.part_HoverC|default('#999999'),
+    goTop_text:data.goTop_text|default('Top'),
+		goTop_BgC:data.goTop_BgC|default('#ffffff'),
+		goTop_TextC:data.goTop_TextC|default('#333333'),
+		goTop_TextHoverC:data.goTop_TextHoverC|default('#999999'),
+	}
+%}
+
+{% set fontFamily = [
+	{name:'OpenSans-Semibold (zaful)',value:'OpenSans-Semibold'},
+  {name:'OpenSans-Bold (zaful)',value:'OpenSans-Bold'},
+  {name:'OpenSans-Regular (zaful)',value:'OpenSans-Regular'},
+  {name:'Trebuchet MS (RG)',value:'Trebuchet MS'},
+  {name:'Tahoma (RW)',value:'Tahoma'},
+  {name:'Arial (RW)',value:'Arial'},
+  {name:'Helvetica (RW)',value:'Helvetica'},
+  {name:'sans-serif (RW)',value:'sans-serif'},
+  {name:'AvenirLTStd_Book (RW)',value:'AvenirLTStd_Book'},
+  {name:'Georgia (RW)',value:'Georgia'},
+  {name:'Times New Roman (RW)',value:'Times New Roman'},
+  {name:'Verdana (RW)',value:'Verdana'},
+]%}
+
+<style>
+.class-manage, .row-lists-content .layui-input-block { margin-left: 20px }
+.gs-tips { font-size: 12px; color: #9E9E9E; }
+.row-lists-content { padding: 10px 15px 20px 20px; border-radius: 4px; }
+.row-lists-content.active { border: 1px solid #e6e6e6; }
+.line-row-text2,.line-row-text3 { display: none; }
+.line-row-text2.active, .line-row-text3.active { display: block; }
+[data-col='2'] .line-row-text2 { display: block; }
+[data-col='3'] .line-row-text2, [data-col='3'] .line-row-text3 { display: block; }
+.layui-form-select .layui-edge { right: 20px; }
+.fr { float: right; }
+</style>
+
+<h3 class='component-form-title'>页面内导航配置
+  <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+    <i class="el-icon-close"></i>
+  </a>
+</h3>
+
+{{include ('@app/htdocs/resources/template/pc/templateList/index.twig')}}
+
+<div class="component-form-setting-item component-form-advanced-item">
+  <h4 class="title"><i class="layui-icon back" id="js_advanced_baseConfig">&#xe603;</i>高级设置</h4>
+  <div class="layui-collapse advanced-setting-container">
+    <div class="layui-colla-item">
+      <h2 class="layui-colla-title">模块配置</h2>
+      <div class="layui-colla-content layui-show">
+        <div class="layui-form-item">
+          <label class="form-item-label">文字大小(px)</label>
+          <div class="layui-input-block">
+            <input type="text" name="part_titleFtS" autocomplete="off" class="layui-input" value="{{ pageData.part_titleFtS }}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="form-item-label">文字字体</label>
+          <div class="layui-input-block">
+            <select name="part_titleFtFa" lay-verify="required" value="{{data.part_titleFtFa}}">
+            <option value="0">请选择</option>
+            {% for item in fontFamily %}
+              <option value="{{item.value}}" {% if item.value == data.part_titleFtFa %}selected{% endif %}>{{item.name}}</option>
+            {% endfor %}
+            </select>
+          </div>
+        </div>
+
+        <div class="layui-form-item">
+          <label class="form-item-label">文字粗细</label>
+          <div class="layui-input-block">
+            <input type="radio" name="part_Weight" value="normal" title="常规"{% if data.part_Weight|default('normal') != 'bold' %} checked{% endif %}>
+            <input type="radio" name="part_Weight" value="bold" title="加粗"{% if data.part_Weight|default('normal') == 'bold' %} checked{% endif %}>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="form-item-label">分会场分割线颜色</label>
+          <div class="layui-input-block">
+            <div class="color-picker-selector" data-hidden-name="part_borderC">
+              <div style="background-color: {{ pageData.part_borderC }};"></div>
+            </div>
+            <input type="text" class="layui-input" name="part_borderC" autocomplete="off" value="{{ pageData.part_borderC }}">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="layui-colla-item">
+      <h2 class="layui-colla-title">返回顶部配置</h2>
+      <div class="layui-colla-content">
+        <div class="layui-form-item">
+          <label class="gs-lable-block">Top 文案</label>
+          <div class="layui-input-block">
+            <input type="text" name="goTop_text" autocomplete="off" class="layui-input" value="{{ pageData.goTop_text }}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="form-item-label">文字大小(px)</label>
+          <div class="layui-input-block">
+            <input type="text" name="goTop_fts" autocomplete="off" class="layui-input" value="{{ pageData.goTop_fts }}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="form-item-label">文字字体</label>
+          <div class="layui-input-block">
+            <select name="goTop_ftsFa" lay-verify="required" value="{{data.goTop_ftsFa}}">
+            <option value="0">请选择</option>
+            {% for item in fontFamily %}
+              <option value="{{item.value}}" {% if item.value == data.goTop_ftsFa %}selected{% endif %}>{{item.name}}</option>
+            {% endfor %}
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="component-form-setting-item component-form-configure-item">
+  <h4 class="title">常用配置</h4>
+  <div class="layui-field-box">
+		{{include ('@app/files/parts/formModules/userGroupItem.twig')}}
+    <div class="layui-form-item">
+      <label class="form-item-label">组件宽度(px) <span class="gs-tips">（建议组件宽度不要超过340px）</span></label>
+      <div class="layui-input-block">
+        <input type="text" name="navigatWidth" autocomplete="off" class="layui-input" value="{{ pageData.navigatWidth}}" >
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label">组件显示位置</label>
+      <div class="layui-input-block">
+        <input type="radio" name="navigat_position" value="1" title="居右" {% if data.navigat_position == '1' or data.navigat_position is empty %} checked="checked" {% endif %}>
+        <input type="radio" name="navigat_position" value="0" title="居左" {% if data.navigat_position == '0'%} checked="checked" {% endif %}>
+      </div>
+    </div>
+		<legend style="margin-bottom:10px;font-size:16px;">顶部图片配置</legend>
+    <div class="layui-form-item">
+      <label class="form-item-label">顶部是否设置图片</label>
+      <div class="layui-input-block">
+        <input type="radio" name="navigat_headImgActive" value="1" title="是" {% if data.navigat_headImgActive == '1' or data.navigat_headImgActive is empty %} checked="checked" {% endif %}>
+        <input type="radio" name="navigat_headImgActive" value="0" title="否" {% if data.navigat_headImgActive == '0'%} checked="checked" {% endif %}>
+      </div>
+    </div>
+    <div class="layui-form-item"><span class="gs-tips" style="padding: 0 20px;display: block;">为确保最佳显示效果，请确保上传图片宽度与组件宽度保持一致。</span></div>
+    <div class="layui-form-item">
+      <label class="form-item-label">顶部图片</label>
+      <div class="layui-input-block">
+        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+        <input class="layui-input" type="text" name="navigat_headImg" value="{{data.navigat_headImg}}" data-height="navigat_headImg_height" data-width="navigat_headImg_width">
+        <input type="hidden" name="navigat_headImg_height" value="{{data.navigat_headImg_height}}">
+        <input type="hidden" name="navigat_headImg_width" value="{{data.navigat_headImg_width}}">
+      </div>
+    </div>
+    <legend style="margin-bottom:10px;font-size:16px;">模块配置</legend>
+    <div class="layui-form-item">
+      <label class="form-item-label">模块背景颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="part_Bgc">
+          <div style="background-color: {{ pageData.part_Bgc }};"></div>
+        </div>
+        <input type="text" class="layui-input" name="part_Bgc" autocomplete="off" value="{{ pageData.part_Bgc }}">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="form-item-label">文字颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="part_TextC">
+          <div style="background-color: {{ pageData.part_TextC }};"></div>
+        </div>
+        <input type="text" class="layui-input" name="part_TextC" autocomplete="off" value="{{ pageData.part_TextC }}">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="form-item-label">文字鼠标滑过颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="part_HoverC">
+          <div style="background-color: {{ pageData.part_HoverC }};"></div>
+        </div>
+        <input type="text" class="layui-input" name="part_HoverC" autocomplete="off" value="{{ pageData.part_HoverC }}">
+      </div>
+    </div>
+    <legend style="margin-bottom:10px;font-size:16px;">返回顶部配置</legend>
+    <div class="layui-form-item">
+      <label class="form-item-label">是否显示</label>
+      <div class="layui-input-block">
+        <input type="radio" name="goTop_Active" value="1" title="是" {% if data.goTop_Active == '1' or data.goTop_Active is empty %} checked="checked" {% endif %}>
+        <input type="radio" name="goTop_Active" value="0" title="否" {% if data.goTop_Active == '0'%} checked="checked" {% endif %}>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="gs-lable-block">高度(px)</label>
+      <div class="layui-input-block">
+        <input type="text" name="goTop_height" autocomplete="off" class="layui-input" value="{{ pageData.goTop_height }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label">背景颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="goTop_BgC">
+          <div style="background-color: {{ pageData.goTop_BgC }};"></div>
+        </div>
+        <input type="text" class="layui-input" name="goTop_BgC" autocomplete="off" value="{{ pageData.goTop_BgC }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label">文字颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="goTop_TextC">
+          <div style="background-color: {{ pageData.goTop_TextC }};"></div>
+        </div>
+        <input type="text" class="layui-input" name="goTop_TextC" autocomplete="off" value="{{ pageData.goTop_TextC }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label">文字鼠标滑过颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="goTop_TextHoverC">
+          <div style="background-color: {{ pageData.goTop_TextHoverC }};"></div>
+        </div>
+        <input type="text" class="layui-input" name="goTop_TextHoverC" autocomplete="off" value="{{ pageData.goTop_TextHoverC }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-form-label">可选导航菜单</label>
+      <div class="layui-input-block">
+        {% if data.navData %}
+        {% for id,item in data.navData %}
+        <input type="checkbox" name="nav_menu" value="{{ id }}" lay-skin="primary" title="{{ item }}" {% if id in data.nav_menu %} checked {% endif %} data-public-tag="true"><br>
+        {% endfor %}
+        <input type="checkbox" lay-filter="check_all" data-name="nav_menu" lay-skin="primary" title="全选">
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="clearfix">
+    <a href="javascript:;" id="js_moreConfig" style="color:#1E9FFF">高级设置</a>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+	<button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>
+
+<script>
+$('#current_template_name').text($('input[name="tpl_id"]').attr('title'));
+</script>

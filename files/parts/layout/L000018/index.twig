@@ -1,0 +1,15 @@
+<div class="geshop-layout-box layout-drag geshop-container" data-key="L000018" id="{{pageInstanceId}}" style="
+	{% if customData.background_color %}background-color: {{ customData.background_color }};{% endif %}
+	{% if customData.background_img %}background-image: url({{ customData.background_img }});{% endif %}
+	{% if customData.background_repeat_position %}background-position: {{ customData.background_repeat_position }};{% endif %}
+	{% if customData.background_repeat %}background-repeat: {{ customData.background_repeat }};{% endif %}
+">
+	<div class="geshop-row">
+		<div class="geshop-col-6" data-position="1">
+			<div class="component-drop">{{ data[1] }}</div>
+		</div>
+		<div class="geshop-col-6" data-position="2">
+			<div class="component-drop">{{ data[2] }}</div>
+		</div>
+	</div>
+</div>

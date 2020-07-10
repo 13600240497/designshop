@@ -1,0 +1,36 @@
+
+<style>
+
+    .tab-add-btn {
+        float: right;
+        margin-top: 16px;
+    }
+
+</style>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">营销活动序号</label>
+
+    <div class="layui-input-block">
+        <input type="number" name="act_id" min="0" placeholder="请输入营销活动序号"  class="layui-input"  value="{{ data.act_id ?? ''}}">
+    </div>
+    <div class="layui-form-item tab-add-btn" >
+        <span class="el-button el-button--primary el-button--small btn-getID">获取ID里的SKU</span>
+    </div>
+</div>
+<br>
+<div class="layui-form-item">
+    <label class="layui-form-label">商品SKU <span style="color: #999999">( 同款SKU将会展示成一个 ) </span></label>
+    <div class="layui-input-block rest-input">
+            <textarea class="layui-textarea  js-valid-skus"
+                      name="goodsSKU"
+                      readonly
+                      data-public-tag="true"
+                      placeholder="请输入商品SKU，每个SKU用英文逗号隔开">{{ data.goodsSKU ?? '' }}</textarea>
+    </div>
+    <div class="layui-form-item tab-add-btn class-manage" data-from="tabs">
+        <span class="el-button el-button--primary el-button--small">商品管理</span>
+    </div>
+</div>
+
+

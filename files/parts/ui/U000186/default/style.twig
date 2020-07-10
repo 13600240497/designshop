@@ -1,0 +1,66 @@
+<!-- embed stylesheet begin -->
+<style type="text/css">
+    .geshop-U000186-default-{{ pageInstanceId }}{
+      height: {% if data.nav_h %}{{ (data.nav_h ) }}{% else %}{{ 44 }}{% endif %}px;
+    }
+    @media screen and (min-width: 1024px){
+
+      .geshop-U000186-default-{{ pageInstanceId }} .component-m-nav-item:hover{
+        background-color: {{ pageData.hover_color|default('transparent') }}!important;
+      }
+      .geshop-U000186-default-{{ pageInstanceId }}  .component-m-nav-item:hover strong{
+        color: {{ pageData.hover_font_color|default('transparent') }}!important;
+      }
+    }
+    .geshop-U000186-default-{{ pageInstanceId }} .m-current {
+      background-color: {{ pageData.hover_color|default('transparent') }}!important;
+    }
+    .geshop-U000186-default-{{ pageInstanceId }} .m-current strong {
+      color: {{ pageData.hover_font_color|default('transparent') }}!important;
+    }
+    .geshop-U000186-default-{{ pageInstanceId }} .component-m-nav{
+      height: {% if data.nav_h %}{{ (data.nav_h ) }}{% else %}{{ 44 }}{% endif %}px;background-color:{{ pageData.bg_color }};
+
+    }
+    .geshop-U000186-default-{{ pageInstanceId }} .component-m-nav-ul {
+
+        height: {{ pageData.nav_h | default(30) }}px;
+		    {% if pageData.bg_color %}background-color:{{ pageData.bg_color }} {% endif %}
+    }
+    .geshop-U000186-default-{{ pageInstanceId }} .component-m-nav-ul .component-m-nav-item{
+      padding: 0 {% if data.nav_gap %}{{ data.nav_gap  }}{% else %}{{ 12 }}{% endif %}px;
+    }
+    .geshop-U000186-default-{{ pageInstanceId }} .component-m-nav-ul .component-m-nav-item strong{
+      {% if pageData.font_color %} color: {{ pageData.font_color}};{% endif %}
+      font-size: {% if data.font_size %}{{ (data.font_size )  }}{% else %}{{ (15 )  }}{% endif %}px;
+      height: {% if data.nav_h %}{{ (data.nav_h )  }}{% else %}{{ (44 )  }}{% endif %}px;
+      line-height: {% if data.nav_h %}{{ (data.nav_h ) }}{% else %}{{ (44 )  }}{% endif %}px;
+    }
+    .back-to-top{
+      background-color: {{ data.bg_color|default('#fd6462') }};
+    }
+
+
+    @media (max-width: 767px) {
+        .geshop-U000186-default-{{ pageInstanceId }}{
+            height: {{ data.nav_h_m | default(60) }}px;
+        }
+        .geshop-U000186-default-{{ pageInstanceId }} .component-m-nav-ul, .geshop-U000186-default-{{ pageInstanceId }} .component-m-nav{
+            height: {{ data.nav_h_m | default(60) }}px;
+        }
+
+        .geshop-U000186-default-{{ pageInstanceId }} .component-m-nav-ul .component-m-nav-item{
+            padding: 0 {{  data.nav_gap_m ?? 40 }}px;
+        }
+
+        .geshop-U000186-default-{{ pageInstanceId }} .component-m-nav-ul .component-m-nav-item strong{
+            font-size: {{ data.font_size_m ?? 15 }}px;
+            height: {{ data.nav_h_m ?? 60 }}px;
+            line-height: {{ data.nav_h_m ?? 60 }}px;
+        }
+    }
+
+    {% set space = '.geshop-U000186-default-'~ pageInstanceId %}
+    {% include '@app/files/parts/formTemplate/components/margin-dl-style.twig' with{'space':space} %}
+</style>
+<!-- embed stylesheet end -->

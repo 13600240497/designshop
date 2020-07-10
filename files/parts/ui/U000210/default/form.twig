@@ -1,0 +1,109 @@
+{% set formData = {
+    id: 'U000210',
+    name: '博客组件',
+    theme: 'default',
+    tabs: [
+        {
+            label: '样式设置',
+            components: [
+                {
+                    label: '常用配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '上边距(px)',
+                            name: 'component_mt',
+                            default: '0',
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: '下边距(px)',
+                            name: 'component_mb',
+                            public: false,
+                            value: '32',
+                            col: 2
+                        }
+                    ]
+                },
+                {
+                    label: '博客内容配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '展示列数',
+                            type: 'radio',
+                            name: 'col_type',
+                            default: 3,
+                            options: [
+                                { label: '两列', value: 2 },
+                                { label: '三列', value: 3 },
+                                { label: '四列', value: 4 }
+                            ]
+                        },
+                        {
+                            label: '图片宽度(px)',
+                            name: 'image_width',
+                            public: false,
+                            default: '387',
+                            col: 2
+                        },
+                        {
+                            label: '图片高度(px)',
+                            name: 'image_height',
+                            public: false,
+                            default: '387',
+                            col: 2
+                        },
+                        {
+                            type: 'diy',
+                            src: '/lib/img_message.twig'
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    moreConfig: [],
+    beforeSubmit: 'onSubmit'
+
+} %}
+
+    {# 引入渲染函数 #}
+    {{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+<script>
+    var submit = true;
+    function onSubmit(progress) {
+        if (submit) {
+            var $ids = $('#dataIDs'),
+                        $blogId = $('#blogIdInput'),
+                        $id = $('#U000210-default');
+            var imgHeight = $id.find('input[name=image_height]').val();
+            var blogIds = [];
+            var _image_url, _jump_url, _blog_title, _description;
+
+            if (imgHeight === '') {
+                layui.layer.msg('请先输入图片的宽和高!');
+                return false;
+            }
+
+            $ids.find('.goods-tab-item').each(function(index, el) {
+                _image_url = $(el).find('.input-img').find('input[name]').val().trim();
+                _jump_url = $(el).find('input[name=jump_url]').val().trim();
+                _blog_title = $(el).find('input[name=blog_title]').val().trim();
+                _description = $(el).find('input[name=description]').val().trim();
+
+                blogIds.push({
+                    image_url: _image_url,
+                    jump_url: _jump_url,
+                    blog_title: _blog_title,
+                    description: _description
+                });
+            });
+            $blogId.val(JSON.stringify(blogIds));
+            progress.next();
+        }
+    }
+
+</script>

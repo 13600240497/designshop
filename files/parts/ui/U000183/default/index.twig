@@ -1,0 +1,40 @@
+{%
+	set pageData = {
+	}
+%}
+<div class="geshop-component-box component-drag geshop-U000183-default geshop-U000183-{{ pageInstanceId }}" data-key="U000183" data-id="{{ pageInstanceId }}">
+		{{ include('style.twig') }}
+		<div class="ad-container clearfix">
+				<a class="js_logsss_browser js_logsss_click_delegate ad"
+					data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.adMImg }}','cporder':'{{ layoutIndex }}','rank':'1'} }"
+					data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.adMImg }}','cporder':'{{ layoutIndex }}','rank':'1'} }"
+				{% if data.imgUrl %} 
+					href="{{ data.imgUrl }}" 
+				{% else %} 
+				javascript:void(0); {%endif%}  {% if data.openInNewWindow == 1 %}target="_blank"{% endif %}>
+					
+							{% if data.isEditEnv %}
+								<picture>
+									<source srcset="{{data.adPadImg | default('https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/banner.png')}}" media="(min-width: 768px) and (max-width: 1024px)">
+									<source srcset="{{data.adPcImg | default('https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/banner.png')}}" media="(min-width: 1025px)">
+									<source srcset="{{data.adMImg | default('https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/banner.png')}}" media="(max-width: 767px)">
+									<img alt="" src="{{data.adPcImg | default('https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/banner.png')}}">
+							</picture>
+							{% else %} 
+							<!--[if !IE]><!--> 
+								<picture>
+										<source srcset="{{data.adPadImg | default('https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/banner.png') }}" media="(min-width: 768px) and (max-width: 1024px)">
+										<source srcset="{{data.adPcImg | default('https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/banner.png') }}" media="(min-width: 1025px)">
+										<source srcset="{{data.adMImg | default('https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/banner.png') }}" media="(max-width: 767px)">
+									<img class="banner-img" alt="" src="{{data.adPcImg | default('https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/banner.png') }}">
+								</picture>
+							<!--<![endif]-->
+							<img class="ie-img-wrap none" 
+					data-pc-src="{{data.adPcImg | default('https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/banner.png')}}" 
+					data-pad-src="{{data.adPadImg | default('https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/banner.png')}}"
+					data-m-src="{{data.adMImg | default('https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/banner.png')}}" />
+							{% endif %}
+							
+				</a>
+    </div>
+</div>

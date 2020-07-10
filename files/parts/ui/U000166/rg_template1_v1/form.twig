@@ -1,0 +1,227 @@
+{% set formData = {
+    id: 'U000166',
+    name: '积分兑换组件配置项',
+    theme: 'rg_template1_v1',
+    tabs: [
+        {
+            label: '数据配置',
+            components: [
+            {
+                label:'数据配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label:'商品显示数量',
+                    name:'goods_limit_num'
+                },
+                {
+                    label: '商品sku',
+                    type: 'goods-sku',
+                    beforeSubmit: 'beforeSubmit'
+                }
+            ]
+            },
+            {
+                type: 'fieldset',
+                components: [
+                {
+                    label: 'View more链接',
+                    name: 'view_more_url'
+                },
+                {
+                    label: 'View more链接用户端是否显示',
+                    name: 'view_more_target',
+                    type: 'radio',
+                    default: 1,
+                    options: [
+                    { label: '是', value: 1 },
+                    { label: '否', value: 2 },
+                ]
+                }
+            ]
+            }
+        ]
+        },
+        {
+            label: '样式配置',
+            components: [
+            {
+                label: '常用配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '下边距(px)',
+                    name: 'box_margin_bottom',
+                    default: '32',
+                    col: 2
+                },
+                {
+                    label: '组件背景颜色',
+                    name: 'box_bg_color',
+                    type: 'colorPicker',
+                    default: '#F8F8F8',
+                    col: 2
+                }
+            ]
+            },
+            {
+                label: '商品信息配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '商品圆角大小',
+                    name: 'goods_border_radius',
+                    default: '2',
+                    col: 2
+                },
+                {
+                    label: '商品描边颜色',
+                    name: 'hover_bdColor',
+                    default: '#FFFFFF',
+                    type: 'colorPicker',
+                    col: 2
+                }
+            ]
+            },
+            {
+                label:'积分',
+                type:'fieldset',
+                components:[
+                {
+                    label: '积分文字颜色',
+                    name: 'integral_font_color',
+                    type: 'colorPicker',
+                    default: '#FA386A'
+                }
+            ]
+            },
+            {
+                label:'销售价',
+                type:'fieldset',
+                components:[
+                {
+                    label: '销售价文字颜色',
+                    name: 'shop_price_color',
+                    type: 'colorPicker',
+                    default: '#FA386A'
+                }
+            ]
+            },
+            {
+                label:'已售信息文字颜色',
+                type:'fieldset',
+                components:[
+                {
+                    label: '文案颜色',
+                    name: 'stock_tip_font_color',
+                    type: 'colorPicker',
+                    default: '#999999'
+                }
+            ]
+            },
+            {
+                label: 'view more 按钮配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '文案',
+                    name: 'view_more_title',
+                    default: 'VIEW MORE'
+                },
+                {
+                    label: '按钮边框颜色',
+                    name: 'btn_border_color',
+                    type: 'colorPicker',
+                    default: '#333333',
+                    col: 2
+                },
+                {
+                    label: '按钮文字颜色',
+                    name: 'view_more_font_color',
+                    type: 'colorPicker',
+                    default: '#333333',
+                    col: 2
+                },
+                {
+                    label: '文字大小',
+                    name: 'view_more_font_size',
+                    default: '28',
+                    col: 2
+                },
+                {
+                    label: '按钮圆角',
+                    desc: '(px)',
+                    name: 'view_more_radius',
+                    default: '4',
+                    col: 2
+                }
+            ]
+            }
+        ]
+        }
+    ],
+    moreConfig: [],
+    skuValidConfig: 'skuValidConfig',
+    beforeSubmit: 'onSubmit'
+} %}
+
+
+<script>
+
+function skuValidConfig () {
+    return {
+        check_type: 'goods',
+        check_rules: 'GOODS_VALIDATE_REDEEM'
+    };
+}
+
+function onSubmit (progress) {
+    var $form = $('#U000166-rg_template1_v1');
+    var _lang = typeof GESHOP_LANG !== 'undefined' ? GESHOP_LANG : 'en';
+    var _pipeline = typeof GESHOP_PIPELINE !== 'undefined' ? GESHOP_PIPELINE : '';
+    var _platform = typeof GESHOP_PLATFORM !== 'undefined' ? GESHOP_PLATFORM : '';
+    var _goodsSKU = $('[name=goodsSKU]',$form).val();
+    var goods_limit_num = $('input[name=goods_limit_num]',$form).val();
+
+    if (goods_limit_num && (!/^([1-9][0-9]*)$/.test(goods_limit_num) || goods_limit_num < 1 ||　goods_limit_num > 100)) {
+        layer.msg('商品显示数量请输入大于等于1小于等于100的整数数值');
+        $('input[name=goods_limit_num]',$form).val('');
+        return false;
+    }
+
+/*    var jsonData = {
+        lang: _lang,
+        pipeline: _pipeline,
+        goodsSn: _goodsSKU,
+        platform: _platform
+    };
+    var requestData = {
+        content: JSON.stringify(jsonData)
+    };*/
+
+    if (_goodsSKU == '') {
+        progress.next();
+        return false;
+    }
+    progress.next();
+}
+
+/* 清空 DOM 的 SKU */
+function design_form_clean_skus (invalid) {
+    var dom = $('.js-valid-skus');
+    var invalid = invalid.split(',');
+    dom.each(function (key, item) {
+        /* 过滤非法空格 */
+        var dom_skus = $(item).val().split(',');
+        var valid_skus = dom_skus.filter(function (value) {
+            return invalid.indexOf(value) < 0;
+        });
+        $(item).val(valid_skus.join(','));
+    });
+}
+</script>
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+

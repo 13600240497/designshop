@@ -1,0 +1,118 @@
+{% set siteData = {
+    btnRadius: 'rg' in siteCode ? 2 : 20
+} %}
+
+{%
+    set pageData = {
+        boxWidth : data.boxWidth | default(400),
+        boxHeight : data.boxHeight | default(240),
+        boxMarginBottom : data.boxMarginBottom | default(0),
+        boxBackgroundColor : data.boxBackgroundColor | default('#EDEDED'),
+        boxBackgroundImage : data.boxBackgroundImage | default(''),
+        
+        discountTextSize : data.discountTextSize | default(72),
+        
+        discountTextColor : data.discountTextColor | default('#333333'),
+        
+        discountTermTextSize : data.discountTermTextSize | default(30),
+        
+        discountTermTextColor : data.discountTermTextColor | default('#333333'),
+        
+        validText : data.validText | default('Validity：Nov.23-Nov.25'),
+        
+        validTextSize : data.validTextSize | default(18),
+       
+        validTextColor : data.validTextColor | default('#333333'),
+        
+        validTextMarginBottom : data.validTextMarginBottom | default(10),
+        
+        btnRadius : data.btnRadius | default(siteData.btnRadius),
+        btnSize :  (data.btnSize | default(16)),
+        btnUnreceivedBgColor : data.btnUnreceivedBgColor | default('#333333'),
+        btnUnreceivedTextColor : data.btnUnreceivedTextColor | default('#ffffff'),
+        btnUnreceivedTextBorderColor : data.btnUnreceivedTextBorderColor | default('transparent'),
+        
+        btnReceivedBgColor : data.btnReceivedBgColor | default('#dddddd'),
+        btnReceivedTextColor : data.btnReceivedTextColor | default('#ffffff'),
+        btnReceivedTextBorderColor : data.btnReceivedTextBorderColor | default('transparent'),
+
+        btnFailedBgColor : data.btnFailedBgColor | default('#dddddd'),
+        btnFailedTextColor : data.btnFailedTextColor | default('#ffffff'),
+        btnFailedTextBorderColor : data.btnFailedTextBorderColor | default('transparent'),
+        alignType : data.alignType | default('2'),
+    }
+%}
+<style>
+    [data-box="coupon-{{ pageInstanceId }}-2"]{
+        width:{{pageData.boxWidth}}px;
+        height:{{pageData.boxHeight}}px;
+        line-height:{{pageData.boxHeight}}px;
+        background-color:{{ pageData.boxBackgroundColor }};
+        {% if data.boxBackgroundImage %}background-image: url("{{ data.boxBackgroundImage }}");{% endif %}
+        {% if pageData.alignType == 1 %}
+            float:left;
+            {% elseif pageData.alignType == 2 %}
+            float: none;
+            margin:0 auto;
+            {% elseif pageData.alignType == 3 %}
+            float:right;
+        {% endif %}
+        margin-bottom : {{ pageData.boxMarginBottom }}px;
+        box-sizing: border-box;
+    }
+    [data-box="coupon-{{ pageInstanceId }}-2"] .snowberg-png{
+        background:url({{data.default.bannerView}});
+    }
+    [data-box="coupon-{{ pageInstanceId }}-2"] .coupon-body .coupon-top .coupon-discount{
+        font-size:{{pageData.discountTextSize}}px;
+        line-height:{{pageData.discountTextSize}}px;
+        color:{{pageData.discountTextColor}};
+    }
+    [data-box="coupon-{{ pageInstanceId }}-2"] .coupon-body .coupon-top .coupon-discount-term{
+        font-size:{{pageData.discountTermTextSize}}px;
+        color:{{pageData.discountTermTextColor}};
+    }
+    [data-box="coupon-{{ pageInstanceId }}-2"] .coupon-body .coupon-middle{
+        font-size:{{pageData.validTextSize}}px;
+        line-height: {{pageData.validTextSize}}px;
+        margin-bottom:{{pageData.validTextMarginBottom}}px;
+        color:{{pageData.validTextColor}};
+    }
+    
+    {# 按钮默认状态 #}
+    [data-box="coupon-{{ pageInstanceId }}-2"] .coupon-body .coupon-layout .coupon-btn{
+        border-radius : {{ pageData.btnRadius }}px;
+        font-size:{{pageData.btnSize}}px;
+        line-height:{{ pageData.btnSize * 2 }}px;
+    }
+    {# 按钮未领取状态 #}
+    [data-box="coupon-{{ pageInstanceId }}-2"] .coupon-body .coupon-layout .coupon-btn.un-received{
+        background-color : {{ pageData.btnUnreceivedBgColor }};
+        color: {{ pageData.btnUnreceivedTextColor }};
+        border-color : {{ pageData.btnUnreceivedTextBorderColor }};
+    }
+    {# 按钮已领取状态 #}
+    [data-box="coupon-{{ pageInstanceId }}-2"] .coupon-body .coupon-layout .coupon-btn.received{
+        background-color : {{ pageData.btnReceivedBgColor }};
+        color: {{ pageData.btnReceivedTextColor }};
+        border-color : {{ pageData.btnReceivedTextBorderColor }};
+    }
+    {# 按钮失效状态 #}
+    [data-box="coupon-{{ pageInstanceId }}-2"] .coupon-body .coupon-layout .coupon-btn.failed{
+        background-color : {{ pageData.btnFailedBgColor }};
+        color: {{ pageData.btnFailedTextColor }};
+        border-color : {{ pageData.btnFailedTextBorderColor }};
+    }
+    [data-box="coupon-{{ pageInstanceId }}-2"] .coupon-body .coupon-bottom .coupon-text{
+        font-size:{{ pageData.countDownTitleTextSize }}px;
+        color:{{ pageData.countDownTitleTextColor }};
+    }
+    [data-box="coupon-{{ pageInstanceId }}-2"] .coupon-body .coupon-time-box strong{
+        color:{{ pageData.countDownTextColor }};
+        border-radius:{{ pageData.countDownRadius }};
+        width:{{ pageData.countDownWidth }}px;
+        height:{{ pageData.countDownHeight }}px;
+        line-height: {{ pageData.countDownHeight }}px;
+        background:{{ pageData.countDownBackgroundColor }};
+    }
+</style>

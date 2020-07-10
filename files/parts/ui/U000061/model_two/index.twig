@@ -1,0 +1,208 @@
+{% set pageData = {
+	picBgc:data.picBgc is not null?data.picBgc:'#ffffff',
+    goodsSKU:data.goodsSKU,
+    buyText:data.buyText|default('Quick Shop'),
+    discountType:data.discountType|default(1),
+
+    goodsSize:(data.goodsSize|default(14)),
+    goodsColor:data.goodsColor is not null?data.goodsColor:'#666666',
+    markePicSize:(data.markePicSize|default(14)),
+    markePicColor:data.markePicColor is not null?data.markePicColor:'#888888',
+    salePicSize:(data.salePicSize|default(16)),
+    salePicColor:data.salePicColor is not null?data.salePicColor:'#1c1c1c',
+    salePicFtW:(data.salePicFtW|default('bold')),
+
+    disVis:(data.disVis|default('show')),
+    dislocation:(data.dislocation|default('right')),
+    disWidth:(data.disWidth|default(50)),
+    disHeight:(data.disHeight|default(50)),
+    disRadius:(data.disRadius|default(50)),
+    disSize:(data.disSize|default(16)),
+    disColor:data.disColor is not null?data.disColor:'#ffffff',
+
+    buyWidth:(data.buyWidth|default(116)),
+    buyHeight:(data.buyHeight|default(34)),
+    buySize:(data.buySize|default(12)),
+    buyColor:data.buyColor is not null?data.buyColor:'#333333',
+    buyBorderS:(data.buyBorderS|default('solid')),
+    borderFont:(data.borderFont|default(1)),
+    buyBgc:data.buyBgc|default('#ffffff'),
+} %}
+
+<div 
+    class="geshop-component-box component-drag gs-index-main wrap-U000061 wrap-{{ pageInstanceId }} js-geshop-ga-click js-geshop-ga-view" 
+    data-key="U000061" 
+    data-id="{{pageInstanceId}}" 
+    data-static-domain="{{staticDomain}}" 
+    data-gid="U000061" 
+    data-p="gs-{{pageId}}-{{pageInstanceId}}" 
+    geshop-component-name="{{data.ga_name}}">
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+        .js_quickShop:hover {
+            background-color:{% if data.buyBgcHover %}{{ data.buyBgcHover|default('#f2f2f2') }}!important;{% endif %}
+        }
+
+        .wrap-{{ pageInstanceId }}{
+            margin-bottom: {{ data.marginBot|default(50) }}px;
+        }
+        {% if pageData.picBgc  is not empty %}
+        .wrap-{{ pageInstanceId }} .geshop-swiper-slide{
+            background-color:{{pageData.picBgc}};
+        }
+        {% endif %}
+        .wrap-{{ pageInstanceId }} .geshop-quickShop{
+            {% if pageData.buyColor is not empty %}
+            color:{{ pageData.buyColor }};
+            {% endif %}
+            {% if pageData.buySize is not empty %}
+            font-size:{{ pageData.buySize }}px;
+            {% endif %}
+            {% if pageData.buyBgc is not empty %}
+            background-color:{{ pageData.buyBgc}};
+            {% endif %}
+            {% if pageData.buyBgImg is not empty %}
+            background-image:url('{{ data.buyBgImg }}');
+            {% endif %}
+            {% if pageData.buyBorderS is not empty %}
+            border-style:{{ pageData.buyBorderS }};
+            {% endif %}
+            {% if pageData.borderFont is not empty %}
+            border-width:{{ pageData.borderFont }}px !important;
+            {% endif %}
+
+            border-color:{{ data.btnBorderColor|default('#dddddd') }};
+
+            {% if pageData.buyWidth is not empty %}
+            width:{{ pageData.buyWidth }}px;
+            {% endif %}
+            {% if pageData.buyHeight is not empty %}
+            height:{{ pageData.buyHeight }}px;
+            line-height:{{ pageData.buyHeight }}px;
+            {% endif %}
+        }
+        {% if (pageData.goodsSize  is not empty) or (pageData.goodsColor is not empty) %}
+        .wrap-{{ pageInstanceId }} .geshop-pro-name a{
+            {% if pageData.goodsSize is not empty %}
+            font-size:{{ pageData.goodsSize }}px;
+            {% endif %}
+            {% if pageData.goodsColor is not empty %}
+            color:{{ pageData.goodsColor }};
+            {% endif %}
+            white-space:normal;
+        }
+        {% endif %}
+        {% if (pageData.salePicSize  is not empty) or (pageData.salePicColor is not empty) or (pageData.salePicFtW is not empty)%}
+        .wrap-{{ pageInstanceId }} .geshop-price{
+            {% if pageData.salePicSize is not empty %}
+            font-size:{{ pageData.salePicSize }}px;
+            {% endif %}
+            {% if pageData.salePicColor is not empty %}
+            color:{{ pageData.salePicColor }};
+            {% endif %}
+            {% if pageData.salePicFtW is not empty %}
+            font-weight:{{ pageData.salePicFtW }};
+            {% endif %}
+        }
+        {% endif %}
+        {% if (pageData.markePicSize  is not empty) or (pageData.markePicColor is not empty) %}
+        .wrap-{{ pageInstanceId }} .geshop-del-price{
+            {% if pageData.markePicSize is not empty %}
+            font-size:{{ pageData.markePicSize }}px;
+            {% endif %}
+            {% if pageData.markePicColor is not empty %}
+            color:{{ pageData.markePicColor }};
+            {% endif %}
+        }
+        {% endif %}
+        .wrap-{{ pageInstanceId }}  .gs-curtoff-wrap{
+            {% if pageData.disWidth is not empty %}
+            width:{{ pageData.disWidth }}px;
+            {% endif %}
+            {% if pageData.disHeight is not empty %}
+            height:{{ pageData.disHeight }}px;
+            {% endif %}
+            background-color:{{ data.disBgc|default('#e33194') }};
+            {% if pageData.disRadius is not empty %}
+            border-radius:{{ pageData.disRadius }}%;
+            {% endif %}
+            {% if pageData.disSize is not empty %}
+            font-size:{{ pageData.disSize }}px;
+            {% endif %}
+            {% if pageData.disColor is not empty %}
+            color:{{ pageData.disColor }};
+            {% endif %}
+            {% if  data.disBgImg is not empty %}
+            background-image:url('{{ data.disBgImg }}');
+            {% endif %}
+            {% if  pageData.disVis is not empty %}
+            visibility:{{ pageData.disVis }};
+            {% endif %}
+            position:absolute;
+            {{ pageData.dislocation }}:25px;
+        }
+    </style>
+    <!-- embed stylesheet end -->
+    <div class="swiper-container js-geshop-swiper-container">
+        {% if data.goodsInfo != 0 %}
+		<ul class="swiper-wrapper clearfix">
+		    {% for list in data.goodsInfo %}
+			<li class="geshop-swiper-slide swiper-slide" >
+               
+                <div class="swiper-item-wrap">
+                    <div class="geshop-slide-img" >
+                      
+                        <a href="{{list.url_title}}" class="logsss_event"
+                           data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ list.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }" style="display:block; width:{% if data.default.lazyWidth > 250 %}250{% else %}{{ data.default.lazyWidth }}{% endif %}px;height:{% if data.default.lazyWidth > 250 %}{{(data.default.lazyHeight * 250 / data.default.lazyWidth) | number_format(0, '.', ',') }}{% else %}{{ data.default.lazyHeight }}{% endif %}px;">
+                            <img  class="swiper-lazy"  src="{{data.default.lazyImg|default(data.default.good)}}" data-src="{{ list.goods_img|default(data.default.good) }}" width="{% if data.default.lazyWidth > 250 %}250{% else %}{{ data.default.lazyWidth }}{% endif %}" height="{% if data.default.lazyWidth > 250 %}{{(data.default.lazyHeight * 250 / data.default.lazyWidth) | number_format(0, '.', ',') }}{% else %}{{ data.default.lazyHeight }}{% endif %}"
+                                  data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ list.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+                        </a>
+                        {# <a href="javascript:void(0);" rel="nofollow" class="geshop-quickShop js_quickShop" data-href="{{ siteDomain }}/m-goods_fast-a-info.htm?goods_id={{list.goods_id}}&ids=">
+                            <i class="tag_c"></i>
+                            {{ pageData.buyText }}
+                        </a> #}
+                        <a href="javascript:void(0);" rel="nofollow" class="geshop-quickShop js_quickShop logsss_event js_logsss_click_delegate" data-href="{{ list.url_quick }}"
+                           data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','cporder':'{{ layoutIndex }}','sku':'{{ list.goods_sn }}','price':'{{ list.shop_price}}','rank':'{{ loop.index }}'},
+'skuinfo':{'sku':'{{ list.goods_sn }}','pam':'1','pc':'{{ list.cateid }}','k':'{{ list.warehouse }}','zt':0} }">
+                            <i class="tag_c"></i>
+                            {{ pageData.buyText }}
+                        </a>
+                    </div>
+                    <p class='geshop-pro-name'>
+                        <a href="{{ list.url_title }}" title="{{ list.goods_title }}" class="logsss_event"
+                           data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ list.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }"
+                        >
+                            {{list.goods_title}}
+                        </a>
+                    </p>
+                    <p class='geshop-pro-price'>
+                        <strong  class="geshop-price my_shop_price" data-orgp="{{list.shop_price}}">${{list.shop_price}}</strong>
+                        <span class="geshop-del-price my_shop_price js_market_wrap" data-orgp="{{list.market_price}}">${{list.market_price}}</span>
+                    </p>
+                    {% if list.discount > 0 %}
+                    {% if pageData.discountType|default(1) == '1' %}
+                        <div class="gs-curtoff-wrap">
+                            <div class="curtoff-box" >
+                                <strong>{{list.discount}}%</strong>
+                                <p style="font-size:14px;margin-top:-4%;">{{ get_component_trans(lang,'off') }}</p>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="gs-curtoff-wrap">
+                            <div class="curtoff-box">
+                                <strong>-{{list.discount}}%</strong>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% endif %}
+                </div>
+			</li>
+            {% endfor %}
+		</ul>
+	    <a href="javascript:;" class="geshop-pre-btn" ></a>
+        <a href="javascript:;" class="geshop-next-btn" ></a>
+        {% else %}
+        <img src="{{ data.default.shuffling }}" style="width:100%">
+        {% endif %}
+	</div>
+</div>

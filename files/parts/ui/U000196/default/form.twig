@@ -1,0 +1,437 @@
+
+{%
+set formData = {
+    id: 'U000196',
+    name: '高额打榜',
+    theme: 'default',
+    tabs: [
+        {
+            label: '样式配置',
+            components: [
+                {
+                    label: '常用配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '时间设置',
+                            desc: '',
+                            name: 'act_time',
+                            type: 'dataRangePicker',
+                        },
+                        {
+                            type: 'diy',
+                            src: './temp/hidden-input.twig',
+                        },
+                        {
+                            label: '组件上边距',
+                            desc: '(PX)',
+                            name: 'component_margin_top',
+                            type: 'input',
+                            default: 0,
+                            col: 2
+                        },
+                        {
+                            label: '组件下边距',
+                            desc: '(PX)',
+                            name: 'component_margin_bottom',
+                            type: 'input',
+                            default: 16,
+                            col: 2
+                        },
+                        {
+                            label: '组件高度',
+                            desc: '(PX)',
+                            name: 'component_height',
+                            type: 'input',
+                            default: 740,
+                        },
+                        {
+                            label: '组件背景图片',
+                            desc: '',
+                            name: 'component_bgImage',
+                            type: 'image',
+                        },
+                        
+                    ]
+                },
+                {
+                    label: '榜单配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '榜单信息展示总数',
+                            name: 'amount_list_limit',
+                            type: 'input',
+                            default: 50,
+                        },
+                        {
+                            label: '榜单信息上边距',
+                            desc: '(PX)',
+                            name: 'amount_list_top',
+                            type: 'input',
+                            default: 290,
+                            col: 2
+                        },
+                        {
+                            label: '榜单信息左边距',
+                            desc: '(PX)',
+                            name: 'amount_list_left',
+                            type: 'input',
+                            default: 110,
+                            col: 2
+                        },
+                        {
+                            label: '榜单信息行高',
+                            desc: '(PX)',
+                            name: 'amount_list_lineheight',
+                            type: 'input',
+                            default: 60,
+                        },
+                        {
+                            label: '榜单消费金额文字颜色',
+                            name: 'amount_list_payments_text_color',
+                            type: 'colorPicker',
+                            default: '#000000',
+                        },
+                    ]
+                },
+                {
+                    label: '查看个人排名按钮',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '按钮文案',
+                            name: 'person_info_btn_text',
+                            default: 'CHECK MY RANKING',
+                        },
+                        {
+                            label: '按钮上边距',
+                            desc: '(PX)',
+                            name: 'person_info_btn_top',
+                            type: 'input',
+                            default: 620
+                        },
+                        {
+                            label: '按钮文案颜色',
+                            name: 'person_info_btn_text_color',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            col: 2
+                        },
+                        {
+                            label: '按钮背景颜色',
+                            name: 'person_info_btn_bg_color',
+                            type: 'colorPicker',
+                            default: '#000000',
+                            col: 2
+                        },
+                        {
+                            label: '按扭背景图片',
+                            desc: '',
+                            name: 'person_info_btn_bg_image',
+                            type: 'image',
+                        },
+                        
+                    ]
+                },
+                {
+                    label: '个人排名弹框配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '标题文字颜色',
+                            desc: '',
+                            name: 'amount_list_title_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                        },
+                        {
+                            label: '消费文字颜色',
+                            desc: '',
+                            name: 'amount_list_payment_text_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            col: 2
+                        },
+                        {
+                            label: '消费金额文字颜色',
+                            desc: '',
+                            name: 'amount_list_payment_money_color',
+                            type: 'colorPicker',
+                            default: '#000000',
+                            col: 2
+                        },
+                    ]
+                },
+                {
+                    label: '规则配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '规则上边距',
+                            desc: '(PX)',
+                            name: 'rule_btn_top',
+                            type: 'input',
+                            default: 40,
+                            col: 2
+                        },
+                        {
+                            label: '规则右边距',
+                            desc: '(PX)',
+                            name: 'rule_btn_left',
+                            type: 'input',
+                            default: 80,
+                            col: 2
+                        },
+                        {
+                            label: '规则文字大小',
+                            desc: '(PX)',
+                            name: 'rule_content_fontsize',
+                            type: 'input',
+                            default: 24,
+                            col: 2
+                        },
+                        {
+                            label: '规则文字颜色',
+                            desc: '',
+                            name: 'rule_content_text_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            col: 2,
+                        },
+
+                        {
+                            label: '规则文案',
+                            desc: '',
+                            name: 'rule_content',
+                            type: 'textarea',
+                            default: '1. From Mar 8th-12th, according to the total payment amount, TOP1 will receive 12 coupons for $38 (each month can use one coupon for plus size and women category); TOP 2-10 will receive one $38 coupon; TOP 11-38 will receive one $18 coupon. \n2. All coupons will be to your account center on Apr 2ed. \n3. If you return, replace or cancel the order, you will cancel your reward and automatically rewards the next customer. \n4. Rosegal reserves the right to amend and explain the rules of this promotion. If you have any questions, please contact our support center.',
+                            row: 4,
+                        },
+                    ]
+                },
+            ]
+        }
+    ],
+    moreConfig: [
+        {
+            label: '折叠控件',
+            type: 'collapse',
+            items: [
+                {
+                    label: '榜单配置配置',
+                    components: [
+                        {
+                            label: '榜单文字大小',
+                            desc: '(PX)',
+                            name: 'amount_list_fontsize',
+                            default: 24,
+                            col: 2
+                        },
+                        {
+                            label: '榜单信息文字颜色',
+                            desc: '',
+                            name: 'amount_list_text_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            col: 2
+                        },
+                    ]
+                },
+                {
+                    label: '查看个人排名按钮',
+                    components: [
+                        {
+                            label: '按钮文字大小',
+                            desc: '(PX)',
+                            name: 'person_info_btn_fontsize',
+                            default: 32,
+                        },
+                        {
+                            label: '按钮圆角',
+                            desc: '(PX)',
+                            name: 'person_info_btn_radius',
+                            default: 0,
+                        },
+                        {
+                            label: '按钮宽度',
+                            desc: '(PX)',
+                            name: 'person_info_btn_width',
+                            default: 480,
+                            col: 2
+                        },
+                        {
+                            label: '按钮高度',
+                            desc: '(PX)',
+                            name: 'person_info_btn_height',
+                            default: 80,
+                            col: 2
+                        },
+                    ]
+                },
+                {
+                    label: '个人排名弹框配置',
+                    components: [
+                        {
+                            label: '弹窗宽度',
+                            desc: '(PX)',
+                            name: 'person_info_dialog_width',
+                            default: 540,
+                            col: 2,
+                        },
+                        {
+                            label: '弹窗高度',
+                            desc: '(PX)',
+                            name: 'person_info_dialog_height',
+                            default: 525,
+                            col: 2,
+                        },
+                        {
+                            label: '标题文字大小',
+                            desc: '(PX)',
+                            name: 'person_info_dialog_title_fontsize',
+                            default: 32,
+                            col: 2,
+                        },
+                        {
+                            label: '消费文字大小',
+                            desc: '(PX)',
+                            name: 'person_info_dialog_payment_fontsize',
+                            default: 28,
+                            col: 2,
+                        },
+                        {
+                            label: '标题上边距',
+                            desc: '(PX)',
+                            name: 'person_info_dialog_title_top',
+                            default: 20,
+                            col: 2,
+                        },
+                        {
+                            label: '消费文字上边距',
+                            desc: '(PX)',
+                            name: 'person_info_dialog_payment_text_top',
+                            default: 140,
+                            col: 2,
+                        },
+                        {
+                            label: '消费信息文字行高',
+                            desc: '(PX)',
+                            name: 'person_info_dialog_content_lineheight',
+                            default: 42,
+                        },
+                        {
+                            label: '背景图片',
+                            desc: '',
+                            name: 'person_info_dialog_bg_image',
+                            type: 'image',
+                        },
+                        {
+                            label: '按钮文案颜色',
+                            desc: '',
+                            name: 'person_info_dialog_btn_color',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            col: 2
+                        },
+                        {
+                            label: '按钮背景颜色',
+                            desc: '',
+                            name: 'person_info_dialog_btn_bgcolor',
+                            type: 'colorPicker',
+                            default: '#000000',
+                            col: 2
+                        },
+                    ]
+                },
+                {
+                    label: '规则弹框配置',
+                    components: [
+                        {
+                            label: '标题文字颜色',
+                            desc: '',
+                            name: 'rule_dialog_title_color',
+                            type: 'colorPicker',
+                            default: '#000000',
+                            col: 2,
+                        },
+                        {
+                            label: '标题背景颜色',
+                            desc: '',
+                            name: 'rule_dialog_title_bg_color',
+                            type: 'colorPicker',
+                            default: '#F0F0F0',
+                            col: 2,
+                        },
+                        {
+                            label: ' 规则说明文字颜色',
+                            desc: '',
+                            name: 'rule_dialog_content_color',
+                            type: 'colorPicker',
+                            default: '#666666',
+                        },
+                        {
+                            label: ' 按钮文案颜色',
+                            desc: '',
+                            name: 'rule_dialog_btn_color',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                        },
+                        {
+                            label: ' 按钮背景颜色',
+                            desc: '',
+                            name: 'rule_dialog_btn_bgcolor',
+                            type: 'colorPicker',
+                            default: '#000000',
+                        },
+                    ]
+                },
+            ]
+        }
+    ],
+    beforeSubmit: 'onSubmit'
+}
+%}
+ 
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+<script>
+    
+    var $box = $('#{{ formData.id }}-{{ formData.theme }}');
+    var $timeInput = $box.find('input[name="act_time"]');
+    $timeInput.attr('readonly', true);
+
+    var _inputFirm = function (text){
+        layer.msg(text);
+    };
+
+    var checkTime = function (val, cb) {
+        var time = val.split(' - '),
+            start_time = Date.parse(time[0])/1000,
+            end_time = Date.parse(time[1])/1000,
+            two_week_time = 60 * 60 * 24 * 14;
+        if (start_time >= end_time) {
+            _inputFirm('开始时间不能大于结束时间');
+            return false;
+        } else if ((end_time - start_time) > two_week_time) {
+            _inputFirm('时间不能超过两周');
+            return false;
+        }
+        $box.find('input[name="act_start_time"]').val(start_time);
+        $box.find('input[name="act_end_time"]').val(end_time);
+        cb && cb();
+    };
+
+    function onSubmit(progress) {
+        var _val = $timeInput.val();
+        if (_val) {
+            checkTime(_val, function() {
+                progress.next()
+            });
+        } else {
+            _inputFirm('请选择活动开始结束时间');
+        }
+    };
+
+</script>

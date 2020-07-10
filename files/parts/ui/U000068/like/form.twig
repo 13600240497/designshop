@@ -1,0 +1,180 @@
+{% set formData={
+    id: 'U000068',
+    name: '异步商品列表',
+    theme: 'like',
+    tabs:[
+        {
+            label:'数据配置',
+            components:[
+            {
+                label: '商品数据来源',
+                name: 'goodsDataFrom',
+                default: '1',
+                type: 'radio',
+                options: [
+                {
+                    label: '人工智能接口调用',
+                    value: '1',
+                }
+            ]
+            },
+            {
+                label: '商品数据来源',
+                type: 'tab_catId',
+                formID: '#U000068-like',
+                componentData: {
+                limitNum: 10,
+                limitTip: '新增分类ID最多10个'
+            }
+            }
+        ]
+        },
+        {
+            label:'样式配置',
+            components:[
+            {
+                label:'常用配置',
+                type:'fieldset',
+                components:[
+                {
+                    label: '展示样式',
+                    name: 'box_multi_column',
+                    default: '2',
+                    type: 'radio',
+                    options: [
+                    {
+                        label: '1行2列',
+                        value: '2',
+                    },
+                    {
+                        label: '1行3列',
+                        value: '3',
+                    }
+                ]
+                },
+                {
+                    label: '下边距(px)',
+                    name: 'box_margin_bottom',
+                    default: '32',
+                    col: 2
+                },
+                {
+                    label: '组件背景颜色',
+                    name: 'box_bg_color',
+                    type: 'colorPicker',
+                    default: '#F8F8F8',
+                    col: 2
+                }
+            ]
+            },
+            {
+                label:'商品信息配置',
+                type:'fieldset',
+                components:[
+                {
+                    label: '商品圆角大小',
+                    name: 'goods_border_radius',
+                    default: '4',
+                    col: 2
+                },
+                {
+                    label: '商品描边颜色',
+                    name: 'hover_border_color',
+                    default: '#FFFFFF',
+                    type: 'colorPicker',
+                    col: 2
+                },
+            ]
+            },
+            {
+                label:'销售价',
+                type:'fieldset',
+                components:[
+                {
+                    label: '文字大小',
+                    name: 'shop_price_font_size',
+                    default: '32',
+                    col: 2
+                },
+                {
+                    label: '文字颜色',
+                    name: 'shop_price_color',
+                    default: '#FA386A',
+                    type: 'colorPicker',
+                    col:2
+                }
+            ]
+            },
+            {
+                label:'SEE MORE 按钮配置',
+                type:'fieldset',
+                components:[
+                {
+                    label: '文字大小',
+                    name: 'see_more_font_size',
+                    default: '28',
+                    col: 2
+                },
+                {
+                    label: 'see more 文字颜色',
+                    name: 'see_more_color',
+                    default: '#222222',
+                    type: 'colorPicker',
+                    col:2
+                },
+                {
+                    label: 'see more 边框颜色',
+                    name: 'see_more_border_color',
+                    default: '#222222',
+                    type: 'colorPicker',
+                    col:2
+                }
+            ]
+            }
+        ]
+        }
+    ],
+    beforeSubmit: 'onSubmit'
+} %}
+{# 引入自定义函数 #}
+<script>
+function onSubmit (progress) {
+    var validStatus = true;
+    var $id = $('#U000068-like');
+    $('.goods__tab--wrap .list-group-item', $id).each(function (index, element) {
+        var goods_limit_num = $(element).find('input[name=catNum]').val();
+        var result = validNum(element, goods_limit_num);
+        return result;
+    });
+
+
+    /**
+     * 数量1-100限制
+     * @param element
+     * @param goods_limit_num
+     * @returns {boolean}
+     */
+    function validNum (element, goods_limit_num) {
+        var result = true;
+        if (goods_limit_num && (!/^([1-9][0-9]*)$/.test(goods_limit_num) || goods_limit_num < 1 || goods_limit_num > 100)) {
+            layer.msg('数量最多支持100');
+            $('input[name=catNum]', $(element)).val('');
+            validStatus = false;
+            result = false;
+        }
+        return result;
+    }
+
+    if (!validStatus) {
+        return false;
+    }
+
+    saveTabInfo(function () {
+        progress.next();
+    });
+
+}
+</script>
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

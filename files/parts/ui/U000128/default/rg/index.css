@@ -1,0 +1,19 @@
+.U000128_default .goodStatus {
+  font-weight: bold;
+}
+
+.U000128_default .geshop-tabs>li.active {
+  font-weight: bold;
+}
+
+.U000128_default .shop-price {
+  font-weight: normal;
+}
+.U000128_default .item-price {
+  text-align: center;
+}
+
+.U000128_default .mask-layer{
+    top:0;
+    left:0;
+}

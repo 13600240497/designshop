@@ -1,0 +1,30 @@
+<div class="BP-goods-block">
+    <div class="BP-goods-img ccc">
+        <a href="{url_title}">
+            {% 
+                include geshop.default.pc.image_goods with { params: {
+                    src: '{goods_img}'
+                }}
+            %}
+        </a>
+        <div class="BP-goods-left">
+            {{ get_component_trans(lang,'left') }}
+        </div>
+        <span class="vc-fix"><!-- 此标签不能换行 --></span>
+    </div>
+    <div class="BP-goods-title"><a href="{url_title}">{goods_title}</a></div>
+    <div class="BP-goods-price">
+        <label class="my_shop_price" data-orgp="{integral_price}">${integral_price}</label>
+        <label>+</label>
+        <span class="BP-goods-icon">
+            <img src="{{ data.bpIcon|default(data.default.BP_point_icon) }}" alt="">
+        </span>
+        <label>{integral}</label>
+    </div>
+    <div class="BP-goods-other">
+        <label class="market-price"><del class="my_shop_price" data-orgp="{market_price}">${market_price}</del></label>
+    </div>
+    <div class="BP-goods-buynow">
+        <a href="{url_title}">{{ data.goodsBtnText|default('Redeem Now') }}</a>
+    </div>
+</div>

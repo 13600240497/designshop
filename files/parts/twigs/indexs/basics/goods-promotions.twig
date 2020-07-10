@@ -1,0 +1,11 @@
+<p class="geshop-goods-promotions {% if options.value|length > 0%}has-more{% endif %}" {% if options.value|length > 0%}data-flag=1{% endif %}>
+    {% if options.value|length > 0%}
+      <span class="promotions-text" data-promotions-length="{{options.value|length}}">{{options.value|first}}</span>
+    {% endif %}
+</p>
+    
+<div class="geshop-goods-promotions-more none">  
+    {% for key,item in options.value %}
+      {{item}}</br>
+    {% endfor %} 
+</div>

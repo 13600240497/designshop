@@ -1,0 +1,789 @@
+{
+    "fields": {
+        "act_code": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "prize_amount": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "show_spins": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "show_list": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "component_margin_top": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "component_margin_bottom": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "component_bgColor": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "component_bgImage": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "component_height": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "title_top": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "title_left": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "title_label": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "title_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "title_fontsize": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "rule_id": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "rule_content_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "rule_content_fontsize": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "rule_content": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "rule_btn_left": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "rule_btn_top": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "rule_btn_bgColor": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "rule_btn_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "rule_dialog_bgColor": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "turntable_top": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "turntable_left": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "turntable_image": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "pointer_top": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "pointer_left": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "pointer_image": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "pointer_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "pointer_fontsize": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "pointer_label": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "spins_top": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "spins_left": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "spins_color": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "spins_fontsize": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "spins_number_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        
+        "points_width": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "points_top": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "points_left": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "points_color": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "points_fontsize": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "points_number_color": {"is_public": "0","is_m": "1","is_app": "0"},
+
+        "list_top": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "list_left": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "list_width": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "list_height": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "list_border_color": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "list_bgImage": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "list_bgColor": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "list_title_top": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "list_title_left": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "list_title_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "list_uname_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "share_top": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "share_left": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "share_title_label": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "share_title_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "share_title_fontsize": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "share_facebook_icon": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "share_twitter_icon": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "share_pinterest_icon": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "share_google_icon": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "share_line_icon": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "success_dialog_icon": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "success_dialog_bgImage": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "success_dialog_fontsize": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "success_dialog_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "success_dialog_btn_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "success_dialog_btn_bgColor": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        }
+    },
+    "languages": {
+        "startIn": {
+            "cn": "活动未开始，活动将于：00: 00: 00: 00开始。",
+            "en": "The promotion will start in ",
+            "fr": "L'événement commencera en ",
+            "es": "La promoción comenzará en ",
+            "de": "Die Promotion beginnt in ",
+            "ar": "سوف يبدأ العرض في ",
+            "it": "La promozione inizierà alle ",
+            "pt": "A promoção começará em ",
+            "ja": "イベントは開始されておらず、イベントは00：00：00：00に開始されます。",
+            "ro": "Promotia incepe in"
+        },
+        "startInTime": {
+            "en": "00: 00: 00: 00",
+            "fr": "00: 00: 00: 00",
+            "es": "00: 00: 00: 00",
+            "de": "00: 00: 00: 00",
+            "ar": "00: 00: 00: 00",
+            "it": "00: 00: 00: 00",
+            "pt": "00: 00: 00: 00",
+            "ja": "00: 00: 00: 00",
+            "ro": "00: 00: 00: 00"
+        },
+        "ended": {
+            "cn": "对不起，活动已经结束了。",
+            "en": "Sorry, promotion ended.",
+            "fr": "Désolé, l'événement est fini.",
+            "es": "Lo sentimos, la promoción terminó.",
+            "de": "Entschuldigung, die Promotion wurde beendet.",
+            "ar": "عفوا, لقد انتهي العرض.",
+            "it": "Spiacente, la promozione è terminata.",
+            "pt": "Desculpe, a promoção terminou.",
+            "ja": "申し訳ありませんが、イベントは終了しました。",
+            "ro": "Scuze, promotia sa incheiat."
+        },
+        "spins": {
+            "cn": "剩余XXX机会",
+            "en": "XXX chances left",
+            "fr": "XXX chances restants",
+            "es": "Quedan XXX posibilidades",
+            "de": "XXX Chancen übrig",
+            "ar": "XXX فرصة متبقية",
+            "it": "XXX possibilità rimaste",
+            "pt": "XXX são possibilidades",
+            "ja": "残りXXXチャンス",
+            "ro": "XXX Sanse ramase"
+        },
+        "listTitle": {
+            "cn": "幸运用户",
+            "en": "Lucky Winners",
+            "fr": "Gagnants Chanceux",
+            "es": "Afortunados ganadores",
+            "de": "Glückliche Gewinner",
+            "ar": "الفائزون المحظوظون",
+            "it": "Vincitori Fortunati",
+            "pt": "Vencedores da Sorte",
+            "ja": "ラッキーユーザー",
+            "ro": "Castigatorii norocosi"
+        },
+        "fail": {
+            "cn": "幸运抽奖失败，请稍后再试。",
+            "en": "If the lucky draw fails, please try again later. ",
+            "fr": "Si le tirage au sort échoue, merci d'essayer à nouveau plus tard.",
+            "es": "Si falla el sorteo, inténtalo de nuevo más tarde.",
+            "de": "Wenn die Verlosung fehlschlägt, versuchen Sie es später erneut.",
+            "ar": "إذا لم يحالفك الحظ فالسحب المحظوظ ، يرجى المحاولة مرة أخرى في وقت لاحق.",
+            "it": "Se il sorteggio è fallito, riprova più tardi.",
+            "pt": "Se o sorteio falhar, tente novamente mais tarde.",
+            "ja": "ラッキードロー失敗しました。しばらくしてからもう一度お試しください。",
+            "ro": "Daca tragerea la sort esueaza, te rugam incearca din nou mai tarziu."
+        },
+        "unlucky": {
+            "cn": "哎呀，这次不幸运。 下次尝试一下",
+            "en": "Oops, ain't lucky this time. Try next time",
+            "fr": "Désolé, vous n'avez pas gagné de récompense cette fois. Essayez à nouveau plus tard",
+            "es": "Vaya, no has tenido suerte esta vez. Intentalo la próxima vez",
+            "de": "Hoppla, dieses mal nicht glücklich. Versuchen Sie es das nächste Mal.",
+            "ar": "عفوا، لم يحالفك الحظ هذه المرة. حاول فالمرة القادمة.",
+            "it": "Oops, questa volta non è fortunato. Prova la prossima volta.",
+            "pt": "Opa, não é sorte desta vez. Tente da próxima vez. ",
+            "ja": "ああ、アンラッキー。 次回お試しください",
+            "ro": "Oops, nu esti norocos de data asta. Incearca din nou data viitoare!"
+        },
+        "unluckyRG": {
+            "cn": "哎呀，这次不幸运。 下次尝试一下",
+            "en": "Oops, good luck next time !",
+            "fr": "Désolé, vous n'avez pas gagné de récompense cette fois. Essayez à nouveau plus tard",
+            "es": "Vaya, no has tenido suerte esta vez. Intentalo la próxima vez",
+            "de": "Hoppla, viel Glück beim nächsten Mal!",
+            "ar": "عفوا، حظا سعيدا فالمرة القادمة!",
+            "it": "Oops, questa volta non è fortunato. Prova la prossima volta.",
+            "pt": "Opa, boa sorte da próxima vez!",
+            "ja": "ああ、アンラッキー。 次回お試しください",
+            "ro": "Oops, mult noroc data viitoare"
+        },
+        "ruleBtn": {
+            "cn": "规则说明",
+            "en": "Rules",
+            "fr": "Règles",
+            "es": "Reglas",
+            "de": "Regeln",
+            "ar": "القواعد",
+            "it": "Regole",
+            "pt": "Regras",
+            "ja": "ルールの説明",
+            "ro": "Reguli"
+        },
+        "shareTitle": {
+            "cn": "分享获取更多游戏机会",
+            "en": "Share for more chances",
+            "fr": "Partagez pour plus de chances",
+            "es": "Comparte para tener más oportunidades",
+            "de": "Teilen Sie für mehr Chancen",
+            "ar": "شارك من أجل الحصول علي فرص اكثر",
+            "it": "Condividi per più possibilità",
+            "pt": "Compartilhe para mais chances",
+            "ja": "より多くのゲームの機会を得るために共有する",
+            "ro": "Distribuie pentru mai multe sanse"
+        },
+        "checkNow": {
+            "cn": "立即查看",
+            "en": "Check Now",
+            "fr": "Vérifiez-le",
+            "es": "Revisalo ahora",
+            "de": "Jetzt checken",
+            "ar": "تفقد الآن",
+            "it": "Controlla ora",
+            "pt": "Verifique Agora",
+            "ja": "今すぐ見る",
+            "ro": "Verifica acum"
+        },
+        "confirm": {
+            "cn": "确定",
+            "en": "OK",
+            "fr": "OK",
+            "es": "OK",
+            "de": "OK",
+            "ar": "حسنا",
+            "it": "OK",
+            "pt": "OK",
+            "ja": "確認する",
+            "ro": "OK"
+        },
+        "closeDialog": {
+            "cn": "去购物",
+            "en": "Go Shopping",
+            "fr": "Shoppez",
+            "es": "Ir de compras",
+            "de": "Einkaufen gehen",
+            "ar": "اذهب للتسوق",
+            "it": "Vai a fare shopping",
+            "pt": "Vai fazer compras",
+            "ja": "買い物に行く",
+            "ro": "Mergi la cumparaturi"
+        },
+        "noChance": {
+            "cn": "您今天已经用完了机会。 请明天再来。",
+            "en": "You've used up your chances today. Please come back tomorrow.",
+            "fr": "Vous avez utilisé toutes vos opportunités aujourd'hui. Revenez demain.",
+            "es": "Has agotado tus posibilidades de hoy. Por favor vuelve mañana.",
+            "de": "Sie haben Ihre Chancen heute aufgebraucht. Bitte komm morgen zurück.",
+            "ar": "لقد استنفذت جميع فرصك لليوم، من فضلك حاول غدا.",
+            "it": "Oggi hai esaurito le tue possibilità. Torni domani per favore.",
+            "pt": "Você usou suas chances hoje. Por favor volte amanhã.",
+            "ja": "今日のチャンスは尽きています。 明日もうやり直してください。",
+            "ro": "Ti-ai folosit sansele pentru astazi. Te rugam revino maine."
+        },
+        "lastChange": {
+            "cn": "您已经用完了抽奖的机会。 分享以获得额外的机会！",
+            "en": "You've used up your chance of playing. Share to get extra chances!",
+            "fr": "Vous n'avez plus aucune chance pour un tirage au sort maintenant, merci de partager pour augmenter vos chances d'obtenir un tirage au sort.",
+            "es": "Has agotado tu oportunidad de jugar. ¡Comparte para obtener oportunidades extra!",
+            "de": "Sie haben Ihre Chance zu spielen aufgebraucht. Teilen Sie, um zusätzliche Chancen zu erhalten!",
+            "ar": "لقد استنفذت جميع فرصك للعب، شارك لتحصل علي فرض أضافية.",
+            "it": "Hai esaurito le tue possibilità di giocare. Condividi per ottenere ulteriori opportunità!",
+            "pt": "Você usou sua chance de jogar. Compartilhe para ter mais chances!",
+            "ja": "お客様は抽選機会を使い果たしました。追加の機会を得るために共有しましょう！",
+            "ro": "Ti-ai folosit sansele de a te juca. Distribuie pentru mai multe sanse!"
+        },
+        "lastChangeRG": {
+            "cn": "您已经用完了抽奖的机会。 分享以获得额外的机会！",
+            "en": "You've used up your chance of playing. Share to get extra chances!",
+            "fr": "Vous n'avez plus aucune chance pour un tirage au sort maintenant, merci de partager pour obtenir un chance.",
+            "es": "Has agotado tu oportunidad de jugar. ¡Comparte para obtener oportunidades extra!",
+            "de": "Sie haben Ihre Chance zu spielen aufgebraucht. Teilen Sie, um zusätzliche Chancen zu erhalten!",
+            "ar": "لقد استنفذت جميع فرصك للعب، شارك لتحصل علي فرض أضافية.",
+            "it": "Hai esaurito le tue possibilità di giocare. Condividi per ottenere ulteriori opportunità!",
+            "pt": "Você usou sua chance de jogar. Compartilhe para ter mais chances!",
+            "ja": "お客様は抽選機会を使い果たしました。追加の機会を得るために共有しましょう！",
+            "ro": "Ti-ai folosit sansele de a te juca. Distribuie pentru mai multe sanse!"
+        },
+        "dialogSuccessTitle": {
+            "cn": "恭喜！",
+            "en": "Congrats!",
+            "fr": "Félicitations!",
+            "es": "Felicidades!",
+            "de": "Glückwunsch!",
+            "ar": "مبروك!",
+            "it": "Congratulazioni!",
+            "pt": "Parabéns!",
+            "ja": "おめでとうございます！",
+            "ro": "Felicitari!"
+        },
+        "dialogSku": {
+            "cn": "您赢了一个免费项目。 只需使用发给您帐户的优惠券即可免费购买（奖券将发放至个人中心）",
+            "en": "You won a FREE item. Just use the coupon issued to your account to purchase it for free. ",
+            "fr": "Vous avoir gagné un article GRATUIT. Utilisez le coupon envoyé dans votre compte pour l'acheter grattuitement.",
+            "es": "Has ganado un artículo GRATIS. Solo usa el cupón emitido a tu cuenta para comprarlo gratis",
+            "de": "Sie haben einen GRATIS Artikel gewonnen. Verwenden Sie einfach den auf Ihrem Konto ausgestellten Gutschein, um ihn kostenlos zu erwerben.",
+            "ar": "لقد فزت بمنتج مجاني! فقط قم باستخدام الكوبون المضاف الي حسابك لتحصل علي المنتج بالمجان",
+            "it": "Hai vinto un articolo GRATUITO. Basta usare il coupon emesso sul tuo account per acquistarlo gratuitamente.",
+            "pt": "Você ganhou um item GRÁTIS. Basta usar o cupom emitido para sua conta para comprá-lo gratuitamente.",
+            "ja": "無料のプロジェクトに勝ちました。 アカウントに置かれたクーポンを使用して無料で購入します（クーポンはパーソナルセンターに置かれました。）。",
+            "ro": "Ai castigat un produs gratuit! Doar foloseste cuponul primit in contul tau pentru al achizitiona gratuit!"
+        },
+        "dialogPoints": {
+            "cn": "您赢了XXX YYY点。 您可以在“优惠券和积分”页面查看",
+            "en": "You won XXX YYY Points.",
+            "fr": "Vous avez gagné XXX Points YYY en récompense.",
+            "es": "Ganaste XXX puntos YYY",
+            "de": "Sie haben XXX YYY-Punkte gewonnen. ",
+            "ar": "XXX YYY نقطة. يمكنك تفقدها في حسابك.",
+            "it": "Hai vinto XXX YYY Punti.",
+            "pt": "Você ganhou XXX YYY Points.",
+            "ja": "お客様はXXX YYYポイントを獲得しました。 「クーポンとポイントページ」でそれを見ることができます。",
+            "ro": "Ai castigat XXX YYY Puncte."
+        },
+        "dialogFreeShipping": {
+            "cn": "你赢得了一张免费送货券。",
+            "en": "You've won a FREE SHIPPING coupon. ",
+            "fr": "Vous avez gagné un coupon de LIVRAISON GRATUITE en récompense.",
+            "es": "Ganaste un cupón de ENVÍO GRATIS.",
+            "de": "Sie haben einen GRATIS VERSAND-Gutschein erhalten.",
+            "ar": "يمكنك تفقده فصفحة ' كوبونات و نقاط'",
+            "it": "Hai vinto un coupon di SPEDIZIONE GRATUITA.",
+            "pt": "Você ganhou um cupom de ENTREGA GRÁTIS.",
+            "ja": "送料無料のクーポンを獲得しました。",
+            "ro": "Ai castigat un cupon pentru TRANSPORT GRATUIT"
+        },
+        "dialogCouponDecreaseZF": {
+            "cn": "您赢得了XXX优惠券。 您可以在“优惠券和积分”页面查看",
+            "en": "You won a YYXX off YYZZ coupon.",
+            "fr": "Vous avez gagné un XXYY DÈS ZZYY.",
+            "es": "Ganaste un cupón YYXX EN COMPRAS DE YYZZ.",
+            "de": "Sie haben einen YYXX auf YYZZ -Gutschein gewonnen.",
+            "ar": "You won a YYXX off YYZZ coupon. ",
+            "it": "Hai vinto un coupon di YYXX off YYZZ.",
+            "pt": "Você ganhou um cupom YYXX off YYZZ.",
+            "ja": "お客様はXXXクーポンを獲得しました。 「クーポンとポイントページ」でそれを見ることができます。",
+            "ro": "Ai castigat un YYXX cupon YYZZ reducere"
+        },
+        "dialogCouponDecreaseRG": {
+            "cn": "您赢得了XXX优惠券。 您可以在“优惠券和积分”页面查看",
+            "en": "You won a YYXX off YYZZ coupon.",
+            "fr": "Vous avez gagné un coupon de XXYY DÈS ZZYY en récompense.",
+            "es": "Usted ganó un cupón de YYXX OFF de YYZZ.",
+            "de": "Sie haben einen YYXX auf YYZZ Gutsheine erhalten.",
+            "ar": "You won a YYXX off YYZZ coupon.",
+            "it": "Hai vinto un coupon di YYXX off YYZZ.",
+            "pt": "Você ganhou um cupom YYXX off YYZZ.",
+            "ja": "お客様はXXXクーポンを獲得しました。 「クーポンとポイントページ」でそれを見ることができます。",
+            "ro": "Ai castigat un YYXX cupon YYZZ reducere"
+        },
+        "dialogCouponPercentZF": {
+            "cn": "您赢得了XXX优惠券。 您可以在“优惠券和积分”页面查看",
+            "en": "You won a XX% off YYZZ coupon.",
+            "fr": "Vous avez gagné un -XX% DÈS ZZYY.",
+            "es": "Ganaste un cupón EN COMPRAS DE XX% DTO YYZZ.",
+            "de": "Sie haben einen -XX% auf YYZZ -Gutschein gewonnen. ",
+            "ar": "You won a XX% off YYZZ coupon.",
+            "it": "Hai vinto un coupon di XX% off YYZZ.",
+            "pt": "Você ganhou um cupom XX% off YYZZ.",
+            "ja": "お客様はXXXクーポンを獲得しました。 「クーポンとポイントページ」でそれを見ることができます。",
+            "ro": "Ai castigat un cupon YYZZ de xx% reducere"
+        },
+        "dialogCouponPercentRG": {
+            "cn": "您赢得了XXX优惠券。 您可以在“优惠券和积分”页面查看",
+            "en": "You won a XX% off YYZZ coupon.",
+            "fr": "Vous avez gagné un coupon de XX% DE REMISE ZZYY en récompense.",
+            "es": "Usted ganó un cupón de XX% OFF de YYZZ.",
+            "de": "Sie haben einen -XX% auf YYZZ Gutsheine erhalten.",
+            "ar": "You won a XX% off YYZZ coupon.",
+            "it": "Hai vinto un coupon di XX% off YYZZ.",
+            "pt": "Você ganhou um cupom XX% off YYZZ.",
+            "ja": "お客様はXXXクーポンを獲得しました。 「クーポンとポイントページ」でそれを見ることができます。",
+            "ro": "Ai castigat un cupon YYZZ de xx% reducere"
+        },
+        "dialogSuccessContent1": {
+            "cn": "您可以在“优惠券和积分”页面查看",
+            "en": "You can check it at 'Coupons & Points' page.",
+            "fr": "Veuillez les vérifier dans la page 'Coupons & Points'.",
+            "es": "Puedes consultarlo en la página 'Cupones y Puntos'.",
+            "de": "Sie können es auf der Seite 'Gutscheine & Punkte' checken",
+            "ar": "نقطة. يمكنك تفقدها فصفحة ' كوبونات و نقاط'",
+            "it": "Puoi verificarlo nella pagina 'Coupon & Punti' ",
+            "pt": "Você pode verificá-lo na página de 'cupons e Pontos'.",
+            "ja": "「クーポンとポイントページ」でチェックすることができます。",
+            "ro": "Il poti verifica pe pagina 'Puncte & Cupoane'"
+        },
+        "dialogSuccessContent2": {
+            "cn": "您可以在账户里面查看",
+            "en": "You can check it in your account.",
+            "fr": "Veuillez les vérifier dans votre compte.",
+            "es": "Puedes consultarlo en la página 'Cupones y Puntos",
+            "de": "Sie können es auf Ihrem Konto checken. ",
+            "ar": "نقطة. يمكنك تفقدها في حسابك.",
+            "it": "Puoi verificarlo nella pagina 'Coupon & Punti' ",
+            "pt": "Você pode verificá-la em sua conta.",
+            "ja": "アカウントでチェックすることができます。",
+            "ro": "Il poti verifica in contul tau"
+        },
+        "pointerText": {
+            "cn": "旋转赢",
+            "en": "SPIN",
+            "fr": "TIREZ",
+            "es": "GIRA",
+            "de": "DREH",
+            "ar": "أدر",
+            "it": "GIRA",
+            "pt": "GIRO",
+            "ja": "回転勝利",
+            "ro": "INVARTE"
+        },
+        "pointText": {
+            "cn": "XX YY Points",
+            "en": "XX YY Points",
+            "fr": "XX Points YY",
+            "es": "XX Puntos YY",
+            "de": "XX YY Punkte",
+            "ar": "XX YY نقاط",
+            "it": "XX YY Punti",
+            "pt": "XX YY pontos",
+            "ja": "XX YYポイント",
+            "ro": "XX YY Puncte"
+        },
+        "couponTextDecrease": {
+            "cn": "a YYXX off YYZZ coupon",
+            "en": "a YYXX off YYZZ coupon",
+            "fr": "un coupon de -XXYY DÈS ZZYY",
+            "es": "un cupón YYXX off YYZZ",
+            "de": "ein YYXX auf YYZZ Gutschein",
+            "ar": "كوبون بقيمة YYXX off YYZZ",
+            "it": "un coupon di YYXX off YYZZ",
+            "pt": "um cupom YYXX off YYZZ",
+            "ja": "クーポン券：YYZZ以上ご购入で YYXX 割引",
+            "ro": "un cupon YYZZ reducere YYXX"
+        },
+        "couponTextPercent": {
+            "cn": "a XX% off YYZZ coupon",
+            "en": "a XX% off YYZZ coupon",
+            "fr": "un coupon de XX% DE REMISE",
+            "es": "un cupón XX% off YYZZ",
+            "de": "ein XX% auf YYZZ Gutschein",
+            "ar": "كوبون بقيمة XX% off YYZZ",
+            "it": "un coupon di XX% off YYZZ",
+            "pt": "um cupom XX% off YYZZ",
+            "ja": "クーポン券：YYZZ以上ご购入で　XX% 割引",
+            "ro": "Un cupon YYZZ rde reducere XX%"
+        },
+        "skuText": {
+            "cn": "a free item",
+            "en": "a free item",
+            "fr": "un article gratuit",
+            "es": "un artículo gratis",
+            "de": "ein Gratis Artikel",
+            "ar": "منتج مجاني",
+            "it": "un articolo gratuito",
+            "pt": "um item grátis",
+            "ja": "無料アイテム",
+            "ro": "un produs gratuit"
+        },
+        "freeCouponText": {
+            "cn": "一张免邮券",
+            "en": "a Free Shipping coupon",
+            "fr": "un coupon de livraison gratuite",
+            "es": "un cupón de envío gratis",
+            "de": "einer Gratis Versand Gutschein",
+            "ar": "a Free Shipping coupon",
+            "it": "un coupon di Spedizione Gratuita",
+            "pt": "um Cupom de Entrega Grátis",
+            "ja": "一枚送料無料のクーポン",
+            "ro": "un cupon de transport gratuit"
+        },
+        "winningTips": {
+            "cn": "因coupon发送量较大，会存在1 min左右的延迟",
+            "en": "There will be a one-minute delay due to the mass sending of coupons.",
+            "fr": "Il y aura un délai d'une minute en raison de l'envoi massif de coupons.",
+            "es": "Habrá un retraso de un minuto debido al envío masivo de cupones.",
+            "de": "Aufgrund des Massenversands von Gutscheinen wird es eine Minute dauern.",
+            "ar": "سيكون هناك تأخير لمدة دقيقة واحدة بسبب الإرسال مقدار كبيرمن القسائم.",
+            "it": "Ci sarà un ritardo di un minuto a causa dell'invio di coupon di massa.",
+            "pt": "Haverá um atraso de um minuto devido ao envio em massa de cupons.",
+            "ja": "大量のクーポンが送信されるため、約1分の遅延があります。",
+            "ro": "Va exista o interziere de un minut datorita cupoanelor trimise in masa"
+        },
+        "shareSuccessTips1": {
+            "cn": "分享成功，获得1次抽奖机会",
+            "en": "Shared successfully & got an extra opportunity to play the lucky draw.",
+            "fr": "Partagé avec succès et obtenu une occasion supplémentaire de jouer le tirage au sort.",
+            "es": "Compartí con éxito  &  tuve una oportunidad extra para jugar el sorteo.",
+            "de": "Teilen erfolgreich. Sie haben eine Gelegenheit gewonnen, um an der Verlosung teilzunehmen.",
+            "ar": "تمت المشاركة بنجاح وحصلت على فرصة إضافية للعب في السحب.",
+            "it": "Condiviso con successo & ottenuto un'ulteriore opportunità per giocare il lucky draw.",
+            "pt": "Compartilhado com sucesso e tenho uma oportunidade extra para jogar o sorteio.",
+            "ja": "成功に共有しました。ラッキードローチャンスを1つ獲得する",
+            "ro": "Distribuit cu succes & si ai primit o sansa in plus in tragerea la sorti!"
+        },
+        "shareSuccessTips2": {
+            "cn": "分享成功！",
+            "en": "Shared successfully!",
+            "fr": "Partagé avec succès!",
+            "es": "Compartido con éxito!",
+            "de": "Erfolgreich geteilt",
+            "ar": "تمت المشاركة بنجاح وحصلت على فرصة إضافية للعب في السحب.",
+            "it": "Condiviso con successo!",
+            "pt": "Compartilhado com sucesso e tenho uma oportunidade extra para jogar o sorteio.",
+            "ja": "成功に共有しました！",
+            "ro": "Distribuit cu succes!"
+        },
+        "points_left": {
+            "cn": "剩余Z积分",
+            "en": "Z-Points left",
+            "fr": "Z-Points restants",
+            "es": "Puntos Z restantes",
+            "de": "Z-Punkte übrig",
+            "ar": "Z-Points left",
+            "it": "Punti Z Lasciati",
+            "pt": "Pontos Z restantes",
+            "ja": "残りのZポイント",
+            "ro": "Puncte Z ramase"
+        },
+        "points_each_draw": {
+            "cn": "每20积分兑换一次抽奖机会",
+            "en": "Exchange 20 Points for one prize draw",
+            "fr": "Échangez 20 points pour tenter de gagner un prix",
+            "es": "Intercambia 20 puntos por un sorteo",
+            "de": "Tauschen Sie 20 Punkte gegen eine Gewinnspiel",
+            "ar": "Exchange 20 Points for one prize draw",
+            "it": "Scambia 20 punti per una chance a giocare il tiraggio a sorte.",
+            "pt": "Troque 20 pontos por empate",
+            "ja": "20ポイントを1つの抽選チャンスに交換します",
+            "ro": "Schimba 20 de Puncte pentru o tragere la sort pentru un premiu"
+        },
+        "points_use_tips": {
+            "cn": "您的抽奖机会已消耗完，积分已不足20 z points ，无法进行抽奖，请进行分享获取抽奖机会",
+            "en": "Your chances have all been used up. You don’t have 20 Z-Points and therefore cannot try to draw a prize. Please share to get more prize draw chances.",
+            "fr": "Vos chances sont toutes épuisées. Vous ne disposez pas de 20 Z-Points et ne pouvez donc pas essayer de tirer un prix. Veuillez partager afin d'obtenir d'avantage de chances de tirage au sort.",
+            "es": "Tus oportunidades se han agotado. No tienes 20 Z-Points y, por lo tanto, no puedes intentar ganar un premio. Por favor, comparte para obtener más oportunidades de sorteo.",
+            "de": "Ihre Chancen sind alle aufgebraucht. Sie haben keine 20 Z-Punkte und können daher nicht versuchen, einen Preis zu ziehen. Bitte teilen Sie, um mehr Gewinnchancen zu erhalten.",
+            "ar": "Your chances have all been used up. You don’t have 20 Z-Points and therefore cannot try to draw a prize. Please share to get more prize draw chances.",
+            "it": "Le tue chance sono esaurite. Non hai 20 punti Z e non puoi giocare il tiraggio a sorte. Si prega di condividere per ottenere più chance .",
+            "pt": "Suas oportunidades estão esgotadas. Você não tem 20 Z-Points e, portanto, não pode tentar ganhar um prêmio. Compartilhe para mais oportunidades de doação.",
+            "ja": "あなたのチャンスはすべて使い尽くされました。 Zポイントが20個ないため、賞品を獲得することはできません。共有して賞品抽選のチャンスを増やしてください。",
+            "ro": "Toate sansele tale au fost folosite. Nu ai 20 de puncte deci nu mai poti participa la tragerea la sort. Te rugam distribuie pentru a primii mai multe sanse in tragerea la sorti. "
+        }
+    }
+}

@@ -1,0 +1,161 @@
+{% set suffix ='rem'%}
+{% set remUnit = 75 %}
+
+{%
+    set pageData = {
+        from_radio_type: data.from_radio_type|default(0),
+        base_border_color: data.base_border_color|default(''),
+        base_radius_size: (data.base_radius_size|default(4)/remUnit)|number_format(3, '.')~suffix,
+        base_border_width: (data.base_border_width|default(0)/remUnit)|number_format(3, '.')~suffix,
+        base_magin_top: (data.base_magin_top|default(0)/remUnit)|number_format(3, '.')~suffix,
+        base_magin_bottom: (data.base_magin_bottom|default(16)/remUnit)|number_format(3, '.')~suffix,
+
+        imgHeight2: (data.imgHeight2|default(200)/remUnit)|number_format(3, '.')~suffix,
+        imgTitle21: data.imgTitle21 is not null ? data.imgTitle21 : '',
+        imgLink21: data.imgLink21 is not null ? data.imgLink21 : 'javascript:;',
+        imgDescribe21: data.imgDescribe21 is not null ? data.imgDescribe21 : '',
+        resourceImg21: data.resourceImg21,
+        resourceImg21Width: data.resourceImg21Width,
+        resourceImg21Height: data.resourceImg21Height,
+
+        imgLink22: data.imgLink22 is not null ? data.imgLink22 : 'javascript:;',
+        imgTitle22: data.imgTitle22 is not null ? data.imgTitle22 : '',
+        imgDescribe22: data.imgDescribe22 is not null ? data.imgDescribe22 : '',
+        resourceImg22: data.resourceImg22,
+    }
+%}
+
+<div class="geshop-component-box component-drag geshop-U000198-default geshop-U000198-default-{{ pageInstanceId }}  geshop-component-goods component-sync clearfix geshop-gb-component ui-{{ pageInstanceId }}" data-gid="U000198_default" data-key="U000198" data-id="{{ pageInstanceId }}" style="padding: {{ 24 / 75|number_format(3, '.') }}rem {{ 20 / 75|number_format(3, '.') }}rem;">
+    
+    {{ include('style.twig') }}
+
+    <div class="gs-ad-default-content swiper-container swiper-container-horizontal swiper-container-free-mode ">
+        <div class="clearfix swiper-wrapper gs-ad-thumb-item {% if data.base_is_border == '1' %} base_border {% endif %} {% if data.base_is_radius == '1' %} base_border_radius {% endif %} {% if pageData.from_radio_type == '0' %} thumb_col_1 {% elseif pageData.from_radio_type == '1' %} thumb_col_2 {% elseif pageData.from_radio_type == '2' %} thumb_col_3  {% elseif pageData.from_radio_type == '3' %} thumb_col_4 {% endif %}" style="margin-left: 0; transition-duration: 300ms; transform: translate3d(0px, 0px, 0px);">
+
+            {% if pageData.from_radio_type == '0' %}
+                <div class="ad-list-item">
+                    {% if data.resourceImg1 %}
+                        <a class="gs-ad-thumb-img" {% if data.imgLink1 %}href="{{ data.imgLink1 }}"{% endif %} target="_special">
+                            <img class="gs-resource-img" src="{{ data.resourceImg1 }} " style="width: {{ 710 / 75|number_format(3, '.') }}rem; height: {% if data.resourceImg1Width and data.resourceImg1Height %} {{ (710 * (data.resourceImg1Height|default(200)) / (data.resourceImg1Width|default(710)))|round(0, 'floor') / 75|number_format(3, '.') }}rem {% else %} {{ data.imgHeight1|default(200) / 75|number_format(3, '.') }}rem {% endif %}" alt="{{ data.imgDescribe1 }}" title="{{ data.imgTitle1 }}"  />
+                        </a>
+                    {% else %}
+                        <a class="gs-ad-thumb-img" href="javascript:;" style="width: {{ 710 / 75 |number_format(3, '.') }}rem">
+                            <img src="{{ data.default.ad_default_bg_wap }}" style="width: 100%; height: 100%; display: block;" />
+                        </a>
+                    {% endif %}
+                </div>
+            {% elseif pageData.from_radio_type == '1' %}
+                <div class="ad-list-item swiper-slide">
+                    {% if data.resourceImg21 %}
+                        <a class="gs-ad-thumb-img thumb-column2" {% if data.imgLink21 %}href="{{ data.imgLink21 }}"{% endif %} target="_special">
+                            <img class="gs-resource-img" src="{{ data.resourceImg21 }}" style="width: {{ 350 / 75|number_format(3, '.') }}rem; height: {% if data.resourceImg21Width and data.resourceImg21Height %} {{ (350 * (data.resourceImg21Height|default(200)) / (data.resourceImg21Width|default(350)))|round(0, 'floor') / 75|number_format(3, '.') }}rem {% else %} {{ data.imgHeight2|default(200) / 75|number_format(3, '.') }}rem {% endif %}" alt="{{ data.imgDescribe21 }}" title="{{ data.imgTitle21 }}" />
+                        </a>
+                    {% else %}
+                        <a class="gs-ad-thumb-img thumb-column2" href="javascript:;" style="width: {{ 350 / 75|number_format(3, '.') }}rem">
+                            <img src="{{ data.default.ad_default_bg_wap2 }}" style="width: 100%; height: 100%; display: block;" />
+                        </a>
+                    {% endif %}
+                </div>
+
+                <div class="ad-list-item swiper-slide" style="margin-right: 0;">
+                    {% if data.resourceImg22 %}
+                        <a class="gs-ad-thumb-img thumb-column2" {% if data.imgLink22 %}href="{{ data.imgLink22 }}"{% endif %} target="_special">
+                            <img class="gs-resource-img" src="{{ data.resourceImg22 }}" style="width: {{ 350 / 75|number_format(3, '.') }}rem; height: {% if data.resourceImg21Width and data.resourceImg21Height %} {{ (350 * (data.resourceImg21Height|default(200)) / (data.resourceImg21Width|default(350)))|round(0, 'floor') / 75|number_format(3, '.') }}rem; {% else %} {{ data.imgHeight2|default(200) / 75 | number_format(3, '.') }}rem; {% endif %}" alt="{{ data.imgDescribe22 }}" title="{{ data.imgTitle22 }}" />
+                        </a>
+                    {% else %}
+                        <a class="gs-ad-thumb-img thumb-column2" href="javascript:;" style="width: {{ 350 / 75|number_format(3, '.') }}rem">
+                            <img src="{{ data.default.ad_default_bg_wap2 }}" style="width: 100%; height: 100%; display: block;" />
+                        </a>
+                    {% endif %}
+                </div>
+            {% elseif pageData.from_radio_type == '2' %}
+                {# 三列 #}
+                <div class="ad-list-item swiper-slide swiper-slide-active">
+                    {% if data.resourceImg31 %}
+                        <a class="gs-ad-thumb-img thumb-column3" {% if data.imgLink31 %}href="{{ data.imgLink31 }}"{% endif %} target="_special">
+                            <img class="gs-resource-img" src="{{ data.resourceImg31 }}" style="width: {{ 300 / 75|number_format(3, '.') }}rem; height: {% if data.resourceImg31Width and data.resourceImg31Height %} {{ (300 * (data.resourceImg31Height|default(200)) / (data.resourceImg31Width|default(300)))|round(0, 'floor') / 75|number_format(3, '.') }}rem;  {% else %} {{ data.imgHeight3|default(200) / 75|number_format(3, '.') }}rem; {% endif %}" alt="{{ data.imgDescribe31 }}" title="{{ data.imgTitle31 }}" />
+                        </a>
+                    {% else %}
+                        <a class="gs-ad-thumb-img thumb-column3" href="javascript:;" style="width: {{ 300 / 75|number_format(3, '.') }}rem">
+                            <img src="{{ data.default.ad_default_bg_wap3 }}" style="width: 100%; height: 100%; display: block;" />
+                        </a>
+                    {% endif %}
+                </div>
+
+                <div class="ad-list-item swiper-slide swiper-slide-active">
+                    {% if data.resourceImg32 %}
+                        <a class="gs-ad-thumb-img thumb-column3" {% if data.imgLink32 %}href="{{ data.imgLink32 }}"{% endif %} target="_special">
+                            <img class="gs-resource-img" src="{{ data.resourceImg32 }}" style="width: {{ 300 / 75|number_format(3, '.') }}rem; height: {% if data.resourceImg31Width and data.resourceImg31Height %} {{ (300 * (data.resourceImg31Height|default(200)) / (data.resourceImg31Width|default(300)))|round(0, 'floor') / 75|number_format(3, '.') }}rem;  {% else %} {{ data.imgHeight3|default(200) / 75|number_format(3, '.') }}rem; {% endif %}" alt="{{ data.imgDescribe32 }}" title="{{ data.imgTitle32 }}"  />
+                        </a>
+                    {% else %}
+                        <a class="gs-ad-thumb-img thumb-column3" href="javascript:;" style="width: {{ 300 / 75|number_format(3, '.') }}rem">
+                            <img src="{{ data.default.ad_default_bg_wap3 }}" style="width: 100%; height: 100%; display: block;" />
+                        </a>
+                    {% endif %}
+                </div>
+
+                <div class="ad-list-item swiper-slide">
+                    {% if data.resourceImg33 %}
+                        <a class="gs-ad-thumb-img thumb-column3" {% if data.imgLink33 %}href="{{ data.imgLink33 }}"{% endif %} target="_special">
+                            <img class="gs-resource-img" src="{{ data.resourceImg33 }}" style="width: {{ 300 / 75|number_format(3, '.') }}rem; height: {% if data.resourceImg31Width and data.resourceImg31Height %} {{ (300 * (data.resourceImg31Height|default(200)) / (data.resourceImg31Width|default(300)))|round(0, 'floor') / 75|number_format(3, '.') }}rem;  {% else %} {{ data.imgHeight3|default(200) / 75|number_format(3, '.') }}rem; {% endif %}" alt="{{ data.imgDescribe33 }}" title="{{ data.imgTitle33 }}" />
+                        </a>
+                    {% else %}
+                        <a class="gs-ad-thumb-img thumb-column3" href="javascript:;" style="width: {{ 300 / 75|number_format(3, '.') }}rem">
+                            <img src="{{ data.default.ad_default_bg_wap3 }}" style="width: 100%; height: 100%; display: block;" />
+                        </a>
+                    {% endif %}
+                </div>
+
+            {% elseif pageData.from_radio_type == '3' %}
+                {# 四列 #}
+                <div class="ad-list-item swiper-slide">
+                    {% if data.resourceImg41 %}
+                        <a class="gs-ad-thumb-img thumb-column4" {% if data.imgLink41 %}href="{{ data.imgLink41 }}"{% endif %} target="_special">
+                            <img class="gs-resource-img" src="{{ data.resourceImg41 }}" style="width: {{ 300 / 75|number_format(3, '.') }}rem; height: {% if data.resourceImg41Width and data.resourceImg41Height %} {{ (300 * (data.resourceImg41Height|default(200)) / (data.resourceImg41Width|default(300)))|round(0, 'floor') / 75|number_format(3, '.') }}rem; {% else %} {{ data.imgHeight4|default(200) / 75|number_format(3, '.') }}rem; {% endif %}" alt="{{ data.imgDescribe41 }}" title="{{ data.imgTitle41 }}" />
+                        </a>
+                    {% else %}
+                        <a class="gs-ad-thumb-img thumb-column4" href="javascript:;" style="width: {{ 300 / 75|number_format(3, '.') }}rem;">
+                            <img src="{{ data.default.ad_default_bg_wap3 }}" style="width: 100%; height: 100%; display: block;" />
+                        </a>
+                    {% endif %}
+                </div>
+
+                <div class="ad-list-item swiper-slide">
+                    {% if data.resourceImg42 %}
+                        <a class="gs-ad-thumb-img thumb-column4" {% if data.imgLink42 %}href="{{ data.imgLink42 }}"{% endif %} target="_special">
+                            <img class="gs-resource-img" src="{{ data.resourceImg42 }}" style="width: {{ 300 / 75|number_format(3, '.') }}rem; height: {% if data.resourceImg41Width and data.resourceImg41Height %} {{ (300 * (data.resourceImg41Height|default(200)) / (data.resourceImg41Width|default(300)))|round(0, 'floor') / 75|number_format(3, '.') }}rem; {% else %} {{ data.imgHeight4|default(200) / 75|number_format(3, '.') }}rem; {% endif %}" alt="{{ data.imgDescribe42 }}" title="{{ data.imgTitle42 }}" />
+                        </a>
+                    {% else %}
+                        <a class="gs-ad-thumb-img thumb-column4" href="javascript:;" style="width: {{ 300 / 75|number_format(3, '.') }}rem">
+                            <img src="{{ data.default.ad_default_bg_wap3 }}" style="width: 100%; height: 100%; display: block;" />
+                        </a>
+                    {% endif %}
+                </div>
+
+                <div class="ad-list-item swiper-slide">
+                    {% if data.resourceImg43 %}
+                        <a class="gs-ad-thumb-img thumb-column4" {% if data.imgLink43 %}href="{{ data.imgLink43 }}"{% endif %} target="_special">
+                            <img class="gs-resource-img" src="{{ data.resourceImg43 }}" style="width: {{ 300 / 75|number_format(3, '.') }}rem; height: {% if data.resourceImg41Width and data.resourceImg41Height %} {{ (300 * (data.resourceImg41Height|default(200)) / (data.resourceImg41Width|default(300)))|round(0, 'floor') / 75|number_format(3, '.') }}rem; {% else %} {{ data.imgHeight4|default(200) / 75|number_format(3, '.') }}rem; {% endif %}" alt="{{ data.imgDescribe43 }}" title="{{ data.imgTitle43 }}" />
+                        </a>
+                    {% else %}
+                        <a class="gs-ad-thumb-img thumb-column4" href="javascript:;" style="width: {{ 300 / 75|number_format(3, '.') }}rem">
+                            <img src="{{ data.default.ad_default_bg_wap3 }}" style="width: 100%; height: 100%; display: block;" />
+                        </a>
+                    {% endif %}
+                </div>
+
+                <div class="ad-list-item swiper-slide">
+                    {% if data.resourceImg44 %}
+                        <a class="gs-ad-thumb-img thumb-column4" {% if data.imgLink44 %}href="{{ data.imgLink44 }}"{% endif %} target="_special">
+                            <img class="gs-resource-img" src="{{ data.resourceImg44 }}" style="width: {{ 300 / 75|number_format(3, '.') }}rem; height: {% if data.resourceImg41Width and data.resourceImg41Height %} {{ (300 * (data.resourceImg41Height|default(200)) / (data.resourceImg41Width|default(300)))|round(0, 'floor') / 75|number_format(3, '.') }}rem; {% else %} {{ data.imgHeight4|default(200) / 75|number_format(3, '.') }}rem; {% endif %}" alt="{{ data.imgDescribe44 }}" title="{{ data.imgTitle44 }}" />
+                        </a>
+                    {% else %}
+                        <a class="gs-ad-thumb-img thumb-column4" href="javascript:;" style="width: {{ 300 / 75|number_format(3, '.') }}rem">
+                            <img src="{{ data.default.ad_default_bg_wap3 }}" style="width: 100%; height: 100%; display: block;" />
+                        </a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

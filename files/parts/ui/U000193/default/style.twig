@@ -1,0 +1,59 @@
+<!-- embed stylesheet begin -->
+<style type="text/css">
+.geshop-U000193-default-{{ pageInstanceId }} .email-wrap{
+    {% if data.isEditEnv == 1 %} display:block; {% endif %}
+    width: {{data.component_width | default(780)}}px;
+    height: {{data.component_height | default(480)}}px;
+    {% if data.component_width %}
+      margin-left: -{{data.component_width /2}}px;
+    {% else %}
+       margin-left: -390px;
+    {% endif %}
+    background-image: url({{data.component_bgImage | default('https://geshoptest.s3.amazonaws.com/uploads/CwGti7xZkrHY2s5qWveInOhP4MQyE6Fd.png')}})
+}
+.geshop-U000193-default-{{ pageInstanceId }} .email-wrap .input-wrap{
+  
+  height: {{data.emailarea_height | default(40)}}px;
+  top: {{data.emailarea_pt | default(345)}}px;
+  left: {{data.emailarea_pl | default(120)}}px;
+}
+.geshop-U000193-default-{{ pageInstanceId }} .email-wrap .input-wrap input{
+  width: {{data.emailarea_width | default(400)}}px;
+}
+
+.geshop-U000193-default-{{ pageInstanceId }} .email-wrap .input-wrap .submit-btn{
+  background-color: {{data.btn_bgColor | default('#333333')}};
+  color: {{data.btn_fontColor | default('#FFFFFF')}};
+  width: {{data.btn_width | default(140)}}px;
+  height: {{data.emailarea_height | default(40)}}px;
+  line-height: {{data.emailarea_height | default(40)}}px;
+  font-size: {{data.btn_fontSize | default(20)}}px;
+}
+.geshop-U000193-default-{{ pageInstanceId }} .success-wrap{
+  width: {{data.component_width | default(780)}}px;
+  height: {{data.component_height | default(480)}}px;
+  {% if data.component_width %}
+      margin-left: -{{data.component_width /2}}px;
+    {% else %}
+       margin-left: -390px;
+    {% endif %}
+  {% if data.success_bgImage %} background-image: url({{data.success_bgImage }}); {% endif %}
+}
+.geshop-U000193-default-{{ pageInstanceId }} .success-wrap .title{
+  font-size: {{data.success_titleFontsize | default(56)}}px;
+  padding-top: {{data.success_titlePt | default(124)}}px;
+  color: {{data.success_fontColor | default('#333')}};
+}
+.geshop-U000193-default-{{ pageInstanceId }} .success-wrap .content{
+  font-size: {{data.success_contentFontsize | default(24)}}px;
+  padding-top: {{data.success_contentPt | default(15)}}px;
+  color: {{data.success_fontColor | default('#333')}};
+  
+}
+.geshop-U000193-default-{{ pageInstanceId }} .success-wrap .link{
+  margin-top: {{data.success_btnPt | default(64)}}px;
+  color: {{data.success_btnFontColor | default('#fff')}};
+  font-size: {{data.success_btnFontSize | default(20)}}px;
+}
+</style>
+<!-- embed stylesheet end -->

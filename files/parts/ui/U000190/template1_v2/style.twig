@@ -1,0 +1,80 @@
+{%
+    set space = '#U000190_' ~ pageInstanceId ~ ' .geshop-U000190-template1-v2-body'
+%}
+
+{{space}} {
+    background-color: {{data.box_bg_color |default('#f8f8f8')}};
+    margin-bottom: {{data.box_margin_bottom | default(32)}}px;
+    overflow: hidden;
+}
+
+{# 购买弹层 #}
+{{space}} .shop-now-container {
+    color: {{data.shopNowFontColor | default('#000000')}};
+    font-size: {{data.shopNowFontSize | default(16) }}px;
+    background-color: {{data.btnBgColor | default('#ffffff')}};
+    border-color: {{data.btnBorderColor | default('#000')}};
+}
+{{space}} .shop-now-container .shop-now-text {
+    color: {{data.shopNowFontColor | default('#000000') }};
+    font-size: {{data.shopNowFontSize | default(16) }}px;
+}
+{{space}} .shop-now-container .bag-img {
+    background-image: url({{data.shopIconImg | default('https://geshoptest.s3.amazonaws.com/uploads/OmoKtEqZh8027cfkU56VTJaYi1WSIXRQ.png')}});
+}
+
+{# 营销文字 #}
+{{space}} .geshop-goods-promotions-more em {
+    color: {{ data.saleInfoFontColor | default('#000') }};
+}
+
+{# 销售价 #}
+{{space}} .price-style1 {
+    color: {{ data.shopPriceTitleColor | default('#000000') }};
+    font-size: {{ data.shopPriceTitleFontSize | default(16) }}px;
+}
+{{space}} .geshop-shop-price {
+    font-size: {{ data.shop_price_size | default(16) }}px;
+}
+
+{# 市场价 #}
+{{space}} .price-style2 {
+    color: {{ data.originalPriceTitleColor | default('#BCBCBC') }};
+    font-size: {{ data.originalPriceTitleFontSize | default(14) }}px;
+}
+{{space}} .geshop-market-price {
+    color: {{ data.market_price_color | default('#BCBCBC') }};
+    font-size: {{ data.market_price_size | default(14) }}px;
+}
+{% include '@app/files/parts/formTemplate/components/margin-dl-style.twig' with{'space':space} %}
+
+@media (max-width: 767px) {
+
+    {# 销售价 #}
+    {{space}} .price-style1 {
+        font-size: {{ data.shopPriceTitleFontSize_m | default(15) }}px;
+    }
+
+    {# 市场价 #}
+    {{space}} .price-style2 {
+        font-size: {{ data.originalPriceTitleFontSize_m | default(14) }}px;
+    }
+
+    {{space}} .geshop-market-price {
+
+        font-size: {{ data.market_price_size_m | default(14) }}px;
+    }
+    {{space}} .geshop-shop-price {
+        font-size: {{ data.shop_price_size_m | default(15) }}px;
+    }
+
+
+    {# 购买弹层 #}
+    {{space}} .shop-now-container {
+        font-size: {{data.shopNowFontSize_m | default(14) }}px;
+    }
+    {{space}} .shop-now-container .shop-now-text {
+        font-size: {{data.shopNowFontSize_m | default(14) }}px;
+    }
+
+}

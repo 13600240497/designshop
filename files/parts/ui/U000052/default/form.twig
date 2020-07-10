@@ -1,0 +1,179 @@
+
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>自定义组件
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+  <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+    <div class="layui-tab">
+      <ul class="layui-tab-title">
+        <li class="layui-this">模板选择</li>
+        <li>样式设置</li>
+      </ul>
+      <div class="layui-tab-content layui-tab-content-parent">
+        <div class="layui-tab-item layui-show">
+						<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+						{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				</div>
+        <div class="layui-tab-item">
+          <div class="layui-collapse" lay-accordion>
+            <div class="layui-colla-item">
+              <h2 class="layui-colla-title">HTML 代码</h2>
+              <div class="layui-colla-content layui-show">
+                <div class="layui-form-item">
+                  <div class="layui-input-block geshop-html-area">
+                    <input name="tpl_html" type="hidden" value='{{ data.tpl_html }}'>
+                    <div id="editor_html"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="layui-colla-item">
+              <h2 class="layui-colla-title">CSS 代码</h2>
+              <div class="layui-colla-content">
+                <div class="layui-form-item">
+                  <div class="layui-input-block geshop-css-area">
+                    <input name="tpl_css" type="hidden" value='{{ data.tpl_css }}'>
+                    <div id="editor_css"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="layui-colla-item">
+              <h2 class="layui-colla-title">JS 代码</h2>
+              <div class="layui-colla-content">
+                <div class="layui-form-item">
+                  <div class="layui-input-block geshop-js-area">
+                    <input name="tpl_js" type="hidden" value='{{ data.tpl_js }}'>
+                    <div id="editor_js"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>
+
+<script src="../../../resources/javascripts/library/src-min-noconflict/ace.js"></script>
+<script src="../../../resources/javascripts/library/src-min-noconflict/ext-language_tools.js"></script>
+<script src="../../../resources/javascripts/library/src-min-noconflict/theme-monokai.js"></script>
+
+<script>
+    var $editor = $('#editor_html');
+    if ($editor.length > 0) {
+      var editor_html = ace.edit('editor_html');
+      editor_html.session.setMode("ace/mode/html");
+      editor_html.session.setValue($('[name="tpl_html"]').val());
+      $('.js_submitDesignForm').click(function() {
+          var code_html = editor_html.getValue();
+          $editor.prev('input[type=hidden]').val(code_html);
+      });
+    };
+    editor_html.setTheme("ace/theme/github");
+    editor_html.setOptions({
+        enableBasicAutocompletion: true,
+        enableSnippets: true,
+        enableLiveAutocompletion: true
+    });
+
+    var $editor_css = $('#editor_css');
+    if ($editor_css.length > 0) {
+      var editor_css = ace.edit("editor_css");
+      editor_css.session.setMode("ace/mode/css");
+      editor_css.session.setValue($('[name="tpl_css"]').val());
+      $('.js_submitDesignForm').click(function() {
+          var code_css = editor_css.getValue();
+          $editor_css.prev('input[type=hidden]').val(code_css);            
+      });
+    };
+    editor_css.setTheme("ace/theme/github");
+    editor_css.setOptions({
+        enableBasicAutocompletion: true,
+        enableSnippets: true,
+        enableLiveAutocompletion: true
+    });
+
+    var $editor_js = $('#editor_js');
+    if ($editor_js.length > 0) {
+      var editor_js = ace.edit("editor_js");
+      editor_js.session.setMode("ace/mode/javascript");
+      editor_js.session.setValue($('[name="tpl_js"]').val());
+      $('.js_submitDesignForm').click(function() {
+          var code_js = editor_js.getValue();
+          $editor_js.prev('input[type=hidden]').val(code_js);
+          $editor_js.val(code_js);
+      });
+    };
+    editor_js.setTheme("ace/theme/github");
+    editor_js.setOptions({
+        enableBasicAutocompletion: true,
+        enableSnippets: true,
+        enableLiveAutocompletion: true
+    });
+
+    ace.define("ace/mode/drools_highlight_rules", function(require, exports, module) {
+      "use strict";
+      var oop = require("../lib/oop");
+      var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
+      var DroolsHighlightRules = function(){
+          var keywordMapper = this.createKeywordMapper({
+              "keyword":
+                  "delect|drop|truncate"
+          }, "identifier");
+          this.$rules = {
+              "start" :[{
+                  token : keywordMapper,
+                  regex : "[a-zA-Z_$][a-zA-Z0-9_$]*\\b"
+              }]
+          };
+      };
+      oop.inherits(DroolsHighlightRules, TextHighlightRules);
+      exports.DroolsHighlightRules = DroolsHighlightRules;
+    });
+ 
+    ace.define("ace/mode/drools", function(require, exports, module) {
+      "use strict";
+      var oop = require("../lib/oop");
+      var TextMode = require("./text").Mode;
+      var DroolsHighlightRules = require("./drools_highlight_rules").DroolsHighlightRules;
+      var DroolsMode = function(){
+          this.HighlightRules = DroolsHighlightRules;
+      };
+      oop.inherits(DroolsMode, TextMode);
+      (function() {
+          this.$id = "ace/mode/drools"
+      }).call(DroolsMode.prototype),
+      exports.Mode = DroolsMode;
+    });
+</script>
+
+{# d网装修页面用了iframe，form表单里面的编辑器的样式要写到form.twig里面，否则加载不到 #}
+<style>
+  #editor_html,
+  #editor_css,
+  #editor_js { 
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height:400px;
+  }
+
+  .activity-component-from-item .layui-input-block.geshop-html-area,
+  .activity-component-from-item .layui-input-block.geshop-css-area,
+  .activity-component-from-item .layui-input-block.geshop-js-area {
+    margin-left: 0px;
+    height: 400px;
+  }
+</style>

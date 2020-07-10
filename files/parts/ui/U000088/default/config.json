@@ -1,0 +1,40 @@
+{
+  "fields": {
+		"openInNewWindow": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"navigat_position": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"navigat_headImg": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"navigat_headImg_width": { "is_public": "1", "is_m": "1", "is_app": "1" },
+    "navigat_headImg_height": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"navigat_titleText": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"navigat_titleBgImg": { "is_public": "1", "is_m": "1", "is_app": "1" },
+    "part_rowNum": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"partsArr": { "is_public": "1", "is_m": "1", "is_app": "1" }
+
+    ,"navigatWidth": { "is_public": "0", "is_m": "0", "is_app": "0" }
+    ,"navigat_headImgActive": { "is_public": "0", "is_m": "1", "is_app": "1" }
+		,"navigat_titleH": { "is_public": "0", "is_m": "1", "is_app": "1" }
+		,"navigat_titleTextC": { "is_public": "0", "is_m": "1", "is_app": "1" }
+    ,"navigat_titleLink": { "is_public": "0", "is_m": "1", "is_app": "1" }
+		,"part_Bgc": { "is_public": "0", "is_m": "1", "is_app": "1" }
+		,"part_TextC": { "is_public": "0", "is_m": "1", "is_app": "1" }
+    ,"part_HoverC": { "is_public": "0", "is_m": "1", "is_app": "1" }
+		,"goTop_Active": { "is_public": "0", "is_m": "1", "is_app": "1" }
+		,"goTop_BgC": { "is_public": "0", "is_m": "1", "is_app": "1" }
+    ,"goTop_TextC": { "is_public": "0", "is_m": "1", "is_app": "1" }
+    ,"goTop_text": { "is_public": "0", "is_m": "1", "is_app": "1" }
+		,"goTop_TextHoverC": { "is_public": "0", "is_m": "1", "is_app": "1" }
+		,"navigat_titleTextActive": { "is_public": "0", "is_m": "1", "is_app": "1" }
+    ,"navigat_titleFtS": { "is_public": "0", "is_m": "0", "is_app": "1" }
+		,"navigat_titleFtFa": { "is_public": "0", "is_m": "1", "is_app": "1" }
+		,"titleWeight": { "is_public": "0", "is_m": "1", "is_app": "1" }
+    ,"navigat_titleBgC": { "is_public": "0", "is_m": "1", "is_app": "1" }
+		,"part_titleFtS": { "is_public": "0", "is_m": "1", "is_app": "1" }
+		,"part_titleFtFa": { "is_public": "0", "is_m": "1", "is_app": "1" }
+    ,"part_Weight": { "is_public": "0", "is_m": "1", "is_app": "1" }
+		,"part_borderC": { "is_public": "0", "is_m": "1", "is_app": "1" }
+		,"goTop_fts": { "is_public": "0", "is_m": "0", "is_app": "1" }
+    ,"goTop_ftsFa": { "is_public": "0", "is_m": "1", "is_app": "1" },
+		"userGroupSelect": { "is_public": "1", "is_m": "1", "is_app": "1" },
+      "component_show_always": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  }
+}

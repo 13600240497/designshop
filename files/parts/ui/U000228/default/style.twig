@@ -1,0 +1,36 @@
+{% set space = '#U000228_'~pageInstanceId %}
+
+
+{{ space }} .geshop-u000228-default-body {
+    width: 100%;
+    overflow: hidden;
+}
+
+{{ space }} .geshop-u000228-default-body.is_edit .swiper-container .swiper-slide a{
+width:auto !important;
+height:auto !important;
+}
+
+{{ space }} .geshop-u000228-default-body.is_edit .swiper-pagination{
+left:0;
+right:0;
+}
+
+{{ space }}{
+margin: {{ data.comp_margin_top ?? 0 }}px {{ data.comp_margin_right ?? 0 }}px {{ data.comp_margin_bottom ?? 0 }}px {{ data.comp_margin_left ?? 0 }}px;
+}
+
+{# pad #}
+@media screen and (max-width: 1024px) and (min-width: 768px){
+    {{ space }}{
+    margin: {{ data.comp_margin_top_pad ?? 0 }}px {{ data.comp_margin_right_pad ?? 0 }}px {{ data.comp_margin_bottom_pad ?? 0 }}px {{ data.comp_margin_left_pad ?? 0 }}px;
+    }
+}
+
+
+{# m #}
+@media screen and (max-width: 767px){
+    {{ space }}{
+    margin: {{ data.comp_margin_top_m ?? 0 }}px {{ data.comp_margin_right_m ?? 0 }}px {{ data.comp_margin_bottom_m ?? 0 }}px {{ data.comp_margin_left_m ?? 0 }}px;
+    }
+}

@@ -1,0 +1,15 @@
+
+
+<div class="geshop-four-goods clearfix">
+    <div class="geshop-four-good-item-wrap">
+        {% for item in data.goodsInfo %}
+            <div class="geshop-four-good-item">
+                <a href="{{ item.url_title }}" class="gs-img logsss_event"
+                   data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ key }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }"><img class="js_gdexp_lazy js-geshopImg-lazyload js_gbexp_lazy" data-original="{{ item.goods_img }}" src="{{data.default.lazyImg|default(data.default.good)}}"
+                                                                                                                                                                                                                                                                        data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ key }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }"></a>
+                <h3 class="geshop-four-good-title">{{ item.goods_title }}</h3>
+                <p class="geshop-four-good-price"><span class="my_shop_price" data-orgp="{{ item.shop_price }}">${{ item.shop_price }}</span></p>
+            </div>
+        {% endfor %}
+    </div>
+</div>

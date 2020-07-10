@@ -1,0 +1,12 @@
+{% set root = '#U000001_'~pageInstanceId %}
+{% set classSpace = '.geshop-component-body' %}
+{% set body = root~' '~classSpace%}
+
+{{ body }}{
+    margin-top: {{ data.box_margin_top ?? 0 }}px;
+    margin-bottom: {{ data.box_margin_bottom ?? 16}}px;
+    background-color:{{ data.box_bg_color ?? '#F8F8F8' }};
+}
+
+
+{{ include ('@app/files/parts/formTemplate/components/siteParam-rg.twig', {'root': root}) }}

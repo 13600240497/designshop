@@ -1,0 +1,145 @@
+<input type="hidden" class="Unwanted" name="sku_selector_parent" value=".radio-tab-group">
+{% set formData = {
+    id: 'U000031',
+    name: '红人组件',
+    theme: 'rg_red_man_v1',
+    tabs: [
+        {
+            label: '商品数据',
+            components: [
+            {
+                label: '商品数据',
+                type: 'fieldset',
+                components: [
+                {
+                    type: 'tab_redman',
+                    formID: '#U000031-rg_red_man_v1',
+                    componentData: {
+                    limitNum: 100,
+                    limitTip: '新增SKU配置最多100个'
+                }
+                }
+            ]
+            }
+        ]
+        },
+        {
+            label: '样式设置',
+            components: [
+            {
+                label: '常用配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '组件下边距 (PX)',
+                    name: 'box_margin_bottom',
+                    default: 32,
+                    col: 2,
+                },
+                {
+                    label: '组件背景颜色',
+                    name: 'box_bg_color',
+                    type: 'colorPicker',
+                    default: '#F8F8F8',
+                    col: 2,
+                }
+            ]
+            },
+            {
+                label: '商品配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '商品描边颜色',
+                    name: 'hover_bdColor',
+                    default: '#FFFFFF',
+                    type: 'colorPicker',
+                    col: 2
+                },
+                {
+                    label: '商品圆角大小',
+                    name: 'goods_border_radius',
+                    default: '4',
+                    col: 2
+                },
+                {
+                    label: '销售价文字颜色',
+                    name: 'shop_price_color',
+                    type: 'colorPicker',
+                    default: '#FA386A',
+                    col: 2
+                },
+                {
+                    label: '小图选中颜色',
+                    name: 'small_color_ative',
+                    type: 'colorPicker',
+                    default: '#FA386A',
+                    col: 2
+                }
+            ]
+            },
+            {
+                label: '折扣标配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '折扣标',
+                    type: 'discount-rg',
+                }
+            ]
+            }
+        ]
+        }
+    ],
+    beforeSubmit: 'onSubmit',
+    isAutoRefresh: 2
+} %}
+
+{% include '@app/files/parts/temp/tab_ips_form_js.twig' %}
+<script>
+{#  自定义保存函数 #}
+function onSubmit (progress) {
+    var $id = $('#U000031-rg_red_man_v1');
+
+    tabRedmanFn.saveTabInfo(function () {
+        progress.next();
+    });
+
+}
+
+var validRule = [
+    { name: 'goodsSKU', type: 'sku', max: '10', message: 'SKU最多输入10个' },
+    {
+        name: 'goodsSKU',
+        selector: '#U000031-rg_red_man_v1 .goods__tab--wrap .second-list',
+        type: 'value',
+        message: 'SKU未填写',
+        required: true
+    },
+    {
+        name: 'image_url',
+        selector: '#U000031-rg_red_man_v1 .goods__tab--wrap .second-list',
+        type: 'value',
+        message: '自定义图片链接未填写',
+        required: true
+    },
+    {
+        name: 'catLink',
+        selector: '#U000031-rg_red_man_v1 .goods__tab--wrap .second-list',
+        type: 'value',
+        message: '自定义跳转链接未填写',
+        required: true
+    }
+];
+
+/* 组件初始化 */
+$(function () {
+    var $id = $('#U000031-rg_red_man_v1');
+    if (typeof window.before_submit_queue === "object" && typeof GS_formvalid !== 'undefined') {
+        before_submit_queue.push(GS_formvalid.addFormValid);
+    }
+    ;
+});
+</script>
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

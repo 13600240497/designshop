@@ -1,0 +1,96 @@
+{%
+    set formData = {
+    id: 'U000031',
+    name: '商品列表组件',
+    theme: 'default_v2',
+    tabs: [
+        {
+            label: '数据配置',
+            components: [
+                {
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '商品数据',
+                            type: 'goods-manager',
+                            beforeSubmit: 'beforeSubmit'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            label: '样式配置',
+            components: [
+                {
+                    label: '基础配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '组件下边距',
+                            name: 'box_margin_bottom',
+                            default: '40',
+                        },
+                        {
+                            label: '背景颜色',
+                            name: 'box_bg_color',
+                            default: '#F2F2F2',
+                            type: 'colorPicker'
+                        },
+                        {
+                            label: '背景是否整体式',
+                            name: 'box_is_whole',
+                            default: '1',
+                            type: 'radio',
+                            options: [
+                                {
+                                    label: '是',
+                                    value: '1',
+                                },
+                                {
+                                    label: '否',
+                                    value: '0',
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    label: '商品样式',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '背景圆角大小(px)',
+                            name: 'goods_bg_radius_size',
+                            default: '12',
+                            col: 2
+                        },
+                        {
+                            label: '单个商品圆角大小(px)',
+                            name: 'goods_radius_size',
+                            default: '12',
+                            col: 2
+                        }
+                    ]
+                },
+                {
+                    label: '折扣标',
+                    type: 'discount-zf'
+                },
+                {
+                    type: 'shop-price',
+                },
+                {
+                    label: '销售价文案',
+                    name: 'shop_price_content',
+                    default: 'Now'
+                }
+            ]
+        }
+    ]
+}
+
+%}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

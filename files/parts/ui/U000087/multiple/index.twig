@@ -1,0 +1,47 @@
+{%
+    set pageData = {
+        couponData : data.couponSortedData | default('[]'),
+    }
+%}
+<div class="geshop-component-box component-drag" data-key="U000087" data-id="{{ pageInstanceId }}">
+    {{ include ('style.twig') }}
+    <div class="geshop-u000087-multiple geshop-u000087-multiple-{{ pageInstanceId }}" data-id="{{ pageInstanceId }}">
+        <input
+            class="hide-info-input"
+            type="hidden"
+            unReceivedText="{{ get_component_trans(lang,'un_received') }}"
+            receivedText="{{ get_component_trans(lang,'gift_sold') }}"
+            failedText="{{ get_component_trans(lang,'failed') }}"
+            endedText="{{ get_component_trans(lang,'btn_ended') }}"
+            successText="{{ get_component_trans(lang,'success_text') }}"
+            lang="{{ lang }}"
+            serverTime="{{ serverTime }}"
+            env="{{ data.isEditEnv }}"
+            staticDomain="{{staticDomain}}"
+            pageInstanceId = "{{ pageInstanceId }}"
+        />
+        <script>
+            var couponData{{ pageInstanceId }} = {{ pageData.couponData | json_encode(constant('JSON_UNESCAPED_UNICODE')) }};
+        </script>
+        <div class="coupon-body">
+            <div class="coupon-layout coupon-top">
+                <div class="center-center">
+                    <span class="coupon-discount site-bold-strict">{% if data.isEditEnv == '1' %}$50{% endif %}</span>
+                    <span class="coupon-discount-term">{{ get_component_trans(lang,'off') }} <i style="font-style: normal;">{% if data.isEditEnv == '1' %}$0{% endif %}</i> </span>
+                </div>
+            </div>
+            <div class="coupon-layout coupon-middle">
+                <div class="center-center">
+                <div class="coupon-text">{% if data.isEditEnv == '1' %}Validity：Nov.23-Nov.25{% endif %}</div>
+                </div>
+            </div>
+            <div class="coupon-layout coupon-bottom">
+                <div class="center-center">
+                <div class="coupon-btn inline-box">{% if data.isEditEnv == '1' %}Claim Now{% endif %}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="clear: both;"></div>
+

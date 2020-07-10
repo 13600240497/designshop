@@ -1,0 +1,184 @@
+/* 新增按钮 */
+
+#goods_tab .tab-add-btn {
+  // position: absolute;
+  bottom: -77px;
+  left: 20px;
+  margin-top: 16px;
+}
+
+#goods_layer_table+.layui-form {
+  display: none !important;
+}
+
+#goods_layer thead th{
+	text-align: center;
+}
+
+#goods_layer .layui-form {
+	margin-top:0;
+  padding-bottom: 40px;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+#goods_layer .layui-table-box,
+#goods_layer .layui-table-view {
+  overflow: hidden;
+}
+
+#goods_layer .layui-icon {
+  cursor: pointer;
+  margin: 2px 5px;
+  display: inline-block;
+}
+
+#goods_layer .layui-icon-prev,
+#goods_layer .layui-icon-next {
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+}
+
+#goods_layer td[data-field="goods_img"] .layui-table-cell {
+  height: 50px;
+	text-align: center;
+}
+
+#goods_layer td[data-field="goods_img"] .layui-table-cell img {
+  max-width: 100%;
+	width:50px;
+}
+
+#goods_layer tbody tr {
+  height: 61px;
+	text-align:center;
+}
+
+/* 删除按钮 */
+
+#goods_layer_wrap .layui-layer-btn2 {
+  float: left;
+}
+
+.goods-fr {
+  float: right;
+}
+
+#gs_goods_add {
+  width: 80%;
+  margin: 50px auto;
+}
+
+/* gs_goods fixed 悬浮操作 */
+
+#goods_layer .layui-table-fixed-r {
+  right: -1px !important;
+}
+
+#goods_layer input::-webkit-outer-spin-button,
+#goods_layer input::-webkit-inner-spin-button {
+  -webkit-appearance: textfield;
+}
+
+#goods_layer input[type="number"] {
+  -moz-appearance: textfield;
+	color: #666;
+	border: 1px solid #d2d2d2;
+	padding: 2px 5px;
+	text-align: center;
+}
+
+/* 选品系统 */
+
+.goods-hide {
+  display: none;
+}
+
+.goods-visible {
+  display: block !important;
+}
+
+.gs-select-box {
+  display: inline-block; // width: 100px;
+  width: 100%;
+  height: 38px;
+  line-height: 38px;
+  border: 1px solid #e4e7ed;
+  padding: 0 10px;
+}
+
+.gs-block {
+  display: block;
+  padding: 10px 0;
+}
+
+.gs-select-box.layui-hide+.select2-container {
+  display: none;
+}
+
+.select2-container {
+  margin-right: 5px; // box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+  width: 350px !important;
+  margin-bottom: 10px;
+}
+
+#goods_tab .select2-container {
+  width: 100% !important;
+  max-width: 160px;
+}
+
+.select2-container--open .select2-dropdown {
+  -webkit-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+  border: 1px solid #e4e7ed;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: #f5f7fa;
+  color: #606266;
+}
+
+.select2-container--default .select2-results__option[aria-selected=true] {
+  background-color: #f5f7fa;
+  color: #606266;
+}
+
+.select2-container .select2-selection--single {
+  height: 38px;
+  line-height: 38px;
+  border: 1px solid #e4e7ed;
+}
+
+.select2-container .select2-selection--single>span {
+  height: 38px !important;
+  line-height: 38px !important;
+}
+
+/* 活动组件样式过渡处理 */
+
+.gs-lable-block {
+  margin: 10px 0 10px 20px;
+  display: block;
+}
+
+.gs-lable-block+.layui-input-block,
+.class-manage,
+.row-lists-content .layui-input-block {
+  margin-left: 20px
+}
+
+.gs-tips {
+  font-size: 12px;
+  color: #9E9E9E;
+}
+
+/* OBS选品 */
+
+.goods-data-wrapper textarea,
+.goods-data-wrapper .select2-container {
+  width: 96% !important;
+}
+
+.goods-data-wrapper .tab-add-btn {
+  width: 96%;
+}

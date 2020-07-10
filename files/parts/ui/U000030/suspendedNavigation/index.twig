@@ -1,0 +1,139 @@
+{% set remUnit = 75 %}
+
+{%
+	set pageData = {
+    repeatBgColor:data.repeatBgColor is not null?data.repeatBgColor:'#FDFDFD',
+		repeatBorderColor:data.repeatBorderColor is not null?data.repeatBorderColor:'#DBDBDB',
+    repeatTextColor:data.repeatTextColor is not null?data.repeatTextColor:'#333333',
+		bgColor:data.bgColor is not null?data.bgColor:'#FDFDFD',
+		hoverBgColor:data.hoverBgColor is not null?data.hoverBgColor:'#333333',
+    fontColor:data.fontColor is not null?data.fontColor:'#333333',
+    hoverFontColor:data.hoverFontColor is not null?data.hoverFontColor:'#FFFFFF',
+    colBgColor:data.colBgColor is not null?data.colBgColor:'#FFFFFF',
+		colHoverBgColor:data.colHoverBgColor is not null ? data.colHoverBgColor:'#333333',
+    colFontColor:data.colFontColor is not null?data.colFontColor:'#333333',
+    colHoverFontColor:data.colHoverFontColor is not null?data.colHoverFontColor:'#FFFFFF',
+    colBorderColor:data.colBorderColor is not null?data.colBorderColor:'#DBDBDB',
+    colBorderColorHover:data.colBorderColorHover is not null?data.colBorderColorHover:'#333333',
+    fontSize:(data.fontSize|default(28))/remUnit,
+    navHeight:(data.navHeight|default(88))/remUnit,
+    navGap:data.navGap|default(1), 
+    btnBgColor:data.btnBgColor is not null?data.btnBgColor:'#FFFFFF',
+    btnIconColor:data.btnIconColor is not null?data.btnIconColor:'#333333',
+    btnBorderColor:data.btnBorderColor is not null?data.btnBorderColor:'#C8C8C8',
+    downUnSelectBdColor: data.downUnSelectBdColor is not null ? data.downUnSelectBdColor:'#d8d8d8',
+    downSelectBdColor: data.downSelectBdColor is not null ? data.downSelectBdColor:'#333333'
+	}
+%}
+
+<div class="geshop-component-box component-drag suspend-nav" data-static-domain="{{staticDomain}}"  data-gid="U000030_suspendNav"
+style="overflow:hidden;height:100% !important;" data-key="U000030" data-id="{{ pageInstanceId }}">
+  <style type="text/css">
+    [data-id="{{ pageInstanceId }}"] .swiper-slide.m-current {
+      background-color:{{ pageData.hoverBgColor }} !important;
+    }
+    [data-id="{{ pageInstanceId }}"] .swiper-slide.m-current a {
+      color:{{ pageData.hoverFontColor }} !important;
+    }
+
+    [data-id="{{ pageInstanceId }}"] .cate-item-all {
+      border-color: {{ pageData.downUnSelectBdColor }};
+      background-color: {{ pageData.colBgColor }};
+    }
+    [data-id="{{ pageInstanceId }}"] .cate-item-all.m-current {
+      background-color: {{ pageData.colHoverBgColor }};
+      border-color: {{ pageData.downSelectBdColor }};
+    }
+    [data-id="{{ pageInstanceId }}"] .cate-item-all.m-current a {
+      color: {{ pageData.colHoverFontColor }} !important;
+    }
+
+    [data-id="{{ pageInstanceId }}"] .geshop-icon-up {
+        border-color: {{ pageData.btnBorderColor }} !important;
+        background-color:{{ pageData.btnBgColor }} !important;
+    }
+
+    [data-id="{{ pageInstanceId }}"] .geshop-icon-up span:after{
+        border-color: {{ pageData.btnIconColor }} !important;
+    }
+
+
+    .suspend-nav[data-id="{{ pageInstanceId }}"] .default-cate-all td {
+        height: {{ pageData.navHeight }}rem;
+        border: {{pageData.navGap}}px solid {{ pageData.repeatBorderColor}};
+        background-color:{{ pageData.repeatBgColor }} !important;
+        color:{{ pageData.repeatTextColor }};
+        font-size:{{ pageData.fontSize }}rem;
+    }
+  </style>
+  <nav class="component-m-nav" id="js_topNav_suspend" style="background-color:#FFFFFF;">
+    <table width="100%" class="default-cate-all" id="nav-table-ul" data-isedit="{{ data.isEditEnv }}">
+      <tr>
+        {% if data.isEditEnv == 1 and  (data.navData | length == 0) or (data.nav_menu | length == 0) %}
+            <td width="25%" data-id="1" data-index="1">Classify</td>
+            <td width="25%" data-id="1" data-index="1">Classify</td>
+            <td width="25%" data-id="1" data-index="1">Classify</td>
+            <td width="25%" data-id="1" data-index="1">Classify</td>
+            </tr><tr>
+            <td width="25%" data-id="1" data-index="1">Classify</td>
+            <td width="25%" data-id="1" data-index="1">Classify</td>
+            <td width="25%" data-id="1" data-index="1">Classify</td>
+            <td width="25%" data-id="1" data-index="1">Classify</td>
+        {% else %}
+            {% set loopIndex = 1 %}
+            {% for id,item in data.navData %}
+                {% if id in data.nav_menu %}
+                    <td width="25%" data-id="{{ id }}" data-index="{{loopIndex}}">{{item}}</td>
+                    {% if loopIndex % 4 == 0 %}
+                    </tr><tr>
+                    {% endif %}
+                    {% set loopIndex = loopIndex + 1 %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+      </tr>
+    </table>
+    <div id="js_topNav_suspend2" style="padding-right: 1.0666666666667rem;">
+        <ul class="component-m-nav-ul swiper-wrapper" id="nav-m-ul" data-isedit="{{ data.isEditEnv }}">
+            {% for id,item in data.navData %}
+                {% if id in data.nav_menu %}
+                <li class="component-m-nav-item swiper-slide" data-id="{{ id }}" style="background-color:{{ pageData.bgColor }};">
+                    <a style="
+                        color:{{ pageData.fontColor }};
+                        font-size:{{ pageData.fontSize }}rem;
+                        height:{{ pageData.navHeight }}rem;
+                        line-height:{{ pageData.navHeight }}rem;">
+                        {{ item }}
+                    </a>
+                </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        {#  #}
+        <div class="swiper-pagination"></div>
+        {#  #}
+        <div class="geshop-icon-up">
+            <a href="javascript:;" 
+                style="height: {{ pageData.navHeight }}rem !important;
+                line-height: {{ pageData.navHeight }}rem !important;
+                display:block;
+                box-sizing:border-box;">
+                <span></span>
+            </a>
+        </div>
+        {#  #}
+        <ul class="component-m-nav-ul-cate-all" id="nav-down-ul" data-isedit="{{ data.isEditEnv }}">
+            {% for id,item in data.navData %}
+                {% if id in data.nav_menu %}
+                <li class="cate-item-all" data-id="{{ id }}">
+                    <a style="color:{{ pageData.colFontColor }};font-size:{{ pageData.fontSize }}rem;">
+                    {{ item }}
+                    </a>
+                </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+  </nav>
+</div>

@@ -1,0 +1,57 @@
+<div class="geshop-U000025-dialog geshop-U000025-dialog-phone">
+    <div class="geshop-U000025-dialog-mask"></div>
+    <div class="geshop-U000025-dialog-container">
+        <div class="geshop-U000025-dialog-close js-close-dialog">
+            <img src="{{ data.default.u000187_default_close }}" alt="">
+        </div>
+        <div class="geshop-U000025-dialog-body down-wrap">
+            <div class="js_infoBox" id="js_infoBox">
+                <div class="form">
+                    <p class="pra-sup">{{ get_component_trans(lang, 'mobile_title') }}:</p>
+                    <p class="pra mt20"><span class="redCls">*</span>{{ get_component_trans(lang, 'country') }}</p>
+                    <div class="country js_country" id="js_contry">
+                        <span class="js_selectCountry" id="js_selectCountry" data-lang="{{ get_component_trans(lang, 'select_country') }}" data-cid="">{{ get_component_trans(lang, 'select_country') }}</span>
+                        <span class="arr-down"></span><div class="country-list" id="js_countryList">
+                            <p data-cid="41">United States</p>
+                            <p data-cid="11">Australia</p>
+                            <p data-cid="13">Canada</p>
+                            <p data-cid="40">United Kingdom</p>
+                            <p data-cid="251">United Arab Emirates</p>
+                            <p data-cid="21">India</p>
+                            <p data-cid="283">The Philippines</p>
+                            <p data-cid="36">Thailand</p>
+                            <p data-cid="25">Malaysia</p>
+                        </div>
+                    </div>
+                    <div class="error js_country_error"></div>
+                    <p class="pra mt20"><span class="redCls">*</span>{{ get_component_trans(lang, 'phone_number') }}</p>
+                    <div class="phone">
+                        <span class="areacode js_areaCode" id="js_areaCode">+86</span>
+                        <select class="oper js_oper" id="js_oper" name="supplier_number">
+                            <option value=""></option>
+                        </select>
+                        <input type="text" placeholder="xxx xxxx xxxx" class="phone-input js_phone" id="js_phone">
+                    </div>
+                    <div class="error js_phone_error"></div>
+                    <div id="js_verifycode" class="js_verifycode none">
+                        <p class="pra mt20"><span class="redCls">*</span>{{ get_component_trans(lang, 'code') }}</p>
+                        <div class="code">
+                            <input type="text" class="code-input" required="">
+                        </div>
+                        <img src="" data-src="/fun/?act=verify" class="codeImg img-verifycode mt10" height="38">
+                    </div>
+                    <div class="error js_code_error"></div>
+                    <button class="submit js_showCode">{{ get_component_trans(lang, 'send_link') }}</button>
+                    <span class="or">{{ get_component_trans(lang, 'or') }}</span>
+                    <a class="messenger" href="https://m.me/916028728426822?ref=engagement:3jw:0https://docs.google.com/document/d/1m0XwjXlcsOlicaYD_73kA4x981dmKICZhbEifmWZ25g/edit">
+                        <span class="icon"></span>{{ get_component_trans(lang, 'messenger') }}</a>
+                    <button class="submit js_sendMes none">{{ get_component_trans(lang, 'send_link') }}</button>
+                </div>
+            </div>
+        </div>
+
+            <input type="hidden" value='{"41":{"id":"2","country_id":"41","country_code":"US","status":"1","time":"2","number":"10","code":"1","country_name":"United States","app":"1","supplier_number":"","scut_number_length":""},"11":{"id":"3","country_id":"11","country_code":"AU","status":"1","time":"2","number":"9","code":"61","country_name":"Australia","app":"1","supplier_number":"","scut_number_length":""},"13":{"id":"4","country_id":"13","country_code":"CA","status":"1","time":"2","number":"10","code":"1","country_name":"Canada","app":"1","supplier_number":"","scut_number_length":""},"40":{"id":"5","country_id":"40","country_code":"GB","status":"1","time":"2","number":"10","code":"44","country_name":"United Kingdom","app":"1","supplier_number":"","scut_number_length":""},"251":{"id":"27","country_id":"251","country_code":"AE","status":"1","time":"2","number":"9","code":"971","country_name":"United Arab Emirates","app":"1","supplier_number":"0","scut_number_length":"9"},"21":{"id":"36","country_id":"21","country_code":"IN","status":"1","time":"2","number":"10","code":"91","country_name":"India","app":"1","supplier_number":"","scut_number_length":"10"},"283":{"id":"38","country_id":"283","country_code":"PH","status":"1","time":"3","number":"10","code":"63","country_name":"The Philippines","app":"1","supplier_number":"","scut_number_length":"10"},"36":{"id":"39","country_id":"36","country_code":"TH","status":"1","time":"2","number":"9","code":"66","country_name":"Thailand","app":"1","supplier_number":"","scut_number_length":"10"},"25":{"id":"40","country_id":"25","country_code":"MY","status":"1","time":"2","number":"10","code":"60","country_name":"Malaysia","app":"1","supplier_number":"","scut_number_length":"9,10"}}' id="supplier_number_json">
+            <input type="hidden" value='6' id="js_tel_min" class="js_tel_min">
+            <input type="hidden" value='20' id="js_tel_max" class="js_tel_max">
+    </div>
+</div>

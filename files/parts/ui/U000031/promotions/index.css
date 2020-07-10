@@ -1,0 +1,184 @@
+.layui-form-select .layui-edge {
+  right: 20px;
+}
+
+
+.wrap_U000031_promotions .gs-list-product {
+  width: 100%;
+  height: auto;
+	margin: 0 auto; 
+}
+
+.wrap_U000031_promotions .goods-item-bigPromote {
+  width: 50%;
+  float: left;
+  position: relative;
+  margin-top: .2rem;
+  box-sizing: border-box;
+  
+}
+.wrap_U000031_promotions .goods-item-bigPromote:nth-child(odd){
+  padding-right:.0667rem
+}
+.wrap_U000031_promotions .goods-item-bigPromote:nth-child(even){
+  padding-left:.0667rem
+} 
+
+.wrap_U000031_promotions .goods-item-bigPromote .gs-img {
+  width: 100%;
+  text-align: center;
+}
+
+.wrap_U000031_promotions .goods-item-bigPromote .gs-img a {
+  width: 100%;
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  overflow: hidden;
+}
+
+.wrap_U000031_promotions .goods-item-bigPromote .gs-img img {
+  width: 100%;
+  /* min-height: 170px;
+  max-width: 300px;
+  max-height: 450px;
+  vertical-align: top; */
+}
+
+.wrap_U000031_promotions .goods-item-bigPromote .gs-goods-describe {
+  padding: 5px;
+  font-size: 12px;
+  height: 18px;
+  line-height: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  /*text-align: center;*/
+}
+
+.wrap_U000031_promotions .goods-item-bigPromote .gs-goods-describe a {
+  color: #666666;
+  text-decoration: none;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 18px;
+  white-space: nowrap;
+  display: block;
+}
+
+.wrap_U000031_promotions .goods-item-bigPromote .gs-goods-price {
+  line-height: 20px;
+  margin-top: 5px;
+  padding-right: 30px;
+  white-space: nowrap;
+  position: relative;
+  /*text-align: center;*/
+}
+
+.wrap_U000031_promotions .goods-item-bigPromote .gs-goods-price del {
+  /*display: inline-block;*/
+  display: block;
+  margin-left: 4px;
+  vertical-align: middle;
+  color: #000;
+  text-decoration: line-through;
+  font-size:12px;
+}
+
+.wrap_U000031_promotions .goods-item-bigPromote .gs-goods-price > span {
+  display:inline-block;
+  vertical-align: middle;
+	/*height:22px;*/
+	/*line-height:20px;*/
+  margin-left: 4px;
+}
+.wrap_U000031_promotions .goods-item-bigPromote .text-over-price {
+  /*display: block;*/
+   overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.wrap_U000031_promotions .goods-item-bigPromote .gs-goods-price > span span {
+  /*padding-left: 4px;*/
+}
+
+.wrap_U000031_promotions .gs-discount {
+	position: absolute;
+	top: 0px;
+	border-radius: 50%;
+	text-align: center;
+}
+
+.wrap_U000031_promotions .gs-discount .gs-discount-box {
+	margin-top: 50%;
+	transform: translateY(-50%);
+}
+
+
+
+.wrap_U000031_promotions .gs-off-more {
+  width: 93%;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-top: 3px;
+  position: absolute;
+  z-index: 5;
+  box-sizing: border-box;
+}
+
+.wrap_U000031_promotions .gs-off-text:not(:first-of-type) {
+  display: none;
+}
+
+.wrap_U000031_promotions .gs-off-text {
+  width: 90%;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; 
+  font-size: 12px;
+}
+
+.wrap_U000031_promotions .gs-active-text {
+  display: inline-block !important;
+}
+
+.wrap_U000031_promotions .line-border {
+  padding: .2666rem;
+  border: 1px solid #EDEDED;
+  background-color: #ffffff;
+}
+
+.wrap_U000031_promotions .icon-downs, .wrap_U000031_promotions .icon-close {
+  width: .37rem;
+  height: .37rem;
+  position: absolute;
+  right: 2%;
+}
+
+.wrap_U000031_promotions .gs-off-more .icon-close {
+  display: none;
+}
+
+.wrap_U000031_promotions .line-border .icon-downs {
+  display: none;
+}
+
+.wrap_U000031_promotions .line-border .gs-off-text {
+  display: inline-block;
+  overflow: auto;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.wrap_U000031_promotions .line-border .icon-close {
+  display: block;
+  top: 6px;
+}

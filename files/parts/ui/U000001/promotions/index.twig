@@ -1,0 +1,207 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+
+{% if data.colNum == '1'%}
+    {% set colClass = liCol[0] %}
+{% elseif data.colNum == '2' %}
+    {% set colClass = liCol[1] %}
+{% elseif data.colNum == '3' %}
+    {% set colClass = liCol[2] %}
+{% elseif data.colNum == '4' %}
+    {% set colClass = liCol[3] %}
+{% elseif data.colNum == '5' %}
+    {% set colClass = liCol[4] %}
+{% else %}
+    {% set colClass = liCol[3] %}
+{% endif %}
+
+{% set goodsData = {
+	marginBottom:data.marginBottom|default(32),
+	componentBgc:data.componentBgc is not null?data.componentBgc:'#ffffff',
+	salePriceText:data.salePriceText|default(''),
+	quickBuyText:data.quickBuyText|default('+ Quick View'),
+	disVis:data.disVis|default('show'),
+	discountType:data.discountType|default(1),
+
+	inforColor:data.inforColor is not null?data.inforColor :'#333333',
+	originalPriceColor:data.originalPriceColor is not null?data.originalPriceColor :'#999999',
+	salePriceFtS:data.salePriceFtS|default(16),
+	salePriceColor:data.salePriceColor is not null?data.salePriceColor:'#333333',
+
+	buyBtnBgc:data.buyBtnBgc is not null?data.buyBtnBgc:'#ffffff',
+
+	dislocation:data.dislocation|default('right'),
+	disWidth:data.disWidth|default(50),
+	disHeight:data.disHeight|default(50),
+	disTop: data.disTop|default(0),
+	disLeft: data.disLeft|default(0),
+	disTextTop: data.disTextTop|default(0),
+	disTextLeft: data.disTextLeft|default(0),
+	disFtS:data.disFtS|default(14),
+	disOffFtS:data.disOffFtS|default(12),
+	disTextColor:data.disTextColor is not null?data.disTextColor:'#ffffff',
+	disTextBgc:data.disTextBgc is not null?data.disTextBgc:'#333333',
+	discountRadius:data.discountRadius|default('50'),
+
+	defaultGoodsCount: data.defaultGoodsCount|default(0),
+	fixedGoodsCount: data.fixedGoodsCount|default(0),
+
+	narketingTextColor: data.narketingTextColor is not null?data.narketingTextColor:'#333333',
+} %}
+
+<div class="geshop-component-box component-drag clearfix" data-gid="U000001_promotions" data-key="U000001" data-id="{{ pageInstanceId }}" data-static-domain="{{ staticDomain }}"
+style="margin-bottom: {{ goodsData.marginBottom }}px;background-color:{{ data.componentBgc|default('#ffffff') }}">
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+		[data-id="{{ pageInstanceId }}"] .gs-img:hover {
+			opacity: .9;
+		}
+
+		[data-id="{{ pageInstanceId }}"] .gs-discount {
+			top: {{ data.disTop ?? 0 }}px;
+			right: {{ data.disLeft ?? 0 }}px;
+		}
+
+
+        [data-id="{{ pageInstanceId }}"] .gs-img:hover .goods-buy-btn {
+            display: block;
+        }
+		[data-id="{{ pageInstanceId }}"] .goods-buy-btn:hover a {
+           opacity: 1 !important;
+        }
+        [data-id="{{ pageInstanceId }}"] .gs-off-text span:first-of-type {
+			color: #333333 !important;
+        }
+        [data-id="{{ pageInstanceId }}"] .gs-off-text span:last-of-type {
+			color: {{goodsData.narketingTextColor}};
+        }
+		[data-id="{{ pageInstanceId }}"] .buy-btn{
+			display: block;
+			width: {{ data.btnWidth }}px;
+			height: {{data.btnHeight}}px;
+			color: {{ data.btnFontColor | default('#FFFFFF') }};
+			background-color: {{ data.btnBgColor | default('#333') }};
+			{% if data.btnBgImg is not empty %}
+				background-image: url({{data.btnBgImg}});
+			{% endif %}
+			font-size: {{data.btnFontSize}}px;
+			text-align: center;
+			line-height: {{data.btnHeight}}px;
+		}
+    </style>
+    <!-- embed stylesheet end -->
+    <div class="gs-list-product" data-default-g-count="{{goodsData.defaultGoodsCount}}" data-fixed-g-count="{{goodsData.fixedGoodsCount}}" data-total="{{data.goodsInfo|length}}" data-init-time="{{data.pageInitTime}}">
+		<ul class="clearfix">
+		{% for key,item in data.goodsInfo|default(0..3) %}
+			<li class="goods-item-bigPromote" data-sku="{{item.goods_sn}}">
+				<div class="gs-img">
+					{% if item.goods_img != '' %}
+					<a class="gs-img-bgc logsss_event" href="{{item.url_title|default('javascript:;')}}" style="{% if data.goodsInfo|length > 0 %}background-color:#FFFFFF;{% else %}background-color: #EDEDED;{% endif %}"
+					data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'},'skuinfo':{'sku':'{{ item.goods_sn }}','pam':'0','pc':'{{ item.catid }}','k':'{{ item.warecode }}'} }">
+						{% if data.isEditEnv == '1' %}
+						<img class="gs-bgc-pic" src="{{item.goods_img}}">
+						{% else %}
+						<img class="gs-bgc-pic js_gdexp_lazy js-geshopImg-lazyload js_gbexp_lazy" src="{{data.default.lazyImg|default(data.default.good)}}" data-original="{{item.goods_img}}"
+							data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }"
+						>
+						{% endif %}
+					{% else %}
+						<a class="gs-img-bgc logsss_event" href="{{item.url_title|default('javascript:;')}}" style="background-color:#EDEDED;"
+					data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'},'skuinfo':{'sku':'{{ item.goods_sn }}','pam':'0','pc':'{{ item.catid }}','k':'{{ item.warecode }}'} }">
+						<img src="{{data.default.clothes}}" class="gs-default-clothes">
+					{% endif %}
+					</a>
+					{# <p class="goods-buy-btn">
+						<a href="javascript:void(0);" rel="nofollow" class="quickShop js_quickShop" data-href="{{ siteDomain }}/m-goods_fast-a-info.htm?goods_id={{item.goods_id}}&ids="
+						style="color:{{ data.buyBtnTextColor|default('#333333') }};background-color:{{ goodsData.buyBtnBgc }};">{{ goodsData.quickBuyText }}</a>
+					</p> #}
+
+					{% if goodsData.discountType|default(1) == '1' and item.discount > 0 %}
+	            	<div class="gs-discount" style="width:{{ goodsData.disWidth }}px;
+							height:{{ goodsData.disHeight }}px;
+							top: {{ goosData.disTop }}px;
+							right: {{goodsData.disLeft}}px;
+	                        background-color:{{ goodsData.disTextBgc }};
+	                        font-size:{{ goodsData.disSize }}px;
+	                        color:{{ goodsData.disTextColor }};
+							border-radius:{{goodsData.discountRadius}}%;
+							{% if data.disBgImg %}background:url({{data.disBgImg}}) no-repeat 0 0/100% 100%;border-radius:0;{% endif %}
+	                        visibility:{{ goodsData.disVis }};
+							">
+						<div class="gs-discount-box" >
+	                        <p style="font-weight:bold;font-size:{{ goodsData.disFtS }}px;padding-top:{{ goodsData.disTextTop }}px;padding-left:{{ goodsData.disTextLeft }}px;">{{item.discount}}%</p>
+	                        <p style="font-size:{{ goodsData.disOffFtS }}px;padding-left:{{ goodsData.disTextLeft }}px;">OFF</p>
+						</div>
+					</div>
+	                {% elseif goodsData.discountType|default(1) != '1' and item.discount > 0 %}
+	                <div class="gs-discount"  style="width:{{ goodsData.disWidth }}px;
+							height:{{ goodsData.disHeight }}px;
+							top: {{ goosData.disTop }}px;
+							right: {{goodsData.disLeft}}px;
+	                        background-color:{{ goodsData.disTextBgc }};
+	                        font-size:{{ goodsData.disSize }}px;
+	                        color:{{ goodsData.disTextColor }};
+							border-radius:{{goodsData.discountRadius}}%;
+	                        {% if data.disBgImg is not empty %}background:url({{data.disBgImg}}) no-repeat 0 0/100% 100%;border-radius:0;{% endif %}
+	                        visibility:{{ goodsData.disVis }};
+							">
+						<div class="gs-discount-box">
+	                        <p style="font-weight:bold;font-size:{{ goodsData.disFtS }}px;">-{{item.discount}}%</p>
+						</div>
+					</div>
+	                {% endif %}
+				</div>
+				<p class="gs-goods-describe">
+					<a href="{{item.url_title|default('javascript:;')}}" class="logsss_event"
+					data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'},'skuinfo':{'sku':'{{ item.goods_sn }}','pam':'0','pc':'{{ item.catid }}','k':'{{ item.warecode }}'} }"
+					style="color:{{ goodsData.inforColor }};">{{item.goods_title|default('Here is the description name of commodity information')}}</a>
+				</p>
+				<p class="gs-goods-price">
+					<span class="price-text" style="font-size:{{ goodsData.salePriceFtS }}px;color:{{ goodsData.salePriceColor }};font-weight:bold; margin-right:{% if goodsData.salePriceText|length <= 1 %} -5px {% endif %}; ">{{ goodsData.salePriceText }}{% if goodsData.salePriceText|length > 1 %} : {% endif %}</span>
+					<span id="new-price"style="font-size:{{ goodsData.salePriceFtS }}px;color:{{ goodsData.salePriceColor }};font-weight:bold;">
+						<strong class="bizhong"></strong>
+						<span class="bz_icon"></span>
+						<span class="my_shop_price" data-orgp="{{item.shop_price|default('0.00')}}">${{item.shop_price|default('0.00')}}</span>
+					</span>
+					<del id="old-price" style="color:{{ goodsData.originalPriceColor }};">
+						<strong class="bizhong"></strong>
+						<span class="bz_icon"></span>
+						<span class="my_shop_price" data-orgp="{{item.market_price|default('0.00')}}">${{item.market_price|default('0.00')}}</span>
+					</del>
+				</p>
+
+				{% if data.goodsInfo %}
+		            <div style="position: relative; height: 20px;line-height: 20px;margin-top: 8px;margin-bottom: 8px;">
+						<div class="gs-off-more" style="{% if data.isEditEnv == '1' %} z-index: 0; {% endif %}">
+	            	{% for key, proItem in item.promotions %}
+							<span class="gs-off-text"> {{ proItem }} </span>
+	            	{% endfor %}
+						</div>
+		            </div>
+            	{% endif %}
+
+				{% if data.isShowBtn == 1 %}
+					<a class="buy-btn" href="{{item.url_title|default('javascript:;')}}">{{data.buyBtnText}}</a>
+				{% endif %}
+            	{# {% if data.goodsInfo %}
+	            	{% for key, proItem in item.promotions %}
+		                <div style="position: relative; height: 20px;line-height: 20px;margin-top: 8px;">
+			                <div class="gs-off-more" style="{% if data.isEditEnv == '1' %} z-index: 0 {% endif %};">
+								<span class="gs-off-text"> {{ proItem }} </span>
+			                </div>
+		                </div>
+	            	{% endfor %}
+				{% else %}
+            	<div style="position: relative; height: 20px;line-height: 20px;margin-top: 8px;">
+	                <div class="gs-off-more" style=" {% if data.isEditEnv == '1' %} z-index: 0 {% endif %};">
+						<span class="gs-off-text">Buy 1 Get 10% off<b>...</b></span>
+        				<span class="gs-off-text">Buy 1 Get 10% off</span>
+        				<span class="gs-off-text">Buy 1 Get 10% off</span>
+	                </div>
+                </div>
+            	{% endif %} #}
+
+			</li>
+		{% endfor %}
+		</ul>
+    </div>
+</div>

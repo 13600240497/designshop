@@ -1,0 +1,125 @@
+{{ include ('@app/files/parts/temp/goods_manager.twig') }}
+
+{% set formData = {
+	id: 'U000041',
+	name: '商品列表tab',
+	theme: 'template1_v3',
+	tabs: [
+			{
+				label: '商品设置',
+				components: [
+					{
+						type: 'diy',
+						src: 'lib/goods.twig'
+					}
+				]
+			},
+			{
+				label: '样式设置',
+				components: [
+                    {
+                        label: '整体组件设置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件下边距',
+                                desc: '(px)',
+                                name: 'box_margin_bottom',
+                                default: 32,
+                                col: 2
+                            },
+                            {
+                                label: '组件背景颜色',
+                                name: 'box_bg_color',
+                                type: 'colorPicker',
+                                default: '#D8D8D8',
+                                col: 2
+                            }
+                        ]
+                    },
+                    {
+                        label: 'Tab 设置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: 'tab选中背颜色',
+                                name: 'tabBgCA',
+                                type: 'colorPicker',
+                                default: '#D8D8D8',
+                                col: 2,
+                            },
+                            {
+                                label: 'tab选中文字颜色',
+                                name: 'tabFtCA',
+                                type: 'colorPicker',
+                                default: '#333333',
+                                col: 2,
+                            },
+                            {
+                                label: 'tab默认背景色',
+                                name: 'tabBgC',
+                                type: 'colorPicker',
+                                default: '#EDEDED',
+                                col: 2,
+                            },
+                            {
+                                label: 'tab默认文字色',
+                                name: 'tabFtC',
+                                type: 'colorPicker',
+                                default: '#999999',
+                                col: 2,
+                            },
+                            {
+                                label: '字体大小(px)',
+                                name: 'tabFtS',
+                                default: 21,
+                                col: 2,
+                            },
+                            {
+                                label: '高度(px)',
+                                name: 'tabHeight',
+                                default: 70,
+                                col: 2,
+                            },
+                        ]
+                    },
+                    {
+                        label: '折扣标配置',
+                        type: 'discount-zf',
+                    },
+                    {
+                        label: '销售价',
+                        type: 'shop-price'
+                    },
+                    {
+                        label: '商品配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '按钮字体颜色',
+                                name: 'buyFtC',
+                                type: 'colorPicker',
+                                default: '#FFFFFF',
+                            },
+                            {
+                                label: '按钮背景颜色',
+                                name: 'buyBgC',
+                                type: 'colorPicker',
+                                default: '#333333',
+                            },
+                            {
+                                label: '购物车图标',
+                                name: 'buyBgImg',
+                                type: 'image',
+                                default: '',
+                            },
+                        ]
+                    },
+                ]
+			}
+	],
+    isAutoRefresh: 2
+} %}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

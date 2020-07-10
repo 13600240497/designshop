@@ -1,0 +1,318 @@
+{% set formData = {
+    id: 'U000044',
+    name: '订阅按钮组件',
+    theme: 'subscribe',
+    tabs: [
+        {
+            label: '数据配置',
+            components: [
+                {
+                    label: '按钮关联活动渠道ID',
+                    name: 'page_id',
+                    default: ''
+                },
+                {
+                    name: 'page_name',
+                    type: 'hidden',
+                },
+                {
+                    label: '按钮可点击时间',
+                    name: 'timestamp',
+                    type: 'dataRangePicker',
+                    default: '',
+                    placeholder: '请选择时间区间',
+                },
+            ]
+        },
+        {
+            label: '样式设置',
+            components: [
+                {
+                    label: '按钮动效开启',
+                    name: 'is_animate',
+                    type: 'radio',
+                    default: '1',
+                    options: [
+                        { label: '开启', value: '1' },
+                        { label: '关闭', value: '0' },
+                    ]
+                },
+                {
+                    label: '未开始',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '按钮文案',
+                            name: 'ready_text',
+                            default: '活动订阅',
+                            col: 2,
+                        },
+                        {
+                            label: '字体颜色',
+                            name: 'ready_text_color',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            col: 2,
+                        },
+                        {
+                            label: '背景颜色',
+                            name: 'ready_bg_color',
+                            type: 'colorPicker',
+                            default: '#000000',
+                            col: 2,
+                        },
+                        {
+                            label: '边框颜色',
+                            name: 'ready_bd_color',
+                            type: 'colorPicker',
+                            default: '#000000',
+                            col: 2,
+                        },
+                        {
+                            label: '背景图片',
+                            name: 'ready_bg_image',
+                            type: 'image',
+                            default: '',
+                        }
+                    ]
+                },
+                {
+                    label: '未点击',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '按钮文案',
+                            name: 'unclick_text',
+                            default: '活动订阅',
+                            col: 2,
+                        },
+                        {
+                            label: '字体颜色',
+                            name: 'unclick_text_color',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            col: 2,
+                        },
+                        {
+                            label: '背景颜色',
+                            name: 'unclick_bg_color',
+                            type: 'colorPicker',
+                            default: '#000000',
+                            col: 2,
+                        },
+                        {
+                            label: '边框颜色',
+                            name: 'unclick_bd_color',
+                            type: 'colorPicker',
+                            default: '#000000',
+                            col: 2,
+                        },
+                        {
+                            label: '背景图片',
+                            name: 'unclick_bg_image',
+                            type: 'image',
+                            default: '',
+                        }
+                    ]
+                },
+                {
+                    label: '已点击',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '按钮文案',
+                            name: 'clicked_text',
+                            default: '已订阅',
+                            col: 2,
+                        },
+                        {
+                            label: '字体颜色',
+                            name: 'clicked_text_color',
+                            type: 'colorPicker',
+                            default: '#000000',
+                            col: 2,
+                        },
+                        {
+                            label: '背景颜色',
+                            name: 'clicked_bg_color',
+                            type: 'colorPicker',
+                            default: '#d0d0d0',
+                            col: 2,
+                        },
+                        {
+                            label: '边框颜色',
+                            name: 'clicked_bd_color',
+                            type: 'colorPicker',
+                            default: '#d0d0d0',
+                            col: 2,
+                        },
+                        {
+                            label: '背景图片',
+                            name: 'clicked_bg_image',
+                            type: 'image',
+                            default: '',
+                        }
+                    ]
+                },
+                {
+                    label: '不可点击',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '按钮文案',
+                            name: 'disabled_text',
+                            default: '超出活动时间',
+                            col: 2,
+                        },
+                        {
+                            label: '字体颜色',
+                            name: 'disabled_text_color',
+                            type: 'colorPicker',
+                            default: '#999999',
+                            col: 2,
+                        },
+                        {
+                            label: '背景颜色',
+                            name: 'disabled_bg_color',
+                            type: 'colorPicker',
+                            default: '#d0d0d0',
+                            col: 2,
+                        },
+                        {
+                            label: '边框颜色',
+                            name: 'disabled_bd_color',
+                            type: 'colorPicker',
+                            default: '#d0d0d0',
+                            col: 2,
+                        },
+                        {
+                            label: '背景图片',
+                            name: 'disabled_bg_image',
+                            type: 'image',
+                            default: '',
+                        }
+                    ]
+                },
+            ]
+        }
+    ],
+    moreConfig: [
+        {
+            label: '折叠控件',
+            type: 'collapse',
+            items: [
+                {
+                    label: '基础配置',
+                    components: [
+                        {
+                            label: '字体大小(px)',
+                            name: 'font_size',
+                            default: '16',
+                        },
+                        {
+                            label: '字体粗细',
+                            name: 'font_weight',
+                            type: 'select',
+                            default: 'normal',
+                            options: [
+                                { label: '普通', value: 'normal' },
+                                { label: '加粗', value: 'bold' },
+                            ]
+                        },
+                        {
+                            label: '宽度(px)',
+                            name: 'width',
+                            default: '240',
+                            col: 2
+                        },
+                        {
+                            label: '高度(px)',
+                            name: 'height',
+                            default: '40',
+                            col: 2
+                        },
+                        {
+                            label: '上间距(px)',
+                            name: 'margin_top',
+                            default: '10',
+                            col: 2
+                        },
+                        {
+                            label: '下间距(px)',
+                            name: 'margin_bottom',
+                            default: '10',
+                            col: 2
+                        },
+                        {
+                            label: '圆角大小(px)',
+                            name: 'border_radius',
+                            default: '20',
+                            col: 2
+                        },
+                        {
+                            label: '边框大小(px)',
+                            name: 'border_width',
+                            default: '0',
+                            col: 2
+                        },
+                        {
+                            label: '边框类型',
+                            name: 'border_style',
+                            type: 'select',
+                            default: 'solid',
+                            options: [
+                                { label: '实线', value: 'solid' },
+                                { label: '虚线', value: 'dashed' },
+                                { label: '点状', value: 'dotted' },
+                                { label: '双线', value: 'double' },
+                            ]
+                        },
+                    ]
+                }
+            ]
+        }
+    ],
+    beforeSubmit: 'beforeSubmit'
+} %}
+
+<script>
+
+/* 公共校验之前的流程 */
+function beforeSubmit (progress) {
+
+    /**
+     * 获取页面专题名称
+     * @param page_id 页面ID
+     * @param callback 回调
+     */
+    function get_page_name (page_id, lang, callback) {
+        $.ajax({
+            url: '/activity/zf/page/get?id='+page_id+'&lang='+lang,
+            method: 'GET',
+            success: callback
+        });
+    }
+
+    /* 更新隐藏域的值 */
+    var page_id = $.trim($('[name="page_id"]').val());
+    /* 如果没填写，直接取当前页面的 */
+    if (page_id == '') {
+        page_id = $('#pageId').val();
+        $('[name="page_id"]').val(page_id);
+    }
+    get_page_name(page_id, GESHOP_LANG, function (res) {
+        if (res.code == 0 && res.data && res.data.pageLanguages[0]) {
+            var title = res.data.pageLanguages[0].title || '';
+            $('[name="page_name"]').val(title);
+            progress.next();
+        } else {
+            layui.layer.msg('按钮关联活动渠道ID不存在');
+            $('[name="page_id"]').val('');
+            $('[name="page_name"]').val('');
+        }
+    });
+}
+</script>
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

@@ -1,0 +1,42 @@
+<div class="geshop-layout-box layout-drag geshop-container geshop-gb-component ui-{{ pageInstanceId }}" data-key="L000053" id="{{ pageInstanceId }}" style="
+	{% if customData.background_color %}background-color: {{ customData.background_color }};{% endif %}
+	{% if customData.background_img %}background-image: url({{ customData.background_img }}); background-position: center top; background-repeat: no-repeat;{% endif %}
+">
+	<style>
+    /*背景图*/
+.geshop-gb-component.ui-{{ pageInstanceId }}{
+{% if customData.base_box_bgImage %}
+	background-image:url({{ customData.background_img }});
+{% endif %}
+{% if customData.component_bg_value %}
+{{ customData.component_bg_value }}
+{% endif %}
+}
+@media screen and (min-width: 1201px){
+	.geshop-gb-component.ui-{{ pageInstanceId }} .geshop-row-1200W-3{
+		width: 1200px;
+		margin:0 auto;
+	}
+}
+@media screen and (max-width: 767px){
+	.geshop-gb-component.ui-{{ pageInstanceId }} .geshop-row-1200W-3{
+		width: 100%;
+	}
+	.geshop-gb-component.ui-{{ pageInstanceId }} .geshop-row-1200W-3 .geshop-col-4{
+			width: 100%;
+		}
+}
+</style>
+
+<div class="geshop-row geshop-row-1200W-3">
+		<div class="geshop-col-4" data-position="1">
+			<div class="component-drop">{{ data[1] }}</div>
+		</div>
+		<div class="geshop-col-4" data-position="2">
+			<div class="component-drop">{{ data[2] }}</div>
+		</div>
+		<div class="geshop-col-4" data-position="3">
+			<div class="component-drop">{{ data[3] }}</div>
+		</div>
+	</div>
+</div>

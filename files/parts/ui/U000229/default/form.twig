@@ -1,0 +1,42 @@
+<style>{{ include ('form.css') }}</style>
+{%
+    set formData = {
+        id: 'U0000229',
+        name: '自定义广告配置项',
+        theme: 'default',
+        tabs: [
+            {
+                label: '样式配置',
+                components: [
+                    {
+                        label: '内容配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '图片跳转地址',
+                                name: 'img_link_url',
+                                default: '',
+                            },
+
+                            {
+                                type: 'platData-dl-target',
+                                name: 'is_open_new',
+                            },
+                            {
+                                type: 'diy',
+                                src: 'data.twig'
+                            }   
+                        ]
+                    }             
+                ]
+            },
+            
+        ],
+        moreConfig: []
+    }
+%}
+ 
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+

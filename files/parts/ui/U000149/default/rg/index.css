@@ -1,0 +1,39 @@
+.discount-off {
+  position: absolute;
+  line-height:20px;
+  font-size:16px;
+  left: 0;
+  top: 16px;
+  padding: 5px 9px;
+  border-radius: 0 2px 2px 0;
+}
+.goods-list-info {
+  padding: 8px 17px 20px;
+}
+.progress-title {
+    text-transform: capitalize;
+}
+.wrap-U000149-default .seckill-container .goods-list ul li .buy-btn {
+  border-radius: 2px;
+  width: 252px;
+}
+.wrap-U000149-default .seckill-container .goods-list ul li {
+  padding: 0;
+}
+.wrap-U000149-default .seckill-container .goods-list ul li .discount-off{
+  z-index: 2;
+}
+
+.wrap-U000149-default .seckill-container .goods-list ul li .goods-img-wrap {
+  width: 286px;
+  height: 348px;
+  text-align: center;
+}
+
+.wrap-U000149-default .seckill-container .goods-list ul li .goods-img-default .goods-img{
+  transform: none;
+}
+
+.wrap-U000149-default .seckill-container  .goods-list ul li{
+  border: solid 1px #E1E1E1;
+}

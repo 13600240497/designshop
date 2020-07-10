@@ -1,0 +1,37 @@
+{% set box = '#U000078_'~pageInstanceId %}
+{% set space = box~' .geshop-u000078-rg_tabspike_v1' %}
+
+
+{{ space }}  {
+    margin-bottom: {{ data.box_margin_bottom ?? 0}}px;
+    background-color: {{ data.box_bg_color ?? '#F8F8F8' }};
+}
+{{ space }} .goods-list-item {
+    border-radius:{{ data.goods_border_radius ?? 2 }}px;
+    border:1px solid {{ data.hover_border_color ?? '#FFFFFF' }};
+}
+
+{{ space }} .u000078-swiper {
+    background-color: {{ data.tab_unselectBgc | default('#999999') }};
+}
+
+{{ space }} .u000078-swiper .gs-tab-list {
+    color: {{ data.tab_unselectTextC | default('#FFFFFF') }};
+    background-color: {{ data.tab_unselectBgc | default('#999999') }};
+}
+{{ space }} .u000078-swiper .gs-tab-list.on {
+    color: {{ data.tab_selectTextC | default('#FFFFFF') }};
+    background-color: {{ data.tab_selectBgc | default('#333333') }};
+}
+
+{{ space }} .geshop-button-buynow {
+    border-radius:{{ data.buynow_radius ?? 2 }}px;
+    border:1px solid {{ data.buynow_bd_color ?? '#222222' }};
+    background-color: {{ data.buynow_bg_color ?? '#FFFFFF' }};
+    color: {{ data.buynow_font_color ?? '#222222'}};
+    {% if data.buynow_show == 1  %}
+        display: block;
+    {% else %}
+        display: none;
+    {% endif %}
+}

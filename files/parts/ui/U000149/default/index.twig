@@ -1,0 +1,380 @@
+{% set pageData = {
+    buyBtnHoverBgColor:data.buyBtnHoverBgColor is not null?data.buyBtnHoverBgColor:'',
+    buyBtnHoverFontColor:data.buyBtnHoverFontColor is not null?data.buyBtnHoverFontColor:'',
+    buyBtnHoverBorderColor:data.buyBtnHoverBorderColor is not null?data.buyBtnHoverBorderColor:'',
+    discountShowLeftTop:data.discountShowLeftTop is not null?data.discountShowLeftTop:'',
+    discountPosRight:data.discountPosRight is not null?data.discountPosRight:'0',
+    discountPosTop:data.discountPosTop is not null?data.discountPosTop:'0',
+    discountHeight:data.discountHeight is not null?data.discountHeight:'50',
+    discountWidth:data.discountWidth is not null?data.discountWidth:'50',
+    discountBgImg:data.discountBgImg is not null?data.discountBgImg:'',
+    discountBgColor:data.discountBgColor is not null?data.discountBgColor:'#333333',
+    discountFontSize:data.discountFontSize is not null?data.discountFontSize:'16',
+    offFontSize:data.offFontSize is not null?data.offFontSize:'14',
+    progressBarBgColor: data.progressBarBgColor is not null?data.progressBarBgColor:'',
+    stockBarBgColor: data.stockBarBgColor is not null?data.stockBarBgColor:'',
+
+    off: get_component_trans(lang,'off') ,
+    buynow:  get_component_trans(lang,'btn_buy_now') ,
+    claimed:  get_component_trans(lang,'sold') ,
+    soldOut:  get_component_trans(lang,'btn_sold_out')
+
+}%}
+
+
+
+<div 
+    data-key="U000149" 
+    class="geshop-component-box component-drag gs-index-main geshop-leaderboard-async seckill wrap-U000149-default wrap-{{ pageInstanceId }} js-geshop-ga-click js-geshop-ga-view" 
+    data-id="{{ pageInstanceId }}" 
+    data-static-domain="{{staticDomain}}" 
+    data-gid="U000149" 
+    style="margin-bottom:{{data.marginBottom}}px;" 
+    geshop-component-name="{{ data.ga_name }}">
+     <!-- embed stylesheet begin -->
+    <style type="text/css">
+
+        .wrap-{{ pageInstanceId }} .goods-list ul li .buy-btn:hover {
+            background-color: {{pageData.buyBtnHoverBgColor|default('')}}!important;
+            color: {{pageData.buyBtnHoverFontColor|default('')}}!important;
+            border-color: {{pageData.buyBtnHoverBorderColor|default('')}}!important;
+        }
+
+
+        .wrap-{{ pageInstanceId }} .goods-list ul li .discount {
+            width: {{pageData.discountWidth}}px!important;
+            height: {{pageData.discountHeight}}px!important;
+            top: -{{pageData.discountPosTop}}px!important;
+            {% if pageData.discountBgImg is not empty %}
+                background-image: url({{ pageData.discountBgImg }})!important;
+            {% endif %}
+            background-color: {{ pageData.discountBgColor }}!important;
+        }
+        {% if pageData.discountShowLeftTop == '1' %}
+            .wrap-{{ pageInstanceId }} .goods-list ul li .discount {
+                left: {{pageData.discountPosRight}}px!important;
+            } {% else %}
+            .wrap-{{ pageInstanceId }} .goods-list ul li .discount {
+                right: {{pageData.discountPosRight}}px!important;
+
+            }
+        {% endif %}
+        .wrap-{{ pageInstanceId }} .goods-list ul li .geshop-progress{
+            background-color:{{pageData.stockBarBgColor}};
+        }
+        .wrap-{{ pageInstanceId }} .goods-list ul li .geshop-progress-bar{
+            background-color: {{pageData.progressBarBgColor}};
+
+        }
+
+        .wrap-U000149-default .seckill-container .goods-list ul li .discount .middle>p {
+            {% if data.isEditEnv == 1 %}
+			line-height: 20px !important;
+			{% endif %}
+        }
+        .wrap-{{ pageInstanceId }} .middle-fr{
+            height: 100%;
+            margin-top: 0 !important;
+            top: 0 !important;
+        }
+        .wrap-{{ pageInstanceId }} .middle-fr .percent{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            height: {{ data.discountFontSize|default(16) }}px;
+        }
+
+        .wrap-{{ pageInstanceId }} .discount-off {
+            border-radius: 0 2px 2px 0;
+            background-color:{{ data.discount_bg_color | default('#FA386A')}};
+            color:{{ data.discount_font_color ?? '#FFFFFF'}};
+        {% if data.discount_bg_image is not empty %}
+            background-image: url({{ data.discount_bg_image }})
+        {% endif %}
+        }
+    </style>
+    <!-- embed stylesheet end -->
+
+    <input type="hidden" name="serverTime" data-start-time="{{data.dataStartTime}}" data-end-time="{{data.dataEndTime}}" data-lefttime="0">
+    <input type="hidden" name="isEndShow" value="{{data.isEndShow}}"/>
+    <input type="hidden" name="isEditEnv" value="{{data.isEditEnv}}"/>
+	<input type="hidden" name="timeGroup" value='["{{data.startDesc|default('Start In')}}","{{data.endDesc|default('Ends In')}}","{{data.overDesc|default('Already Ended')}}"]'>
+    <div class="leader-board-container">
+        {# layui template start #}
+        <input type="hidden" name="goodsSKU" value="{{data.goodsSKU}}"/>
+
+        <script type="text/html" class="pc-leader-board-template">
+
+            <div class="seckill-container clearfix">
+                <input type="hidden" value="{{data.isAutoPlay}}" name="isAutoPlay" />
+                {% if data.count_textStatus != '2' or (data.isEndShow == '1' and data.count_textStatus == '2') or data.isEditEnv == 1 %}
+                {% if siteCode == 'rw-pc' %}
+
+                    {% if data.link | length > 0 %}
+                    <a class="seckill-info" style="{% if data.btnBgImg is not empty %}background-image: url({{data.btnBgImg}});{% endif %} {% if data.buyBtnActive == '1' %} height:392px; {% else %} height:448px;  {% endif %}" href="{{data.link}}" target="_blank" >
+                    {% else %}
+                    <div class="seckill-info" style="{% if data.btnBgImg is not empty %}background-image: url({{data.btnBgImg}});{% endif %} {% if data.buyBtnActive == '1' %} height:392px; {% else %} height:448px;  {% endif %}">
+                    {% endif %}
+                        <div class="si-info" style="margin-top:{% if data.seckillMarginTop is not empty %}{{data.seckillMarginTop}}{% else %}200{% endif %}px;">
+                            {% if data.count_textStatus == '0' %}
+                                <p class="copywriter" style="font-size: {{data.seckillFontSize}}px;color:{{data.seckillFontColor}};">{{data.startDesc | default('Start In')}}</p>
+                            {% elseif data.count_textStatus == '1' %}
+                                <p class="copywriter" style="font-size: {{data.seckillFontSize}}px;color:{{data.seckillFontColor}};">{{data.endDesc | default('Ends In')}}</p>
+                            {% elseif data.count_textStatus == '2' %}
+                                <p class="copywriter" style="font-size: {{data.seckillFontSize}}px;color:{{data.seckillFontColor}};">{{data.overDesc | default('Already Ended')}}</p>
+                            {% endif %}
+
+                            {% if data.count_textStatus == '2' %}
+                                <div class="timer">
+                                    <span class="time-item s-days" style="background-color:{{data.seckillTimeBgColor }};color: {{data.seckillTimeFontColor}}">00</span><i style="color:{{data.seckillTimeBgColor }}">：</i>
+                                    <span class="time-item s-hours" style="background-color:{{data.seckillTimeBgColor}};color: {{data.seckillTimeFontColor}}">00</span><i  style="color:{{data.seckillTimeBgColor }}">：</i>
+                                    <span class="time-item s-minutes" style="background-color:{{data.seckillTimeBgColor}};color: {{data.seckillTimeFontColor}}">00</span><i  style="color:{{data.seckillTimeBgColor }}">：</i>
+                                    <span class="time-item s-seconds" style="background-color:{{data.seckillTimeBgColor}};color: {{data.seckillTimeFontColor}}">00</span>
+                                </div>
+                            {% else %}
+                                <div class="timer">
+                                    <span class="time-item s-days" style="background-color:{{data.seckillTimeBgColor }};color: {{data.seckillTimeFontColor}}"></span><i style="color:{{data.seckillTimeBgColor }}">：</i>
+                                    <span class="time-item s-hours" style="background-color:{{data.seckillTimeBgColor}};color: {{data.seckillTimeFontColor}}"></span><i  style="color:{{data.seckillTimeBgColor }}">：</i>
+                                    <span class="time-item s-minutes" style="background-color:{{data.seckillTimeBgColor}};color: {{data.seckillTimeFontColor}}"></span><i  style="color:{{data.seckillTimeBgColor }}">：</i>
+                                    <span class="time-item s-seconds" style="background-color:{{data.seckillTimeBgColor}};color: {{data.seckillTimeFontColor}}"></span>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% if data.link | length > 0 %}
+                    </a>
+                    {% else %}
+                    </div>
+                    {% endif %}
+                {% else %}
+                    {% if data.link | length > 0 %}
+                    <a class="seckill-info" style="{% if data.btnBgImg is not empty %}background-image: url({{data.btnBgImg}});{% endif %}color:{{data.seckillFontColor}};  {% if data.buyBtnActive == '1' %} height:477px; {% else %} height:531px;  {% endif %}" href="{{data.link}}"  target="_blank">
+                    {% else %}
+                    <div class="seckill-info" style="{% if data.btnBgImg is not empty %}background-image: url({{data.btnBgImg}});{% endif %}color:{{data.seckillFontColor}}; {% if data.buyBtnActive == '1' %} height:477px; {% else %} height:531px;  {% endif %}">
+                    {% endif %}
+                        <div class="si-info" style="margin-top:{% if data.seckillMarginTop is not empty %}{{data.seckillMarginTop}}{% else %}200{% endif %}px;">
+                            {% if data.count_textStatus == '0' %}
+                                <p class="copywriter" style="font-size: {{data.seckillFontSize}}px;color:{{data.seckillFontColor}};">{{data.startDesc | default('Start In')}}</p>
+                            {% elseif data.count_textStatus == '1' %}
+                                <p class="copywriter" style="font-size: {{data.seckillFontSize}}px;color:{{data.seckillFontColor}};">{{data.endDesc | default('Ends In')}}</p>
+                            {% elseif data.count_textStatus == '2' %}
+                                <p class="copywriter" style="font-size: {{data.seckillFontSize}}px;color:{{data.seckillFontColor}};">{{data.overDesc | default('Already Ended')}}</p>
+                            {% endif %}
+
+                            <div class="timer">
+                                <span class="time-item s-days" style="background-color:{{data.seckillTimeBgColor }};color: {{data.seckillTimeFontColor}}"></span><i style="color:{{data.seckillTimeBgColor }}">：</i>
+                                <span class="time-item s-hours" style="background-color:{{data.seckillTimeBgColor}};color: {{data.seckillTimeFontColor}}"></span><i  style="color:{{data.seckillTimeBgColor }}">：</i>
+                                <span class="time-item s-minutes" style="background-color:{{data.seckillTimeBgColor}};color: {{data.seckillTimeFontColor}}"></span><i  style="color:{{data.seckillTimeBgColor }}">：</i>
+                                <span class="time-item s-seconds" style="background-color:{{data.seckillTimeBgColor}};color: {{data.seckillTimeFontColor}}"></span>
+                            </div>
+                        </div>
+                    {% if data.link | length > 0 %}
+                    </a>
+                    {% else %}
+                    </div>
+                    {% endif %}
+               {% endif %}
+
+
+               <div class="goods-list">
+                    <div class=" swiper-container">
+                        <ul class="swiper-wrapper clearfix">
+                            <%# if(d.goodsInfo.length > 0){ %>
+                                <%#  $.each(d.goodsInfo, function(index, item){ %>
+                                    <li style="background-color: {{data.goodsBgColor}}" class="swiper-slide">
+                                        {% if 'rg' in siteCode %}
+                                            {% if (data.discount_type ?? 0) == 1 %}
+                                                <span class="discount-off site-font-bold"><% (item.discount).toFixed(0) %>% OFF</span>
+                                            {% else %}
+                                                <span class="discount-off site-font-bold">-<% (item.discount).toFixed(0) %>%</span>
+                                            {% endif %}
+                                        {% endif %}
+                                    {% if data.discountVis == '1' %}
+                                        <div class="discount">
+                                            <div class="middle {% if lang == 'fr' %}middle-fr{% endif %}">
+                                                {% if lang != 'fr' %}
+                                                    <p class="percent" style="font-size: {{data.discountFontSize}}px;"><% (item.discount).toFixed(0) %>%</p>
+                                                    <p class="offtext" style="font-size: {{data.offFontSize}}px;">{{pageData.off}}</p>
+                                                {% else %}
+                                                    <p class="percent" style="font-size: {{data.discountFontSize}}px;">-<% (item.discount).toFixed(0) %>%</p>
+                                                {% endif %}
+
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+                                        {% if siteCode == 'rw-pc' %}
+                                            <a href="<% item.url_title %>" target="_blank" >
+                                            <img style="wdith:254px;height:254px;" class="goods-img swiper-lazy" data-src="<% item.goods_img %>" src="{{data.default.lazyImg|default(data.default.good)}}"/>
+                                            </a>
+                                        {% else %}
+                                            <a href="<% item.url_title %>" target="_blank" class="goods-img-wrap logsss_event"
+                                               data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'<% item.goods_sn %>','cporder':'{{ layoutIndex }}','rank':'<% index %>'} }"
+                                            >
+                                                <img  class="goods-img swiper-lazy" data-src="<% item.goods_img %>"
+                                                      src="{{data.default.lazyImg|default(data.default.good)}}"
+                                                      data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'<% item.goods_sn %>','cporder':'{{ layoutIndex }}','rank':'<% index %>'} }"
+
+                                                /></a>
+                                        {% endif %}
+
+
+                                    <p class="goods-title">
+                                        <a href="<% item.url_title %>" target="_blank" style="color: {{data.goodsTitleColor}};font-size: {{data.goodsFontSize}}px;"><% item.goods_title || 'This is the descript' %></a>
+                                    </p>
+                                    <p class="goods-price">
+                                        <span class="my_shop_price goods-now-price site-bold-strict" data-orgp="<% item.shop_price %>" style="color: {{data.salePriceColor}};font-size: {{data.salePriceFontSize}}px;">$<% item.shop_price || 0.00 %></span>
+                                        <span class="my_shop_price goods-original-price js_market_wrap" data-orgp="<% item.market_price %>" style="color: {{data.marketPriceColor}};font-size: {{data.marketPriceFontSize}}px;">$<% item.market_price || 0.00 %></span>
+                                    </p>
+                                    <div class="geshop-progress">
+                                        {% if 'rg' in siteCode %}
+                                        <div class="geshop-progress-bar" style="width: <% (((item.activity_number - item.activity_volume_number)/item.activity_number)*100).toFixed(0) %>%"></div>
+                                        {% else %}
+                                            <div class="geshop-progress-bar" style="width: <% ((item.activity_volume_number/item.activity_number)*100).toFixed(0) %>%"></div>
+                                        {% endif %}
+                                    </div>
+
+                                    <%# if(item.activity_number == 0){ %>
+                                        <p class="progress-title" style="color: {{data.salesFontColor}}">{{ pageData.soldOut }}</p>
+                                    <%# }else{ %>
+                                        {% if data.isprocessBarPercent == '1' %}
+                                            <p class="progress-title" style="color: {{data.salesFontColor}}">
+                                                <%# if(item.activity_number > 0){ %>
+                                                    <%# if(Number(item.activity_volume_number) >= Number(item.activity_number)){ %>
+                                                        100% {{pageData.claimed}}
+                                                    <%# }else { %>
+                                                        <% ((item.activity_volume_number/item.activity_number)*100).toFixed(0) %>% {{pageData.claimed}}
+                                                    <%# } %>
+                                                <%# }else{ %>
+                                                    0% {{pageData.claimed}}
+                                                <%# } %>
+                                            </p>
+                                        {% else %}
+                                            <p class="progress-title" style="color: {{data.salesFontColor}}">
+                                                {% if lang == "en" %}
+                                                    Only <% item.activity_number - item.activity_volume_number %> left
+                                                {% elseif lang == "de" %}
+                                                    Nur <% item.activity_number - item.activity_volume_number %> auf Lager
+                                                {% elseif lang == "es" %}
+                                                    sólo quedan <% item.activity_number - item.activity_volume_number %>
+                                                {% elseif lang == "fr" %}
+                                                    <% item.activity_number - item.activity_volume_number %> Restant(s)
+                                                {% elseif lang == "it" %}
+                                                    <% item.activity_number - item.activity_volume_number %> disponibili
+                                                {% elseif lang == "pt" %}
+                                                    apenas <% item.activity_number - item.activity_volume_number %> sobrando
+                                                {% elseif lang == "ro" %}
+                                                    doar <% item.activity_number - item.activity_volume_number %> ramase
+                                                {% elseif lang == "ru" %}
+                                                    осталось только <% item.activity_number - item.activity_volume_number %>
+                                                {% else %}
+                                                    Only <% item.activity_number - item.activity_volume_number %> left
+                                                {% endif %}
+                                            </p>
+                                        {% endif %}
+                                    <%# } %>
+
+                                    <a class="buy-btn logsss_event" href="<% item.url_title %>" target="_blank"
+                                       style="background-color:{{data.buyBtnBgColor }};color: {{data.buyBtnFontColor}};
+                                        border-color:{{data.buyBtnBorderColor}};border-width: {{data.buyBtnBorderWidth}}px;
+                                        border-radius: {{data.buyBtnBorderRadius}}px;width: {{data.buyBtnWidth}}px;height: {{data.buyBtnHeight}}px;font-size: {{data.buyBtnFontSize}}px;
+                                        {% if data.buyBtnActive == '1' %} display:none; {% endif %}
+                                        " data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'<% item.goods_sn %>','cporder':'{{ layoutIndex }}','rank':'<% index %>'} }"
+                                    >{{pageData.buynow}}</a>
+
+
+                                    </li>
+                                <%# }); %>
+                            <%# } %>
+                        </ul>
+                        <div class="btn pre-btn"><i></i></div>
+                        <div class="btn next-btn"><i></i></div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </script>
+
+        {# layui template end #}
+        <div class="seckill-container clearfix">
+            {% if data.link | length > 0 %}
+            <a class="seckill-info" style="{% if data.btnBgImg is not empty %}background-image: url({{data.btnBgImg}});{% endif %}color:{{data.seckillFontColor}};{% if data.buyBtnActive == '1' %} height:392px; {% else %} height:448px;  {% endif %}" href="{{data.link}}" target="_blank">
+            {% else %}
+            <div class="seckill-info" style="{% if data.btnBgImg is not empty %}background-image: url({{data.btnBgImg}});{% endif %}color:{{data.seckillFontColor}};{% if data.buyBtnActive == '1' %} height:392px; {% else %} height:448px;  {% endif %}">
+            {% endif %}
+                <div class="si-info" style="margin-top:{% if data.seckillMarginTop is not empty %}{{data.seckillMarginTop}}{% else %}200{% endif %}px;">
+                    <p class="copywriter" style="font-size: {{data.seckillFontSize}}px;color:{{data.seckillFontColor}};">{{data.startDesc | default('Start In')}}</p>
+                    <div class="timer">
+                        <span class="time-item s-days" style="background-color:{{data.seckillTimeBgColor }};color: {{data.seckillTimeFontColor}}"></span><i style="color:{{data.seckillTimeBgColor }}";>：</i>
+                        <span class="time-item s-hours" style="background-color:{{data.seckillTimeBgColor}};color: {{data.seckillTimeFontColor}}"></span><i  style="color:{{data.seckillTimeBgColor }}";>：</i>
+                        <span class="time-item s-minutes" style="background-color:{{data.seckillTimeBgColor}};color: {{data.seckillTimeFontColor}}"></span><i  style="color:{{data.seckillTimeBgColor }}";>：</i>
+                        <span class="time-item s-seconds" style="background-color:{{data.seckillTimeBgColor}};color: {{data.seckillTimeFontColor}}"></span>
+                    </div>
+                </div>
+            {% if data.link | length > 0 %}
+            </a>
+            {% else %}
+            </div>
+            {% endif %}
+
+
+            <div class="goods-list">
+                {% if data.isEditEnv == 1 %}
+                <div class=" swiper-container">
+                    <ul class="swiper-wrapper clearfix">
+                        {% for key, content in [1,2,3] %}
+                            <li style="background-color: {{data.goodsBgColor}}" class="swiper-slide">
+                                {% if 'rg' in siteCode %}
+                                    {% if (data.discount_type ?? 0) == 1 %}
+                                        <span class="discount-off site-font-bold">{{ item.discount ?? 50 }}% OFF</span>
+                                    {% else %}
+                                        <span class="discount-off site-font-bold">-{{ item.discount ?? 50 }}%</span>
+                                    {% endif %}
+                                {% else %}
+                                    <div class="discount" style="left:0">
+                                        <div class="middle {% if lang == 'fr' %}middle-fr{% endif %}">
+                                            {% if lang != 'fr' %}
+                                                <p class="percent" style="font-size: {{data.discountFontSize}}px;">50%</p>
+                                                <p class="offtext" style="font-size: {{data.offFontSize}}px;">{{pageData.off}}</p>
+                                            {% else %}
+                                                <p class="percent" style="font-size: {{data.discountFontSize}}px;">-50%</p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                <a href="" target="_blank" >
+                                <img style="wdith:254px;height:254px;" class="goods-img swiper-lazy" src="https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/good.png"/>
+                                </a>
+                                <p class="goods-title" style="color: {{data.goodsTitleColor}};font-size: {{data.goodsFontSize}}px;"><a href="#" target="_blank" >This is the descript</a></p>
+                                <p class="goods-price">
+                                    <span class="my_shop_price goods-now-price site-bold-strict" style="color: {{data.salePriceColor}};font-size: {{data.salePriceFontSize}}px;">$0.00</span>
+                                    <span class="my_shop_price goods-original-price js_market_wrap" style="color: {{data.marketPriceColor}};font-size: {{data.marketPriceFontSize}}px;"$0.00</span>
+                                </p>
+                                <div class="geshop-progress">
+                                    <div class="geshop-progress-bar" lay-percent="30%"></div>
+                                </div>
+
+                                <p class="progress-title" style="color: {{data.salesFontColor}}">Only 50 left</p>
+                                <a class="buy-btn" href="<% item.url_title %>" target="_blank" style="background-color:{{data.buyBtnBgColor }};color: {{data.buyBtnFontColor}};
+                            border-color:{{data.buyBtnBorderColor}};border-width: {{data.buyBtnBorderWidth}}px;
+                            border-radius: {{data.buyBtnBorderRadius}}px;width: {{data.buyBtnWidth}}px;height: {{data.buyBtnHeight}}px;font-size: {{data.buyBtnFontSize}}px;
+                            {% if data.buyBtnActive == '1' %} display:none; {% endif %}
+                            ">{{pageData.buynow}}</a>
+
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="btn pre-btn"><i></i></div>
+                    <div class="btn next-btn"><i></i></div>
+                </div>
+                {% else %}
+                <div style="height:448px; background:url(https://geshopimg.logsss.com/uploads/K016no8NLPkfFRXZ5IEsv4OJrl7VD3Wm.gif) no-repeat center center; "></div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+    {# {% endif %}  #}
+</div>

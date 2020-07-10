@@ -1,0 +1,73 @@
+{% set pageData = {
+	viewText:data.viewText is not null?data.viewText:'VIEW IT',
+	marginTop:data.marginTop is not null?data.marginTop:'30',
+	marginBottom:data.marginBottom is not null?data.marginBottom:'30',
+	titleText:data.titleText is not null?data.titleText:'ROSEGAL-STYLE',
+	titleLinkText:data.titleLinkText is not null?data.titleLinkText:'SHOW YOUR STYLE >',
+	shopIt:data.shopIt|default(get_component_trans(lang,'shop_it')),
+	buyNow:data.buyNow|default(get_component_trans(lang,'buy_now')),
+	shareIt:data.shareIt|default(get_component_trans(lang,'share_it'))
+}%}
+
+<div style="display:none; width:830px; height:540px; background:#fff url(https://geshopimg.logsss.com/uploads/K016no8NLPkfFRXZ5IEsv4OJrl7VD3Wm.gif) no-repeat center center;" id="view-it-dialog-container1">
+	<div class="view-it-dialog js_viewIt_alert">
+		<a href="javascript:void(0)" rel="nofollow" class="js_close_btn close-btn"></a>
+		<a href="javascript:void(0)" rel="nofollow" class="prev"></a>
+		<a href="javascript:void(0)" rel="nofollow" class="next"></a>
+		<div class="dialog-box js_box_container">
+			<div class="left">
+				<a href="" class="img-wrap js_goods_link" target="_blank">
+					<img class="js_ins_img" src="" alt="rosewholesale">
+				</a>
+			</div>
+			<div class="right">
+				<h2>{{ pageData.shopIt }}</h2>
+				<div>
+					<a class="img-wrap js_goods_link" target="_blank" href="">
+						<img class="js_goods_img" src="" alt="rosewholesale">
+					</a>
+					<a target="_blank" class="goods-title js_goods_title js_goods_link"></a>
+					<div class="goods-price">
+						<strong class="my_shop_price new-price js_new_price" data-orgp=""></strong>
+						<del class="my_shop_price old-price js_old_price" data-orgp=""></del>
+					</div>
+					<div class="buy-now">
+						<a href="" target="_blank" class="js_buy_now js_goods_link">{{ pageData.buyNow }}</a>
+					</div>
+				</div>
+			</div>
+			<div class="bottom">
+				<p class="share">
+					<span class="title">{{ pageData.shareIt }}:</span>
+					<span class="fb-icon js_share_btn" data-share-type="facebook"></span>
+					<span class="twitter-icon js_share_btn" data-share-type="twitter"></span>
+					<span class="pinterest-icon js_share_btn" data-share-type="pinterest"></span>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="geshop-component-box component-drag" data-gid="U000063_rglink" data-key="U000063" data-static-domain="{{staticDomain}}" data-id="{{ pageInstanceId }}" attr="nav_flag" style="margin-bottom:{{ data.marginBottom | default(30) }}px">
+	<style type="text/css">
+		.title-link-{{ pageInstanceId }} a {
+			color: {{data.titleLinkColor|default('#666')}};
+		}
+		.title-link-{{ pageInstanceId }} a:hover {
+			color: {{data.titleLinkHoverColor|default('#ea5455')}};
+		}
+	</style>
+	<div class="ins-banner js_buyer_show">
+		<ul id="goodsSKUContainer" style="display:none">
+			{% for key,item in data.goodsInfo|default(0..3) %}
+				<li>{{ item|json_encode() }}</li>
+			{% endfor %}
+		</ul>
+		{% if data.isEditEnv == 1 %}
+			{{ include('edit.twig') }}
+		{% else %}
+			{{ include('product.twig') }}
+		{% endif %}
+	</div>
+</div>

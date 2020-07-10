@@ -1,0 +1,12 @@
+<h4 class="column-title">模板选择<span>（切换模板后 标识的配置数据将被重置）</span></h4>
+<label for="">当前使用</label>
+<ul class="template-list">
+    {% for item in data.templates.list %}
+    <li class="{% if item.id == data.templates.selected %} active {% endif %}">
+        <input type="radio" name="tpl_id" value="{{ item.id }}" lay-filter="templateId" title="{{ item.name }}"{% if item.id == data.templates.selected %} checked{% endif %}>
+        <i class="layui-icon layui-icon-ok"></i>
+        {% if item.pic|length > 0 %}<img src="{{item.pic}}" alt="">{% endif %}
+        <span class="tpl-name">默认模板</span>
+    </li>
+    {% endfor %}
+</ul>

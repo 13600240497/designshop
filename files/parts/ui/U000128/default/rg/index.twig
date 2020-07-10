@@ -1,0 +1,301 @@
+
+{% if lang %}
+{% else %}
+    {% set lang = 'en' %}
+{% endif %}
+
+{% set goodsData = {
+	titleTxtxStart: get_component_trans(lang,'gift_start'),
+	titleTxtxEnd: get_component_trans(lang,'gift_end'),
+	left: get_component_trans(lang,'gift_left'),
+	sold: get_component_trans(lang,'gift_sold')
+} %}
+{% set remUnit = 37.5 %}
+{% set pageSet = {
+		tabFontSize: (data.tabFontSize|default(24))/remUnit/2,
+		marketPriceFontsize: (data.marketPriceFontsize|default(32))/remUnit/2,
+		mainMargin:(data.mainMargin|default(10))/remUnit/2,
+		tabHeight:(data.tabHeight|default(108))/remUnit/2,
+		tabStockFts:(data.tabStockFts|default(24))/remUnit/2,
+	}
+%}
+
+{% set pageData = {
+	tabPriceTextColor:data.tabPriceTextColor is not null?data.tabPriceTextColor:'#FA386A'
+} %}
+
+<div class="geshop-component-box component-drag clearfix geshop-gift-async tab{{pageInstanceId}} U000128_default" data-gid="U000128_default" data-key="U000128"
+	data-id="{{ pageInstanceId }}" attr="nav_flag" data-static-domain="{{staticDomain}}"
+	>
+
+    <style type="text/css">
+
+		.tab{{pageInstanceId}} .geshop-tabs .active{
+			{% if data.tabSelectBgurl  %}
+			   background: url('{{data.tabSelectBgurl}}') repeat-x;
+			{% else %}
+			  background: {{data.tabSelectedBgColor|default('#333333')}} !important;
+			{% endif %}
+			color:{{data.tabSelectedTextColor|default('#ffffff')}} !important;
+		}
+
+		.tab{{pageInstanceId}} .geshop-tabs .swiper-slide{
+			background:{{ data.tabUnselectedBgColor | default('#ededed')}} !important;
+			color:{{data.tabUnselectedTextColor|default('#333333')}} !important;
+			font-size: {{ pageSet.tabFontSize }}rem;
+		}
+
+		{#  销售价 #}
+		.U000128_default[data-id="{{ pageInstanceId }}"] .shop-price {
+			width:67px;
+			font-size: {{ pageSet.marketPriceFontsize }}rem;
+		}
+
+		{# tab栏高度 #}
+		.U000128_default[data-id="{{ pageInstanceId }}"] .swiper-container,
+		.U000128_default[data-id="{{ pageInstanceId }}"] .swiper-slide-item {
+			height:{{pageSet.tabHeight}}rem;
+			height:{{pageSet.tabHeight}}rem;
+		}
+		.U000128_default[data-id="{{ pageInstanceId }}"] .item_stock{
+			text-align: center;
+			text-transform: capitalize;
+		}
+    </style>
+
+	<div class="clearfix" style="
+			{% if data.boxMarginBottom %}margin-bottom:{{ data.boxMarginBottom / 75 | number_format(3, '.') }}rem;{% endif %}
+			{% if data.componentBgColor %}background: {{ data.componentBgColor |default('#F8F8F8')}};{% endif %}
+		">
+		<div class='data-goodsIDnum-domain' data-goodsIDnum-domain="{{data.goodsIDnum}}" ></div>
+
+		{% if data.goodsPrice  %}
+			<ul class="rg-goods-price-wrap" style="display:none;">
+			{% for key,item in data.goodsPrice %}
+				<li>{{ item }}</li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+
+		<input type="hidden" class="pagesize" value="{{data.productsNum|default(20)}}" />
+		<div class="swiper-container" >
+			<div class="swiper-wrapper geshop-tabs">
+				{% if data.goodsID  %}
+					{% for key,item in data.goodsID %}
+						{% if key == '0' %}
+							<div class="swiper-slide " style="display: table;{% if data.goodsIDnum == 1 %} width:100% !important;{% endif %}">
+								<div 
+									class="swiper-slide-item active" 
+									style=" display: table-cell; vertical-align: middle; " 
+									data-activityid-id="{{item}}">
+									{{goodsData.titleTxtxStart}}
+									<span class="minPrice my_shop_price" data-orgp="{{ data.goodsPrice[key] }}">${{ data.goodsPrice[key] }}</span>
+									{{goodsData.titleTxtxEnd}}
+								</div>
+							</div>
+						{% else %}
+							<div class="swiper-slide" style="display: table;">
+								<div 
+									class="swiper-slide-item" 
+									style=" display: table-cell; vertical-align: middle; "
+									data-activityid-id="{{item}}">
+									{{goodsData.titleTxtxStart}}
+									<span class="minPrice my_shop_price" data-orgp="{{ data.goodsPrice[key] }}">${{ data.goodsPrice[key] }}</span>
+									{{goodsData.titleTxtxEnd}}
+								</div>
+							</div>
+						{% endif %}
+					{% endfor %}
+
+				{% else  %}
+					<div class="swiper-slide" style="display: table;">
+						<div class="swiper-slide-item active" style=" display: table-cell; vertical-align: middle;">
+						{{goodsData.titleTxtxStart}}<span class="minPrice my_shop_price" data-orgp="0">XXX</span>{{goodsData.titleTxtxEnd}}
+						</div>
+					</div>
+					<div class="swiper-slide" style="display: table;">
+						<div class="swiper-slide-item" style=" display: table-cell; vertical-align: middle;">
+						{{goodsData.titleTxtxStart}}<span class="minPrice my_shop_price" data-orgp="0">XXX</span>{{goodsData.titleTxtxEnd}}
+						</div>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+
+		<section style="margin: 0 auto">
+		<div class="geshop-col-12" style=" {% if data.componentBgColor %}background: {{ data.componentBgColor }};{% endif %}">
+			{% if data.goodsID  %}
+				<div class="giftviewBox"></div>
+			{% else  %}
+				<div class="gs-goodsWrap" data-gid="gs-goods-rwDefult" style="width:100%;margin:0 auto;">
+					<ul class="clearfix">
+					{% for key,item in data.goodsInfo|default(0..3) %}
+						<li class="goods-item" >
+								<div class="component-self-goodBox" style="background-color:{{data.itemBgColor|default('#ffffff')}};">
+									<div class="component-self-goodWrap">
+											<div class="gs-img" data-editEnv="{{data.isEditEnv}}">
+												<a href="{{item.url_gift|default('javascript:;')}}"  class="logsss_event"
+													data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'},'skuinfo':{'sku':'{{ item.goods_sn }}','pam':'0','pc':'{{ item.catid }}','k':'{{ item.warecode }}'} }"
+												>
+													{% if data.isEditEnv == '1' and data.goodsInfo %}
+														<img  src="{{item.goods_img|default(data.default.good)}}"style="max-width: 100%;max-height:100%;">
+													{% elseif  data.isEditEnv == '0' and data.goodsInfo %}
+														<img class="js_gdexp_lazy js-geshopImg-lazyload js_gbexp_lazy" src="{{data.default.lazyImg|default(data.default.good)}}" data-original="{{item.goods_img|default(data.default.good)}}" style="max-width: 100%;max-height:100%;"
+															data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }"
+														>
+													{% else %}
+														<img  src="{{data.default.good}}" style="max-width: 100%;max-height:100%;">
+													{% endif %}
+{#													#}{# 上架状态 #}
+{#													{% if (item.activity_number - activity_volume_number <= 0) or item.goods_number <= 0 %}#}
+{#														<div class="goodStatus" style=" color:{{data.tabSelloutTextColor|default('#333333')}};#}
+{#															background:{{data.tabSelloutBgColor|default('#ffffff')}};#}
+{#															font-size:{{data.sellOutFontsize|default(32)}}px;">#}
+
+{#															<div style=" display: table-cell; vertical-align: middle; ">{{ languages.soldout[lang]|default('All Claimed') }}</div>#}
+{#														</div>#}
+{#													{% endif %}#}
+
+
+												</a>
+
+										</div>
+
+										<div style="background:{{data.tabStockBarTotalColor|default('#EDEDED')}}; margin: 0.2rem auto; margin-bottom: .05rem;width:100%; height:8px; border-radius:4px;">
+											<div style="width:50%; height:8px; border-radius:4px;background:{{data.tabStockBarLavelColor|default('#D0D0D0')}};"> </div>
+										</div>
+
+										<div style="font-size:0.19rem;margin: 0.08rem auto 0.08rem auto;width:100%; height:19px;line-height:19px;color:#333333;text-align: center">
+{#											{% if lang == 'ru' %}#}
+{#												<span style="color:{{data.titleBgColor|default('#333333')}}">{{ languages.sold[lang]|default('Claimed') }}</span>&nbsp;#}
+{#												<span style="color:{{data.tabSellTextColor|default('#333333')}}">0</span>&nbsp;#}
+{#											{% else %}#}
+{#												<span style="color:{{data.tabSellTextColor|default('#333333')}}">0</span>&nbsp;#}
+{#												<span style="color:{{data.titleBgColor|default('#333333')}}">{{ languages.sold[lang]|default('Claimed') }}</span>&nbsp;#}
+{#											{% endif %}#}
+
+{#											<span style="color:{{data.titleBgColor|default('#333333')}};">/&nbsp;1&nbsp;{{ goodsData.left}}</span>#}
+											{# 库存剩余 #}
+											<div class="item_stock">
+												<span>{{ (get_component_trans(lang,'left_persent')|default('only XX% left'))|replace({'XX': '0'}) }}</span>
+											</div>
+										</div>
+
+										<div class="gs-desc">
+											<p class="item-price">
+												<span class="shop-price site-bold-strict">
+													<span class="shop-price" style="color:{{pageData.tabPriceTextColor | default('#FA386A') }};">
+														$0.00
+													</span>
+												</span>
+												<del class="market-price js_market_wrap">
+													<span style=" color:{{data.marketPriceFontColor|default('#333333')}}; font-size:0.2rem;  width:51px; line-height:21px; text-decoration:line-through; text-line-through-color: {{data.marketPriceFontColor|default('#333333')}};">
+														$5.2
+													</span>
+												</del>
+											</p>
+										</div>
+									</div>
+								</div>
+						</li>
+					{% endfor %}
+					</ul>
+				</div>
+			{% endif %}
+		</div>
+		</section>
+	</div>
+	<script  type="text/html" class="pc-gift-template">
+		<div class="gs-goodsWrap" data-gid="gs-goods-rwDefult" style="width:100%;
+				{% if data.baseBgC%}background-color:{{data.baseBgC}};{% endif %} ">
+			<ul class="clearfix goodList">
+				<%#  $.each(d.goodsInfo, function(index, item){ %>
+					<li class=" goods-item">
+						<div class="component-self-goodBox" style="background-color:{{data.itemBgColor|default('#ffffff')}};">
+							<div class="component-self-goodWrap">
+								<div class="gs-img" data-editEnv="{{data.isEditEnv}}">
+									<a href="<% geshopUrlToApp(item.url_gift ? item.url_gift : item.url_title, item.goods_id) %>" class="logsss_event"
+										data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'<% item.goods_sn %>','cporder':'{{ layoutIndex }}','rank':'<% index %>'},'skuinfo':{'sku':'<% item.goods_sn %>','pam':'0','pc':'<% item.cateid %>','k':'<% item.warehousecode %>'} }"
+									>
+										<%# if (item.activity_number - item.activity_volume_number<=0 || item.goods_number<=0) { %>
+											<div  class="mask-layer">
+												<div class="goodStatus" style=" color:{{data.tabSelloutTextColor|default('#333333')}};
+													background:{{data.tabSelloutBgColor|default('#ffffff')}};
+													font-size:{{ data.sellOutFontsize / 75 | number_format(3, '.') }}rem;  ">
+													<div style=" display: table-cell; vertical-align: middle; ">{{ languages.soldout[lang]|default('All Claimed') }}</div>
+												</div>
+											</div>
+										<%# } %>
+										{% if data.isEditEnv == '1' %}
+												<img  src="<% item.goods_img %>" alt="<% item.goods_title %>" style="max-width: 100%;max-height:100%;"/>
+										{% elseif  data.isEditEnv == '0' %}
+											<img class="js_gdexp_lazy js-geshopImg-lazyload js_gbexp_lazy"
+												src="<% item.goods_img %>"
+												data-original="<% item.goods_img %>"
+												style="max-width: 100%;max-height:100%;"
+												data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'<% item.goods_sn %>','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }"
+											>
+										{% endif %}
+									</a>
+								</div>
+
+								<div style="background:{{data.tabStockBarTotalColor|default('#EDEDED')}}; margin: 0.2rem 0; margin-bottom: .05rem; width:100%; height:8px; border-radius:4px;">
+									<%#
+									var left_persent = Math.ceil(((item.activity_number - item.activity_volume_number)/item.activity_number) * 100);
+									var left_persent_real = left_persent > 0 && item.goods_number > 0 ? left_persent : 0;
+									if( left_persent_real ){ %>
+									<div style="width:<% left_persent_real %>%;  background:{{data.tabStockBarLavelColor|default('#D0D0D0')}}; height:8px; border-radius:4px;"> </div>
+									<%# } %>
+
+								</div>
+
+								<div style="font-size:0.19rem;margin: 0.08rem auto 0.08rem auto;width:100%; height:19px;line-height:19px;color:#333333;font-size:{{pageSet.tabStockFts}}rem">
+{#									{% if lang == 'ru' %}#}
+{#											<span style="color:{{data.titleBgColor|default('#333333')}}">{{ languages.sold[lang]|default('Claimed') }}</span>&nbsp;#}
+{#											<span style="color:{{data.tabSellTextColor|default('#333333')}}"><% item.activity_volume_number %></span>&nbsp;#}
+{#									{% else %}#}
+{#											<span style="color:{{data.tabSellTextColor|default('#333333')}}"><% item.activity_volume_number %></span>&nbsp;#}
+{#											<span style="color:{{data.titleBgColor|default('#333333')}}">{{ languages.sold[lang]|default('Claimed') }}</span>&nbsp;#}
+{#									{% endif %}#}
+
+{#									#}{# <span style="color:{{data.titleBgColor|default('#333333')}};">&nbsp;/&nbsp;<% item.activity_number - item.activity_volume_number > 0 ? (item.activity_number - item.activity_volume_number) : 0 %>&nbsp;{{ goodsData.left}}</span>						  #}
+{#									<span style="color:{{data.titleBgColor|default('#333333')}};">&nbsp;/&nbsp;<% item.activity_number - 0 ? item.activity_number : 0 %>&nbsp;</span>#}
+									<%#
+									var left_persent = Math.ceil(((item.activity_number - item.activity_volume_number)/item.activity_number) * 100);
+									var left_persent_real = left_persent > 0 && item.goods_number > 0 ? left_persent : 0;
+									var left_value = window.GESHOP_LANGUAGES.left_persent && window.GESHOP_LANGUAGES.left_persent.replace('XX',left_persent_real);
+									if( left_value ){ %>
+									<div class="item_stock">
+										<span><% left_value %></span>
+									</div>
+									<%# } %>
+								</div>
+
+								<div class="gs-desc">
+									<p class="item-price">
+										<span class="shop-price site-bold-strict">
+											<span class="my_shop_price" data-orgp="<% item.shop_price %>"
+												style=" width:67px;  font-size:{{ pageSet.marketPriceFontsize }}rem;
+												{% if data.tabPriceTextColor %}color:{{pageData.tabPriceTextColor }};{% endif %}
+												">
+												$<% item.shop_price %>
+											</span>
+										</span>
+										<del class="market-price">
+											<span class="my_shop_price js_market_wrap" data-orgp="<% item.market_price %>"
+											style=" color:{{data.marketPriceFontColor|default('#333333')}}; font-size:0.32rem;
+											width:51px; line-height:21px; text-line-through-color: {{data.marketPriceFontColor|default('#333333')}}; text-decoration:line-through;">
+											$<% item.market_price %>
+											</span>
+										</del>
+									</p>
+								</div>
+
+							</div>
+						</div>
+					</li>
+				<%# }); %>
+			</ul>
+		</div>
+	</script>
+</div>

@@ -1,0 +1,169 @@
+.p2r(@px) {
+  @rem: round(@px / 37.5 * 1rem, 3);
+}
+@p: 37.5;
+[data-gid="U000100"] {
+  .goodsFloor {
+    position: relative;
+    .p2r(10);
+    padding: @rem @rem 0;
+
+    .goodsFloor_content {
+      overflow: hidden;
+      position: relative;
+      .subjectGoodList-appVip {
+        font-size: 0;
+        .subjectGoodItem {
+          margin-bottom: round(10 / @p * 1rem, 3);
+          .p2r(248);
+          height: @rem;
+          color: #fff;
+          text-align: center;
+          vertical-align: top;
+          background-color: #fff;
+          -webkit-transition: 0.5s;
+          transition: 0.5s;
+          display: inline-block;
+          width: 48.45%;
+          -webkit-box-sizing: border-box;
+                  box-sizing: border-box;
+          position: relative;
+
+          &:nth-child(2n + 1) {
+            margin-right: 0.267rem;
+          }
+          /* 商品折扣 */
+
+          .gs-goods-discount {
+            position: absolute;
+            z-index: 1;
+            text-align: center;
+            -webkit-box-sizing: border-box;
+                    box-sizing: border-box;
+            padding: round(5 / @p * 1rem, 3) 0;
+            .curtoff-box {
+              strong {
+                font-weight: 400;
+              }
+            }
+            span {
+              display: block;
+              .p2r(12);
+              font-size: @rem;
+            }
+          }
+
+          /* 商品信息 */
+          .goodInfoContainer {
+            padding: round(8 / @p * 1rem, 3);
+            position: relative;
+
+            .goodInfoLink {
+              display: block;
+              font-size: 0;
+              position: relative;
+              .p2r(196);
+              min-height: @rem;
+              .goodImg {
+                .p2r(156);
+                width: @rem;
+                height: @rem;
+              }
+              .tearImage {
+                .p2r(156);
+                width: @rem;
+                height: @rem;
+                img {
+                  .p2r(156);
+                  width: @rem;
+                  height: @rem;
+                }
+              }
+              .goodDescript {
+                margin: round(4 / @p * 1rem, 3) 0 0;
+                font-size: round(12 / @p * 1rem, 3);
+                width: 100%;
+                line-height: round(16 / @p * 1rem, 3);
+                display: -webkit-box;
+                overflow: hidden;
+                color: #333;
+                text-align: left;
+                height: round(32 / @p * 1rem, 3);
+                -webkit-transition: all 0.3s ease-in-out;
+                transition: all 0.3s ease-in-out;
+                text-decoration: none;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+              }
+
+              .gs-goods-status {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+                width: round(80 / @p * 1rem, 3);
+                height: round(80 / @p * 1rem, 3);
+                display: inline-block;
+                .p2r(20);
+                padding: @rem round(10 / @p * 1rem, 3);
+                font-size: @rem;
+                line-height: @rem;
+                color: #fff;
+                text-align: center;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+                visibility: visible;
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                font-style: normal;
+                display: none;
+                white-space:normal; 
+                word-break:break-all; 
+              }
+            }
+            /* 商品价格 */
+
+            .gs-goods-price--m {
+              margin: 0;
+              font-size: 0;
+              text-align: left;
+              .gs-market-price {
+                display: block;
+                font-size: round(11 / @p * 1rem, 3);
+                line-height: round(15 / @p * 1rem, 3);
+                color: #bebebe;
+              }
+              .gs-shop-price {
+                display: block;
+                font-size: round(16 / @p * 1rem, 3);
+                line-height: round(20 / @p * 1rem, 3);
+                color: #cc0001;
+                strong {
+                  display: inline-block;
+                  vertical-align: middle;
+                  font-weight: 600;
+                }
+              }
+            }
+          }
+        }
+        .good_soldOut {
+          .gs-goods-status {
+            display: block !important;
+          }
+          .js-addCart {
+            background-color: #cccccc !important;
+            color: #fff !important;
+            pointer-events: none;
+            cursor: default;
+          }
+        }
+      }
+    }
+  }
+
+  @import '../../../temp/gb/css/index_default_m.less';
+
+}

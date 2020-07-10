@@ -1,0 +1,5 @@
+{
+    "fields": {
+        "test": { "is_public": "0", "is_m": "0", "is_app": "0" }
+    }
+}

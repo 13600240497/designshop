@@ -1,0 +1,58 @@
+
+{%
+    set pageData = {
+        validText : data.validText | default('Validity：Nov.23-Nov.25'),
+        couponId : data.couponId | default(''),
+    }
+%}
+
+{# 新老客的css类名 #}
+{% set userGroupClass = "geshop_user_"~data.userGroupSelect|default(0) %}
+
+{# start wrap #}
+{{include ('@app/files/parts/ui/U000165/coupon2/style.twig')}} 
+{# end wrap #}
+<div 
+    data-key="U000165" 
+    data-id="{{pageInstanceId}}" 
+    data-static-domain="{{staticDomain}}" 
+    data-gid="U000165" 
+    class="geshop-component-box component-drag gs-index-main {{userGroupClass}}">
+    <div data-module="U000165-2" data-box="coupon-{{pageInstanceId}}-2">
+        <input 
+            class="hide-info-input"
+            type="hidden"
+            unReceivedText="{{ languages.unReceived[lang] }}"
+            receivedText="{{ languages.received[lang] }}"
+            failedText="{{ languages.failed[lang] }}"
+            successText="{{ languages.successText[lang] }}"
+            couponId="{{ pageData.couponId }}"
+            lang="{{ lang }}"
+            serverTime="{{ serverTime }}"
+            env="{{ data.isEditEnv }}"
+            staticDomain="{{staticDomain}}"
+        />
+        
+        <div class="coupon-body">
+            <div class="coupon-layout coupon-top">
+                <div class="center-center">
+                    <span class="coupon-discount site-bold-strict"></span>
+                    <span class="coupon-discount-term">{{ languages.off[lang] }} <i style="font-style: normal;"></i> </span>
+                </div>
+            </div>
+            <div class="coupon-layout coupon-middle">
+                <div class="center-center">
+                <div class="coupon-text">{{ pageData.validText }}</div>
+                </div>
+            </div>
+            <div class="coupon-layout coupon-bottom">
+                <div class="center-center">
+                <div class="coupon-btn inline-box" >Claim Now</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {# <div class="snowberg-png"></div> #}
+</div>
+<div style="clear: both;"></div>
+

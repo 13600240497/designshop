@@ -1,0 +1,29 @@
+{#/**
+*@author: 任贸华
+*@date: 2018/11/24 16:31:41
+*@desc: 模板选择组件
+* @param {string} label 名称
+* @param {object} list 数组 [{a:1,b:2}]
+* @param {string} name 参数名
+* @param {string} value 参数值
+*/#}
+{# {% if options %}
+    <div class="layui-form-item">
+        <label class="layui-form-label">{{ options.label|default('') }}</label>
+        <div class="layui-input-block">
+            {% for item in options.list %}
+                <input type="radio" name="tpl_id" value="{{ item.id }}" lay-filter="templateId"
+                       title="{{ item.name }}"{% if item.id == data.templates.selected %} checked{% endif %}>
+                {% if item.pic|length > 0 %}
+                    <p><img alt="{{ item.name }}" src="{{ item.pic }}" width="120"></p>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% else %}
+    {{include ('@app/files/parts/common/components/argsErrors.twig')}}
+{% endif %} #}
+
+
+<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}

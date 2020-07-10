@@ -1,0 +1,98 @@
+
+{% 
+	set pageData = {
+		defaultBannerModelData: data.imgItem|slice(0,1)
+	} 
+%}
+
+{% 
+	set imageModelData = ""
+%}
+
+{% if siteCode == 'rw-pc' %}
+<div data-key="U000058" data-id="{{ pageInstanceId }}" data-gid="U000058_model_timeslot" data-static-domain="{{staticDomain}}" class="geshop-component-box component-drag gs-index-main" style="
+	width: {{data.ImgWidth | default(1200)}}px;
+	height: {{data.ImgHeight | default(535)}}px;
+	margin-top: {{ data.marginTop | default(0) }}px;
+	margin-bottom: {{ data.marginBottom | default(0) }}px;
+	overflow: hidden;
+">
+{% elseif siteCode == 'rg-pc' %}
+<div data-key="U000058" data-id="{{ pageInstanceId }}" data-gid="U000058_model_timeslot" data-static-domain="{{staticDomain}}" class="geshop-component-box component-drag gs-index-main" style="
+	width: {{data.ImgWidth | default(1200)}}px;
+	height: {{data.ImgHeight | default(560)}}px;
+	margin-top: {{ data.marginTop | default(0) }}px;
+	margin-bottom: {{ data.marginBottom | default(0) }}px;
+	overflow: hidden;
+">
+{% elseif siteCode == 'zf-pc' %}
+<div data-key="U000058" data-id="{{ pageInstanceId }}" data-gid="U000058_model_timeslot" data-static-domain="{{staticDomain}}" class="geshop-component-box component-drag gs-index-main" style="
+	width: {{data.ImgWidth | default(1240)}}px;
+	height: {{data.ImgHeight | default(600)}}px;
+	margin-top: {{ data.marginTop | default(0) }}px;
+	margin-bottom: {{ data.marginBottom | default(0) }}px;
+	overflow: hidden;
+">
+{% endif %}
+
+	{% if data.imgItem %}
+
+	{# 过滤处于当前时段的banner时段数据 #}
+	{% for key,item in data.imgItem %}
+		{# {% if ('now'|date('U')) > (item.startTime |date('U')) and ('now'|date('U')) < (item.endTime |date('U')) %} #}
+		{% if ('now'|date('U')) > item.startTimeStamp and ('now'|date('U')) < item.endTimeStamp %}
+			{% set imageModelData = item %}
+		{% endif %}
+	{% endfor %}
+
+	{# <div class="geshop swiper-container geshop-index-banner"> #}
+	<div class="geshop swiper-container geshop-index-banner geshop-swiper-container-{{ pageInstanceId }}" data-id="{{ pageInstanceId }}">
+		<div class="swiper-wrapper">
+			{# 没有匹配时间段数据 #}
+			{% if imageModelData|length == 0 %}
+				{% for key,item in pageData.defaultBannerModelData %}
+					{% for it in item.imgSrc %}
+						<div class="geshop swiper-slide swiper-slide">
+							<a href="{{ it.imgLink }}" class="logsss_event js-geshop-ga-click js-geshop-ga-view" geshop-component-name="{{ it.ga_name }}" style="text-align: center;"
+								{% if data.isOpenNew == 1 %}target="_blank"{% endif %}
+								data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ it.imgSource }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+								<img class="swiper-lazy" data-src="{{ it.imgSource }}" src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{ it.imgSource }}" style="width:{{data.ImgWidth}}px; height:{{data.ImgHeight}}px;"
+									data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ it.imgSource }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+							</a>
+							<div class="swiper-lazy-preloader"></div>
+						</div>
+					{% endfor %}
+				{% endfor %}
+			{% else %}
+				{% for it in imageModelData.imgSrc %}
+					<div class="geshop swiper-slide swiper-slide">
+						<a href="{{ it.imgLink }}" class="logsss_event js-geshop-ga-click js-geshop-ga-view" geshop-component-name="{{ it.ga_name }}" style="text-align: center;"
+							{% if data.isOpenNew == 1 %}target="_blank"{% endif %}
+							data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ it.imgSource }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+							<img class="swiper-lazy" data-src="{{ it.imgSource }}" src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{ it.imgSource }}" style="width:{{data.ImgWidth}}px; height:{{data.ImgHeight}}px;"
+								data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ it.imgSource }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+						</a>
+						<div class="swiper-lazy-preloader"></div>
+					</div>
+				{% endfor %}
+			{% endif %}
+			
+		</div>
+		<div class="geshop swiper-button-prev" style='display: none;'></div>
+		<div class="geshop swiper-button-next" style='display: none;'></div>
+		<div class="swiper-pagination"></div>
+	</div>
+	{% else %}
+		{% if siteCode == 'rw-pc' %}
+		<div class="geshop swiper-container geshop-index-banner"
+			 style="height:{{data.ImgHeight | default(535)}}px;{% if data.default.bannerView is not empty %}background-image:url('{{ data.default.bannerView }}');background-repeat:no-repeat;background-position: center center;background-size:350px 270px;{% endif %}background-color:#EDEDED;></div>
+		{% elseif siteCode == 'rg-pc' %}
+		<div class="geshop swiper-container geshop-index-banner"
+			 style="height:{{data.ImgHeight | default(560)}}px;{% if data.default.bannerView is not empty %}background-image:url('{{ data.default.bannerView }}');background-repeat:no-repeat;background-position: center center;background-size:350px 270px;{% endif %}background-color:#EDEDED;"></div>
+		{% elseif siteCode == 'zf-pc' %}
+		<div class="geshop swiper-container geshop-index-banner"
+			 style="height:{{data.ImgHeight | default(600)}}px;{% if data.default.bannerView is not empty %}background-image:url('{{ data.default.bannerView }}');background-repeat:no-repeat;background-position: center center;background-size:350px 270px;{% endif %}background-color:#EDEDED;"></div>
+		{% endif %}
+	{% endif %}
+</div>
+<link rel="stylesheet" href="{{staticDomain}}/resources/javascripts/library/swiper/swiper.min.css" type="text/css" />

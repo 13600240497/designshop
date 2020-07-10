@@ -1,0 +1,144 @@
+{% set space = '#U000224_'~pageInstanceId %}
+{% set body = space~' .geshop-U000224-model2-body' %}
+
+{# 三端共有样式 #}
+{{space}} .geshop-U000224-model2-body {
+    margin-top: {{data.box_margin_top | default(0)}}px;
+    margin-bottom: {{data.box_margin_bottom | default(32)}}px;
+}
+
+{{ space }} .geshop-U000224-model2-body .goods-buy-buttom {
+    font-size: 16px;
+    background-color:{{ data.buy_bg_color|default('#000000') }};
+    color:{{ data.buy_text_color|default('#FFFFFF') }};
+}
+
+{# 折扣 #}
+{{ space }} .geshop-U000224-model2-body .geshop-components-discount{
+top: 6px !important;
+right: 6px !important;
+border-radius:2px !important;
+background-color:{{ data.discount_bg_color|default('#151515') }} !important;
+color:{{ data.discount_text_color|default('#ffffff') }} !important;
+background-position: center center;
+background-size: contain;
+background-repeat: no-repeat;
+}
+
+{{ space }} .geshop-U000224-model2-body .geshop-components-discount span label {
+font-size: 12px !important;
+font-weight: normal !important;
+}
+
+{{ body }} .geshop-components-discount *{
+color:inherit;
+}
+
+{{ space }} .geshop-U000224-model2-body .swiper-slide {
+width: 20%;
+display: inline-block;
+float: left;
+}
+
+{# PC 模式 #}
+@media screen and (min-width: 1025px) {
+
+    {{ space }} .geshop-U000224-model2-body {
+        margin-top: {{data.box_margin_top | default(0)}}px;
+        margin-bottom: {{data.box_margin_bottom | default(32)}}px;
+    }
+
+    {{ space }} .geshop-U000224-model2-body .geshop-components-discount{
+        width:{{ data.discount_width|default(46) }}px !important;
+        height:{{ data.discount_height|default(20) }}px !important;
+        {% if data.discount_bg_image %}
+            background-image: url({{ data.discount_bg_image|default('none') }}) !important;
+            background-color: transparent;
+            border-radius:0 !important;
+        {% endif %}
+    }
+
+    {% if data.swiper_left_image %}
+        {{ space }} .geshop-U000224-model2-body .swiper-button-prev{
+            background-image: url({{ data.swiper_left_image }}) !important;
+        }
+    {% endif %}
+
+    {% if data.swiper_right_image %}
+        {{ space }} .geshop-U000224-model2-body .swiper-button-next{
+            background-image: url({{ data.swiper_right_image }}) !important;
+        }
+    {% endif %}
+
+    {{ space }} .geshop-U000224-model2-body .goods-buy-buttom:hover {
+        transition: all 0.3s;
+        background-color:{{ data.buy_hover_bg_color|default('#000000') }};
+        color:{{ data.buy_hover_text_color|default('#ffffff') }}
+    }
+}
+
+{# PAD #}
+@media screen and (max-width: 1024px) and (min-width: 768px){
+    {{ space }} .geshop-U000224-model2-body {
+        margin-top: {{data.box_pad_margin_top | default(0)}}px;
+        margin-bottom: {{data.box_pad_margin_bottom | default(32)}}px;
+    }
+
+    {{ space }} .geshop-U000224-model2-body .geshop-components-discount{
+        width:{{ data.discount_pad_width|default(46) }}px !important;
+        height:{{ data.discount_pad_height|default(20) }}px !important;
+        {% if data.discount_pad_bg_image %}
+            background-image:url({{ data.discount_pad_bg_image|default('none') }}) !important;
+            background-color: transparent;
+            border-radius:0 !important;
+        {% endif %}
+    }
+
+    {% if data.swiper_pad_left_image %}
+        {{ space }} .geshop-U000224-model2-body .swiper-button-prev{
+            background-image: url({{ data.swiper_pad_left_image }}) !important;
+        }
+    {% endif %}
+
+    {% if data.swiper_pad_right_image %}
+        {{ space }} .geshop-U000224-model2-body .swiper-button-next{
+            background-image: url({{ data.swiper_pad_right_image }}) !important;
+        }
+    {% endif %}
+
+    {{ space }} .geshop-U000224-model2-body .swiper-container{
+        position: initial !important;
+    }
+    {{ space }} .geshop-U000224-model2-body {
+        padding-bottom: 40px;
+    }
+    {{ space }} .swiper-pagination {
+        bottom: -30px;
+    }
+}
+
+
+{# M #}
+@media screen and (max-width: 767px){
+    {{ space }} .geshop-U000224-model2-body {
+        margin-top: {{data.box_m_margin_top | default(0)}}px;
+        margin-bottom: {{data.box_m_margin_bottom | default(20)}}px;
+    }
+    {{space}} .geshop-U000224-model2-body .swiper-container{
+        padding-bottom: 34px;
+    }
+
+    {{ space }} .geshop-U000224-model2-body .swiper-pagination{
+        bottom:4px;
+    }
+
+    {{ space }} .geshop-U000224-model2-body .geshop-components-discount{
+        width:{{ data.discount_m_width|default(46) }}px !important;
+        height:{{ data.discount_m_height|default(20) }}px !important;
+        {% if data.discount_m_bg_image %}
+            background-image: url({{ data.discount_m_bg_image|default('none') }}) !important;
+            background-color: transparent;
+            border-radius:0 !important;
+        {% endif %}
+    }
+}

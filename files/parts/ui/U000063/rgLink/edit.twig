@@ -1,0 +1,131 @@
+
+<div class="w1200 clearfix">  
+    <ul class="clearfix l-part">
+        {% if data.communityRgDefaultList %}
+            {% for item in data.communityRgDefaultList|slice(0,2) %}
+                <li class="buyer-show-item first js_show_item_{{ loop.index }}" data-index="{{ loop.index }}">
+                    <img src="{{ item.imageSrc }}" alt="">
+                    <div class="ins-shade js_insopenquickshop">
+                        <div class="shade-content">
+                            <span class="ins-icon"></span> 
+                            <a class="view-it" href="javascript:void(0)">{{ pageData.viewText }}</a>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li class="buyer-show-item first js_show_item_1" data-index="1">
+                <img src="{{staticDomain}}/resources/images/rg-pc/edit_icon1.png" alt="">
+                <div class="ins-shade js_insopenquickshop">
+                    <div class="shade-content">
+                        <span class="ins-icon"></span> 
+                        <a class="view-it" href="javascript:void(0)">View it</a>
+                    </div>
+                </div>
+            </li>
+            <li class="buyer-show-item first js_show_item_2" data-index="2">
+                <img src="{{staticDomain}}/resources/images/rg-pc/edit_icon2.png" alt="">
+                <div class="ins-shade js_insopenquickshop">
+                    <div class="shade-content">
+                        <span class="ins-icon"></span> 
+                        <a class="view-it" href="javascript:void(0)">View it</a>
+                    </div>
+                </div>
+            </li>
+        {% endif %}
+    </ul>
+    <ul class="clearfix r-part">
+        {% if data.communityRgDefaultList %}
+            {% for item in data.communityRgDefaultList|slice(2,1) %}
+                <li class="first-photo buyer-show-item js_show_item_{{ loop.index + 2 }}" data-index="{{ loop.index + 2 }}">
+                    <img src="{{ item.imageSrc }}" alt="">
+                    <div class="ins-shade js_insopenquickshop">
+                        <div class="shade-content">
+                            <span class="ins-icon"></span> 
+                            <a class="view-it" href="javascript:void(0)">{{ pageData.viewText }}</a>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li class="first-photo buyer-show-item js_show_item_3" data-index="3">
+                <img src="{{staticDomain}}/resources/images/rg-pc/edit_icon3.png" alt="">
+                <div class="ins-shade js_insopenquickshop">
+                    <div class="shade-content">
+                        <span class="ins-icon"></span> 
+                        <a class="view-it" href="javascript:void(0)">View it</a>
+                    </div>
+                </div>
+            </li>
+        {% endif %}
+
+        {% if data.communityRgDefaultList %}
+            {% for item in data.communityRgDefaultList|slice(3,6) %}
+                <li class="buyer-show-item js_show_item_{{ loop.index + 3 }}" data-index="{{ loop.index + 3 }}">
+                    <img src="{{ item.imageSrc }}" alt="">
+                    <div class="ins-shade js_insopenquickshop">
+                        <div class="shade-content">
+                            <span class="ins-icon"></span> 
+                            <a class="view-it" href="javascript:void(0)">{{ pageData.viewText }}</a>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li class="buyer-show-item js_show_item_4" data-index="4">
+                <img src="{{staticDomain}}/resources/images/rg-pc/edit_icon4.png" alt="">
+                <div class="ins-shade js_insopenquickshop">
+                    <div class="shade-content">
+                        <span class="ins-icon"></span> 
+                        <a class="view-it" href="javascript:void(0)">View it</a>
+                    </div>
+                </div>
+            </li>
+            <li class="buyer-show-item js_show_item_5" data-index="5">
+                <img src="{{staticDomain}}/resources/images/rg-pc/edit_icon5.png" alt="">
+                <div class="ins-shade js_insopenquickshop">
+                    <div class="shade-content">
+                        <span class="ins-icon"></span> 
+                        <a class="view-it" href="javascript:void(0)">View it</a>
+                    </div>
+                </div>
+            </li>
+            <li class="buyer-show-item js_show_item_6" data-index="6">
+                <img src="{{staticDomain}}/resources/images/rg-pc/edit_icon6.png" alt="">
+                <div class="ins-shade js_insopenquickshop">
+                    <div class="shade-content">
+                        <span class="ins-icon"></span> 
+                        <a class="view-it" href="javascript:void(0)">View it</a>
+                    </div>
+                </div>
+            </li>
+            <li class="buyer-show-item js_show_item_7" data-index="7"> 
+                <img src="{{staticDomain}}/resources/images/rg-pc/edit_icon7.png" alt="">
+                <div class="ins-shade js_insopenquickshop">
+                    <div class="shade-content">
+                        <span class="ins-icon"></span> 
+                        <a class="view-it" href="javascript:void(0)">View it</a>
+                    </div>
+                </div>
+            </li>
+            <li class="buyer-show-item js_show_item_8" data-index="8">
+                <img src="{{staticDomain}}/resources/images/rg-pc/edit_icon8.png" alt="">
+                <div class="ins-shade js_insopenquickshop">
+                    <div class="shade-content">
+                        <span class="ins-icon"></span> 
+                        <a class="view-it" href="javascript:void(0)">View it</a>
+                    </div>
+                </div>
+            </li>
+            <li class="buyer-show-item js_show_item_9" data-index="9">
+                <img src="{{staticDomain}}/resources/images/rg-pc/edit_icon9.png" alt="">
+                <div class="ins-shade js_insopenquickshop">
+                    <div class="shade-content">
+                        <span class="ins-icon"></span> 
+                        <a class="view-it" href="javascript:void(0)">View it</a>
+                    </div>
+                </div>
+            </li>
+        {% endif %}
+    </ul>
+</div>

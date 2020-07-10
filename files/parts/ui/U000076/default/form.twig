@@ -1,0 +1,137 @@
+<h3 class='component-form-title'>秒杀商品
+  <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+    <i class="el-icon-close"></i>
+  </a>
+</h3>
+{# <blockquote class="component-form-quote">切换模板后, 未包含 <span class="layui-badge-dot layui-bg-orange"></span> 标识的配置数据将被重置</blockquote> #}
+{{include ('@app/htdocs/resources/template/pc/templateList/index.twig')}}
+
+<div class="component-form-setting-item component-form-advanced-item">
+  <h4 class="title"><i class="layui-icon back" id="js_advanced_baseConfig">&#xe603;</i>高级设置</h4>
+  <div class="layui-collapse advanced-setting-container">
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> FLASH SALE 字体颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="fontColorFlashSale"><div style="background-color: {{ data.fontColorFlashSale | default('#000000') }};"></div></div>
+        <input type="text" class="layui-input" name="fontColorFlashSale" autocomplete="off" value="{{ data.fontColorFlashSale | default('#000000') }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 倒计时字体颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="fontColorTime"><div style="background-color: {{ data.fontColorTime | default('#000000') }};"></div></div>
+        <input type="text" class="layui-input" name="fontColorTime" autocomplete="off" value="{{ data.fontColorTime | default('#000000') }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 秒杀价字体颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="fontColorSalePrice"><div style="background-color: {{ data.fontColorSalePrice | default('#e33194') }};"></div></div>
+        <input type="text" class="layui-input" name="fontColorSalePrice" autocomplete="off" value="{{ data.fontColorSalePrice | default('#e33194') }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 市场价字体颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="fontColorMarketPrice"><div style="background-color: {{ data.fontColorMarketPrice | default('#aaaaaa') }};"></div></div>
+        <input type="text" class="layui-input" name="fontColorMarketPrice" autocomplete="off" value="{{ data.fontColorMarketPrice | default('#aaaaaa') }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> BUY NOW 字体颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="fontColorBuyNow"><div style="background-color: {{ data.fontColorBuyNow | default('#000000') }};"></div></div>
+        <input type="text" class="layui-input" name="fontColorBuyNow" autocomplete="off" value="{{ data.fontColorBuyNow | default('#000000') }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> BUY NOW 按钮背景颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="bgColorBuyNow"><div style="background-color: {{ data.bgColorBuyNow | default('#ffffff') }};"></div></div>
+        <input type="text" class="layui-input" name="bgColorBuyNow" autocomplete="off" value="{{ data.bgColorBuyNow | default('#ffffff') }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> BUY NOW 按钮边框颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="borderColorBuyNow"><div style="background-color: {{ data.borderColorBuyNow | default('#000000') }};"></div></div>
+        <input type="text" class="layui-input" name="borderColorBuyNow" autocomplete="off" value="{{ data.borderColorBuyNow | default('#000000') }}">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="form-item-label">是否显示VIEW MORE</label>
+      <div class="layui-input-block">
+        <input type="radio" name="isshowViewMore" data-public-tag="true" value="1" title="是"  {% if data.isshowViewMore|default(1) == 1 %} checked{% endif %}>
+        <input type="radio" name="isshowViewMore" data-public-tag="true" value="0" title="否"  {% if data.isshowViewMore|default(1) == 0 %} checked{% endif %}>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> VIEW MORE 字体颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="fontColorViewMore"><div style="background-color: {{ data.fontColorViewMore | default('#000000') }};"></div></div>
+        <input type="text" class="layui-input" name="fontColorViewMore" autocomplete="off" value="{{ data.fontColorViewMore | default('#000000') }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> VIEW MORE 所在区域背景颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="bgColorViewMore"><div style="background-color: {{ data.bgColorViewMore | default('#e9e9e9') }};"></div></div>
+        <input type="text" class="layui-input" name="bgColorViewMore" autocomplete="off" value="{{ data.bgColorViewMore | default('#e9e9e9') }}">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="component-form-setting-item component-form-configure-item">
+  <h4 class="title">常用配置</h4>
+  <div class="layui-field-box">
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 下边距(px)</label>
+      <div class="layui-input-block">
+        <input type="text" name="boxMarginBottom" autocomplete="off" class="layui-input" value="{{ data.boxMarginBottom | default(50) }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 数据来源</label>
+      <div class="layui-input-block" style="line-height: 36px; color: #9e9e9e;">RW后台调用</div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 秒杀时间背景颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="bgColorFlashSale"><div style="background-color: {{ data.bgColorFlashSale | default('#f8cce4') }};"></div></div>
+        <input type="text" class="layui-input" name="bgColorFlashSale" autocomplete="off" value="{{ data.bgColorFlashSale | default('#f8cce4') }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 折扣标字体颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="fontColorDiscount"><div style="background-color: {{ data.fontColorDiscount | default('#ffffff') }};"></div></div>
+        <input type="text" class="layui-input" name="fontColorDiscount" autocomplete="off" value="{{ data.fontColorDiscount | default('#ffffff') }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 折扣标背景颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="bgColorDiscount"><div style="background-color: {{ data.bgColorDiscount | default('#e33194') }};"></div></div>
+        <input type="text" class="layui-input" name="bgColorDiscount" autocomplete="off" value="{{ data.bgColorDiscount | default('#e33194') }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 库存条颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="bgColorFlashed"><div style="background-color: {{ data.bgColorFlashed | default('#f8cce4') }};"></div></div>
+        <input type="text" class="layui-input" name="bgColorFlashed" autocomplete="off" value="{{ data.bgColorFlashed | default('#f8cce4') }}">
+      </div>
+    </div>
+  </div>
+  <div class="clearfix">
+    <a href="javascript:;" id="js_moreConfig" style="color:#1E9FFF">高级设置</a>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>

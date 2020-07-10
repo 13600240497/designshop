@@ -1,0 +1,69 @@
+{# form.twig 表单分页配置项 #}
+{% set components = [
+    {
+        label: '是否分页配置',
+        desc: '(如开启分页功能，导航可能不能正常工作)',
+        name: 'is_pagination',
+        default: '0',
+        type: 'radio',
+        filter: 'is_pagination',
+        options: [
+        { label: '是', value: '1' },
+        { label: '否', value: '0' }
+    ]
+    },
+    {
+        label: '展示数量',
+        name: 'page_size',
+        type: 'select',
+        default: 20,
+        options: [
+        { label: 20, value: 20 },
+        { label: 60, value: 60 },
+        { label: 120, value: 120 }
+    ]
+    }
+
+] %}
+
+{# 合并当前端的配置项 #}
+<fieldset class="layui-elem-field">
+    <legend>分页配置</legend>
+    <div class="layui-field-box">
+        {{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}
+    </div>
+</fieldset>
+<script>
+;$(function () {
+    var is_pagination = '{{ data.is_pagination|default('0') }}';
+    $is_pagination_wrap = $('[filter=is_pagination]', '.design-form-component');
+    if (is_pagination == 1) {
+        $('[name=page_size]', '.design-form-component').parents('.layui-form-item').eq(0).parent().hide();
+        $is_pagination_wrap.addClass('is_pagination_hide');
+    }
+    /*添加页面样式 - 系统设置，自定义设置切换*/
+    layui.form.on('radio(is_pagination)', function (data) {
+        var $pageSize = $(this).parents('.layui-field-box').eq(0).find('select[name=page_size]').parents('.layui-col-xs12').eq(0);
+        if (data.value == 1) {
+            $pageSize.hide();
+            $is_pagination_wrap.addClass('is_pagination_hide');
+        } else if (data.value == 0) {
+            $pageSize.show();
+            $is_pagination_wrap.removeClass('is_pagination_hide');
+        }
+        ;
+    });
+});
+
+</script>
+<style>
+    .is_pagination_hide {
+        margin-bottom: 0 !important;
+    }
+    [filter=is_pagination] .desc{
+        display:none;
+    }
+    .is_pagination_hide .desc{
+        display:block;
+    }
+</style>

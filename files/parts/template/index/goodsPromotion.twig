@@ -1,0 +1,26 @@
+{#/**
+  *@author: 胡明
+  *@date: 2018/12/19 17:05:00
+  *@desc: dresslily商品促销信息组件
+*/#}
+{% if options %}
+ 
+    <p class="geshop-goods-promotions">
+     {% if options.value|length > 0%}
+      <span class="promotions-text">{{options.value|first}}</span>
+      {% if GLOBAL.util.getPlatform() != 2 %}
+        <img  src="https://geshoptest.s3.amazonaws.com/uploads/WaiETHlZ8ShDeFRXMB97Yjc3uQ4InAJr.png">
+      {% endif %}
+       {% endif %}
+    </p>
+    
+    <div class="geshop-goods-promotions-more none">  
+        {% for key,item in options.value %}
+          {{item}}</br>
+        {% endfor %} 
+    </div>
+ 
+{% else %}
+  {{ include ('@app/files/parts/common/components/argsErrors.twig') }}
+{% endif %}
+

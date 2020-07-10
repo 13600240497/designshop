@@ -1,0 +1,315 @@
+{%
+    set pageData = {
+        couponId : data.couponId | default(''),
+    }
+%}
+{% 
+  set shopSetting = [
+    {
+      _name : 'couponId',
+      _value : data.couponId | default(''),
+      _label : '优惠券ID',
+    },
+    {
+      _name : 'startText',
+      _value : data.startText | default('Coming Soon'),
+      _label : '即将开始按钮文案',
+    },
+    {
+      _name : 'getCouponText',
+      _value : data.getCouponText | default('Get now'),
+      _label : '领取按钮文案',
+    },
+    {
+      _name : 'couponTitle',
+      _value : data.couponTitle | default('CRAZY COUPON'),
+      _label : '优惠劵标题',
+    },
+  ]
+%}
+{% 
+  set styleSetting1 = [
+    {
+      _name : 'boxMarginBottom',
+      _value : data.boxMarginBottom | default(0),
+      _label : '下边距(px)',
+    },
+    {
+      _name : 'boxWidth',
+      _value : data.boxWidth | default(592),
+      _label : '宽度(px)',
+    },
+    {
+      _name : 'boxHeight',
+      _value : data.boxHeight | default(400),
+      _label : '高度(px)',
+    },
+    {
+      _name : 'boxBackgroundColor',
+      _value : data.boxBackgroundColor | default('#EDEDED'),
+      _label : '背景颜色',
+      _type : 1,
+    },
+    {
+      _name : 'boxBackgroundImage',
+      _value : data.boxBackgroundImage | default(''),
+      _label : '背景图片',
+      _type : 2,
+    },
+    {
+      _name : 'alignType',
+      _value : data.alignType | default(2),
+      _label : '组件对齐方式',
+      _type : 3,
+      _subs : [
+        {value : 1,label : '左',},
+        {value : 2,label : '中',},
+        {value : 3,label : '右',},
+      ]
+    }
+  ]
+%}
+{% 
+  set styleSetting2 = [
+    {
+      _name : 'couponTextSize',
+      _value : data.couponTextSize | default(48),
+      _label : '标题字体大小(px)',
+    },
+    {
+      _name : 'couponTextColor',
+      _value : data.couponTextColor | default('#333333'),
+      _label : '标题字体颜色',
+      _type : 1,
+    },
+    {
+      _name : 'btnTextSize',
+      _value : data.btnTextSize | default(16),
+      _label : '按钮文字大小(px)',
+    },
+    {
+      _name : 'btnBackgroundColor',
+      _value : data.btnBackgroundColor | default('#B8BEC4'),
+      _label : '按钮背景颜色',
+      _type : 1,
+    },
+    {
+      _name : 'btnTextColor',
+      _value : data.btnTextColor | default('#ffffff'),
+      _label : '按钮文字颜色',
+      _type : 1,
+    },
+    {
+      _name : 'btnRadius',
+      _value : data.btnRadius | default('0'),
+      _label : '按钮圆角大小(px)',
+    },
+  ]
+%}
+
+{% 
+  set styleSetting3 = [
+    {
+      _name : 'countDown',
+      _value : data.countDown | default('1'),
+      _label : '是否显示倒计时',
+      _type : 3,
+      _subs : [
+        {value : 1,label : '是',},
+        {value : 2,label : '否',},
+      ]
+    },
+    {
+      _name : 'countDownTitleTextSize',
+      _value : data.countDownTitleTextSize | default(20),
+      _label : '标题文字大小(px)',
+    },
+    {
+      _name : 'countDownTitleTextColor',
+      _value : data.countDownTitleTextColor | default('#333333'),
+      _label : '标题文字颜色',
+      _type : 1,
+    },
+    {
+      _name : 'countDownBackgroundColor',
+      _value : data.countDownBackgroundColor | default('#333333'),
+      _label : '倒计时背景颜色',
+      _type : 1,
+    },
+    {
+      _name : 'countDownTextColor',
+      _value : data.countDownTextColor | default('#ffffff'),
+      _label : '倒计时文字颜色',
+      _type : 1,
+    },
+    {
+      _name : 'countDownRadius',
+      _value : data.countDownRadius | default(0),
+      _label : '倒计时背景圆角(px)',
+    },
+  ]
+%}
+{% 
+  set styleSetting4 = [
+    {
+      _name : 'btnWidth',
+      _value : data.btnWidth | default(120),
+      _label : '按钮宽度(px)',
+    },
+    {
+      _name : 'btnHeight',
+      _value : data.btnHeight | default(40),
+      _label : '按钮高度(px)',
+    },
+    {
+      _name : 'btnBackgroundImage',
+      _value : data.btnBackgroundImage | default(''),
+      _label : '按钮背景图片',
+      _type : 2,
+    },
+  ]
+%}
+{% 
+  set styleSetting5 = [
+    {
+      _name : 'countDownWidth',
+      _value : data.countDownWidth | default(40),
+      _label : '背景宽度',
+    },
+    {
+      _name : 'countDownHeight',
+      _value : data.countDownHeight | default(40),
+      _label : '背景高度',
+    },
+    {
+      _name : 'timeSize',
+      _value : data.timeSize | default(20),
+      _label : '时间文字大小(px)',
+    },
+  ]
+%}
+
+
+<script src="/resources/template/goods/index.js?v={{ serverTime }}"></script>
+<h3 class="component-form-title">
+<span>优惠券组件配置</span>
+<a href="javascript:;" class="design-form-close js_closeDesignForm icon-close"><i class="el-icon-close"></i></a>
+</h3>
+{{include ('@app/htdocs/resources/template/pc/templateList/index.twig')}}
+<div id="gs_component_countdown" data-from="from{{ pageInstanceId }}" class="component-form-setting-item component-form-configure-item" data-gid="U000129_timer" style="padding-bottom: 40px;">
+    <p class="geshop-title" style="margin-top: 10px;font-weight: bold;">常用配置</p>
+    {% include '@app/files/parts/temp/from/list-from.twig' with { _cells : styleSetting1 ,_list2:1,} %} 
+    <p class="geshop-title" style="margin-top: 30px;font-weight: bold;">优惠券数据输入配置</p>
+    {% include '@app/files/parts/temp/from/list-from.twig' with { _cells : shopSetting  ,_list2:1,} %} 
+    <p class="geshop-title" style="margin-top: 30px;font-weight: bold;">优惠券设置</p>
+    {% include '@app/files/parts/temp/from/list-from.twig' with { _cells : styleSetting2 ,_list2:1, } %} 
+    <p class="geshop-title" style="margin-top: 30px;font-weight: bold;">倒计时配置</p>
+    {% include '@app/files/parts/temp/from/list-from.twig' with { _cells : styleSetting3 ,_list2:1, } %} 
+
+    <div class="clearfix advanced-config">
+        <a href="javascript:;" id="js_moreConfig" style="color:#1E9FFF">高级配置 <i></i></a>
+    </div>
+</div>
+
+<div class="component-form-setting-item component-form-advanced-item" data-gid="U000129_timer">
+    <h4 class="title"><i class="layui-icon back" id="js_advanced_baseConfig">&#xe603;</i>返回</h4>
+    <div class="layui-collapse advanced-setting-container">
+        <p class="geshop-title" style="margin: 20px 0;padding-left: 20px;font-weight: bold;">高级配置</p>
+        <div class="layui-colla-item">
+            <h2 class="layui-colla-title">优惠券按钮配置</h2>
+            <div class="layui-colla-content layui-show">
+                {% include '@app/files/parts/temp/from/list-from.twig' with { _cells : styleSetting4  ,_list2:1,} %} 
+            </div>
+        </div>
+        <div class="layui-colla-item">
+            <h2 class="layui-colla-title">倒计时配置</h2>
+            <div class="layui-colla-content layui-show">
+                {% include '@app/files/parts/temp/from/list-from.twig' with { _cells : styleSetting5  ,_list2:1,} %} 
+            </div>
+        </div>
+    </div>
+</div>
+<div class="layui-form-item geshop-form-operation">
+    <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+    <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>
+
+<script>
+  (function(){
+    $('.js_submitDesignForm').attr('disabled',false);
+    var $box = $('[data-from="from{{ pageInstanceId }}"]');
+    var $couponid = $box.find('input[name="couponId"]');
+    var couponId = '{{ pageData.couponId }}';
+    var _inputFirm = function _inputFirm(text){
+        var _index = layer.confirm(text || '优惠券ID错误，请正确填写优惠券ID', {
+              btn: ['取消', '确定'],
+              area: '420px',
+              icon: 3,
+              skin: 'element-ui-dialog-class'
+        },function(){
+            $couponid.focus();
+            layer.close(_index);
+        },function(){
+            $couponid.focus();
+        });
+    };
+    var _jsonp = function _jsonp(param){
+            param = param || {};
+            return $.ajax($.extend({
+                dataType: "jsonp",
+                jsonp: 'callback',
+            },param));
+        };
+    var getCouponDetail = function getCouponDetail(_value){
+      {# GESHOP_INTERFACE.coupondetail 这个是正式版本的优惠券接口url地址 #}
+      {# var _url = 'http://www.pc-zaful.com.v1011.php5.egomsl.com/geshop/goods/coupondetail'; #}
+      var _url = GESHOP_INTERFACE.coupondetail.url;
+      return _jsonp({
+          url: _url,
+          data: {
+              content : JSON.stringify({
+                  lang : '{{ lang }}',
+                  couponid : _value,
+                  pipeline: (typeof GESHOP_PIPELINE != 'undefined' ? GESHOP_PIPELINE : '')
+              })
+          },
+          success :function(res){
+              $('.js_submitDesignForm').attr('disabled',false);
+              if(res.code === 0){
+                  var couponInfo = res.data.couponInfo || {};
+                  if(couponInfo.supportPipeline){
+                    var supportPipeline = couponInfo.supportPipeline.split(',');
+                    if(supportPipeline.indexOf(GESHOP_PIPELINE.toLocaleLowerCase()) == -1){
+                      layui.layer.msg('该优惠券不支持在当前国家使用');
+                      $('input[name="couponId"]').val('');
+                      $('.js_submitDesignForm').attr('disabled',true);
+                      return;
+                    }
+                  }
+                  if(!couponInfo.id){
+                      _inputFirm();
+                      _clearInput();
+                  }
+              }else{
+                  _inputFirm();
+                  _clearInput();
+              }
+          }
+      });
+    };
+    var _clearInput = function _clearInput(){
+      $couponid.val('');
+    };
+    $couponid.blur(function(){
+      var $this = $(this),_val = $this.val().trim();
+      if(_val){
+        getCouponDetail(_val);
+      }else{
+        _clearInput();
+      }
+    });
+    if(couponId){
+       getCouponDetail(couponId);
+    }
+  }());
+</script>  

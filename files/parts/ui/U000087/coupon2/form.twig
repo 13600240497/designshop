@@ -1,0 +1,411 @@
+{%
+    set pageData = {
+    couponId : data.couponId | default('')
+}
+%}
+
+{% set siteData = {
+    btnRadius: 'rg' in siteCode ? 2 : 24
+} %}
+
+
+<input type="hidden" id="siteCode" value="{{ siteCode|split('-')[0] }}" />
+{%
+    set formData = {
+        id: 'U000087',
+        name: '优惠券模版2',
+        theme: 'coupon2',
+        tabs: [
+            {
+                label: '商品设置',
+                components: [
+                    {
+                        type: 'diy',
+                        src: 'form-coupon.twig'
+                    }
+                ]
+            },
+            {
+                label: '样式配置',
+                components: [
+                    {
+                        label: '常用配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件下边距(px)',
+                                name: 'boxMarginBottom',
+                                default: 0,
+                                public: false
+                            },
+                            {
+                                label: '宽度(PX)',
+                                name: 'boxWidth',
+                                default: '100%',
+                                col: 2,
+                                public: false
+                            },
+                            {
+                                label: '高度(PX)',
+                                name: 'boxHeight',
+                                default: 270,
+                                col: 2,
+                                public: false
+                            },
+                            {
+                                label: '组件对齐方式',
+                                name: 'alignType',
+                                type: 'radio',
+                                default: '2',
+                                options: [
+                                    { label: '左', value: '1' },
+                                    { label: '中', value: '2' },
+                                    { label: '右', value: '3' },
+                                ],
+                                public: false
+                            }
+                        ]
+                    },
+                    {
+                        label: '优惠券内容配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '背景颜色',
+                                name: 'boxBackgroundColor',
+                                type: 'colorPicker',
+                                default: '#EDEDED'
+                            },
+                            {
+                                label: '背景图片',
+                                name: 'boxBackgroundImage',
+                                type: 'image',
+                                public: false
+                            },
+                            {
+                                label: '折扣值文字大小',
+                                name: 'discountTextSize',
+                                desc: '(px)',
+                                default: 64,
+                                public: false
+                            },
+                            {
+                                label: '折扣值文字颜色',
+                                name: 'discountTextColor',
+                                type: 'colorPicker',
+                                default: '#333333',
+                                public: false
+                            },
+                            {
+                                label: '折扣条件文字大小',
+                                desc: '(px)',
+                                name: 'discountTermTextSize',
+                                default: 28,
+                                public: false,
+                            },
+                            {
+                                label: '折扣条件文字颜色',
+                                name: 'discountTermTextColor',
+                                type: 'colorPicker',
+                                default: '#333333',
+                                public: false
+                            },
+                            {
+                                label: '有效时间字体文案',
+                                name: 'validText',
+                                default: 'Validity：Nov.23-Nov.25',
+                                public: false
+                            },
+                            {
+                                label: '有效时间文字大小',
+                                desc: '(px)',
+                                name: 'validTextSize',
+                                default: '24',
+                                public: false
+                            },
+                            {
+                                label: '有效时间文字颜色',
+                                name: 'validTextColor',
+                                type: 'colorPicker',
+                                default: '#333333',
+                                public: false
+                            },
+                            {
+                                label: '有效时间下边距',
+                                desc: '(px)',
+                                name: 'validTextMarginBottom',
+                                default: '10',
+                                public: false
+                            }
+                        ]
+                    },
+                    {
+                        label: '按钮配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '圆角大小',
+                                desc: '(px)',
+                                name: 'btnRadius',
+                                default: siteData.btnRadius
+                            },
+                            {
+                                label: '文字大小',
+                                desc: '(px)',
+                                name: 'btnSize',
+                                default: 24
+                            },
+                            {
+                                label: '未领取背景颜色',
+                                name: 'btnUnreceivedBgColor',
+                                type: 'colorPicker',
+                                default: '#333333',
+                                public: false
+                            },
+                            {
+                                label: '未领取字体颜色',
+                                name: 'btnUnreceivedTextColor',
+                                type: 'colorPicker',
+                                default: '#FFFFFF',
+                                public: false
+                            },
+                            {
+                                label: '未领取边框颜色',
+                                name: 'btnUnreceivedTextBorderColor',
+                                type: 'colorPicker',
+                                default: 'transparent',
+                                public: false
+                            },
+                            {
+                                label: '已领取背景颜色',
+                                name: 'btnReceivedBgColor',
+                                type: 'colorPicker',
+                                default: '#dddddd',
+                                public: false
+                            },
+                            {
+                                label: '已领取字体颜色',
+                                name: 'btnReceivedTextColor',
+                                type: 'colorPicker',
+                                default: '#FFFFFF',
+                                public: false
+                            },
+                            {
+                                label: '已领取边框颜色',
+                                name: 'btnReceivedTextBorderColor',
+                                type: 'colorPicker',
+                                default: 'transparent',
+                                public: false
+                            },
+                            {
+                                label: '已失效背景颜色',
+                                name: 'btnFailedBgColor',
+                                type: 'colorPicker',
+                                default: '#dddddd',
+                                public: false
+                            },
+                            {
+                                label: '已失效字体颜色',
+                                name: 'btnFailedTextColor',
+                                type: 'colorPicker',
+                                default: '#FFFFFF',
+                                public: false
+                            },
+                            {
+                                label: '已失效边框颜色',
+                                name: 'btnFailedTextBorderColor',
+                                type: 'colorPicker',
+                                default: 'transparent',
+                                public: false
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        beforeSubmit: 'onSubmit',
+        skuValidConfig: 'skuValidConfig'
+    }
+%}
+
+<script>
+    $('.js_submitDesignForm').attr('disabled',false);
+    var $box = $('#{{ formData.id }}-{{ formData.theme }}');
+    {# 优惠券ID #}
+    var $couponid =  $box.find('input[name="couponId"]');
+    {# 优惠券时间段 #}
+    var $timeLine = $box.find('.time-line');
+    {# 优惠券折扣 #}
+    var $couponDiscount =  $box.find('.couponDiscount-line');
+    {# 优惠券折扣条件 #}
+    var $couponDiscountText = $box.find('.couponDiscountText-line');
+    var couponId = '{{ pageData.couponId }}';
+    {# 转换时间 #}
+    var _formatDate = function(_d){
+        return [
+            _d.getFullYear(),
+            '-',
+            fillZero(_d.getMonth() + 1),
+            '-',
+            fillZero(_d.getDate()),
+            ' ',
+            fillZero(_d.getHours()),
+            ':',
+            fillZero(_d.getMinutes()),
+            ':',
+            fillZero(_d.getSeconds()),
+        ].join('')
+    };
+    var _inputFirm = function _inputFirm(text){
+        var _index = layer.confirm(text || '优惠券ID错误，请正确填写优惠券ID', {
+            btn: ['取消', '确定'],
+            area: '420px',
+            icon: 3,
+            skin: 'element-ui-dialog-class'
+        },function(){
+            $couponid.focus();
+            layer.close(_index);
+        },function(){
+            $couponid.focus();
+        });
+    };
+    var _jsonp = function _jsonp(param){
+        param = param || {};
+        return $.ajax($.extend({
+            dataType: "jsonp",
+            jsonp: 'callback',
+        },param));
+    };
+    var fillZero = function fillZero(n){
+        return n < 10 ? '0' + n : n ;
+    };
+    var getCouponDetail = function getCouponDetail(_value){
+        {# GESHOP_INTERFACE.coupondetail 这个是正式版本的优惠券接口url地址 #}
+        {# var _url = 'http://www.pc-zaful.com.v1011.php5.egomsl.com/geshop/goods/coupondetail'; #}
+        var _url = GESHOP_INTERFACE.coupondetail.url;
+        var siteCode = $('#siteCode').val();
+        return _jsonp({
+            url: _url,
+            data: {
+                content : JSON.stringify({
+                    lang : '{{ lang }}',
+                    couponid : _value,
+                    pipeline: (typeof GESHOP_PIPELINE != 'undefined' ? GESHOP_PIPELINE : '')
+                })
+            },
+            success: function (res) {
+                $('.js_submitDesignForm').attr('disabled',false);
+                if (res.code === 0) {
+                    var couponInfo = res.data.couponInfo || {};
+                    if(couponInfo.supportPipeline){
+                        var supportPipeline = couponInfo.supportPipeline.split(',');
+                        if(supportPipeline.indexOf(GESHOP_PIPELINE.toLocaleLowerCase()) == -1){
+                            layui.layer.msg('该优惠券不支持在当前国家使用');
+                            $('input[name="couponId"]').val('');
+                            $('.js_submitDesignForm').attr('disabled',true);
+                            return;
+                        }
+                    }
+                    if (couponInfo.id) {
+
+                        if (siteCode == 'rg') {
+                            var startTime = parseInt(couponInfo.getStartTime) * 1000;
+                            var endTime = parseInt(couponInfo.getEndTime) * 1000;
+                        } else {
+                            var startTime = parseInt(couponInfo.enableStartTime) * 1000;
+                            var endTime = parseInt(couponInfo.enableEndTime) * 1000;
+                        }
+
+                        if (startTime === 0) {
+                            _setTime();
+                        } else {
+                            _setTime({
+                                start : _formatDate(new Date(startTime)),
+                                end : _formatDate(new Date(endTime)),
+                            });
+
+                            if (parseInt(couponInfo.type) === 1) {
+                                _setDiscount(couponInfo.offerAmount + '%');
+                            } else if(parseInt(couponInfo.type) === 2) {
+                                _setDiscount('$' + couponInfo.offerAmount);
+                            }
+                            _setDiscountText('$' + couponInfo.thresholdAmount);
+                        }
+                    } else {
+                        _clearFrom();
+                    }
+                } else {
+                    {# 获取优惠券信息错误 #}
+                    _clearFrom();
+                }
+            }
+        });
+    };
+    var coupunParam = JSON.stringify({
+        lang : '{{ lang }}',
+        couponid : '{{ pageData.couponId }}'
+    });
+
+    {# 设置时间 #}
+    var _setTime = function _setTime(param){
+        param = param || {};
+        $timeLine.find('.time-start').html(param.start || '');
+        $timeLine.find('.time-end').html(param.end || '');
+    };
+    {# 设置折扣 #}
+    var _setDiscount = function _setDiscount(text){
+        $couponDiscount.find('.text').html(text || '');
+        $couponDiscount.find('input').val(text || '');
+    };
+    {# 设置折扣文案 #}
+    var _setDiscountText = function _setDiscountText(text){
+        $couponDiscountText.find('.text').html(text || '');
+        $couponDiscountText.find('input').val(text || '');
+    };
+    {# 清楚表单信息 #}
+    var _clearFrom = function clearFrom(){
+        _setTime({});
+        _setDiscount('');
+        _setDiscountText('');
+        $couponid.val('');
+    };
+
+    $couponid.blur(function(){
+        var $this = $(this),_value = $this.val().replace(/^\s|\s$/g,'');
+        if(!_value){
+            _clearFrom();
+        }
+    });
+
+    function onSubmit(progress) {
+        var $val = $couponid.val();
+        if ($.trim($val) == '') {
+            $couponid.val('');
+            progress.next();
+        } else if (!isNaN(+$val) && $val > 0) {
+            progress.next(function () {
+                if ($val) {
+                    getCouponDetail($val);
+                }
+            });
+        } else {
+            $couponid.val('');
+            _clearFrom();
+            _inputFirm('请填写优惠券ID');
+        }
+    }
+
+    if(parseInt(couponId)){
+        getCouponDetail(couponId);
+    };
+
+    {# 自定义校验函数 #}
+    function skuValidConfig() {
+        return {
+            check_type: 'coupon',
+            check_rules: 'COUPON_VALIDATE_ID_EXITS'
+        }
+    }
+</script>
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

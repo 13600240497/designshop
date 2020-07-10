@@ -1,0 +1,207 @@
+
+
+.wrap-U000127-default  .header-timeline-container {
+  background-color: #ff7e8a;
+}
+
+.wrap-U000127-default  .swiper-container {
+  background: none;
+  width: auto;
+}
+
+.wrap-U000127-default  .header-timeline-container:after {
+  display: block;
+  content: '';
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  clear: both;
+  visibility: hidden;
+}
+
+.wrap-U000127-default  .header-timeline-container .inner-fixed-container {
+  position: relative;
+  /* height: 104px; */
+}
+
+.wrap-U000127-default  .inner-fixed-container {
+  /* width: 1200px; */
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0;
+}
+
+.wrap-U000127-default  .timeline-logo {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 0;
+  background-size: cover;
+  width: 1.8667rem;
+  height: 1.8667rem;
+  float: left;
+  background-image: url(https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/view.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: #EDEDED;
+}
+
+.wrap-U000127-default  .timeline-list-wrapper {
+  font-size: 18px;
+  max-width: 6.2667rem;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  /* display: inline-block; */
+  vertical-align: top;
+  text-align: left;
+  float: left;
+}
+
+.wrap-U000127-default  .timeline-list-wrapper li {
+  color: #bf2333;
+  display: inline-block;
+  padding: 0.12rem 0.3rem 0.16rem 0.213rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: auto!important;
+  position: relative;
+  height: 1.8667rem;
+}
+
+.wrap-U000127-default  .timeline-list-wrapper li.active {
+  color: #fff;
+}
+
+.wrap-U000127-default  .timeline-list-wrapper li.active .header-timeline-date {
+  color: #f74253;
+  background-color: #fff;
+}
+
+.wrap-U000127-default  .timeline-list-wrapper li .header-timeline-date {
+  font-size: 0.32rem;
+  border-radius: 0.56rem;
+  background-color: #f0606f;
+  padding: 1px 0.213rem;
+  text-align: center;
+  color: #ffa9b1;
+  display: inline-block;
+}
+
+.wrap-U000127-default  .timeline-list-wrapper li .header-timeline-title {
+  margin: 0.1067rem 0 0.1067rem;
+  font-size: 0.293rem;
+}
+
+.wrap-U000127-default  .timeline-list-wrapper li .header-timeline-discount {
+  font-size: 0.347rem;
+}
+
+.wrap-U000127-default  .timeline-promotion-container {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 0.347rem;
+  width: 100px;
+  height: 100%;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  background-size: cover;
+}
+
+.wrap-U000127-default  .header-sale-guide {
+  display: inline-block;
+  width: 1.8667rem;
+  height: 1.8667rem;
+  text-align: center;
+  background-color: #EDEDED;
+  font-size: 0.32rem;
+  font-weight: bold;
+  padding-top: 0.267rem;
+  box-sizing: border-box;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.wrap-U000127-default  .timeline-promotion-container .timeline-promotion-calendar {
+  display: block;
+  color: inherit;
+  font-family: OpenSans-Semibold;
+}
+
+.wrap-U000127-default  .timeline-promotion-container .timeline-prototion-calendar-content {
+  display: none;
+  position: absolute;
+  top: 100px;
+  right: -100px;
+  background-color: #fff;
+  width: 916px;
+  z-index: 3;
+  padding: 0 40px 40px;
+}
+
+.wrap-U000127-default  .timeline-promotion-container .timeline-prototion-calendar-content h3 {
+  margin: 30px 0;
+  font-size: 20px;
+  font-family: OpenSans-Bold;
+  color: #333333;
+  line-height: 1;
+}
+
+.wrap-U000127-default  .timeline-promotion-container .timeline-prototion-calendar-content img {
+  display: block;
+  width: 100%;
+}
+
+.wrap-U000127-default  .timeline-promotion-container:hover .timeline-prototion-calendar-content {
+  display: block;
+}
+
+/* .wrap-U000127-default  .timeline-list-wrapper li+li:before {
+  content: '';
+  color: #fff;
+  font-family: OpenSans-Bold;
+  position: absolute;
+  left: 0;
+  top: 50px;
+  background-image: url(../../../resources/images/icon/time-default-arrow.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 12px;
+  height: 18px;
+} */
+
+.wrap-U000127-default  .timeline-list-wrapper li+li .arrow {
+  display: inline-block;
+  color: #fff;
+  font-family: OpenSans-Bold;
+  position: absolute;
+  left: -0.2667rem;
+  top: 50%;
+  margin-top: -0.3rem;
+  background-image: url(../../../resources/images/icon/time-default-arrow.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 0.32rem;
+  height: 0.6rem;
+}
+
+.wrap-U000127-default  .link-sale-guide {
+  display: block;
+  color: #fff;
+  font-family: OpenSans-Semibold;
+}
+
+/* iPhone 5 CSS media query */
+@media screen and (device-aspect-ratio: 40/71) {
+  .wrap-U000127-default  .timeline-list-wrapper li {
+    padding-top: 0.02rem;
+  }
+  .wrap-U000127-default  .timeline-list-wrapper li .header-timeline-title {
+    margin-top: 0.05rem;
+  }
+}

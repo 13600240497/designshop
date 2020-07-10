@@ -1,0 +1,516 @@
+{%
+	set pageData = {
+    ImgWidth:data.ImgWidth is not null?data.ImgWidth:276,
+    ImgHeight:data.ImgHeight is not null?data.ImgHeight:480, 
+	}
+%}
+<style>
+  .gs-lable-block {
+    margin: 10px 0 10px 20px;
+    display: block;
+  }
+
+  .gs-lable-block+.layui-input-block,
+  .class-manage,
+  .row-lists-content .layui-input-block {
+    margin-left: 20px
+  }
+
+  .gs-tips {
+    font-size: 12px;
+    color: #9E9E9E;
+  }
+  .datatime-lists-wrap li{
+    border: 1px solid #E6E6E6;
+    margin: 20px;
+    padding-bottom: 10px;
+  }
+</style>
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>时间轴组件设置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+  <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+    <div class="layui-tab">
+      <ul class="layui-tab-title">
+        <li class="layui-this">模板选择</li>
+        <li>数据输入</li>
+        <li>样式设置</li>
+      </ul>
+      <div class="layui-tab-content layui-tab-content-parent">
+        <div class="layui-tab-item layui-show">
+						<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+						{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				</div>
+        <div class="layui-tab-item">
+          <fieldset class="layui-elem-field" id="dateTimeContainer">
+            <legend>数据添加<span style="font-size:12px;">(设置的活动日期按照先后顺序自动排序)</span></legend>
+            <div class="layui-field-box" style="margin-top:10px">
+              <div id="killTabWrap">
+                <input type="hidden" name="dateTimeArrs" />
+                <ul class="layui-hide tab-template">
+                  <li>
+                    <div class="layui-form-item">
+                      <div class="gs-lable-block">活动<span class="loop-index"></span>日期</div>
+                      <div class="layui-input-block">
+                        <input class="layui-input down-timestamp Unwanted" type="text" value="" readonly data-public-tag="true">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <div class="gs-lable-block">活动<span class="loop-index"></span>名称</div>
+                      <div class="layui-input-block">
+                        <input class="layui-input activity-name Unwanted" name="activityName" data-public-tag="true" value="">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <div class="gs-lable-block">活动<span class="loop-index"></span>简介文案</div>
+                      <div class="layui-input-block">
+                        <input class="layui-input activity-desc Unwanted" name="activityDesc" data-public-tag="true" value="">
+                      </div>
+                    </div>
+                    <div class="geshop-third-value tab-add-btn" style="padding-right:10px;">
+                        <span class="img-btn delete-datetime-item">
+                          <i class='icon-delete'></i>
+                          <b class="tips">删除</b>
+                        </span>
+                    </div>
+                  </li>
+                </ul>
+                <ul class="datatime-lists-wrap">
+                  {% for dateTimeItem in data.dateTimeArrs|default(0..0) %}
+                    <li>
+                      <div class="layui-form-item">
+                        <div class="gs-lable-block">活动<span class="loop-index">{{loop.index}}</span>日期</div>
+                        <div class="layui-input-block">
+                          <input class="layui-input down-timestamp Unwanted" type="text" value="{{dateTimeItem.timeRange}}" readonly data-public-tag="true" data-start="{{ dateTimeItem.dateStartTime }}" data-end="{{ dateTimeItem.dateEndTime }}">
+                        </div>
+                      </div>
+
+                      <div class="layui-form-item">
+                        <div class="gs-lable-block">活动<span class="loop-index">{{loop.index}}</span>名称</div>
+                        <div class="layui-input-block">
+                          <input class="layui-input activity-name Unwanted" name="activityName" data-public-tag="true" value="{{dateTimeItem.activityName}}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <div class="gs-lable-block">活动<span class="loop-index">{{loop.index}}</span>简介文案</div>
+                        <div class="layui-input-block">
+                          <input class="layui-input activity-desc Unwanted" name="activityDesc" data-public-tag="true" value="{{dateTimeItem.activityDesc}}">
+                        </div>
+                      </div>
+                      <div class="geshop-third-value tab-add-btn" style="padding-right:10px;">
+                          <span class="img-btn delete-datetime-item">
+                            <i class='icon-delete'></i>
+                            <b class="tips">删除</b>
+                          </span>
+                      </div>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                  <div class="layui-form-item tab-add-btn" style="margin-left:20px;">
+                    <span class="el-button el-button--primary el-button--small" id="gs_tab_add">新增日期模块</span>
+                  </div>
+                </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="layui-tab-item">
+          <div class="layui-carousel" id="form_carousel">
+            <div carousel-item>
+              <div>
+                <fieldset class="layui-elem-field">
+                  <legend>基础配置</legend>
+                  <div class="layui-field-box" style="margin-top:10px">
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">下边距(px)</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="boxMarginBottom" autocomplete="off" class="layui-input" value="{{ data.boxMarginBottom | default(32) }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">背景颜色</label>
+                      <div class="layui-input-block">
+                        <div class="color-picker-selector" data-hidden-name="bgColor"><div style="background-color: {{ data.bgColor | default('#f5f5f5') }};"></div></div>
+                        <input type="text" class="layui-input" name="bgColor" autocomplete="off" value="{{ data.bgColor | default('#f5f5f5') }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">背景图片</label>
+                      <div class="layui-input-block">
+                        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                        <input type="text" name="bgImage" autocomplete="off" class="layui-input" value="{{ data.bgImage }}">
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                <fieldset class="layui-elem-field">
+                  <legend>活动Logo图片设置</legend>
+                  <div class="layui-field-box" style="margin-top:10px">
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">Banner图片<span style="font-size:12px;">(建议图片尺寸110*110px)</span></label>
+                      <div class="layui-input-block">
+                        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                        <input type="text" name="bannerImage" autocomplete="off" class="layui-input" value="{{ data.bannerImage }}">
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                <fieldset class="layui-elem-field">
+                  <legend>活动样式设置</legend>
+                  <div class="layui-field-box" style="margin-top:10px">
+
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                      <ul class="layui-tab-title" style="padding-left: 30px;">
+                        <li class="layui-this">未开始</li>
+                        <li>已开始</li>
+                        <li>已结束</li>
+                      </ul>
+                      <div class="layui-tab-content">
+                        <div class="layui-tab-item layui-show">
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">日期背景颜色</label>
+                            <div class="layui-input-block">
+                              <div class="color-picker-selector" data-hidden-name="hasNotStartedTimeDateBgColor"><div style="background-color: {{ data.hasNotStartedTimeDateBgColor | default('#dbdee0') }};"></div></div>
+                              <input type="text" class="layui-input" name="hasNotStartedTimeDateBgColor" autocomplete="off" value="{{ data.hasNotStartedTimeDateBgColor | default('#dbdee0') }}">
+                            </div>
+                          </div>
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">日期字体颜色</label>
+                            <div class="layui-input-block">
+                              <div class="color-picker-selector" data-hidden-name="hasNotStartedTimeDateTextColor"><div style="background-color: {{ data.hasNotStartedTimeDateTextColor | default('#ffffff') }};"></div></div>
+                              <input type="text" class="layui-input" name="hasNotStartedTimeDateTextColor" autocomplete="off" value="{{ data.hasNotStartedTimeDateTextColor | default('#ffffff') }}">
+                            </div>
+                          </div>
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">活动名称字体颜色</label>
+                            <div class="layui-input-block">
+                              <div class="color-picker-selector" data-hidden-name="hasNotStartedActivityNameColor"><div style="background-color: {{ data.hasNotStartedActivityNameColor | default('#c4c4c4') }};"></div></div>
+                              <input type="text" class="layui-input" name="hasNotStartedActivityNameColor" autocomplete="off" value="{{ data.hasNotStartedActivityNameColor | default('#c4c4c4') }}">
+                            </div>
+                          </div>
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">活动简介字体颜色</label>
+                            <div class="layui-input-block">
+                              <div class="color-picker-selector" data-hidden-name="hasNotStartedActivityDescColor"><div style="background-color: {{ data.hasNotStartedActivityDescColor | default('#c4c4c4') }};"></div></div>
+                              <input type="text" class="layui-input" name="hasNotStartedActivityDescColor" autocomplete="off" value="{{ data.hasNotStartedActivityDescColor | default('#c4c4c4') }}">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="layui-tab-item">
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">日期背景颜色</label>
+                            <div class="layui-input-block">
+                              <div class="color-picker-selector" data-hidden-name="hasStartedTimeDateBgColor"><div style="background-color: {{ data.hasStartedTimeDateBgColor | default('#b8bec4') }};"></div></div>
+                              <input type="text" class="layui-input" name="hasStartedTimeDateBgColor" autocomplete="off" value="{{ data.hasStartedTimeDateBgColor | default('#b8bec4') }}">
+                            </div>
+                          </div>
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">日期字体颜色</label>
+                            <div class="layui-input-block">
+                              <div class="color-picker-selector" data-hidden-name="hasStartedTimeDateTextColor"><div style="background-color: {{ data.hasStartedTimeDateTextColor | default('#ffffff') }};"></div></div>
+                              <input type="text" class="layui-input" name="hasStartedTimeDateTextColor" autocomplete="off" value="{{ data.hasStartedTimeDateTextColor | default('#ffffff') }}">
+                            </div>
+                          </div>
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">活动名称字体颜色</label>
+                            <div class="layui-input-block">
+                              <div class="color-picker-selector" data-hidden-name="hasStartedActivityNameColor"><div style="background-color: {{ data.hasStartedActivityNameColor | default('#2d2d2d') }};"></div></div>
+                              <input type="text" class="layui-input" name="hasStartedActivityNameColor" autocomplete="off" value="{{ data.hasStartedActivityNameColor | default('#2d2d2d') }}">
+                            </div>
+                          </div>
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">活动简介字体颜色</label>
+                            <div class="layui-input-block">
+                              <div class="color-picker-selector" data-hidden-name="hasStartedActivityDescColor"><div style="background-color: {{ data.hasStartedActivityDescColor | default('#2d2d2d') }};"></div></div>
+                              <input type="text" class="layui-input" name="hasStartedActivityDescColor" autocomplete="off" value="{{ data.hasStartedActivityDescColor | default('#2d2d2d') }}">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="layui-tab-item">
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">日期背景颜色</label>
+                            <div class="layui-input-block">
+                              <div class="color-picker-selector" data-hidden-name="hasEndedTimeDateBgColor"><div style="background-color: {{ data.hasEndedTimeDateBgColor | default('#dbdee0') }};"></div></div>
+                              <input type="text" class="layui-input" name="hasEndedTimeDateBgColor" autocomplete="off" value="{{ data.hasEndedTimeDateBgColor | default('#dbdee0') }}">
+                            </div>
+                          </div>
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">日期字体颜色</label>
+                            <div class="layui-input-block">
+                              <div class="color-picker-selector" data-hidden-name="hasEndedTimeDateTextColor"><div style="background-color: {{ data.hasEndedTimeDateTextColor | default('#ffffff') }};"></div></div>
+                              <input type="text" class="layui-input" name="hasEndedTimeDateTextColor" autocomplete="off" value="{{ data.hasEndedTimeDateTextColor | default('#ffffff') }}">
+                            </div>
+                          </div>
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">活动名称字体颜色</label>
+                            <div class="layui-input-block">
+                              <div class="color-picker-selector" data-hidden-name="hasEndedActivityNameColor"><div style="background-color: {{ data.hasEndedActivityNameColor | default('#c4c4c4') }};"></div></div>
+                              <input type="text" class="layui-input" name="hasEndedActivityNameColor" autocomplete="off" value="{{ data.hasEndedActivityNameColor | default('#c4c4c4') }}">
+                            </div>
+                          </div>
+                          <div class="layui-form-item">
+                            <label class="layui-form-label">活动简介字体颜色</label>
+                            <div class="layui-input-block">
+                              <div class="color-picker-selector" data-hidden-name="hasEndedActivityDescColor"><div style="background-color: {{ data.hasEndedActivityDescColor | default('#c4c4c4') }};"></div></div>
+                              <input type="text" class="layui-input" name="hasEndedActivityDescColor" autocomplete="off" value="{{ data.hasEndedActivityDescColor | default('#c4c4c4') }}">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> 
+                  </div>
+                </fieldset>
+                <fieldset class="layui-elem-field">
+                  <legend>活动日历图标样式设置</legend>
+                  <div class="layui-field-box" style="margin-top:10px">
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">默认状态日历图片<span style="font-size:12px;">(建议图片尺寸104*104px)</span></label>
+                      <div class="layui-input-block">
+                        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                        <input type="text" name="defaultDateImage" autocomplete="off" class="layui-input" value="{{ data.defaultDateImage }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">Hover日历图片<span style="font-size:12px;">(建议图片尺寸104*104px)</span></label>
+                      <div class="layui-input-block">
+                        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                        <input type="text" name="defaultHoverDateImage" autocomplete="off" class="layui-input" value="{{ data.defaultHoverDateImage }}">
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                <fieldset class="layui-elem-field">
+                  <legend>活动日历样式设置</legend>
+                  <div class="layui-field-box" style="margin-top:10px">
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">日历标题</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="dateTimeTitle" autocomplete="off" class="layui-input" value="{{ data.dateTimeTitle }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">日历图片<span style="font-size:12px;">(建议图片尺寸900*400px)</span></label>
+                      <div class="layui-input-block">
+                        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                        <input type="text" name="dateTimeImage" autocomplete="off" class="layui-input" value="{{ data.dateTimeImage }}">
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                <fieldset class="layui-elem-field">
+                  <legend>攻略样式设置</legend>
+                  <div class="layui-field-box" style="margin-top:10px">
+                    <div class="layui-form-item">
+                      {# <label class="layui-form-label">默认状态活动攻略图片<span style="font-size:12px;">(建议图片尺寸104*104px)</span></label> #}
+                      <label class="layui-form-label">攻略图片 <span style="font-size:12px;">(建议图片尺寸104*104px)</span></label>
+                      <div class="layui-input-block">
+                      <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                        <input type="text" name="defaultRaidersImage" autocomplete="off" class="layui-input" value="{{ data.defaultRaidersImage }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">攻略链接</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="defaultRaidersLink" autocomplete="off" class="layui-input" value="{{ data.defaultRaidersLink }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">新窗口打开</label>
+                      <div class="layui-input-block">
+                        <input type="radio" name="defaultLinkTarget" data-public-tag="true" value="_blank" title="是" {% if data.defaultLinkTarget == '_blank' %} checked="checked" {% endif %}>
+                        <input type="radio" name="defaultLinkTarget" data-public-tag="true" value="_self" title="否" {% if data.defaultLinkTarget | default('_self') == '_self' %} checked="checked" {% endif %}>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                <div class="text-right">
+                  <button type="button" id="js_moreConfig" class="layui-btn layui-btn-normal layui-btn-sm">更多配置</button>
+                </div>
+              </div>
+              <div>
+                <div class="layui-tab layui-tab-vertical">
+                  <ul class="layui-tab-title">
+                    <li class="layui-this">基础设置</li>
+                    <li>箭头设置</li>
+                    <li>活动日期设置</li>
+                  </ul>
+                  <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">组件高度(px)</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="componentHeight" autocomplete="off" class="layui-input" value="{{ data.componentHeight | default(104) }}">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="layui-tab-item">
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">非当前活动箭头图片</label>
+                        <div class="layui-input-block">
+                          <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                          <input type="text" name="notCurrentActivityImg" autocomplete="off" class="layui-input" value="{{ data.notCurrentActivityImg }}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">当前活动箭头图片</label>
+                        <div class="layui-input-block">
+                          <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                          <input type="text" name="currentActivityImg" autocomplete="off" class="layui-input" value="{{ data.currentActivityImg }}">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="layui-tab-item">
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">活动日历标题(px)</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="activityDateTimeTitleFontSize" autocomplete="off" class="layui-input" value="{{ data.activityDateTimeTitleFontSize | default(20) }}">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <button type="button" id="js_baseConfig" class="layui-btn layui-btn-normal layui-btn-sm">基础配置</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <span type="button" class="layui-btn layui-btn-normal" id="gs_submit">提交</span>
+	<button type="button" class="layui-btn layui-btn-normal js_submitDesignForm layui-hide">提交</button>
+</div>
+
+<script>
+  /* 移除绑定事件 */
+  $('.delete-datetime-item').unbind('click');
+
+  var $dateTable = $('#dateTimeContainer');
+  
+  /* 新增活动模块 */
+  $('#gs_tab_add').on('click',function(){
+    var clone = $('.tab-template li',$dateTable).clone();
+    $('.datatime-lists-wrap',$dateTable).append(clone);
+    initIndex();
+    downDateInit();
+  });
+
+  /* 删除活动模块 */
+  $('body').on('click', '.delete-datetime-item', function () {
+    var target = $(this).closest('li'),
+      timeRange = target.find('.down-timestamp').val(),
+      activityName = target.find('.activity-name').val(), 
+      activityDesc = target.find('.activity-desc').val();
+
+    if (timeRange || activityName || activityDesc) {
+      layui.layer.confirm('删除当前数据不可恢复，确定是否删除？', {
+        btn: ['否', '是'],
+        area: '420px',
+        icon: 3,
+        skin: 'element-ui-dialog-class'
+      }, function (index) {
+        layui.layer.close(index)
+      }, function (index) {	
+        target.remove();
+        initIndex();
+      });
+    } else {
+      target.remove();
+      initIndex();
+    }
+  });
+
+  function initIndex() {
+    $('.datatime-lists-wrap li').each(function(){
+      var index = parseInt($(this).index()) + 1;
+      $(this).find('.loop-index').text(index);
+    })
+  };
+
+  downDateInit();
+
+  /* 时间 */
+  function downDateInit (min, max) {
+    var laydate = layui.laydate;
+    var $tabTarget = $('#goods_tab');
+    $('.datatime-lists-wrap .down-timestamp').each(function(){
+      var _this = $(this);
+      laydate.render({
+        elem: this
+        , type: 'datetime'
+        , range: true
+        , done: function (value, date, endDate) {
+          var dateStrArr = value.split(' - '),
+            validateStartTime,
+            validateEndTime,
+					  dateStartTime,
+					  dateEndTime;
+          
+          {# if (dateStrArr) {
+            validateStartTime = DesignCommon.timestamp.convertToService(Date.parse(new Date(dateStrArr[0])) / 1000);
+            validateEndTime = DesignCommon.timestamp.convertToService(Date.parse(new Date(dateStrArr[1])) / 1000);
+
+            dateStartTime = validateStartTime.code == 0 ? validateStartTime.data : 0;
+            dateEndTime = validateEndTime.code == 0 ? validateEndTime.data : 0;
+          } #}
+          
+          dateStartTime = Date.parse(new Date(dateStrArr[0])) / 1000;
+          dateEndTime = Date.parse(new Date(dateStrArr[1])) / 1000;
+
+          _this.attr({"data-start":dateStartTime,"data-end":dateEndTime});
+        }
+      })
+    })
+  };
+
+  /* 排序 */
+  function timeSort (property) {
+    return function (o1, o2) {
+      var v1 = o1[property],
+        v2 = o2[property];
+      return v1 - v2;
+    }
+  };
+
+  /* 提交 */
+  $('#gs_submit').on('click', function () {
+    var dateTimeArrs = [];
+    $('.datatime-lists-wrap li').each(function (i,item) {
+      var dateStartTime = $(item).find('.down-timestamp').attr('data-start'), 
+        dateEndTime = $(item).find('.down-timestamp').attr('data-end'), 
+        timeRange = $(item).find('.down-timestamp').val(),
+        activityName = $(item).find('.activity-name').val(), 
+        activityDesc = $(item).find('.activity-desc').val(),
+        dateObject = {};
+      /*设置日期为必选项*/
+      if (timeRange) {
+        dateObject = {
+          'timeRange': timeRange,
+          'dateStartTime': dateStartTime,
+          'dateEndTime': dateEndTime,
+          'activityName': activityName,
+          'activityDesc': activityDesc,
+        };
+        dateTimeArrs.push(dateObject);
+      }
+    });
+    if(dateTimeArrs.length == 0) {
+      layer.msg('请添加数据');
+      return false;
+    } else {
+      dateTimeArrs.sort(timeSort('dateEndTime'));
+      $('input[name="dateTimeArrs"]').val(JSON.stringify(dateTimeArrs));
+      $(this).next('button').trigger('click');
+    }
+  });
+
+</script>

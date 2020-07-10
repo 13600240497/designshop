@@ -1,0 +1,79 @@
+{% set remUnit = 75 %}
+{% set suffix = 'rem' %}
+
+{% 
+	set pageData = {
+		widthX: (data.title_text_width|default(750)/remUnit)|number_format(3, '.')~suffix,
+		width: (data.title_text_width|default(750)) / remUnit~suffix,
+		height: (data.title_text_height|default(80) / remUnit)|number_format(3, '.')~suffix,
+		titleWidth: (data.titleWidth|default(400)) / remUnit~suffix,
+		titleFont: (data.title_text_fz|default(34) / remUnit)|number_format(3, '.')~suffix,
+		margin_top: (data.model_magin_top|default(0) / remUnit)|number_format(3, '.')~suffix,
+		margin_bottom: (data.model_magin_bottom|default(16) / remUnit)|number_format(3, '.')~suffix,
+		title_border_width: (data.title_border_width|default(0) / remUnit)|number_format(3, '.')~suffix,
+		title_ico_sz: (data.title_ico_sz|default(24) / remUnit)|number_format(3, '.')~suffix,
+	}
+%}
+
+<style type="text/css">
+	[data-gid="U000032_model4"][data-id="{{ pageInstanceId }}"] {
+        margin-top: {{ pageData.margin_top }};
+		margin-bottom: {{ pageData.margin_bottom }};
+	}
+
+	[data-gid="U000032_model4"][data-id="{{ pageInstanceId }}"] .geshop-content-box {
+		box-sizing: border-box;
+		padding: {% if data.isEditEnv == '1' %} 0.27rem 0; {% else %} 0 0 {% endif %}
+    }
+
+	[data-gid="U000032_model4"][data-id="{{ pageInstanceId }}"] .geshop-content-nav-title {
+		width: {% if pageData.width == '10rem' %} auto {% else %} {{ pageData.width }} {% endif %};
+        height: {% if pageData.title_border_width %} auto {% else %} {{ pageData.height }} {% endif %};
+		line-height: {{ pageData.height }};
+        text-align: center;
+		margin: 0 auto;
+		position: relative;
+		overflow: hidden;
+		background-color: {% if data.title_text_bgColor %}{{ data.title_text_bgColor|default('#f8f8f8') }} {% else %} #f8f8f8 {% endif %};
+        {% if data.title_text_bgImage is not empty %}background-image: url({{ data.title_text_bgImage }});{% endif %}
+		background-size: 100% 100%;
+		background-position: center;
+		background-repeat: no-repeat;
+		border: {{ pageData.title_border_width }} solid {{ data.title_border_color|default() }};
+		border-radius: {{ data.title_radius_sz|default(0) }}{{suffix}};
+	}
+
+	[data-gid="U000032_model4"][data-id="{{ pageInstanceId }}"] .geshop-content-nav-title span {
+		position: relative;
+        margin: 0 .1066rem 0 auto;
+		height: {{ pageData.height }};
+        font-size: {{ pageData.titleFont }};
+		color: {{ data.title_text_color }};
+		display: inline-block;
+		font-weight: {% if data.title_is_bold == '1' %} bold {% else %} normal {% endif %}; 
+	}
+
+	[data-gid="U000032_model4"][data-id="{{ pageInstanceId }}"] .geshop-icon-link {
+		vertical-align: {% if data.isEditEnv == '1' %} middle {% else %} top {% endif %};
+		height: {{ pageData.height }};
+		line-height: {{ pageData.height }};
+		color: {{ data.title_ico_color|default('#333333') }};
+		font-size: {{ pageData.title_ico_sz }} !important;
+		position: relative;
+		display: inline-block;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		cursor: {% if data.view_link_href %} pointer;{% else %} default; {% endif %}
+	}
+
+</style>
+
+<div class="geshop-component-box component-drag" id="U000032_{{ pageInstanceId }}" data-gid="U000032_model4" data-key="U000032" data-id="{{ pageInstanceId }}" attr="nav_flag">
+	<div class="geshop-content-box">
+		<h2 class="geshop-content-nav-title">
+			<span>{{ data.titleText|default('请设置标题名称') }}</span>
+			{% if data.view_link_href %}
+				<a class="gs-iconfont geshop-icon-link gs-icon-round-arrow-full {% if data.title_arr_style == '1' %} gs-icon-round-arrow-full {% else %} gs-icon-round-arrow {% endif %}" href="{{ data.view_link_href|default('javascript:;') }}" target="_special"></a>
+			{% endif %}
+		</h2>
+	</div>
+</div>

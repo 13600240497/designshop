@@ -1,0 +1,46 @@
+<div data-key="U000083" data-id="{{ pageInstanceId }}"  data-static-domain="{{ staticDomain }}" class="geshop-component-box component-drag geshop-component-box-U000083  geshop-component-box-{{ pageInstanceId }}">
+	{% if data.goodsInfo != 0 %}
+		{% if data.isEditEnv == 1 %}
+			{{ include('edit.twig') }}
+		{% else %}
+			{{ include('product.twig') }}
+		{% endif %}
+	{% else %}
+		<img src="{{ data.default.pureimage }}" style="height:392px;display:block;margin:0 auto;">
+	{% endif %}
+	<!-- embed stylesheet begin -->
+	<style type="text/css">
+		.geshop-component-box-{{ pageInstanceId }}{
+			margin-bottom: {{ data.marginBottom | default(0) }}px;
+		}
+		.geshop-component-box-{{ pageInstanceId }} .geshop-four-goods {
+			{% if data.isEditEnv == 1 %}
+			width:{{data.width|default(1202)}}px;
+			{% else %}
+			width:{{data.width|default(1200)}}px;
+			{% endif %}
+		}
+		.geshop-component-box-{{ pageInstanceId }} .geshop-four-good-item{
+			margin-bottom: {{ data.itemMarginBottom | default(10) }}px;
+			margin-left: {{ data.itemMarginLeft | default(0) }}px;
+		
+			margin-right: {{ data.itemMarginRight | default(5) }}px;
+			text-align:{{data.textAlgin|default('left')}};
+			
+		}
+		.geshop-component-box-{{ pageInstanceId }} .geshop-four-good-item-wrap{
+			margin-right: -{{ data.itemMarginRight | default(5) }}px;
+		}
+		.geshop-component-box-{{ pageInstanceId }} .geshop-four-good-title{
+			font-size:{{ data.goodsFtS | default(16) }}px;
+			color:{{ data.goodsFtC|default('#666') }};
+		}
+		.geshop-component-box-{{ pageInstanceId }} .geshop-four-good-price{
+			font-size:{{ data.priceFt | default(26) }}px;
+			color:{{ data.priceC|default('#222') }};
+			font-weight:700;
+		}
+	</style>
+  	<!-- embed stylesheet end -->
+
+</div>

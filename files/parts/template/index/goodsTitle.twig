@@ -1,0 +1,11 @@
+{#/**
+  *@author: 胡明
+  *@date: 2018/12/19 17:05:00
+  *@desc: dresslily商品名称组件
+*/#}
+
+{% if options %}
+  <a href="{{options.urlTitle}}" class="geshop-goods-title" target="_blank">{{options.goodsTitle}}</a>
+{% else %}
+  {{ include ('@app/files/parts/common/components/argsErrors.twig') }}
+{% endif %}

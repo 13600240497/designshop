@@ -1,0 +1,12 @@
+# app
+/.idea
+/data/*.ini
+/runtime/*
+/htdocs/coverage
+/vendor/*
+/pack
+/xtflow
+*/node_modules
+.DS_Store
+/htdocs/resource/*js
+.history/

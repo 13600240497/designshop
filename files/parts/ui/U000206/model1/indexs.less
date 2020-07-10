@@ -1,0 +1,347 @@
+.geshop-u000233-model1 {
+  // 1200 - 1024
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  .u000233-model1-goods-wrap {
+
+    box-sizing: border-box;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+
+    .u000233-model1-list {
+
+      .main-box {
+        display: block;
+        position: relative;
+        padding-top: 30px;
+        background-color: #ffffff;
+
+        .comb-lists {
+          display: block;
+          font-size: 0;
+          box-sizing: border-box;
+          //padding: 30px 20/1158*100% 0 20/1158*100%;
+          width: calc(100% - 44px);
+          background-color: #ffffff;
+          margin: 0 auto;
+
+
+          .comb-goods-list {
+            display: inline-block;
+            font-size: 14px;
+            width: calc( 25% - 16px);
+           /* width: 273/1158*100%;
+            width: 273px;*/
+            //background-color: #00aa00;
+
+
+            vertical-align: top;
+            /* margin: 0 8/1158*100% 30px;*/
+            margin: 0 8px 20px;
+            position: relative;
+
+            .u000233-model1-goods-img {
+              height: 363px;
+
+              > a {
+                display: block;
+                height: 100%;
+              }
+
+              .lt-img {
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+              }
+            }
+
+            .goods-price {
+              margin: 4px 0 0;
+
+              .geshop-shop-price {
+                display: block;
+                margin-bottom: 2px;
+                font-family: LatoBold;
+                line-height: 27px;
+                margin-right: 16px;
+              }
+
+              .join-comb {
+                user-select: none;
+                cursor: pointer;
+                font-size: 14px;
+                font-family: Lato-Regular;
+                font-weight: 400;
+                color: rgba(0, 0, 0, 1);
+                height: 20px;
+                line-height: 20px;
+                display: block;
+
+                .icon-ck {
+                  margin-right: 8px;
+                  background: url("https://geshopimg.logsss.com/uploads/J2H5hu6piTmjZ0wMxXFq98PcVkNgoEIY.png") 0 0 no-repeat;
+                  width: 20px;
+                  height: 20px;
+                }
+
+                &.on {
+                  .icon-ck {
+                    background: url("https://geshopimg.logsss.com/uploads/e0vUCBwgYjVTOpyuWLJZ5EoxGXM6rhiF.png") 0 0 no-repeat;
+                    width: 20px;
+                    height: 20px;
+                  }
+                }
+
+                .icon-ck, .icon-desc {
+                  display: inline-block;
+                  vertical-align: middle;
+                }
+
+              }
+            }
+            .goods-list-title{
+              color: #333333;
+              width: 100%;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              white-space: nowrap;
+              margin: 12px 0 4px;
+            }
+            .con-wrap {
+              font-size: 0;
+              user-select: none;
+
+              .select-wrap {
+                display: inline-block;
+                font-size: 14px;
+                position: relative;
+                vertical-align: text-bottom;
+
+                &.cr-l {
+                  margin-right: 12px;
+                }
+
+                .target-text {
+                  display: block;
+                  width: 130px;
+                  height: 30px;
+                  line-height: 28px;
+                  overflow: hidden;
+                  box-sizing: border-box;
+                  padding: 0 8px;
+                  position: relative;
+                  cursor: pointer;
+                  z-index: 10;
+
+                  &.noselect{
+                    &:after {
+                      content: '';
+                      display: none;
+                    }
+                    &:before {
+                      content: '';
+                      display: none;
+                    }
+                  }
+
+                  &:after {
+                    content: '';
+                    position: absolute;
+                    width: 6px;
+                    height: 6px;
+                    border-left: 1px solid currentColor;
+                    border-bottom: 1px solid currentColor;
+                    transform: rotate(-45deg);
+                    right: 10px;
+                    top: 8px;
+                  }
+
+                  &:before {
+                    content: '';
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    width: 21px;
+                    height: 100%;
+
+                  }
+
+                  &.on {
+                    border-bottom: none;
+
+                    &:after {
+                      content: '';
+                      transform: rotate(135deg);
+                      right: 10px;
+                      top: 12px;
+                    }
+                  }
+                }
+
+                .js-size-wrap, .js-color-wrap {
+                  display: block;
+                  position: absolute;
+                  top: 29px;
+                  width: 100%;
+                  left: 0;
+                  z-index: 11;
+                  line-height: 28px;
+                  box-sizing: border-box;
+                  padding: 0 8px;
+                  transition: height .25s ease;
+                  height: 0;
+                  max-height: 140px;
+                  overflow-y: auto;
+
+                  > li {
+                    cursor: pointer;
+                    width: 100%;
+                    display: block;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+
+                    &:hover {
+                      font-weight: bold;
+
+                      > span {
+                        text-decoration: underline;
+                      }
+                    }
+                  }
+                }
+              }
+
+            }
+
+          }
+        }
+
+      }
+
+    }
+
+  }
+
+  &.geshop_dl_pad {
+    .u000233-model1-goods-wrap {
+      width: 100%;
+      .u000233-model1-list {
+        .main-box {
+          width: 100%;
+          padding-top: 30px;
+          background-color: #ffffff;
+          .comb-lists {
+            display: block;
+            //padding: 30/1158*100% 21/1158*100% 0 21/1158*100%;
+
+            .comb-goods-list {
+              //width: 273/1158*100%;
+
+
+              .u000233-model1-goods-img {
+                height: auto;
+                padding-bottom: (363)/273 *100%;
+                position: relative;
+
+                > a {
+                  display: block;
+                  height: 100%;
+
+                }
+
+                .lt-img {
+                  position: absolute;
+                }
+              }
+
+              .con-wrap {
+                .select-wrap {
+                  width: 100%;
+
+                  &.cr-l {
+                    margin-bottom: 4px;
+                  }
+
+                  .target-text {
+                    width: 100%;
+                  }
+                }
+              }
+
+            }
+          }
+        }
+      }
+    }
+  }
+  &.geshop_dl_wap {
+    .u000233-model1-goods-wrap {
+      width: 100%;
+
+      .u000233-model1-list {
+        .main-box {
+          background-color: #ffffff;
+          display: block;
+          width: calc(100% - 20px);
+          margin: 10px auto;
+
+          .comb-lists {
+            display: block;
+            //width: 342/355 * 100%;
+            width: calc(100% - 10px);
+            padding: 5px 0;
+            margin: 0 auto;
+
+            .comb-goods-list {
+              width: calc(50% - 10px);
+              margin: 5px;
+
+              .u000233-model1-goods-img {
+                height: auto;
+                padding-bottom: (213)/160 *100%;
+                position: relative;
+
+                > a {
+                  display: block;
+                  height: 100%;
+
+                }
+
+                .lt-img {
+                  position: absolute;
+                  width: 100%;
+                }
+              }
+
+              .con-wrap {
+                .select-wrap {
+                  width: 100%;
+
+                  &.cr-l {
+                    margin-bottom: 4px;
+                  }
+
+                  .target-text {
+                    width: 100%;
+                  }
+                }
+              }
+
+            }
+
+          }
+
+        }
+      }
+    }
+    &.geshop_dl_m{
+      .join-comb {
+        font-size: 10px !important;
+      }
+    }
+  }
+
+}

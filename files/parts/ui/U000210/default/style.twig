@@ -1,0 +1,49 @@
+<!-- embed stylesheet begin -->
+<style type="text/css">
+    {% set classRoot = '.geshop-U000210-default-'~pageInstanceId~' .gs-goods-wrap' %}
+
+    {{ classRoot }} {
+        margin: 0 auto;
+        margin-top: {{ data.component_mt }}px;
+        margin-bottom: {{ data.component_mb }}px;
+        margin-right: -30px;
+    }
+    {{ classRoot }} .gs-blog-col2 {
+        {% if data.image_height %}
+            height: {{ data.image_height + 85 }}px;
+        {% else %}
+            height: 675px;
+        {% endif %}
+    }
+    {{ classRoot }} .cursor-df{
+        cursor: default;
+    }
+    {{ classRoot }} .cursor-pt{
+        cursor: pointer;
+    }
+
+    {{ classRoot }} .gs-blog-col2 img {
+        height: {{ data.image_height }}px;
+    }
+    {{ classRoot }} .gs-blog-col3{
+        {% if data.image_height %}
+            height: {{ data.image_height + 55 }}px;
+        {% else %}
+            height: 430px;
+        {% endif %}
+    }
+    {{ classRoot }} .gs-blog-col3 img{
+        height: {{ data.image_height }}px;
+    }
+    {{ classRoot }} .gs-blog-col4{
+        {% if data.image_height %}
+            height: {{ data.image_height + 40 }}px;
+        {% else %}
+            height: 325px;
+        {% endif %}
+    }
+    {{ classRoot }} .gs-blog-col4 img {
+        height: {{ data.image_height }}px;
+    }
+</style>
+<!-- embed stylesheet end -->

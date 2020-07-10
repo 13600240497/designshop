@@ -1,0 +1,169 @@
+[data-gid="U000058_model_timeslot"].gs-index-main{
+  margin: 0 auto;
+  width: 1240px;
+}
+/* 
+[data-gid="U000058_model_timeslot"] .swiper-button-prev{
+  position: absolute;
+  top: 50%;
+  margin-top: -40px;
+  left: 0;
+  z-index: 1;
+  width: 32px;
+  height: 64px;
+  text-align: center;
+  background-color: #fff;
+  border-top-right-radius: 32px;
+  border-bottom-right-radius: 32px;
+  background-image: none;
+}
+[data-gid="U000058_model_timeslot"] .swiper-button-prev::after{
+  content: '';
+  display: inline-block;
+  margin-top: 22px;
+  background-image:url('../../../resources/images/carousel-image/common_icon.png');
+  background-position: -2px -24px;
+  width: 12px;
+  height: 21px;
+  font-size: 0;
+}
+[data-gid="U000058_model_timeslot"] .swiper-button-next{
+  position: absolute;
+  top: 50%;
+  margin-top: -40px;
+  right: 0;
+  z-index: 1;
+  width: 32px;
+  height: 64px;
+  text-align: center;
+  background-color: #fff;
+  border-top-left-radius: 32px;
+  border-bottom-left-radius: 32px;
+  background-image: none;
+}
+[data-gid="U000058_model_timeslot"] .swiper-button-next::after{
+  content: '';
+  display: inline-block;
+  margin-top: 22px;
+  background-image: url('../../../resources/images/carousel-image/common_icon.png');
+  background-position: -2px -48px;
+  width: 12px;
+  height: 21px;
+  font-size: 0;
+}
+[data-gid="U000058_model_timeslot"] .swiper-container-horizontal>.swiper-pagination {
+  bottom: 10%;
+}
+
+[data-gid="U000058_model_timeslot"] .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  border: 1px solid #ffffff;
+  background-color: transparent;
+}
+
+[data-gid="U000058_model_timeslot"] .swiper-pagination-bullet-active {
+  background-color: #ffffff;
+} */
+
+[data-gid="U000058_model_timeslot"] .icon-up{
+  background-image:url('../../../resources/images/carousel-image/up.png');
+}
+[data-gid="U000058_model_timeslot"] .icon-down{
+  background-image:url('../../../resources/images/carousel-image/down.png');
+} 
+[data-gid="U000058_model_timeslot"] .icon-delete{
+  background-image:url('../../../resources/images/carousel-image/delete.png');
+}
+
+[data-gid="U000058_model_timeslot"] .js_gdexp_lazy {
+  opacity: 1 !important;
+  display:inline !important;
+}
+
+
+#BanboxModelTimeSlot .layui-tab-content {
+  padding: 10px 0px;
+  width: 320px;
+}
+#BanboxModelTimeSlot{
+  margin-top: 16px;
+}
+#BanboxModelTimeSlot .layui-tab-title li.layui-this{
+  background: #1E9FFF !important;
+  color: #fff; 
+  font-size: 16px;   
+  margin-right: 48px;
+  border: none !important;
+}
+
+#BanboxModelTimeSlot .layui-tab-title li.layui-this i{ 
+  color: #fff !important; 
+}
+#BanboxModelTimeSlot .layui-tab-title li .layui-tab-close:hover {
+  border-radius: 2px;
+  background-color: #fff;
+  color: #c2c2c2;
+}
+#BanboxModelTimeSlot .layui-tab-title li.layui-this .layui-tab-close:hover {
+  border-radius: 2px;
+  background-color: #1E9FFF;
+  color: #fff;
+}
+
+#BanboxModelTimeSlot .layui-tab-title li{
+  font-size: 16px;   
+  height: 40px;
+  padding: 0 5px  ;
+  margin-left: -54px;
+  background: #fff;
+  border: 1px solid #E6E6E6;
+  border-bottom: 0px solid;
+  max-width: 90px;
+  width: 78px;
+}
+#BanboxModelTimeSlot .layui-tab-title li.init{
+  margin-left: 0px !important;
+  background: #fff; 
+}
+#BanboxModelTimeSlot .layui-tab-title li .tab-item {
+  display: inline-block;
+  width: 48px;
+  overflow: hidden;
+  float: left;
+  text-overflow: ellipsis;
+}
+#BanboxModelTimeSlot .imgSrc{
+  width: 113% !important;
+  border-top-left-radius: 0; 
+  border-bottom-left-radius: 0;
+}
+#BanboxModelTimeSlot .js_openResource{
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+#BanboxModelTimeSlot .js_start_time,#BanboxModelTimeSlot .js_end_time{
+  border: none;
+  text-align: center;
+}
+#BanboxModelTimeSlot .dateTime{
+  border: 1px solid #e6e6e6;
+}
+.li-add{
+  width: 40px;
+  height: 40px!important;
+  line-height: 38px;
+  position: absolute;
+  text-align: center;
+  right: 0;
+  font-size: 30px;
+  top: 0;
+  border: 1px solid #E6E6E6;
+  border-bottom: 0px solid #ddd; 
+  border-top-right-radius: 4px;
+}
+.li-add a{
+display: block;
+color: #1e9fff;
+}

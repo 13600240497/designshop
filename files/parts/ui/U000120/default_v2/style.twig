@@ -1,0 +1,85 @@
+.tab{{ pageInstanceId }} {
+    margin-bottom: {{ data.box_margin_bottom }}px;
+}
+
+.tab{{pageInstanceId}} .component-self-goodWrap:hover, .tab{{pageInstanceId}} .current {
+
+}
+
+.gs_model {
+    color:red;
+}
+
+.tab{{pageInstanceId}} .geshop-tabs .active{  
+    {% if data.tabSelectBgurl  %}
+        background: url('{{data.tabSelectBgurl}}') repeat-x; 	
+    {% else %}
+        background: {{data.tabSelectedBgColor|default('#999999')}} !important;
+    {% endif %}
+    color:{{data.tabSelectedTextColor|default('#ffffff')}} !important;  
+}
+
+.tab{{pageInstanceId}} .geshop-tabs .swiper-slide {
+    {# 未选中Tab背景图片 #}
+    {% if data.tabunSelectBgurl  %}
+        background: url('{{ data.tabunSelectBgurl }}') repeat-x; 	
+    {% else %}
+        background:{{ data.tabUnselectedBgColor | default('#ffffff')}} !important;
+    {% endif %} 
+    color:{{ data.tabUnselectedTextColor | default('#333333') }} !important;
+    font-size:{{ data.tabFontSize | default(24) }}px !important;
+    float:left;
+}
+
+.tab{{pageInstanceId}} .swiper-container,
+.tab{{pageInstanceId}} .swiper-button-next,
+.tab{{pageInstanceId}} .swiper-button-prev,
+.tab{{pageInstanceId}} .swiper-slide-item {
+    height:{{data.tabHeight|default(68)}}px!important;
+    line-height:{{data.tabHeight|default(68)}}px!important;
+}
+.tab{{pageInstanceId}} .left-arrow,
+.tab{{pageInstanceId}} .right-arrow{
+    margin-top:{{ (data.tabHeight|default(68) - 16 ) / 2}}px!important;
+}
+
+{% if lang == 'ru' %}
+.tab{{pageInstanceId}} .goodStatus {
+    width: 140px;
+    height: 140px;
+    margin-left: -70px;
+}
+{% endif %}
+
+.tab{{pageInstanceId}} .swiper-button-next,
+.tab{{pageInstanceId}} .swiper-button-prev {
+    margin-top: 0px;
+    top: 0px !important;
+    overflow: hidden;
+}
+
+
+.tab{{pageInstanceId}} .gs-add-bag {
+    color: {{ data.add_bug_font_color | default('#333333') }};
+    background: {{ data.add_bug_bg_color | default('#ffffff') }};
+}
+
+
+
+
+{% if lang == 'ar' %}
+    .tab{{pageInstanceId}} .swiper-slide-item {
+        direction: rtl;
+    }
+    .tab{{pageInstanceId}} .swiper-slide-item span {
+        display: inline-block;
+    }
+
+    .tab{{pageInstanceId}} .item-clamid {
+        direction: ltr;
+    }
+    .tab{{pageInstanceId}} .item-clamid .item-clamid-pre {
+        direction: rtl;
+        display: inline-block;
+    }
+{% endif %}

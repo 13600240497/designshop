@@ -1,0 +1,348 @@
+<input type="hidden" class="nav-list-arr" name="navList" value='{{ (data.navList | default({}) ) | json_encode }}' data-public-tag="true">
+
+{% if data.navList %}
+    {% set list =  data.navList %}
+{% else %}
+    {% set list = [{ pic_url: "", pic_url_pad: "", pic_url_m: "", pic_href: "", pic_positon: { pc: "", m:"" } }] %}
+{% endif %}
+{% set flen = list | length %}
+
+<div class="layui-col-xs12 show-list hide">
+    <div class="layui-form-item pic-label">图片<span>{{ i+1 }}</span>配置<i>(所有内容都为必填项)</i></div>
+    <div class="box-g">
+        {%  if siteCode == 'dl-web' %}
+            <div class="layui-form-item">
+                <label class="layui-form-label ">PC图片<span>（建议图片宽273px,高370px）</span></label>
+                <div class="layui-input-block">
+                    {#<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon"></i></a>#}
+                    <input type="text" name="pic_url" autocomplete="off" class="layui-input" value="{{ item.pic_url }}" data-public-tag="" data-width="0" data-height="0">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label ">PAD图片<span>（建议图片宽229px,高327px）</span></label>
+                <div class="layui-input-block">
+                    {#<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon"></i></a>#}
+                    <input type="text" name="pic_url_pad" autocomplete="off" class="layui-input" value="{{ item.pic_url_pad }}" data-public-tag="" data-width="0" data-height="0">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label ">M图片<span>（建议图片宽173px,高262px）</span></label>
+                <div class="layui-input-block">
+                    {#<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon"></i></a>#}
+                    <input type="text" name="pic_url_m" autocomplete="off" class="layui-input" value="{{ item.pic_url_m }}" data-public-tag="" data-width="0" data-height="0">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label ">图片跳转链接</label>
+                <div class="layui-input-block">
+                    <input type="text" name="pic_href" autocomplete="off" class="layui-input " value="{{ item.pic_href }}" placeholder="" data-public-tag="">
+                </div>
+            </div>
+            <div class="layui-tab ">
+                <ul class="layui-tab-title">
+                    <li class=" layui-this ">PC/PAD</li>
+                    <li class="">M</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item  layui-show ">
+                        <div class="layui-row layui-col-space20">
+                            <div class="layui-col-xs12 " filter="" name="filter">
+                                <div class="layui-form-item ">
+                                    <label class="layui-form-label ">图片位置<span>（数字指展示在列表里对应的坑位）</span>    </label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="pic_positon" autocomplete="off" class="layui-input " value="{{ item.pic_positon.pc }}" placeholder="" data-public-tag="">
+                                    </div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-tab-item">
+                        <div class="layui-row layui-col-space20">
+                            <div class="layui-col-xs12 " filter="" name="filter">
+                                <div class="layui-form-item ">
+                                    <label class="layui-form-label ">图片位置<span>（数字指展示在列表里对应的坑位）</span>    </label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="pic_positon_m" autocomplete="off" class="layui-input " value="{{ item.pic_positon.m }}" placeholder="" data-public-tag="">
+                                    </div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {%  if siteCode == 'dl-app' %}
+            <div class="layui-form-item">
+                <label class="layui-form-label ">图片<span>（建议图片宽173px,高262px）</span></label>
+                <div class="layui-input-block">
+                    {#<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon"></i></a>#}
+                    <input type="text" name="pic_url_m" autocomplete="off" class="layui-input" value="{{ item.pic_url_m }}" data-public-tag="" data-width="0" data-height="0">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label ">图片跳转链接</label>
+                <div class="layui-input-block">
+                    <input type="text" name="pic_href" autocomplete="off" class="layui-input " value="{{ item.pic_href }}" placeholder="" data-public-tag="">
+                </div>
+            </div>
+            <div class="layui-form-item ">
+                <label class="layui-form-label ">图片位置<span>（数字指展示在列表里对应的坑位）</span>    </label>
+                <div class="layui-input-block">
+                    <input type="text" name="pic_positon_m" autocomplete="off" class="layui-input " value="{{ item.pic_positon.m }}" placeholder="" data-public-tag="">
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    <div class="menus-g">
+                        <span class="img-btn  f-delete">
+                          <i class='icon-delete'></i>
+                          <b class="tips">删除 </b>
+                        </span>
+        <span class="img-btn f-up">
+                          <i class='icon-up'></i>
+                          <b class="tips">上移</b>
+                        </span>
+        <span class="img-btn f-down">
+                          <i class='icon-down'></i>
+                          <b class="tips">下移</b>
+                        </span>
+        <span class="img-btn f-add">
+                          <i class='icon-add '></i>
+                          <b class="tips">新增</b>
+                        </span>
+    </div>
+</div>
+<div class="layui-col-xs12">
+    <fieldset class="layui-elem-field">
+        <div class="show-list-box">
+            {% for i, item in list %}
+                <div class="layui-col-xs12 show-list">
+                    <div class="layui-form-item pic-label">图片<span>{{ i+1 }}</span>配置<i>(所有内容都为必填项)</i></div>
+                    <div class="box-g">
+                        {%  if siteCode == 'dl-web' %}
+                            <div class="layui-form-item">
+                                <label class="layui-form-label ">PC图片<span>（建议图片宽273px,高370px）</span></label>
+                                <div class="layui-input-block">
+                                    {#<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon"></i></a>#}
+                                    <input type="text" name="pic_url" autocomplete="off" class="layui-input" value="{{ item.pic_url }}" data-public-tag="" data-width="0" data-height="0">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label ">PAD图片<span>（建议图片宽229px,高327px）</span></label>
+                                <div class="layui-input-block">
+                                    {#<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon"></i></a>#}
+                                    <input type="text" name="pic_url_pad" autocomplete="off" class="layui-input" value="{{ item.pic_url_pad }}" data-public-tag="" data-width="0" data-height="0">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label ">M图片<span>（建议图片宽173px,高262px）</span></label>
+                                <div class="layui-input-block">
+                                    {#<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon"></i></a>#}
+                                    <input type="text" name="pic_url_m" autocomplete="off" class="layui-input" value="{{ item.pic_url_m }}" data-public-tag="" data-width="0" data-height="0">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label ">图片跳转链接</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="pic_href" autocomplete="off" class="layui-input " value="{{ item.pic_href }}" placeholder="" data-public-tag="">
+                                </div>
+                            </div>
+                            <div class="layui-tab ">
+                                <ul class="layui-tab-title">
+                                    <li class=" layui-this ">PC/PAD</li>
+                                    <li class="">M</li>
+                                </ul>
+                                <div class="layui-tab-content">
+                                    <div class="layui-tab-item  layui-show ">
+                                        <div class="layui-row layui-col-space20">
+                                            <div class="layui-col-xs12 " filter="" name="filter">
+                                                <div class="layui-form-item ">
+                                                    <label class="layui-form-label ">图片位置<span>（数字指展示在列表里对应的坑位）</span>    </label>
+                                                    <div class="layui-input-block">
+                                                        <input type="text" name="pic_positon" autocomplete="off" class="layui-input " value="{{ item.pic_positon.pc }}" placeholder="" data-public-tag="">
+                                                    </div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-tab-item">
+                                        <div class="layui-row layui-col-space20">
+                                            <div class="layui-col-xs12 " filter="" name="filter">
+                                                <div class="layui-form-item ">
+                                                    <label class="layui-form-label ">图片位置<span>（数字指展示在列表里对应的坑位）</span>    </label>
+                                                    <div class="layui-input-block">
+                                                        <input type="text" name="pic_positon_m" autocomplete="off" class="layui-input " value="{{ item.pic_positon.m }}" placeholder="" data-public-tag="">
+                                                    </div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {%  if siteCode == 'dl-app' %}
+                            <div class="layui-form-item">
+                                <label class="layui-form-label ">图片<span>（建议图片宽173px,高262px）</span></label>
+                                <div class="layui-input-block">
+                                    {#<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon"></i></a>#}
+                                    <input type="text" name="pic_url_m" autocomplete="off" class="layui-input" value="{{ item.pic_url_m }}" data-public-tag="" data-width="0" data-height="0">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label ">图片跳转链接</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="pic_href" autocomplete="off" class="layui-input " value="{{ item.pic_href }}" placeholder="" data-public-tag="">
+                                </div>
+                            </div>
+                            <div class="layui-form-item ">
+                                <label class="layui-form-label ">图片位置<span>（数字指展示在列表里对应的坑位）</span>    </label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="pic_positon_m" autocomplete="off" class="layui-input " value="{{ item.pic_positon.m }}" placeholder="" data-public-tag="">
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="menus-g">
+                        <span class="img-btn  f-delete">
+                          <i class='icon-delete'></i>
+                          <b class="tips">删除 </b>
+                        </span>
+                        <span class="img-btn f-up">
+                          <i class='icon-up'></i>
+                          <b class="tips">上移</b>
+                        </span>
+                        <span class="img-btn f-down">
+                          <i class='icon-down'></i>
+                          <b class="tips">下移</b>
+                        </span>
+                        <span class="img-btn f-add">
+                          <i class='icon-add '></i>
+                          <b class="tips">新增</b>
+                        </span>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </fieldset>
+</div>
+
+<style>
+    {% set root = '#U000182-template1_v3' %}
+    {{ root }} .show-list {
+        margin-bottom: 16px;
+    }
+    {{ root }} .show-list .layui-form-item{
+        margin-bottom: 16px;
+    }
+    {{ root }} .show-list.hide{
+        display: none;
+    }
+    {{ root }} .menus-g{
+       text-align: right;
+        margin-top: 8px;
+    }
+    {{ root }} .pic-label{
+       font-size: 16px;
+       font-weight: bold;
+    }
+    {{ root }} .pic-label i {
+        color: #9E9E9E;
+        margin-left: 4px;
+        font-size: 14px;
+        font-style: normal;
+    }
+
+    {{ root }} .box-g {
+       border-radius:4px;
+       border:1px solid rgba(230,230,230,1);
+       -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+       box-sizing: border-box;
+       padding: 16px;
+    }
+</style>
+<script>
+    (function () {
+        var $wrap = $('#U000182-template1_v3');
+        var $box_wrap =  $wrap.find('.show-list-box');
+        /*一级图标的显示隐藏*/
+        function showIcon() {
+            upNum();
+            var len = $box_wrap.find('.menus-g').length;
+            if (len > 1) {
+                $box_wrap.find('.menus-g').each(function (index) {
+                    if (index == 0) {
+                        $(this).find('.img-btn').hide();
+                        $(this).find('.f-down').show();
+                        $(this).find('.f-delete').show();
+                    } else {
+                        $(this).find('.img-btn').show();
+                        if (index == len - 1) {
+                            $(this).find('.f-down').hide();
+                        } else {
+                            $(this).find('.f-add').hide();
+                        }
+                    }
+                })
+            } else {
+                $box_wrap.find('.img-btn').hide();
+                $box_wrap.find('.f-add').show();
+            }
+        }
+        /*更新一级导航的数字 tab{x}*/
+        function upNum() {
+            $box_wrap.find('.pic-label span').each(function (index) {
+                $(this).text(index + 1)
+            })
+        }
+
+        /*一级图标的显示隐藏*/
+        showIcon();
+        /* 新增一级分类 */
+        function addOne() {
+            var clone = $wrap.find('.show-list.hide').clone(true);
+            $box_wrap.append(clone);
+            $box_wrap.find('.show-list.hide').removeClass('hide');
+            showIcon();
+        }
+        /* 新增一级分类 */
+        $wrap.find('.menus-g').on('click', '.f-add', function (e) {
+            e.stopPropagation();
+            addOne();
+        });
+
+        /* 下移分类 */
+        $wrap.find('.menus-g').on('click', '.f-down', function (e) {
+            e.stopPropagation();
+            var $tr = $(this).parents('.show-list:eq(0)');
+            var $trNext = $tr.next();
+            if (0 != $trNext.length) {
+                $trNext.after($tr);
+                showIcon();
+            }
+        });
+
+        /* 上移分类 */
+        $wrap.find('.menus-g').on('click', '.f-up', function (e) {
+            e.stopPropagation();
+            var $tr = $(this).parents('.show-list:eq(0)');
+            var $trPrev = $tr.prev();
+            $trPrev.before($tr);
+            showIcon();
+        });
+
+        /* 删除分类 */
+        $wrap.find('.menus-g').on('click', '.f-delete', function (e) {
+            var  $tr = $(this).parents('.show-list:eq(0)');
+            layer.confirm('是否删除该分类?', {
+                title: '提示',
+                btn: ['否', '是'],
+                area: '420px',
+                icon: 3,
+                skin: 'element-ui-dialog-class'
+            }, function (index) {
+                layer.close(index);
+            }, function (index) {
+                $tr.remove();
+                layer.close(index);
+                showIcon();
+            })
+        });
+    })();
+</script>

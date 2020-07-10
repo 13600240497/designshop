@@ -1,0 +1,389 @@
+{%
+    set contentTabData = {
+        label: '导航内容',
+        components: [
+            {
+                label: '导航内容配置',
+                type: 'fieldset',
+                components: [
+                    {
+                        label: '可选导航菜单',
+                        type: 'diy',
+                        name: 'nav_menu',
+                        default: '',
+                        src: 'form/NavForm.twig',
+                        items: data.navData,
+                    },
+                ]
+            },
+            {
+                label: '分享内容配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '分享内容配置',
+                    type: 'diy',
+                    name: 'share',
+                    default: '',
+                    src: 'form/share.twig',
+                },
+                ]
+            },
+            {
+                label: '二维码设置',
+                desc: '（此配置不适用于移动端）',
+                type: 'fieldset',
+                isshow: 'dl-web',
+                components: [
+                    {
+                        label: '二维码是否显示',
+                        type: 'radio',
+                        name: 'qrcode_show',
+                        default: 0,
+                        options: [
+                            { label: '是', value: '1' },
+                            { label: '否', value: '0' },
+                        ]
+                    },
+                    {
+                        label: '二维码显示位置',
+                        type: 'radio',
+                        name: 'qrcode_positions',
+                        default: 0,
+                        options: [
+                            { label: '导航顶部', value: '1' },
+                            { label: '导航底部', value: '0' },
+                        ]
+                    },
+                    {
+                        label: '二维码图片',
+                        name: 'qrcode_position',
+                        type: 'image',
+                        default: 'https://geshoptest.s3.amazonaws.com/uploads/VaYcwqOLUXdislPjt8M9f4zDG0J6NCWr.png',
+                    },
+                    {
+                        label: '二维码图片底部文案',
+                        name: 'qrcode_desc',
+                        type: 'textarea',
+                        default: 'New Users Enjoy $59 OFF Coupons & App-EXCLUSIVE Deals!',
+                    },
+                ]
+            }
+        ]
+    }
+%}
+
+{%
+    set styleTabData = {
+        label: '样式配置',
+        components: [
+            {
+                label: '常用配置',
+                type: 'fieldset',
+                components: [
+                    {
+                        label: 'PC端导航组件宽度（PX）',
+                        desc: '请填写大于等于180的值',
+                        name: 'nav_w',
+                        default: 180,
+                    },
+                    {
+                        label: '顶部背景图片',
+                        type: 'image',
+                        name: 'top_image',
+                        default: '',
+                    },
+                    {
+                        label: '底部背景图片',
+                        type: 'image',
+                        name: 'bottom_image',
+                        default: ''
+                    },
+                    {
+                        label: '导航菜单描边颜色',
+                        type: 'colorPicker',
+                        name: 'border_color',
+                        default: '',
+                    },
+                    {
+                        label: '导航菜单圆角(px)',
+                        type: 'input',
+                        name: 'border_radius',
+                        default: 10,
+                    },
+                    {
+                        type: 'tab',
+                        items: [
+                            {
+                                label: '选中状态',
+                                components: [
+                                    {
+                                        label: '背景图片',
+                                        type: 'image',
+                                        name: 'active_bg_image',
+                                        default: '',
+                                    },
+                                    {
+                                        label: '背景颜色',
+                                        type: 'colorPicker',
+                                        name: 'active_bg_color',
+                                        default: '#999999',
+                                        col: 2,
+                                    },{
+                                        label: '文字颜色',
+                                        type: 'colorPicker',
+                                        name: 'active_color',
+                                        default: '#ffffff',
+                                        col: 2,
+                                    }
+                                ]
+                            },
+                            {
+                                label: '未选中状态',
+                                components: [
+                                    {
+                                        label: '背景图片',
+                                        type: 'image',
+                                        name: 'normal_bg_image',
+                                        default: '',
+                                    },
+                                    {
+                                        label: '背景颜色',
+                                        type: 'colorPicker',
+                                        name: 'normal_bg_color',
+                                        default: '#d8d8d8',
+                                        col: 2,
+                                    },{
+                                        label: '文字颜色',
+                                        type: 'colorPicker',
+                                        name: 'normal_color',
+                                        default: '#000000',
+                                        col: 2,
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                ]
+            },
+            {
+                label: '分享内容配置',
+                type: 'fieldset',
+                isshow: 'dl-web',
+                components: [
+                    {
+                        label: '分享图标圆角 (PX)',
+                        name: 'icon_radius',
+                        default: '20',
+                    },
+                    {
+                        label: '二维码图片底部文字颜色',
+                        type: 'colorPicker',
+                        name: 'qrcode_desc_color',
+                        default: '#000000',
+                    },
+                ]
+            },
+            {
+                label: '分享图标背景配置',
+                desc: '（此配置不适用于移动端）',
+                type: 'fieldset',
+                isshow: 'dl-web',
+                components: [
+                    {
+                        label: 'Facebook背景颜色',
+                        type: 'colorPicker',
+                        name: 'fb_bg_color',
+                        default: '#000000',
+                        col: 2,
+                    },
+                    {
+                        label: 'Pinterest背景颜色',
+                        type: 'colorPicker',
+                        name: 'pt_bg_color',
+                        default: '#000000',
+                        col: 2,
+                    },
+                    {
+                        label: 'Twitter背景颜色',
+                        type: 'colorPicker',
+                        name: 'tw_bg_color',
+                        default: '#000000',
+                        col: 2,
+                    },
+                    {
+                        label: 'Gmail背景颜色',
+                        type: 'colorPicker',
+                        name: 'gm_bg_color',
+                        default: '#000000',
+                        col: 2,
+                    },
+                    {
+                        label: 'Messnger背景颜色',
+                        type: 'colorPicker',
+                        name: 'ms_bg_color',
+                        default: '#000000',
+                        col: 2,
+                    },
+                ]
+            },
+        ]
+    }
+%}
+
+{%
+    set moreConfig = [
+        {
+            label: '高级配置',
+            type: 'collapse',
+            items: [
+                {
+                    label: 'PC端整体导航配置',
+                    components: [
+                        {
+                            label: '导航位置',
+                            type: 'radio',
+                            name: 'position',
+                            default: 'right',
+                            options: [
+                                { label: '左侧', value: 'left' },
+                                { label: '右侧', value: 'right' },
+                            ]
+                        },
+                    ]
+                },
+                {
+                    label: 'PC端单个导航配置',
+                    components: [
+                        {
+                            label: '文字上下内边距(px)',
+                            type: 'input',
+                            name: 'padding_tb',
+                            default: '18',
+                            col: 2
+                        },
+                        {
+                            label: '文字左右内边距(px)',
+                            type: 'input',
+                            name: 'padding_lr',
+                            default: '30',
+                            col: 2
+                        },
+                        {
+                            label: '文字大小(px)',
+                            type: 'input',
+                            name: 'font_size',
+                            default: '16'
+                        },
+                        {
+                            label: '文字是否加粗',
+                            type: 'radio',
+                            name: 'font_weight',
+                            default: 'normal',
+                            options: [
+                                { label: '正常', value: 'normal' },
+                                { label: '加粗', value: 'bold' },
+                            ]
+                        },
+                    ]
+                },
+                {
+                    label: 'iPad/M端导航配置',
+                    components: [
+                        {
+                            label: '导航菜单高度(px)',
+                            type: 'input',
+                            name: 'h_height',
+                            default: '50'
+                        },
+                        {
+                            label: '导航菜单边距(px)',
+                            type: 'input',
+                            name: 'h_gap',
+                            default: '5'
+                        },
+                        {
+                            label: '文字大小(px)',
+                            type: 'input',
+                            name: 'h_font_size',
+                            default: '14'
+                        },
+                        {
+                            label: '背景颜色',
+                            type: 'colorPicker',
+                            name: 'h_nav_bg_color',
+                            default: '#d8d8d8',
+                        },
+                        {
+                            type: 'tab',
+                            items: [
+                                {
+                                    label: '选中状态',
+                                    components: [
+                                        {
+                                            label: '按钮背景颜色',
+                                            type: 'colorPicker',
+                                            name: 'h_active_bg_color',
+                                            default: '#999999',
+                                        },
+                                        {
+                                            label: '文字颜色',
+                                            type: 'colorPicker',
+                                            name: 'h_active_color',
+                                            default: '#ffffff',
+                                        },
+                                    ]
+                                },
+                                {
+                                    label: '未选中状态',
+                                    components: [
+                                        {
+                                            label: '按钮背景颜色',
+                                            type: 'colorPicker',
+                                            name: 'h_bg_color',
+                                            default: '#d8d8d8',
+                                        },
+                                        {
+                                            label: '文字颜色',
+                                            type: 'colorPicker',
+                                            name: 'h_color',
+                                            default: '#000000',
+                                        },
+                                    ]
+                                },
+                            ]
+                        },
+                    ]
+                },
+            ]
+        }
+    ]
+%}
+
+{%
+    set formData = {
+        id: 'U000201',
+        name: 'D网垂直导航栏(分享)',
+        theme: 'modal2',
+        tabs: [ contentTabData, styleTabData ],
+        moreConfig: moreConfig,
+        onSubmit: 'onSubmit',
+    }
+%}
+<script>
+
+
+    {#  自定义保存函数 #}
+    function onSubmit(progress) {
+        var shareArr = [];
+        $('#U000201-modal2 input.share_data:checked').each(function(index,element){
+            var $val = $(this).val();
+            shareArr.push($val);
+        });
+
+        $('input[name=share_data]').val(JSON.stringify(shareArr));
+        progress.next()
+ };
+</script>
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

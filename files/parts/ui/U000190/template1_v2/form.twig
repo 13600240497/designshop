@@ -1,0 +1,273 @@
+{% set formData = {
+    id: 'U000190',
+    name: '自定义价格组件',
+    theme: 'template1_v2',
+    tabs: [
+        {
+            label: '数据配置',
+            components: [
+                {
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '价格类型',
+                            type: 'radio',
+                            name: 'newUserPrice',
+                            options: [
+                                { label: '新人价', value: 1 },
+                                { label: '普通价', value: 0 },
+                                { label: 'app专享价 (不支持选品)', value: 2},
+                            ],
+                            default: 1
+                        },
+						{
+                            label: '商品数据',
+                            type: 'goods-manager',
+                            ipsMethodsArr: ['1','2','3','4']
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            label: '样式配置',
+            components: [
+                {
+                    label: '基础配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            type: 'margin-dl'
+                        },
+                        {
+                            label: '背景颜色',
+                            name: 'box_bg_color',
+                            default: '#f8f8f8',
+							type: 'colorPicker',
+							col: 2
+                        },
+                    ]
+                },
+                {
+                    label: '销售价配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '标题文案',
+							name: 'shopPriceCopywrite',
+                            default: 'New User Price'
+                        },
+                        {
+                            label: '标题文字颜色',
+                            name: 'shopPriceTitleColor',
+                            type: 'colorPicker',
+                            default: '#000000',
+                            col: 2
+                        },
+                        {
+                            label: '价格文字颜色',
+							name: 'shop_price_color',
+                            type: 'colorPicker',
+                            default: '#FF4545',
+                            col: 2
+                        },
+                        {
+                            type:'platData-dl',
+                            componentsData:[
+                                {
+                                    label: '价格文字大小(px)',
+                                    name: 'shop_price_size',
+                                    default: '16',
+                                    default_m: '15',
+                                    col: 2
+                                },
+                                {
+                                    label: '标题文字大小(px)',
+                                    name: 'shopPriceTitleFontSize',
+                                    default: '16',
+                                    default_m: '15',
+                                    col: 2
+                                },
+                            ]
+                        },
+                    ]
+                },
+                {
+                    label: '原价配置',
+                    type: 'fieldset',
+                    components: [
+						{
+                            label: '原价是否显示',
+							name: 'isOriginalPriceVis',
+                            type: 'radio',
+							default: '1',
+							options: [
+								{ label: '是', value: '1' },
+								{ label: '否', value: '0' },
+							]
+                        },
+                        {
+                            label: '标题文案',
+							name: 'originalPriceCopywrite',
+                            default: 'Market Price'
+                        },
+                        {
+                            label: '标题文字颜色',
+                            name: 'originalPriceTitleColor',
+                            type: 'colorPicker',
+                            default: '#BCBCBC',
+                            col: 2
+                        },
+                        {
+                            label: '原价文字颜色',
+                            name: 'market_price_color',
+                            type: 'colorPicker',
+                            default: '#BCBCBC',
+                            col: 2
+                        },
+                        {
+                            type:'platData-dl',
+                            componentsData:[
+                                {
+                                    label: '原价文字大小',
+                                    name: 'market_price_size',
+                                    default: '14',
+                                    default_m: '14',
+                                    col: 2
+                                },
+                                {
+                                    label: '标题文字大小(px)',
+                                    name: 'originalPriceTitleFontSize',
+                                    default: '14',
+                                    default_m: '14',
+                                    col: 2
+                                },
+                            ]
+                        },
+                    ]
+                },
+                {
+                    label: '营销信息配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '文字颜色',
+                            name: 'saleInfoFontColor',
+                            type: 'colorPicker',
+                            default: '#000000',
+                        }
+                    ]
+                },
+				{
+                    label: '折扣标',
+                    type: 'discount-dl'
+                },
+				{
+                    label: '购买按钮配置',
+					type: 'fieldset',
+					components: [
+						{
+							label: '背景颜色',
+							name: 'btnBgColor',
+							type: 'colorPicker',
+							default: '#FFFFFF',
+							col: 2
+						},
+						{
+							label: '边框颜色',
+							name: 'btnBorderColor',
+							type: 'colorPicker',
+							default: '#000000',
+							col: 2
+						},
+						{
+							label: '文字颜色',
+							name: 'shopNowFontColor',
+							type: 'colorPicker',
+							default: '#000000',
+							col: 2
+						},
+						{
+							label: '图标图片',
+							name: 'shopIconImg',
+							type: 'image'
+						},
+                        {
+                            type:'platData-dl',
+                            componentsData:[
+                                {
+                                    label: '文字大小(px)',
+                                    name: 'shopNowFontSize',
+                                    default: '16',
+                                    default_m: '14',
+                                },
+                            ]
+                        },
+					],
+				}
+            ]
+        }
+    ],
+    isAutoRefresh: 1,
+    apiParams: 'apiParams',
+    skuValidConfig: 'skuValidConfig',
+    beforeSubmit: 'onSubmit'
+}
+%}
+
+<script>
+   /* $(function () {
+        var form = layui.form;
+        form.on('radio(newUserPrice)', function(data){
+            if (data.value == 2 ) {
+                $('#U000190-template1_v2').find('input[name="goodsDataFrom"][value="2"]').attr('disabled', true);
+                $('#U000190-template1_v2').find('input[name="goodsDataFrom"][value="2"]+.layui-form-radio').css('opacity', .5);
+            } else {
+                $('#U000190-template1_v2').find('input[name="goodsDataFrom"][value="2"]').attr('disabled', false);
+                $('#U000190-template1_v2').find('input[name="goodsDataFrom"][value="2"]+.layui-form-radio').css('opacity', 1);
+            }
+        });
+    });*/
+
+   function onSubmit (progress) {
+       var price_type = parseInt($('[name="newUserPrice"]:checked').val());
+       var goods_type = $('#U000190-template1_v2').find('input[name="goodsDataFrom"]:checked').val();
+       if (price_type == 2) {
+           if (goods_type == 2) {
+               layer.msg('APP专享价不能使用选品！');
+           } else {
+               progress.next()
+           }
+       } else {
+           progress.next()
+       }
+   }
+
+    /** 自定义校验规则 */
+function skuValidConfig () {
+    var price_type = parseInt($('[name="newUserPrice"]:checked').val());
+    var valid_type = price_type == 1 ? 'GOODS_VALIDATE_NEW_USER_PRICE' : '';
+    if (price_type == 2 ) {
+        valid_type = 'GOODS_VALIDATE_APP_PRICE'
+    }
+    return {
+        check_type: 'goods',
+        check_rules: valid_type
+    }
+}
+
+/* 自定义接口参数，新人价 */
+function apiParams () {
+    var price_type = parseInt($('[name="newUserPrice"]:checked').val());
+    return {
+        'newUserPrice': price_type == 1 ? 1 : 0
+    }
+}
+
+
+</script>
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+

@@ -1,0 +1,698 @@
+<style type="text/css">
+  .geshop-map-img-container {
+    text-align: center;
+    width: 640px;
+    height: 480px;
+  }
+
+  .geshop-map-img {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: crosshair;
+  }
+
+  .geshop-map-img img {
+    max-width: 100%;
+  }
+
+  .geshop-map-img-coords {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background-color: rgba(64, 158, 255, .5);
+    cursor: default;
+  }
+
+  .geshop-map-img-coords:hover .geshop-map-img-coords-delete{
+    display: block;
+  }
+
+  .geshop-map-img-coords-number {
+    flex: 0 0 auto;
+    display: block;
+    width: 48px;
+    height: 24px;
+    line-height: 24px;
+    background-color: #ffffff;
+    font-size: 10px;
+  }
+
+  .geshop-map-img-coords-delete {
+    display: none;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 20px;
+    height: 20px;
+    background-color: #FF5722;
+    border-radius: 20px;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    line-height: 20px;
+  }
+
+  .geshop-map-img-coords-point1 {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background-color: #ffffff;
+    cursor: nw-resize;
+  }
+
+  .geshop-map-img-coords-point2 {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    background-color: #ffffff;
+    cursor: n-resize;
+  }
+
+  .geshop-map-img-coords-point3 {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 6px;
+    background-color: #ffffff;
+    cursor: ne-resize;
+  }
+
+  .geshop-map-img-coords-point4 {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background-color: #ffffff;
+    cursor: w-resize;
+  }
+
+  .geshop-map-img-coords-point6 {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 6px;
+    height: 6px;
+    background-color: #ffffff;
+    cursor: e-resize;
+  }
+
+  .geshop-map-img-coords-point7 {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background-color: #ffffff;
+    cursor: sw-resize;
+  }
+
+  .geshop-map-img-coords-point8 {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    background-color: #ffffff;
+    cursor: s-resize;
+  }
+
+  .geshop-map-img-coords-point9 {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 6px;
+    height: 6px;
+    background-color: #ffffff;
+    cursor: se-resize;
+  }
+
+  .component-form-setting-item .layui-form-label{
+    text-align: left;
+    padding-left: 0;
+  }
+</style>
+
+<h3 class='component-form-title'>热图组件设置
+  <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+    <i class="el-icon-close"></i>
+  </a>
+</h3>
+
+{{include ('@app/htdocs/resources/template/pc/templateList/index.twig')}}
+
+<div class="component-form-setting-item component-form-configure-item">
+  <h4 class="title" style="margin-bottom:0">常用配置</h4>
+  <div class="layui-field-box" style="padding-top:0">
+		{{include ('@app/files/parts/formModules/userGroupItem.twig')}}
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 上边距</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="marginTop" autocomplete="off" class="layui-input" value="{{ data.marginTop | default(0) }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 下边距</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="marginBottom" autocomplete="off" class="layui-input" value="{{ data.marginBottom | default(0) }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label">
+          <span class="layui-badge-dot layui-bg-orange"></span>
+          链接是否打开新窗口</label>
+      <div class="layui-input-block">
+          <input type="radio" name="isOpenNew" value="1" {% if data.isOpenNew|default('0') == '1' %} checked{% endif %} title="是">
+          <input type="radio" name="isOpenNew" value="0" {% if data.isOpenNew|default('0') == '0' %} checked{% endif %} title="否">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 图片</label>
+      <div class="layui-input-block rest-input">
+        <a href="javascript:;" class="js_openResource design-open-resource" style="top:1px;"><i class="layui-icon">&#xe64a;</i></a>
+        <input type="text" name="imgSrc" autocomplete="off" class="layui-input" value="{{ data.imgSrc }}"><br>
+        <a href="javascript:;" class="js_editHotImg layui-btn layui-btn-normal layui-btn-sm" data-name="imgSrc">{% if data.imgSrc %}重新绘制{% else %}编辑{% endif %}</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if (data.areas) %}
+<input type="hidden" name="areas" value='{{ data.areas | json_encode() }}'>
+{% else %}
+<input type="hidden" name="areas" value='[]'>
+{% endif %}
+
+  <div class="layui-form-item geshop-form-operation">
+    <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+    <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+  </div>
+
+<script>
+  (function($){
+    $('#current_template_name').text($('input[name="tpl_id"]').attr('title'));
+    $.fn.imgMap = function(options) {
+      /**
+      * areas: [{
+      *  coords: [10, 10, 10, 10],
+      *  href: 'https://www.globalegrow.com/'
+      * }]
+      */
+      var settings = $.extend({
+        imgId: 'map_img',
+        imgTag: '#map_img',
+        coords: ['', '', '', ''],
+        areas: []
+      }, options || {});
+
+      $(settings.imgTag)
+        .mousedown(function (event) {
+          if (event.target.tagName == 'SPAN') {
+            return false;
+          }
+
+          var index = 0;
+          var length = settings.areas.length;
+          var areaCount = 0;
+
+          for (index = 0; index < length; index++) {
+            if (settings.areas[index]) {
+              areaCount = areaCount + 1;
+            }
+          }
+
+          if (areaCount >= 10) {
+            layui.layer.msg('热图上只能添加10个链接！');
+
+            return false;
+          }
+
+          settings.coords[0] = event.offsetX;
+          settings.coords[1] = event.offsetY;
+          
+          var rectHTML = '' +
+          '<div class="geshop-map-img-coords current">' +
+            '<a href="javascript:;" class="js_deleteCoords geshop-map-img-coords-delete">' +
+              '<i class="layui-icon layui-icon-close"></i>' +
+            '</a>' +
+            '<span class="js_geshopAdjustCoords geshop-map-img-coords-point1" data-type="1"></span>' +
+            '<span class="js_geshopAdjustCoords geshop-map-img-coords-point2" data-type="2"></span>' +
+            '<span class="js_geshopAdjustCoords geshop-map-img-coords-point3" data-type="3"></span>' +
+            '<span class="js_geshopAdjustCoords geshop-map-img-coords-point4" data-type="4"></span>' +
+            '<span class="js_geshopAdjustCoords geshop-map-img-coords-point6" data-type="6"></span>' +
+            '<span class="js_geshopAdjustCoords geshop-map-img-coords-point7" data-type="7"></span>' +
+            '<span class="js_geshopAdjustCoords geshop-map-img-coords-point8" data-type="8"></span>' +
+            '<span class="js_geshopAdjustCoords geshop-map-img-coords-point9" data-type="9"></span>' +
+            '<a href="javascript:;" class="js_coordsNumber geshop-map-img-coords-number"></a>' +
+          '</div>';
+
+          $('#map_img').append(rectHTML);
+        })
+        .mousemove(function (event) {
+          if (Boolean(sessionStorage.getItem('mapImgFlag'))) {
+            var type = Number(sessionStorage.getItem('mapImgFlag'));
+            var flag = Number($('.geshop-map-img-coords.current').attr('data-flag')) - 1;
+    
+            if (type == 1) {
+              settings.areas[flag].coords[0] = event.offsetX;
+              settings.areas[flag].coords[1] = event.offsetY;
+              $('.geshop-map-img-coords.current').css({
+                left: settings.areas[flag].coords[0] + 6,
+                top: settings.areas[flag].coords[1] + 6,
+                width: Math.abs(settings.areas[flag].coords[0] - settings.areas[flag].coords[2]) - 6,
+                height: Math.abs(settings.areas[flag].coords[1] - settings.areas[flag].coords[3]) - 6
+              });
+              $(settings.imgTag).css('cursor', 'nw-resize');
+            } else if (type == 2) {
+              settings.areas[flag].coords[1] = event.offsetY;
+              $('.geshop-map-img-coords.current').css({
+                top: settings.areas[flag].coords[1] + 6,
+                height: Math.abs(settings.areas[flag].coords[1] - settings.areas[flag].coords[3]) - 6
+              });
+              $(settings.imgTag).css('cursor', 'n-resize');
+            } else if (type == 3) {
+              settings.areas[flag].coords[1] = event.offsetY;
+              settings.areas[flag].coords[2] = event.offsetX;
+              $('.geshop-map-img-coords.current').css({
+                top: settings.areas[flag].coords[1] + 6,
+                width: Math.abs(settings.areas[flag].coords[0] - settings.areas[flag].coords[2]) - 6,
+                height: Math.abs(settings.areas[flag].coords[1] - settings.areas[flag].coords[3]) - 6
+              });
+              $(settings.imgTag).css('cursor', 'ne-resize');
+            } else if (type == 4) {
+              settings.areas[flag].coords[0] = event.offsetX;
+              $('.geshop-map-img-coords.current').css({
+                left: settings.areas[flag].coords[0] + 6,
+                top: settings.areas[flag].coords[1],
+                width: Math.abs(settings.areas[flag].coords[0] - settings.areas[flag].coords[2]) - 6
+              });
+              $(settings.imgTag).css('cursor', 'w-resize');
+            } else if (type == 6) {
+              settings.areas[flag].coords[2] = event.offsetX;
+              $('.geshop-map-img-coords.current').css({
+                width: Math.abs(settings.areas[flag].coords[2] - settings.areas[flag].coords[0]) - 6
+              });
+              $(settings.imgTag).css('cursor', 'e-resize');
+            } else if (type == 7) {
+              settings.areas[flag].coords[0] = event.offsetX;
+              settings.areas[flag].coords[3] = event.offsetY;
+              $('.geshop-map-img-coords.current').css({
+                left: settings.areas[flag].coords[0] + 6,
+                width: Math.abs(settings.areas[flag].coords[0] - settings.areas[flag].coords[2]) - 6,
+                height: Math.abs(settings.areas[flag].coords[1] - settings.areas[flag].coords[3]) - 6
+              });
+              $(settings.imgTag).css('cursor', 'sw-resize');
+            } else if (type == 8) {
+              settings.areas[flag].coords[3] = event.offsetY;
+              $('.geshop-map-img-coords.current').css({
+                height: Math.abs(settings.areas[flag].coords[1] - settings.areas[flag].coords[3]) - 6
+              });
+              $(settings.imgTag).css('cursor', 's-resize');
+            } else if (type == 9) {
+              settings.areas[flag].coords[2] = event.offsetX;
+              settings.areas[flag].coords[3] = event.offsetY;
+              $('.geshop-map-img-coords.current').css({
+                width: Math.abs(settings.areas[flag].coords[0] - settings.areas[flag].coords[2]) - 6,
+                height: Math.abs(settings.areas[flag].coords[1] - settings.areas[flag].coords[3]) - 6
+              });
+              $(settings.imgTag).css('cursor', 'se-resize');
+            }
+          } else {
+            var css = {};
+
+            settings.coords[2] = event.offsetX;
+            settings.coords[3] = event.offsetY;
+
+            if (settings.coords[0] < settings.coords[2]) {
+              if (settings.coords[1] < settings.coords[3]) {
+                css = {
+                  left: settings.coords[0],
+                  top: settings.coords[1],
+                  width: Math.abs(settings.coords[0] - settings.coords[2]),
+                  height: Math.abs(settings.coords[1] - settings.coords[3])
+                };
+              } else {
+                css = {
+                  left: settings.coords[0],
+                  top: settings.coords[3],
+                  width: Math.abs(settings.coords[0] - settings.coords[2]),
+                  height: Math.abs(settings.coords[1] - settings.coords[3])
+                };
+              }
+            } else {
+              if (settings.coords[1] < settings.coords[3]) {
+                css = {
+                  left: settings.coords[2],
+                  top: settings.coords[1],
+                  width: Math.abs(settings.coords[0] - settings.coords[2]),
+                  height: Math.abs(settings.coords[1] - settings.coords[3])
+                };
+              } else {
+                css = {
+                  left: settings.coords[2],
+                  top: settings.coords[3],
+                  width: Math.abs(settings.coords[0] - settings.coords[2]),
+                  height: Math.abs(settings.coords[1] - settings.coords[3])
+                };
+              }
+            }
+
+            $('.geshop-map-img-coords.current').css(css);
+            $(settings.imgTag).css('cursor', 'crosshair');
+          }
+        })
+        .mouseup(function (event) {
+          if (sessionStorage.getItem('mapImgFlag')) {
+            var type = Number(sessionStorage.getItem('mapImgFlag'));
+            var flag = Number($('.geshop-map-img-coords.current').attr('data-flag')) - 1;
+    
+            if (type == 1) {
+              settings.areas[flag].coords[0] = event.offsetX;
+              settings.areas[flag].coords[1] = event.offsetY;
+              $('.geshop-map-img-coords.current').css({
+                left: settings.areas[flag].coords[0],
+                top: settings.areas[flag].coords[1],
+                width: Math.abs(settings.areas[flag].coords[0] - settings.areas[flag].coords[2]),
+                height: Math.abs(settings.areas[flag].coords[1] - settings.areas[flag].coords[3])
+              });
+            } else if (type == 2) {
+              settings.areas[flag].coords[1] = event.offsetY;
+              $('.geshop-map-img-coords.current').css({
+                top: settings.areas[flag].coords[1],
+                height: Math.abs(settings.areas[flag].coords[1] - settings.areas[flag].coords[3])
+              });
+            } else if (type == 3) {
+              settings.areas[flag].coords[1] = event.offsetY;
+              settings.areas[flag].coords[2] = event.offsetX;
+              $('.geshop-map-img-coords.current').css({
+                top: settings.areas[flag].coords[1],
+                width: Math.abs(settings.areas[flag].coords[0] - settings.areas[flag].coords[2]),
+                height: Math.abs(settings.areas[flag].coords[1] - settings.areas[flag].coords[3])
+              });
+            } else if (type == 4) {
+              settings.areas[flag].coords[0] = event.offsetX;
+              $('.geshop-map-img-coords.current').css({
+                left: settings.areas[flag].coords[0],
+                width: Math.abs(settings.areas[flag].coords[0] - settings.areas[flag].coords[2])
+              });
+            } else if (type == 6) {
+              settings.areas[flag].coords[2] = event.offsetX;
+              $('.geshop-map-img-coords.current').css('width', Math.abs(settings.areas[flag].coords[2] - settings.areas[flag].coords[0]));
+            } else if (type == 7) {
+              settings.areas[flag].coords[0] = event.offsetX;
+              settings.areas[flag].coords[3] = event.offsetY;
+              $('.geshop-map-img-coords.current').css({
+                left: settings.areas[flag].coords[0],
+                width: Math.abs(settings.areas[flag].coords[0] - settings.areas[flag].coords[2]),
+                height: Math.abs(settings.areas[flag].coords[1] - settings.areas[flag].coords[3])
+              });
+            } else if (type == 8) {
+              settings.areas[flag].coords[3] = event.offsetY;
+              $('.geshop-map-img-coords.current').css({
+                height: Math.abs(settings.areas[flag].coords[1] - settings.areas[flag].coords[3])
+              });
+            } else if (type == 9) {
+              settings.areas[flag].coords[2] = event.offsetX;
+              settings.areas[flag].coords[3] = event.offsetY;
+              $('.geshop-map-img-coords.current').css({
+                width: Math.abs(settings.areas[flag].coords[0] - settings.areas[flag].coords[2]),
+                height: Math.abs(settings.areas[flag].coords[1] - areas[flag].coords[3])
+              });
+            }
+
+            $('.geshop-map-img-coords.current').removeClass('current');
+            sessionStorage.setItem('mapImgFlag', '');
+          } else {
+            settings.coords[2] = event.offsetX;
+            settings.coords[3] = event.offsetY;
+
+            if (settings.coords[0] == '' && settings.coords[1] == '') {
+              settings.coords = ['', '', '', ''];
+              $('.geshop-map-img-coords.current').remove();
+
+              return false;
+            }
+
+            if (Math.abs(settings.coords[0] - settings.coords[2]) == 0 ||
+              Math.abs(settings.coords[1] - settings.coords[3]) == 0) {
+                settings.coords = ['', '', '', ''];
+                $('.geshop-map-img-coords.current').remove();
+
+                return false;
+            }
+            
+            settings.areas.push({
+              coords: settings.coords
+            });
+          
+            var length = settings.areas.length;
+            var html = '' +
+              '<div class="layui-form-item" data-flag="' + length + '">' +
+                '<label class="layui-form-label" style="width:66px;padding-bottom:5px;">链接' + String(length) + '</label>' +
+                '<div class="layui-input-block">' +
+                  '<input type="text" name="links[]" placeholder="请输入链接" autocomplete="off" class="layui-input">' +
+                '</div>' +
+              '</div>';
+            
+            $('#map_links').append(html);
+            $('.geshop-map-img-coords.current').attr('data-flag', length);
+            $('.geshop-map-img-coords.current .js_coordsNumber').text('区域' + String(length));
+            $('.geshop-map-img-coords.current').removeClass('current');
+            settings.coords = ['', '', '', ''];
+          }
+        })
+        .on('mousedown', '.js_geshopAdjustCoords', function () {
+          $(this).closest('.geshop-map-img-coords').addClass('current');
+          sessionStorage.setItem('mapImgFlag', $(this).data('type'));
+
+          if (Boolean(sessionStorage.getItem('mapImgFlag'))) {
+            var type = Number(sessionStorage.getItem('mapImgFlag'));
+            var flag = Number($('.geshop-map-img-coords.current').attr('data-flag')) - 1;
+    
+            if (type == 1) {
+              $('.geshop-map-img-coords.current').css({
+                left: settings.areas[flag].coords[0] + 6,
+                top: settings.areas[flag].coords[1] + 6,
+                width: Math.abs(settings.areas[flag].coords[0] - settings.areas[flag].coords[2]) - 6,
+                height: Math.abs(settings.areas[flag].coords[1] - settings.areas[flag].coords[3]) - 6
+              });
+              $(settings.imgTag).css('cursor', 'nw-resize');
+            } else if (type == 2) {
+              $('.geshop-map-img-coords.current').css({
+                top: settings.areas[flag].coords[1] + 6,
+                height: Math.abs(settings.areas[flag].coords[1] - settings.areas[flag].coords[3]) - 6
+              });
+              $(settings.imgTag).css('cursor', 'n-resize');
+            } else if (type == 3) {
+              $('.geshop-map-img-coords.current').css({
+                top: settings.areas[flag].coords[1] + 6,
+                width: Math.abs(settings.areas[flag].coords[0] - settings.areas[flag].coords[2]) - 6,
+                height: Math.abs(settings.areas[flag].coords[1] - settings.areas[flag].coords[3]) - 6
+              });
+              $(settings.imgTag).css('cursor', 'ne-resize');
+            } else if (type == 4) {
+              $('.geshop-map-img-coords.current').css({
+                left: settings.areas[flag].coords[0] + 6,
+                width: Math.abs(settings.areas[flag].coords[0] - settings.areas[flag].coords[2]) - 6
+              });
+              $(settings.imgTag).css('cursor', 'w-resize');
+            } else if (type == 6) {
+              $('.geshop-map-img-coords.current').css({
+                width: Math.abs(settings.areas[flag].coords[2] - settings.areas[flag].coords[0]) - 6
+              });
+              $(settings.imgTag).css('cursor', 'e-resize');
+            } else if (type == 7) {
+              $('.geshop-map-img-coords.current').css({
+                left: settings.areas[flag].coords[0] + 6,
+                width: Math.abs(settings.areas[flag].coords[0] - settings.areas[flag].coords[2]) - 6,
+                height: Math.abs(settings.areas[flag].coords[1] - settings.areas[flag].coords[3]) - 6
+              });
+              $(settings.imgTag).css('cursor', 'sw-resize');
+            } else if (type == 8) {
+              $('.geshop-map-img-coords.current').css({
+                height: Math.abs(settings.areas[flag].coords[1] - settings.areas[flag].coords[3]) - 6
+              });
+              $(settings.imgTag).css('cursor', 's-resize');
+            } else if (type == 9) {
+              $('.geshop-map-img-coords.current').css({
+                width: Math.abs(settings.areas[flag].coords[0] - settings.areas[flag].coords[2]) - 6,
+                height: Math.abs(settings.areas[flag].coords[1] - settings.areas[flag].coords[3]) - 6
+              });
+              $(settings.imgTag).css('cursor', 'se-resize');
+            }
+          }
+        })
+        .on('mousemove', '.js_geshopAdjustCoords', function (event) {
+          event.preventDefault();
+        })
+        .on('click', '.js_deleteCoords', function () {
+          var flag = $(this).closest('.geshop-map-img-coords').attr('data-flag');
+
+          $('#map_links .layui-form-item[data-flag=' + flag + ']').remove();
+          settings.areas[flag - 1] = false;
+          $(this).closest('.geshop-map-img-coords').remove();
+        });
+       $('#save').click(function () {
+        var hasEmptyLinks = false;
+        var links = [];
+
+        $('[name="links[]"]').each(function () {
+          links.push($(this).val());
+
+          if ($(this).val() == '') {
+            hasEmptyLinks = true;
+          }
+        });
+
+        if (hasEmptyLinks) {
+          layui.layer.msg('请将跳转链接填写完整！');
+
+          return false;
+        }
+
+        var img = $(settings.imgTag).find('img')[0];
+        var actualWidth = img.clientWidth;
+        var actualHeight = img.clientHeight;
+        var originalImg = new Image();
+
+        originalImg.src = img.src;
+
+        originalImg.onload = function () {
+          var originalWidth = originalImg.width;
+          var originalHeight = originalImg.height;
+          var length = settings.areas.length;
+          var transformAreas = [];
+          var transformIndex = 0;
+          
+          for (var index = 0; index < length; index++) {
+            if (settings.areas[index] !== false) {
+              transformAreas[transformIndex] = {};
+              transformAreas[transformIndex].originalCoords = [];
+              transformAreas[transformIndex].coords = [];
+
+              transformAreas[transformIndex].originalCoords[0] = settings.areas[index].coords[0];
+              transformAreas[transformIndex].originalCoords[1] = settings.areas[index].coords[1];
+              transformAreas[transformIndex].originalCoords[2] = settings.areas[index].coords[2];
+              transformAreas[transformIndex].originalCoords[3] = settings.areas[index].coords[3];
+
+              transformAreas[transformIndex].coords[0] = (settings.areas[index].coords[0] * (originalWidth / actualWidth)).toFixed(0);
+              transformAreas[transformIndex].coords[1] = (settings.areas[index].coords[1] * (originalHeight / actualHeight)).toFixed(0);
+              transformAreas[transformIndex].coords[2] = (settings.areas[index].coords[2] * (originalWidth / actualWidth)).toFixed(0);
+              transformAreas[transformIndex].coords[3] = (settings.areas[index].coords[3] * (originalHeight / actualHeight)).toFixed(0);
+
+              transformAreas[transformIndex].formattedCoords = transformAreas[transformIndex].coords.join(',');
+              transformAreas[transformIndex].href = links[transformIndex];
+
+              transformIndex = transformIndex + 1;
+            }
+          }
+          
+          $('[name=areas]').val(JSON.stringify(transformAreas));
+          layui.layer.closeAll();
+
+          $('.js_editHotImg').text('重新绘制');
+        }
+      });
+    }
+  })(jQuery)
+</script>
+
+<script>
+  $(function () {
+    $('#component_form').on('change', '[name="imgSrc"]', function () {
+      if ($.trim($(this).val()).length == 0) {
+        $('[name=areas]').val('[]');
+      }
+    });
+    
+    $('.js_editHotImg').click(function () {
+      var imgSrc = $('[name=' + $(this).data('name') + ']').val();
+      var areas = JSON.parse('{ "data": ' + ($('[name=areas]').val() || '[]') + '}').data;
+      var areasHTML = '';
+      var inputHTML = '';
+      var areasLength = areas ? areas.length : 0;
+      var originalAreas = [];
+
+      for (var index = 0; index < areasLength; index++) {
+        originalAreas.push({
+          href: areas[index].href,
+          coords: areas[index].originalCoords
+        });
+
+        inputHTML += '' +
+          '<div class="layui-form-item" data-flag="' + String(index + 1) + '">' +
+            '<label class="layui-form-label">链接' + String(index + 1) + '</label>' +
+            '<div class="layui-input-block">' +
+              '<input type="text" name="links[]" placeholder="请输入链接" autocomplete="off" class="layui-input" value="' + areas[index].href + '">' +
+            '</div>' +
+          '</div>';
+
+        areasHTML += '' +
+          '<div class="geshop-map-img-coords" style="' +
+            'left: ' + areas[index].originalCoords[0] + 'px;' +
+            'top: ' + areas[index].originalCoords[1] + 'px;' +
+            'width: ' + String(Math.abs(areas[index].originalCoords[0] - areas[index].originalCoords[2])) + 'px; ' +
+            'height: ' + String(Math.abs(areas[index].originalCoords[1] - areas[index].originalCoords[3])) + 'px;"' +
+            'data-flag="' + String(index + 1) +'">' +
+            '<a href="javascript:;" class="js_deleteCoords geshop-map-img-coords-delete">' +
+              '<i class="layui-icon layui-icon-close"></i>' +
+            '</a>' +
+            '<span class="js_geshopAdjustCoords geshop-map-img-coords-point1" data-type="1"></span>' +
+            '<span class="js_geshopAdjustCoords geshop-map-img-coords-point2" data-type="2"></span>' +
+            '<span class="js_geshopAdjustCoords geshop-map-img-coords-point3" data-type="3"></span>' +
+            '<span class="js_geshopAdjustCoords geshop-map-img-coords-point4" data-type="4"></span>' +
+            '<span class="js_geshopAdjustCoords geshop-map-img-coords-point6" data-type="6"></span>' +
+            '<span class="js_geshopAdjustCoords geshop-map-img-coords-point7" data-type="7"></span>' +
+            '<span class="js_geshopAdjustCoords geshop-map-img-coords-point8" data-type="8"></span>' +
+            '<span class="js_geshopAdjustCoords geshop-map-img-coords-point9" data-type="9"></span>' +
+            '<a href="javascript:;" class="js_coordsNumber geshop-map-img-coords-number">区域' + String(index + 1) + '</a>' +
+          '</div>';
+      }
+      
+      var html = '' +
+        '<div class="layui-container">' +
+          '<div class="layui-row">' +
+            '<div class="layui-col-md9 geshop-map-img-container">' +
+              '<div id="map_img" class="geshop-map-img">' +
+                '<img src="' + imgSrc + '" draggable="false">' + areasHTML +
+              '</div>' +
+            '</div>' +
+            '<div class="layui-col-md3">' +
+              '<form id="map_links" class="layui-form">' + inputHTML + '</form><br>' +
+              '<div class="layui-form-item">' +
+                '<div class="layui-input-block">' +
+                  '<button id="save" type="button" class="layui-btn layui-btn-normal">保存</button>' +
+                '</div>' +
+              '</div>' +
+           '</div>' +
+          '</div>' +
+        '</div>';
+
+      layui.layer.open({
+        title: '制作热图',
+        type: 1,
+		    area: '1170px',
+        content: html
+      });
+
+      $('#map_img').imgMap({
+        areas: originalAreas
+      });
+    });
+  });
+</script>

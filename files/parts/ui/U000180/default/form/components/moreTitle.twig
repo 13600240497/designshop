@@ -1,0 +1,24 @@
+<div class="layui-row layui-col-space20">
+    <div class="layui-col-md6">
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'上边距(px)',name:'TitleMarginTop',value:pageData.TitleMarginTop ,full:true,}}
+        ) }}
+    </div>
+    <div class="layui-col-md6">
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'左边距(px)',name:'TitleMarginLeft',value:pageData.TitleMarginLeft ,full:true,}}
+        ) }}
+    </div>
+
+    <div class="layui-col-md6">
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'已签标题文字颜色',name:'SignTitleColor',value:pageData.SignTitleColor ,full:true,}}
+        ) }}
+    </div>
+    <div class="layui-col-md6" >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'已签天数文字颜色',name:'SignDayColor',value:pageData.SignDayColor ,full:true,}}
+        ) }}
+    </div>
+
+</div>

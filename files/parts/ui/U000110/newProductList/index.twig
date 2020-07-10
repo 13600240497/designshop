@@ -1,0 +1,289 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+
+{% if data.colNum == '1'%}
+    {% set colClass = liCol[0] %}
+{% elseif data.colNum == '2' %}
+    {% set colClass = liCol[1] %}
+{% elseif data.colNum == '3' %}
+    {% set colClass = liCol[2] %}
+{% elseif data.colNum == '4' %}
+    {% set colClass = liCol[3] %}
+{% elseif data.colNum == '5' %}
+    {% set colClass = liCol[4] %}
+{% else %}
+    {% set colClass = liCol[3] %}
+{% endif %}
+
+{% set remUnit = 75 %}
+{% set goodsData = {
+	boxMarginBottom:(data.boxMarginBottom|default(32))/remUnit,
+	marginTop:(data.marginTop|default(0))/remUnit,
+	boxBgC:data.boxBgC is not null?data.boxBgC:'#ededed',
+	tabBgc:data.tabBgc is not null?data.tabBgc:'#D8D8D8',
+	tabTextColor:data.tabTextColor is not null?data.tabTextColor:'#ffffff',
+	tabTextColorCheck:data.tabTextColorCheck is not null?data.tabTextColorCheck:'#B8BEC4',
+	iconWidth:(data.iconWidth|default(40))/remUnit,
+	iconHeight:(data.iconHeight|default(48))/remUnit,
+	iconOtherTextColor:data.iconOtherTextColor is not null?data.iconOtherTextColor:'#ffffff',
+	salePicTextColor:data.salePicTextColor is not null?data.salePicTextColor:'#333333',
+	disBgc:data.disBgc is not null?data.disBgc:'#EDEDED',
+	disTextColor:data.disTextColor is not null?data.disTextColor:'#333333',
+	btnWidth:(data.btnWidth|default(72))/remUnit,
+	btnHeight:(data.btnHeight|default(72))/remUnit,
+	disTextSize:(data.disTextSize|default(24))/remUnit,
+	salePriceSize:(data.salePriceSize|default(36))/remUnit,
+	iconFirstImg:data.iconFirstImg is not null?data.iconFirstImg:'',
+	iconSecondImg:data.iconSecondImg is not null?data.iconSecondImg:'',
+	iconThirdImg:data.iconThirdImg is not null?data.iconThirdImg:'',
+	iconOtherImg:data.iconOtherImg is not null?data.iconOtherImg:'',
+	iconOtherTextColor:data.iconOtherTextColor is not null?data.iconOtherTextColor:'#ffffff',
+	goodsNum:data.goodsNum|default(10)
+} %}
+
+<div class="geshop-component-box component-drag geshop-leaderboard-async-list geshop-gift-async tab{{pageInstanceId}} wrap-U000110_newProductList" data-gid="U000110_newProductList" data-key="U000110" data-id="{{ pageInstanceId }}" data-static-domain="{{staticDomain}}" data-code="{{siteCode}}"
+	style="margin-bottom:{{ goodsData.boxMarginBottom }}rem;">
+	<!-- embed stylesheet begin-->
+	<style type="text/css">
+		.tab{{pageInstanceId}} .gs-tab-wrap .swiper-container .swiper-slide.current span {
+			color:{{goodsData.tabTextColorCheck}} !important;
+		}
+		.tab{{pageInstanceId}} .goods-nav-name li:hover {
+			color:{{goodsData.tabTextColorCheck}} !important;
+		}
+		{% for item in data.goodsIds %}
+			.tab{{pageInstanceId}} .gs-tab-wrap .swiper-container .swiper-slide.current a {
+				background:url('{{item.checkIco}}') no-repeat 0 0/100% 100% !important;
+			}
+		{% endfor %}
+		.wrap-U000110_newProductList .gs-tab-content .goods-item {
+			{% if data.isEditEnv == 0 %}
+			height: 4rem;
+			{% endif %}
+		}
+	</style>
+	<!-- embed stylesheet end -->
+	<input type="hidden" class="pagesize" value="{{ goodsData.goodsNum }}"/>
+
+	{% if data.bannerImg != '' %}
+	<div class="gs-banner">
+		<span  class="gs-banner-bg" style="display: block;">
+			<img class="gs-bgc-pic" src="{{ data.bannerImg }}" style="display: block;">
+		</span>
+	</div>
+	{% else %}
+	<div class="gs-banner" style="height:200px;background-color:#EDEDED;position:relative;">
+		<span class="gs-banner-bg" style="display: block;">
+			<img src="{{ data.default.view }}" class="gs-default-view" style="display: block;">
+		</span>
+	</div>
+	{% endif %}
+  <div class="geshop-content" style="background-color:{{ goodsData.boxBgC }};">
+	{# start wrap #}
+		<div class="gs-tab">
+			<div class="gs-tab-wrap" style="height: {{  data.tabHeight ?? 40 }}px;position:relative;">
+				<div class="gs-tab-box">
+					<div class="swiper-container">
+						<ul class="gs-tab-label goods-nav-name swiper-wrapper" style="background-color:{{ goodsData.tabBgc }};">
+						{% if data.goodsIds != '' %}
+							{% for item in data.goodsIds %}
+							<li class="swiper-slide swiper-slide-{{ pageInstanceId }}-{{ loop.index }}" data-asyncdata-id="{{ item.cateid }}" style="
+								background-color:{{ goodsData.tabBgc }};
+								height: {{  data.tabHeight ?? 40 }}px;
+								">
+								<a href="javascript:;;" style="background:url('{{ item.defaultIco }}') no-repeat 0 0/100% 100%;"></a>
+								<span style="
+									font-size: {{data.tabFontSize}}px;
+									color:{{ goodsData.tabTextColor }};
+									line-height: {{  data.tabHeight ?? 40 }}px;
+									{% if data.tabFontWeight == 1  %}
+										font-weight: bold;
+									{% endif %}
+									">{{ item.category }}</span>
+							</li>
+							{% endfor %}
+							{% else %}
+							{% for item in data.goodsIds|default(0..2)%}
+							<li class="swiper-slide swiper-slide-{{ pageInstanceId }}-{{ loop.index }}" data-asyncdata-id="{{ item.cateid }}">
+								<a href="javascript:;;" style="background:url('{{ data.default.round }}') no-repeat 0 0/100% 100%;"></a>
+								<span style="color:{{ goodsData.tabTextColor }};">All Sale</span>
+							</li>
+							{% endfor %}
+						{% endif %}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="gs-tab-content" style="padding-top:{{ goodsData.marginTop}}rem;">
+				<div class="gs-tab-item gs-goodsWrap {% if loop.index0 == 0%}gs-tab-show{% endif %}">
+					<ul class="leader-board-container" style="background-color:{{ goodsData.boxBgC }};">
+					</ul>
+					<div id="goodsNum-{{ pageInstanceId }}" class="layui-pager"></div>
+				</div>
+			</div>
+		</div>
+  </div>
+	<script type="text/html" class="m-leader-board-template">
+			<%# if(d.goodsInfo.length > 0 || d.cateid > 0){ %>
+				<%# $.each(d.goodsInfo, function(index, item){ %>
+				<li class="goods-item">
+					<div class="component-self-goodBox">
+						<div class="component-self-goodWrap">
+							<div class="gs-img" data-editEnv="{{ data.isEditEnv }}">
+								<a href="<% geshopUrlToApp(item.url_title,item.goods_id) %>" class="logsss_event"
+									data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'<% item.goods_sn %>','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+									<img  src="<% item.goods_img %>">
+								</a>
+							</div>
+							<div class="gs-goods-info">
+								<div class="gs-desc">
+										{% if data.goodsActive|default(1) == '1' %}
+											<a href="<% geshopUrlToApp(item.url_title,item.goods_id) %>" class="logsss_event product-desc"
+												data-logsss-event-value="{'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'<% item.goods_sn %>','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'}}">
+												<span class="item-name"><% item.goods_title %></span>
+											</a>
+										{% endif %}
+										<p class="item-price">
+											<p class="sale-discount" style="background-color:{{ goodsData.disBgc }};color:{{ goodsData.disTextColor }};font-size:{{ goodsData.disTextSize }}rem;">
+												<%# if(d.lang == 'en'){ %>
+													<strong><% item.sale_number %></strong> Pieces Sold After <strong><% item.sale_days ? item.sale_days : 0 %></strong> Days Released
+												<%# }else if(d.lang == 'fr'){ %>
+													<strong><% item.sale_number %></strong> pièces vendues après <strong><% item.sale_days ? item.sale_days : 0 %></strong> jours de sortie
+												<%# }else if(d.lang == 'es'){ %>
+													<strong><% item.sale_number %></strong> prendas vendidas después de <strong><% item.sale_days ? item.sale_days : 0 %></strong> días desde su lanzamiento
+												<%# }else if(d.lang == 'de'){ %>
+													Nach <strong><% item.sale_days ? item.sale_days : 0 %></strong> Tagen werden <strong><% item.sale_number %></strong> Stücke verkauft
+												<%# }else if(d.lang == 'pt'){ %>
+													<strong><% item.sale_number %></strong> peças vendidas após <strong><% item.sale_days ? item.sale_days : 0 %></strong> dias lançados
+												<%# }else if(d.lang == 'it'){ %>
+													<strong><% item.sale_number %></strong> Pezzo Venduti Dopo <strong><% item.sale_days ? item.sale_days : 0 %></strong> giorni dal Lancio
+												<%# }else{ %>
+													<strong><% item.sale_number %></strong> Pieces Sold After <strong><% item.sale_days ? item.sale_days : 0 %></strong> Days Released
+												<%# } %>
+											</p>
+											<p class="shop-price">
+												<span class="my_shop_price" data-orgp="<% item.shop_price %>" style="font-size:{{ goodsData.salePriceSize }}rem;color:{{ goodsData.salePicTextColor }};">
+												$<% item.shop_price %></p>
+											</p>
+											<del class="market-price">
+												<span class="my_shop_price js_market_wrap" data-orgp="<% item.market_price %>">$<% item.market_price %></span>
+											</del>
+										</p>
+										<a href="<% geshopUrlToApp(item.url_title,item.goods_id) %>" class="to-detail-link" style="background-color:black;width:{{ goodsData.btnWidth }}rem;height:{{ goodsData.btnHeight }}rem;border-radius:50%;">
+											<img src="{{ data.btnBgImg | default(data.default.shopCar) }}">
+										</a>
+								</div>
+							</div>
+							<%# if((index + (d.pageno - 1) * d.pagesize) == 0){ %>
+							{% if goodsData.iconFirstImg %}
+								<span class="ranking-icon" style="
+									{% if goodsData.iconFirstImg %}background:url({{ goodsData.iconFirstImg }}) no-repeat 0 0/100% 100%;{% endif %}
+									{% if goodsData.iconWidth %}width:{{goodsData.iconWidth}}rem;{% endif %}
+									{% if goodsData.iconHeight %}height:{{goodsData.iconHeight}}rem;{% endif %}
+								"></span>
+							{% else %}
+								<span class="ranking-icon" style="
+									background:url({{ data.default.rankingFirst }}) no-repeat 0 0/100% 100%;
+									width:{{goodsData.iconWidth}}rem;
+									height:{{goodsData.iconHeight}}rem;
+								"></span>
+							{% endif %}
+							<%# } %>
+
+							<%# if((index + (d.pageno - 1) * d.pagesize) == 1){ %>
+							{% if goodsData.iconSecondImg %}
+								<span class="ranking-icon" style="
+									{% if goodsData.iconSecondImg %}background:url({{ goodsData.iconSecondImg }}) no-repeat 0 0/100% 100%;{% endif %}
+									{% if goodsData.iconWidth %}width:{{goodsData.iconWidth}}rem;{% endif %}
+									{% if goodsData.iconHeight %}height:{{goodsData.iconHeight}}rem;{% endif %}
+								"></span>
+							{% else %}
+								<span class="ranking-icon" style="
+									background:url({{ data.default.rankingSecond }}) no-repeat 0 0/100% 100%;
+									width:{{goodsData.iconWidth}}rem;
+									height:{{goodsData.iconHeight}}rem;
+								"></span>
+							{% endif %}
+							<%# } %>
+
+							<%# if((index + (d.pageno - 1) * d.pagesize) == 2){ %>
+							{% if goodsData.iconThirdImg %}
+								<span class="ranking-icon" style="
+									{% if goodsData.iconThirdImg %}background:url({{ goodsData.iconThirdImg }}) no-repeat 0 0/100% 100%;{% endif %}
+									{% if goodsData.iconWidth %}width:{{goodsData.iconWidth}}rem;{% endif %}
+									{% if goodsData.iconHeight %}height:{{goodsData.iconHeight}}rem;{% endif %}
+								"></span>
+							{% else %}
+								<span class="ranking-icon" style="
+									background:url({{ data.default.rankingThird }}) no-repeat 0 0/100% 100%;
+									width:{{goodsData.iconWidth}}rem;
+									height:{{goodsData.iconHeight}}rem;
+								"></span>
+							{% endif %}
+							<%# } %>
+
+							<%# if((index + (d.pageno - 1) * d.pagesize) > 2){ %>
+							{% if goodsData.iconOtherImg %}
+								<span class="ranking-icon" style="
+									{% if goodsData.iconOtherImg %}background:url({{ goodsData.iconOtherImg }}) no-repeat 0 0/100% 100%;{% endif %}
+									{% if goodsData.iconWidth %}width:{{goodsData.iconWidth}}rem;{% endif %}
+									{% if goodsData.iconHeight %}height:{{goodsData.iconHeight}}rem;{% endif %}
+									{% if goodsData.iconHeight %}line-height:{{goodsData.iconHeight}}rem;{% endif %}
+									{% if goodsData.iconOtherTextColor %}color:{{goodsData.iconOtherTextColor}};{% endif %}
+									{% if goodsData.leaderBoardOtherFontSize %}font-size:{{goodsData.leaderBoardOtherFontSize}}rem;{% endif %}
+								"><% (index + (d.pageno - 1) * d.pagesize) + 1 %></span>
+							{% else %}
+								<span class="ranking-icon" style="
+									background:url({{ data.default.rankingOther }}) no-repeat 0 0/100% 100%;
+									width:{{goodsData.iconWidth}}rem;
+									height:{{goodsData.iconHeight}}rem;
+									line-height:{{goodsData.iconHeight}}rem;
+									color:{{goodsData.iconOtherTextColor}};
+									{% if goodsData.leaderBoardOtherFontSize %}font-size:{{goodsData.leaderBoardOtherFontSize}}rem;{% endif %}
+								"><% (index + (d.pageno - 1) * d.pagesize) + 1 %></span>
+							{% endif %}
+							<%# } %>
+						</div>
+					</div>
+				</li>
+				<%# }); %>
+			<%# }else{ %>
+				<%# $.each(Array(4), function(index){ %>
+					<li class="goods-item">
+						<div class="component-self-goodBox">
+							<div class="component-self-goodWrap">
+								<div class="gs-img" style="position:relative;">
+									<a href="" class="logsss_event">
+										<img src="https://geshopimg.logsss.com/uploads/RO2KTybdpMct1JuLjFgYWVPrXmZEsH3q.png " class="gs-default-clothess">
+									</a>
+								</div>
+								<div class="gs-goods-info">
+									<div class="gs-desc">
+										<a href="" class="logsss_event product-desc">
+											<span class="item-name">This Is The Description Name Of …</span>
+										</a>
+										<p class="item-price">
+											<P class="sale-discount">
+												<a style="color:{{data.disTextColor}};">
+													<strong>8273</strong> Pieces Sold After <strong>1</strong> Days Released
+												</a>
+											</P>
+											<p class="shop-price">
+												<span class="my_shop_price">$0.00</span>
+											</p>
+											<del class="market-price">
+												<span class="my_shop_price js_market_wrap">$0.00</span>
+											</del>
+										</P>
+										<a class="to-detail-link" href="" style="background-color:black;
+										width:{{ goodsData.btnWidth }}rem;height:{{ goodsData.btnHeight }}rem;border-radius:50%;">
+											<img src="{{data.default.shopCar}}">
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+				<%# }); %>
+			<%# } %>
+	</script>
+</div>

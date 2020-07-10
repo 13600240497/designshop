@@ -1,0 +1,29 @@
+{
+    "fields": {
+        "component_width": { "is_public": "1", "is_m": "0", "is_app": "0" },
+        "component_height": { "is_public": "1", "is_m": "0", "is_app": "0" },
+        "component_bgImage": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "emailarea_width": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "emailarea_height": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "btn_width": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "btn_text": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "btn_bgColor": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "btn_fontColor": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "emailarea_pt": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "emailarea_pl": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "btn_fontSize": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "success_display": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "success_bgImage": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "success_text": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "success_titleFontsize": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "success_titlePt": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "success_contentText": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "success_contentFontsize": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "success_contentPt": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "success_fontColor": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "success_btnPt": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "success_btnText": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "success_btnFontColor": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "success_btnFontSize": { "is_public": "0", "is_m": "0", "is_app": "0" }
+    }
+}

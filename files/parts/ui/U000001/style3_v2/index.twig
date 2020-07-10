@@ -1,0 +1,74 @@
+<div class="geshop-component-box component-drag geshop-U000001-style3-v2 geshop-U000001-style3-v2-{{ pageInstanceId }}" data-gid="U000001_test" data-key="U000001" data-id="{{ pageInstanceId }}">
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+        {% include 'style.twig' %}
+
+        .geshop-U000001-style2-v2-{{ pageInstanceId }} .bg-style{
+            background-color:#EDEDED;
+            width:100%;
+            height:100%;
+        {% if data.default.view is not empty %}
+            background-image:url({{ data.default.view }});
+            background-repeat:no-repeat;
+            background-position:center center;
+            background-size:120px 94px;
+        {% endif %}
+        }
+    </style>
+    <!-- embed stylesheet end -->
+    <div class="geshop-U000001-style3-v2-wrapper {% if data.buynow_show == '0' %}geshop-U000001-style3-v2-wrapper-no-button {% endif %}">
+        <div class="geshop-U000001-style3-v2-wrapper-left">
+
+            <a {% if data.ad_link %}href="{{ data.ad_link }}{% endif %}" target="{{ data.target_blank|default(1) == 1 ? '_target' : '_self' }}">
+                {% if data.ad_image %}
+                    {% if data.isEditEnv == '1' %}
+                        <span><img src="{{ data.ad_image }}" /></span>
+                    {% else %}
+                        <span><img class="js_gdexp_lazy js-geshopImg-lazyload js_gbexp_lazy" src="{{ data.default.lazyImg }}" data-original="{{ data.ad_image }}" alt="{{ pageData.jumpLink }}" /></span>
+                    {% endif %}
+                {% else %}
+                    <div class="bg-style"></div>
+                {% endif %}
+            </a>
+        </div>
+        <div class="geshop-U000001-style3-v2-wrapper-swiper">
+            <ul>
+                {% for index, item in data.goodsInfo|default(0..5) %}
+                    <li>
+                        {% set a_analytics = "{'pm':'mp','p':'p-"~pageId~"','ubcta':{'cpID':'"~pageInstanceId~"','cpnum':'"~compKey~"','cplocation':'"~uiIndex~"','sku':'"~item.goods_sn~"','cporder':'"~layoutIndex~"','rank':'"~index~"'},'skuinfo':{'sku':'"~item.goods_sn~"','pam':'0','pc':'"~item.cateid~"','k':'"~item.warehousecode~"'} }" %}
+                        {% set img_analytics = "{ 'pm':'mp','p':'p-"~pageId~"','bv':{'cpID':'"~pageInstanceId~"','cpnum':'"~compKey~"','cplocation':'"~uiIndex~"','sku':'"~item.goods_sn~"','cporder':'"~layoutIndex~"','rank':'"~index~"'} }" %}
+                        <a href="{{ item.url_title }}" class="logsss_event" data-logsss-event-value="{{ a_analytics }}">
+                            <div class="geshop-U000001-style3-v2-list-img">
+                            {% if item.discount > 0  %}
+                                {% if (data.discount_type ?? 0) == 1 %}
+                                    <span class="discount-off site-font-bold">{{ item.discount ?? 50 }}% OFF</span>
+                                {% else %}
+                                    <span class="discount-off site-font-bold">-{{ item.discount ?? 50 }}%</span>
+                                {% endif %}
+                            {% endif %}
+                                {% include geshop.default.pc.image_goods with { params: { src: item.goods_img }} %}
+                                {% if item.goods_number is not empty %}
+                                    {% include geshop.default.pc.sold_out with { params: { show: item.goods_number - 0 <= 0 ? true : false }} %}
+                                {% endif %}
+                            </div>
+                            <div class="geshop-U000001-style3-v2-list-title rg-ellipsis-1">
+                                {{ item.goods_title | default('ZAFUL Fleece Vest And Corduroy Jack') }}
+                            </div>
+                            <div style="margin-top: 4px; height: 22px; overflow: hidden;">
+                                {% include geshop.default.pc.shop_price with { params: { value: item.shop_price }} %}
+                                {% if item.market_price - item.shop_price > 0 %}
+                                    {% include geshop.default.pc.market_price with { params: { value: item.market_price }} %}
+                                {% endif %}
+                            </div>
+                        </a>
+                        {% if data.buynow_show != '0' %}
+                            {% include geshop.default.pc.button_buy with { params: { href: item.url_title }} %}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+            {% include geshop.default.pc.button_swiper with { params: { }} %}
+        </div>
+    </div>
+</div>
+

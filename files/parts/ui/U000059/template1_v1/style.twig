@@ -1,0 +1,18 @@
+
+{% set class_root = '#U000059_'~pageInstanceId %}
+
+{% if data.isEditEnv == 0 %}
+    {{ class_root }} .area-point {
+        background: transparent;
+    }
+{% else %}
+    {{ class_root }} .area-point {
+        border: 1px dotted #ffffff;
+        background: rgba(30, 159, 255, .5);
+    }
+{% endif %}
+{{ class_root }} {
+    margin-top: {{ data.box_margin_top ?? 0}}px;
+    margin-bottom: {{ data.box_margin_bot ?? 0 }}px;
+}
+

@@ -1,0 +1,94 @@
+
+{% set space = '#U000227_'~pageInstanceId %}
+
+{%
+    set pageData = {
+        pc_show_logo: data.pc_show_logo is null or data.pc_show_logo == '1' ? 'table-cell' : 'none',
+    }
+%}
+
+{{ space }} .geshop-u000227-default {
+    width: 100%;
+    overflow: hidden;
+    background-color: {{ data.lamp_bgColor|default('#333333') }};
+}
+
+{{ space }} .geshop-u000227-default .item-link {
+    display: inline-block;
+    color: {{ data.lamp_fontColor|default('#ffffff') }};
+    vertical-align: top;
+}
+
+{# 间隔线颜色 #}
+{{ space }} .geshop-u000227-default .item-line {
+    font-weight: normal;
+    color: {{ data.lamp_pc_itemColor|default('#ffffff') }};
+}
+
+
+{# PC 模式 #}
+@media screen and (min-width: 1025px) {
+
+    {{ space }} .geshop-u000227-default {
+        overflow: hidden;
+        height: {{ data.lamp_pc_compHeight|default('40') }}px;
+        line-height: {{ data.lamp_pc_compHeight|default('40') }}px;
+        margin-top: {{ data.lamp_pc_marginTop|default('0') }}px;
+        margin-bottom: {{ data.lamp_pc_marginBottom|default('32') }}px;
+    }
+
+    {{ space }} .geshop-u000227-default .item-link {
+        font-size: {{ data.lamp_pc_fontSize|default('14') }}px;
+        {% if data.lamp_fontIsBold == '1' %} 
+            font-weight: bold;
+        {% else %}
+            font-weight: normal;
+        {% endif %} 
+    }
+
+    {{ space }} .geshop-u000227-default .item-line {
+        font-weight: normal;
+        color: {{ data.lamp_pc_itemColor|default('#ffffff') }};
+    }
+}
+
+{# PAD #}
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+    {{ space }} .geshop-u000227-default {
+        overflow: hidden;
+        height: {{ data.lamp_pad_compHeight|default('40') }}px;
+        line-height: {{ data.lamp_pad_compHeight|default('40') }}px;
+        margin-top: {{ data.lamp_pad_marginTop|default('0') }}px;
+        margin-bottom: {{ data.lamp_pad_marginBottom|default('20') }}px;
+    }
+
+    {{ space }} .geshop-u000227-default .item-link {
+        font-size: {{ data.lamp_pad_fontSize|default('14') }}px;
+    }
+
+    {{ space }} .geshop-u000227-default .item-for-pad .marquee_top {
+        transition: all 0.5s;
+	    margin-top: -{{ data.lamp_pad_compHeight|default('40') }}px;
+    }
+}
+
+
+{# M #}
+@media screen and (max-width: 767px) and (min-width: 0px) {
+
+    {{ space }} .geshop-u000227-default {
+        height: {{ data.lamp_wap_compHeight|default('40') }}px;
+        line-height: {{ data.lamp_wap_compHeight|default('40') }}px;
+        margin-top: {{ data.lamp_wap_marginTop|default('0') }}px;
+        margin-bottom: {{ data.lamp_wap_marginBottom|default('20') }}px;
+    }
+
+    {{ space }} .geshop-u000227-default .item-link {
+        font-size: {{ data.lamp_wap_fontSize|default('14') }}px;
+    }
+
+    {{ space }} .geshop-u000227-default .item-for-pad .marquee_top {
+        transition: all 0.5s;
+	    margin-top: -{{ data.lamp_wap_compHeight|default('40') }}px;
+    }
+}

@@ -1,0 +1,12 @@
+
+{% set userGroupClass = "geshop_user_"~data.userGroupSelect|default(0)%}
+<div class="geshop-component-box component-drag {{userGroupClass}}" data-key="U000074" data-id="{{ pageInstanceId }}" style="text-align: center;
+  margin-top: {{ data.marginTop | default(0) }}px; margin-bottom: {{ data.marginBottom | default(0) }}px;">
+  {% if data.imgSrc | length == 0 %}
+    {{ include('default.twig') }}
+  {% elseif data.isEditEnv == 1 %}
+    {{ include('edit.twig') }}
+  {% else %}
+    {{ include('product.twig') }}
+  {% endif %}
+</div>

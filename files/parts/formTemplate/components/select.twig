@@ -1,0 +1,11 @@
+<div class="layui-form-item {{ componentData.extendClass }}">
+    <label class="layui-form-label {% if componentData.public %} public-data {% endif %}">{{ componentData.label }}</label>
+    <div class="layui-input-block">
+        <select name="{{ componentData.name }}" lay-verify="" data-public-tag="{{ componentData.public }}">
+            <option value="">所有</option>
+            {% for item in componentData.options %}
+            <option value="{{ item.value }}" {% if item.value == componentData.value %} selected {% endif %}>{{ item.label }}</option>
+            {% endfor %}
+        </select>   
+    </div>
+</div>

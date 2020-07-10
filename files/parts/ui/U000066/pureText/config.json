@@ -1,0 +1,15 @@
+{
+  "fields": {
+    "boxMarginBottom": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "bgColor": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "titleText": { "is_public": "1", "is_m": "0", "is_app": "1" },
+    "titleColor": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "fontFamily": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "titlePlace": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "height": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "titleFont": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "titleWeight": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "marginLeft": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "viewHref": { "is_public": "1", "is_m": "0", "is_app": "1" }
+  }
+}

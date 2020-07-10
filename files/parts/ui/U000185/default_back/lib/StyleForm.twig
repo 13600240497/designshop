@@ -1,0 +1,71 @@
+<h4 class="column-title">常用配置<span>此组件只适用于通栏</span></h4>
+
+{{ include ('@app/files/parts/formTemplate/components/margin-dl.twig') }}
+
+<div class="layui-form-item">
+    <label class="form-item-label">组件背景颜色</label>
+    <div class="layui-input-block">
+        {{
+            include ('lib/ColorPicker.twig', {
+                'cmpt_name': 'moduleBgColor',
+                'cmpt_value': data.moduleBgColor,
+                'cmpt_default': '#FFFFFF'
+            })
+        }}
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">标题文案</label>
+    <div class="layui-input-block">
+        <input type="text" name="titleText" autocomplete="off" class="layui-input" value="{{ data.titleText | default('') }}">
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">标题文案颜色</label>
+    <div class="layui-input-block">
+        {{
+            include ('lib/ColorPicker.twig', {
+                'cmpt_name': 'titleFontColor',
+                'cmpt_value': data.titleFontColor,
+                'cmpt_default': '#000000'
+            })
+        }}
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">链接文案</label>
+    <div class="layui-input-block">
+        <input type="text" name="linkCopywrite" autocomplete="off" class="layui-input" value="{{ data.linkCopywrite | default('Get More') }}">
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">链接文案颜色</label>
+    <div class="layui-input-block">
+        {{
+            include ('lib/ColorPicker.twig', {
+                'cmpt_name': 'linkFontColor',
+                'cmpt_value': data.linkFontColor,
+                'cmpt_default': '#000000'
+            })
+        }}
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">链接URL</label>
+    <div class="layui-input-block">
+        <input type="text" name="link" autocomplete="off" class="layui-input" value="{{ data.link | default('') }}">
+    </div>
+</div>
+<div class="layui-form-item">
+    <label class="layui-item-label">
+        链接是否打开新窗口</label>
+    <div class="layui-input-block">
+        <input type="radio" name="isOpenNew" value="1" {% if data.isOpenNew|default('0') == '1' %} checked{% endif %} title="是">
+        <input type="radio" name="isOpenNew" value="0" {% if data.isOpenNew|default('0') == '0' %} checked{% endif %} title="否">
+    </div>
+</div>

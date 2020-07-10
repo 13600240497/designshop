@@ -1,0 +1,104 @@
+{% 
+  set pageData = { 
+    viewText:data.viewText is not null?data.viewText:'VIEW IT', 
+    textColor:data.textColor is not null?data.textColor:'#2d2d2d',
+    marginTop:data.marginTop is not null?data.marginTop:'30',
+    marginBottom:data.marginBottom is not null?data.marginBottom:'30',
+  } 
+%}
+
+
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>社区组件设置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+    {{include ('@app/htdocs/resources/template/pc/templateList/index.twig')}}
+    <div class="component-form-setting-item component-form-configure-item">
+      <h4 class='title'>常用配置</h4>
+      <div class="layui-form-item">
+        <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 视区详情查看文案</label>
+        <div class="layui-input-block rest-input">
+          <input type="text" name="viewText" placeholder="" autocomplete="off" class="layui-input" value="{{pageData.viewText}}" />
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="form-item-label public-data"><span class="layui-badge-dot layui-bg-orange"></span> 文案颜色</label>
+        <div class="layui-input-block rest-input">
+          <div class="color-picker-selector" data-hidden-name="textColor">
+            <div style="background-color: {{ pageData.textColor }};"></div>
+          </div>
+          <input type="text" class="layui-input" name="textColor" autocomplete="off" value="{{ pageData.textColor }}">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 上边距</label>
+        <div class="layui-input-block rest-input">
+          <input type="text" name="marginTop" autocomplete="off" class="layui-input" value="{{ pageData.marginTop }}">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 下边距</label>
+        <div class="layui-input-block rest-input">
+          <input type="text" name="marginBottom" autocomplete="off" class="layui-input" value="{{ pageData.marginBottom }}">
+        </div>
+      </div>
+      <div class="layui-form-item" style="display: none;">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 懒加载Class</label>
+        <div class="layui-input-block">
+          <input type="text" name="loadImgClass" autocomplete="off" class="layui-input" value="{{ data.loadImgClass |default('js_gdexp_lazy') }}">
+        </div>
+      </div>
+      {# <div class="clearfix">
+        <a href="javascript:;" id="js_moreConfig" style="color:#1E9FFF">高级设置</a>
+      </div> #}
+    </div>
+    <div style="height: 100px;"></div>
+
+    {# <div class="component-form-setting-item component-form-template-item">
+      <h4 class="title">模板选择</h4>
+      <div class="layui-form-item">
+        <p class="component-tmp-title">当前使用：
+          <span id="current_template_name"></span>
+          <a href="javascript:;" id="js_templateList" style="float:right;color:#1E9FFF">更换</a>
+        </p>
+        {% for item in data.templates.list %}
+          {% if item.id==data.templates.selected %}
+          <div class="component-tmp-list">
+            <input type="hidden" name="tpl_id" value="{{ item.id }}" title="{{ item.name }}"> 
+            <p class="component-tmp-content">
+              <img alt="{{ item.name }}" src="{{ item.pic }}">
+            </p>
+          </div>
+          {% endif %} 
+        {% endfor %}
+      </div>
+    </div> #}
+
+
+    
+</div>
+<input type="hidden" id="communityList" name="community" value="" />
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <span type="button" class="layui-btn layui-btn-normal" id="js_submitTrigger">提交</span>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm" style="display:none">提交</button>
+<div>
+
+<script>
+  $(function() {
+    $.get('/home/community/lists', {siteCode: 'zf-pc'}, function(res) {
+      if(res.code == 0) {
+        sessionStorage.communityList = JSON.stringify(res.data);
+      }
+    });
+
+    $('#js_submitTrigger').click(function() {
+      $('#communityList').val(sessionStorage.communityList);
+      if($('#communityList').val() != '') {
+        $(this).next('button').trigger('click');
+      }
+    });
+  })
+</script>

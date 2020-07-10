@@ -1,0 +1,102 @@
+<div class="layui-form-item gs-dataset-selector">
+    <label class="layui-form-label public-data">商品数据来源<span></span></label>
+    <div class="layui-input-block">
+        {% if siteCode|split('-')[0] == 'zf' %}
+            {% set site_label = 'ZAFUL' %}
+        {% elseif siteCode|split('-')[0] == 'rw' %}
+            {% set site_label = 'RW' %}
+        {% elseif siteCode|split('-')[0] == 'rg' %}
+            {% set site_label = 'RG' %}
+        {% endif %}
+        <div>
+            <input
+                    type="radio"
+                    name="goodsDataSource"
+                    value="1"
+                    title="新品榜"
+                    data-public-tag="1"
+                    {% if data.goodsDataSource|default('1') == '1' %} checked{% endif %}>
+        </div>
+        <div>
+            <input
+                    type="radio"
+                    name="goodsDataSource"
+                    value="2"
+                    title="热卖榜"
+                    data-public-tag="1"
+                    {% if data.goodsDataSource|default('1') == '2' %} checked{% endif %}>
+        </div>
+        <div>
+            <input
+                    type="radio"
+                    name="goodsDataSource"
+                    value="3"
+                    title="折扣榜"
+                    data-public-tag="1"
+                    {% if data.goodsDataSource|default('1') == '3' %} checked{% endif %}>
+        </div>
+    </div>
+</div>
+
+<script>
+$(function() {
+    var $component_id = $('#U000113-rg_template1_v1');
+    /* 切换数据来源 */
+    $('.gs-dataset-selector .layui-form-radio',$component_id).on("click", function() {
+        var cate_id = $('[name="cateId"]').val();
+        if ( cate_id ) {
+            var type = parseInt($(this).prev('[name="goodsDataSource"]').val());
+            var cate_id = parseInt(cate_id);
+            var $this = $('[name="cateId"]');
+            asycnGoods(type, cate_id, $this)
+        }
+    });
+
+    /* 变更分类DI */
+    $('[name=cateId]',$component_id).on('change', function() {
+        var $this = $(this);
+        var type = parseInt($('.layui-form-radioed').prev('[name=goodsDataSource]').val());
+        var cate_id = parseInt($this.val());
+        asycnGoods(type, cate_id, $this)
+    });
+
+    /* 通过异步请求判断这个分类存不存在 */
+    function asycnGoods(type, cate_id, ele) {
+        var rankdetailObj = GESHOP_INTERFACE ? GESHOP_INTERFACE.getrankdetail : {};
+        var lang = typeof GESHOP_LANG != 'undefined' ? GESHOP_LANG : 'en';
+        var params = {
+            type: type,
+            lang: lang,
+            pageno: 1,
+            pagesize: 12,
+            cateid: cate_id,
+            pipeline: (typeof GESHOP_PIPELINE != 'undefined' ? GESHOP_PIPELINE : '')
+        };
+        var url = rankdetailObj.url,
+            content = { content: JSON.stringify(params) };
+        if (type) {
+            $.ajax({
+                url: url,
+                type: 'get',
+                dataType: 'jsonp',
+                data: content,
+                success: function (res) {
+                    if( res.data.goodsInfo.length == 0 ) {
+                        layer.confirm('该分类不存在，是否删除？', {
+                            title: '提示',
+                            btn: ['否', '是'],
+                            area: '420px',
+                            icon: 3,
+                            skin: 'element-ui-dialog-class'
+                        }, function(index){
+                            layer.close(index);
+                        }, function(index) {
+                            ele.val("");
+                        });
+                    }
+                }
+            });
+        }
+    }
+})
+</script>

@@ -1,0 +1,6 @@
+{# 配置rg 组件样式 #}
+
+{# 组件背景颜色 #}
+{{ root }} .geshop-component-body,{{ root }} .geshop-loading-real>div{
+    background-color: {{ data.box_bg_color|default(defaultParam.box_bg_color) }}
+}

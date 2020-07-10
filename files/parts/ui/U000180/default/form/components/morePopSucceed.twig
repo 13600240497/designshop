@@ -1,0 +1,47 @@
+<div class="layui-row layui-col-space20">
+    <div class="layui-col-md6">
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'宽度(px)',name:'popSucceedWidth',value:pageData.popSucceedWidth ,full:true,}}
+        ) }}
+    </div>
+    <div class="layui-col-md6">
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'高度(px)',name:'popSucceedHeight',value:pageData.popSucceedHeight ,full:true,}}
+        ) }}
+    </div>
+
+    <div class="layui-col-md12"  >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'背景图片',name:'popSucceedBackgroundImg',value:pageData.popSucceedBackgroundImg ,full:true,}}
+        ) }}
+    </div>
+
+    <div class="layui-col-md12" >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'背景颜色',name:'popSucceedBackgroundColor',value:pageData.popSucceedBackgroundColor ,full:true,}}
+        ) }}
+    </div>
+
+    <div class="layui-col-md6"  >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'积分数字文字颜色',name:'popSucceedIntegralNumColor',value:pageData.popSucceedIntegralNumColor ,full:true,}}
+        ) }}
+    </div>
+    <div class="layui-col-md6" >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'积分数字文字大小',name:'popSucceedIntegralNumSize',value:pageData.popSucceedIntegralNumSize ,full:true,}}
+        ) }}
+    </div>
+
+    <div class="layui-col-md6"  >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'描述文字上边距',name:'popSucceedDescriptionMarginTop',value:pageData.popSucceedDescriptionMarginTop ,full:true,}}
+        ) }}
+    </div>
+    <div class="layui-col-md6" >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'按钮上边距',name:'popSucceedButtonMarginTop',value:pageData.popSucceedButtonMarginTop ,full:true,}}
+        ) }}
+    </div>
+
+</div>

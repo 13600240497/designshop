@@ -1,0 +1,252 @@
+{
+    "fields": {
+        "boxMarginBottom": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "dataRange": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "goodsSKU": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "more_href": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "moreText": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "more_bgColor": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "more_FontColor": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "more_FontSize": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "cmptBgColor": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "titleBgImg": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "titleBgColor": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "titleHeight": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "titleFontColor": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "titleCounterFontColor": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "titleCounterFontSize": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "titleCounterBgColor": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "titleCounterWidth": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "titleCounterHeight": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "titleCounterRadius": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "goodsMarketPriceFontColor": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "goodsSalePriceFontColor": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discountImg": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discountWidth": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discountHeight": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discountFontSize": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discountFontSize2": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discountFontColor": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discountBgColor": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "goodsBtnText": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "goodsBtnFontSize": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "goodsBtnFontColor": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "goodsBtnBgColor": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "goodsBtnBgImg": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "goodsBtnWidth": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "goodsBtnHeight": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "goodsProcessBgColor1": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "goodsProcessBgColor2": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "goodsLeftFontColor": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        }
+    },
+    "languages": {
+        "title": {
+            "zh-tw": "秒殺",
+            "cn": "秒杀",
+            "en": "Flash Sale",
+            "fr": "Vente Flash ",
+            "es": "Venta Flash",
+            "it": "Vendita Flash",
+            "pt": "Promoção Relâmpago",
+            "de": "Flash Sale",
+            "ru": "Распродажа",
+            "ae": "عروض مؤقتة",
+            "ja": "スパイク",
+            "ro": "Reducere Flash"
+        },
+        "sales": {
+            "zh-tw": "已售XX件",
+            "cn": "已售XX件",
+            "en": "XX claimed",
+            "fr": "XX Vendus",
+            "es": "XX piezas vendidas",
+            "it": "XX venduti",
+            "pt": "XX Vendeu",
+            "de": "XX verkauft",
+            "ru": "XX заявлено",
+            "ae": "XX مباعة",
+            "ja": "販売したXX個",
+            "ro": "XX Revendicate"
+        },
+        "soldOut": {
+            "zh-tw": "售罄",
+            "cn": "售罄",
+            "en": "SOLD OUT",
+            "fr": "ÉPUISÉ",
+            "es": "AGOTADO",
+            "it": "ESAURITO",
+            "pt": "ESGOTADO",
+            "de": "SOLD OUT",
+            "ru": "Продано",
+            "ae": "بيعت كلها",
+            "ja": "売り切れ",
+            "ro": "VANDUT"
+        },
+        "discount": {
+            "zh-tw": "XX% off",
+            "cn": "XX% off",
+            "en": "XX% off",
+            "fr": "-XX%",
+            "es": "-XX%",
+            "it": "XX% off",
+            "pt": "XX% off",
+            "de": "XX% off",
+            "ru": "XX% скидку",
+            "ae": "%XX الخصم",
+            "ja": "XX％オフ",
+            "ro": "XX% reducere"
+        }
+    }
+}

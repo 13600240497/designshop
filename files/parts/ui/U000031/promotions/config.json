@@ -1,0 +1,206 @@
+{
+    "name": "pc goodsList",
+    "version": "v1.0.0.1",
+    "description": "pc goodsList,特征:购买按钮为图标+transform;没有配置边框颜色;",
+    "author": "xingtao",
+    "doc": "http://wiki.hqygou.com:8090/pages/viewpage.action?pageId=39029806",
+    "commjs": {
+        "jquery": true
+    },
+    "commcss": {
+        "main": true
+    },
+    "min-width": "auto",
+    "min-height": "inherit",
+    "fields": {
+        "goodsSKU": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "marginBottom": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "componentBgc": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "fontFamily": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "salePriceText": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "quickBuyText": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "disVis": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "discountType": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "inforColor": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "originalPriceColor": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "salePriceFtS": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "salePriceColor": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "buyBtnBgc": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "buyBtnTextColor": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "dislocation": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "disWidth": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "disHeight": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "disFtS": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "disOffFtS": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "disTextColor": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "disTextBgc": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "disBgImg": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "goodsDataFrom": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "gsSelectLevel0": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "gsSelectLevel1": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "gsSelectLevel2": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "ipsGoodsSKU": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "ipsAutoInfo": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "ipsAutoRuleSKU": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "gsSelectLevel3": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "gsSelectLevel4": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "gsSelectLevel5": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "ipsMethods": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "ipsInfo": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "ipsFilterInfo": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        }
+    },
+    "languages": {
+        "off": {
+            "en": "off",
+            "de": "off",
+            "es": "DTO.",
+            "fr": "",
+            "it": "off",
+            "pt": "off",
+            "ru": "скидку",
+            "ar": "الخصم",
+            "ja": "オフ",
+            "ro": "reducere"
+        }
+    }
+}

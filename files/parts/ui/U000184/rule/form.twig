@@ -1,0 +1,292 @@
+{% set formData = {
+    id: 'U000184',
+    name: 'Banner规则弹窗配置',
+    theme: 'rule',
+    tabs: [
+        {
+            label: '内容配置',
+            components: [
+                {
+                    label: '规则设置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '规则按钮是否开启',
+                            type: 'radio',
+                            name: 'rule_btn_type',
+                            default: 1,
+                            options: [
+                                { label: '是', value: 1 },
+                                { label: '否', value: 2 }
+                            ]
+                        },
+                        {
+                            label: '按钮/弹窗标题文案',
+                            name: 'btn_title',
+                            default: 'RULE',
+                            public: false
+                        },
+                        {
+                            label: '规则文案',
+                            name: 'rule_title',
+                            type: 'textarea',
+                            public: false
+                        },
+                        {
+                            label: '图片跳转链接',
+                            name: 'img_jump_url',
+                            public: false
+                        }
+                    ]
+                },
+                {
+                    label: '三端配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            type:'tab',
+                            items:[
+                                {
+                                    label:'PC/PAD',
+                                    components: [
+                                        {
+                                            label: 'Banner图片',
+                                            type: 'image',
+                                            name: 'pc_img_url',
+                                            data_width: 'pc_img_width',
+                                            data_height: 'pc_img_height'
+                                        }
+                                    ]
+                                },
+                                {
+                                    label:'M',
+                                    components: [
+                                        {
+                                            label: 'Banner图片',
+                                            type: 'image',
+                                            name: 'm_img_url',
+                                            data_width: 'm_img_width',
+                                            data_height: 'm_img_height'
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+
+            ]
+        },
+        {
+            label: '样式配置',
+            components: [
+                {
+                    label: '常用配置(建议此组件在通栏布局中使用)',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '按钮文字颜色',
+                            name: 'btn_foot_color',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: '按钮背景颜色',
+                            name: 'btn_bg_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: '按钮边框颜色',
+                            name: 'btn_border_color',
+                            type: 'colorPicker',
+                            default: '#333333'
+                        }
+                    ]
+                },
+                {
+                    label: '三端配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            type: 'tab',
+                            items: [
+                                {
+                                    label:'PC/PAD',
+                                    components: [
+                                        {
+                                            label: '组件上边距(px)',
+                                            name: 'box_margin_top',
+                                            public: false,
+                                            default: '0',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '组件下边距(px)',
+                                            name: 'box_margin_bottom',
+                                            public: false,
+                                            default: '0',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '按钮宽度(px)',
+                                            name: 'pc_btn_width',
+                                            public: false,
+                                            default: '88',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '按钮高度(px)',
+                                            name: 'pc_btn_height',
+                                            public: false,
+                                            default: '38',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '按钮上偏移(px)',
+                                            name: 'pc_btn_offset_up',
+                                            public: false,
+                                            default: '60',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '按钮右偏移(px)',
+                                            name: 'pc_btn_offset_right',
+                                            public: false,
+                                            default: '100',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '按钮背景图片',
+                                            name: 'pc_btn_bg_img',
+                                            type: 'image'
+                                        },
+                                        {
+                                            label: '按钮圆角',
+                                            desc: '(请按格式填写：左上 右上 右下 左下，例如：8px 8px 8px 8px，请注意要写上px否则无效)',
+                                            name: 'pc_btn_border_radius',
+                                            public: false,
+                                            default: '4px 4px 4px 4px'
+                                        },
+                                        {
+                                            label: '按钮文字大小(px)',
+                                            name: 'pc_btn_title_size',
+                                            default: '14'
+                                        },
+                                        {
+                                            label: '按钮边框粗细(px)',
+                                            name: 'pc_btn_border_size',
+                                            default: '2'
+                                        },
+                                        {
+                                            label: '规则弹窗文案大小(px)',
+                                            name: 'pc_popup_title_size',
+                                            default: '14'
+                                        }
+                                    ]
+                                },
+                                {
+                                    label:'M',
+                                    components: [
+                                        {
+                                            label: '组件上边距(px)',
+                                            name: 'box_margin_top_m',
+                                            public: false,
+                                            default: '0',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '组件下边距(px)',
+                                            name: 'box_margin_bottom_m',
+                                            public: false,
+                                            default: '0',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '按钮宽度(px)',
+                                            name: 'm_btn_width',
+                                            public: false,
+                                            default: '60',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '按钮高度(px)',
+                                            name: 'm_btn_height',
+                                            public: false,
+                                            default: '36',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '按钮上偏移(px)',
+                                            name: 'm_btn_offset_up',
+                                            public: false,
+                                            default: '40',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '按钮右偏移(px)',
+                                            name: 'm_btn_offset_right',
+                                            public: false,
+                                            default: '40',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '按钮背景图片',
+                                            name: 'm_btn_bg_img',
+                                            type: 'image'
+                                        },
+                                        {
+                                            label: '按钮圆角',
+                                            desc: '(请按格式填写：左上 右上 右下 左下，例如：8px 8px 8px 8px，请注意要写上px否则无效)',
+                                            name: 'm_btn_border_radius',
+                                            public: false,
+                                            default: '4px 4px 4px 4px'
+                                        },
+                                        {
+                                            label: '按钮文字大小(px)',
+                                            name: 'm_btn_title_size',
+                                            default: '14'
+                                        },
+                                        {
+                                            label: '按钮边框粗细(px)',
+                                            name: 'm_btn_border_size',
+                                            default: '2'
+                                        },
+                                        {
+                                            label: '规则弹窗文案大小(px)',
+                                            name: 'm_popup_title_size',
+                                            default: '12'
+                                        }
+                                    ]
+                                }
+                            ]
+
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    beforeSubmit: 'onSubmit'
+
+} %}
+
+    {# 引入渲染函数 #}
+    {{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+<script>
+    $(function () {
+        $('textarea[name=rule_title]').val($('textarea[name=rule_title]').val().replace(/<br>/g,'\\n'));
+
+    });
+
+    function onSubmit(progress) {
+        var text = $('textarea[name=rule_title]').val();
+        $('textarea[name=rule_title]').val(text.replace(/\\n/g,'<br>'));
+        progress.next();
+    };
+</script>

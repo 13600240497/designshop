@@ -1,0 +1,196 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+{% set suffix='px'%}
+
+{% if data.colNum == '1'%}
+    {% set colClass = liCol[0] %}
+{% elseif data.colNum == '2' %}
+    {% set colClass = liCol[1] %}
+{% elseif data.colNum == '3' %}
+    {% set colClass = liCol[2] %}
+{% elseif data.colNum == '4' %}
+    {% set colClass = liCol[3] %}
+{% elseif data.colNum == '5' %}
+    {% set colClass = liCol[4] %}
+{% else %}
+    {% set colClass = liCol[3] %}
+{% endif %}
+
+
+
+
+
+{%
+    set pageData = {
+		price_ft_weight:data.price_ft_weight|default(0),
+		base_bg_shadow:data.base_bg_shadow|default(1),
+        lang:data.lang|default('en'),
+        imgSrc:'https://gloimg.gbtcdn.com/soa/gb/pdm-product-pic/Electronic/2018/01/19/goods_thumb_220-v2/20180119095740_68364.jpg',
+
+        base_magin_top: data.base_magin_top|default(0)~suffix,
+        base_magin_bottom:data.base_magin_bottom|default(32)~suffix,
+        base_bgc:data.base_bgc is not null ? data.base_bgc:'#F8F8F8',
+        base_bgImage:data.base_bgImage,
+        discount_bgc:data.discount_bgc is not null ? data.discount_bgc:'#FF8A00',
+        discount_ftc:data.discount_ftc is not null ? data.discount_ftc:'#FFFFFF',
+        buy_ftc:data.buy_ftc is not null ? data.buy_ftc:'#FFFFFF',
+        buy_bgc:data.buy_bgc is not null ? data.buy_bgc:'#FF8A00',
+        buy_hover_bgc:data.buy_hover_bgc is not null ? data.buy_hover_bgc:'#FFAE5A',
+        buy_hover_ftc:data.buy_hover_ftc is not null ? data.buy_hover_ftc:'#FFFFFF',
+        buy_cart_bgc:data.buy_cart_bgc is not null ? data.buy_cart_bgc:'#CC0000',
+        price_fts:data.price_fts|default(22)~suffix,
+        price_color:data.price_color is not null ? data.price_color:'#f30240',
+        discount_height:data.discount_height|default(50)~suffix,
+        discount_width:data.discount_width|default(50)~suffix,
+        discount_fts:data.discount_fts|default(16)~suffix,
+        discount_right:data.discount_right|default(10)~suffix,
+        discount_top:data.discount_top|default(10)~suffix,
+        discount_bgImage:data.discount_bgImage,
+        discount_off_fts:data.discount_off_fts|default(12)~suffix,
+        discount_off_text:data.discount_off_text|default('off'),
+
+        view_more_text:data.view_more_text,
+        view_more_ftc:data.view_more_ftc is not null ? data.view_more_ftc: '#333333',
+        view_more_link: data.view_more_link,
+        view_more_fts:data.view_more_fts|default(20)~suffix,
+        
+        buy_text:data.buy_text,
+        sold_out_text:data.sold_out_text,
+        stocking_text:data.stocking_text,
+        comming_soon_text:data.comming_soon_text,
+        end_text:data.end_text,
+        buy_fts:data.buy_fts|default(18)~suffix,
+
+        discount_active:data.discount_active|default(1),
+        market_active:data.market_active|default(1),
+        view_more_active:data.view_more_active|default(1),
+        viewmore_bold_active:data.viewmore_bold_active|default(1),
+        server_label_active: data.server_label_active|default(0),
+
+        wrapperWidth:1200,
+        baseWidth:1000,
+        col:4,
+        marginRight:12
+    }
+%}
+
+{% set liWidth = (pageData.baseWidth-3*pageData.marginRight)/pageData.col %}
+
+
+<div class="geshop-component-box component-drag geshop-component-goods component-sync clearfix wrap-U000175-default geshop-gb-component ui-{{ pageInstanceId }}" data-gid="U000175_default" data-key="U000175" data-id="{{ pageInstanceId }}"
+	data-editenv="{{data.isEditEnv}}" data-static-domain="{{staticDomain}}" data-vis="{{liLength}}" data-lang="{{lang}}"
+	style="{% if data.boxMarginTop %}margin-top: {{ data.boxMarginTop }}px;{% endif %}
+				 {% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}">
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+        [data-gid="U000175_default"][data-id="{{ pageInstanceId }}"]{
+            margin-top: {{ pageData.base_magin_top }};
+            margin-bottom:{{pageData.base_magin_bottom}};
+        }
+        {# [data-gid="U000175_default"][data-id="{{ pageInstanceId }}"] .js-addCard{
+            background-color:{{pageData.buy_cart_bgc}};
+        } #}
+        [data-gid="U000175_default"][data-id="{{ pageInstanceId }}"] .gb_goodsWrap{
+            position: relative;
+        }
+
+        {# 折扣标 #}
+        [data-gid="U000175_default"][data-id="{{ pageInstanceId }}"] .gs-goods-discount{
+            background-color:{{pageData.discount_bgc}};
+            color:{{pageData.discount_ftc}};
+            width:{{pageData.discount_width}};
+            height:{{pageData.discount_height}};
+            top:{{pageData.discount_top}};
+            right:{{pageData.discount_right}};
+            {% if pageData.discount_bgImage %}
+                background:url({{pageData.discount_bgImage}}) no-repeat center center/100% 100%;
+                border-radius:0;
+            {% endif %}
+        }
+        [data-gid="U000175_default"][data-id="{{ pageInstanceId }}"] .gs-goods-discount span{
+            font-size:{{pageData.discount_fts}};
+        }
+        [data-gid="U000175_default"][data-id="{{ pageInstanceId }}"] .gs-goods-discount .curtoff-text{
+            font-size: {{pageData.discount_off_fts}};
+        }
+
+        {# 售价 #}
+        [data-gid="U000175_default"][data-id="{{ pageInstanceId }}"] .gs-goods-price .gs-shop-price{
+            font-size:{{pageData.price_fts}};
+            color:{{pageData.price_color}};
+             margin-bottom: 0;
+        }
+
+        {# 购买按钮设置 #}
+        [data-gid="U000175_default"][data-id="{{ pageInstanceId }}"] .gs-goods-buy .buyLink{
+            color:{{pageData.buy_ftc}};
+            background-color:{{pageData.buy_bgc}};
+            font-size:{{pageData.buy_fts}};
+        }
+        [data-gid="U000175_default"][data-id="{{ pageInstanceId }}"] .gs-goods-buy .js-addCart{
+            background-color:{{pageData.buy_cart_bgc}};
+        }
+        [data-gid="U000175_default"][data-id="{{ pageInstanceId }}"] .gs-goods-buy .buyLink:hover{
+            color:{{pageData.buy_hover_ftc}};
+            background-color:{{pageData.buy_hover_bgc}};
+        }
+        {# [data-gid="U000175_default"][data-id="{{ pageInstanceId }}"] .gs-goods-buy .js-addCart:hover{
+            background-color:{{pageData.buy_cart_hover_bgc}};
+        } #}
+        [data-gid="U000175_default"][data-id="{{ pageInstanceId }}"] .gb-view-more-text {
+            padding-bottom: 20px;
+        }
+        [data-gid="U000175_default"][data-id="{{ pageInstanceId }}"] .gb-view-more-text span {
+            color: {{pageData.view_more_ftc}};
+            font-size: {{pageData.view_more_fts}};
+        }
+        [data-gid="U000175_default"][data-id="{{ pageInstanceId }}"] .gs-list-item {
+            /*border: 1px solid #EEEEEE;*/
+            box-shadow: none;
+            box-sizing: border-box;
+        }
+        {#[data-gid="U000175_default"][data-id="{{ pageInstanceId }}"] .gs-goods-price .gs-shop-price strong {#}
+            {#font-weight: bold;#}
+        {#}#}
+        [data-gid="U000175_default"][data-id="{{ pageInstanceId }}"] .comming-or-ended-status {
+            cursor: default;
+            background-color: #999999 !important;
+        }
+        [data-gid="U000175_default"][data-id="{{ pageInstanceId }}"] .gs-goods-discount .curtoff-text {
+            text-transform: uppercase;
+        }
+[data-gid="U000175_default"][data-id="{{ pageInstanceId }}"] .gs-goods-item-common {
+display: block;
+overflow: hidden;
+text-align: center;
+height: 322px;
+}
+[data-gid="U000175_default"][data-id="{{ pageInstanceId }}"] .gs-goods-item-common img {
+    height: 322px;
+    max-width: 100%;
+    max-height: 100%;
+}
+</style>
+
+    <!-- embed stylesheet end -->
+    <div class="geshop-col-12">
+		<div class="gb_goodsWrap gb_wrapper_common wrap-default-U000175" data-skus="{{data.goodsSKUList}}" data-isEditEnv="{{data.isEditEnv}}"
+				style="margin:auto;
+			 {% if data.baseFtFa %}font-family:{{data.baseFtFa}};{% endif %};padding:50px 0 38px">
+                {# felix #}
+                <ul  class="clearfix gb-list-default gb-global-wrapper" style="width:{{pageData.baseWidth}}{{suffix}}">
+                {% for key,item in data.goodsInfo|default(0..3)%}
+                    {{include ('@app/files/parts/temp/gb/index_goods_tmp.twig')}}
+                {% endfor %}
+                </ul>
+                {% if pageData.view_more_active == '1' %}
+                    <div class="gb-view-more-text view-more-box" style="width:{{pageData.baseWidth}}{{suffix}}; {% if pageData.viewmore_bold_active == '1' %} font-weight: bold {% endif %};">
+                        <a href="{{pageData.view_more_link}}" target="_blank" >
+                            <span class="view-more-btn">{{ pageData.view_more_text|default(gb_component_trans(lang, 'view_more')) }} >
+														</span>
+                        </a>
+                    </div>
+                {% endif %}
+		</div>
+    </div>
+</div>
+

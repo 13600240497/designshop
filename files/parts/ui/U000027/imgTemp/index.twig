@@ -1,0 +1,24 @@
+<div 
+	class="geshop-component-box component-drag geshop-U000027-imgTemp geshop-U000027-imgTemp-{{ pageInstanceId }}" data-key="U000027" data-id="{{ pageInstanceId }}">
+	{{ include('style.twig') }}
+  <input type="hidden" name="nav_height" value="{{data.nav_height}}" />
+	<nav class="component-nav">
+    <ul class="component-nav-ul" data-isedit="{{ data.isEditEnv }}" id="nav-ul">
+      {% if data.navNewData %}
+        {% for item in data.navNewData %}
+          {% if item.id in data.nav_menu %}
+            <li class="component-nav-item" data-id="{{ item.id }}">
+              <img class="nav-img" src="{{item.img | default('https://geshopimg.logsss.com/uploads/uoWqpAkcCeRB0rz4FTImJOg3SnHadXtw.png')}}" />
+							<strong>{{ item.name }}</strong>
+            </li>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <li class="component-nav-item">
+          <strong">请配置数据</strong>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
+

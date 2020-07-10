@@ -1,0 +1,190 @@
+{%
+
+    set formData = {
+        id: 'U000090',
+        name: '轮播排行榜组件设置',
+        theme: 'default_v2',
+        tabs: [
+            {
+                label: '数据配置',
+                components: [
+                    {
+                        type: 'fieldset',
+                        components: [
+                            {
+                                type: 'diy',
+                                src: 'form-dataset.twig'
+                            },
+                            {
+                                label: '商品分类ID',
+                                name: 'cateId',
+                                public: true
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                label: '样式配置',
+                components: [
+                    {
+                        label: '基础配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件下边距',
+                                name: 'boxMarginBottom',
+                                default: '32',
+                                type: 'input'
+                            },
+                            {
+                                label: '背景颜色',
+                                name: 'box_bg_color',
+                                default: '#f8f8f8',
+                                type: 'colorPicker'
+                            },
+                            {
+                                label: '背景图片',
+                                name: 'bgImage',
+                                default: '',
+                                type: 'image'
+                            }
+                        ]
+                    },
+                    {
+                        label: '左侧图片',
+                        type: 'fieldset',
+                        desc: '请上传宽为276px，高为480px的图片',
+                        components: [
+                            {
+                                label: '图片地址',
+                                name: 'leftSideImage',
+                                default: '',
+                                type: 'image'
+                            },
+                            {
+                                label: '图片链接',
+                                name: 'jumpLink',
+                                default: '',
+                                type: 'input'
+                            }
+                        ]
+                    },
+                    {
+                        label: '排行榜图标',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '宽度',
+                                name: 'iconWidth',
+                                default: '40',
+                                col: 2
+                            },
+                            {
+                                label: '高度',
+                                name: 'iconHeight',
+                                default: '48',
+                                col: 2
+                            },
+                            {
+                                label: '第一名图标',
+                                name: 'iconFirstImg',
+                                default: '',
+                                type: 'image'
+                            },
+                            {
+                                label: '第二名图标',
+                                name: 'iconSecondImg',
+                                default: '',
+                                type: 'image'
+                            },
+                            {
+                                label: '第三名图标',
+                                name: 'iconThirdImg',
+                                default: '',
+                                type: 'image'
+                            },
+                            {
+                                label: '其他名次图标',
+                                name: 'iconOtherImg',
+                                default: '',
+                                type: 'image'
+                            },
+                            {
+                                label: '其他名次文字颜色',
+                                name: 'iconOtherTextColor',
+                                default: '#333333',
+                                type: 'colorPicker'
+                            }
+                        ]
+                    },
+                    {
+                        label: '销售价',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '文字颜色',
+                                name: 'shop_price_color',
+                                default: '#333',
+                                type: 'colorPicker'
+                            }
+                        ]
+                    },
+                    {
+                        label: '已售信息',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '背景颜色',
+                                name: 'btnBgColor',
+                                default: '#999999',
+                                type: 'colorPicker',
+                                col: 2
+                            },
+                            {
+                                label: '文字颜色',
+                                name: 'leaderBoardTextColor',
+                                default: '#FFFFFF',
+                                type: 'colorPicker',
+                                col: 2
+                            }
+                        ]
+                    },
+                    {
+                        label: '抢购按钮',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '文案',
+                                name: 'buyText',
+                                default: 'SNAP UP',
+                            },
+                            {
+                                label: '背景颜色',
+                                name: 'buyBtnTextBgColor',
+                                default: '#333333',
+                                type: 'colorPicker',
+                                col: 2
+                            },
+                            {
+                                label: '文字颜色',
+                                name: 'buyTextColor',
+                                default: '#fff',
+                                type: 'colorPicker',
+                                col: 2
+                            }
+                        ]
+                    },
+                ]
+            }
+        ],
+        moreConfig: []
+    }
+    
+%}
+    
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+{# 引入自定义脚本 #}
+{# <script>{{ include ('form.js') }}</script>   #}

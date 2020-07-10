@@ -1,0 +1,398 @@
+
+.geshop-U000182-template1-v3-body {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+
+    ul.goods-list {
+        position: relative;
+        width: 100%;
+        padding: 0 22px;
+        padding-top: 30px;
+        padding-bottom: 14px;
+        overflow: hidden;
+        box-sizing: border-box;
+
+        > li {
+            float: left;
+            width: 25%;
+            padding: 0 8px;
+            padding-bottom: 16px;
+            box-sizing: border-box;
+        }
+    }
+
+    ul li:hover {
+        .shop-now-container {
+            display: block;
+        }
+    }
+
+    .goods-item {
+        position: relative;
+        width: 100%;
+        background: #fff;
+        overflow: hidden;
+        &.goods-item-placehoder {
+            display: block;
+            * {
+                opacity: 0;
+            }
+            .img-placehode {
+                opacity: 1;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: url("https://geshoptest.s3.amazonaws.com/uploads/LE2hb7vCDgH4wTumMASWIXnaOoG0dcs6.png") 50% 50% no-repeat;
+            }
+        }
+    }
+
+    .goods-item-head {
+        position: relative;
+        width: 100%;
+    }
+
+    // 图片区域
+    .geshop-goods-img {
+        position: relative;
+        width: 100%;
+        padding-top: 100%;
+        overflow: hidden;
+
+        a {
+            img {
+                display: block;
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                margin: auto;
+            }
+        }
+
+        .out-style-text {
+            width: 140px;
+            height: 136px;
+            background-size: 100% 100%;
+            background-image: url('https://geshopcss.logsss.com/imagecache/geshop/resources/images/dl/goods-out-style.png');
+            position: absolute;
+            left: 50%;
+            z-index: 12;
+            font-size: 20px;
+            color: #ff4546;
+            text-align: center;
+            line-height: 136px;
+            margin-left: -70px;
+            top: 50%;
+            margin-top: -68px;
+        }
+    }
+
+    // 图片售罄
+    .geshop-goods-img.soldout-bg {
+        background: rgba(255, 255, 255, 1);
+
+        .shop-now-container {
+            border: none;
+        }
+    }
+
+    // 标题
+    .geshop-goods-title {
+        display: block;
+        margin-top: 4px;
+        margin-left: 8px;
+        margin-right: 8px;
+        margin-bottom: 4px;
+        font-size: 14px;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        line-height: 17px;
+        height: 17px;
+    }
+
+    // 价格
+    .geshop-item-price-layer {
+        margin-left: 8px;
+        margin-right: 8px;
+        margin-bottom: 4px;
+        height: 27px;
+        line-height: 27px;
+        font-size: 0px;
+
+        > span {
+            display: inline-block;
+        }
+    }
+
+    .geshop-shop-price {
+        margin-right: 10px;
+    }
+
+    .geshop-market-price {
+        font-size: 14px;
+        color: #999999;
+    }
+
+    // 促销信息
+    .geshop-goods-promotions {
+        margin-left: 8px;
+        margin-right: 8px;
+        margin-bottom: 10px;
+        height: 17px;
+        line-height: 17px;
+        cursor: pointer;
+
+        img {
+            width: 10px;
+            margin-left: 8px;
+            transition: all 0.3s;
+
+            &.up {
+                transform: rotate(180deg);
+                transition: all 0.3s;
+            }
+        }
+
+        .promotions-text {
+            display: inline-block;
+            font-size: 14px;
+            height: 17px;
+            line-height: 17px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
+
+            em {
+                font-style: normal;
+            }
+        }
+    }
+
+    // 促销信息弹层
+    .geshop-goods-promotions-more {
+        position: absolute;
+        z-index: 999;
+        bottom: 22 + 17px;
+        left: 12px;
+        padding: 10px 20px;
+        border: 1px solid #121212;
+        border-radius: 4px;
+        font-size: 14px;
+        color: #121212;
+        background-color: #fff;
+        line-height: 20px;
+
+        &.none {
+            display: none;
+        }
+
+        &:after,
+        &:before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent
+        }
+
+        &:before {
+            bottom: -8px;
+            border-top: 8px solid #121212
+        }
+
+        &:after {
+            bottom: -7px;
+            border-top: 8px solid #fff
+        }
+
+        > em {
+            color: #d28b1a;
+        }
+    }
+
+    // 购买遮罩
+    .shop-now-container {
+        display: none;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        width: 100%;
+        padding-top: 100%;
+        opacity: 0.75;
+        border-style: solid;
+        border-width: 2px;
+        box-sizing: border-box;
+
+        .inner-wrapper {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            margin-top: -10px;
+            text-align: center
+        }
+
+        .bag-img {
+            font-size: 25px;
+            width: 22px;
+            height: 22px;
+            background-size: 100% 100%;
+            display: inline-block;
+        }
+
+        .shop-now-text {
+            display: block;
+            font-size: 16px;
+        }
+    }
+
+    // 折扣标
+    .geshop-goods-discount span {
+        line-height: 17px;
+    }
+
+    .item-more-wrap {
+        margin: 4px 0 10px;
+        display: none;
+    }
+
+    .view_more {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        width: 165px;
+        height: 36px;
+        margin: auto;
+        background-color: #333333;
+        border-radius: 2px;
+        text-align: center;
+
+        & span {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 17px;
+            color: inherit;
+        }
+    }
+}
+
+
+// PAD
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+    .geshop-U000182-template1-v3-body {
+        .geshop-goods-promotions-more {
+            left: 0px;
+            padding: 10px 16px;
+        }
+
+        .geshop-goods-promotions {
+            &.has-more {
+                margin-right: 0px;
+            }
+        }
+
+        // 价格
+        .geshop-item-price-layer {
+            margin-left: 8px;
+            margin-right: 8px;
+            margin-bottom: 4px;
+            height: auto;
+            line-height: unset;
+            font-size: 0px;
+
+            > span {
+                display: inline-block;
+            }
+            .geshop-shop-price {
+                margin-right: 10px;
+            }
+
+            .geshop-market-price {
+                display: block;
+                font-size: 14px;
+                color: #999999;
+            }
+        }
+    }
+}
+
+// M
+@media screen and (max-width: 767px) and (min-width: 0px) {
+    .geshop-U000182-template1-v3-body {
+
+        ul.goods-list {
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-top: 10px;
+            padding-bottom: 5px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: stretch;
+
+            > li {
+                flex-shrink: 0;
+                width: 50%;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-bottom: 10px;
+            }
+
+            .goods-item {
+                min-height: 100%;
+            }
+
+
+        }
+
+        // 图片
+        .geshop-goods-img .out-style-text {
+            width: 80px;
+            height: 78px;
+            line-height: 78px;
+            margin-left: -39px;
+            font-size: 14px;
+            top: 50%;
+            margin-top: -39px;
+        }
+
+
+        .geshop-goods-promotions-more {
+            left: 0px;
+        }
+
+        .item-more-wrap {
+            display: block;
+        }
+
+        // 价格
+        .geshop-item-price-layer {
+            height: auto;
+            line-height: unset;
+
+            .geshop-market-price {
+                display: block;
+            }
+        }
+    }
+}

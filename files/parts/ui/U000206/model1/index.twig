@@ -1,0 +1,88 @@
+{#
+    D网倒计时组件：by罗晓辉@20190221
+
+    1、banner图片的处理：不填---使用默认图片，空格---不显示图片，其他---按填写的链接显示图片。
+    2、倒计时显示：显示天、时、分、秒，天为0的时候不显示。
+#}
+
+{%
+    set data = data | merge({
+        cd_container_opacity: data.cd_container_opacity | default(100),
+
+        pc_banner_width: data.pc_banner_width | default(1200),
+        pc_banner_height: data.pc_banner_height | default(480),
+
+        pad_banner_width: data.pad_banner_width | default(1024),
+        pad_banner_height: data.pad_banner_height | default(480),
+
+        m_banner_width: data.m_banner_width | default(750),
+        m_banner_height: data.m_banner_height | default(480),
+    })
+%}
+
+{% 
+    set formData = data | merge({
+        box_margin_top: data.box_margin_top | default('0'),
+        comp_padding_bottom: data.comp_padding_bottom | default('0'),
+        cd_container_bcolor: data.cd_container_bcolor | default('#ffffff'),
+        cd_container_opacity: (data.cd_container_opacity / 100) | number_format(1, '.') | default('1'),
+        cd_value_bcolor: data.cd_value_bcolor | default('#333333'),
+        cd_value_fcolor: data.cd_value_fcolor | default('#ffffff'),
+        cd_title_fcolor: data.cd_title_fcolor | default('#333333'),
+
+        before_title: data.before_title ? ((data.before_title | trim) ? data.before_title : '') : 'Comming Soon',
+        started_title: data.started_title ? ((data.started_title | trim) ? data.started_title : '' ): 'End In',
+        ended_title: data.ended_title ? ((data.ended_title | trim) ? data.ended_title : '') : 'Already Ended',
+
+        pc_banner: data.pc_banner | default('https://geshopimg.logsss.com/uploads/sQ1tUd5mz0Oo2gIiy8jlB7vPJ6YGEKbC.png'),
+        pc_banner_ratio: (data.pc_banner_height / data.pc_banner_width * 100) | number_format(8, '.'),
+        pc_cd_container_padding_top: data.pc_cd_container_padding_top | default('40'),
+        pc_cd_container_width: data.pc_cd_container_width | default('260'),
+        pc_cd_container_height: data.pc_cd_container_height | default('94'),
+        pc_cd_font_size: data.pc_cd_font_size | default('20'),
+        pc_cd_padding_top: data.pc_cd_padding_top | default('8'),
+
+        pad_banner: data.pad_banner | default('https://geshopimg.logsss.com/uploads/GMfy4JQWS96Y2VKixRoIsvm7lreqNOAX.png'),
+        pad_banner_ratio: (data.pad_banner_height / data.pad_banner_width * 100) | number_format(8, '.'),
+        pad_cd_container_padding_top: data.pad_cd_container_padding_top | default('40'),
+        pad_cd_container_width: data.pad_cd_container_width | default('260'),
+        pad_cd_container_height: data.pad_cd_container_height | default('94'),
+        pad_cd_font_size: data.pad_cd_font_size | default('20'),
+        pad_cd_padding_top: data.pad_cd_padding_top | default('8'),
+
+        m_banner: data.m_banner | default('https://geshopimg.logsss.com/uploads/TRIvlJzOSbGUdhnfa0e8KqM7Nsic5WtL.png'),
+        m_banner_ratio: (data.m_banner_height / data.m_banner_width * 100) | number_format(8, '.'),
+        m_cd_container_padding_top: data.m_cd_container_padding_top | default('40'),
+        m_cd_container_width: data.m_cd_container_width | default('200'),
+        m_cd_container_height: data.m_cd_container_height | default('84'),
+        m_cd_font_size: data.m_cd_font_size | default('15'),
+        m_cd_padding_top: data.m_cd_padding_top | default('4'),
+    })
+%}
+<div class="geshop-component-box component-drag geshop-U000206-model1 geshop-U000206-model1-{{ pageInstanceId }} {% if data.isEditEnv == 1 %}is-edit{% endif %}" data-key="U000206" data-id="{{ pageInstanceId }}">
+    {{ include('style.twig') }}
+    
+    <div class="cd-container">
+        <div class="cd">
+            {# 为了支持居中，必须把所有内容用一个元素包裹起来 #}
+            <div class="cd-inner"
+                data-before-title="{{ formData.before_title }}" 
+                data-started-title="{{ formData.started_title }}" 
+                data-ended-title="{{ formData.ended_title }}" 
+                data-start-time="{{ formData.start_time }}" 
+                data-end-time="{{ formData.end_time }}" 
+                data-day-label="{{ languages.day[lang] }}" 
+                data-days-label="{{ languages.days[lang] }}">
+                <input type="hidden" name="time_show_type" value="{{ data.time_show_type }}" />
+                <div class="cd-title"></div>
+                {#
+                    cd-content, 区分2个状态class，默认到天，通过JS更改
+                    到秒 is-day
+                    到天 is-second
+                        is-second 会运用到配置项 "数字文字上边距(px)" 的值
+                #}
+                <div class="cd-content"></div>
+            </div>
+        </div>
+    </div>
+</div>

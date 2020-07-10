@@ -1,0 +1,19 @@
+[data-gid="U000058_model"].gs-index-main{
+  margin: 0 auto;
+  width: 1240px;
+}
+
+[data-gid="U000058_model"] .icon-up{
+  background-image:url('../../../resources/images/carousel-image/up.png');
+}
+[data-gid="U000058_model"] .icon-down{
+  background-image:url('../../../resources/images/carousel-image/down.png');
+} 
+[data-gid="U000058_model"] .icon-delete{
+  background-image:url('../../../resources/images/carousel-image/delete.png');
+}
+
+[data-gid="U000058_model"] .js_gdexp_lazy {
+  opacity: 1 !important;
+  display:inline !important;
+}

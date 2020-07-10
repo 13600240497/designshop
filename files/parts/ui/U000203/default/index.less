@@ -1,0 +1,552 @@
+
+.geshop-U000203-default {
+    .nav-container {
+        overflow: hidden;
+    }
+
+    .nav-list {
+        max-width: 1200px;
+        text-align: center;
+        width: 100%;
+        margin: 30px auto 0px;
+
+        li {
+            text-align: center;
+            margin-right: 16px;
+            margin-bottom: 16px;
+            display: inline-block;
+            cursor: pointer;
+            overflow: hidden;
+            background-size: 100% 100%;
+            box-sizing: border-box;
+            border: 2px solid rgba(51, 51, 51, 1);
+            vertical-align: middle;
+
+            span {
+                display: inline-block;
+                overflow: hidden;
+                width: 88%;
+                * {
+                    color:inherit;
+                    pointer-events: none;
+                }
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+
+    .goods-list {
+        display: none;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px 24px;
+        overflow: hidden;
+        box-sizing: border-box;
+
+        ul.goods-list-ul {
+            box-sizing: border-box;
+
+            > li {
+                float: left;
+                width: 25%;
+                box-sizing: border-box;
+                position: relative;
+            }
+
+
+            .goods-items {
+                position: relative;
+                background-color: #fff;
+            }
+
+
+            .geshop-goods-title {
+                display: block;
+                margin-top: 13px;
+                font-size: 14px;
+                color: #000;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                line-height: 20px;
+                height: 20px;
+                width: 90%;
+                padding-left: 12px;
+                white-space: nowrap;
+            }
+
+            .geshop-goods-item-price {
+                margin-top: 4px;
+                padding-left: 12px;
+                overflow: hidden;
+            }
+
+            .geshop-goods-shopprice {
+                font-size: 22px;
+                font-weight: bold;
+                margin-right: 5px;
+                word-break: break-word;
+                font-family: Lato-Bold;
+            }
+
+            .geshop-goods-market-price {
+                font-size: 14px;
+                color: rgba(188, 188, 188, 1);
+                text-decoration: line-through;
+            }
+
+            .geshop-goods-img {
+                position: relative;
+                margin: 0 auto;
+                overflow: hidden;
+                text-align: center;
+
+                &.soldout-bg {
+                    background: rgba(255, 255, 255, 1);
+
+                    .shop-now-container {
+                        border: none;
+                    }
+                }
+
+                a.img {
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    margin: auto;
+                }
+
+                .out-style-text {
+                    width: 140px;
+                    height: 136px;
+                    background-size: 100% 100%;
+                    background-image: url('https://geshopcss.logsss.com/imagecache/geshop/resources/images/dl/goods-out-style.png');
+                    position: absolute;
+                    left: 50%;
+                    z-index: 12;
+                    font-size: 20px;
+                    color: #ff4546;
+                    text-align: center;
+                    line-height: 136px;
+                    margin-left: -70px;
+                    top: 50%;
+                    margin-top: -68px;
+                }
+
+                .inner-wrapper {
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    width: 100%;
+                    margin-top: -10px;
+                    text-align: center
+                }
+
+                .bag-img {
+                    background-image: url('https://geshoptest.s3.amazonaws.com/uploads/OmoKtEqZh8027cfkU56VTJaYi1WSIXRQ.png');
+                    display: inline-block;
+                    width: 22px;
+                    height: 24px;
+                    background-size: 100% 100%;
+                }
+
+                .shop-now-text {
+                    display: block;
+                }
+
+                .shop-now-container {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    display: none;
+                    border-style: solid;
+                    border-width: 2px;
+                    box-sizing: border-box;
+                    opacity: 0.75;
+                }
+            }
+
+            .geshop-goods-promotions {
+                margin-top: 5px;
+                cursor: pointer;
+                height: 17px;
+                line-height: 17px;
+                overflow: hidden;
+                font-size: 14px;
+                padding-left: 12px;
+                padding-bottom: 16px;
+
+                span {
+                    font-size: 14px;
+                    word-break: break-all;
+                }
+
+                img {
+                    width: 10px;
+                    margin-left: 8px;
+                    transition: all 0.3s;
+
+                    &.up {
+                        transform: rotate(180deg);
+                        transition: all 0.3s;
+                    }
+                }
+
+                .promotions-text em {
+                    font-style: normal;
+                }
+            }
+
+            .geshop-goods-promotions-more {
+                position: absolute;
+                z-index: 999;
+                bottom: 41px;
+                left: 0px;
+                padding: 10px 20px;
+                border: 1px solid #121212;
+                border-radius: 4px;
+                font-size: 14px;
+                color: #121212;
+                background-color: #fff;
+                line-height: 20px;
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    left: 15px;
+                    border-left: 5px solid transparent;
+                    border-right: 5px solid transparent;
+                    bottom: -8px;
+                    border-top: 8px solid #121212;
+                }
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    left: 15px;
+                    border-left: 5px solid transparent;
+                    border-right: 5px solid transparent;
+                    bottom: -7px;
+                    border-top: 8px solid #fff;
+                }
+            }
+
+            .discount {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .btn-seemore {
+        display: block;
+        margin: 4px auto 0;
+        border: 1px solid rgba(151, 151, 151, 1);
+        border-radius: 22px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+    .view_more {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        width: 165px;
+        height: 36px;
+        margin: auto;
+        background-color: #333333;
+        border-radius: 0.05333333rem;
+        text-align: center;
+        span{
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 17px;
+            color: inherit;
+        }
+    }
+    .page-visible{
+        display: block !important;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .geshop-U000203-default {
+        .geshop-goods-item-price {
+            height: 27px;
+            line-height: 27px;
+        }
+
+        ul.goods-list-ul {
+            margin-top: 4px;
+            box-sizing: border-box;
+
+            > li {
+                padding: 0 8px 16px;
+            }
+        }
+
+        .geshop-goods-promotions-more {
+            left: 12px !important;
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+    .geshop-U000203-default {
+
+        ul.goods-list-ul {
+
+            box-sizing: border-box;
+
+            > li {
+                float: left;
+                width: 25%;
+                box-sizing: border-box;
+                padding: 0 6px 16px;
+            }
+
+            .goods-items {
+                min-height: 100%;
+                position: relative;
+                width: 100%;
+                background: #fff;
+                overflow: hidden;
+            }
+
+            .geshop-goods-img {
+                position: relative;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .geshop-goods-promotions {
+                font-size: 14px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                width: 90%;
+                white-space: nowrap;
+            }
+
+            .discount {
+                font-size: 14px;
+            }
+        }
+
+        .geshop-goods-promotions-more {
+            padding: 10px 16px !important;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) and (min-width: 374px) {
+    .geshop-U000203-default {
+
+        .nav-container {
+            padding: 0 5px;
+        }
+
+        .goods-list {
+            padding: 0;
+        }
+
+        .nav-list {
+            li {
+                margin-bottom: 10px !important;
+                margin-left: 4px;
+                margin-right: 4px;
+                &:nth-child(2n) {
+                    //margin-right: 0;
+                }
+                &:last-child{
+                    margin-right: 4px;
+                }
+            }
+        }
+
+        ul.goods-list-ul {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: stretch;
+            box-sizing: border-box;
+
+            > li {
+                flex-shrink: 0;
+                width: 50% !important;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-bottom: 10px;
+                box-sizing: border-box;
+            }
+
+            .goods-items {
+                min-height: 100%;
+                position: relative;
+                width: 100%;
+                background: #fff;
+                overflow: hidden;
+            }
+
+            .geshop-goods-img {
+                position: relative;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .geshop-goods-item-price {
+                line-height: 22px;
+                height: 22px;
+            }
+
+            .geshop-goods-promotions {
+                padding-bottom: 10px !important;
+                font-size: 13px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                width: 90%;
+                white-space: nowrap;
+            }
+
+            .discount {
+                font-size: 13px;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 374px) {
+    .geshop-U000203-default {
+
+        .nav-container {
+            padding: 0 5px;
+        }
+
+        .goods-list {
+            padding: 0;
+        }
+
+        .nav-list {
+            li {
+                margin-right: 0;
+                margin-bottom: 10px !important;
+            }
+        }
+
+        ul.goods-list-ul {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: stretch;
+            box-sizing: border-box;
+
+            > li {
+                flex-shrink: 0;
+                width: 50% !important;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-bottom: 10px;
+                box-sizing: border-box;
+            }
+
+            .goods-items {
+                min-height: 100%;
+                position: relative;
+                width: 100%;
+                background: #fff;
+                overflow: hidden;
+            }
+
+            .geshop-goods-img {
+                position: relative;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .geshop-goods-promotions {
+                padding-bottom: 10px !important;
+                font-size: 13px;
+
+                text-overflow: ellipsis;
+                overflow: hidden;
+                width: 90%;
+                white-space: nowrap;
+
+            }
+
+            .discount {
+                font-size: 13px;
+            }
+        }
+    }
+}
+// hack for android 360 with
+@media screen and (min-width: 360px) and (max-width: 374px) {
+    .geshop-U000203-default {
+        .nav-list{
+            li {
+                width: 165px !important;
+                margin-right: 11px !important;
+                margin-bottom: 10px !important;
+
+                &:nth-child(2n) {
+                    margin-right: 0 !important;
+                }
+            }
+        }
+    }
+}
+
+
+// PAD
+@media screen and (min-width: 768px){
+    .geshop-U000203-default{
+        .item-more-wrap{
+            display:none;
+        }
+    }
+}
+
+// M
+@media screen and (max-width: 767px) and (min-width: 0px){
+    .geshop-U000203-default{
+        .btn-seemore{
+            display:none;
+        }
+        .goods-list-ul li{
+            display: none;
+        }
+        .item-more-less{
+            padding-bottom:10px ;
+        }
+    }
+
+}
+
+.none {
+    display: none;
+}
+
+.clearfix {
+    display: block;
+}
+
+.clearfix:after {
+    content: '.';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}

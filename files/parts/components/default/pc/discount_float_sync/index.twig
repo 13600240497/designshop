@@ -1,0 +1,53 @@
+{# 
+    浮动折扣标
+    @params value               折扣值
+    @style type                 折扣类型，默认1
+    @style background-color     背景颜色
+    @style background-image     背景图片
+    @style color               折扣值文字颜色
+    @style top                  上浮动像素
+    @style right                右浮动像素
+ #} 
+
+ 
+{# 输出HTML #}
+
+{% if params is not null %}
+    {# 设定 type 默认值为1 #}
+    {% if params.type is null or params.type is empty %}
+        {% set params = params | merge({ 'type': 1 }) %}
+    {% endif %}
+    {# 少于等于0的不展示 #}
+    <span class="test-discount-type">{{ params.type }}</span>
+    <span class="test-discount">{{ params.value and params.value != 0?'1111':'2222' }}</span>
+    {% if params.value %}
+        <div class="geshop-components-default-discount-float discount-float-{{ pageInstanceId }}">
+            <span>
+                {% if params.type == 1 %}
+                    <label>{{ params.value | default('0') }}%<br><i>OFF</i></label>
+                {% else %}
+                    <label>-{{ params.value | default('0') }}%</label>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+{% endif %}
+
+{# 定制样式 #}
+{% if style is not null %}
+
+    .discount-float-{{ pageInstanceId }} {
+        right: {{ style.right | default(0) }}px;
+        top: {{ style.top | default(0) }}px;
+        color: {{ style.color | default('#fff') }};
+        {% if style['background-image'] is not null and style['background-image'] != '' %}
+            background-image: url('{{ style['background-image'] }}');
+            border-radius: 0px;
+        {% else %}
+            background-color: {{ style['background-color'] | default('#333') }};
+        {% endif %}
+    }
+
+{% endif %}
+
+

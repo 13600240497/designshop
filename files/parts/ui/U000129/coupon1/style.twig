@@ -1,0 +1,76 @@
+{%
+    set pageData = {
+        boxWidth : data.boxWidth | default(592),
+        boxHeight : data.boxHeight | default(400),
+        boxMarginBottom : data.boxMarginBottom | default(0),
+        boxBackgroundColor : data.boxBackgroundColor | default('#EDEDED'),
+        boxBackgroundImage : data.boxBackgroundImage | default(''),
+        couponTextSize : data.couponTextSize | default(48),
+        couponTextColor : data.couponTextColor | default('#333333'),
+        couponId : data.couponId | default(''),
+        startText : data.startText | default('Coming Soon'),
+        getCouponText : data.getCouponText | default('Get now'),
+        couponTitle : data.couponTitle | default('CRAZY COUPON'),
+        btnTextSize : data.btnTextSize | default(16),
+        btnBackgroundColor : data.btnBackgroundColor | default('#B8BEC4'),
+        btnTextColor : data.btnTextColor | default('#ffffff'),
+        btnRadius : data.btnRadius | default('0'),
+        countDown : data.countDown | default('1'),
+        countDownTitleTextSize : data.countDownTitleTextSize | default(20),
+        countDownTitleTextColor : data.countDownTitleTextColor | default('#333333'),
+        countDownBackgroundColor : data.countDownBackgroundColor | default('#333333'),
+        countDownTextColor : data.countDownTextColor | default('#ffffff'),
+        countDownRadius : data.countDownRadius | default(0),
+        btnWidth : data.btnWidth | default(120),
+        btnHeight : data.btnHeight | default(40),
+        btnBackgroundImage : data.btnBackgroundImage | default(''),
+        countDownWidth : data.countDownWidth | default(40),
+        countDownHeight : data.countDownHeight | default(40),
+        alignType : data.alignType | default('2'),
+        timeSize : data.timeSize | default(20),
+    }
+%}
+<style>
+    [data-box="coupon-{{ pageInstanceId }}-1"]{
+        width:{{pageData.boxWidth}}px;
+        height:{{pageData.boxHeight}}px;
+        background-color:{{ pageData.boxBackgroundColor }};
+        {% if data.boxBackgroundImage %}background-image: url("{{ data.boxBackgroundImage }}");{% endif %}
+        {% if pageData.alignType == 1 %}
+            float:left;
+            {% elseif pageData.alignType == 2 %}
+            float: none;
+            margin:0 auto;
+            {% elseif pageData.alignType == 3 %}
+            float:right;
+        {% endif %}
+        margin-bottom : {{ pageData.boxMarginBottom }}px;
+    }
+    [data-box="coupon-{{ pageInstanceId }}-1"] .coupon-body .coupon-top{
+        font-size:{{ pageData.couponTextSize }}px;
+        color:{{ pageData.couponTextColor }};
+    }
+    [data-box="coupon-{{ pageInstanceId }}-1"] .coupon-body .coupon-layout .coupon-btn{
+        color: {{ pageData.btnTextColor }};
+        width:{{ pageData.btnWidth }}px;
+        height:{{ pageData.btnHeight }}px;
+        line-height: {{ pageData.btnHeight }}px;
+        background-color:{{ pageData.btnBackgroundColor }};
+        font-size:{{ pageData.btnTextSize }}px;
+        {% if data.btnBackgroundImage %}background-image: url("{{ pageData.btnBackgroundImage }}");{% endif %}
+        border-radius : {{ pageData.btnRadius }}px;
+    }
+    [data-box="coupon-{{ pageInstanceId }}-1"] .coupon-body .coupon-bottom .coupon-text{
+        font-size:{{ pageData.countDownTitleTextSize }}px;
+        color:{{ pageData.countDownTitleTextColor }};
+    }
+    [data-box="coupon-{{ pageInstanceId }}-1"] .coupon-body .coupon-time-box strong{
+        font-size:{{ pageData.timeSize }}px;
+        color:{{ pageData.countDownTextColor }};
+        border-radius:{{ pageData.countDownRadius }}px;
+        width:{{ pageData.countDownWidth }}px;
+        height:{{ pageData.countDownHeight }}px;
+        line-height: {{ pageData.countDownHeight }}px;
+        background:{{ pageData.countDownBackgroundColor }};
+    }
+</style>

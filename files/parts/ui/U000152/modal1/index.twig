@@ -1,0 +1,100 @@
+
+{% if lang %}
+{% else %}
+    {% set lang = 'en' %}
+{% endif %}
+
+{% set goodsData = {
+	titleTxtxStart: get_component_trans(lang,'gift_start') ,
+	titleTxtxEnd: get_component_trans(lang,'gift_end') ,
+	shopTitleColor : data.shopTitleColor | default('#333333'),
+	purchasePriceTextSizeize : data.purchasePriceTextSizeize | default(20),
+} %}
+
+{% set _tabs = data.goodsID | default([{name:'订单满$xx1,加$Y1换购一下产品',ids:''},{name:'订单满$xx2,加$Y2换购一下产品',ids:''}]) %}
+<div class="geshop-component-box component-drag clearfix geshop-gift-async   geshop-U000152-modal1 tab{{pageInstanceId}} geshop-U000152-modal1-{{pageInstanceId}}" data-gid="U000152_default" data-key="U000152" data-module="U000152"
+	data-id="{{ pageInstanceId }}" attr="nav_flag" data-static-domain="{{staticDomain}}">
+	{{ include('style.twig') }}
+
+	<input class="hidden-input" type="hidden"  serverTime="{{ serverTime }}"
+		defaultImage="{{ data.default.clothes }}"
+		productsNum="{{ data.productsNum | default(4)}}" defaultImage="{{ data.default.lazyImg|default(data.default.clothes) }}" />
+	<div class="tabs-list" style="display:none;">{{ _tabs | json_encode }}</div>
+	<div class="clearfix" style="background: {{ data.box_bg_color |default('#F8F8F8') }};width: 1200px;margin:0 auto;">
+		<input type="hidden" class="pagesize" value="{{data.productsNum|default(20)}}" failedText="{{ get_component_trans(lang,'failed') }}" />
+		<div class="swiper-container">
+			<div class="swiper-wrapper geshop-tabs swiper-no-swiping">
+				{% for item in _tabs %}
+					<div class="swiper-slide  {% if loop.first %} swiper-slide-active-1 {% endif %}" >
+						<div class="swiper-slide-item-1" style="text-align:
+						center;" index="{{ loop.index - 1 }}">
+							<span>{{ item.name }}</span>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			{% if _tabs | length > 2 %}
+				<div class="swiper-button-prev-1 off">
+				</div>
+				<div class="swiper-button-next-1" >
+				</div>
+			{% endif %}
+		</div>
+
+		<div class="geshop-col-12">
+			<div class="gs-goodsWrap" data-gid="gs-goods-rwDefult" style="">
+				{% for tab in _tabs %}
+					<ul class="clearfix goodList tab-ul-item" data-inde="{{ loop.index - 1 }}">
+
+					</ul>
+				{% endfor %}
+			</div>
+		</div>
+		<ul style="display:none;" class="pc-gift-template" >
+			<li class="geshop-U000152-modal1-list geshop-col-3 goods-item" activity-number="\{\{activity_number\}\}" activity-volume-number="\{\{activity_volume_number\}\}">
+				<div class="geshop-U000152-modal1-list-img">
+					<a href="\{\{url_title\}\}" class="logsss_event"
+					   data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','
+									ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'\{\{goods_sn\}\}',
+									'cporder':'{{ layoutIndex }}','rank':'\{\{index\}\}'},'skuinfo':{'sku':'\{\{goods_sn\}\}','pam':'0','pc':'\{\{catid\}\}','k':'\{\{warecode\}\}'} }"
+					>
+							<span data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'\{\{goods_sn\}\}','cporder':'{{ layoutIndex }}','rank':'\{\{index\}\}'} }">
+								{% include geshop.default.pc.image_goods with { params: { src: "\{\{goods_img\}\}",lazy: data.isEditEnv != 1  }} %}
+							</span>
+
+
+					</a>
+					{% if item.goods_number is not empty %}
+						{% include geshop.default.pc.sold_out with { params: { show:  false , text: get_component_trans(lang,'sold_out') }} %}
+					{% endif %}
+
+
+					{# 过期活动 #}
+					<div class="goods-mask act-end">
+						<span>{{ get_component_trans(lang,'btn_ended') }}</span>
+					</div>
+					{# 活动卖完 #}
+					<div class="goods-mask act-sale-out">
+						<span>{{ get_component_trans(lang,'failed') }}</span>
+					</div>
+				</div>
+				<div class="desc-box">
+					<div class="trans-box">
+						<div class="geshop-U000152-modal1-list-title">
+							<a href="\{\{url_title\}\}">\{\{goods_title\}\}</a>
+						</div>
+						<div class="gs-shop-price">
+							<span>{{ data.purchasePriceText | default('Now Only') }}</span> {% include geshop.default.pc.shop_price with { params:{ value:  "\{\{increaseamount\}\}" }} %}
+						</div>
+						<div class="markt-price">
+							{% include geshop.default.pc.market_price with { params: { value: "\{\{shop_price\}\}" }} %}
+						</div>
+					</div>
+				</div>
+				<div>
+					{% include geshop.default.pc.button_buy with { params: { href: "\{\{url_title\}\}" }} %}
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>

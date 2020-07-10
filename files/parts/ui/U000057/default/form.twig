@@ -1,0 +1,338 @@
+{% set 
+  viewBorderSArr = [ {name:'无',value:'none'}, {name:'实线',value:'solid'}, {name:'虚线',value:'dashed'}, {name:'点状',value:'dotted'},
+  {name:'双线',value:'double'}, {name:'继承上级',value:'inherit'}, ]
+%} 
+
+{% set pageData = { 
+  viewBorderC:data.viewBorderC is not null?data.viewBorderC:'#333333',
+  height:data.height is not null?data.height:'40', 
+  lineHeight:data.lineHeight is not null?data.lineHeight:'40', 
+  viewPaddingLR:data.viewPaddingLR is not null?data.viewPaddingLR:'0', 
+  viewPaddingTB:data.viewPaddingTB is not null?data.viewPaddingTB:'0', 
+  bgColor:data.bgColor is not null?data.bgColor:'#333333', 
+  textColor:data.textColor is not null?data.textColor:'#ffffff', 
+  viewPaddingTB:data.viewPaddingTB is not null?data.viewPaddingTB:'0', 
+  fontFamily:data.fontFamily is not null?data.fontFamily:'OpenSans-Semibold,arial,serif',
+  fontSize:data.fontSize is not null?data.fontSize:'16',
+  boxMarginTop:data.boxMarginTop is not null?data.boxMarginTop:'15',
+  boxMarginBottom:data.boxMarginBottom is not null?data.boxMarginBottom:'15',
+  boxMarginLeft:data.boxMarginLeft is not null?data.boxMarginLeft:'15',
+  boxMarginRight:data.boxMarginRight is not null?data.boxMarginRight:'15'
+}
+%}
+
+<h3 class='component-form-title'>跑马灯组件设置
+  <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+    <i class="el-icon-close"></i>
+  </a>
+</h3>
+
+{{include ('@app/htdocs/resources/template/pc/templateList/index.twig')}}
+
+<div class="component-form-setting-item component-form-advanced-item">
+  <h4 class="title">
+    <i class="layui-icon back" id="js_advanced_baseConfig">&#xe603;</i>高级设置</h4>
+  <div class="layui-collapse advanced-setting-container">
+    <div class="layui-colla-item">
+      <h2 class="layui-colla-title">基础设置</h2>
+      <div class="layui-colla-content layui-show">
+        <div class="layui-form-item">
+          <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 高度(px)</label>
+          <div class="layui-input-block">
+            <input type="text" name="height" autocomplete="off" class="layui-input" value="{{ pageData.height}}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 字体大小(px)</label>
+          <div class="layui-input-block">
+            <input type="text" name="fontSize" autocomplete="off" class="layui-input" value="{{ pageData.fontSize}}">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="layui-colla-item">
+      <h2 class="layui-colla-title">边距设置</h2>
+      <div class="layui-colla-content">
+        <div class="layui-form-item">
+          <label class="form-item-label">
+            <span class="layui-badge-dot layui-bg-orange"></span> 上外边距(px)</label>
+          <div class="layui-input-block">
+            <input type="text" name="boxMarginTop" autocomplete="off" class="layui-input" value="{{ pageData.boxMarginTop |default(0) }}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="form-item-label">
+            <span class="layui-badge-dot layui-bg-orange"></span> 下外边距(px)</label>
+          <div class="layui-input-block">
+            <input type="text" name="boxMarginBottom" autocomplete="off" class="layui-input" value="{{ pageData.boxMarginBottom |default(0)  }}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="form-item-label">
+            <span class="layui-badge-dot layui-bg-orange"></span> 左外边距(px)</label>
+          <div class="layui-input-block">
+            <input type="text" name="boxMarginLeft" autocomplete="off" class="layui-input" value="{{ pageData.boxMarginLeft |default(0) }}">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="form-item-label">
+            <span class="layui-badge-dot layui-bg-orange"></span> 右外边距(px)</label>
+          <div class="layui-input-block">
+            <input type="text" name="boxMarginRight" autocomplete="off" class="layui-input" value="{{ pageData.boxMarginRight |default(0) }}">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="layui-colla-item">
+      <h2 class="layui-colla-title">特殊字体设置</h2>
+      <div class="layui-colla-content">
+        <div class="layui-form-item">
+          <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 字体</label>
+          <div class="layui-input-block">
+            <input type="text" name="fontFamily" autocomplete="off" class="layui-input" value="{{ pageData.fontFamily}}">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="layui-colla-item">
+      <h2 class="layui-colla-title">背景图设置</h2>
+      <div class="layui-colla-content">
+        <div class="layui-form-item">
+          <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 背景图宽度(px)</label>
+          <div class="layui-input-block rest-input">
+            <input type="text" name="ImgWidth" autocomplete="off" class="layui-input" value="{{ data.ImgWidth }}">
+          </div>
+        </div>
+
+        <div class="layui-form-item">
+          <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 背景图高度(px)</label>
+          <div class="layui-input-block rest-input">
+            <input type="text" name="ImgHeight" autocomplete="off" class="layui-input" value="{{ data.ImgHeight }}">
+          </div>
+        </div>
+
+        <div class="geshop-first-value">
+          <a href="javascript:;" class="img_openResource" style="width: 78px; font-size: 32px; line-height: 30px;">
+            <span>
+              {% if data.bgimgSrc is empty %}
+              <img src="/resources/images/carousel-image/add.png">
+              {% else %}
+                <img src="{{ data.bgimgSrc}}" width="78" height="38">
+              {% endif %}
+            </span>
+          </a>
+          <input type="text" lay-verify="required" autocomplete="off" class="layui-input select-img" name="bgimgSrc" style="margin-left: 2px;" value="{{ data.bgimgSrc }}">
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<div class="component-form-setting-item component-form-configure-item">
+  <h4 class="title">常用配置</h4>
+  <div class="layui-field-box" style="padding-top:0">
+
+    <div class="layui-tab layui-tab-brief" style="margin-top:0" lay-filter="docDemoTabBrief">
+      <ul class="layui-tab-title">
+        <li class="layui-this">跑马灯信息配置</li>
+        <li>样式设置</li>
+      </ul>
+      
+      <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+          <div class="img-table">
+            <input type="hidden" name="marquee">
+            <div class="layui-form-item img-item layui-hide marquee-component-configure-item">
+              <div class='layui-input-block layui-inline rest-input'>
+                <div class="layui-row">
+                  <div class="layui-col-xs12" style="float:right">
+                    <div class="layui-form-item">
+                      <label class="layui-form-label" style="text-align:left"><span class="layui-badge-dot layui-bg-orange"></span> 文案</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="text" required autocomplete="off" class="layui-input Unwanted marquee-text-input" style="width:100%" value="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p class="action-bar" style="width:300px">
+                  <span class="img-btn">
+                    <i class='icon-up'></i>
+                    <b class="tips">上移</b>
+                  </span>
+                  <span class="img-btn">
+                    <i class='icon-down'></i>
+                    <b class="tips">下移</b>
+                  </span>
+                  <span class="img-btn">
+                    <i class='icon-delete'></i>
+                    <b class="tips">删除</b>
+                  </span>
+                </P>
+              </div>
+            </div>
+
+            <div class='img-body'>
+              {% for key, item in data.marquee|default(['']) %}
+              <div class="layui-form-item item-flag marquee-component-configure-item">
+                  <div class='layui-input-block rest-input'>
+                    <div class="layui-row">
+                    <div class="layui-col-xs12" style="float:right">
+                      <div class="layui-form-item">
+                        <label class="layui-form-label" style="text-align:left"><span class="layui-badge-dot layui-bg-orange"></span> 文案</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="text" required autocomplete="off" class="layui-input Unwanted marquee-text-input" style="width:100%" value="{{ item.text }}">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="action-bar" style="width:300px">
+                    <span class="img-btn">
+                      <i class='icon-up'></i>
+                      <b class="tips">上移</b>
+                    </span>
+                    <span class="img-btn">
+                      <i class='icon-down'></i>
+                      <b class="tips">下移</b>
+                    </span>
+                    <span class="img-btn">
+                      <i class='icon-delete'></i>
+                      <b class="tips">删除</b>
+                    </span>
+                  </p>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="layui-form-item tab-add-btn">
+              <span class="el-button el-button--primary el-button--small" id="img_tab_add">新增</span>
+            </div>
+          </div>
+        </div>
+        <div class="layui-tab-item">
+
+          <div class="layui-form-item">
+            <label class="form-item-label public-data"><span class="layui-badge-dot layui-bg-orange"></span> 文案颜色</label>
+            <div class="layui-input-block">
+              <div class="color-picker-selector" data-hidden-name="textColor">
+                <div style="background-color: {{ pageData.textColor }};"></div>
+              </div>
+              <input type="text" class="layui-input" name="textColor" autocomplete="off" value="{{ pageData.textColor }}">
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 背景颜色</label>
+            <div class="layui-input-block">
+              <div class="color-picker-selector" data-hidden-name="bgColor">
+                <div style="background-color: {{ pageData.bgColor }};"></div>
+              </div>
+              <input type="text" class="layui-input" name="bgColor" autocomplete="off" value="{{ pageData.bgColor }}">
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 边框颜色</label>
+            <div class="layui-input-block">
+              <div class="color-picker-selector" data-hidden-name="viewBorderC">
+                <div style="background-color: {{ pageData.viewBorderC }};"></div>
+              </div>
+              <input type="text" class="layui-input" name="viewBorderC" autocomplete="off" value="{{ pageData.viewBorderC }}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix">
+    <a href="javascript:;" id="js_moreConfig" style="color:#1E9FFF">高级设置</a>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <span type="button" class="layui-btn layui-btn-normal" id="img_submit">提交</span>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm" style="display:none">提交</button>
+</div>
+
+<script>
+
+  var swapItems = function (arr, index1, index2) {　　
+    arr[index1] = arr.splice(index2, 1, arr[index1])[0];　　
+    return arr;
+  };
+
+  function upData(arr, index) {　　
+    if (arr.length > 1 && index !== 0) {　　　　
+      newArr = swapItems(arr, index, index - 1);
+      return newArr;　　
+    }
+  };
+
+  function downData(arr, index) {
+    if (arr.length > 1 && index !== (this.arr.length - 1)) {　　　　
+      newArr = swapItems(arr, index, index + 1);
+      return newArr;　　
+    }
+  };
+
+  var $imgTable = $('.img-table');
+  var flagIndex = 0; 
+  {#新增选择图片栏#}
+  $('#img_tab_add').on('click', function () {
+    flagIndex++;
+    debugger;
+    var clone = $('.img-item', $imgTable).clone();
+    clone.removeClass('img-item layui-hide');
+    clone.find('input[name=imgSrc]').attr('name', flagIndex);
+    $('.img-body', $imgTable).append(clone);
+  });
+
+  {# 获取当前模板name #}
+  $('#current_template_name').text($('input[name="tpl_id"]').attr('title'));
+
+  $('#img_submit').on('click', function () {
+    var marqueeArr = [];
+    $('.marquee-component-configure-item').each(function (index, element) {
+      var self = $(this);
+      var $index = self.find('.marquee-index-input').val();
+      var $text = self.find('.marquee-text-input').val();
+      if ($index || $text) {
+        marqueeArr.push({
+          index: $index,
+          text: $text
+        })
+      }
+    });
+    $('.img-table input[name=marquee]').val(JSON.stringify(marqueeArr));
+    $(this).next('button').trigger('click');
+  });
+
+  $('body').on('click', '.icon-up', function () {
+    var target = $(this).closest('.layui-form-item');
+
+    if (target.prev('.layui-form-item').length > 0) {
+      target.prev('.layui-form-item').before(target.clone());
+      target.remove();
+    }
+  });
+  $('body').on('click', '.icon-up', function () {
+    var target = $(this).closest('.layui-form-item');
+
+    if (target.prev('.layui-form-item').length > 0) {
+      target.prev('.layui-form-item').before(target.clone());
+      target.remove();
+    }
+  });
+  $('body').on('click', '.icon-down', function () {
+    var target = $(this).closest('.layui-form-item');
+    if (target.next('.layui-form-item').length > 0) {
+      target.next('.layui-form-item').after(target.clone());
+      target.remove();
+    }
+  });
+  $('body').on('click', '.icon-delete', function () {
+    var target = $(this).closest('.layui-form-item');
+    target.remove();
+  });
+</script>

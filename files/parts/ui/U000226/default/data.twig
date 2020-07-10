@@ -1,0 +1,183 @@
+<section>
+    <div class="slider-list-setting component-form-setting-ite component-form-configure-item">
+    	<h4 class="column-title">基础配置</h4>
+		<div class="layui-tab layui-tab-brief">
+			<ul class="layui-tab-title">
+				<li class="layui-this">PC</li>
+				<li>PAD</li>
+				<li>M</li>
+			</ul>
+			<div class="layui-tab-content">
+				<div class="layui-tab-item layui-show">
+					<div class="layui-form-item">
+						<label class="layui-form-label">组件上边距(px)</label>
+						<div class="layui-input-block">
+							<input class="layui-input" type="text" name="pc_marginTop" value="{{ data.pc_marginTop|default(0) }}">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">组件下边距(px)</label>
+						<div class="layui-input-block">
+							<input type="text" name="pc_marginBottom" autocomplete="off" class="layui-input" value="{{ data.pc_marginBottom|default(32) }}">
+						</div>
+					</div>
+				</div>
+				<div class="layui-tab-item">
+					<div class="layui-form-item">
+						<label class="layui-form-label">组件上边距(px)</label>
+						<div class="layui-input-block">
+							<input class="layui-input" type="text" name="pad_marginTop" value="{{ data.pad_marginTop|default(0) }}">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">组件下边距(px)</label>
+						<div class="layui-input-block">
+							<input type="text" name="pad_marginBottom" autocomplete="off" class="layui-input" value="{{ data.pad_marginBottom|default(32) }}">
+						</div>
+					</div>
+				</div>
+				<div class="layui-tab-item">
+					<div class="layui-form-item">
+						<label class="layui-form-label">组件上边距(px)</label>
+						<div class="layui-input-block">
+							<input class="layui-input" type="text" name="m_marginTop" value="{{ data.m_marginTop|default(0) }}">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">组件下边距(px)</label>
+						<div class="layui-input-block">
+							<input type="text" name="m_marginBottom" autocomplete="off" class="layui-input" value="{{ data.m_marginBottom|default(20) }}">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<h4 class="column-title">内容配置</h4>
+			<div class="layui-form-item">
+                <label class="layui-form-label">pc/pad页面链接是否新窗口打开</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="is_open_new" value="_blank" title="是" {% if data.is_open_new | default('_blank') == '_blank'%} checked="checked" {% endif %}>
+                    <input type="radio" name="is_open_new" value="_self" title="否" {% if data.is_open_new == '_self' %} checked="checked" {% endif %}>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">m页面链接是否新窗口打开</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="is_open_new_m" value="_blank" title="是" {% if data.is_open_new_m == '_blank' %} checked="checked" {% endif %}>
+                    <input type="radio" name="is_open_new_m" value="_self" title="否" {% if data.is_open_new_m | default('_self') == '_self' %} checked="checked" {% endif %}>
+                </div>
+            </div>
+			<div class="layui-tab layui-tab-brief">
+				<ul class="layui-tab-title">
+					<li class="layui-this">PC</li>
+					<li>PAD</li>
+					<li>M</li>
+				</ul>
+                
+
+
+				<div class="layui-tab-content">
+					<div class="layui-tab-item layui-show" data-type="pc">
+                        <input class="hidden_data" data-type="pc" name="pc_datas" type="hidden">
+                        {% for key, item in data.pc_datas | default(0..1) %} 
+                            <div class="slider-item">
+                                <p class="nav-title">图片{{key+1}}</p>
+                                <div class="layui-block">
+                                    
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">图片地址</label>
+                                        <div class="layui-input-block">
+                                            <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                                            <input class="layui-input Unwanted slider-img" type="text" name="pc_slider_bg{{key+1}}" value="{{item.imgUrl}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-form-item">
+                                        <label class="form-item-label">跳转链接</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="slider_link" class="Unwanted layui-input"  type="text" value="{{item.imgLink}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                    
+                                <div class="geshop-third-value" data-type="pc">
+                                    <span class="img-btn up-class"><i class='icon-up'></i><b class="tips">上移</b></span>
+                                    <span class="img-btn down-class"><i class='icon-down'></i><b class="tips">下移</b></span>
+                                    <span class="img-btn remove-class"><i class='icon-delete'></i><b class="tips">删除</b></span>
+                                    <span class="img-btn add-class"><i class='icon-add'></i><b class="tips">新增</b></span>
+                                </div>
+                            </div>
+                            
+                        {% endfor %}
+					</div>
+					<div class="layui-tab-item" data-type="pad">
+                        <input class="hidden_data" data-type="pad" name="pad_datas" type="hidden">
+						{% for key, item in data.pad_datas | default(0..1) %} 
+                            <div class="slider-item">
+                                <p class="nav-title">图片{{key+1}}</p>
+                                <div class="layui-block">
+                                    
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">图片地址</label>
+                                        <div class="layui-input-block">
+                                            <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                                            <input class="layui-input Unwanted slider-img" type="text" name="pad_slider_bg{{key+1}}" value="{{item.imgUrl}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-form-item">
+                                        <label class="form-item-label">跳转链接</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="slider_link" class="Unwanted layui-input"  type="text" value="{{item.imgLink}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                    
+                                <div class="geshop-third-value" data-type="pad">
+                                    <span class="img-btn up-class"><i class='icon-up'></i><b class="tips">上移</b></span>
+                                    <span class="img-btn down-class"><i class='icon-down'></i><b class="tips">下移</b></span>
+                                    <span class="img-btn remove-class"><i class='icon-delete'></i><b class="tips">删除</b></span>
+                                    <span class="img-btn add-class"><i class='icon-add'></i><b class="tips">新增</b></span>
+                                </div>
+                            </div>
+                            
+                        {% endfor %}
+					</div>
+					<div class="layui-tab-item" data-type="m">
+                        <input class="hidden_data" data-type="m" name="m_datas" type="hidden">
+						{% for key, item in data.m_datas | default(0..1) %} 
+                            <div class="slider-item">
+                                <p class="nav-title">图片{{key+1}}</p>
+                                <div class="layui-block">
+                                    
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">图片地址</label>
+                                        <div class="layui-input-block">
+                                            <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                                            <input class="layui-input Unwanted slider-img" type="text" name="m_slider_bg{{key+1}}" value="{{item.imgUrl}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-form-item">
+                                        <label class="form-item-label">跳转链接</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="slider_link" class="Unwanted layui-input"  type="text" value="{{item.imgLink}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                    
+                                <div class="geshop-third-value" data-type="m">
+                                    <span class="img-btn up-class"><i class='icon-up'></i><b class="tips">上移</b></span>
+                                    <span class="img-btn down-class"><i class='icon-down'></i><b class="tips">下移</b></span>
+                                    <span class="img-btn remove-class"><i class='icon-delete'></i><b class="tips">删除</b></span>
+                                    <span class="img-btn add-class"><i class='icon-add'></i><b class="tips">新增</b></span>
+                                </div>
+                            </div>
+                            
+                        {% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+</section>

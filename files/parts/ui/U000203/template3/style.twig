@@ -1,0 +1,130 @@
+{% set space = '#U000203_'~pageInstanceId %}
+{% set body =  space~' .geshop_u000203_template3_body' %}
+
+{{ body }} {
+    background-color: {{ data.box_bg_color | default('#F8F8F8') }};
+}
+
+{# 导航样式 #}
+{{ body }} .nav_tab .pc_nav {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    {% if data.tab_cont_bg_img is not empty %}
+        background-image: url('{{ data.tab_cont_bg_img }}');
+        background-repeat: no-repeat;
+        background-size: 100%;
+    {% else %}
+        background-color: {{ data.tab_cont_bg_color | default('#F8F8F8') }};
+    {% endif %}
+}
+
+{{ body }} .nav_tab li{
+    background-color:{{ data.tab_bg_color | default('#FFFFFF') }};
+    color: {{ data.tab_font_color | default('#000000') }};
+    border: 1px solid {{ data.tab_border_color | default('#000000') }};
+}
+
+{{ body }} .nav_tab ul li:hover{
+    background-color:{{ data.tab_check_bg_color | default('#000000') }};
+    color: {{ data.tab_check_font_color | default('#FFFFFF') }};
+    border: 1px solid {{ data.tab_check_border_color | default('#000000') }};
+}
+
+{{ body }} .nav_tab ul li.is_check{
+    background-color:{{ data.tab_check_bg_color | default('#000000') }};
+    color: {{ data.tab_check_font_color | default('#FFFFFF') }};
+    border: 1px solid {{ data.tab_check_border_color | default('#000000') }};
+}
+
+
+{# M端导航 #}
+{{ body }} .m_nav_tab .m_swiper {
+    background-color: {{ data.m_tab_bg_color | default('#FFFFFF') }};
+}
+
+{{ body }} .m_nav_tab .tab_nav_box {
+    background-color: {{ data.m_tab_bg_color | default('#FFFFFF') }};
+}
+
+{{ body }} .m_nav_tab .swiper-slide{
+    color: {{ data.m_tab_font_color | default('#333333') }};
+}
+
+{{ body }} .m_nav_tab .is_check{
+    background-color:{{ data.m_tab_check_bg_color | default('#333333') }};
+    color: {{ data.m_tab_check_font_color | default('#FFFFFF') }};
+}
+
+{{ body }} .m_nav_tab .gs-icon-arrow-down {
+    color: {{ data.m_tab_icon_color | default('#333333') }};
+}
+
+{# 展开tab #}
+{{ body }} .expend_ul {
+    width: 100%;
+    padding: 11px 6px 0px 6px;
+    box-sizing: border-box;
+    background-color: {{ data.m_tab_area_bg_color | default('#FFFFFF') }};
+}
+
+{{ body }} .expend_ul li {
+    display: inline-block;
+    background-color: {{ data.m_tab_bg_color | default('#FFFFFF') }};
+    text-align: center;
+    line-height: 30px;
+    box-sizing: border-box;
+    border: 1px solid {{ data.m_tab_border_color | default('#999999') }};
+    margin-bottom: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: break-word;
+    overflow:hidden;
+    padding: 0 12px;
+    font-size: 13px;
+    color: {{ data.m_tab_font_color | default('#333333') }};
+}
+
+{{ body }} .expend_ul li.is_check {
+    border: 1px solid {{ data.m_tab_check_border_color | default('#999999') }};
+}
+
+{% if data.m_tab_show_num == 2 %}
+    {{ body }} .expend_ul li {
+        width: calc((100% - 16px) / 2);
+        margin-right: 4px;
+        margin-left: 4px;
+    }
+{% endif %}
+
+{% if data.m_tab_show_num == 3 %}
+    {{ body }} .expend_ul li {
+        width: calc((100% - 24px) / 3);
+        margin-right: 4px;
+        margin-left: 4px;
+    }
+{% endif %}
+
+{% if data.m_tab_show_num == 4 %}
+    {{ body }} .expend_ul li {
+        width: calc((100% - 32px) / 4);
+        margin-right: 4px;
+        margin-left: 4px;
+    }
+{% endif %}
+
+{# 分页 #}
+{{ body }} .GESHOP_pagination li{
+    color: {{ data.page_color | default('#000000') }};
+}
+{{ body }} .GESHOP_pagination .active{
+    border:1px solid {{ data.page_color | default('#000000') }};
+}
+
+{# view more #}
+{{ body }} .view_more{
+    background-color: {{ data.m_btn_bg_color | default('#FFFFFF') }};
+    color: {{ data.m_btn_font_color | default('#000000') }};
+    border-radius: {{ data.m_btn_radius_size | default('2') }}px;
+    border:1px solid {{ data.m_btn_border_color | default('#000000') }};
+}

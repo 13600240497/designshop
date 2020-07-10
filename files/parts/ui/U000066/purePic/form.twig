@@ -1,0 +1,72 @@
+
+<h3 class='component-form-title'>标题组件配置
+  <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+    <i class="el-icon-close"></i>
+  </a>
+</h3>
+
+{{include ('@app/htdocs/resources/template/pc/templateList/index.twig')}}
+
+<div class="component-form-setting-item component-form-configure-item">
+  <h4 class="title">常用配置</h4>
+  <div class="layui-field-box">
+    <div class="layui-form-item">
+      <label class="form-item-label">标题栏高度(px)</label>
+      <div class="layui-input-block">
+        <input type="text" name="boxHeight" autocomplete="off" class="layui-input" value="{{ data.boxHeight|default(120) }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label">下间距(px)</label>
+      <div class="layui-input-block">
+        <input type="text" name="boxMarginBottom" autocomplete="off" class="layui-input" value="{{ data.boxMarginBottom|default(10) }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label">背景图片<span class="geshop-prompt">(建议宽度小于1200px,高度低于标题栏高度)</span></label>
+      <div class="layui-input-block">
+        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+        <input type="text" name="imgSrc" autocomplete="off" class="layui-input" value="{{ data.imgSrc }}">
+      </div>
+    </div>
+   {#  <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 导航标题<span class="geshop-prompt">(用于导航定位显示内容)</span></label>
+      <div class="layui-input-block">
+        <input type="text" name="titleText" autocomplete="off" class="layui-input" value="{{ data.titleText }}" data-public-tag="true">
+      </div>
+    </div> #}
+     <div class="layui-form-item">
+      <label class="form-item-label public-data"><span class="layui-badge-dot layui-bg-orange"></span> 标题文案导航命名<span class="geshop-prompt">(用于导航定位显示内容)</span></label>
+      <div class="layui-input-block">
+        <input type="text" name="titleNavText" autocomplete="off" class="layui-input" value="{{ data.titleNavText }}" data-public-tag="true">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label">标题栏链接</label>
+      <div class="layui-input-block">
+        <input type="text" name="viewHref" autocomplete="off" class="layui-input" value="{{ data.viewHref }}" data-public-tag="true">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>
+
+<script>
+  $('.js_submitDesignForm').click(function(){
+    var title = $("input[name='titleNavText']").val();
+    if ( title == '') {
+      layer.msg('请先填写导航标题，不然无法进行导航');
+      return false;
+    };
+    if(title.length > 100) {
+      layer.msg('导航文案不能超过100个字符');
+      return false;
+    };
+  });
+</script>
+
+

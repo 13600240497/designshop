@@ -1,0 +1,17 @@
+<div class="geshop-component-box component-drag" data-key="U000025" data-gid="U000025_timezone" data-id="{{ pageInstanceId }}">
+    <div class="initImgSrc" style="
+		{% if data.boxMarginTop %}margin-top: {{ data.boxMarginTop }}px;{% endif %}
+		{% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}
+        background-image: url({% if data.imgSrc %}{{ data.imgSrc }}{% else %} {{ data.default.banner }}{% endif %});
+        background-position: center;
+        background-repeat: no-repeat;
+        height: {{ data.imgHeight | default(500) }}px;
+    "></div>
+
+    <div style="display:none" class="js_geshopTimeZoneBanner" >
+        {% for item in data.imgItem %}
+            {{item.start_time}} - {{item.end_time}}&{{item.imgSrc}}#
+        {% endfor %}
+    </div>
+</div>
+

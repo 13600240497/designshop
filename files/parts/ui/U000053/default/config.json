@@ -1,0 +1,31 @@
+{
+	"name": "PC countdown",
+	"version": "v1.0.0.1",
+	"description": "PC countdown",
+	"author": "xingtao",
+	"commjs": {
+		"jquery": true
+	},
+	"commcss": {
+		"main": true
+	},
+	"min-width": "auto",
+	"min-height": "inherit",
+  "fields": {
+		"left_time": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "count_textStatus": { "is_public": "1", "is_m": "0", "is_app": "1" },
+    "serverTime": { "is_public": "1", "is_m": "1", "is_app": "1" },
+    "dataStartTime": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"dataEndTime": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"downBgC": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "downDateRange": { "is_public": "1", "is_m": "1", "is_app": "1" },
+    "downCl": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "downTimeBgC": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "downFtC": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "downBfText": { "is_public": "1", "is_m": "1", "is_app": "1" },
+    "downIngText": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"downAfText": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"downFtS": { "is_public": "0", "is_m": "0", "is_app": "1" },
+		"downTimeFtS": { "is_public": "0", "is_m": "0", "is_app": "1" }
+  }
+}

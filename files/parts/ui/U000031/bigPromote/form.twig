@@ -1,0 +1,319 @@
+
+{%
+	set fontFamily = [
+		{name:'OpenSans-Semibold (zaful)',value:'OpenSans-Semibold'},
+  	{name:'OpenSans-Bold (zaful)',value:'OpenSans-Bold'},
+  	{name:'OpenSans-Regular (zaful)',value:'OpenSans-Regular'},
+  	{name:'Trebuchet MS (RG)',value:'Trebuchet MS'},
+  	{name:'Tahoma (RW)',value:'Tahoma'},
+  	{name:'Arial (RW)',value:'Arial'},
+  	{name:'Helvetica (RW)',value:'Helvetica'},
+  	{name:'sans-serif (RW)',value:'sans-serif'},
+  	{name:'AvenirLTStd_Book (RW)',value:'AvenirLTStd_Book'},
+  	{name:'Georgia (RW)',value:'Georgia'},
+  	{name:'Times New Roman (RW)',value:'Times New Roman'},
+  	{name:'Verdana (RW)',value:'Verdana'},
+	]
+%}
+
+{{include ('@app/files/parts/temp/goods_manager.twig')}}
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>商品列表组件配置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+  <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+		<div class="layui-tab">
+			<ul class="layui-tab-title">
+				<li class="layui-this">模板选择</li>
+				<li>商品数据</li>
+				<li>样式设置</li>
+			</ul>
+			<div class="layui-tab-content layui-tab-content-parent">
+				<div class="layui-tab-item layui-show">
+						<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+						{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				</div>
+				<div class="layui-tab-item radio-tab-true">
+					<div class="layui-form-item">
+						<label class="gs-label-block">商品数据</label>
+						<div class="layui-input-block">
+							<input type="radio" name="goodsDataFrom" lay-filter="goodsDataFrom" value="2" title="选品系统" {% if data.goodsDataFrom == '2' %} checked="checked" {% endif %}>
+							<input type="radio" name="goodsDataFrom" lay-filter="goodsDataFrom" value="1" title="商品SKU" {% if data.goodsDataFrom == '1' or data.goodsDataFrom is empty %} checked="checked" {% endif %}>
+						</div>
+					</div>
+					<div class="radio-tab-group">
+						<div class="goods-hide {% if data.goodsDataFrom|default('1') == '2' %}goods-visible{% endif %}" data-target="goodsDataFrom-2">
+						{# 选品系统手动自动方式 start #}
+							{% include '@app/files/parts/temp/choose_products_tpl.twig' with{'ipsMethodsArr':['1','2','3','4'],'ipsDefault':'2'} %}
+						{# 选品系统手动自动方式 end #}
+						</div>
+						<div class="goods-hide {% if data.goodsDataFrom|default('1') == '1' %}goods-visible{% endif %}" data-target="goodsDataFrom-1">
+							<div class="layui-form-item" >
+								<label class="gs-label-block gs-label-blank"></label>
+								<div class="layui-input-block">
+									<textarea placeholder="请输入商品编号（SKU ID），编号与编号间用英文逗号隔开" class="layui-textarea" name="goodsSKU" data-public-tag="true">{{data.goodsSKU}}</textarea>
+								</div>
+								<span style="margin: 10px 0 10px 110px; display: block; color: #bbb;">"商品SKU"不可重复</span>
+							</div>
+							<div class="layui-form-item tab-add-btn">
+								<span class="el-button el-button--primary el-button--small" id="gs_getList" style="float:right">商品管理</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-tab-item">
+					<div class="layui-carousel" id="form_carousel">
+						<div carousel-item>
+							<div>
+								<fieldset class="layui-elem-field">
+									<legend>常用配置<span style="color:#A4A4A4;font-size:16px;"> (此组件只适用于通栏)</span></legend>
+									<div class="layui-field-box">
+										<div class="layui-form-item" style="margin-top:16px;">
+											<label class="layui-form-label">组件下边距(px)</label>
+											<div class="layui-input-block">
+												<input class="layui-input" type="text" name="marginBottom" value="{{ data.marginBottom|default(40) }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">组件背景颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="componentBgc">
+													<div style="background-color: {{ data.componentBgc|default('#ffffff') }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="componentBgc" autocomplete="off" value="{{ data.componentBgc|default('#ffffff') }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+                      <label class="layui-form-label">文字字体</label>
+                      <div class="layui-input-block">
+                        <select name="fontFamily" lay-verify="required" value="{{data.fontFamily }}">
+                        {% for item in fontFamily %}
+                          <option value="{{item.value}}" {% if item.value == data.fontFamily %}selected{% endif %}>{{item.name}}</option>
+                        {% endfor %}
+                        </select>
+                      </div>
+                    </div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">销售价文案</label>
+											<div class="layui-input-block">
+												<input class="layui-input" type="text" name="salePriceText" value="{{data.salePriceText|default('Now')}}" data-public-tag="true">
+											</div>
+										</div>
+										<div class="layui-form-item">
+          					  <label class="layui-form-label">是否显示折扣标</label>
+          					  <div class="layui-input-block">
+          					    <input type="radio" name="disVis" value="show" title="是"{% if data.disVis|default('show') == 'show' %} checked{% endif %}>
+          					    <input type="radio" name="disVis" value="hidden" title="否"{% if data.disVis|default('show') != 'show' %} checked{% endif %}>
+          					  </div>
+	  								</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">折扣标显示方式</label>
+											<div class="layui-input-block">
+												<input type="radio" name="discountType" data-public-tag="true" value="0" title="-**%" {% if data.discountType == '0' %} checked="checked" {% endif %}>
+												<input type="radio" name="discountType" data-public-tag="true" value="1" title="**%OFF" {% if data.discountType == '1' or data.discountType is empty %} checked="checked" {% endif %}>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<div class="text-right">
+									<button type="button" id="js_moreConfig" class="layui-btn layui-btn-normal layui-btn-sm">更多配置</button>
+								</div>
+							</div>
+							<div>
+								<div class="layui-tab layui-tab-vertical">
+									<ul class="layui-tab-title">
+										<li class="layui-this">商品信息配置</li>
+										<li>折扣标配置</li>
+									</ul>
+									<div class="layui-tab-content">
+										<div class="layui-tab-item layui-show">
+											<div class="layui-form-item">
+												<label class="layui-form-label">商品信息文字颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="inforColor">
+														<div style="background-color:{{ data.inforColor|default('#333333') }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="inforColor" autocomplete="off" value="{{ data.inforColor|default('#333333') }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">原价文字颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="originalPriceColor">
+														<div style="background-color:{{ data.originalPriceColor|default('#999999') }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="originalPriceColor" autocomplete="off" value="{{ data.originalPriceColor|default('#999999') }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">销售价文字大小(px)</label>
+												<div class="layui-input-block">
+													<input class="layui-input" type="text" name="salePriceFtS" value="{{ data.salePriceFtS|default(16) }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">销售价文字颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="salePriceColor">
+														<div style="background-color:{{ data.salePriceColor|default('#333333') }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="salePriceColor" autocomplete="off" value="{{ data.salePriceColor|default('#333333') }}">
+												</div>
+											</div>
+										</div>
+										<div class="layui-tab-item">
+											<div class="layui-form-item">
+          						  <label class="layui-form-label">折扣标位置</label>
+          						  <div class="layui-input-block">
+          						    <input type="radio" name="dislocation" value="right" title="右上角"{% if data.dislocation|default('right') == 'right' %} checked{% endif %}>
+          						    <input type="radio" name="dislocation" value="left" title="左上角"{% if data.dislocation|default('right') != 'right' %} checked{% endif %}>
+          						  </div>
+	  									</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">宽度(px)</label>
+												<div class="layui-input-block">
+													<input class="layui-input" type="text" name="disWidth" value="{{data.disWidth|default(90)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">高度(px)</label>
+												<div class="layui-input-block">
+													<input class="layui-input" type="text" name="disHeight" value="{{data.disHeight|default(90)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">折扣数值文字大小(px)</label>
+												<div class="layui-input-block">
+													<input class="layui-input" type="text" name="disFtS" value="{{data.disFtS|default(32)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">OFF文字大小(px)</label>
+												<div class="layui-input-block">
+													<input class="layui-input" type="text" name="disOffFtS" value="{{data.disOffFtS|default(28)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">文字颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="disTextColor">
+														<div style="background-color:{{ data.disTextColor|default('#ffffff') }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="disTextColor" autocomplete="off" value="{{ data.disTextColor|default('#ffffff') }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">背景颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="disTextBgc">
+														<div style="background-color:{{ data.disTextBgc|default('#333333') }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="disTextBgc" autocomplete="off" value="{{ data.disTextBgc|default('#333333') }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">背景图片</label>
+												<div class="layui-input-block">
+													<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+													<input class="layui-input" type="text" name="disBgImg" value="{{data.disBgImg}}">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="text-right">
+									<button type="button" id="js_baseConfig" class="layui-btn layui-btn-normal layui-btn-sm">基础配置</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+	<button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+		<span type="button" class="layui-btn layui-btn-normal" id="gs_submit">提交</span>
+	<button type="button" class="layui-btn layui-btn-normal js_submitDesignForm layui-hide">提交</button>
+</div>
+<script>
+	{# $('#gs_submit').on('click',function(){
+
+		$(".gs-select-box").each(function(index){
+			$('input[name=gsSelectLevel'+ index +']').val($(this).val());
+		});
+
+		var goodsDataFrom = $('input[name=goodsDataFrom]:checked').val();
+		var gsSelectLevel2 = $('input[name=gsSelectLevel2]').val();
+		if(goodsDataFrom == '2' && (!gsSelectLevel2 || gsSelectLevel2 == '00')){
+			layer.msg('请选择三级活动信息');
+			return false;
+		}
+		$(this).next('button').trigger('click');
+	});
+
+	$(function(){
+			$(".gs-select-box").each(function(index){
+				var val = $('input[name=gsSelectLevel'+ index +']').val();
+				$(this).val(val);
+		});
+	}); #}
+
+	$('.layui-textarea').on('blur',function(){
+		if($(this).val() != '') {
+			var $this = $(this);
+			var res = /(\s{5,1000})/g;
+			var reg = /\n/g;
+			var skuList = $(this).val().replace(res, ',').replace(reg, ',');
+			var skuArr = skuList.split(',');
+			if (!skuList) {
+				return false
+			}
+			if (skuArr[skuArr.length - 1] === '') {
+				skuArr.pop();
+			}
+			/*去重*/
+			var newArr = [];
+			for(var i=0;i<skuArr.length;i++){
+				if(newArr.indexOf(skuArr[i]) == -1){
+					newArr.push(skuArr[i]);
+				}
+			}
+			skuArr = newArr;
+			skuList = newArr.toString();
+			$(this).val(skuList);
+
+    	GsManager.goods_exists(skuList).done(function(res){
+    	  if(res.code !== 0){
+    	    layer.confirm(''+res.message+',是否清空', {
+    	        title: '提示',
+    	        btn: ['否', '是'],
+    	        area: '420px',
+    	        icon: 3,
+    	        skin: 'element-ui-dialog-class'
+    	    }, function (index) {layui.layer.close(index)}, function (index) {
+    	      var delSkuArr = res.message.split(' ')[1].split(','),
+						skuListArr = skuList.split(','),
+						newSku = '';
+						delSkuArr.forEach(function(delItem){
+							skuListArr.forEach(function(skuItem, skuIndex){
+								if (delItem == skuItem) {
+									skuListArr.splice(skuIndex, 1)
+								};
+							});
+						});
+				    newSku = skuListArr.toString();
+				    $this.val(newSku);
+				    layer.close(index);
+					});
+				};
+			});
+		};
+  });
+</script>
+{{include ('@app/files/parts/temp/choose_products_form_js.twig')}}

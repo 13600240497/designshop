@@ -1,0 +1,310 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+{% set suffix='px'%}
+{% set remUnit = 70 %}
+
+{% if data.colNum == '1'%}
+    {% set colClass = liCol[0] %}
+{% elseif data.colNum == '2' %}
+    {% set colClass = liCol[1] %}
+{% elseif data.colNum == '3' %}
+    {% set colClass = liCol[2] %}
+{% elseif data.colNum == '4' %}
+    {% set colClass = liCol[3] %}
+{% elseif data.colNum == '5' %}
+    {% set colClass = liCol[4] %}
+{% else %}
+    {% set colClass = liCol[3] %}
+{% endif %}
+
+{# tab_bothBdType 1,2,3 直角,圆角,半圆 #}
+{% set goodsData = {
+	goodsBgc:data.goodsBgc is not null?data.goodsBgc:'#ffffff',
+	goodsLimitsTextColor:data.goodsLimitsTextColor is not null?data.goodsLimitsTextColor:'#ffffff',
+
+	goodsFtC:data.goodsFtC is not null?data.goodsFtC:'#333333',
+	buyHeight:data.buyHeight|default(34),
+	buyRadius:data.buyRadius|default(20),
+	buyFtS:(data.buyFtS|default(24))/remUnit,
+	buyBgC:data.buyBgC is not null?data.buyBgC:'#333333',
+	buyFtC:data.buyFtC is not null?data.buyFtC:'#ffffff',
+	buyBorderC:data.buyBorderC is not null?data.buyBorderC:'transparent',
+	buyBorderW:data.buyBorderW|default('0'),
+	buyText:data.buyText|default( get_component_trans(lang,'btn_buy_now') ),
+	priceC:data.priceC is not null?data.priceC:'#FA386A',
+	priceFt:(data.priceFt|default(14))/remUnit,
+	discountOffsetT:data.discountOffsetT|default('10'),
+	discountOffsetR:data.discountOffsetR|default('10'),
+	discountOffsetL:data.discountOffsetL|default('10'),
+	discountRadius:data.discountRadius|default('50'),
+	discountBgc:data.discountBgc is not null?data.discountBgc:'#333333',
+	discountFtC:data.discountFtC is not null?data.discountFtC:'#ffffff',
+	goodsLimitsTotalBgColor:data.goodsLimitsTotalBgColor is not null?data.goodsLimitsTotalBgColor:'#D8D8D8',
+	goodsLimitsSoldBgColor:data.goodsLimitsSoldBgColor is not null?data.goodsLimitsSoldBgColor:'#333333',
+	goodsLimitsRemainBgColor:data.goodsLimitsRemainBgColor is not null?data.goodsLimitsRemainBgColor:'#333333',
+	discountTop:data.discountTop|default(0),
+	discountType:data.discountType|default(1),
+	discountArea:data.discountArea|default(0),
+	colNum:data.colNum|default('4'),
+	baseWidth:(data.baseWidth|default(remUnit * 10))/remUnit,
+	discountFtS:(data.discountFtS|default(12))/remUnit,
+	discountSymbolFts:(data.discountSymbolFts|default(10))/remUnit,
+	soldFtS:data.soldFtS|default(12),
+	soldTextC:data.soldTextC|default('#ffffff'),
+	soldBgC:data.soldBgC|default('#000000'),
+	goodsLimitsTextType:data.goodsLimitsTextType|default(1),
+
+} %}
+
+{% set pageData = {
+	goodsPbBdC:data.goodsPbBdC is not null?data.goodsPbBdC:'#333333',
+
+	tab_headerBgC:data.tab_headerBgC|default('#666666'),
+	tab_headerFtC:data.tab_headerFtC|default('#ffffff'),
+	tab_bothBdType:data.tab_bothBdType|default('1'),
+	tab_endBgc:data.tab_endBgc|default('#F6F6F6'),
+	tab_endTextC:data.tab_endTextC|default('#999999'),
+	tab_endBdC:data.tab_endBdC|default(''),
+	tab_ingBgc:data.tab_ingBgc|default('#999999'),
+	tab_ingTextC:data.tab_ingTextC|default('#FFFFFF'),
+	tab_ingBdC:data.tab_ingBdC|default('#999999'),
+	tab_soonBgc:data.tab_soonBgc|default('#F6F6F6'),
+	tab_soonTextC:data.tab_soonTextC|default('#FFFFFF'),
+	tab_soonBdC:data.tab_soonBdC|default('#D8D8D8'),
+	boxMarginBottom:(data.boxMarginBottom|default(40))/remUnit,
+	arrowBgC:data.arrowBgC|default('#333333'),
+	arrowLBgImg:data.arrowLBgImg|default(''),
+	arrowRBgImg:data.arrowRBgImg|default(''),
+
+	tab_selectBgc: data.tab_selectBgc,
+	tab_selectTextC:data.tab_selectTextC,
+	tab_selectBdC:data.tab_selectBdC,
+	tab_unselectBgc: data.tab_unselectBgc,
+	tab_unselectTextC:data.tab_unselectTextC,
+	tab_unselectBdC:data.tab_unselectBdC,
+
+	goodsBdC:data.goodsBdC|default('transparent'),
+	goodsMarginTop:(data.goodsMarginTop|default(0))/remUnit,
+	goodsMarginBottom:(data.goodsMarginBottom|default(20))/remUnit,
+	goodsBShadowdC:data.goodsBShadowdC|default('#CCCCCC'),
+
+	downFtS:data.downFtS|default(14),
+	downTextC:data.downTextC|default('#FFFFFF'),
+	downBfText: get_component_trans(lang,'coming_soon'),
+	downIngText: get_component_trans(lang,'on_going'),
+	downAfText: get_component_trans(lang,'already_ended'),
+	yesterday: get_component_trans(lang,'yesterday'),
+	today: get_component_trans(lang,'today'),
+	tomorrow: get_component_trans(lang,'tomorrow'),
+
+	titleNavText:data.titleNavText|default('Flash Sale'),
+	fs_titleBgC:data.fs_titleBgC|default('#ffffff'),
+	fs_titleHeight:(data.fs_titleHeight|default(60))/remUnit,
+	fs_titleBgImg:data.fs_titleBgImg,
+	fs_titleFtC:data.fs_titleFtC|default('#333333'),
+	fs_titleMarginBottom:(data.fs_titleMarginBottom|default(0))/remUnit,
+	fs_titleFtSize:(data.fs_titleFtSize|default(40))/remUnit,
+
+	baseBgC:data.baseBgC|default('#EDEDED'),
+}
+%}
+
+{% set liLength = ( data.goodsSKUSort|default(0..1))|length %}
+{% set liVis = liLength>2?2:liLength %}
+{# {% set liWidth = (goodsData.baseWidth - 350)/liVis %} #}
+{% set liWidth = (goodsData.baseWidth)/liVis %}
+{# {% set liLength = ( data.goodsSKUSort|default(0..3))|length %} #}
+{% set sizeSacle = 16/24 %}
+{% set sizeWidth = pageData.downFtS/sizeSacle %}
+
+<div class="geshop-component-box component-drag component-sync clearfix" data-gid="U000153_tabspike" data-key="U000153" attr="nav_flag" data-id="{{ pageInstanceId }}"
+	data-editenv="{{data.isEditEnv}}" data-static-domain="{{staticDomain}}" data-vis="{{liLength}}" data-lang="{{lang}}">
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+
+				[data-gid="U000153_tabspike"][data-id="{{ pageInstanceId }}"] .gs-tab-status {
+					background-color: {{pageData.tab_unselectBgc}};
+					color: {{pageData.tab_unselectTextC}};
+					border-color:{{pageData.tab_unselectBdC}};
+				}
+
+				[data-gid="U000153_tabspike"][data-id="{{ pageInstanceId }}"] .gs-tab_going{
+					background-color:{{pageData.tab_selectBgc}};
+					color:{{pageData.tab_selectTextC}};
+    			border-color:{{pageData.tab_selectBdC}};
+				}
+
+				[data-gid="U000153_tabspike"][data-id="{{ pageInstanceId }}"] .gs-tab_select {
+					border-width:1px;
+					background-color: {{pageData.tab_selectBgc}} !important;
+					color: {{pageData.tab_selectTextC}} !important;
+					border-color:{{pageData.tab_selectBdC}} !important;
+				}
+
+				[data-gid="U000153_tabspike"][data-id="{{ pageInstanceId }}"] .swiper-container {
+					overflow: inherit;
+					height: auto !important;
+				}
+
+				[data-gid="U000153_tabspike"][data-id="{{ pageInstanceId }}"] .gs-tab-title-item.gs-tab_current {
+					background-color: #999999;
+				}
+
+				[data-gid="U000153_tabspike"][data-id="{{ pageInstanceId }}"] .gs-tab-title-item.gs-tab_select::after {
+					content: '';
+					display: block;
+					position: absolute;
+					bottom: -8px;
+					left: 50%;
+					margin-left: -3px;
+					width: 0;
+					height: 0;
+					border-left: 6px solid transparent;
+					border-right: 6px solid transparent;
+					border-top: 8px solid {{pageData.tab_selectBgc}};
+				}
+
+				[data-gid="U000153_tabspike"][data-id="{{ pageInstanceId }}"] [data-gid="gs-goods-rwDefult-tabspike"].gs-goodsWrap li {
+					margin-top: {{pageData.goodsMarginTop}}rem;
+					margin-bottom: {{pageData.goodsMarginBottom}}rem;
+					border-color: {{pageData.goodsBdC}};
+				}
+
+				[data-gid="U000153_tabspike"][data-id="{{ pageInstanceId }}"] .gs-option .prev,[data-gid="U000153_tabspike"][data-id="{{ pageInstanceId }}"] .gs-option .next{
+					background-color:{{pageData.arrowBgC}};
+
+				}
+
+				[data-gid="U000153_tabspike"][data-id="{{ pageInstanceId }}"] .gs-option .prev {
+					{% if pageData.arrowLBgImg %}background-image:url({{pageData.arrowLBgImg}});{% else %}background-image:url(/resources/images/icon/tabspike-arrow-left.png);{% endif %}
+				}
+
+				[data-gid="U000153_tabspike"][data-id="{{ pageInstanceId }}"] .gs-option .next {
+					{% if pageData.arrowRBgImg %}background-image:url({{pageData.arrowRBgImg}});{% else %}background-image:url(/resources/images/icon/tabspike-arrow-right.png);{% endif %}
+				}
+
+				[data-gid="U000153_tabspike"][data-id="{{ pageInstanceId }}"] .gs_component_countDown em{
+					font-size:{{pageData.downFtS}}{{suffix}};
+					line-height:{{sizeWidth}}{{suffix}};
+					color:{{pageData.downTextC}};
+					background: {{data.downTimeBgC|default('transparent')}};
+				}
+				[data-gid="U000153_tabspike"][data-id="{{ pageInstanceId }}"] .item-price{
+					border-color:{{pageData.goodsPbBdC}} !important;
+				}
+				[data-gid="U000153_tabspike"][data-id="{{ pageInstanceId }}"] .item-price{
+					border-color:{{pageData.goodsPbBdC}} !important;
+				}
+				[data-gid="U000153_tabspike"][data-id="{{ pageInstanceId }}"] .kill_soldout{
+					border-bottom-left-radius:6px;
+					border-bottom-right-radius:6px;
+				}
+				[data-gid="U000153_tabspike"][data-id="{{ pageInstanceId }}"] .gs-tab-title-item{
+					padding:0.21333rem 0;
+					line-height:0.5333rem;
+					height:auto;
+				}
+				[data-gid="U000153_tabspike"][data-id="{{ pageInstanceId }}"] .item-price{
+					padding: .1333rem 0 .1333rem 0.24rem !important;
+				}
+				[data-gid="U000153_tabspike"][data-id="{{ pageInstanceId }}"] .shop-price {
+					display:block;
+					line-height: .507rem !important;
+					font-size: .373rem;
+				}
+				[data-gid="U000153_tabspike"][data-id="{{ pageInstanceId }}"] .market-price {
+					display:block;
+					line-height: .507rem !important;
+					font-size: .32rem;
+				}
+				{# [data-gid="U000153_tabspike"][data-id="{{ pageInstanceId }}"] .gs-img>a{
+					{% if data.isEditEnv == 0 %}
+					 height:auto !important;
+					 {% endif %}
+				}		 #}
+
+				[data-gid="U000153_tabspike"][data-id="{{ pageInstanceId }}"] .discount-off {
+					background-color:{{ data.discount_bg_color | default('#FA386A')}};
+					color:{{ data.discount_font_color ?? '#FFFFFF'}};
+				{% if data.discount_bg_image is not empty %}
+					background-image: url({{ data.discount_bg_image }})
+				{% endif %}
+				}
+
+
+    </style>
+    <!-- embed stylesheet end -->
+
+    <div class="geshop-col-12">
+			<div class="gs-goods-tab" style="width:{{goodsData.baseWidth}}rem;margin-bottom:{{pageData.boxMarginBottom}}rem;background-color:{{pageData.baseBgC}}" data-id="{{pageInstanceId}}" data-isEditEnv="{{data.isEditEnv}}" data-tplStatus="0" data-sitedomain="{{siteDomain}}">
+				{# {% if liLength >4 %}
+				<div class="gs-option">
+					<a class="prev" style="top:{{ pageData.fs_titleHeight }}px;"></a>
+					<a class="next" style="top:{{ pageData.fs_titleHeight }}px;"></a>
+				</div>
+				{% endif %} #}
+				<div class="gs-main" style="width:{{goodsData.baseWidth}}rem;">
+					<div class="gs-goods-hd hide">
+						<ul>
+							{% for key,item in data.goodsSKUSort|default(0..1) %}
+								<li>{{loop.index}}</li>
+							{% endfor %}
+						</ul>
+					</div>
+					<p class="gs-goods-inner-title" style="
+						{% if pageData.fs_titleBgC %}background-color:{{ pageData.fs_titleBgC }};{% endif %}
+						{% if pageData.fs_titleHeight %}height:{{ pageData.fs_titleHeight }}rem;{% endif %}
+						{% if pageData.fs_titleHeight %}line-height:{{ pageData.fs_titleHeight }}rem;{% endif %}
+						{% if pageData.fs_titleBgImg %}background-image:url({{ pageData.fs_titleBgImg }});{% endif %}
+						{% if pageData.fs_titleFtC %}color:{{ pageData.fs_titleFtC }};{% endif %}
+						{% if pageData.fs_titleMarginBottom %}margin-bottom:{{ pageData.fs_titleMarginBottom }}rem;{% endif %}
+						{% if pageData.fs_titleFtSize %}font-size:{{ pageData.fs_titleFtSize }}rem;{% endif %}
+					">{{ pageData.titleNavText }}</p>
+
+					<div class="gs-goods-bd" style="background-color:{{pageData.tab_headerBgC}};">
+						<input type="hidden" name="tabColorInput" data-background-color="{{pageData.tab_unselectBgc}}" data-color="{{pageData.tab_unselectTextC}}" data-border-color="{{pageData.tab_selectBdC}}" />
+
+						<div class="swiper-container swiper-container-{{pageInstanceId}}">
+							<ul class="swiper-wrapper bd-main">
+								{% for key,item in data.goodsSKUSort|default(0..1)|sort('dataStartTime') %}
+
+									{% if data.isEditEnv == '0' and data.goodsSKUSort %}
+									<li class="swiper-slide gs-tab-title-item" data-index="{{loop.index0}}" data-start-time="{{item.dataStartTime}}" data-end-time="{{item.dataEndTime}}">
+										<span class="gs-date_day" style="font-size:0.42rem;">{{get_component_trans(lang,'yesterday')}}</span>
+										<span class="gs-goods-date_hours" style="font-size:0.42rem;">10:00 am</span>
+										<span class="gs-date-status" style="font-size: 0.375rem;">{{get_component_trans(lang,'already_ended')}}</span>
+										{# tab time start #}
+										{{include ('@app/files/parts/temp/count_down_arr_tabspike_m.twig')}}
+										{# tab time end #}
+									</li>
+
+									{% else %}
+									{# <li class="swiper-slide gs-tab-title-item {% if loop.index0 == 0 %}gs-tab_current{% endif %}" data-index="{{loop.index0}}"> #}
+									<li class="swiper-slide gs-tab-title-item" data-index="{{loop.index0}}">
+										<span class="gs-date_day" style="font-size:0.42rem;">{{get_component_trans(lang,'tomorrow')}}</span>
+										<span class="gs-goods-date_hours" style="font-size:0.42rem;">10:00 am</span>
+										<span class="gs-date-status" style="font-size: 0.375rem;">{{get_component_trans(lang,'coming_soon')}}</span>
+
+										{{include ('@app/files/parts/temp/count_down_arr_tabspike_m.twig')}}
+									</li>
+									{% endif %}
+
+								{% endfor %}
+							</ul>
+						</div>
+
+
+					</div>
+					<div class="gs-tab-content">
+						{% for key,item in data.goodsSKUSort|default(0..1) %}
+						{# gs_tab_show #}
+						<div class="gs-tab-item gs-goodsWrap" data-index="{{loop.index0}}" data-skus="{{item.lists}}">
+							{{include ('@app/htdocs/resources/template/m/goodsList_sync/killDefaultTabSpikeM/index.twig')}}
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+
+    </div>
+</div>
+

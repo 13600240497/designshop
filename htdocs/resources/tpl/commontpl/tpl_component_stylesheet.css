@@ -1,0 +1,102 @@
+#geshop_style_setting {
+	overflow: hidden;
+}
+
+#geshop_style_setting .layui-tab-vertical {
+	display: block;
+	margin: 0;
+	border: none;
+}
+
+/* tips */
+#geshop_style_setting .layui-tab-vertical .gs-tips {
+	color: #999999;
+	font-size: 12px;
+	margin-left: 20px;
+}
+
+#geshop_style_setting .layui-tab-vertical .layui-input-block {
+	min-height: initial;
+}
+
+#geshop_style_setting .layui-tab-title {
+	width: 200px;
+	box-sizing: border-box;
+}
+
+#geshop_style_setting .layui-tab-title li {
+	position: relative;
+	font-size: 16px;
+	height: 48px;
+	line-height: 48px;
+}
+
+#geshop_style_setting .layui-tab-title .layui-this {
+	color: #1E9FFF;
+}
+
+#geshop_style_setting .layui-tab-title .layui-this:after {
+	content: '';
+	position: absolute;
+	width: 4px;
+	height: 100%;
+	background-color: #1E9FFF;
+}
+
+#geshop_style_setting .layui-tab-vertical .layui-tab-content {
+	position: relative;
+	width: calc(100% - 200px);
+	/*padding-bottom: 100px;*/
+	height: 600px;
+	/*border: none;*/
+	padding-left: 24px;
+	box-sizing: border-box;
+	overflow: auto;
+}
+
+#geshop_style_setting .layui-tab-vertical .layui-tab-item {
+	padding-bottom: 20px;
+}
+
+#geshop_style_setting .layui-tab-vertical .layui-form-item {
+	margin-bottom: 10px;
+}
+
+#geshop_style_setting .layui-tab-vertical .layui-form-label {
+	/*width: 140px;*/
+	width: 100%;
+	display: block;
+	text-align: left;
+	padding-left: 0;
+	padding-right: 0;
+	display: block;
+	float: inherit;
+}
+
+#geshop_style_setting .layui-tab-vertical .layui-input-block {
+	/*margin-left: 280px;*/
+	width: 320px;
+	margin-left: 0;
+}
+
+#geshop_style_setting ~ .layui-layer-btn {
+	/*margin-top: -100px;*/
+	position: relative;
+	z-index: 12;
+	width: calc(100% - 250px);
+	margin-left: 199px;
+	border-left: 1px solid #e6e6e6;
+}
+
+#geshop_style_setting ~ .layui-layer-btn a {
+	width: 80px;
+	border-radius: 4px;
+}
+
+/*background setting*/
+#geshop_style_setting .component_bg{
+	width:80%;
+}
+#geshop_style_setting .class-bg-group .layui-input-block{
+	width:400px;
+}

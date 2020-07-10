@@ -1,0 +1,82 @@
+[data-gid="U000109_discountList"] .icon-img-left {
+  width: 12px !important;
+  height: 12px !important;
+  position: absolute;
+  left: 15px;
+}
+
+[data-gid="U000109_discountList"] .icon-img-right {
+  width: 12px !important;
+  height: 12px !important;
+  position: absolute;
+  right: 29px;
+}
+
+[data-gid="U000109_discountList"] .side-icon{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+
+[data-gid="U000109_discountList"] .goods-nav-name {
+  /* display: inline-block; */
+  text-align: center;
+  /* margin: auto; */
+  /* overflow: hidden;
+  width: auto; */
+}
+
+[data-gid="U000109_discountList"] .geshop-tab-btn {
+  width: 58px;
+  z-index: 1;
+  cursor: pointer;
+  background-size: 50px 44px;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  position: relative;
+}
+
+[data-gid="U000109_discountList"] .geshop-tab-btn img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+[data-gid="U000109_discountList"] .geshop-tab-btn.pre-btn {
+  border-radius: 45px 0px 0px 45px !important;
+}
+
+[data-gid="U000109_discountList"] .geshop-tab-btn.next-btn {
+  border-radius: 0px 45px 45px 0px !important;
+}
+
+[data-gid="U000109_discountList"] .gs-tab-box {
+  /* position: absolute;
+  left: 50%;
+  transform: translateX(-50%); */
+  display: inline-table;
+  width: 1200px;
+}
+
+[data-gid="U000109_discountList"] .gs-tab-box .swiper-container {
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  display: inline-block;
+}
+
+[data-gid="U000109_discountList"] .gs-banner {
+  width: 100% !important;
+  height: auto;
+}
+
+[data-gid="U000109_discountList"] .component-self-goodWrap .ranking-icon {
+  font-weight: bold !important;
+}

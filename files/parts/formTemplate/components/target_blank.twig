@@ -1,0 +1,19 @@
+{# 链接是否新窗口打开 #}
+{% set components = [
+    {
+        label: '链接是否在新窗口打开',
+        name: 'target_blank',
+        type: 'radio',
+        default: '1',
+        options: [
+        { label: '是', value: '1' },
+        { label: '否', value: '0' },
+    ]
+    }
+] %}
+
+<fieldset class="layui-elem-field">
+    <div class="layui-field-box">
+        {{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}
+    </div>
+</fieldset>

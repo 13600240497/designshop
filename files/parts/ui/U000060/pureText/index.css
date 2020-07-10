@@ -1,0 +1,8 @@
+[data-gid="U000060"] .gs-title-wrap{
+	display:table;
+}
+
+[data-gid="U000060"] .gs-title-box{
+	vertical-align: middle;
+  display: table-cell;
+}

@@ -1,0 +1,46 @@
+{{ include ('@app/files/parts/ui/U000230/default/area.twig') }}
+{% if data.areas_pc == 0 %}
+    {% set areas_pc = 0 %}
+{% else %}
+    {% set areas_pc = data.areas_pc | json_encode() %}
+{% endif %}
+<div class="area-box">
+    <input type="hidden" name="areas_pc" data-val='{{ areas_pc }}'
+           value='{{ areas_pc }}'
+           data-public-tag="true"
+           data-src="{{ data.base_img_pc ?? '' }}">
+    {#<img src="https://geshoptest.s3.amazonaws.com/uploads/euU7IEx4mBTFWLyYGn3tj08VJ6Cq5krZ.jpg" alt="">#}
+    <button class="btn btn-pc">绘制热区</button>
+
+</div>
+<script>
+    /**/
+    $('#U000230-modal1').on('click', '.btn.btn-pc', function () {
+        var imgSrc = $("input[name='base_img_pc']").val();
+
+        if (imgSrc == '') {
+            layui.layer.msg('请先填写图片！');
+            return false;
+        }
+        var img = $("input[name='areas_pc']").attr('data-src');
+        if (img != imgSrc) {
+            $("input[name='areas_pc']").val(0);
+        }
+
+        var opts = {
+            bgImg: imgSrc,
+            areas: $("input[name='areas_pc']").val() || 0,
+            callback: function (data) {
+                if (parseInt(data) == 0) {
+                    $("input[name='areas_pc']").val(0);
+                } else {
+                    $("input[name='areas_pc']").val(JSON.stringify(data));
+                }
+
+            }
+        };
+        new HotArea(opts);
+        $("input[name='areas_pc']").attr('data-src', imgSrc);
+    });
+</script>
+

@@ -1,0 +1,23 @@
+.warp-U000078_zaful [data-gid="gs-goods-rwDefult"] .gs-content-rt.gs-goods-box {
+	max-width: 205px;
+}
+
+.warp-U000078_zaful [data-gid=gs-goods-rwDefult] .goodStatus {
+	width: 100%;
+	text-align: center;
+	line-height: normal;
+	height: auto;
+	font-size: 16px;
+	bottom: 35px;
+    top: auto;
+}
+
+.warp-U000078_zaful .discount-off {
+	position: absolute;
+	line-height: 20px;
+	font-size: 12px;
+	left: 0;
+	top: 16px;
+	padding: 0px 6px;
+	border-radius: 0 2px 2px 0;
+}

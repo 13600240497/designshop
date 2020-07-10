@@ -1,0 +1,28 @@
+{
+    "fields": {
+        "margin_top": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "margin_bottom": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "position": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "button_height": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "button_width": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "button_bottom": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "button_right": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "button_bgColor_ready": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "button_bgColor_able": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "button_bgColor_ing": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "button_bgColor_ended": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "button_bgColor_booked": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "button_color_ready": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "button_color_able": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "button_color_ing": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "button_color_ended": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "button_color_booked": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "button_image": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "width": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "height": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "image": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "book_time": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "book_link": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "book_desc": { "is_public": "1", "is_m": "1", "is_app": "1" }
+    }
+}

@@ -1,0 +1,158 @@
+{# 默认商品列表模板 #}
+
+{# css属性单位 #}
+{% set suffix='rem'%}
+
+{#
+    set pageData = {
+        imgSrc:'',// 图片地址
+				baseWidth:1100,//容器宽度
+				col:4,//容器分栏
+				marginRight:12//容器右间距
+    }
+#}
+
+
+{# {% set liWidth = (pageData.baseWidth-3*pageData.marginRight)/pageData.col %} #}
+{# 限时限量商品 #}
+{# {% if pageData.limit_active == '1' %}
+	{% set left_number =  (item.stock_num|number_format - item.activity_stock|number_format)>0?(item.stock_num|number_format - item.activity_stock|number_format):0 %}
+	{% set goodsStatus =  left_number==0 and data.goodsInfo? 'good_soldOut' :'goodsBuyPro'%}
+{% endif %} #}
+	{% set left_number =  (item.stock_num- item.activity_stock)>0?(item.stock_num - item.activity_stock):0 %}
+	{% set goodsStatus =  left_number == 0 and data.goodsInfo and pageData.limit_active!='1'? 'good_soldOut' :'goodsBuyPro'%}
+	{% set isLimitGoods = pageData.down_active == '1' ? 'is_goods_limit' : 'not_goods_limit'%}
+	{% set isPriceEqual =  item.market_price == item.shop_price? 'visible-hide':''%}
+
+    {# felix #}
+			<li class="gs-list-item_tag gs-list-item--m {{goodsStatus}} {{isLimitGoods}}">
+				{# 倒计时 #}
+				{% if pageData.down_active == '1' %}
+				<div class="gs-gb-timer">
+					<p class="gs-goods-time--m gs-google-time">
+						{# <em class="icon-clock"></em> #}
+						{# <span class="gs-goodsRushDown" data-begin="0" data-end="0" data-stock="0">Ends in: 00:00:00:00</span> #}
+						<span class="gs-goodsRushDown" data-begin="{{item.promote_start_date}}" data-end="{{item.promote_end_date}}" data-stock="{{left_number}}">Ends in: 00:00:00:00</span>
+					</p>
+				</div>
+				{% endif %}
+				<div class="item-content">
+					<div class="gs-goods-wrap--m">
+							{# 商品图片配置 #}
+							<figure class="gs-goods-item-thumb box-loading {% if item.goods_img|default('') == '' %} has-cloth-not{% endif %}">
+								{% if data.isEditEnv == '1' and data.goodsInfo %}
+									<img class="js-lazyload" src="{{item.goods_img}}" style="max-width: 100%;max-height:100%;" data-lazy="{{item.goods_img}}" >
+								{% elseif data.isEditEnv == '0' and data.goodsInfo %}
+									<img class="js-lazyload" src="{{data.default.good}}" data-lazy="{{item.goods_img}}">
+								{% else %}
+									<img class="gs-default-clothes" src="{{data.default.clothes}}" class="gs-default-clothes" style="max-width: 100%;max-height:100%;">
+								{% endif %}
+								<i class="gs-goods-status"><span>Sold Out</span></i>
+							</figure>
+
+
+						{# 折扣标配置 #}
+						{% if pageData.discount_active == '1' and item.discount >0 %}
+						<div class="gs-goods-discount--m">
+							<div class="inner">
+								<span class="curtoff-box">
+									<strong>{{item.discount|number_format}}%</strong>
+								</span>
+								<span class="curtoff-text">OFF</span>
+							</div>
+						</div>
+						{% endif %}
+
+						{% if pageData.discount_active == '1' and data.goodsInfo is null %}
+						<div class="gs-goods-discount--m">
+							<div class="inner">
+								<span class="curtoff-box">
+									<strong>20%</strong>
+								</span>
+								<span class="curtoff-text">OFF</span>
+							</div>
+						</div>
+						{% endif %}
+
+
+					</div>
+					{# 库存配置start #}
+						{% if pageData.limit_active == '1' %}
+							{% if data.goodsInfo and item.stock_num != 0 %}
+									{% set leftPersent = (left_number)*100/item.stock_num %}
+									{% set activityPersent = (item.activity_stock)*100/item.stock_num %}
+							{% else %}
+									{% set leftPersent = 0 %}
+									{% set activityPersent = 100 %}
+							{% endif %}
+
+					<div class="gs-goods-progress">
+						<span class="text">
+								{% if pageData.limit_type == '1' %}
+									{# <span class="num">
+										{{left_number|default(0)}}
+									</span>
+									PCs Left #}
+									{{gb_component_trans(lang , 'limited_to_units' , ['<span class="num">'~ left_number|default(0) ~'</span>'])}}
+								{% else %}
+									<span class="num">
+										{{leftPersent}}%
+									</span>
+									{{gb_component_trans(lang , 'left')}}
+								{% endif %}
+
+						</span>
+						<span class="bar">
+							<i style="width:{{activityPersent}}%;">
+							</i>
+						</span>
+					</div>
+						{% endif %}
+						{# 库存配置end #}
+					<div class="gs-goods-desc--m">
+						{# 商品标题配置 #}
+						{% if pageData.goods_title_active == '1' %}
+						<h4 class="gs-goods-title">{{item.goods_title|default('Beelink GT1 Ultimate 3GB DDR4 + 32GB EMMC TV Box')}}</h4>
+						{% endif %}
+
+						{# 商品价格配置 #}
+						<p class="gs-goods-price--m">
+							{% if pageData.market_active == '1' and item.market_price > 0  %}
+							<del class="gs-market-price js-currency {{isPriceEqual}}" data-currency="{{item.market_price}}" data-wrap="0" data-round="2">${{item.market_price}}</del>
+							{% endif %}
+
+							{% if item.shop_price > 0 %}
+							<span class="gs-shop-price">
+								<strong class="js-currency" data-currency="{{item.shop_price}}" data-wrap="0" data-round="2">${{item.shop_price}}</strong>
+							</span>
+							{% endif %}
+
+							{# 装修价格 #}
+							{% if data.goodsInfo|length == 0 %}
+									{% if pageData.market_active == '1' %}
+								<del class="gs-market-price js-currency" data-currency="0.00" data-wrap="0" data-round="2">$0.00</del>
+									{% endif %}
+								<span class="gs-shop-price">
+									<strong class="js-currency" data-currency="0.00" data-wrap="0" data-round="2">$0.00</strong>
+								</span>
+							{% endif %}
+						</p>
+
+					</div>
+
+					{# 商品购买配置 #}
+					<div class="gs-goods-buy--m">
+						<a href="{{item.url_title}}" class="buyLink gs-gooditem-btn" target="_special">
+							{% if left_number == 0 and data.goodsInfo and pageData.limit_active != '1' %}
+								Sold Out
+							{% else %}
+								{{pageData.buy_text|default('Buy Now')}}
+							{% endif %}
+						</a>
+					</div>
+					<a href="javascript:;" class="gs-gooditem-addCard js-addCart" data-sku="{{item.goods_sku}}" data-warehousecode="{{item.wh_code}}" data-qty="1" >
+						<i class="icon-cart"></i>
+					</a>
+					<a href="{{item.url_title}}" class="pmGoodsItem_link" data-app="" data-app-sku="" data-app-wcode=""></a>
+				</div>
+			</li>

@@ -1,0 +1,171 @@
+{#
+    D网排行榜组件 by罗晓辉@20190221
+
+    1、组件主要组成：banner，导航，前三商品，其他商品。
+    2、banner可以为空。
+    3、导航只显示有分类名称的，如果所有分类名称都为空，那么隐藏导航。
+    4、所有图片的处理：不填---使用默认图片，空格---不显示图片，其他---按填写的链接显示图片。
+    5、折扣标图片如果存在则显示图片，不会显示背景色。否则显示背景色并且圆角是50%。
+    6、商品都有sold out状态的显示，sold out状态图片不能点击，但是标题和按钮可以点击跳转商详页。
+    7、导航可以开启吸附功能，当窗口顶部在组件范围内，导航吸附，覆盖在页面导航上面。
+    8、图片shop now遮罩只有pc才有。
+    9、售价：app优先取app优化价，没有app优化价取促销价。web取促销价。
+    10、售价和市场价一行显示，货币切换后空间不够，那么市场价掉到第二行，溢出隐藏。
+    11、商品都支持满减营销信息，营销信息里面的价格支持货币转换，满减信息里面的关键信息（例如金额或者折扣，接口返回用em标签包裹）可以设置颜色。展示情况：
+    （1）m版和m版，一行显示不下，超出显示...如果有多条满减信息，显示箭头，点击显示气泡。
+    （2）pc版，一行显示不下，超出隐藏。如果有多条满减信息，显示...鼠标hover显示气泡。
+    12、d网满减营销信息有7种类型。
+    （1）X件享Y折：2件享9折，3件享8折，格式为：2-10,3-20；
+    （2）X件免Y件：2件免1件，3件免2件，格式为：2-1,3-2；
+    （3）第X件享Y折：第4件7折，第3件6折，格式为：4-30,3-40；
+    （4）X件减Y元：2件减5元，3件减8元，4件减9元，5件减10元，格式为：2-5,3-8,4-9,5-10；
+    （5）X件Y元：2件10元，3件20元，4件30元，5件40元，格式为：2-10,3-20,4-30,5-40。
+    （6）X元减Y元：20元减2元，30元减3元，40元减5元，50元减8元，格式为：20-2,30-3,40-5,50-8。
+    （7）X元享Y折：20元享9折，30元享8折，40元享7折，格式为：20-10,30-20,40-30。
+
+    @FIXME：商品图片是按照正方形处理的，如果后面发现问题，就得处理一下，包括了商品图片和sold out图片。
+
+    提供d网测试机的sku：
+    Women
+    220089808,209656122,238996404,245189404,210229302,236354404,YM3557902,YL2730204,YL2743003,YL3330402,YL3332205,YL4150405,118446907,197037601
+    Men
+    241986501,241986801,242036803,241998701,242032801,242036601,242002128,242011601,242011301,240732801
+    Bags
+    245515008,198283402,PB0109701,202333603,198639503,197611302,165906002,YG0546601,134233603,176977402
+    Wigs
+    214956901,216989104,229643001,229453102,229420701,229417301,229271801
+    Home
+    193924701,187846201,198060703,183739901,183739402,183722201,197408504,183832501,161313501
+#}
+
+{# 用来区分表单是否保存过 #}
+{%
+    set formHasSaved = data.box_margin_top is null ? 'n' : 'y'
+%}
+
+{# 表单填写共66个配置 #}
+{%
+    set data = data | merge({
+        pc_banner_width: data.pc_banner_width | default(1200),
+        pc_banner_height: data.pc_banner_height | default(300),
+
+        pad_banner_width: data.pad_banner_width | default(1024),
+        pad_banner_height: data.pad_banner_height | default(240),
+
+        m_banner_width: data.m_banner_width | default(750),
+        m_banner_height: data.m_banner_height | default(300),
+    })
+%}
+
+{# 图片都有支持：空字符串使用默认图片，输入空白字符图片为空 #}
+{%
+    set formData = data | merge({
+        goodsSKU: data.goodsSKU | default([]),
+
+        box_margin_top: data.box_margin_top | default('0'),
+        box_margin_bottom: data.box_margin_bottom | default('0'),
+        comp_bcolor: data.comp_bcolor | default('#F8F8F8'),
+        comp_radius: data.comp_radius | default('0px 0px 0px 0px'),
+        comp_radius_m: data.comp_radius_m | default('0px 0px 0px 0px'),
+
+        pc_banner: data.pc_banner ? ( data.pc_banner | trim ? data.pc_banner : '') : 'https://geshopimg.logsss.com/uploads/2ysZMWpA0mck8XvG3OYIJKUDg4LRdzoh.png',
+        pc_banner_ratio: (data.pc_banner_height / data.pc_banner_width * 100) | number_format(8, '.'),
+
+        pad_banner: data.pad_banner ? ( data.pad_banner | trim ? data.pad_banner : '') : 'https://geshopimg.logsss.com/uploads/EhLczoUed60mp4Rjtg235srSDKvfP8Yk.png',
+        pad_banner_ratio: (data.pad_banner_height / data.pad_banner_width * 100) | number_format(8, '.'),
+
+        m_banner: data.m_banner ? ( data.m_banner | trim ? data.m_banner : '') : 'https://geshopimg.logsss.com/uploads/1zR6Lb8XWuGZh3DNQAwCaUOdxKEHi9sm.png',
+        m_banner_ratio: (data.m_banner_height / data.m_banner_width * 100) | number_format(8, '.'),
+
+        nav_fixed: data.nav_fixed | default('n'),
+        nav_bcolor: data.nav_bcolor | default('#000000'),
+        nav_active_fcolor: data.nav_active_fcolor | default('#FFFFFF'),
+        nav_line_color: data.nav_line_color | default('#FFFFFF'),
+        nav_fcolor: data.nav_fcolor | default('#999999'),
+        nav_padding_bottom: data.nav_padding_bottom | default('30'),
+        nav_height: data.nav_height | default('50'),
+        nav_radius: data.nav_radius | default('0'),
+        nav_font_size: data.nav_font_size | default('18'),
+
+        top1_image: data.top1_image ? ( data.top1_image | trim ? data.top1_image : '') : 'https://geshopimg.logsss.com/uploads/thJ9szge1MDmuHjQG06ZyNviREdCqwOP.png',
+        top2_image: data.top2_image ? ( data.top2_image | trim ? data.top2_image : '') : 'https://geshopimg.logsss.com/uploads/cK5FxiuoRhgaGm9NrXeqAlOvfYdZtVH6.png',
+        top3_image: data.top3_image ? ( data.top3_image | trim ? data.top3_image : '') : 'https://geshopimg.logsss.com/uploads/bvnGEH4XNSoZ6xJD5ja2r7ltWKTUphwA.png',
+        pc_topn_padding_top: data.pc_topn_padding_top | default('0'),
+        pc_topn_padding_left: data.pc_topn_padding_left | default('0'),
+        pad_topn_padding_top: data.pad_topn_padding_top | default('0'),
+        pad_topn_padding_left: data.pad_topn_padding_left | default('0'),
+        m_topn_padding_top: data.m_topn_padding_top | default('10'),
+        m_topn_padding_left: data.m_topn_padding_left | default('10'),
+
+        cutoff_image: (data.cutoff_image | trim) ? data.cutoff_image : '',
+        cutoff_fcolor: data.cutoff_fcolor | default('#FFFFFF'),
+        cutoff_bcolor: data.cutoff_bcolor | default('#000000'),
+        cutoff_type: data.cutoff_type | default('1'),
+        cutoff_fpadding_top: data.cutoff_fpadding_top | default('11'),
+        cutoff_fpadding_right: data.cutoff_fpadding_right | default('11'),
+        pc_cutoff_padding_top: data.pc_cutoff_padding_top | default('0'),
+        pc_cutoff_padding_right: data.pc_cutoff_padding_right | default('0'),
+        pc_cutoff_font_size: data.pc_cutoff_font_size | default('15'),
+        pad_cutoff_padding_top: data.pad_cutoff_padding_top | default('0'),
+        pad_cutoff_padding_right: data.pad_cutoff_padding_right | default('0'),
+        pad_cutoff_font_size: data.pad_cutoff_font_size | default('15'),
+        m_cutoff_padding_top: data.m_cutoff_padding_top | default('0'),
+        m_cutoff_padding_right: data.m_cutoff_padding_right | default('0'),
+        m_cutoff_font_size: data.m_cutoff_font_size | default('14'),
+
+        price_fcolor: data.price_fcolor | default('#FF4545'),
+        promotion_fcolor: data.promotion_fcolor | default('#000000'),
+
+        pc_shop_bcolor: data.pc_shop_bcolor | default('#FFFFFF'),
+        pc_shop_border_color: data.pc_shop_border_color | default('#000000'),
+        pc_shop_fcolor: data.pc_shop_fcolor | default('#000000'),
+        pc_shop_font_size: data.pc_shop_font_size | default('16'),
+
+        m_shop_text: data.m_shop_text | default('SHOP NOW'),
+        m_shop_font_size: data.m_shop_font_size | default('14'),
+        m_shop_fcolor: data.m_shop_fcolor | default('#FFFFFF'),
+        m_shop_bcolor: data.m_shop_bcolor | default('#000000'),
+    })
+%}
+
+{%
+    set categoryList = []
+%}
+
+{# 剔除分类名是空的数据 #}
+{% for item in formData.goodsSKU %}
+    {% if item.categoryName %}
+        {% set categoryList = categoryList | merge([item]) %}
+    {% endif %}
+{% endfor %}
+
+<div class="geshop-component-box component-drag geshop-U000208-model1 geshop-U000208-model1-{{ pageInstanceId }} {% if data.isEditEnv == 1 %}is-edit{% endif %}" data-key="U000208" data-id="{{ pageInstanceId }}"
+    data-is-fixed="{{ formData.nav_fixed }}"
+    data-goods='{{ formData.goodsSKU | json_encode() | replace({'\'':'&prime;'}) }}'
+>
+    {{ include ('style.twig') }}
+    <div class="rank
+        {% if formData.pc_banner %}has-pc-banner{% endif %}
+        {% if formData.pad_banner %}has-pad-banner{% endif %}
+        {% if formData.m_banner %}has-m-banner{% endif %}
+        {% if formData.cutoff_image %}has-cutoff-image{% endif %}
+    ">
+        {# banner #}
+        {{ include ('view/banner.twig') }}
+        <div class="rank-content">
+            {# 导航 #}
+            {{ include ('view/nav.twig') }}
+            {# 商品 #}
+            <div class="goods-section">
+                {# 组件没有设置过，并且是在装修界面，显示必要的默认信息 #}
+                {% if data.isEditEnv == 1 and formHasSaved == 'n' %}
+                    {{ include ('view/defaultGoods.twig') }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {# 前三的商品前端模板 #}
+    {{ include ('view/topGoodsTpl.twig') }}
+    {# 其他商品 #}
+    {{ include ('view/otherGoodsTpl.twig') }}
+</div>

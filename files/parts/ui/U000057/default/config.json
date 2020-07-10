@@ -1,0 +1,18 @@
+{
+  "fields": {
+    "height": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "fontSize": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "boxMarginTop": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "boxMarginBottom": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "boxMarginLeft": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "boxMarginRight": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "fontFamily": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "marquee": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "textColor": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "bgColor": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "bgimgSrc": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "ImgHeight": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "ImgWidth": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "viewBorderC": { "is_public": "0", "is_m": "0", "is_app": "0" }
+  }
+}

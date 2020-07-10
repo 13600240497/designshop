@@ -1,0 +1,680 @@
+{%
+set formData = {
+    id: 'U0000187',
+    name: '转盘抽奖组件配置',
+    theme: 'default',
+    tabs: [
+        {
+            label: '规则配置',
+            components: [
+                {
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '规则ID',
+                            desc: '(ELF系统中小游戏规则ID)',
+                            name: 'rule_id',
+                        },
+                        {
+                            label: '转盘奖品数',
+                            name: 'prize_amount',
+                            type: 'input',
+                            disabled: true,
+                        },
+                        {
+                            type: 'diy',
+                            src: './temp/input-actcode.twig'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            label: '样式配置',
+            components: [
+                {
+                    label: '常用配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '组件下边距',
+                            desc: '(PX)',
+                            name: 'component_margin_bottom',
+                            type: 'input',
+                            default: 32,
+                        },
+                        {
+                            label: '背景颜色',
+                            name: 'component_bgColor',
+                            type: 'colorPicker',
+                            default: '#F8F8F8',
+                        },
+                        {
+                            label: '背景图片',
+                            desc: '(建议宽1200px,高700px)',
+                            name: 'component_bgImage',
+                            type: 'image',
+                        },
+                        {
+                            label: '是否展示抽奖次数',
+                            name: 'show_spins',
+                            type: 'radio',
+                            default: 'show',
+                            options: [
+                                { label: '是', value: 'show' },
+                                { label: '否', value: 'hide' },
+                            ],
+                        },
+                    ]
+                },
+                {
+                    label: '标题配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '文案',
+                            name: 'title_label',
+                            type: 'input',
+                            default: 'LUCKY REWARDS',
+                        },
+                        {
+                            label: '文字颜色',
+                            name: 'title_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                        },
+                    ]
+                },
+                {
+                    label: '转盘配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '转盘图片',
+                            desc: '(建议宽500px,高500px)',
+                            name: 'turntable_image',
+                            type: 'image',
+                        },
+                        {
+                            label: '指针图片',
+                            desc: '（建议宽242px,高242px）',
+                            name: 'pointer_image',
+                            type: 'image',
+                            default: '',
+                        },
+                        {
+                            label: '指针文案',
+                            name: 'pointer_label',
+                            default: 'SPIN',
+                        },
+                        {
+                            label: '文字颜色',
+                            name: 'pointer_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            col: 2,
+                        },
+                        {
+                            label: '文字大小',
+                            desc: '(PX)',
+                            name: 'pointer_fontsize',
+                            default: 30,
+                            col: 2,
+                        },
+                    ]
+                },
+                {
+                    label: '中奖者展示配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '是否展示中奖者名单',
+                            name: 'show_list',
+                            type: 'radio',
+                            default: 'show',
+                            options: [
+                                { label: '是', value: 'show' },
+                                { label: '否', value: 'hide' },
+                            ],
+                        },
+                        {
+                            label: '背景图片',
+                            desc: '(建议尺寸宽度500px，高度467px)',
+                            name: 'list_bgImage',
+                            type: 'image',
+                            default: 'https://geshopimg.logsss.com/uploads/yPlv68TUOQKdLhsGa2fjzIJ1mHwrFnuR.png',
+                        },
+                        {
+                            label: '背景颜色',
+                            desc: '',
+                            name: 'list_bgColor',
+                            type: 'colorPicker',
+                            default: '#ffffff',
+                        },
+                        {
+                            label: '标题文字颜色',
+                            desc: '',
+                            name: 'list_title_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            col: 2,
+                        },
+                        {
+                            label: '中奖者名单文字颜色',
+                            desc: '',
+                            name: 'list_uname_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            col: 2,
+                        },
+                        {
+                            label: '中奖者名单上间距',
+                            desc: '(PX)',
+                            name: 'list_content_top',
+                            type: 'input',
+                            default: 60,
+                        },
+                        {
+                            label: '中奖者名单左右间距',
+                            desc: '(PX)',
+                            name: 'list_content_padding_lr',
+                            type: 'input',
+                            default: 32,
+                        },
+                        {
+                            label: '中奖者名单文字大小',
+                            desc: '(PX)',
+                            name: 'list_content_fontsize',
+                            type: 'input',
+                            default: 16,
+                        },
+                    ]
+                },
+                {
+                    label: '规则说明配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '按钮背景颜色',
+                            desc: '',
+                            name: 'rule_btn_bgColor',
+                            type: 'colorPicker',
+                            default: '#EDEDED',
+                            col: 2,
+                        },
+                        {
+                            label: '按钮文字颜色',
+                            desc: '',
+                            name: 'rule_btn_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            col: 2,
+                        },
+                        {
+                            label: '规则文案文字颜色',
+                            desc: '',
+                            name: 'rule_content_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                        },
+                        {
+                            label: '规则文字大小',
+                            desc: '(PX)',
+                            name: 'rule_content_fontsize',
+                            type: 'input',
+                            default: 16,
+                        },
+                        {
+                            label: '规则文案',
+                            desc: '',
+                            name: 'rule_content',
+                            type: 'textarea',
+                            default: '1、If you sign in you have an opportunty to Spin the Lucky Wheel and get a GIFTS.\n2、Placing 1 paid order the you can spin the lucky wheel 1 times！（Limit：3 per day）\n3、Want another chance to win ？ Just share our game！（Limit：1 per day）',
+                            row: 4,
+                        },
+                    ]
+                },
+                {
+                    label: '分享配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: 'FB渠道图片',
+                            desc: '(建议尺寸50x50px)',
+                            name: 'share_facebook_icon',
+                            type: 'image',
+                            default: '',
+                        },
+                        {
+                            label: 'Twitter渠道图片',
+                            desc: '(建议尺寸50x50px)',
+                            name: 'share_twitter_icon',
+                            type: 'image',
+                            default: '',
+                        },
+                        {
+                            label: 'Pinterest渠道图片',
+                            desc: '(建议尺寸50x50px)',
+                            name: 'share_pinterest_icon',
+                            type: 'image',
+                            default: '',
+                        },
+                        {
+                            label: 'Line渠道图片',
+                            desc: '(建议尺寸50x50px)',
+                            name: 'share_line_icon',
+                            type: 'image',
+                            default: '',
+                        },
+                    ]
+                },
+            ]
+        }
+    ],
+    moreConfig: [
+        {
+            label: '折叠控件',
+            type: 'collapse',
+            items: [
+                {
+                    label: '基础配置',
+                    components: [
+                        {
+                            label: '组件上边距',
+                            desc: '(PX)',
+                            name: 'component_margin_top',
+                            default: 0,
+                        },
+                        {
+                            label: '组件高度',
+                            desc: '(PX)',
+                            name: 'component_height',
+                            default: 700,
+                        },
+                    ]
+                },
+                {
+                    label: '标题配置',
+                    components: [
+                        {
+                            label: '上边距',
+                            desc: '(PX)',
+                            name: 'title_top',
+                            default: 32,
+                            col: 2,
+                        },
+                        {
+                            label: '左边距',
+                            desc: '(PX)',
+                            name: 'title_left',
+                            default: 467,
+                            col: 2,
+                        },
+                        {
+                            label: '文字大小',
+                            desc: '(PX)',
+                            name: 'title_fontsize',
+                            default: 30,
+                        },
+                    ]
+                },
+                {
+                    label: '转盘配置',
+                    components: [
+                        {
+                            label: '上边距',
+                            desc: '(PX)',
+                            name: 'turntable_top',
+                            default: 114,
+                            col: 2,
+                        },
+                        {
+                            label: '左边距',
+                            desc: '(PX)',
+                            name: 'turntable_left',
+                            default: 40,
+                            col: 2,
+                        },
+                        {
+                            label: '指针配置上边距',
+                            desc: '(PX)',
+                            name: 'pointer_top',
+                            default: 129,
+                            col: 2,
+                        },
+                        {
+                            label: '指针配置左边距',
+                            desc: '(PX)',
+                            name: 'pointer_left',
+                            default: 129,
+                            col: 2,
+                        },
+                    ]
+                },
+                {
+                    label: '中奖者展示配置',
+                    components: [
+                        {
+                            label: '上边距',
+                            desc: '(PX)',
+                            name: 'list_top',
+                            default: 114,
+                            col: 2,
+                        },
+                        {
+                            label: '左边距',
+                            desc: '(PX)',
+                            name: 'list_left',
+                            default: 660,
+                            col: 2,
+                        },
+                        {
+                            label: '榜单宽度',
+                            desc: '(PX)',
+                            name: 'list_width',
+                            default: 500,
+                            col: 2,
+                        },
+                        {
+                            label: '榜单高度',
+                            desc: '(PX)',
+                            name: 'list_height',
+                            default: 467,
+                            col: 2,
+                        },
+                        {
+                            label: '标题文字大小(PX）',
+                            desc: '',
+                            name: 'list_title_fotsize',
+                            default: 18,
+                        },
+                        {
+                            label: '标题上边距',
+                            desc: '(PX)',
+                            name: 'list_title_top',
+                            default: 20,
+                            col: 2,
+                        },
+                        {
+                            label: '标题左边距',
+                            desc: '(PX)',
+                            name: 'list_title_left',
+                            default: 190,
+                            col: 2,
+                        },
+                        {
+                            label: '边框颜色',
+                            desc: '',
+                            name: 'list_border_color',
+                            type: 'colorPicker',
+                            default: '',
+                        },
+                    ]
+                },
+                {
+                    label: '抽奖次数配置',
+                    components: [
+                        {
+                            label: '上边距',
+                            desc: '(PX)',
+                            name: 'spins_top',
+                            default: 632,
+                            col: 2,
+                        },
+                        {
+                            label: '左边距',
+                            desc: '(PX)',
+                            name: 'spins_left',
+                            default: 240,
+                            col: 2,
+                        },
+                        {
+                            label: '文字大小',
+                            desc: '(PX)',
+                            name: 'spins_fontsize',
+                            default: 16,
+                        },
+                        {
+                            label: '数字文字颜色',
+                            desc: '',
+                            name: 'spins_number_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            col: 2,
+                        },
+                        {
+                            label: '文案文字颜色',
+                            desc: '',
+                            name: 'spins_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            col: 2,
+                        },
+                    ]
+                },
+                {
+                    label: '剩余积分文案配置',
+                    isshow: 'zf-pc',
+                    components: [
+                        {
+                            label: '上边距',
+                            desc: '(PX)',
+                            name: 'points_top',
+                            default: 652,
+                            col: 2,
+                        },
+                        {
+                            label: '左边距',
+                            desc: '(PX)',
+                            name: 'points_left',
+                            default: 100,
+                            col: 2,
+                        },
+                        {
+                            label: '文字大小',
+                            desc: '(PX)',
+                            name: 'points_fontsize',
+                            default: 16,
+                        },
+                        {
+                            label: '数字文字颜色',
+                            desc: '',
+                            name: 'points_number_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            col: 2,
+                        },
+                        {
+                            label: '文案文字颜色',
+                            desc: '',
+                            name: 'points_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            col: 2,
+                        },
+                    ]
+                },
+                {
+                    label: '分享配置',
+                    components: [
+                        {
+                            label: '上边距',
+                            desc: '(PX)',
+                            name: 'share_top',
+                            default: 600,
+                            col: 2,
+                        },
+                        {
+                            label: '左边距',
+                            desc: '(PX)',
+                            name: 'share_left',
+                            default: 944,
+                            col: 2,
+                        },
+                        {
+                            label: '标题文案配置',
+                            desc: '',
+                            name: 'share_title_label',
+                            default: 'SHARE FOR MORE CHANCES',
+                        },
+                        {
+                            label: '标题文字颜色',
+                            desc: '',
+                            name: 'share_title_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                        },
+                        {
+                            label: '文案文字大小',
+                            desc: '(PX)',
+                            name: 'share_title_fontsize',
+                            default: 14,
+                        },
+                    ]
+                },
+                {
+                    label: '规则说明配置',
+                    components: [
+                        {
+                            label: '按钮上边距',
+                            desc: '(PX)',
+                            name: 'rule_btn_top',
+                            default: 82,
+                            col: 2,
+                        },
+                        {
+                            label: '按钮左边距',
+                            desc: '(PX)',
+                            name: 'rule_btn_left',
+                            default: 1080,
+                            col: 2,
+                        },
+                        {
+                            label: '弹出框背景颜色',
+                            desc: '',
+                            name: 'rule_dialog_bgColor',
+                            type: 'colorPicker',
+                            default: '#FFFFF',
+                        },
+                    ]
+                },
+                {
+                    label: '弹出框配置',
+                    components: [
+                        {
+                            label: '图标',
+                            desc: '(建议宽140px,高122px)',
+                            name: 'success_dialog_icon',
+                            type: 'image',
+                            default: '',
+                        },
+                        {
+                            label: '背景图片',
+                            desc: '(宽度600px,高度400px)',
+                            name: 'success_dialog_bgImage1',
+                            type: 'image',
+                            default: '',
+                        },
+                        {
+                            label: '文字大小',
+                            desc: '(PX)',
+                            name: 'success_dialog_fontsize',
+                            type: 'input',
+                            default: 16,
+                            col: 2,
+                        },
+                        {
+                            label: '文字颜色',
+                            desc: '',
+                            name: 'success_dialog_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            col: 2,
+                        },
+                        {
+                            label: '按钮文字颜色',
+                            desc: '',
+                            name: 'success_dialog_btn_color',
+                            type: 'colorPicker',
+                            default: '#ffffff',
+                            col: 2,
+                        },
+                        {
+                            label: '按钮背景颜色',
+                            desc: '',
+                            name: 'success_dialog_btn_bgColor',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            col: 2,
+                        },
+                    ]
+                },
+            ]
+        }
+    ],
+    beforeSubmit: 'onSubmit'
+}
+%}
+ 
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+<script>
+    
+    var $box = $('#{{ formData.id }}-{{ formData.theme }}');
+    var $ruleID = $box.find('input[name="rule_id"]');
+
+    var _inputFirm = function _inputFirm(text){
+        layer.msg(text);
+    };
+
+    var _json = function (param) {
+        param = param || {};
+        return $.ajax($.extend({
+            dataType: "jsonp"
+        }, param));
+    };
+
+    var getRuleDetail = function (_value, callback) {
+      var _url = GESHOP_INTERFACE.elf_webgame_get_activity.url;
+      var website = GESHOP_SITECODE ? GESHOP_SITECODE.split('-')[0].toUpperCase() : '';
+      var pipeline_code = typeof GESHOP_PIPELINE !== 'undefined' ? GESHOP_PIPELINE : GESHOP_LANG === 'en' ? (GESHOP_SITECODE.split('-')[0]).toUpperCase() : (GESHOP_SITECODE.split('-')[0] + GESHOP_LANG).toUpperCase();
+        return _json({
+          type: 'GET',
+          url: _url,
+          data: { website: website, act_id: _value, pipeline_code: pipeline_code },
+          success :function(res){
+              if (res.status === 200) {
+                  $box.find('input[name="prize_amount"]').val(res.data.prize_count);
+                  $box.find('input[name="act_code"]').val(res.data.act_code);
+                  callback && callback()
+              } else {
+                  GS_GOODS_UTILS.showConfirm(_value+' ID不存在，是否清空规则ID？',function(){
+                      _clearInput();
+                  });
+              }
+          }
+      });
+
+    };
+
+    var _clearInput = function () {
+        $box.find('input[name="prize_amount"]').val('');
+        $box.find('input[name="act_code"]').val('');
+        $box.find('input[name="rule_id"]').val('');
+    };
+
+    {#  自定义保存函数 #}
+    function onSubmit(progress) {
+        var _val = $('input[name="rule_id"]').val();
+        if (_val) {
+            getRuleDetail(_val, function() {
+                progress.next()
+            });
+        } else {
+            _inputFirm('请填写规则ID');
+            _clearInput();
+        }
+    };
+
+</script>

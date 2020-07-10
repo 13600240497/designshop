@@ -1,0 +1,19 @@
+<div class="geshop-component-box component-drag" data-key="U000193" data-id="{{ pageInstanceId }}">
+    <!-- embed stylesheet begin -->   
+    {{ include('style.twig') }}
+    <!-- embed stylesheet end -->
+    <div class="U000193-template1 U000193-template1-{{ pageInstanceId }} {% if data.isEditEnv == 1 %} is-edit {% endif %}">
+        <div class="mask"></div>
+        <div class="image-layer">
+            <i class="geshop-popup-close"></i>
+            {% if data.href is not empty %}
+            <a href="{{ data.href | default('javascript:;') }}" target="_blank">
+            {% else %}
+            <a href="javascript:;">
+            {% endif %}
+                <img src="{{ data.component_bgImage | default('https://geshoptest.s3.amazonaws.com/uploads/CwGti7xZkrHY2s5qWveInOhP4MQyE6Fd.png') }}" />
+            </a>
+        </div>
+    </div>
+</div>
+

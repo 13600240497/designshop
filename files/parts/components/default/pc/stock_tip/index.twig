@@ -1,0 +1,8 @@
+
+{% set promotion_length = item.promotions and item.promotions.length %}
+{% if data.stock_urgent|default(1) == '1' and (item.goods_number|number_format) and item.is_stock_urgent == '1' and (promotion_length is null or promotion_length == 0) %}
+    {% set stock_value = get_component_trans(lang,'stock_left')|replace({'XX':item.goods_number}) %}
+    <div class="geshop__mask--stocktip geshop-pc">
+        <p>{{ stock_value }}</p>
+    </div>
+{% endif %}

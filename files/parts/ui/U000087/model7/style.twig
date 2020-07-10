@@ -1,0 +1,80 @@
+{% set box = '#U000087_'~pageInstanceId %}
+
+#U000087_{{ pageInstanceId }} {
+    margin-top: {{ data.box_margin_top ?? 0 / 75 }}rem;
+    margin-bottom: {{ data.box_margin_bottom ?? 32 / 75 }}rem;
+}
+
+{{ box }} .coupon7_body {
+    background: url("{{ data.coupon_bg ?? 'https://geshopimg.logsss.com/uploads/zUnZLJiF9SG6y83aBdxj01VvRHN2uMIe.png' }}") 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+
+
+{{ box }} .dis_hd {
+    color: {{ data.dis_hd_color ?? '#333333' }};
+    font-size: {{ data.dis_hd_fontSize ?? 68 / 75 }}rem;
+}
+
+{{ box }} .currency_icon {
+    color: {{ data.currency_icon_color ?? '#333333' }};
+    font-size: {{ data.currency_icon_fontSize ?? 24 / 75 }}rem;
+}
+
+{{ box }} .center_tit_hd {
+    color: {{ data.center_tit_hd_color ?? '#333333' }};
+}
+
+{{ box }} .center_tit_bd {
+    color: {{ data.center_tit_bd_color ?? '#000000' }};
+}
+
+{{ box }} .list_time {
+    color: {{ data.time_color ?? '#333333' }};
+}
+
+{{ box }} .list_plat {
+    color: {{ data.platform_color ?? '#333333' }};
+}
+
+{{ box }} .btn-claim {
+    background-color: {{ data.claim_bg_color ?? '#FFFFFF' }};
+    color: {{ data.claim_color ?? '#333333' }};
+}
+
+{{ box }} .btn-useNow {
+    background-color: {{ data.use_bg_color ?? '#FFFFFF' }};
+    color: {{ data.use_color ?? '#333333' }};
+}
+
+{{ box }} .coupon_code {
+    color: {{ data.coupon_color ?? '#FFFFFF' }};
+}
+
+{{ box }} .coupon_code_desc {
+    color: {{ data.coupons_received_color ?? '#FFFFFF' }};
+}
+
+{{ box }} .btn-end, {{ box }} .btn-soon {
+    background-color: {{ data.end_bg_color ?? '#414141' }};
+    color: {{ data.end_color ?? '#AEAEAE' }};
+}
+
+{{ box }} .dia-box {
+    background-color: {{ data.dia_bg_color ?? '#FFFFFF' }};
+    color: {{ data.dia_color ?? '#333333' }};
+}
+
+{{ box }} .user_coupon_info > a {
+    color: {{ data.dia_color ?? '#333333' }};
+}
+
+{{ box }} .cop {
+    background-color: {{ data.dia_coup_bg_color ?? '#333333' }};
+    color: {{ data.dia_coup_color ?? '#FFFFFF' }};
+}
+
+{{ box }} .btn_coupons_none, {{ box }} .btn_user_none {
+    color: {{ data.coupon_color ?? '#FFFFFF' }};
+}
+

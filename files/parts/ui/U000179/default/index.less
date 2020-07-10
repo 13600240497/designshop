@@ -1,0 +1,134 @@
+//component
+.ui-U000179_default{
+	line-height: initial;
+	.point-wrapper{
+		overflow:hidden;
+	}
+	.point-name{
+		background: rgba(153,153,153,.7);
+	}
+	.check-status{
+		color:#333333;
+		background-color: #D8D8D8;
+		&.check-logined{
+			color:#FFFFFF;
+			background-color: #999999;
+		}
+	}
+
+}
+
+
+
+//block ui
+.blockUi-U000179 {
+
+	.content {
+		padding: 15px;
+		text-align: left
+	}
+	.content.pd0 {
+		padding: 0px;
+	}
+	.content .txt.center {
+		font-size: 18px;
+		font-weight: bold;
+		margin-top: 20px;
+		text-align: center
+	}
+	.content.pd0 .txt.center {
+		padding: 280px 30px 0px;
+	}
+	.content .contb {
+		background: #fff;
+		border-radius: 0px 0px 8px 8px;
+		padding-bottom: 30px;
+		float: left
+	}
+	.content .tit {
+		font-size: 18px;
+	}
+	.content .times {
+		font-size: 18px;
+		margin-top: 10px;
+		text-align: center;
+		font-weight: bold
+	}
+	.content .txt.left {
+		text-align: left;
+		margin-top: 10px;
+		font-size: 12px;
+		font-weight: normal;
+	}
+	.content .closeBtn {
+		text-align: center;
+		margin-top: 45px;
+	}
+	.content .closeBtn span {
+		display: inline-block;
+		font-size:20px;
+		width: 160px;
+		height: 40px;
+		line-height: 40px;
+		background: #333;
+		color: #fff;
+		border-radius: 18px;
+		cursor: pointer;
+	}
+	.content {
+		.success {
+			font-size: 24px !important;
+		}
+		.success-point {
+			color: #d82525;
+		}
+		.fail{
+			margin-top:80px !important;
+		}
+		/*规则*/
+		.block-rule-title{
+			font-size:18px;
+			margin-bottom:20px;
+		}
+		.block-rule-content{
+			font-size: 18px;
+			word-break: break-word;
+			white-space: inherit;
+			overflow: hidden;
+			color: #5a5a5a;
+			font-weight: normal;
+		}
+	}
+	&.blockUi-status_success {
+		padding: 80px;
+		background-color: transparent !important;
+	}
+	&.blockUi-rules{
+		padding: 40px !important;
+		border-radius: 4px;
+		box-sizing: border-box;
+		position: relative;
+		&:before{
+			content: " ";
+			position: absolute;
+			height: 0;
+			width: 0;
+			border: solid transparent;
+			pointer-events: none;
+			border-width: 8px;
+			//border-color: initial;
+		}
+	}
+	&.pointer-top{
+		&:before{
+			margin-left: -16px;
+			border-bottom-color: #ffffff;
+			top: -16px;
+			right:30px;
+		}
+	}
+
+}
+.blockUi-U000179-overflow{
+	overflow:hidden;
+}

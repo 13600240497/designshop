@@ -1,0 +1,121 @@
+.geshop-activity-lists .ge-activity-list-icon {
+  padding: 0px 0px;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.gb-label-title {
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 10px;
+  display: block;
+}
+.channelSwiperContainer {
+  position: static;
+  width: 560px;
+}
+.channelSwiperContainer .swiper-button-next,
+.channelSwiperContainer .swiper-button-prev {
+  background-size: 8px 44px;
+  height: 40px;
+}
+.channelSwiperContainer .swiper-button-next {
+  right: 0px;
+}
+.channelSwiperContainer .swiper-button-prev {
+  left: 0px;
+}
+.channel-language-text {
+  margin-left: 20px;
+  vertical-align: -webkit-baseline-middle;
+  display: inline;
+}
+.geshop-activity-actionbar {
+  display: none;
+}
+@media (min-width: 1000px) and (max-width: 1670px) {
+  .geshop-page-list-header .header-input {
+    width: 80px;
+  }
+  .geshop-page-list-header .geshop-Activity-btn-add {
+    left: 5px;
+  }
+  .geshop-page-list-header .geshop-activity-actionbar {
+    display: block;
+  }
+  .geshop-page-list-header .geshop-activity-actionbar-col {
+    display: none;
+  }
+}
+@media (min-width: 1671px) and (max-width: 1770px) {
+  .geshop-page-list-header .header-input {
+    width: 100px;
+  }
+}
+@media (min-width: 1771px) and (max-width: 2200px) {
+  .geshop-page-list-header .header-input {
+    width: 125px;
+  }
+}
+@media (min-width: 1000px) and (max-width: 1670px) {
+  .geshop-activity-actionbar {
+    display: block;
+  }
+  .geshop-activity-actionbar .header-input {
+    width: 90px;
+  }
+  .geshop-activity-actionbar-col {
+    display: none;
+  }
+}
+.geshop-activity-lists .geshop-activity-child-pages .child-pages-hover .icon-geshop-decorate {
+  position: static;
+}
+.geshop-activity-lists .geshop-activity-child-pages .child-pages-hover .icon-geshop-online,
+.geshop-activity-lists .geshop-activity-child-pages .child-pages-hover .icon-geshop-offline {
+  position: static;
+}
+.geshop-activity-lists .geshop-activity-child-pages .child-pages-hover .icon-geshop-mobile {
+  position: static;
+}
+.geshop-activity-lists .geshop-activity-child-pages .child-pages-hover .icon-geshop-search,
+.geshop-activity-lists .geshop-activity-child-pages .child-pages-hover .advertisement-icon-geshop-mobile {
+  position: static;
+}
+.geshop-activity-lists .geshop-activity-child-pages .el-card__body .child-pages-hover {
+  padding: 30px 8px 0 8px;
+  text-align: center;
+}
+.geshop-activity-lists .geshop-activity-child-pages .el-card__body .child-pages-hover .child-pages-container {
+  display: flex;
+  justify-content: space-around;
+}
+.geshop-new-activities-lang.activity-place-channel-item .el-form-item__label ::before {
+  content: '*';
+  color: #f56c6c;
+}
+.geshop-new-activities-lang.activity-place-channel-item .el-form-item__content {
+  overflow: hidden;
+}
+.geshop-activity-place-channel-tabs .el-tabs__item {
+  width: 80px;
+  text-align: center;
+}
+.geshop-activity-place-channel-tabs-title {
+  margin-bottom: 0;
+}
+.geshop-activity-place-channel-tabs-title .icon {
+  color: #f56c6c;
+}
+.geshop-new-child-page .gs-col-all.end-time .el-form-item__error {
+  top: 40px;
+}
+.geshop-preview-dialog-container .el-button.el-button--primary {
+  margin-top: 10px;
+}
+.geshop-add-edit-activity-form .el-radio {
+  margin: 5px 30px 5px 0;
+}

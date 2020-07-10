@@ -1,0 +1,30 @@
+.geshop-U000001-default-v2-{{ pageInstanceId }} {
+    margin-bottom: {{ data.box_margin_bottom | default(32) }}px;
+}
+
+.geshop-U000001-default-v2-{{ pageInstanceId }} li:hover:after {
+    border-color: {{ data.hover_bdColor | default('#333') }};
+}
+
+{%
+    include geshop.default.pc.shop_price with { style: {
+        'color': data.shop_price_color
+    }}
+%}
+
+{%
+    include geshop.default.pc.button_buy with { style: {
+        'color': data.buynow_font_color,
+        'background-image': data.buynow_bg_image,
+        'background-color': data.buynow_bg_color,
+        'border-radius': data.buynow_radius
+    }}
+%}
+
+{%
+    include geshop.default.pc.discount_float with { style: {
+        'background-color': data.discount_bg_color,
+        'background-image': data.discount_bg_image,
+        'color': data.discount_font_color,
+    }}
+%}

@@ -1,0 +1,131 @@
+
+{% set space = '#U000232_'~pageInstanceId %}
+
+{% set body = space~' .geshop-U000232-model1-body' %}
+
+{{ space }} .geshop-U000232-model1-body {
+    width: 100%;
+    overflow: hidden;
+    background-color: {{ data.box_bg_color ?? 'transparent' }};
+}
+
+{# 三端共有样式 #}
+{{ body }} .geshop-U000232-model1-wrapper{
+    text-align:{{ data.btn_align|default('center') }}
+}
+
+{{ body }} .gs-btn-area{
+    color:{{ data.btn_ft_color|default('#FFFFFF') }};
+    border-color:{{ data.btn_border_color|default('#000000') }};
+    border-style: {{ data.border_type|default('1') == '1'? 'solid' : 'dashed' }};
+    background-color:{{ data.btn_bg_color|default('#000000') }};
+}
+
+{{ body }} .gs-btn{
+    background-color:{{ data.btn_bg_color|default('#000000') }};
+    font-weight:{{ data.font_weight|default('bold') }};
+}
+
+
+{# PC 模式#}
+@media screen and (min-width: 1025px){
+    {{ body }} .gs-btn-area:hover{
+        color:{{ data.pc_btn_hover_color|default('#000000') }};
+        border-color:{{ data.pc_btn_hover_border_color|default('#333333') }};
+        background-color:{{ data.pc_btn_hover_bgc|default('#FFFFFF') }};
+    }
+
+    {{ body }} .gs-btn-area:hover .gs-btn{
+        background-color:{{ data.pc_btn_hover_bgc|default('#FFFFFF') }};
+    }
+}
+
+{# PC + pad 模式 #}
+@media screen and (min-width: 768px) {
+    {{ body }} {
+        {% if data.btn_show ?? 1 != 0 %}
+            display: block;
+        {% else %}
+            display: none;
+        {% endif %}
+    }
+    {{ body }} .gs-btn-area{
+        margin-top:{{ data.pc_margin_top|default('0') }}px;
+        margin-bottom:{{ data.pc_margin_bot|default('32') }}px;
+        width:{{ data.pc_btn_width|default('200') }}px;
+        height:{{ data.pc_btn_height|default('50') }}px;
+        line-height:{{ data.pc_btn_height|default('50') - (data.pc_border_width|default(2))*2 }}px;
+        border-radius:{{ data.pc_btn_radius|default('25') }}px;
+{#        margin-left:{{ data.pc_margin_left|default(0) }}px;#}
+        border-width:{{ data.pc_border_width|default(2) }}px;
+        font-size:{{ data.pc_ft_size|default(20) }}px;
+    }
+
+    {{ body }} .gs-btn-area .gs-btn{
+        {% if data.pc_bg_image %}
+            background:url({{ data.pc_bg_image }}) no-repeat center center;
+            background-size: 100% 100%;
+        {% endif %}
+    }
+
+
+
+}
+
+{# PAD #}
+{#@media screen and (max-width: 1024px) and (min-width: 768px) {
+    {{ body }} .gs-btn-area{
+    margin-top:{{ data.pad_margin_top|default('0') }}px;
+    margin-bottom:{{ data.pad_margin_bot|default('32') }}px;
+    width:{{ data.pad_btn_width|default('200') }}px;
+    height:{{ data.pad_btn_height|default('50') }}px;
+    line-height:{{ data.pad_btn_height|default('50') - (data.pad_border_width|default(2))*2 }}px;
+    border-radius:{{ data.pad_btn_radius|default('25') }}px;
+#}{#    margin-left:{{ data.pad_margin_left|default(0) }}px;#}{#
+    border-width:{{ data.pad_border_width|default(2) }}px;
+    font-size:{{ data.pad_ft_size|default(20) }}px;
+    }
+
+    {{ body }} .gs-btn-area .gs-btn{
+        {% if data.pad_bg_image %}
+            background:url({{ data.pad_bg_image }}) no-repeat center center;
+            background-size: 100% 100%;
+        {% endif %}
+    }
+
+}#}
+
+
+{# M #}
+@media screen and (max-width: 767px) and (min-width: 0px) {
+    {{ body }} {
+        {% if data.btn_show_m ?? 1 != 0 %}
+            display: block;
+        {% else %}
+            display: none;
+        {% endif %}
+    }
+    {{ body }} .gs-btn-area{
+    margin-top:{{ data.m_margin_top|default('0') }}px;
+    margin-bottom:{{ data.m_margin_bot|default('16') }}px;
+    width:{{ data.m_btn_width|default('160') }}px;
+    height:{{ data.m_btn_height|default('40') }}px;
+    line-height:{{ data.m_btn_height|default('40') - (data.m_border_width|default(2))*2 }}px;
+    border-radius:{{ data.m_btn_radius|default('25') }}px;
+{#    margin-left:{{ data.m_margin_left|default(0) }}px;#}
+    border-width:{{ data.m_border_width|default(2) }}px;
+    font-size:{{ data.m_ft_size|default(18) }}px;
+    }
+
+    {{ body }} .gs-btn-area .gs-btn{
+        {% if data.m_bg_image %}
+            background:url({{ data.m_bg_image }}) no-repeat center center;
+            background-size: 100% 100%;
+        {% endif %}
+    }
+}
+{% if data.isEditEnv == 1 %}
+    {{ body }} {
+        display: block;
+    }
+{% endif %}

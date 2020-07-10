@@ -1,0 +1,34 @@
+<div class="geshop-component-box component-drag" data-key="U000077" data-id="{{ pageInstanceId }}" data-unique="true"
+  data-fontColorActive="{{ data.fontColorActive | default('#e33194') }}"
+  data-fontColorBtn="{{ data.fontColorBtn | default('#000000') }}"
+  data-bgColorBtn="{{ data.bgColorBtn | default('#ffffff') }}"
+  data-borderColorBtn="{{ data.borderColorBtn | default('#000000') }}"
+  data-page-id='{{ pageId }}'
+  data-page-instance-id='{{ pageInstanceId }}'
+  data-layout-index='{{ layoutIndex }}'
+  data-comp-key='{{ compKey }}'
+  data-ui-index='{{ uiIndex }}'
+
+>
+  <!-- embed stylesheet begin -->
+  <style type="text/css">
+    .geshop-recommend-category-inline .geshop-recommend-category-inline-active a:after {
+      background-color: {{ data.fontColorActive | default('#e33194') }};
+    }
+  </style>
+  <!-- embed stylesheet end -->
+  <div class="geshop-recommend-block js_geshopRecommendBlock" style="display:none;margin-bottom: {{ ((data.boxMarginBottom | default(98)) / 75) | number_format(3, '.') }}rem;">
+    <div class="geshop-recommend-category-block-warp">
+      <div class="geshop-recommend-category-block">
+      <div class="geshop-recommend-category-inline">
+        <div class="geshop-recommend-category-inline-list js_geshopRecommendCategoryInline">
+          <ul></ul>
+        </div>
+        <a href="javascript:;" class="geshop-recommend-category-arrow js_geshopShowCategory"></a>
+      </div>
+      <ul class="geshop-recommend-category-all js_geshopRecommendCategoryAll"></ul>
+    </div>
+    </div>
+    <div class="geshop-recommend-goods js_geshopRecommendGoods clearfix"></div>
+  </div>
+</div>

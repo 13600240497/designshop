@@ -1,0 +1,12 @@
+{
+  "fields": {
+    "bg_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "hover_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "font_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "hover_font_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "font_size": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "nav_h": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "nav_gap": { "is_public": "0", "is_m": "0", "is_app": "1" },
+		"userGroupSelect": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  }
+}

@@ -1,0 +1,19 @@
+<div class="geshop-col-6" style="text-align: left;">
+    {% if data.img1Src %}
+        <a class="box-loading" {% if data.img1Href %}href="{{ data.img1Href }}"{% endif %}>
+            <img class="js-lazyload" alt="{{ data.img1Alt }}" data-lazy="{{ data.img1Src }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=" style="display: block; vertical-align: top; width: 4.68rem;">
+        </a>
+    {% else %}
+        <p style="border: 1px solid #dddddd; height: 64px; line-height: 64px; text-align: center; font-size: 16px; font-weight: bold; color: #dddddd;">图片一</p>
+    {% endif %}
+</div>
+
+<div class="geshop-col-6" style="text-align: right;">
+    {% if data.img2Src %}
+        <a class="box-loading" {% if data.img2Href %}href="{{ data.img2Href }}"{% endif %}>
+            <img class="js-lazyload" alt="{{ data.img2Alt }}" data-lazy="{{ data.img2Src }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=" style="display: block; vertical-align: top; width: 4.68rem;">
+        </a>
+    {% else %}
+        <p style="border: 1px solid #dddddd; height: 64px; line-height: 64px; text-align: center; font-size: 16px; font-weight: bold; color: #dddddd;">图片二1</p>
+    {% endif %}
+</div>

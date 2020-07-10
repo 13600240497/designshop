@@ -1,0 +1,82 @@
+
+<!-- embed stylesheet begin -->
+<style type="text/css" >
+    {% set class_root = '.geshop-U000041-model4-'~pageInstanceId %}
+    {% set class_box = '.geshop-U000041-model4-'~pageInstanceId~' .geshop-containr' %}
+    {% set unit = 'px' %}
+
+    {{ class_root }} {
+        margin-top: {{ data.component_mt ?? 0 }}px;
+        margin-bottom: {{ data.component_mb ?? 32}}px;
+    }
+    {{ class_box }} .geshop-navswiper .swiper-slide span {
+        font-size: {{ data.nav1_fontSize ?? 16  }}px;
+    }
+    {{ class_box }} .geshop-navswiper .swiper-slide.active span {
+        color: {{ data.nav1_actColor ?? '#333333'}};
+        border-bottom-color: {{ data.nav1_bdColor ?? '#333333' }};
+    }
+    /*二级导航配置*/
+    {{ class_box }} .geshop-navswiper .swiper-slide {
+        margin-bottom: {{ data.nav2_mt ?? 16  }}px;
+    }
+    {{ class_box }} .geshop-secondswiper .swiper-slide {
+        height: {{ data.nav2_bg_h ?? 40  }}px;
+        line-height: {{ data.nav2_bg_h ?? 40  }}px;
+        margin-left: {{ data.nav2_span_mg ?? 10  }}px;
+
+    }
+    {{ class_box }} .geshop-secondswiper .swiper-slide>span {
+        font-size: {{ data.nav2_fontSize ?? 14  }}px;
+        padding: 0 {{ data.nav2_span_pd ?? 10  }}px;
+        color: {{ data.nav2_color ?? '#666666' }};
+    }
+    {{ class_box }} .geshop-secondswiper .swiper-slide .nav-img {
+        width: {{ data.nav2_bg_w ?? 40  }}px;
+        height: {{ data.nav2_bg_h ?? 40 }}px;
+    }
+    /*折扣标*/
+    {{ class_box }} .discount-off {
+         background-color:{{ data.discount_bg_color | default('#FA386A')}};
+         color:{{ data.discount_font_color ?? '#FFFFFF'}};
+         {% if data.discount_bg_image is not empty %}
+             background-image: url({{ data.discount_bg_image }})
+         {% endif %}
+     }
+    {{ class_box }} .discont-curtoff .gs-curtoff-wrap{
+        {% if data.discount_bg %}
+            background-color: transparent;
+            border-radius: 0;
+        {% else %}
+            background-color: {{ data.discount_bgColor ?? '#333333' }};
+            border-radius: 100%;
+        {% endif %}
+    }
+    {{ class_box }} .discont-curtoff .curtoff-box .line{
+        margin-right: {{ data.discont_mr ?? 0  }}px;
+    }
+    {{ class_box }} .discont-curtoff .curtoff-box .line.line-1{
+        margin-top: {{ data.discont_mt ?? 11  }}px;
+    }
+    /*营销信息*/
+    {{ class_box }} .second-nav-list li>a .shop-fast {
+        color: #333333;
+    }
+    {{ class_box }} .second-nav-list .ri-list  strong{
+        color: {{ data.goodsDesc_color ?? '#333333' }}!important;
+    }
+
+    {{ class_box }} .geshop-secondswiper .swiper-button-prev,{{ class_box }} .geshop-secondswiper .swiper-button-next{
+        height: {{ data.nav2_bg_h ?? 40 }}px;
+        width: {{ data.nav2_bg_w ?? 40  }}px;
+    }
+    {{ class_box }} .geshop-secondswiper .swiper-button-prev .icon-left,{{ class_box }} .geshop-secondswiper .swiper-button-next .icon-right{
+        width: {{ data.nav2_bg_w ?? 40  }}px;
+        height: {{ data.nav2_bg_h ?? 40 }}px;
+    }
+
+    {{ class_box }} .second-nav-list{
+        background-color: {{ data.box_bg_color|default('#F8F8F8') }}
+     }
+</style>
+<!-- embed stylesheet end -->

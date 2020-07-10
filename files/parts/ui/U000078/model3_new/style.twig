@@ -1,0 +1,81 @@
+<!-- embed stylesheet begin -->
+    <style type="text/css">
+        .warp-{{ pageInstanceId }} .component-self-goodWrap:hover, .warp-{{ pageInstanceId }} .current {
+            border-color:{{data.hover_borderColor|default('#333333')}} !important;
+        }
+
+        .warp-{{ pageInstanceId }} .component-self-goodWrap{
+            border-color:{{goodsData.goodsBdC_normal|default('transparent')}} !important;
+        }
+
+        .warp-{{ pageInstanceId }} .gs-tab_going{
+            background-color:{{pageData.tab_ingBgc}} ;
+            color:{{pageData.tab_ingTextC}};
+        border-color: {{pageData.tab_ingBdC}} !important;
+        }
+        .warp-{{ pageInstanceId }} .bd-main li {
+        border-color: {{pageData.tab_soonBdC}};
+        }
+
+        .warp-{{ pageInstanceId }} [data-class='gs-tab-already']{
+            background-color:{{pageData.tab_ingBgc}};
+            color:{{pageData.tab_ingTextC}};
+        border-color: {{pageData.tab_ingBdC}} !important;
+        }
+        .warp-{{ pageInstanceId }} [data-class='gs-tab-end']{
+            background-color:{{pageData.tab_endBgc}};
+            color:{{pageData.tab_endTextC}};
+        border-color: {{pageData.tab_endBdC}} !important;
+        }
+
+        .warp-{{ pageInstanceId }} [data-class='gs-tab-soon']{
+            background-color:{{pageData.tab_soonBgc}};
+            color:{{pageData.tab_soonTextC}};
+        border-color: {{pageData.tab_soonBdC}} !important;
+        }
+        .warp-{{ pageInstanceId }} .gs-tab_select{
+                border-width:1px;
+                border-color:{{pageData.tab_ingBgc}} !important;
+        }
+        .warp-{{ pageInstanceId }} .gs-option .prev,.warp-{{ pageInstanceId }} .gs-option .next{
+            background-color:{{pageData.tab_soonBgc}}
+        }
+
+
+        .warp-{{ pageInstanceId }} .gs_component_countDown em{
+            font-size:{{pageData.downFtS}}{{suffix}};
+            {# width:{{sizeWidth}}{{suffix}}; #}
+            height:{{sizeHeight}}{{suffix}};
+            line-height:{{sizeHeight}}{{suffix}};
+            min-width:30px;
+            padding:0 5px;
+        }
+
+        {{ nameSpace }} li:hover:after {
+            border-color: {{ data.goodsBdC }};
+        }
+
+        {%
+            include geshop.default.pc.discount_float with { style: {
+            
+                'color':goodsData.discount_font_color,
+                'background-color':goodsData.discount_bg_color,
+                'background-image': data.discount_bg_image,
+            }}
+        %}
+
+        {%
+            include geshop.default.pc.shop_price with { style: {
+                'color': goodsData.shop_price_color
+            }}
+        %}
+
+        {%
+            include geshop.default.pc.button_buy with { style: {
+                'color': data.buynow_font_color,
+                'background-color': goodsData.buynow_bg_color,
+                'border-radius': data.buyBorderR
+            }}
+        %}
+</style>
+<!-- embed stylesheet end -->

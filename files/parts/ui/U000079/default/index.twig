@@ -1,0 +1,47 @@
+
+{% set pageData = {
+	buyFtC:data.buyFtC is not null?data.buyFtC:'#1c1c1c',
+	buyFtCHover:data.buyFtCHover is not null?data.buyFtCHover:'#ffffff',
+	buyBgc:data.buyBgc is not null?data.buyBgc:'#ffffff',
+	buyBgcHover:data.buyBgcHover is not null?data.buyBgcHover:'#1c1c1c',
+	borderColor:data.borderColor is not null?data.borderColor:'#1c1c1c',
+
+	buyFtS:(data.buyFtS|default(14)),
+	buyMarginB:(data.buyMarginB|default(50)),
+	borderFont:(data.borderFont|default(1)),
+	buyRadius:data.buyRadius|default(0),
+	buyHeight:(data.buyHeight|default(34)),
+	buyWidth:(data.buyWidth|default(116)),
+	buyFtW:data.buyFtW|default(100),
+	buyBorderS:data.buyBorderS|default('solid')
+} %}
+
+<div class="geshop-component-box component-drag clearfix" data-gid="U000079" data-key="U000079" data-id="{{ pageInstanceId }}">
+	<style type="text/css">
+		[data-gid="U000079"] .gs-btn:hover {
+			color:{% if data.buyFtCHover %}{{data.buyFtCHover|default('#ffffff')}}!important;{% endif %}
+			background-color:{% if data.buyFtCHover %}{{data.buyBgcHover|default('#1c1c1c')}}!important;{% endif %}
+		}
+	</style>
+	<div class="geshop-col-12" style="{% if data.buyMarginB %}margin-bottom: {{data.buyMarginB|default(50)}}px;{% endif %}">
+		<div class="gs-btn-area text-center">
+			<a 
+				href="{{data.buyLink|default('javascript:;')}}" 
+				class="gs-btn js-geshop-ga-view js-geshop-ga-click" 
+				geshop-component-name="{{ data.ga_name }}"
+				style="{% if pageData.buyBgc %}background-color:{{pageData.buyBgc}};{% endif %}{% if pageData.buyFtC %}color:{{pageData.buyFtC}};{% endif %}
+			display:inline-block;text-align:center;
+			{% if pageData.buyFtS %}font-size:{{pageData.buyFtS}}px;{% endif %}
+			{% if pageData.buyFtW %}font-weight:{{pageData.buyFtW|default(100)}};{% endif %}
+			{% if data.buyBgImg %}background:url({{data.buyBgImg}}) no-repeat 0 0/100% 100%;border:none;{% endif %}
+			{% if pageData.buyRadius %}border-radius:{{pageData.buyRadius}}px;{% endif %}
+			{% if pageData.buyWidth %}width:{{pageData.buyWidth}}px;{% endif %}
+			{% if pageData.buyHeight %}height:{{pageData.buyHeight}}px;line-height:{{pageData.buyHeight}}px;{% endif %}
+			{% if pageData.borderColor %}border-color:{{pageData.borderColor}};{% endif %}
+			{% if pageData.buyBorderS %}border-style:{{pageData.buyBorderS|default('solid')}};{% endif %}
+			border-width:{{pageData.borderFont|default(1)}}px;">
+					<span style="visibility:{{data.textVis|default(show)}}">{{data.buyText|default("See More")}}</span>
+			</a>
+		</div>
+	</div>
+</div>

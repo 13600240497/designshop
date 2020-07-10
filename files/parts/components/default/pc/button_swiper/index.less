@@ -1,0 +1,53 @@
+.geshop-components-default-button-swiper {
+
+    .button-swiper-prev,
+    .button-swiper-next {
+        position: absolute;
+        top: 169px;
+        width: 40px;
+        height: 65px;
+        line-height: 65px;
+        background: rgba(255,255,255, .7);
+        cursor: pointer;
+        z-index: 1;
+        > i {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -10px;
+            &:before {
+                display: block;
+                width: 10px;
+                height: 10px;
+                border: solid 2px #333;
+                border-top-color: transparent;
+                border-right-color: transparent;
+                content: " ";
+            }
+        }
+    }
+
+    .button-swiper-prev {
+        left: 16px;
+        i {
+            margin-left: -5px;
+            &:before {
+                transform: rotate(45deg);
+            }
+        }
+    }
+    .button-swiper-next {
+        right: 16px;
+        text-align: right;
+        i {
+            margin-left: -10px;
+            &:before {
+                transform: rotate(-135deg);
+            }
+        }
+    }
+
+
+}
+
+

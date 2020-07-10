@@ -1,0 +1,113 @@
+<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+    <ul class="layui-tab-title" style="padding-left: 0; margin-bottom: 12px;">
+		<li class="layui-this">PC</li>
+		<li>PAD</li>
+		<li>M</li>
+	</ul>
+
+    <div class="layui-tab-content">
+        {# PC start #}
+        <div class="layui-tab-item layui-show" data-for="pc">
+            <div class="layui-form-item" style="margin-bottom: 16px;">
+				<label class="layui-form-label">组件上边距(px)</label>
+				<div class="layui-input-block">
+                    <input class="layui-input" type="text" name="lamp_pc_marginTop" value="{{ data.lamp_pc_marginTop|default(0) }}">
+				</div>
+			</div>
+
+            <div class="layui-form-item" style="margin-bottom: 16px;">
+				<label class="layui-form-label">组件下边距(px)</label>
+				<div class="layui-input-block">
+                    <input class="layui-input" type="text" name="lamp_pc_marginBottom" value="{{ data.lamp_pc_marginBottom|default(32) }}">
+				</div>
+			</div>
+
+            <div class="layui-form-item" style="margin-bottom: 16px;">
+				<label class="layui-form-label">字体大小</label>
+				<div class="layui-input-block">
+                    <input class="layui-input" type="text" name="lamp_pc_fontSize" value="{{ data.lamp_pc_fontSize|default(14) }}">
+				</div>
+			</div>
+
+            <div class="layui-form-item" style="margin-bottom: 16px;">
+				<label class="layui-form-label">组件高度</label>
+				<div class="layui-input-block">
+                    <input class="layui-input" type="text" name="lamp_pc_compHeight" value="{{ data.lamp_pc_compHeight|default(40) }}">
+				</div>
+			</div>
+
+            <div class="layui-form-item" style="margin-bottom: 16px;">
+                <label class="layui-form-label">间隔线颜色</label>
+                <div class="layui-input-block">
+                    <div class="color-picker-selector" data-hidden-name="lamp_pc_itemColor"><div style="background-color: {{ data.lamp_pc_itemColor|default('#FFFFFF') }};"></div></div>
+                    <input type="text" class="layui-input" name="lamp_pc_itemColor" autocomplete="off" value="{{ data.lamp_pc_itemColor|default('#FFFFFF') }}">
+                </div>
+			</div>
+        </div>
+        {# PC end #}
+
+        {# PAD start #}
+        <div class="layui-tab-item" data-for="pad">
+            <div class="layui-form-item" style="margin-bottom: 16px;">
+				<label class="layui-form-label">组件上边距(px)</label>
+				<div class="layui-input-block">
+                    <input class="layui-input" type="text" name="lamp_pad_marginTop" value="{{ data.lamp_pad_marginTop|default(0) }}">
+				</div>
+			</div>
+
+            <div class="layui-form-item" style="margin-bottom: 16px;">
+				<label class="layui-form-label">组件下边距(px)</label>
+				<div class="layui-input-block">
+                    <input class="layui-input" type="text" name="lamp_pad_marginBottom" value="{{ data.lamp_pad_marginBottom|default(32) }}">
+				</div>
+			</div>
+
+            <div class="layui-form-item" style="margin-bottom: 16px;">
+				<label class="layui-form-label">字体大小</label>
+				<div class="layui-input-block">
+                    <input class="layui-input" type="text" name="lamp_pad_fontSize" value="{{ data.lamp_pad_fontSize|default(14) }}">
+				</div>
+			</div>
+
+            <div class="layui-form-item" style="margin-bottom: 16px;">
+				<label class="layui-form-label">组件高度</label>
+				<div class="layui-input-block">
+                    <input class="layui-input" type="text" name="lamp_pad_compHeight" value="{{ data.lamp_pad_compHeight|default(40) }}">
+				</div>
+			</div>
+        </div>
+        {# PAD end  #}
+
+        {# M start  #}
+        <div class="layui-tab-item" data-for="m">
+            <div class="layui-form-item" style="margin-bottom: 16px;">
+				<label class="layui-form-label">组件上边距(px)</label>
+				<div class="layui-input-block">
+                    <input class="layui-input" type="text" name="lamp_wap_marginBottom" value="{{ data.lamp_wap_marginBottom|default(0) }}">
+				</div>
+			</div>
+
+            <div class="layui-form-item" style="margin-bottom: 16px;">
+				<label class="layui-form-label">组件下边距(px)</label>
+				<div class="layui-input-block">
+                    <input class="layui-input" type="text" name="lamp_wap_marginBottom" value="{{ data.lamp_wap_marginBottom|default(20) }}">
+				</div>
+			</div>
+
+            <div class="layui-form-item" style="margin-bottom: 16px;">
+				<label class="layui-form-label">字体大小</label>
+				<div class="layui-input-block">
+                    <input class="layui-input" type="text" name="lamp_wap_fontSize" value="{{ data.lamp_wap_fontSize|default(14) }}">
+				</div>
+			</div>
+
+            <div class="layui-form-item" style="margin-bottom: 16px;">
+				<label class="layui-form-label">组件高度</label>
+				<div class="layui-input-block">
+                    <input class="layui-input" type="text" name="lamp_wap_compHeight" value="{{ data.lamp_wap_compHeight|default(40) }}">
+				</div>
+			</div>
+        </div>
+        {# M end #}
+	</div>
+</div>

@@ -1,0 +1,16 @@
+<div class="geshop-col-12">
+  {% if data.img1Src %}
+  <a class="logsss_event" href="{{ data.img1Href }}" style="display: block; width: {{ data.img1Width }}px; height: {{ data.img1Height }}px;"
+    {% if data.isOpenNew == 1 %}target="_blank"{% endif %}
+    data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.img1Src }}','cporder':'{{ layoutIndex }}','rank':'1'} }"
+  >
+    <img alt="{{ data.img1Alt }}" src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{ data.img1Src }}" style="display: block; vertical-align: top;" width="{{ data.img1Width }}" height="{{ data.img1Height }}" class="js_gdexp_lazy js-geshopImg-lazyload js_gbexp_lazy"
+      data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.img1Src }}','cporder':'{{ layoutIndex }}','rank':'1'} }"
+    >
+  </a>
+  {% else %}
+  <p style="border: 1px solid #dddddd; height: 64px; line-height: 64px; text-align: center; font-size: 16px; font-weight: bold; color: #dddddd;">
+    图片宽度限为1200px
+  </p>
+  {% endif %}
+</div>

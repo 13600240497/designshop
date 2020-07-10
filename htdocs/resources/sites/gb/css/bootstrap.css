@@ -1,0 +1,224 @@
+@import 'normalize.css';
+@import './variable.css';
+@import './button.css';
+@import './form.css';
+@import './icon.css';
+@import './textTransform.css';
+
+@font-face {
+    font-family: 'OpenSans';
+    src: url('../font/OpenSans-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../font/OpenSans-Regular.woff2') format('woff2'),
+        url('../font/OpenSans-Regular.woff') format('woff'),
+        url('../font/OpenSans-Regular.ttf') format('truetype'),
+        url('../font/OpenSans-Regular.svg#OpenSans') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OpenSans-Bold';
+    src: url('../font/OpenSans-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../font/OpenSans-Bold.woff2') format('woff2'),
+        url('../font/OpenSans-Bold.woff') format('woff'),
+        url('../font/OpenSans-Bold.ttf') format('truetype'),
+        url('../font/OpenSans-Bold.svg#OpenSans-Bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    color: var(--normalC);
+    line-height: 1;
+    min-width: 1200px;
+}
+
+body,
+td,
+a,
+p,
+li,
+dl,
+ul,
+dt,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+dd {
+    @extend %fontBase;
+    padding: 0;
+    margin: 0;
+}
+
+em, i {
+    font-style: normal;
+}
+
+strong, b {
+    font-weight: normal;
+}
+
+sub, sup {
+    position: static;
+    top: auto;
+    font-size: 100%;
+}
+
+input,
+textarea,
+button {
+    @extend %fontBase;
+    outline: none;
+}
+
+input::-ms-clear {
+    display: none;
+}
+
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: var(--normalC);
+    text-decoration: none;
+    font-size: inherit;
+    outline: none;
+}
+
+.siteScroll,
+.siteHeader_currencyList,
+body {
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: white;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: #999999;
+    }
+}
+
+.gb-hide{
+    display: none;
+}
+
+.tag {
+    background: var(--emphasizeC);
+    color: white;
+    font-size: var(--miniFS);
+    text-align: center;
+    padding: 3px;
+    line-height: 12px;
+    position: absolute;
+    transform: translateX(-100%) scale(0.8);
+    border-radius: 4px;
+    text-transform: uppercase;
+    &:after {
+        content: '';
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 3px;
+        border-color: var(--emphasizeC) var(--emphasizeC) transparent transparent;
+        position: absolute;
+        bottom: -5px;
+        right: 5px;
+    }
+}
+
+.tearImage {
+    display: block;
+    position: relative;
+    height: 100%;
+    margin: 0;
+
+    img {
+        width: 30px !important;
+        height:30px !important;
+        margin: auto;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+    }
+}
+
+.singleLineSpill {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.slick-slider {
+    user-select: auto !important;
+}
+
+.price-loading {
+    position: relative;
+    color: transparent !important;
+    &:after,
+    &:before {
+        position: absolute;
+        content: '';
+        width: 2px;
+        height: 14px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        background: var(--assistC);
+    }
+    &:before {
+        left: calc(50% - 4px);
+        animation: line-scale 1s -.1s infinite cubic-bezier(.2, .68, .18, 1.08);
+    }
+    &:after {
+        left: calc(50% + 4px);
+        animation: line-scale 1s 0s infinite cubic-bezier(.2, .68, .18, 1.08);
+    }
+}
+
+@keyframes line-scale {
+    0% {
+        transform: scaley(1);
+    }
+    50% {
+        transform: scaley(0.4);
+    }
+    100% {
+        transform: scaley(1);
+    }
+}
+
+.box-loading {
+    background-color: #eee;
+}
+
+/* 高频国家下拉列表样式 */
+.select-country {
+    .select_optgroup {
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #eee;
+
+        &:last-of-type {
+            padding-bottom: 0;
+            margin-bottom: 0;
+            border-bottom: 0;
+        }
+    }
+}
+
+/* live chat下的下拉框不需隐藏 */
+.lp_desktop select{
+    visibility: visible;
+}

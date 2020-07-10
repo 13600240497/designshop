@@ -1,0 +1,184 @@
+{%
+
+    set formData = {
+        id: 'U000166',
+        name: '积分兑换组件配置项',
+        theme: 'default_new',
+        tabs: [
+            {
+                label: '商品数据',
+                components: [
+                    {
+                        label: '此组件不能用于App端',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                type: 'goods-sku',
+                                beforeSubmit: 'beforeSubmit'
+                            }
+                        ]
+                    },
+                    {
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '默认显示商品个数',
+                                name: 'default_show_goods_number'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                label: '样式配置',
+                components: [
+                    {
+                        label: '常用配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件下边距(px)',
+                                name: 'margin_bottom',
+                                default: '40',
+                                col: 2
+                            },
+                            {
+                                label: '组件背景颜色',
+                                name: 'box_bj_color',
+                                type: 'colorPicker',
+                                default: '#F8F8F8',
+                                col: 2
+                            }
+                        ]
+                    },
+                    {
+                        label: '商品内容配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '商品圆角(px)',
+                                name: 'goods_border_radius',
+                                default: '12'
+                            },
+                            {
+                                label: '销售价文字颜色',
+                                name: 'shop_price_color',
+                                type: 'colorPicker',
+                                default: '#333333',
+                                col: 2
+                            },
+                            {
+                                label: '积分文字颜色',
+                                name: 'integral_font_color',
+                                type: 'colorPicker',
+                                default: '#333333',
+                                col: 2
+                            },
+                            {
+                                label: '积分图片',
+                                desc: '(建议上传宽高为36px*36px的图片)',
+                                name: 'integral_icon_img',
+                                type: 'image'
+                            },
+                            {
+                                label: '库存提示背景颜色',
+                                name: 'stock_tip_bg_color',
+                                type: 'colorPicker',
+                                default: '#FFFFFF',
+                                col: 2
+                            },
+                            {
+                                label: '库存提示文字颜色',
+                                name: 'stock_tip_font_color',
+                                type: 'colorPicker',
+                                default: '#666666',
+                                col: 2
+                            }
+                        ]
+                    },
+                    {
+                        label: '兑换按钮配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '背景颜色',
+                                name: 'exchange_bg_color',
+                                type: 'colorPicker',
+                                default: '#333333',
+                                col: 2
+                            },
+                            {
+                                label: '文字颜色',
+                                name: 'exchange_font_color',
+                                type: 'colorPicker',
+                                default: '#FFFFFF',
+                                col: 2
+                            },
+                            {
+                                label: '按钮圆角(px)',
+                                name: 'exchange_btn_radius',
+                                default: '30'
+                            }
+                        ]
+                    },
+                    {
+                        label: '查看更多按钮配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '背景颜色',
+                                name: 'view_more_bg_color',
+                                type: 'colorPicker',
+                                default: '#FFFFFF',
+                                col: 2
+                            },
+                            {
+                                label: '文字颜色',
+                                name: 'view_more_font_color',
+                                type: 'colorPicker',
+                                default: '#333333',
+                                col: 2
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        moreConfig: [],
+        skuValidConfig: 'skuValidConfig',
+        onSubmit: 'onSubmit'
+    }
+%}
+
+<script>
+
+    function skuValidConfig () {
+        return {
+            check_type: 'goods',
+            check_rules: 'GOODS_VALIDATE_REDEEM'
+        };
+    };
+
+    function onSubmit (progress) {
+        var _goodsSKU = $('[name=goodsSKU]').val();
+        var $input = $('input[name=default_show_goods_number]'),
+            _val = $.trim($input.val());
+
+        if (_val != '') {
+            if (!/^([1-9][0-9]*)$/.test(_val) || _val <= 1) {
+                layer.msg('请输入为大于1的整数');
+                $input.val('');
+                return false;
+            };
+
+            if (_goodsSKU == '') {
+                progress.next();
+            }
+        };
+        progress.next();
+    }
+
+</script>
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

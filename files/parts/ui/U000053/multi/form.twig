@@ -1,0 +1,14 @@
+{# 设置PC端公共配置项的默认值 #}
+{%
+	set pc_device_defalut = {
+		textFontSize: 24
+		, numbersFontSize: 24
+		, gridWidth: 54
+		, gridHeight: 54
+		, gridRadius: 2
+		, cmptHeight: 80
+	}
+%}
+
+{# 引入公共的表单文件 #}
+{{ include ('/lib/form.twig', { 'default': pc_device_defalut }) }}

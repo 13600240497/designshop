@@ -1,0 +1,25 @@
+{#
+    售罄
+    @params show 是否展示
+ #}
+
+{% if params is not null %}
+    <div class="geshop-components-default-soldout geshop-soldout-{{ pageInstanceId }} {{ siteCode | split('-')[0] }}"
+        {% if params.show == true %} style="display: block;" {% endif %}>
+        <table>
+            <tr>
+                <td>
+                    <div class="geshop-soldout-wrapper">
+                        <span class="geshop-soldout-table">
+                            <label>{{ params.text ?:  get_component_trans(lang, 'btn_sold_out') }}</label>
+                        </span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+{% endif %}
+
+{% if style is not null %}
+
+{% endif %}

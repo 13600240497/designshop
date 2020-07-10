@@ -1,0 +1,370 @@
+{% set formData = {
+    id: 'U000086',
+    name: '优惠券组件',
+    theme: 'coupon1',
+    tabs: [
+        {
+            label: '数据设置',
+            components: [
+                {
+                    label: '文案配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '即将开始按钮文案',
+                            name: 'startText',
+                            default: 'Coming Soon'
+                        },
+                        {
+                            name : 'getCouponText',
+                            default: 'Get now',
+                            label : '领取按钮文案',
+                        },
+                        {
+                            name: 'couponTitle',
+                            default: 'CRAZY COUPON',
+                            label: '优惠劵标题',
+                        }
+                    ]
+                },
+                {
+                    label: '优惠券数据配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            isshow: 'zf-pc',
+                            label: '优惠券ID',
+                            name: 'couponId',
+                            default: '',
+                        },
+                        {
+                            type: 'diy',
+                            src: 'form-couponId.twig',
+                            isshow: 'rg-pc',
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            label: '样式设置',
+            components: [
+                {
+                    label: '常用配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '组件下边距(px)',
+                            name: 'boxMarginBottom',
+                            default: '0',
+                        },
+                        {
+                            name: 'boxWidth',
+                            default: 592,
+                            label: '组件宽度(px)',
+                            col: 2
+                        },
+                        {
+                            name: 'boxHeight',
+                            default: 400,
+                            label: '组件高度(px)',
+                            col: 2
+                        },
+                        {
+                            name: 'boxBackgroundColor',
+                            default: '#EDEDED',
+                            label: '组件背景颜色',
+                            type: 'colorPicker',
+                        },
+                        {
+                            name: 'boxBackgroundImage',
+                            default: '',
+                            label: '组件背景图片',
+                            type: 'image',
+                        },
+                        {
+                            name: 'alignType',
+                            default: 2,
+                            label: '组件对齐方式',
+                            type: 'radio',
+                            options: [
+                                { value: 1, label: '左' },
+                                { value: 2, label: '中' },
+                                { value: 3, label: '右' },
+                            ]
+                        }
+                    ]
+                },
+                {
+                    label: '优惠券设置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            name: 'couponTextSize',
+                            default: 48,
+                            label: '标题字体大小(px)',
+                            col: 2
+                        },
+                        {
+                            name: 'couponTextColor',
+                            default: '#333333',
+                            label: '标题字体颜色',
+                            type: 'colorPicker',
+                            col: 2
+                        },
+                        {
+                            name: 'btnTextSize',
+                            default: 16,
+                            label: '按钮文字大小(px)',
+                            col: 2
+                        },
+                        {
+                            name: 'btnBackgroundColor',
+                            default: '#B8BEC4',
+                            label: '按钮背景颜色',
+                            type: 'colorPicker',
+                            col: 2
+                        },
+                        {
+                            name: 'btnTextColor',
+                            default: '#ffffff',
+                            label: '按钮文字颜色',
+                            type: 'colorPicker',
+                            col: 2
+                        },
+                        {
+                            name: 'btnRadius',
+                            default: '2',
+                            label: '按钮圆角大小(px)',
+                            col: 2
+                        },
+                        {
+                            name: 'btnWidth',
+                            default: 120,
+                            label: '按钮宽度(px)',
+                            col: 2
+                        },
+                        {
+                            name: 'btnHeight',
+                            default: 40,
+                            label: '按钮高度(px)',
+                            col: 2
+                        },
+                        {
+                            name: 'btnBackgroundImage',
+                            default: '',
+                            label: '按钮背景图片',
+                            type: 'image',
+                        },
+                        {
+                            name: 'couponBtnMarginTop',
+                            default: 40,
+                            label: '上边距(px)',
+                        }
+                    ]
+                },
+                {
+                    label: '倒计时设置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '是否显示倒计时',
+                            name: 'countDown',
+                            type: 'radio',
+                            default: '1',
+                            options: [
+                                { label: '是', value: '1' },
+                                { label: '否', value: '0' },
+                            ],
+                            public: false
+                        },
+                        {
+                            name: 'countDownTitleTextSize',
+                            default: 20,
+                            label: '标题文字大小(px)',
+                            col: 2
+                        },
+                        {
+                            name: 'countDownTitleTextColor',
+                            default: '#333333',
+                            label: '标题文字颜色',
+                            type: 'colorPicker',
+                            col: 2
+                        },
+                        {
+                            name: 'countDownBackgroundColor',
+                            default: '#333333',
+                            label: '倒计时背景颜色',
+                            type: 'colorPicker',
+                            col: 2
+                        },
+                        {
+                            name: 'countDownTextColor',
+                            default: '#ffffff',
+                            label: '倒计时文字颜色',
+                            type: 'colorPicker',
+                            col: 2
+                        },
+                        {
+                            name: 'countDownRadius',
+                            default: 0,
+                            label: '倒计时背景圆角(px)',
+                        },
+                        {
+                            name: 'countDownWidth',
+                            default: 40,
+                            label: '背景宽度',
+                            col: 2
+                        },
+                        {
+                            name: 'countDownHeight',
+                            default: 40,
+                            label: '背景高度',
+                            col: 2
+                        },
+                        {
+                            name: 'timeSize',
+                            default: 20,
+                            label: '时间文字大小(px)',
+                            col: 2
+                        },
+                        {
+                            name: 'couponTimerMarginTop',
+                            default: 40,
+                            label: '上边距(px)',
+                            col: 2
+                        },
+                    ],
+                },
+            ]
+        }
+    ],
+    skuValidConfig: 'get_valid_config',
+    beforeSubmit: 'beforeSubmit'
+}
+%}
+
+<script>
+    /* 优惠券校验参数111 */
+    function get_valid_config () {
+        return {
+            check_type: 'coupon',
+            check_rules: 'COUPON_VALIDATE_ID_EXITS'
+        }
+    }
+
+    /* 更新隐藏域的值 */
+    function update_hidden_value () {
+        var dom_couponId = $('input[name="couponId"]');
+        var site_code = "{{ siteCode }}";
+        /** 如果是RG的组件 */
+        if (site_code.indexOf('rg') >= 0) {
+            var ids = [];
+            $('.design-form .js-valid-couponIds').each(function() {
+                var id = $(this).val();
+                    id = id.trim();
+                    $(this).val(id);
+                if (id != '') {
+                    ids.push(id);
+                }
+            });
+            dom_couponId.val(ids.join(','));
+        }
+        return dom_couponId.val();
+    }
+
+    /* 校验是否有重复 */
+    function is_coupon_repeat () {
+        var ids = $('input[name="couponId"]').val().split(',');
+        var new_ids = [];
+        var repeat_ids = [];
+        ids.map(function(id) {
+            /* 检查是否已经存在 */
+            if (new_ids.indexOf(id) > -1) {
+                repeat_ids.push(id);
+            } else {
+                new_ids.push(id);
+            }
+        });
+        return repeat_ids;
+    }
+
+    /*
+     * 展示重复信息提示
+     * @params {Array} ids 重复的优惠券ID
+     */
+    function show_repeat_warning (ids) {
+        var text = '优惠券ID' + ids.join(',') + '重复，请检查';
+        layui.layer.open({
+            title: false,
+            btn: false,
+            content: '<div style="padding-top:15px;text-align:center;">'+ text +'</div>',
+            area: ['420px'],
+            skin: 'element-ui-dialog-class dialog-repeat-toast',
+            success:function(layero, index){
+                setTimeout(function(){
+                    layui.layer.close(index)
+                }, 2000)
+            }
+        });
+    }
+
+    /* 校验数量 */
+    function show_tolong_warning (count) {
+        var text = '最多可添加' + count + '个优惠券ID';
+        layui.layer.open({
+            title: false,
+            btn: false,
+            content: '<div style="padding-top:15px;text-align:center;">'+ text +'</div>',
+            area: ['420px'],
+            skin: 'element-ui-dialog-class dialog-repeat-toast',
+            success:function(layero, index){
+                setTimeout(function(){
+                    layui.layer.close(index)
+                }, 2000)
+            }
+        });
+    }
+
+    /* 公共校验之前的流程 */
+    function beforeSubmit (progress) {
+
+        /* 更新隐藏域的值 */
+        var ids = update_hidden_value();
+
+        /* 校验是否有重复 */
+        var repeat_ids = is_coupon_repeat();
+        if (repeat_ids.length > 0) {
+            return show_repeat_warning(repeat_ids);
+        }
+
+        /* 校验数量 */
+        const max_count = 20;
+        if (ids.split(',').length > max_count) {
+            return show_tolong_warning(max_count);   
+        }
+
+        /* 公共校验之后的流程 */
+        progress.next(null, function () {
+            /* 更新隐藏域的值 */
+            update_hidden_value();
+        });
+    }
+
+
+/*
+ if(couponInfo.supportPipeline){
+    var supportPipeline = couponInfo.supportPipeline.split(',');
+    if(supportPipeline.indexOf(GESHOP_PIPELINE.toLocaleLowerCase()) == -1){
+        layui.layer.msg('该优惠券不支持在当前国家使用');
+        $('input[name="couponId"]').val('');
+        $('.js_submitDesignForm').attr('disabled',true);
+        return;
+    }
+}
+*/
+
+</script>
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

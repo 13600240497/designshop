@@ -1,0 +1,28 @@
+{#/**
+*@author: 任贸华
+*@date: 2018/11/24 16:31:41
+*@desc: input组件
+* @param {string} full 是否通栏显示input
+* @param {string} startTimeName 开始时间参数名
+* @param {string} endTimeName 结束时间参数名
+* @param {string} startTime 开始时间参数值
+* @param {string} endTime 结束时间参数值
+* @param {string} label input标题
+* @param {string} subLabel input小标题
+*/#}
+{% if options %}
+    <div class="layui-form-item">
+        <p style="margin:8px 0 5px 0;">
+            <span class="layui-badge-dot layui-bg-orange"></span>
+            {{ options.label|default('时间设置') }}{{options.subLabel|default('')  }}
+        </p>
+        <div class="dateTime" style="position:relative;width:100%">
+            <span class="time-icon"></span>
+            <input type="text" class="layui-input start-time js_start_time startTime"  style="display:inline;width:158px;border-right:none;" name="{{ options.startTimeName|default('') }}"  placeholder="开始时间" autocomplete="off" value="{{options.startTime}}">
+            <span class="time-split">{{ options.separator|default('至') }}</span>
+            <input type="text" class="layui-input end-time js_end_time endTime" style="display:inline;width:165px;border-left:none;margin-left:-1px"  placeholder="结束时间" name="{{ options.endTimeName|default('') }}" autocomplete="off" value="{{options.endTime}}">
+        </div>
+    </div>
+{% else %}
+    {{include ('@app/files/parts/common/components/argsErrors.twig')}}
+{% endif %}

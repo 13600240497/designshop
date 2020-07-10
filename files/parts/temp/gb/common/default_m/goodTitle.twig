@@ -1,0 +1,4 @@
+						{# 商品标题配置 #}
+						{% if pageData.goods_title_active|default(1) == '1' %}
+							<h4 class="gs-goods-title">{{item.goods_title|default('Beelink GT1 Ultimate 3GB DDR4 + 32GB EMMC TV Box')}}</h4>
+						{% endif %}

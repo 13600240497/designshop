@@ -1,0 +1,70 @@
+[data-gid="component-countdown"] {
+  position: relative;
+  overflow: hidden;
+  /* compoment layout class list */
+}
+
+[data-gid="component-countdown"] .clearfix:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+
+[data-gid="component-countdown"] .g-w990 {
+  width: 990px;
+}
+
+[data-gid="component-countdown"] .text-center {
+  text-align: center;
+}
+
+[data-gid="component-countdown"] .geshop-component-box {
+  overflow: hidden;
+}
+
+[data-gid="component-countdown"] .geshop-panel {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+}
+
+[data-gid="component-countdown"] .layui-form-label {
+  white-space: nowrap;
+}
+
+[data-gid="component-countdown"] .gs-time-inner {
+  height: 32px;
+  line-height: 32px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #333333;
+  margin-left: -20px;
+  padding: 5px 0;
+  display: block;
+  text-align: center;
+}
+
+[data-gid="component-countdown"] .gs-time-inner .icon-clock-black {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 5px;
+  background-image: url(../../../resources/images/view/icon-block-black.png);
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 32px;
+  background-position: 0 0;
+}
+
+[data-gid="component-countdown"] .gs-time-inner .gs-down-text {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+[data-gid="component-countdown"] .gs_component_countDown em {
+  font-style: normal;
+  padding: 2px;
+}

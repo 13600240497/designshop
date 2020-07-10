@@ -1,0 +1,24 @@
+{
+  "fields": {
+    "bg_color": {
+      "is_public": "0",
+      "is_m": "0",
+      "is_app": "1"
+    },
+    "title_color": {
+      "is_public": "0",
+      "is_m": "0",
+      "is_app": "1"
+    },
+    "title_color_off": {
+      "is_public": "0",
+      "is_m": "0",
+      "is_app": "1"
+    },
+    "type_arr": {
+      "is_public": "0",
+      "is_m": "0",
+      "is_app": "1"
+    }
+  }
+}

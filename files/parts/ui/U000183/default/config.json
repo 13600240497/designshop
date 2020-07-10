@@ -1,0 +1,26 @@
+{
+  "fields": {
+      "box_margin_top": {"is_public": "1", "is_m": "1", "is_app": "1"},
+      "box_margin_bottom": {"is_public": "1", "is_m": "1", "is_app": "1"},
+      "box_margin_top_m": {"is_public": "1", "is_m": "1", "is_app": "1"},
+      "box_margin_bottom_m": {"is_public": "1", "is_m": "1", "is_app": "1"},
+    "height": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "bgImage": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "textTitle": { "is_public": "1", "is_m": "1", "is_app": "0" },
+    "textCode": { "is_public": "1", "is_m": "1", "is_app": "0" },
+    "textMarginTop": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "fontSize": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "textColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "copyBtnIsVisible": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "bgColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "btnfontSize": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "btnWidth": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "btnHeight": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "copyCodeText": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "copyCodeTextColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "copyCodeBgColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "copyCodeVisitedText": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "copyCodeVisitedTextColor": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "copyCodeVisitedBgColor": { "is_public": "0", "is_m": "0", "is_app": "0" }    
+  }
+}

@@ -1,0 +1,85 @@
+{
+    "name": "pc advertising chart component",
+    "version": "v1.0.0.1",
+    "description": "advertising component",
+    "author": "001",
+    "doc":"http://wiki.hqygou.com:8090/pages/viewpage.action?pageId=39029806",
+    "commjs": {
+        "jquery": true
+    },
+    "commcss": {
+        "main": true
+    },
+    "min-width": "auto",
+    "min-height": "inherit",
+    "fields": {
+        "imgSrc": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "imgHeight": { "is_public": "1", "is_m": "0", "is_app": "1" },
+        "boxMarginTop": { "is_public": "0", "is_m": "0", "is_app": "1" },
+        "boxMarginBottom": { "is_public": "0", "is_m": "0", "is_app": "1" },
+        "base_magin_top": { "is_public": "0", "is_m": "0", "is_app": "1" },
+        "base_magin_bottom": { "is_public": "0", "is_m": "0", "is_app": "1" },
+        "from_radio_type": { "is_public": "1", "is_m": "1", "is_app": "1" },
+
+        "imgLink1": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "imgTitle1": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "imgHeight1": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "imgDescribe1": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "resourceImg1": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "resourceImg1Width": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "resourceImg1Height": { "is_public": "1", "is_m": "1", "is_app": "1" },
+
+        "imgHeight2": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "imgLink21": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "imgTitle21": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "imgDescribe21": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "resourceImg21": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "resourceImg21Width": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "resourceImg21Height": { "is_public": "1", "is_m": "1", "is_app": "1" },
+
+        "imgLink22": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "imgTitle22": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "imgDescribe22": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "resourceImg22": { "is_public": "1", "is_m": "1", "is_app": "1" },
+
+        "imgHeight3": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "imgLink31": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "imgTitle31": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "imgDescribe31": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "resourceImg31": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "resourceImg31Width": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "resourceImg31Height": { "is_public": "1", "is_m": "1", "is_app": "1" },
+
+        "imgLink32": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "imgTitle32": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "imgDescribe32": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "resourceImg32": { "is_public": "1", "is_m": "1", "is_app": "1" },
+
+        "imgLink33": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "imgTitle33": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "imgDescribe33": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "resourceImg33": { "is_public": "1", "is_m": "1", "is_app": "1" },
+
+        "imgHeight4": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "imgLink41": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "imgTitle41": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "imgDescribe41": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "resourceImg41": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "resourceImg41Width": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "resourceImg41Height": { "is_public": "1", "is_m": "1", "is_app": "1" }
+    },
+    "languages":{
+        "off":{
+            "en":"off",
+            "de":"off",
+            "es":"DTO.",
+            "fr":"",
+            "it":"off",
+            "pt":"off",
+            "ru":"скидку",
+            "ar":"الخصم",
+            "ja":"オフ",
+            "ro":"reducere"
+        }
+    }
+}

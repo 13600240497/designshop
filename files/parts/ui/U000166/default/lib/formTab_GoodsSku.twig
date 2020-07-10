@@ -1,0 +1,26 @@
+<section>
+    <h4 class="column-title">商品数据</h4>
+    <div class="component-form-setting-ite component-form-configure-item">
+        <div class="layui-form-item">
+            <label class="form-item-label">商品SKU</label>
+            <div class="layui-input-block">
+                <textarea
+                    cols="30"
+                    rows="3"
+                    class="layui-textarea"
+                    name="goodsSKU"
+                    data-from="sku"
+                    placeholder="请输入商品SKU，每个SKU用英文逗号隔开。SKU不可以重复，为了页面显示的美观，SKU数量尽量为4的倍数">{{ data.goodsSKU | default('') }}</textarea>
+            </div>
+        </div>
+        <div class="layui-form-item goods-manage-row">
+            <a href="javascript:;" id="gs_getList" data-from="sku">商品管理</a>
+        </div>
+        <div class="layui-form-item">
+            <label class="form-item-label">View more链接</label>
+            <div class="layui-input-block">
+                <input type="text" name="viewmoreHref" autocomplete="off" class="layui-input" value="{{ data.viewmoreHref | default('') }}">
+            </div>
+        </div>
+    </div>
+</section>

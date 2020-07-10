@@ -1,0 +1,17 @@
+{{ include ('@app/files/parts/common/components/tips.twig',{options:{type:'Tab',label:'常用配置',subLabel:'(活动Banner无时段替换,默认切换成基础配置）'}}) }}
+
+{{ include ('@app/files/parts/common/components/rangeTimes.twig',
+    { options: {label:'活动时间',subLabel:'(设置美国时间)',  startTimeName:'startTime',endTimeName:'endTime',startTime:item.startTime,endTime :item.endTime}}
+) }}
+
+{{ include ('@app/files/parts/common/components/select.twig',
+    { options: {label:'选择规则', name:'select',list :[{name:111,value:1},{name:222,value:2}],active:1,full:true}}
+) }}
+
+{{ include ('@app/files/parts/common/components/radio.twig',
+    { options: { label:'活动结束状态',name:'endState',list:[{title:'直接消失',value:1},{title:'显示活动结束',value:0}],full:true }}
+) }}
+
+{{ include ('@app/files/parts/common/components/radio.twig',
+    { options: { label:'周期规则展示方式',name:'displayMode',list:[{title:'固定第一周期',value:1},{title:'下一周期展示',value:0}] ,full:true}}
+) }}

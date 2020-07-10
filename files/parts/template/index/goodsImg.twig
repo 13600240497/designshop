@@ -1,0 +1,38 @@
+{#/**
+  *@author: 胡明
+  *@date: 2018/12/19 17:05:00
+  *@desc: dresslily商品图片组件
+*/#}
+
+{% if options %}
+  <div class="geshop-goods-img {% if options.goodsNum == 0 %} soldout-bg  {% endif %}">
+    {% if options.goodsNum == 0 %}
+      <p class="out-style-text">Sold Out</p>
+     {% endif %}
+    <a href="{{options.urlTitle}}" target="_blank" >
+      {# {{item.goods_img|default(data.default.good)}} #}
+      <img src="{{options.goodsImg}}" style="max-width: 100%;max-height:100%;"
+        data-original="{{options.goodsImg}}"
+        data-sku="{{options.goodsSku}}" class="js_gdexp_lazy js-lazy" data-module="product">
+      <div class="shop-now-container" style="
+        background-color: {{options.styleObj.bgColor}};
+        opacity: 0.75;
+        border-color: {{options.styleObj.borderColor}};
+      ">
+        <div class="inner-wrapper">
+          <i class="icon-bag" style="
+            {% if options.styleObj.icoBgImg %} 
+              background-image: url({{options.styleObj.icoBgImg}});
+            {% endif %}
+          "></i> 
+          <span class="shop-now-text" style="
+            color: {{options.styleObj.color}};
+            font-size: {{options.styleObj.fontSize}}px;
+          "> shop now </span>
+        </div>
+      </div>
+    </a>
+  </div>
+{% else %}
+  {{ include ('@app/files/parts/common/components/argsErrors.twig') }}
+{% endif %}

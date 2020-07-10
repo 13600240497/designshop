@@ -1,0 +1,28 @@
+
+<section>
+    <div class="component-form-setting-ite component-form-configure-item">
+        <div class="layui-form-item">
+            <label class="form-item-label">分享内容配置</label>
+        </div>
+        <input name="share_data_img" value="{{shareData.image}}" type="hidden" />
+        <input name="share_data_title" value="{{shareData.title}}" type="hidden" />
+        <input name="share_data_desc" value="{{shareData.desc}}" type="hidden" />
+        <input name="share_data_link" value="{{shareData.link}}" type="hidden" />
+        <input name="share_data" type="hidden" />
+        <div class="layui-form-item">
+            <div class="layui-row share-data">
+                {% if shareData.place %}
+                  {% for item in shareData.place %}
+                      <div class="layui-col-md6">
+                        {% if item == "Snapchat" or item == "Google+" %}
+                          <input type="checkbox" disabled  class="Unwanted share_data" value="{{item}}" lay-skin="primary" title="{{item}}" data-public-tag="true">  
+                        {% else %}
+                          <input type="checkbox" {% if item in data.share_data  %} checked {% endif %}  class="Unwanted share_data" value="{{item}}" lay-skin="primary" title="{{item}}" data-public-tag="true">  
+                        {% endif %}
+                      </div>
+                  {% endfor %}
+                {% endif %}
+            </div>
+         </div>
+    </div>
+</section>

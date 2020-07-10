@@ -1,0 +1,75 @@
+{{ include('@app/files/parts/formTemplate/components/goods-id-js.twig') }}
+<div class="layui-form-item goods__btn--wrapper">
+    {# <label class="layui-form-label public-data">商品SKU</label> #}
+    <label class="gs-label-block gs-label-blank"></label>
+    <div class="layui-input-block">
+        <span class="layui-btn layui-btn-normal layui-btn-sm goods-id-btn goods-btn-full
+{% if data.goods_btn_value %} layui-hide{% endif %}">
+            选择商品数据
+        </span>
+        <div class="goods-btn-box {% if data.goods_btn_value is null or data.goods_btn_value is empty %}layui-hide{% endif %}">
+            {# 组件tab类型 goods_source_type single 单个#}
+            <input type="hidden" name="goods_source_type" value="single">
+            {# goods_source_info 商品运营平台数据对象 #}
+            <input type="hidden" name="goods_source_info" value='{{ json_encode_no_unicode(data.goods_source_info) }}'>
+            <input type="text" name="goods_btn_value"
+                   class="layui-input goods-id-input layui-disabled" value="{{ data.goods_btn_value }}" disabled>
+            <span class="layui-btn layui-btn-normal layui-btn-sm goods-id-btn goods-btn-reset">重新选择</span>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* 商品数据按钮 */
+    .goods__btn--wrapper .goods-id-btn {
+        height: 40px;
+        line-height: 40px;
+        background: rgba(30, 159, 255, 0.05);
+        border-radius: 4px;
+        border: 1px solid rgba(30, 159, 255, 1);
+        color: #1E9FFF;
+    }
+
+    .goods__btn--wrapper .goods-btn-box {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .goods__btn--wrapper .goods-btn-reset {
+        padding: 0 15px;
+        float: right;
+    }
+
+    .goods__btn--wrapper .goods-btn-full {
+        width: 100%;
+    }
+
+    .goods__btn--wrapper .goods-id-input {
+        float: left;
+        margin-right: 10px;
+        height: 40px;
+    }
+</style>
+
+<script>
+/*
+    id: '', // 当前页面唯一的数据源ID
+    component_id: 0, // 当前绑定的组件ID
+    type: 2, // 当前选中的模式
+    able: [2], // 可用模式
+    sop_rule_id: "332",
+    sop_rule_name: "规则标题",
+* */
+$(function () {
+    var $component = $('.design-form-component');
+    var $wrapper = $('.goods__btn--wrapper', $component);
+    /* 商品选择按钮 */
+    $('.goods-btn-full,.goods-btn-reset', $component).on('click', function () {
+        GoodsSource.goodsDialogOpen($wrapper, function (res) {
+            if (res.sop_rule_id) {
+                GoodsSource.goodsSourceCallback($wrapper, res);
+            }
+        });
+    });
+});
+</script>

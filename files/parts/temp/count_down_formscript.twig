@@ -1,0 +1,72 @@
+<script>
+$(function () {
+	var pageId = $("#activityId").val();
+	$.get('/activity/activity/get', { id: pageId }, function (res) {
+		if (res.code == 0) {
+			var min = res.data.start_time,
+				max = res.data.end_time;
+			downDateInit((min * 1000), (max * 1000))
+		} else {
+			downDateInit()
+		}
+	})
+});
+
+
+function formatDateTime (inputTime) {
+	var date = new Date(inputTime);
+	var y = date.getFullYear();
+	var m = date.getMonth() + 1;
+	m = m < 10 ? ('0' + m) : m;
+	var d = date.getDate();
+	d = d < 10 ? ('0' + d) : d;
+	var h = date.getHours();
+	h = h < 10 ? ('0' + h) : h;
+	var minute = date.getMinutes();
+	var second = date.getSeconds();
+	minute = minute < 10 ? ('0' + minute) : minute;
+	second = second < 10 ? ('0' + second) : second;
+	return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second;
+};
+
+/* min,max close*/
+function downDateInit (min, max) {
+	var laydate = layui.laydate;
+	laydate.render({
+		elem: '.down-timestamp'
+		, type: 'datetime'
+		, range: true
+		, done: function (value, date, endDate) {
+			var dateStrArr = value.split(' - '),
+				dataStartTime,
+				dataEndTime;
+			if (dateStrArr) {
+				dataStartTime = new Date(dateStrArr[0]).getTime();
+				dataEndTime = new Date(dateStrArr[1]).getTime();
+				{# var serverTime = $('#gs_component_countdown').find('input[name=serverTime]').val() ||new Date().getTime(); #}
+				var serverTime = new Date().getTime();
+				var status = 0,
+					leftTime = 0,
+					textCont = "",
+					textArr = ['未开始', '已开始', '已结束'];
+				if (dataStartTime > serverTime) {
+					leftTime = dataStartTime - serverTime;
+				} else if (dataStartTime <= serverTime && dataEndTime > serverTime) {
+					status = 1;
+					leftTime = dataEndTime - serverTime;
+				} else if (dataEndTime < serverTime) {
+					status = 2;
+					leftTime = 0;
+				}
+				textCont = textArr[status];
+				{# leftTime = Math.round(leftTime / 1000);
+				$('#gs_component_countdown').find('input[name=left_time]').val(leftTime); #}
+				$('#gs_component_countdown').find('input[name=dataStartTime]').val(dataStartTime);
+				$('#gs_component_countdown').find('input[name=dataEndTime]').val(dataEndTime);
+				$('#gs_component_countdown').find('input[name=count_textStatus]').val(status);
+			}
+		}
+	})
+};
+
+</script>

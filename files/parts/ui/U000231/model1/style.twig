@@ -1,0 +1,166 @@
+
+{% set space = '#U000231_'~pageInstanceId %}
+
+{% set body = space~' .geshop-U000231-model1-body' %}
+
+{{ space }} .geshop-U000231-model1-body {
+    width: 100%;
+    overflow: hidden;
+}
+
+{# 三端共有样式 #}
+{{ body }} .geshop-page-part{
+    background-color:{{ data.bg_color|default('#FFFFFF') }};
+    color:{{ data.part_ft_color|default('#333333') }};
+
+}
+
+{{ body }} .geshop-page-part li a{
+    background-color:{{ data.part_bg_color|default('#D8D8D8') }};
+}
+
+{{ body }} .geshop-page-part li a:hover{
+    color:{{ data.hover_part_ft_color|default('#FFFFFF') }};
+    background-color:{{ data.hover_part_bg_color|default('#999999') }};
+}
+
+
+{{ body }} .side-btn{
+    background-color:{{ data.part_bg_color|default('#D8D8D8') }};
+
+}
+{{ body }} .side-icon span{
+    border-color:{{ data.part_ft_color|default('#333333') }};
+}
+
+
+{# PC 模式 #}
+@media screen and (min-width: 1025px) {
+
+    {% if isEditEnv == '1' %} {% endif %}
+}
+
+{# PAD #}
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+
+}
+
+{% set form_pc = {
+    pc_base_width: data.pc_base_width|default(302),
+    pc_part_space: data.pc_part_space|default(2)
+} %}
+
+{% set form_m = {
+    m_base_width: data.m_base_width|default(204),
+    m_part_space: data.m_part_space|default(2)
+} %}
+
+{# PC+PAD 模式 #}
+@media screen and (min-width: 768px) {
+    {{ body }} .geshop-page-navigator,{{ body }} .geshop-page-content{
+        width:{{ form_pc.pc_base_width }}px;
+    }
+    {{ body }} .geshop-page-part{
+        font-size:{{ data.pc_part_ft_size|default(14) }}px;
+        padding:{{ form_pc.pc_part_space }}px;
+    }
+
+    {{ body }} .geshop-page-part li{
+        margin-bottom:{{ form_pc.pc_part_space }}px;
+    }
+
+
+    {{ body }} .geshop-page-part li a{
+        font-size:{{ data.pc_part_ft_size|default(14) }}px;
+        border-radius:{{ data.pc_part_radius|default(0) }}px;
+{#{% if data.bg_color == 'transparent' %}#}
+{#    border-right:{{ form_pc.pc_part_space }}px solid #FFFFFF;#}
+{#    {% else %}#}
+{#        border-right:{{ form_pc.pc_part_space }}px solid {{ data.bg_color|default('#FFFFFF') }};#}
+{#{% endif %}#}
+    }
+
+    {{ body }} .geshop-page-part li .part-col2{
+        width:{{ (form_pc.pc_base_width - form_pc.pc_part_space*3)/2 }}px;
+    }
+    {{ body }} .geshop-page-part li .part-col2:first-child{
+        margin-right:{{ form_pc.pc_part_space }}px;
+    }
+
+
+    {{ body }} .geshop-navigator-left .side-btn{
+        left:{{ form_pc.pc_base_width }}px;
+    }
+
+    {{ body }} .geshop-statu-fold.geshop-navigator-left .side-btn{
+        -webkit-transform: translateX(-{{ form_pc.pc_base_width }}px);
+        transform: translateX(-{{ form_pc.pc_base_width }}px);
+    }
+    {{ body }} .geshop-navigator-right .side-btn{
+        right:{{ form_pc.pc_base_width }}px;
+    }
+
+    {{ body }} .geshop-statu-fold.geshop-navigator-right .side-btn{
+        -webkit-transform: translateX({{ form_pc.pc_base_width }}px);
+        transform: translateX({{ form_pc.pc_base_width }}px);
+    }
+
+    {{ body }} .geshop-page-main,{{ body }} .geshop-page-goTop{
+        padding: 0 {{ form_pc.pc_part_space }}px;
+    }
+}
+
+{# M #}
+@media screen and (max-width: 767px) and (min-width: 0px) {
+    {{ body }} .geshop-page-navigator,{{ body }} .geshop-page-content{
+        width:{{ form_m.m_base_width }}px;
+    }
+    {{ body }} .geshop-page-part{
+        font-size:{{ data.m_part_ft_size|default(14) }};
+        padding:{{ form_m.m_part_space }}px;
+    }
+
+    {{ body }} .geshop-page-part li{
+        margin-bottom:{{ form_m.m_part_space }}px;
+    }
+
+    {{ body }} .geshop-page-part li a{
+        font-size:{{ data.m_part_ft_size|default(14) }}px;
+        border-radius:{{ data.m_part_radius|default(0) }}px;
+{#{% if data.bg_color == 'transparent' %}#}
+{#    border-right:{{ form_m.m_part_space }}px solid #FFFFFF;#}
+{#{% else %}#}
+{#    border-right:{{ form_m.m_part_space }}px solid {{ data.bg_color|default('#FFFFFF') }};#}
+{#{% endif %}#}
+
+    }
+
+    {{ body }} .geshop-page-part li .part-col2{
+        width:{{ (form_m.m_base_width - form_m.m_part_space*3)/2 }}px;
+    }
+    {{ body }} .geshop-page-part li .part-col2:first-child{
+        margin-right:{{ form_m.m_part_space }}px;
+    }
+
+
+    {{ body }} .geshop-navigator-left .side-btn{
+        left:{{ form_m.m_base_width }}px;
+    }
+
+    {{ body }} .geshop-statu-fold.geshop-navigator-left .side-btn{
+        -webkit-transform: translateX(-{{ form_m.m_base_width }}px);
+        transform: translateX(-{{ form_m.m_base_width }}px);
+    }
+    {{ body }} .geshop-navigator-right .side-btn{
+        right:{{ form_m.m_base_width }}px;
+    }
+
+    {{ body }} .geshop-statu-fold.geshop-navigator-right .side-btn{
+        -webkit-transform: translateX({{ form_m.m_base_width }}px);
+        transform: translateX({{ form_m.m_base_width }}px);
+    }
+
+    {{ body }} .geshop-page-main,{{ body }} .geshop-page-goTop{
+        padding: 0 {{ form_m.m_part_space }}px;
+    }
+}

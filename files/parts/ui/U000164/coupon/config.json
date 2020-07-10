@@ -1,0 +1,285 @@
+{
+    "name": "pc score",
+    "version": "v1.0.0.1",
+    "fields": {
+        "active_id": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "components_align": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "bg_img": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "underway_bg_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "underway_text_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "notstart_bg_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "notstart_text_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "ended_bg_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "ended_text_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "model_border_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "model_text_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "noscore_model_border_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "noscore_model_bg_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "noscore_model_text_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "oops_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "model_icon": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "getScore_link_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        }
+    },
+    "languages": {
+        "upcoming": {
+            "cn": "即将开启",
+            "zh-tw": "即將開始",
+            "en": "Upcoming ",
+            "ar": "القادمة",
+            "de": "Bevorstehende",
+            "es": "Próximo",
+            "fr": "Prochainement",
+            "it": "Prossimo",
+            "pt": "Em breve",
+            "ru": "Скоро",
+            "th": "จะเริ่มเร็วๆนี้",
+            "vi": "Sắp có",
+            "ja": "近日公開予定",
+            "ro": "In curand"
+        },
+        "ended": {
+            "cn": "已结束",
+            "zh-tw": "活動結束",
+            "en": "Ended ",
+            "ar": "قد انتهى",
+            "de": "Endete",
+            "es": "Terminado",
+            "fr": "Terminé",
+            "it": "Finito",
+            "pt": "Terminou",
+            "ru": "Конец",
+            "th": "เสร็จสิ้น",
+            "vi": "Đã kết thúc",
+            "ja": "終了しました",
+            "ro": "Sfarsit"
+        },
+        "underway": {
+            "cn": "进行中",
+            "zh-tw": "立即兌換",
+            "en": "Redeem Now",
+            "ar": "استرداد الآن",
+            "de": "Jetzt einlösen",
+            "es": "Canjear ahora",
+            "fr": "Échangez maintenant",
+            "it": "Riscatta ora",
+            "pt": "Resgatar Agora",
+            "ru": "Выкупить сейчас",
+            "th": "แลกตอนนี้",
+            "vi": "Đang tiến hành",
+            "ja": "進行中",
+            "ro": "Revendica acum"
+        },
+        "use_score": {
+            "cn": "您确定使用{score}积分兑换优惠券吗？",
+            "zh-tw": "您確定使用{score}積分兌換優惠券嗎？",
+            "en": "Are you sure to use {score} points to redeem the coupon?",
+            "ar": "هل أنت متأكد من استخدام {score} نقطة لاسترداد القسيمة؟",
+            "de": "Sind Sie sicher, {score} Punkte für die Einlösung des Gutscheins zu verwenden?",
+            "es": "¿Seguro que usas {score} puntos para canjear el cupón?",
+            "fr": "Êtes-vous sûr(e) de vouloir utiliser {score} points pour échanger le coupon ?",
+            "it": "Sei sicuro di usare {score} punti a riscattare il coupon?",
+            "pt": "Você tem certeza de usar {score} pontos para resgatar o cupom?",
+            "ru": "Вы уверены, что хотите использовать {score} баллов для погашения купона?",
+            "th": "คุณแน่ใจว่าจะแลกคูปองด้วย {score} คะแนนหรือไม่?",
+            "vi": "Bạn có chắc chắn để đổi phiếu giảm giá của bạn với {score} điểm?",
+            "ja": "クーポンを{score}ポイントで交換してよろしいですか？",
+            "ro": "Esti sigur ca vrei sa folosesti puncte pentru a revendica acest cupon? "
+        },
+        "yes": {
+            "cn": "确定",
+            "zh-tw": "是",
+            "en": "Yes",
+            "ar": "انتهى",
+            "de": "Ja",
+            "es": "Sí",
+            "fr": "Oui",
+            "it": "Sì.",
+            "pt": "Sim",
+            "ru": "Да",
+            "th": "ตกลง",
+            "vi": "Xác định",
+            "ja": "はい",
+            "ro": "Da"
+        },
+        "exchange_succcess": {
+            "cn": "兑换成功",
+            "zh-tw": "收到優惠券",
+            "en": "Coupon Received",
+            "ar": "تلقى القسيمة",
+            "de": "Gutschein erhalten",
+            "es": "Cupón recibido",
+            "fr": "Echange réussi !",
+            "it": "Coupon ricevuto.",
+            "pt": "Cupão Recebido",
+            "ru": "Купон получен",
+            "th": "เก็บคูปองแล้ว",
+            "vi": "Đổi thành công",
+            "ja": "兌換成功",
+            "ro": "Cupon primit"
+        },
+        "oops": {
+            "cn": "抱歉",
+            "zh-tw": "抱歉",
+            "en": "OOPS",
+            "ar": "عفوا",
+            "de": "HOPPLA",
+            "es": "OOPS",
+            "fr": "OUPS",
+            "it": "Ahime!",
+            "pt": "OOPS",
+            "ru": "OOPS",
+            "th": "ขออภัย",
+            "vi": "Xin lỗi",
+            "ja": "おっと",
+            "ro": "OOPS"
+        },
+        "oops_tips": {
+            "cn": "您的Z积分不足",
+            "zh-tw": "你的Z積分不足。",
+            "en": "Your Z Points are not enough.",
+            "ar": "النقطة Z الخاصة بك ليست كافية.",
+            "de": "Ihre Z-Punkte reichen nicht aus.",
+            "es": "Tus puntos Z no son suficientes.",
+            "fr": "Vos Z Points ne sont pas suffisants.",
+            "it": "I tuoi Z punti non sono sufficienti.",
+            "pt": "Seus Z Points não são suficientes.",
+            "ru": "Ваши Z поинты не достаточны.",
+            "th": "z คะแนนของคุณไม่เพียงพอ",
+            "vi": "Điểm Z của bạn không đủ",
+            "ja": "Zポイントは不十分です",
+            "ro": "Punctele tale Z nu sunt suficiente"
+        },
+        "get_more_score": {
+            "cn": "想要获取更多积分？",
+            "zh-tw": "如何獲得更多Z積分？ ",
+            "en": "How to earn more Z Points? ",
+            "ar": "كيف تكسب المزيد من نقاط Zاحصل!>",
+            "de": "Wie bekomme ich mehr Z Punkte? ",
+            "es": "¿Cómo ganar más puntos Z? ",
+            "fr": "Comment avoir d'avantage de Z Points ? ",
+            "it": "Come prendere più Z punti? ",
+            "pt": "Como ganhar mais Z Points? ",
+            "ru": "Как заработать больше очков Z? ",
+            "th": "จะวินZ คะแนนมากขึ้นได้ยังไง?",
+            "vi": "Bạn muốn có được nhiều điểm hơn?",
+            "ja": "もっとポイントを取りたいですか？",
+            "ro": "Cum sa primesti mai multe puncte Z? "
+        },
+        "get_more_score_href": {
+            "cn": "去赚取吧>>>",
+            "zh-tw": "去賺取！>>>",
+            "en": "Go and Get!>>>",
+            "ar": " المزيد من نقاط >",
+            "de": "weiter und erhaltenl! >>>",
+            "es": "Ve y consigue! >>>",
+            "fr": "Venez en Obtenir ! >>",
+            "it": "Vai e prendi.",
+            "pt": " Vá e pegue! >>>",
+            "ru": "Иди и получи! >>>",
+            "th": "ไปวินตอนนี้>>>",
+            "vi": "Đi kiếm nó >>>",
+            "ja": "稼ぎましょう>>>",
+            "ro": "Mergi si primeste! >>>"
+        },
+        "out_off": {
+            "cn": "所有优惠券均已兑换完",
+            "zh-tw": "對不起，優惠券已經兌換完了。",
+            "en": "Sorry, the coupons have been run out.",
+            "ar": "عذرا ، لقد نفدت القسائم.",
+            "de": "Entschuldigung, die Gutscheine sind abgelaufen.",
+            "es": "Lo sentimos, los cupones se han agotado.",
+            "fr": "Désolé, les coupons sont épuisés.",
+            "it": "Mi dispiace, i coupon sono esauriti..",
+            "pt": "Desculpe, os cupons foram esgotados.",
+            "ru": "Извините, купоны закончились.",
+            "th": "ขออภัย คูปองหมด",
+            "vi": "Tất cả các phiếu giảm giá đã được đổi",
+            "ja": "すべてのクーポンが引き換えられました",
+            "ro": "Scuze, cupoanele sau terminat. "
+        },
+        "today_off": {
+            "cn": "当日优惠券已经兑换完",
+            "zh-tw": "對不起，今天的優惠券已經兌換完了。",
+            "en": "Sorry, the coupons for today have been run out.",
+            "ar": "عذرا ، كوبونات اليوم قد نفدت",
+            "de": "Entschuldigung, die Gutscheine für heute sind aufgebraucht.",
+            "es": "Lo sentimos, los cupones para hoy se han agotado.",
+            "fr": "Désolé, les coupons sont épuisés pour aujourd'hui.",
+            "it": "Mi dispiace, i coupon di oggi sono esauriti.",
+            "pt": "Desculpe, os cupons de hoje estão esgotados.",
+            "ru": "Извините, сегодня купоны закончились.",
+            "th": "ขออภัย คูปองวันนี้หมดแล้ว",
+            "vi": "Phiếu giảm giá trong ngày đã được đổi",
+            "ja": "今日のクーポンが引き換えられました",
+            "ro": "Scuze, cupoanele pe astazi sau terminat."
+        }
+    }
+}

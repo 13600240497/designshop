@@ -1,0 +1,52 @@
+{% set space = '#U000236_'~pageInstanceId %}
+{% set body =  space~' .geshop-u000236-model1-body' %}
+{% set suffix = 'px' %}
+
+{{ body }}{
+    margin-bottom: {{ data.margin_bottom|default(32) }}{{ suffix }};
+    background-color:{{ data.background_color|default('#F8F8F8') }};
+}
+
+{{ body }} .item_shop_price{
+    color:{{ data.first_font_color|default('#FA386A') }};
+    font-size:{{ data.first_price_font_size|default(14) }}{{ suffix }};
+    line-height:{{ data.first_price_font_size|default(14) +2  }}{{ suffix }};
+}
+
+{{ body }} .item_shop_price .my_shop_price{
+    color:{{ data.first_font_color|default('#FA386A') }} !important;
+}
+
+
+{{ body }} .item_market_price{
+    color:{{ data.second_price_font_color|default('#999999') }};
+}
+
+{{ body }} .item_market_price .geshop-market-price{
+    color:inherit;
+}
+
+{{ body }} .goods_list_wrap li {
+    border-radius:{{ data.goods_radius|default('4') }}{{ suffix }};
+}
+
+{{ body }} .goods_list_wrap li .list_item{
+    border-radius:{{ data.goods_radius|default('4') }}{{ suffix }};
+    border:1px solid {{ data.goods_border_color|default('#FFFFFF') }};
+    box-sizing: border-box;
+}
+
+{{ body }} .item_image img,{{ body }} .geshop-components-soldout-bottom{
+    bottom: auto;
+    top: 0;
+    border-top-left-radius: {{ data.goods_radius|default('4') }}{{ suffix }};
+    border-top-right-radius: {{ data.goods_radius|default('4') }}{{ suffix }};
+}
+
+{{ body }} .geshop-components-soldout-bottom{
+    height: 384px;
+}
+
+{{ body }} .item_image img{
+
+}

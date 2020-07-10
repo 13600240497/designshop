@@ -1,0 +1,155 @@
+.geshop-U000090-default-v2 {
+
+    .leader-board-container {
+        width: 1200px;
+        height: 542px;
+        overflow: hidden;
+        margin: 0px auto;
+        position: relative;
+    }
+
+    // 左侧广告图
+    .leader-board-aside-link {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 284px;
+        height: 542px;
+        display: table;
+        a {
+            display: table-cell;
+            vertical-align: middle
+        }
+        img {
+            display: inline-block;
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    // 右侧滑动区域 
+    .swiper-parent-container {
+        display: none;
+        position: relative;
+        margin-left: 284px;
+        width: 916px;
+        height: 542px;
+        box-sizing: border-box;
+        padding-top: 16px;
+        padding-bottom: 16px;
+
+        .swiper-container {
+            width: 916 - 32px;
+            height: 100%;
+        }
+    }
+    
+  
+    //  LI 节点
+    .leader-board-content-item {
+        float: left;
+        background-color: #fff;
+        padding: 10px 10px 10px;
+        height: 513px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        position: relative;
+        counter-increment: tabItemOrders;
+
+        > a {
+            display: block;
+            height: 260px;
+            height: 347px;
+            overflow: hidden;
+        }
+
+        .geshop-components-default-button-buy {
+            display: none;
+        }
+
+    }
+
+    // 
+    .leader-board-content-item:hover {
+        .product-desc,
+        .product-selling-point {
+            display: none;
+        }
+        .geshop-components-default-button-buy {
+            display: block;
+        }
+        .product-price {
+            margin-top: 24px;
+        }
+    }
+    
+    // 图标
+    .ranking-icon {
+        display: inline-block;
+        position: absolute;
+        width: 40px;
+        height: 48px;
+        top: 7px;
+        line-height: 38px;
+        text-align: center;
+        font-family: OpenSans-Bold;
+        font-size: 18px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: 1;
+    }
+
+    .product-desc {
+        margin-top: 12px;
+        font-size: 14px;
+        max-width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+    }
+
+    .product-price {
+        margin-top: 4px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+    }
+    
+    .product-button-groups {
+        position: absolute;
+        left: 0px;
+        bottom: 24px;
+        height: 52px;
+        display: table;
+        width: 100%;
+        > div {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            padding: 0 12px;
+        }
+    }
+
+    .product-selling-point {
+        background-color: #ffecec;
+        color: #ff5058;
+        border-radius: 20px;
+        display: inline-block;
+        vertical-align: top;
+        border: 1px solid transparent;
+        height: auto;
+        line-height: normal;
+        padding: 5px 10px;
+        margin: 0;
+        max-width: 100%;
+        overflow: hidden;
+        strong {
+            font-family: OpenSans-Bold;
+        }
+    }
+  
+}

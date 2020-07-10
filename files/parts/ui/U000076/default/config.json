@@ -1,0 +1,18 @@
+{
+  "fields": {
+    "fontColorFlashSale": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "fontColorTime": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "fontColorMarketPrice": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "fontColorBuyNow": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "bgColorBuyNow": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "borderColorBuyNow": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "fontColorViewMore": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "bgColorViewMore": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "boxMarginBottom": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "bgColorFlashSale": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "bgColorDiscount": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "fontColorDiscount": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "bgColorFlashed": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "fontColorSalePrice": { "is_public": "0", "is_m": "0", "is_app": "0" }
+  }
+}

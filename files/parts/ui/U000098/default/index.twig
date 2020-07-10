@@ -1,0 +1,294 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+{% set suffix ='rem'%}
+{% set remUnit = 75 %}
+
+{% if data.colNum == '1'%}
+    {% set colClass = liCol[0] %}
+{% elseif data.colNum == '2' %}
+    {% set colClass = liCol[1] %}
+{% elseif data.colNum == '3' %}
+    {% set colClass = liCol[2] %}
+{% elseif data.colNum == '4' %}
+    {% set colClass = liCol[3] %}
+{% elseif data.colNum == '5' %}
+    {% set colClass = liCol[4] %}
+{% else %}
+    {% set colClass = liCol[3] %}
+{% endif %}
+
+
+
+
+
+{%
+    set pageData = {
+		price_ft_weight:data.price_ft_weight|default(1),
+		base_bg_shadow:data.base_bg_shadow|default(0),
+        lang:data.lang|default('en'),
+        base_magin_top:(data.base_magin_top|default(0)/remUnit)|number_format(3, '.')~suffix,
+        base_magin_bottom:(data.base_magin_bottom|default(32)/remUnit)|number_format(3, '.')~suffix,
+        base_bgc:data.base_bgc is not null ? data.base_bgc:'#FFFFFF',
+        base_bgImage:data.base_bgImage,
+
+        discount_ftc:data.discount_ftc is not null ? data.discount_ftc:'#FFFFFF',
+        discount_bgc:data.discount_bgc is not null ? data.discount_bgc:'#FF8A00',
+
+        buy_ftc:data.buy_ftc is not null ? data.buy_ftc:'#FFFFFF',
+        buy_bgc:data.buy_bgc is not null ? data.buy_bgc:'#FF8A00',
+
+        price_fts:(data.price_fts|default(32)/remUnit)|number_format(3, '.')~suffix,
+        price_color:data.price_color is not null ? data.price_color:'#f30240',
+
+        discount_height:(data.discount_height|default(70)/remUnit)|number_format(3, '.')~suffix,
+        discount_width:(data.discount_width|default(70)/remUnit)|number_format(3, '.')~suffix,
+        discount_fts:(data.discount_fts|default(24)/remUnit)|number_format(3, '.')~suffix,
+        discount_off_fts:(data.discount_off_fts|default(22)/remUnit)|number_format(3, '.')~suffix,
+        discount_right:(data.discount_right|default(12)/remUnit)|number_format(3, '.')~suffix,
+        discount_top:(data.discount_top|default(12)/remUnit)|number_format(3, '.')~suffix,
+        discount_bgImage:data.discount_bgImage,
+
+        buy_text:data.buy_text,
+        buy_fts:(data.buy_fts|default(24)/remUnit)|number_format(3, '.')~suffix,
+
+        down_bgc:data.down_bgc is not null ? data.down_bgc:'#333333',
+        down_ftc:data.down_ftc is not null ? data.down_ftc:'#FFFFFF',
+        limit_progress_bgc:data.limit_progress_bgc is not null ? data.limit_progress_bgc:'#FA8A02',
+        limit_left_color:data.limit_left_color is not null ? data.limit_left_color:'#FA8A02',
+
+        coming_soon_bgc:data.coming_soon_bgc is not null ? data.coming_soon_bgc:'#999999',
+        coming_soon_ftc:data.coming_soon_ftc is not null ? data.coming_soon_ftc:'#FFFFFF',
+
+        coming_soon_text:data.coming_soon_text,
+        buy_now_text:data.buy_now_text,
+        deals_ended_text:data.deals_ended_text,
+
+        tab_col:data.tab_num|default(3),
+        tab_bgc:data.tab_bgc is not null ? data.tab_bgc:'#333333',
+        tab_active_bgc:data.tab_active_bgc is not null ? data.tab_active_bgc:'#FF8A00',
+        tab_ftc:data.tab_ftc is not null ? data.tab_ftc:'#FFFFFF',
+        tab_active_ftc:data.tab_active_ftc is not null ? data.tab_active_ftc:'#FFFFFF',
+
+
+        market_active: data.market_active|default(1),
+        discount_active: data.discount_active|default(1),
+        limit_end_active: data.limit_end_active|default(1),
+        goods_title_active:data.goods_title_active|default(1),
+        down_active:data.down_active|default(1),
+        limit_active:data.limit_active|default(1),
+        limit_type: data.limit_type|default(1),
+
+        view_more_ftc:data.view_more_ftc is not null ? data.view_more_ftc : "#333333",
+        view_more_bgc:data.view_more_bgc is not null ? data.view_more_bgc : "#FFFFFF",
+        view_more_text:data.view_more_text,
+        view_less_text:data.view_less_text,
+        view_more_border_color:data.view_more_border_color is not null ? data.view_more_border_color : "#333333",
+        view_more_fts:(data.view_more_fts|default(24)/remUnit)|number_format(3, '.'),
+        view_more_radius:(data.view_more_radius|default(4)/remUnit)|number_format(3, '.')~suffix,
+
+        view_all_ftc:data.view_all_ftc is not null ? data.view_all_ftc : "#333333",
+        view_all_text:data.view_all_text,
+        view_all_link:data.view_all_link|default(""),
+        view_all_fts:(data.view_all_fts|default(28)/remUnit)|number_format(3, '.'),
+        view_all_weight:data.view_all_weight|default(0),
+        view_all_active:data.view_all_active|default(0),
+
+        limit_stock_active: data.limit_stock_active|default(1),
+		server_label_active: data.server_label_active|default(0),
+    }
+%}
+
+{# {% set liWidth = (pageData.baseWidth-3*pageData.marginRight)/pageData.col %} #}
+
+
+<div class="geshop-component-box component-drag geshop-component-goods component-sync clearfix geshop-gb-component ui-{{ pageInstanceId }}" data-gid="U000098_default" data-key="U000098" data-id="{{ pageInstanceId }}" data-editenv="{{data.isEditEnv}}" data-static-domain="{{staticDomain}}" data-vis="{{liLength}}" data-lang="{{lang}}" data-buytext="{{data.buy_text}}" style=" {% if data.boxMarginTop %}margin-top: {{ data.boxMarginTop }}px;{% endif %} {% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}">
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+        [data-gid="U000098_default"][data-id="{{ pageInstanceId }}"]{
+            margin-top: {{ pageData.base_magin_top }};
+            margin-bottom:{{pageData.base_magin_bottom}};
+        }
+
+        [data-gid="U000098_default"][data-id="{{ pageInstanceId }}"] .gb_goodsWrap{
+            {#background-color:{{pageData.base_bgc}};#}
+            padding: 0;
+            position: relative;
+        }
+
+        {# 折扣标 #}
+        [data-gid="U000098_default"][data-id="{{ pageInstanceId }}"] .gs-goods-discount--m{
+            background-color:{{pageData.discount_bgc}};
+            color:{{pageData.discount_ftc}};
+            width:{{pageData.discount_width}};
+            height:{{pageData.discount_height}};
+            top:{{pageData.discount_top}};
+            right:{{pageData.discount_right}};
+            {% if pageData.discount_bgImage %}
+                background:url({{pageData.discount_bgImage}}) no-repeat center center/100% 100%;
+                border-radius:0;
+            {% endif %}
+        }
+        [data-gid="U000098_default"][data-id="{{ pageInstanceId }}"] .gs-goods-discount--m .curtoff-box{
+            font-size:{{pageData.discount_fts}};
+        }
+        {# 售价 #}
+        [data-gid="U000098_default"][data-id="{{ pageInstanceId }}"] .gs-goods-price--m .gs-shop-price{
+                font-size:{{pageData.price_fts}};
+                color:{{pageData.price_color}};
+        }
+
+        {# 购买按钮设置 #}
+        [data-gid="U000098_default"][data-id="{{ pageInstanceId }}"] .gs-goods-buy--m .buyLink{
+            color:{{pageData.buy_ftc}};
+            background-color:{{pageData.buy_bgc}};
+            font-size:{{pageData.buy_fts}};
+        }
+
+        {# 分类标签设置 #}
+        [data-gid="U000098_default"] .swiper-container .swiper-wrapper .swiper-slide p {
+            background: {{ pageData.tab_bgc }};
+            color: {{ pageData.tab_ftc }};
+
+        }
+        [data-gid="U000098_default"] .swiper-container .swiper-wrapper .swiper-slide.tab-lose p {
+            background: #999999;
+            color: #ffffff;
+
+        }
+        [data-gid="U000098_default"] .swiper-container .swiper-wrapper .tab-active p, [data-gid="U000098_default"] .swiper-container .swiper-wrapper .tab-lose.tab-active p {
+            background-color: {{ pageData.tab_active_bgc }};
+            color: {{ pageData.tab_active_ftc }};
+        }
+
+
+        {# 限时抢购 #}
+        [data-gid="U000098_default"][data-id="{{ pageInstanceId }}"] .gs-gb-timer .gs-goods-time--m {
+            background-color: {{pageData.down_bgc}};
+        }
+        [data-gid="U000098_default"][data-id="{{ pageInstanceId }}"] .gs-gb-timer .gs-goods-time--m .gs-goodsRushDown {
+            color: {{pageData.down_ftc}};
+        }
+
+        {# 库存设置 #}
+
+        {# 库存相关 #}
+        [data-gid=U000098_default][data-id="{{ pageInstanceId }}"] .gs-goods-progress .num{
+            color: {{pageData.limit_left_color}};
+        }
+        [data-gid=U000098_default][data-id="{{ pageInstanceId }}"] .gs-goods-progress i {
+            background-color: {{pageData.limit_progress_bgc}};
+        }
+
+
+        {# view 按钮样式 #}
+        [data-gid="U000098_default"][data-id="{{ pageInstanceId }}"] .isHide{
+            display:none;
+            height:0;
+            opacity:0;
+        }
+        [data-gid="U000098_default"][data-id="{{ pageInstanceId }}"] .view-more{
+                min-height:{{2 * pageData.view_all_fts}}rem;
+        }
+        [data-gid="U000098_default"][data-id="{{ pageInstanceId }}"] .view-more-btn{
+            margin-top:{{pageData.view_all_fts - pageData.view_more_fts}}rem;
+            color:{{pageData.view_more_ftc}};
+            background-color:{{pageData.view_more_bgc}};
+            line-height: {{ pageData.view_all_fts - pageData.view_more_fts > 0 ? 1.5 * pageData.view_all_fts : 1.5 * pageData.view_more_fts }}rem;
+            font-size:{{pageData.view_more_fts}}rem;
+            border-radius: {{pageData.view_more_radius}};
+            border: 1px solid {{pageData.view_more_border_color}};
+        }
+        [data-gid="U000098_default"][data-id="{{ pageInstanceId }}"] .view-all-btn{
+            color:{{pageData.view_all_ftc}};
+            line-height: {{ pageData.view_all_fts - pageData.view_more_fts > 0 ? 1.5 * pageData.view_all_fts : 1.5 * pageData.view_more_fts }}rem;
+            font-size:{{pageData.view_all_fts}}rem;
+            {% if pageData.view_all_weight %}
+            font-weight: bold;
+            {% endif %}
+        }
+        .geshop-gb-component.ui-{{ pageInstanceId }} .gs-goods-buy--m{
+            position: relative;
+            z-index: 2;
+        }
+[data-gid="U000098_default"][data-id="{{ pageInstanceId }}"] .gs-goods-item-common {
+  position: relative;
+  width: 4.2rem;
+  height: 5.6rem;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+[data-gid="U000098_default"][data-id="{{ pageInstanceId }}"] .gs-goods-item-common img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+[data-gid="U000098_default"][data-id="{{ pageInstanceId }}"] .tab-item {
+    margin-top: 0.2667rem;
+    width: auto;
+}
+
+</style>
+    <!-- embed stylesheet end -->
+
+    <div class="geshop-col-12">
+
+        <div class="gb_goodsWrap gb_wrapper_common" data-skus="{{data.goodsSKUList}}" data-isEditEnv="{{data.isEditEnv}}" style="{% if data.baseFtFa %}font-family:{{data.baseFtFa}};{% endif %}">
+            <div id="timeGoodsTab" class="swiper-container swiper-container-horizontal swiper-container-free-mode timeGoodsTab" >
+                <input name="buy_now_text" type="hidden" value="{{pageData.buy_now_text|default(gb_component_trans(lang , 'buy_now'))}}">
+				<input name="coming_soon_text" type="hidden" value="{{pageData.coming_soon_text|default(gb_component_trans(lang , 'coming_soon'))}}">
+				<input name="deals_ended_text" type="hidden" value="{{pageData.deals_ended_text|default(gb_component_trans(lang , 'deals_ended'))}}">
+                <input name="coming_soon_bgc" type="hidden" value="{{pageData.coming_soon_bgc}}">
+                <input name="coming_soon_ftc" type="hidden" value="{{pageData.coming_soon_ftc}}">
+                <div class="swiper-wrapper gs-tab-label" style="transition-duration: 300ms; transform: translate3d(0px, 0px, 0px);">
+                    {% for key, item in data.goodsInfo|default(0..5) %}
+                        {% if pageData.tab_col < 3 %}
+                            <div class="swiper-slide tab-item time-item {% if loop.index0 == 0 %} swiper-slide-active {% endif %} {% if loop.index0 == 1 %} swiper-slide-next {% endif %}" data-begin="{{item.startTime}}" data-end="{{item.endTime}}" style="width: {{ 100/pageData.tab_col }}%">
+                                <p >
+                                    <span>{{pageData.buy_now_text|default(gb_component_trans(lang , 'buy_now'))}}</span>
+                                    <span>{{gb_component_trans(lang , 'ends_in')}}: 00:00:00:00</span>
+                                </p>
+                            </div>
+                        {% else %}
+                            <div class="swiper-slide tab-item time-item {% if loop.index0 == 0 %} swiper-slide-active {% endif %} {% if loop.index0 == 1 %} swiper-slide-next {% endif %}" data-begin="{{item.startTime}}" data-end="{{item.endTime}}">
+                                <p>
+                                    <span>{{pageData.buy_now_text}}</span>
+                                    <span>{{gb_component_trans(lang , 'ends_in')}}: 00:00:00:00</span>
+                                </p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% for tabKey, tabItem in data.goodsInfo|default(0..3) %}
+                <div class="goods-category {% if loop.index0 == 0 %} category-active {% endif %}" style="padding-bottom: .2667rem;">
+                    <ul class="clearfix gb-list-default gb-lists-default" data-shownum ="{{data.defaultGoodsCount}}">
+                        {% for key, item in tabItem.lists|default(0..3) %}
+                            {% set isHide = (key >= data.defaultGoodsCount and data.defaultGoodsCount > 0) ? 'isHide' : "" %}
+                            {{include ('@app/files/parts/temp/gb/index_default_m_test.twig')}}
+                        {% endfor %}
+                    </ul>
+                    {% set sku_num = skuNum ? skuNum : tabItem.lists|default(0..3)|length %}
+                    {% set offSetRight = '0.266rem'  %}
+                    {% if tabItem.viewAllUrl or ( data.defaultGoodsCount < sku_num  and data.defaultGoodsCount > 0) %}
+                        <div class="view-more" style="margin-right: 0.2667rem;">
+                            {% set sku_num = skuNum ? skuNum : tabItem.lists|default(0..3)|length %}
+                            {% if data.defaultGoodsCount < sku_num  and data.defaultGoodsCount > 0 %}
+                                <p class="view-more-btn"  data-moretext="{{pageData.view_more_text|default(gb_component_trans(lang , 'view_more' )) }}" data-lesstext="{{pageData.view_less_text|default(gb_component_trans(lang , 'view_less' ))}}">
+                                    <span style="display: inline-block;max-width: 3rem;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;vertical-align: middle;">{{pageData.view_more_text|default(gb_component_trans(lang , 'view_more' ))}} </span>
+                                    <i style="color:#333333;" class="gs-iconfont gs-icon-down1"></i>
+                                </p>
+                            {% endif %}
+                            {% if tabItem.viewAllUrl  %}
+                                <a  href="{{tabItem.viewAllUrl}}"  class="view-all-btn" style="margin-right:.1rem">
+                                <span style="display: inline-block;white-space: nowrap;padding: 0 .2rem;max-width: 2.3rem;overflow: hidden;vertical-align: middle;text-overflow: ellipsis">{{pageData.view_all_text|default(gb_component_trans(lang , 'view_all' ))}}</span>>
+                                </a>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                </div>
+            {% endfor %}
+            <div class="goods-category-empty"> 暂无商品 </div>
+        </div>
+
+    </div>
+</div>

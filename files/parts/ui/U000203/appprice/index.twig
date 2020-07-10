@@ -1,0 +1,323 @@
+<div 
+	class="geshop-component-box component-drag geshop-U000203-appprice geshop-U000203-default-{{ pageInstanceId }}" data-key="U000203" data-id="{{ pageInstanceId }}">
+	{{ include('style.twig') }}
+	<input type="hidden" name="editEnv" value="{{data.isEditEnv}}"/>
+	<input type="hidden" name="priceType" value="{{data.price_type}}"/>
+	<input type="hidden" name="page_show_goods_number" value="{{ data.page_show_goods_number|default(20) }}">
+	<input type="hidden" name="view_more_text" value="{{ languages.view_more[lang]|default('View More') }}">
+	<input type="hidden" name="view_less_text" value="{{ languages.view_less[lang]|default('View Less') }}">
+	<div class="nav-container">
+		<ul class="nav-list">
+			{% if data.navList %}
+				{% for key,item in data.navList|default(0..3) %}
+					<li data-sku={{item.skus|json_encode()}} data-link={{ item.link }}><span>{{item.categoryName}}</span></li>
+				{% endfor %}
+			{% else %}
+				<li class="active">Tops</li>
+				<li>Dress</li>
+				<li>Bottoms</li>
+				<li>Swimwear</li>
+			{% endif %}
+		</ul>
+
+		<div class="goods-list">
+			<div class="goods-list-ul clearfix">
+				{% for item in (0..3) %}
+					<div class="goods-item-li">
+						<div class="goods-item">
+							<div class="geshop-goods-img">
+								<a href="" class="js_logsss_click_delegate_ps">
+									<img src="https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/good.png" style="max-width: 100%;max-height:100%;" data-original="https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/good.png"  class="js_gdexp_lazy js-lazy" data-module="product">
+									<div class="shop-now-container">
+										<div class="inner-wrapper">          
+											<i class="bag-img"></i>           
+											<span class="shop-now-text"> shop now </span>        
+										</div>
+																
+									</div>
+								</a>  
+							</div>
+							<a href="" class="geshop-goods-title js_logsss_click_delegate_ps" target="_blank">Plus Size Mesh Panel Snowflak…</a>
+							<div class="normal-price">
+								<p class="geshop-goods-shopprice">
+									<span class="price-label">shop-price :</span>&nbsp;
+									<span class="my-shop-price" data-orgp="0.00">                                    
+									<span class="icon">$</span>0.00</span>
+								</p>
+								<p class="geshop-goods-market-price">
+									<span class="price-label">market-price : </span>
+									<span class="my-shop-price" data-orgp="0.00">
+										<span class="icon">$</span>
+										0.00
+									</span>
+								</p>                                                    
+							</div>
+							<p class="geshop-goods-promotions">Buy 1 Get 10% OFF…</p>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			
+			{% if data.navList %}
+				{% for key,item in data.navList|default(0..3) %}
+					{% if item.link %}
+						<a class="btn-seemore" target="_blank" href="{{item.link}}">{{data.seemore_btnText | default('See More')}}>></a>
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+		</div>
+
+		<div class="gs-tab-content">
+			{# view_more #}
+			{% if data.navList %}
+			{% for key,item in data.navList|default(0..3) %}
+				<div class="tab-item {% if loop.index0 == 0 %}active{% endif %}">
+					<div class="item-more-wrap ">
+						<div class="item-more-less">
+							<div class="view_more view_more_btn"><span>{{ languages.view_more[lang]|default('View More') }}</span></div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+			{% endif %}
+		</div>
+
+		<script class="cont-goodsList-js" type="text/html">
+			
+			<%# d.forEach(function(item, index) { %>
+				<div class="goods-item-li">
+					<div class="goods-item js_logsss_browser js_logsss_event_ps"
+									data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }"
+									data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'},'skuinfo':{'sku':'{{ item.goods_sn }}','pam':'0','pc':'{{ item.catid }}','k':'{{ item.warecode }}'} }">
+						
+						<div class="geshop-goods-discount">
+							<p class="geshop-goods-discount-value"> 
+								{% if lang == 'fr' %} 
+									-<% item.discount %>%
+								{% else %}
+									<% item.discount %>%
+								{% endif %}
+							</p></br>
+								{% if lang != 'fr' and data.discount_showtype == 1 %} 
+									<p class="geshop-goods-discount-offtext">
+									OFF
+									</p>
+								{% endif %}
+						</div>
+						
+						<div class="geshop-goods-img <%# if(item.goods_number == 1){ %> soldout-bg  <%# } %> ">
+							
+							<a href="<% item.url_title %>" class="js_logsss_click_delegate_ps">
+							<img src="https://geshopcss.logsss.com/imagecache/geshop/resources/images/dl/loading.gif" style="max-width: 100%;max-height:100%;"
+								data-original="<% item.goods_img %>"
+								data-sku="<% item.goods_sn %>" class="js_gdexp_lazy js-lazy" data-module="product">
+							<div class="shop-now-container">
+								<div class="inner-wrapper">
+								<i class="bag-img"></i> 
+								<span class="shop-now-text"> {{ get_component_trans(lang,'shop_now') }} </span>
+								</div>
+							</div>
+							</a>
+						</div>
+
+						<a href="<% item.url_title %>" class="geshop-goods-title js_logsss_click_delegate_ps" target="_blank">
+							<% item.goods_title %>
+						</a>
+
+						
+
+						{% if data.price_type == 0 %}
+							<div class="normal-price">
+								<p class="geshop-goods-shopprice">
+									<span class="price-label">{{data.fl_text_0 ?? 'SHOP-PRICE'}} :</span>&nbsp;
+									<span class="my-shop-price" data-orgp="<% item.shop_price %>">
+										<span class="icon">$</span><% item.shop_price %>
+									</span>
+								</p>
+								
+								{% if data.cl_price_ishide_0 == 0  %}
+									<p class="geshop-goods-market-price">
+										<span class="price-label">{{data.cl_text_0 ?? 'market-price'}}:</span> 
+										<span class="my-shop-price" data-orgp="<% item.market_price %>">
+											<span class="icon">$</span>
+											<% item.market_price %>
+										</span>
+									</p>
+								{% endif %}
+							</div>
+
+						{% elseif  data.price_type == 1 %}
+							<div class="newuser-price">
+								<p class="geshop-goods-shopprice">
+									<span  class="price-label">{{data.fl_text_1 ?? 'NEW-USER-ONLY'}}</span>&nbsp;
+									<span class="my-shop-price" data-orgp="<% item.promote_price %>">
+										<span class="icon">$</span>
+										<% item.promote_price %>
+									</span>
+								</p>
+								{% if data.cl_price_ishide_1 == 0  %}
+									<p class="geshop-goods-market-price">
+										<span class="price-label">{{data.cl_text_1 ?? 'shop-price'}} :</span>
+										<span class="my-shop-price" data-orgp="<% item.shop_price %>">
+											<span class="icon">$</span>
+											<% item.shop_price %>
+										</span>
+									</p>
+								{% endif %}
+							</div>
+						
+							
+						{% elseif  data.price_type == 2 %}
+							<div class="app-price">
+								<p class="geshop-goods-shopprice">
+									<span class="price-label">{{data.fl_text_2 ?? 'APP-ONLY'}} PRICE:</span>&nbsp;
+									<span class="my-shop-price" data-orgp="<% item.promote_price %>">
+										<span class="icon">$</span>
+										<% item.promote_price %>
+									</span>
+								</p>
+								{% if data.cl_price_ishide_2 == 0  %}
+									<p class="geshop-goods-market-price">
+										<span class="price-label">{{data.cl_text_2 ?? 'shop-price'}} :</span>
+										<span class="my-shop-price" data-orgp="<% item.shop_price %>">
+											<span class="icon">$</span>
+											<% item.shop_price %>
+										</span>
+									</p>
+								{% endif %}
+							</div>
+						{% endif %}
+						
+						
+						<p class="geshop-goods-promotions" <%# if(item.promotions.length == 1)  { %> data-flag=1	<%# } %> >
+							<%# if (item.promotions.length > 0) { %>
+								<span class="promotions-text" data-promotions-length="<% item.promotions.length %>"><% item.promotions[0] %></span>
+							<%# } %>
+						</p>
+						
+							
+						<div class="geshop-goods-promotions-more none"> 
+							<%# for(var index = 0; index < item.promotions.length; index++) { %>
+								<p><% item.promotions[index] %></p>
+							<%# } %>
+
+						
+						</div>
+					</div>
+				</div>
+			<%# }) %>
+		</script>
+
+
+		{# {% if data.goodsInfo %}
+		{% for key,navs in data.goodsInfo %}
+		<div class="goods-list clearfix">
+				<input type="hidden" name="editEnv" value="{{data.isEditEnv}}"/>
+				<input type="hidden" name="platform" value=""/>
+				<div class="clearfix">
+					
+						{% for key,item in navs.lists %}
+							<div class="goods-item js_logsss_browser js_logsss_event_ps"
+								data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }"
+								data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'},'skuinfo':{'sku':'{{ item.goods_sn }}','pam':'0','pc':'{{ item.catid }}','k':'{{ item.warecode }}'} }">
+								
+								{{ include ('@app/files/parts/twigs/indexs/basics/goods-picture.twig',
+											{ options: { 
+													goodsImg: item.goods_img|default(data.default.good),
+													urlTitle: item.url_title,
+													goodsSku: item.goods_sn,
+													goodsNum: item.goods_number | default(1),
+													isOnSale: item.is_on_sale | default(1),
+													lang:{
+														soldout: get_component_trans(lang,'btn_sold_out'),
+														shopnow:  get_component_trans(lang,'shop_now')
+													}
+												}
+											}
+								) }}
+
+								{{ include ('@app/files/parts/twigs/indexs/basics/goods-title.twig',
+											{ options: { 
+													goodsTitle: item.goods_title | default('Plus Size Mesh Panel Snowflake amPlu…'),
+													urlTitle: item.url_title
+												}
+											}
+								) }}
+								<p>
+									
+									{% if siteCode == 'dl-app' %}
+										{% set goodsPrice = item.app_price | default(item.shop_price) %}
+									{% else %}
+										{% set goodsPrice = item.shop_price %}
+									{% endif %}
+									
+									{{ include ('@app/files/parts/twigs/indexs/basics/goods-sale-price.twig',
+											{ options: { 
+													value: goodsPrice | default('0.00')
+												}
+											}
+								) }}
+
+								{% if item.discount > 0 %}
+										{% if lang == 'fr' %}
+											<span class="discount">(-{{item.discount}}%)</span>
+										{% else %}
+											<span class="discount">({{item.discount}}%Off)</span>
+										{% endif %}
+								{% endif %}
+								
+								{{ include ('@app/files/parts/twigs/indexs/basics/goods-promotions.twig',
+											{ options: { 
+													value: item.promotions
+												}
+											}
+								) }}
+								</p>
+							</div>
+						{% endfor %}
+					
+					</div>
+					{% if navs.link %}
+						<a class="btn-seemore" target="_blank" href="{{navs.link}}">{{data.seemore_btnText | default('See More')}}>></a>
+					{% endif %}
+			</div>
+			{% endfor %}
+		{% else %}
+			{% for item in (0..3) %}
+			<div class="goods-list clearfix">
+			<div class="clearfix">
+			{% for item in (0..3) %}
+				<div class="goods-item">
+					<div class="geshop-goods-img ">
+						<a href="" class="js_logsss_click_delegate_ps">
+							<img src="https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/good.png" style="max-width: 100%;max-height:100%;" data-original="https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/good.png"  class="js_gdexp_lazy js-lazy" data-module="product">
+							<div class="shop-now-container">
+								<div class="inner-wrapper">          
+									<i class="bag-img"></i>           
+									<span class="shop-now-text"> shop now </span>        
+								</div>
+														
+							</div>
+						</a>  
+					</div>
+					<a href="" class="geshop-goods-title js_logsss_click_delegate_ps" target="_blank">Plus Size Mesh Panel...</a>
+					<p>
+						<span class="geshop-goods-shopprice my-shop-price" data-orgp="0.00">
+							<span class="icon">$</span>0.00 
+						</span>
+						<span class="my-shop-price geshop-goods-market-price" data-orgp="0.00">           
+							<span class="icon">$</span>0.00    
+						</span>
+					</p>
+					<p class="geshop-goods-promotions">Buy 1 Get 10% OFF…</p>
+				</div>
+				{% endfor %}
+				</div>
+				<a class="btn-seemore" target="_blank" href="">See More>></a>
+			</div>
+			{% endfor %}
+		{% endif %} #}
+		
+		
+	</div>
+</div>

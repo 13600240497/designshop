@@ -1,0 +1,717 @@
+<style>
+.gs-lable-block{
+	margin:10px 0 10px 20px;
+	display: block;
+}
+.gs-lable-block+.layui-input-block,.class-manage,.row-lists-content .layui-input-block{
+	margin-left:20px
+}
+.gs-tips{
+	font-size: 12px;
+	color: #9E9E9E;
+}
+.row-lists-content{
+	margin: 10px 15px 20px 20px;
+  border-radius: 4px;
+}
+.row-lists-content.active{
+  border: 1px solid #e6e6e6;
+}
+.line-row-text2,.line-row-text3{
+	display:none;
+}
+.line-row-text2.active,.line-row-text3.active{
+	display:block;
+}
+
+[data-col='2'] .line-row-text2{
+	display:block;
+}
+
+[data-col='3'] .line-row-text2,[data-col='3'] .line-row-text3{
+	display:block;
+}
+
+
+.layui-form-select .layui-edge{
+	right:20px;
+}
+.fr{
+	float:right;
+}
+
+</style>
+{%
+	set pageData = {
+		navigatWidth:data.navigatWidth|default(340),
+		navigat_titleH:data.navigat_titleH|default(150),
+		navigat_titleTextC:data.navigat_titleTextC|default('#333333'),
+		navigat_titleBgC:data.navigat_titleBgC|default('#F5F7F9'),
+		navigat_titleText:data.navigat_titleText is not null?data.navigat_titleText:'主会场',
+		navigat_titleFtS:data.navigat_titleFtS|default(16),
+		part_titleFtS:data.part_titleFtS|default(14),
+		goTop_fts:data.goTop_fts|default(14),
+		goTop_height:data.goTop_height|default(80),
+		part_borderC:data.part_borderC|default('#F2F2F2'),
+		part_Bgc:data.part_Bgc|default('#ffffff'),
+		part_TextC:data.part_TextC|default('#333333'),
+		part_HoverC:data.part_HoverC|default('#999999'),
+		goTop_text:data.goTop_text|default('Top'),
+		goTop_BgC:data.goTop_BgC|default('#ffffff'),
+		goTop_TextC:data.goTop_TextC|default('#333333'),
+		goTop_TextHoverC:data.goTop_TextHoverC|default('#999999'),
+	}
+%}
+
+{% set fontFamily = [
+	{name:'OpenSans-Semibold (zaful)',value:'OpenSans-Semibold'},
+  {name:'OpenSans-Bold (zaful)',value:'OpenSans-Bold'},
+  {name:'OpenSans-Regular (zaful)',value:'OpenSans-Regular'},
+  {name:'Trebuchet MS (RG)',value:'Trebuchet MS'},
+  {name:'Tahoma (RW)',value:'Tahoma'},
+  {name:'Arial (RW)',value:'Arial'},
+  {name:'Helvetica (RW)',value:'Helvetica'},
+  {name:'sans-serif (RW)',value:'sans-serif'},
+  {name:'AvenirLTStd_Book (RW)',value:'AvenirLTStd_Book'},
+  {name:'Georgia (RW)',value:'Georgia'},
+  {name:'Times New Roman (RW)',value:'Times New Roman'},
+  {name:'Verdana (RW)',value:'Verdana'},
+]%}
+
+
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>页面导航配置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+  <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+    <div class="layui-tab">
+      <ul class="layui-tab-title">
+        <li class="layui-this">模板选择</li>
+        <li>配置</li>
+      </ul>
+      <div class="layui-tab-content layui-tab-content-parent">
+        <div class="layui-tab-item layui-show">
+						<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+						{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				</div>
+        <div class="layui-tab-item">
+          <div class="layui-carousel" id="form_carousel">
+            <div carousel-item>
+              <div>
+                <fieldset class="layui-elem-field">
+                  <legend>常用配置</legend>
+                  <div class="layui-field-box">
+										{{include ('@app/files/parts/formModules/userGroupItem.twig')}}
+					  <div class="layui-form-item">
+						  <label class="gs-lable-block">是否一直显示</label>
+						  <div class="layui-input-block">
+							  <input type="radio" name="component_show_always" value="1" title="是"{% if data.component_show_always | default('0') == '1' %} checked{% endif %}>
+							  <input type="radio" name="component_show_always" value="0" title="否"{% if data.component_show_always | default('0') == '0' %} checked{% endif %}>
+						  </div>
+					  </div>
+                    <div class="layui-form-item">
+                      <label class="gs-lable-block ">组件宽度(px) <span class="gs-tips">（建议组件宽度不要超过340px）</span></label>
+                      <div class="layui-input-block">
+                        <input type="text" name="navigatWidth" autocomplete="off" class="layui-input" value="{{ pageData.navigatWidth}}" >
+                      </div>
+                    </div>
+										<div class="layui-form-item">
+                      <label class="gs-lable-block">跳转链接是否新窗口打开</label>
+                      <div class="layui-input-block">
+                        <input type="radio" name="openInNewWindow" value="1" title="是"{% if data.openInNewWindow|default('2') == '1' %} checked{% endif %}>
+                        <input type="radio" name="openInNewWindow" value="2" title="否"{% if data.openInNewWindow|default('2') == '2' %} checked{% endif %}>
+                      </div>
+                    </div>
+									<div class="layui-form-item">
+										<label class="gs-lable-block">组件显示位置</label>
+										<div class="layui-input-block">
+											<input type="radio" name="navigat_position" value="1" title="居右" {% if data.navigat_position == '1' or data.navigat_position is empty %} checked="checked" {% endif %}>
+											<input type="radio" name="navigat_position" value="0" title="居左" {% if data.navigat_position == '0'%} checked="checked" {% endif %}>
+										</div>
+									</div>
+									<legend style="margin-bottom: 20px;font-size:18px;">顶部图片配置</legend>
+									<div class="layui-form-item">
+										<label class="gs-lable-block">顶部是否设置图片</label>
+										<div class="layui-input-block">
+											<input type="radio" name="navigat_headImgActive" value="1" title="是" {% if data.navigat_headImgActive == '1' or data.navigat_headImgActive is empty %} checked="checked" {% endif %}>
+											<input type="radio" name="navigat_headImgActive" value="0" title="否" {% if data.navigat_headImgActive == '0'%} checked="checked" {% endif %}>
+										</div>
+									</div>
+									<div class="layui-form-item"><span class="gs-tips" style="padding: 0 20px;display: block;">为确保最佳显示效果，请确保上传图片宽度与组件宽度保持一致。</span></div>
+									<div class="layui-form-item">
+										<label class="gs-lable-block">顶部图片</label>
+										<div class="layui-input-block">
+											<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+											<input class="layui-input" type="text" name="navigat_headImg" value="{{data.navigat_headImg}}" data-height="navigat_headImg_height" data-width="navigat_headImg_width">
+											<input type="hidden" name="navigat_headImg_height" value="{{data.navigat_headImg_height}}">
+											<input type="hidden" name="navigat_headImg_width" value="{{data.navigat_headImg_width}}">
+										</div>
+									</div>
+									<legend style="margin-bottom: 20px;font-size:18px;">主会场模块配置</legend>
+                    <div class="layui-form-item">
+                      <label class="gs-lable-block ">高度(px)</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="navigat_titleH" autocomplete="off" class="layui-input" value="{{ pageData.navigat_titleH }}" >
+                      </div>
+                    </div>
+										<div class="layui-form-item">
+											<label class="gs-lable-block">主会场背景图片</label>
+											<div class="layui-input-block">
+												<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+												<input class="layui-input" type="text" name="navigat_titleBgImg" value="{{data.navigat_titleBgImg}}">
+											</div>
+										</div>
+                    <div class="layui-form-item">
+                      <label class="gs-lable-block ">主会场文案</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="navigat_titleText" autocomplete="off" class="layui-input" value="{{ pageData.navigat_titleText }}" >
+                      </div>
+                    </div>
+										<div class="layui-form-item">
+											<label class="gs-lable-block">主会场文字颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="navigat_titleTextC">
+													<div style="background-color: {{ pageData.navigat_titleTextC }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="navigat_titleTextC" autocomplete="off" value="{{ pageData.navigat_titleTextC }}">
+											</div>
+										</div>
+                    <div class="layui-form-item">
+                      <label class="gs-lable-block ">主会场链接</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="navigat_titleLink" autocomplete="off" class="layui-input" value="{{ data.navigat_titleLink }}" >
+                      </div>
+                    </div>
+									<legend style="margin-bottom: 20px;font-size:18px;">分会场模块配置</legend>
+										<div class="layui-form-item">
+											<label class="gs-lable-block">模块背景颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="part_Bgc">
+													<div style="background-color: {{ pageData.part_Bgc }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="part_Bgc" autocomplete="off" value="{{ pageData.part_Bgc }}">
+											</div>
+										</div>
+
+										<div class="layui-form-item">
+											<label class="gs-lable-block">文字颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="part_TextC">
+													<div style="background-color: {{ pageData.part_TextC }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="part_TextC" autocomplete="off" value="{{ pageData.part_TextC }}">
+											</div>
+										</div>
+
+										<div class="layui-form-item">
+											<label class="gs-lable-block">文字鼠标滑过颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="part_HoverC">
+													<div style="background-color: {{ pageData.part_HoverC }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="part_HoverC" autocomplete="off" value="{{ pageData.part_HoverC }}">
+											</div>
+										</div>
+                    <div class="layui-form-item">
+                      <label class="gs-lable-block ">分会场行数 <span class="gs-tips">(不超过20行)</span></label>
+                      <div class="layui-input-block">
+                        <input type="number" name="part_rowNum" autocomplete="off" class="layui-input" value="{{ data.part_rowNum }}" data-value="{{data.part_rowNum}}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="gs-lable-block ">分会场行数模块设置</label>
+                      <div class="layui-input-block">
+												<select class="part_rowSelect" name="part_rowSelect" lay-verify="part_rowSelect">
+													{% for index,item in data.partsArr %}
+														<option value="{{index}}">分会场模块{{index+1}}</option>
+													{% endfor %}
+												</select>
+                      </div>
+                    </div>
+										<input type="hidden" name="partsArr">
+										<div class="row-lists-content">
+
+{% for index,item in data.partsArr %}
+<div class="row-item {% if index != '0' %}layui-hide{% endif %}" data-col="{{item.col|default('1')}}">
+	<div class="layui-form-item">
+		<label class="gs-lable-block ">一行显示会场数
+			<span class="img-btn btn-delete fr">
+				<i class='icon-delete'></i>
+				<b class="tips">删除</b>
+			</span>
+		</label>
+		<div class="layui-input-block">
+				<input type="radio" name="line_row{{index}}" class="Unwanted line_row" value="1" title="1" {% if item.col|default('1') == '1' %}checked="checked"{% endif %} >
+				<input type="radio" name="line_row{{index}}" class="Unwanted line_row" value="2" title="2" {% if item.col|default('1') == '2' %}checked="checked"{% endif %}>
+				<input type="radio" name="line_row{{index}}" class="Unwanted line_row" value="3" title="3" {% if item.col|default('1') == '3' %}checked="checked"{% endif %}>
+		</div>
+	</div>
+{% for key,partItem in item.colArr %}
+	<div class="layui-form-item line-row-text{{key+1}}">
+		<label class="gs-lable-block ">分会场{{key+1}}文案</label>
+		<div class="layui-input-block">
+			<input type="text" name="line{{index}}_text{{key+1}}" autocomplete="off" class="layui-input text{{key+1}} Unwanted" value="{{partItem.text}}">
+		</div>
+	</div>
+	<div class="layui-form-item line-row-text{{key+1}}">
+		<label class="gs-lable-block ">分会场{{key+1}}链接</label>
+		<div class="layui-input-block">
+			<input type="text" name="line{{index}}_link{{key+1}}" autocomplete="off" class="layui-input link{{key+1}} Unwanted" value="{{partItem.link}}">
+		</div>
+	</div>
+{% endfor %}
+
+</div>
+
+{% endfor %}
+										</div>
+
+									<legend style="margin-bottom: 20px;font-size:18px;">返回顶部配置</legend>
+									<div class="layui-form-item">
+										<label class="gs-lable-block">是否显示</label>
+										<div class="layui-input-block">
+											<input type="radio" name="goTop_Active" value="1" title="是" {% if data.goTop_Active == '1' or data.goTop_Active is empty %} checked="checked" {% endif %}>
+											<input type="radio" name="goTop_Active" value="0" title="否" {% if data.goTop_Active == '0'%} checked="checked" {% endif %}>
+										</div>
+									</div>
+									<div class="layui-form-item">
+										<label class="gs-lable-block">高度(px)</label>
+										<div class="layui-input-block">
+											<input type="text" name="goTop_height" autocomplete="off" class="layui-input" value="{{ pageData.goTop_height }}">
+										</div>
+									</div>
+									<div class="layui-form-item">
+										<label class="gs-lable-block">背景颜色</label>
+										<div class="layui-input-block">
+											<div class="color-picker-selector" data-hidden-name="goTop_BgC">
+												<div style="background-color: {{ pageData.goTop_BgC }};"></div>
+											</div>
+											<input type="text" class="layui-input" name="goTop_BgC" autocomplete="off" value="{{ pageData.goTop_BgC }}">
+										</div>
+									</div>
+									<div class="layui-form-item">
+										<label class="gs-lable-block">文字颜色</label>
+										<div class="layui-input-block">
+											<div class="color-picker-selector" data-hidden-name="goTop_TextC">
+												<div style="background-color: {{ pageData.goTop_TextC }};"></div>
+											</div>
+											<input type="text" class="layui-input" name="goTop_TextC" autocomplete="off" value="{{ pageData.goTop_TextC }}">
+										</div>
+									</div>
+									<div class="layui-form-item">
+										<label class="gs-lable-block">文字鼠标滑过颜色</label>
+										<div class="layui-input-block">
+											<div class="color-picker-selector" data-hidden-name="goTop_TextHoverC">
+												<div style="background-color: {{ pageData.goTop_TextHoverC }};"></div>
+											</div>
+											<input type="text" class="layui-input" name="goTop_TextHoverC" autocomplete="off" value="{{ pageData.goTop_TextHoverC }}">
+										</div>
+									</div>
+
+                  </div>
+                </fieldset>
+                <div class="text-right">
+                  <button type="button" id="js_moreConfig" class="layui-btn layui-btn-normal layui-btn-sm">更多配置</button>
+                </div>
+              </div>
+              <div>
+                <div class="layui-tab layui-tab-vertical">
+                  <ul class="layui-tab-title">
+                    <li class="layui-this">主会场配置</li>
+										<li class="layui-this">分会场配置</li>
+										<li class="layui-this">返回顶部配置</li>
+                  </ul>
+                  <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+											<div class="layui-form-item">
+												<label class="gs-lable-block">是否隐藏主会场文字</label>
+												<div class="layui-input-block">
+													<input type="radio" name="navigat_titleTextActive" value="1" title="是" {% if data.navigat_titleTextActive == '1' %} checked="checked" {% endif %}>
+													<input type="radio" name="navigat_titleTextActive" value="0" title="否" {% if data.navigat_titleTextActive == '0' or data.navigat_titleTextActive is empty %} checked="checked" {% endif %}>
+												</div>
+											</div>
+                      <div class="layui-form-item">
+                        <label class="gs-lable-block">文字大小(px)</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="navigat_titleFtS" autocomplete="off" class="layui-input" value="{{ pageData.navigat_titleFtS }}">
+                        </div>
+                      </div>
+											<div class="layui-form-item">
+												<label class="gs-lable-block">文字字体</label>
+												<div class="layui-input-block">
+													<select name="navigat_titleFtFa" lay-verify="required" value="{{data.navigat_titleFtFa}}">
+													<option value="0">请选择</option>
+													{% for item in fontFamily %}
+														<option value="{{item.value}}" {% if item.value == data.navigat_titleFtFa %}selected{% endif %}>{{item.name}}</option>
+													{% endfor %}
+													</select>
+												</div>
+											</div>
+
+                      <div class="layui-form-item">
+                        <label class="gs-lable-block">文字粗细</label>
+                        <div class="layui-input-block">
+												  <input type="radio" name="titleWeight" value="normal" title="常规"{% if data.titleWeight|default('normal') != 'bold' %} checked{% endif %}>
+                          <input type="radio" name="titleWeight" value="bold" title="加粗"{% if data.titleWeight|default('normal') == 'bold' %} checked{% endif %}>
+                        </div>
+                      </div>
+											<div class="layui-form-item">
+												<label class="gs-lable-block">主会场背景颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="navigat_titleBgC">
+														<div style="background-color: {{ pageData.navigat_titleBgC }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="navigat_titleBgC" autocomplete="off" value="{{ pageData.navigat_titleBgC }}">
+												</div>
+											</div>
+
+                    </div>
+
+                    <div class="layui-tab-item">
+                      <div class="layui-form-item">
+                        <label class="gs-lable-block">文字大小(px)</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="part_titleFtS" autocomplete="off" class="layui-input" value="{{ pageData.part_titleFtS }}">
+                        </div>
+                      </div>
+											<div class="layui-form-item">
+												<label class="gs-lable-block">文字字体</label>
+												<div class="layui-input-block">
+													<select name="part_titleFtFa" lay-verify="required" value="{{data.part_titleFtFa}}">
+													<option value="0">请选择</option>
+													{% for item in fontFamily %}
+														<option value="{{item.value}}" {% if item.value == data.part_titleFtFa %}selected{% endif %}>{{item.name}}</option>
+													{% endfor %}
+													</select>
+												</div>
+											</div>
+
+                      <div class="layui-form-item">
+                        <label class="gs-lable-block">文字粗细</label>
+                        <div class="layui-input-block">
+												  <input type="radio" name="part_Weight" value="normal" title="常规"{% if data.part_Weight|default('normal') != 'bold' %} checked{% endif %}>
+                          <input type="radio" name="part_Weight" value="bold" title="加粗"{% if data.part_Weight|default('normal') == 'bold' %} checked{% endif %}>
+                        </div>
+                      </div>
+											<div class="layui-form-item">
+												<label class="gs-lable-block">分会场分割线颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="part_borderC">
+														<div style="background-color: {{ pageData.part_borderC }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="part_borderC" autocomplete="off" value="{{ pageData.part_borderC }}">
+												</div>
+											</div>
+                    </div>
+
+                    <div class="layui-tab-item">
+                      <div class="layui-form-item">
+                        <label class="gs-lable-block">Top 文案</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="goTop_text" autocomplete="off" class="layui-input" value="{{ pageData.goTop_text }}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="gs-lable-block">文字大小(px)</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="goTop_fts" autocomplete="off" class="layui-input" value="{{ pageData.goTop_fts }}">
+                        </div>
+                      </div>
+											<div class="layui-form-item">
+												<label class="gs-lable-block">文字字体</label>
+												<div class="layui-input-block">
+													<select name="goTop_ftsFa" lay-verify="required" value="{{data.goTop_ftsFa}}">
+													<option value="0">请选择</option>
+													{% for item in fontFamily %}
+														<option value="{{item.value}}" {% if item.value == data.goTop_ftsFa %}selected{% endif %}>{{item.name}}</option>
+													{% endfor %}
+													</select>
+												</div>
+											</div>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="text-right">
+                  <button type="button" id="js_baseConfig" class="layui-btn layui-btn-normal layui-btn-sm">基础配置</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+	<span type="button" class="layui-btn layui-btn-normal" id="gs_submit">提交</span>
+	<button type="button" class="layui-btn js_submitDesignForm" style="display:none">提交</button>
+</div>
+
+<script>
+{# part_row change event #}
+var $design = $('.design-right');
+var part_rowSelect = $('.part_rowSelect');
+function rowNumChange () {
+  $('.design-right').find('input[name=part_rowNum]').on('change', function () {
+    var $that = $(this);
+		var part_rowNum = $(this).val();
+    var val = Number($(this).val());
+    var value = $that.attr('data-value') || 0;
+		if(val>20){
+			$that.val(value);
+			layui.layer.msg('行数不可超过20行');
+			return false;
+		}
+		if(part_rowNum && $that.attr('data-value')){
+			layui.layer.confirm('修改行数将修改分会场模块', {
+				title: '提示',
+				btn: ['否', '是'],
+				area: '420px',
+				icon: 3,
+				skin: 'element-ui-dialog-class'
+			}, function (index) {
+				$that.val(value);
+				layui.layer.close(index)
+			}, function (index) {
+				$that.attr('data-value', val);
+				rowNumChangeCallback();
+				layui.layer.close(index);
+
+				if(val>0){
+					$('.row-lists-content').addClass('active')
+				}else{
+					$('.row-lists-content').removeClass('active')
+				}
+
+			})
+		}else{
+				$that.attr('data-value', val);
+				rowNumChangeCallback();
+				if(val>0){
+					$('.row-lists-content').addClass('active')
+				}else{
+					$('.row-lists-content').removeClass('active')
+				}
+		}
+
+  })
+};
+
+/* 增删select */
+function rowNumChangeCallback () {
+  var val = Number($('.design-right').find('input[name=part_rowNum]').val());
+  var optionLength = $('.part_rowSelect').find('option').length;
+  var optionLists = "";
+  var rowLists = "";
+	if(val == 0 ){
+		$('.row-lists-content').html('');
+	};
+  if (val > optionLength) {
+    for (var i = 0; i < val - optionLength; i++) {
+      var listKey = i + optionLength;
+			var listNo = Number(listKey) + 1;
+      optionLists += '<option value='+listKey+'>分会场模块' + listNo + '</option>';
+
+      var strVar = "";
+      strVar += "<div class='row-item layui-hide'>";
+      strVar += "	<div class='layui-form-item'>";
+      strVar += "		<label class='gs-lable-block '>一行显示会场数";
+			strVar += "<span class=\'img-btn btn-delete fr\'>";
+			strVar += "  <i class='icon-delete'><\/i>";
+			strVar += "  <b class=\'tips\'>删除<\/b>";
+			strVar += "<\/span>";
+			strVar += "<\/label>";
+      strVar += "		<div class='layui-input-block'>";
+      strVar += "				<input type='radio' name='line_row" + listKey + "' class='Unwanted line_row' value='1' title='1' checked='checked'>";
+      strVar += "				<input type='radio' name='line_row" + listKey + "' class='Unwanted line_row' value='2' title='2'>";
+      strVar += "				<input type='radio' name='line_row" + listKey + "' class='Unwanted line_row' value='3' title='3'>";
+      strVar += "		<\/div>";
+      strVar += "	<\/div>";
+      strVar += "";
+      strVar += "	<div class='layui-form-item'>";
+      strVar += "		<label class='gs-lable-block '>分会场1文案<\/label>";
+      strVar += "		<div class='layui-input-block'>";
+      strVar += "			<input type='text' name='line" + listKey + "_text1' autocomplete='off' class='layui-input text1 Unwanted' >";
+      strVar += "		<\/div>";
+      strVar += "	<\/div>";
+      strVar += "	<div class='layui-form-item'>";
+      strVar += "		<label class='gs-lable-block '>分会场1链接<\/label>";
+      strVar += "		<div class='layui-input-block'>";
+      strVar += "			<input type='text' name='line" + listKey + "_link1' autocomplete='off' class='layui-input link1 Unwanted' >";
+      strVar += "		<\/div>";
+      strVar += "	<\/div>";
+      strVar += "	<div class='layui-form-item line-row-text2'>";
+      strVar += "		<label class='gs-lable-block '>分会场2文案<\/label>";
+      strVar += "		<div class='layui-input-block'>";
+      strVar += "			<input type='text' name='line" + listKey + "_text2' autocomplete='off' class='layui-input text2 Unwanted' >";
+      strVar += "		<\/div>";
+      strVar += "	<\/div>";
+      strVar += "	<div class='layui-form-item line-row-text2'>";
+      strVar += "		<label class='gs-lable-block '>分会场2链接<\/label>";
+      strVar += "		<div class='layui-input-block'>";
+      strVar += "			<input type='text' name='line" + listKey + "_link2' autocomplete='off' class='layui-input link2 Unwanted' >";
+      strVar += "		<\/div>";
+      strVar += "	<\/div>";
+      strVar += "	<div class='layui-form-item line-row-text3'>";
+      strVar += "		<label class='gs-lable-block '>分会场3文案<\/label>";
+      strVar += "		<div class='layui-input-block'>";
+      strVar += "			<input type='text' name='line" + listKey + "_text3' autocomplete='off' class='layui-input text3 Unwanted' >";
+      strVar += "		<\/div>";
+      strVar += "	<\/div>";
+      strVar += "	<div class='layui-form-item line-row-text3'>";
+      strVar += "		<label class='gs-lable-block '>分会场3链接<\/label>";
+      strVar += "		<div class='layui-input-block'>";
+      strVar += "			<input type='text' name='line" + listKey + "_link3' autocomplete='off' class='layui-input link3 Unwanted' >";
+      strVar += "		<\/div>";
+      strVar += "	<\/div>";
+      strVar += "";
+      strVar += "<\/div>";
+      rowLists += strVar;
+    }
+    $('.part_rowSelect').append(optionLists);
+    $('.row-lists-content').append(rowLists);
+		clickEvent();
+  }
+  if (val < optionLength) {
+    for (var i = 0; i < optionLength - val; i++) {
+      var listKey = i + val;
+      $('.part_rowSelect').find('option:eq(' + listKey + ')').addClass('removing');
+    }
+    $(".removing").remove();
+  }
+  layui.form.render();
+
+	/*  选中分会场 */
+	var part_rowSelect = Number($('.part_rowSelect').val());
+	$('.row-lists-content').find('.row-item').addClass('layui-hide');
+	$('.row-lists-content').find('.row-item:eq('+part_rowSelect+')').removeClass('layui-hide');
+
+
+};
+
+function rowSelectChange(){
+	layui.form.on('select', function(data){
+			var part_rowSelect = Number(data.value);
+			$('.row-lists-content').find('.row-item').addClass('layui-hide');
+			$('.row-lists-content').find('.row-item:eq('+part_rowSelect+')').removeClass('layui-hide');
+	});
+
+	layui.form.on('radio', function(data){
+		var $content = $(data.elem).parents('.row-lists-content');
+		if($content.length>0){
+			var $item = $(data.elem).parents('.row-item');
+			var value = Number(data.value);
+			$item.attr('data-col',value);
+		}
+	});
+};
+
+function clickEvent(){
+/*删除分会场*/
+$('.btn-delete').each(function(){
+	var e = $._data(this, "events");
+	if(e && e.click.length>=1){
+		return;
+	};
+	var $that = $(this);
+	$(this).on('click',function(){
+
+    layui.layer.confirm('删除该样式将无法恢复，确定是否删除', {
+      title: '提示',
+      btn: ['否', '是'],
+      area: '420px',
+      icon: 3,
+      skin: 'element-ui-dialog-class'
+    }, function (index) {
+      layui.layer.close(index)
+    }, function (index) {
+
+			var $row_num = $('input[name=part_rowNum]');
+			var row_num = Number($row_num.val());
+			if(row_num>0){
+				$row_num.val(row_num - 1);
+			};
+			/*row清除*/
+			var rowItem = $that.closest('.row-item');
+			var rowIndex = $('.row-lists-content .row-item').index(rowItem);
+			rowItem.remove();
+			rowRadioListInit();
+			/*
+			rowItem.addClass('layui-hide');
+			rowItem.find('input[type=text]').val('');
+			rowItem.find('.line_row[value=1]').prop('checked',true);
+			*/
+
+			/*select option 清除*/
+			$('.part_rowSelect').find('option:eq('+rowIndex+')').remove();
+			$('.part_rowSelect').find('option').each(function(index,element){
+				var listNo = Number(index)+1;
+				$(element).attr('value',index).text('分会场模块'+listNo);
+			});
+			var firstValue = Number($('.part_rowSelect').find('option:first').attr('value'));
+			$('.part_rowSelect').val(firstValue);
+			$('.row-lists-content .row-item').addClass('layui-hide');
+			if(firstValue || firstValue == 0){
+				$('.row-lists-content .row-item:eq('+firstValue+')').removeClass('layui-hide');
+			}
+			layui.form.render();
+
+    })
+
+	});
+
+})
+
+};
+
+/*序号重置*/
+function rowRadioListInit(){
+	$('.row-lists-content').find('.row-item').each(function(index,element){
+		$(element).find('.line_row').attr('name','line_row'+index);
+	})
+}
+
+$(function () {
+  rowNumChange();
+	rowSelectChange();
+	clickEvent();
+
+});
+
+
+$('#gs_submit').on('click',function(){
+
+	var part_rowNum = $('input[name=part_rowNum]').val();
+	if(part_rowNum<1){
+		layui.layer.msg('请补充分会场信息');
+		return false;
+	};
+
+	var partsArr = [];
+	var optionLength = $('.part_rowSelect').find('option').length;
+	for(var i=0;i<optionLength;i++){
+		var row = $('.row-lists-content .row-item:eq('+i+')');
+		var colRadioCurrent = Number(row.find('.line_row:checked').val());
+		var colArr = [];
+		colArr = [
+				{text:row.find('.text1').val(),link:row.find('.link1').val()},
+				{text:row.find('.text2').val(),link:row.find('.link2').val()},
+				{text:row.find('.text3').val(),link:row.find('.link3').val()}
+			];
+
+		partsArr.push({
+			col:colRadioCurrent,
+			colArr:colArr
+		})
+	}
+
+	$('input[name=partsArr]').val(JSON.stringify(partsArr));
+	$(this).next('button').trigger('click');
+});
+</script>

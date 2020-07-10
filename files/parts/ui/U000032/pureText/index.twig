@@ -1,0 +1,32 @@
+{% set remUnit = 75 %}
+
+{% set pageData = {
+	height:(data.height|default(120))/remUnit,
+	titleFont:(data.titleFont|default(24))/remUnit,
+	boxMarginBottom:(data.boxMarginBottom|default(10))/remUnit,
+}%}
+
+<div class="geshop-component-box component-drag" id="U000032_{{ pageInstanceId }}" data-key="U000032" data-id="{{ pageInstanceId }}" attr="nav_flag">
+	<div style="
+		margin-bottom: {{ pageData.boxMarginBottom }}rem;
+		background-color:{% if data.bgColor %}{{ data.bgColor }}{% endif %};
+		height:{{pageData.height }}rem;
+		width:100%;
+		overflow: hidden;
+	">
+		<a href="{{ data.viewHref|default('javascript:;') }}"
+			style="display:block;cursor: pointer;
+			line-height:{{pageData.height}}rem;
+			font-family:{{ data.fontFamily }};
+			font-size:{{pageData.titleFont}}rem;
+			text-align:{{ data.titlePlace|default('center')}};
+			color:{% if data.titleColor %}{{ data.titleColor }}{% else %} #333333{% endif %};
+			font-weight:{% if data.titleWeight %}{{ data.titleWeight }}{% else %} normal {% endif %};
+		">
+			{% if data.titleText %}{{ data.titleText }}{% else %}请设置导航标题{% endif %}
+		</a>
+	</div>
+</div>
+
+
+

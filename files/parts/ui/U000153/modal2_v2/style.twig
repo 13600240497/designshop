@@ -1,0 +1,14 @@
+{% set space = '#U000153_'~pageInstanceId %}
+
+{{ space }} .u000153-swiper {
+    background-color: {{ data.tab_unselectBgc | default('#333333') }};
+}
+
+{{ space }} .u000153-swiper li {
+    color: {{ data.tab_unselectTextC | default('#999') }};
+    background-color: {{ data.tab_unselectBgc | default('#333333') }};
+}
+{{ space }} .u000153-swiper li.is-active {
+    color: {{ data.tab_selectTextC | default('#fff') }};
+    background-color: {{ data.tab_selectBgc | default('#333333') }};
+}

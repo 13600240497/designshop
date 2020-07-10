@@ -1,0 +1,273 @@
+[data-gid="zaful_index"] {
+  /* goods hover */
+  /* goods  attribute*/
+  /* btn */
+  /* 下架 */
+}
+[data-gid="zaful_index"].gs-goodsWrap {
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+[data-gid="zaful_index"].gs-goodsWrap:hover .recommend-nav-prev,
+[data-gid="zaful_index"].gs-goodsWrap:hover .recommend-nav-next {
+  display: block;
+}
+[data-gid="zaful_index"].gs-goodsWrap ul {
+  font-size: 0;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+[data-gid="zaful_index"].gs-goodsWrap:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+[data-gid="zaful_index"].gs-goodsWrap li {
+  font-size: 12px;
+  position: relative;
+  float: left;
+  text-align: left;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+[data-gid="zaful_index"] .layui-form-label {
+  white-space: nowrap;
+}
+[data-gid="zaful_index"] .gs-goods-info {
+  width: 100%;
+  position: relative;
+  height: 85px;
+  overflow: hidden;
+}
+[data-gid="zaful_index"] .component-self-goodBox {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+[data-gid="zaful_index"] .component-self-goodWrap {
+  border: 1px solid transparent;
+}
+[data-gid="zaful_index"] .discont-curtoff {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 40px;
+  height: 38px;
+  color: #ffffff;
+  background-size: contain;
+  line-height: 14px;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 50%;
+}
+[data-gid="zaful_index"] .discont-curtoff strong {
+  font-size: 12px;
+  font-weight: normal;
+  display: inline-block;
+}
+[data-gid="zaful_index"] .item-name {
+  overflow: hidden;
+  padding: 15px 0 0;
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  transition: all .5s;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+}
+[data-gid="zaful_index"] .item-price {
+  padding: 10px 0;
+  margin: 0;
+  white-space: nowrap;
+  min-height: 29px;
+  text-align: left;
+}
+[data-gid="zaful_index"] .shop-price {
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  vertical-align: middle;
+}
+[data-gid="zaful_index"] [class^=js-price-mark] {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: OpenSans-Bold;
+  color: #b7602a;
+  padding-left: 5px;
+  vertical-align: middle;
+}
+[data-gid="zaful_index"] .gs-btn-area {
+  margin-bottom: 10px;
+}
+[data-gid="zaful_index"] .gs-btn-area a:hover {
+  opacity: .9;
+}
+[data-gid="zaful_index"] .gs-desc a {
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+  display: block;
+}
+[data-gid="zaful_index"] .market-price {
+  font-size: 13px;
+  color: #999999;
+  vertical-align: middle;
+}
+[data-gid="zaful_index"] .gs-img {
+  display: table;
+  position: relative;
+  font-size: 0;
+  width: 100%;
+  text-align: center;
+}
+[data-gid="zaful_index"] .gs-img a {
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+}
+[data-gid="zaful_index"] .gs-img img {
+  max-height: 100%;
+  display: block;
+}
+[data-gid="zaful_index"] .gs-btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  /* 		line-height: 1.42857143; */
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 0;
+  text-decoration: none;
+}
+[data-gid="zaful_index"] .btn-primary {
+  color: #fff;
+  padding: 8px 20px;
+  overflow: hidden;
+  word-break: break-all;
+  white-space: inherit;
+  max-width: 100%;
+}
+[data-gid="zaful_index"] .btn-middle {
+  border-radius: 20px;
+  padding: 6px 20px;
+}
+[data-gid="zaful_index"] .promotion-time-inner {
+  height: 32px;
+  line-height: 32px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #333333;
+  margin-left: -20px;
+  margin-bottom: 10px;
+  display: block;
+}
+[data-gid="zaful_index"] .promotion-time-inner .icon-clock-black {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 5px;
+  background-image: url(../../../resources/images/view/icon-block-black.png);
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 32px;
+  background-position: 0 0;
+}
+[data-gid="zaful_index"] .gs-curtoff-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+[data-gid="zaful_index"] .discont-curtoff strong {
+  font-size: 12px;
+}
+[data-gid="zaful_index"] .discont-curtoff .curtoff-box {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 50%;
+  font-size: 12px;
+}
+[data-gid="zaful_index"] .buyLink {
+  background-color: #999 !important;
+  color: #fff !important;
+  pointer-events: none;
+  cursor: default;
+}
+[data-gid="zaful_index"] .goodStatus {
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  background-color: #333;
+  background-color: rgba(51, 51, 51, 0.8);
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 20px 10px;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  margin-left: -40px;
+  top: 28%;
+  visibility: visible;
+}
+[data-gid="zaful_index"] .recommend-nav-prev,
+[data-gid="zaful_index"] .recommend-nav-next {
+  position: absolute;
+  top: 190px;
+  width: 40px;
+  height: 64px;
+  line-height: 64px;
+  background-color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  display: none;
+  z-index: 2;
+}
+[data-gid="zaful_index"] .recommend-nav-prev:before,
+[data-gid="zaful_index"] .recommend-nav-next:before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url(../../../resources/images/view/common_icon.png?2017112101);
+  width: 12px;
+  height: 21px;
+}
+[data-gid="zaful_index"] .recommend-nav-prev:hover,
+[data-gid="zaful_index"] .recommend-nav-next:hover {
+  background-color: #fff;
+}
+[data-gid="zaful_index"] .recommend-nav-prev {
+  left: 15px;
+}
+[data-gid="zaful_index"] .recommend-nav-prev:before {
+  background-position: -2px -24px;
+}
+[data-gid="zaful_index"] .recommend-nav-next {
+  right: 15px;
+}
+[data-gid="zaful_index"] .recommend-nav-next:before {
+  background-position: -2px -48px;
+}

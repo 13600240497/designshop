@@ -1,0 +1,109 @@
+{#
+ * @Author: wuxingtao
+ * @Date: 2019-08-14 16:50:52
+ * @Last Modified by: wuxingtao
+ * @Last Modified time: 2019-08-14 16:57:52
+DL  三端公共配置tab
+pc,m 使用tab数据  tabData
+app 单独使用数据  components
+m及app端 name 默认为name+ '_m'
+#}
+
+{% set components = [] %}
+{% set tabData = {type: 'tab',isshow: 'dl-web', items:[
+    {label:'PC / PAD',components:[]},
+    {label:'M',components:[]}
+]} %}
+{% set items_pc = [] %}
+{% set items_m = [] %}
+
+{% for index,value in componentsData %}
+
+    {% if value.platonly != 'dl-pc'%}
+        {# app 端数据 #}
+        {% set components = components|merge([{
+            type: value.type|default('input'),
+            label: value.label,
+            name: value.name~'_m',
+            default: value.default_m|default(value.default|default('')),
+            col: value.col|default(1),
+            filter: value.filter,
+            desc: value.desc_m ? value.desc_m : value.desc,
+            options: value.options,
+            extendClass: value.extendClass,
+            items: value.items,
+            isshow:'dl-app'
+        }])
+        %}
+    {% endif %}
+
+
+    {# platonly dl-pc,dl-m,dl-app 限制只在某端显示#}
+    {% if value.platonly != 'dl-m'%}
+        {# pc 端tab数据 #}
+        {% set items_pc = items_pc|merge([{
+            type: value.type|default('input'),
+            label: value.label,
+            name: value.name,
+            default: value.default|default(''),
+            col: value.col|default(1),
+            filter: value.filter,
+            desc: value.desc,
+            options: value.options,
+            extendClass: value.extendClass,
+            items: value.items,
+        }]) %}
+    {% endif %}
+
+    {% if value.platonly != 'dl-pc'%}
+        {# m 端tab数据 #}
+        {% set items_m = items_m|merge([{
+            type: value.type|default('input'),
+            label: value.label,
+            name: value.name~'_m',
+            default: value.default_m|default(value.default|default('')),
+            col: value.col|default(1),
+            filter: value.filter,
+            desc: value.desc_m ? value.desc_m : value.desc,
+            options: value.options,
+            extendClass: value.extendClass,
+            items: value.items,
+        }]) %}
+    {% endif %}
+{% endfor %}
+
+
+{# 记录 分端数据#}
+{% set tabData = tabData|merge(
+    {type: 'tab',isshow: 'dl-web', items:[
+        {label:'PC / PAD',components:items_pc},
+        {label:'M',components:items_m}
+    ]}
+) %}
+
+
+{% set components = components|merge([tabData]) %}
+
+<div class="component-platData-dl">
+    {{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}
+</div>
+
+
+<style>
+    /* 兼容老组件样式 */
+    .component-platData-dl .layui-form-item>.layui-form-label{
+        display: block;
+        width: 100%;
+        padding: 0 0 4px 0;
+        text-align: left;
+        float: none;
+        box-sizing: border-box;
+    }
+    .component-platData-dl .layui-row.layui-col-space20:last-child> div[class*=layui-col]:last-child{
+        margin-bottom: 0 !important;
+    }
+    .component-platData-dl .layui-row.layui-col-space20:last-child> div[class*=layui-col-xs6]:nth-last-child(2){
+        margin-bottom: 0;
+    }
+    /* fieldset 间距处理*/
+</style>

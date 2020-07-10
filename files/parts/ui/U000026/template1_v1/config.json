@@ -1,0 +1,18 @@
+{
+    "fields": {
+        "box_margin_top": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "box_margin_bottom": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "box_margin_left": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "box_margin_right": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "img_align": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "active_time": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "banner_img": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "banner_href": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "mask_bg": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "mask_opacity": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "mask_radius": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "font_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "font_bg": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "font_opacity": { "is_public": "0", "is_m": "1", "is_app": "1" }
+    }
+}

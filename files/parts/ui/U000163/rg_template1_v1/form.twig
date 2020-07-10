@@ -1,0 +1,168 @@
+{%
+    set formData = {
+        id: 'U000163',
+        name: '预促销组件－默认模版（新） ',
+        theme: 'rg_template1_v1',
+        tabs: [
+            {
+                label: '数据配置',
+                components: [
+                    {
+                        type: 'fieldset',
+                        components: [
+							{
+                                label: '商品sku显示数量',
+                                desc: '(*建议输入4的倍数，且不超过100)',
+                                name: 'skuLimit'
+                            },
+                            {
+                                label: '商品数据',
+                                type: 'goods-sku',
+                                valid: false
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                label: '样式配置',
+                components: [
+                    {
+                        label: '基础配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '下边距(PX)',
+                                name: 'box_margin_bottom',
+                                default: '16',
+                                col: 2
+                            },
+                            {
+                                label: '组件背景颜色',
+                                name: 'box_bg_color',
+                                type: 'colorPicker',
+                                default: '#F8F8F8',
+                                col: 2
+                            },
+                        ]
+                    },
+                    {
+                        type: 'border-style-rg',
+                    },
+                    {
+                        label: '预售状态配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                type: 'tab',
+                                items: [
+                                    {
+                                        label: "活动未开始",
+                                        components: [
+                                            {
+                                                label: '预售文字颜色',
+                                                name: 'pre_text_color',
+                                                type: 'colorPicker',
+                                                default: '#FFFFFF',
+                                                col: 2
+                                            },
+                                            {
+                                                label: '预售价背景颜色',
+                                                name: 'notstart_prePriceBgC',
+                                                type: 'colorPicker',
+                                                default: '#222222',
+                                                col: 2
+                                            },
+                                            {
+                                                label: '预售价背景图片',
+                                                name: 'notstart_pre_bgImg',
+                                                type: 'image'
+                                            },
+                                            {
+                                                label: '预售文案',
+                                                name: 'pre_text',
+                                                default: 'Upcoming'
+                                            },
+                                            {
+                                                label: '销售价文案',
+                                                name: 'notstart_shopprice_text',
+                                                default: 'Now',
+                                                col: 2
+                                            },
+                                            {
+                                                label: '销售价文字颜色',
+                                                name: 'notstart_text_color',
+                                                type: 'colorPicker',
+                                                default: '#222222',
+                                                col: 2
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        label: "活动已开始",
+                                        components: [
+                                            {
+                                                label: '活动价文字颜色',
+                                                name: 'underway_text_color',
+                                                type: 'colorPicker',
+                                                default: '#ffffff',
+                                                col: 2
+                                            },
+                                            {
+                                                label: '活动价背景颜色',
+                                                name: 'underway_prePriceBgC',
+                                                type: 'colorPicker',
+                                                default: '#222222',
+                                                col: 2
+                                            },
+                                            {
+                                                label: '活动价背景图片',
+                                                name: 'underway_pre_bgImg',
+                                                type: 'image'
+                                            },
+                                            {
+                                                label: '活动文案',
+                                                name: 'start_text',
+                                                default: 'Now'
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        label:  '折扣标配置',
+                        type:'fieldset',
+                        components:[
+                        {
+                            label: '折扣标',
+                            type: 'discount-rg'
+                        },
+                        ]
+                    }
+                ]
+            }
+        ],
+        moreConfig: [],
+        beforeSubmit: 'onSubmit',
+        skuValidConfig: 'skuValidConfig'
+    }
+%}
+
+{# 引入自定义脚本 #}
+<script>{{ include ('form.js') }}</script>
+
+<script>
+
+    {# 自定义校验 #}
+    function skuValidConfig () {
+        return {
+            check_type: 'goods',
+            check_rules: 'GOODS_VALIDATE_PRE_PROMOTION'
+        }
+    }
+
+</script>
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

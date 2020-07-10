@@ -1,0 +1,149 @@
+<h4 class="column-title"><i class="layui-icon back" id="js_advanced_baseConfig">&#xe603;</i>高级设置</h4>
+
+<div class="layui-collapse">
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">标题配置</h2>
+        <div class="layui-colla-content layui-show">
+            <div class="layui-form-item">
+                <label class="form-item-label">标题文字大小(px)</label>
+                <div class="layui-input-block">
+                    <input type="text" name="titleFontSize" autocomplete="off" class="layui-input" value="{{ data.titleFontSize | default(40) }}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="form-item-label">标题高度（px）</label>
+                <div class="layui-input-block">
+                    <input type="text" name="titleHeight" autocomplete="off" class="layui-input" value="{{ data.titleHeight | default(120) }}">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">商品信息配置</h2>
+        <div class="layui-colla-content layui-show">
+            <div class="layui-form-item">
+                {{
+                    include ('lib/ColorPicker2.twig', {
+                        'cmpt_label': '商品标题颜色',
+                        'cmpt_name': 'goodsFontColor',
+                        'cmpt_value': data.goodsFontColor,
+                        'cmpt_default': '#333333'
+                    })
+                }}
+            </div>
+            <div class="layui-form-item">
+                <label class="form-item-label">整体列表左右边距（px）</label>
+                <div class="layui-input-block">
+                    {% set _cmptPaddingLR = data.cmptPaddingLR | default(20) %}
+                    <input type="radio" name="cmptPaddingLR" title="20px" value="20" {% if _cmptPaddingLR == 20 %} checked{% endif %}>
+                    <input type="radio" name="cmptPaddingLR" title="24px" value="24" {% if _cmptPaddingLR == 24 %} checked{% endif %}>
+                    <input type="radio" name="cmptPaddingLR" title="32px" value="32" {% if _cmptPaddingLR == 32 %} checked{% endif %}>
+                </div>
+            </div>
+            <div class="layui-row layui-col-space20">
+                <div class="layui-col-xs6">
+                    <div class="layui-form-item">
+                        {{
+                            include ('lib/Input.twig', {
+                                'cmpt_label': '兑换按钮宽度（px）',
+                                'cmpt_name': 'goodsBtnWidth',
+                                'cmpt_value': data.goodsBtnWidth,
+                                'cmpt_default': '306'
+                            })
+                        }}
+                    </div>
+                </div>
+                <div class="layui-col-xs6">
+                    <div class="layui-form-item">
+                        {{
+                            include ('lib/Input.twig', {
+                                'cmpt_label': '兑换按钮高度（px）',
+                                'cmpt_name': 'goodsBtnHeight',
+                                'cmpt_value': data.goodsBtnHeight,
+                                'cmpt_default': '64'
+                            })
+                        }}
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                {{
+                    include ('lib/Input.twig', {
+                        'cmpt_label': '兑换按钮圆角（px）',
+                        'cmpt_name': 'goodsBtnRadius',
+                        'cmpt_value': data.goodsBtnRadius,
+                        'cmpt_default': '32'
+                    })
+                }}
+            </div>
+            <div class="layui-form-item">
+                {{
+                    include ('lib/Input.twig', {
+                        'cmpt_label': '兑换按钮文本大小（px）',
+                        'cmpt_name': 'goodsBtnFontSize',
+                        'cmpt_value': data.goodsBtnFontSize,
+                        'cmpt_default': '28'
+                    })
+                }}
+            </div>
+            <div class="layui-form-item">
+                {{
+                    include ('lib/Upload.twig', {
+                        'cmpt_label': '兑换按钮背景图片',
+                        'cmpt_name': 'goodsBtnImg',
+                        'cmpt_value': data.goodsBtnImg,
+                        'cmpt_default': ''
+                    })
+                }}
+            </div>
+        </div>
+    </div>
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">查看更多配置</h2>
+        <div class="layui-colla-content layui-show">
+            <div class="layui-form-item">
+                <label class="form-item-label">View More是否显示</label>
+                <div class="layui-input-block">
+                    <input type="radio" value="1" name="viewmoreShow" title="是" {% if data.viewmoreShow is empty or data.viewmoreShow == 1 %} checked {% endif %}/>
+                    <input type="radio" value="0" name="viewmoreShow" title="否" {% if data.viewmoreShow is not null and data.viewmoreShow == 0 %} checked {% endif %}/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                {{
+                    include ('lib/Input.twig', {
+                        'cmpt_label': '文案',
+                        'cmpt_name': 'viewmoreText',
+                        'cmpt_value': data.viewmoreText,
+                        'cmpt_default': 'VIEW MORE'
+                    })
+                }}
+            </div>
+            <div class="layui-row layui-col-space20">
+                <div class="layui-col-xs6">
+                    <div class="layui-form-item">
+                        {{
+                            include ('lib/Input.twig', {
+                                'cmpt_label': '文本大小',
+                                'cmpt_name': 'viewmoreFontSize',
+                                'cmpt_value': data.viewmoreFontSize,
+                                'cmpt_default': '28'
+                            })
+                        }}
+                    </div>
+                </div>
+                <div class="layui-col-xs6">
+                    <div class="layui-form-item">
+                        {{
+                            include ('lib/Input.twig', {
+                                'cmpt_label': '按钮圆角（px）',
+                                'cmpt_name': 'viewmoreRadius',
+                                'cmpt_value': data.viewmoreRadius,
+                                'cmpt_default': '32'
+                            })
+                        }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

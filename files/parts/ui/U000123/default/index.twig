@@ -1,0 +1,261 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+{% set suffix='px'%}
+
+
+
+
+
+{%
+    set pageData = {
+			price_ft_weight:data.price_ft_weight|default(0),
+			base_bg_shadow:data.base_bg_shadow|default(1),
+			lang:data.lang|default('en'),
+			page_point_type:'landPage',
+        	imgSrc:'https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/good.png',
+
+
+			base_magin_bottom:data.base_magin_bottom|default(32),
+			base_magin_left:data.base_magin_left|default(30),
+			base_magin_right:data.base_magin_right|default(0),
+			base_bgc:data.base_bgc is not null ? data.base_bgc:'#FFFFFF',
+
+			goods_shop_ftc:data.goods_shop_ftc is not null ? data.goods_shop_ftc:'#f30240',
+			goods_shop_fts:data.goods_shop_fts|default(30),
+			goods_text_ftc:data.goods_text_ftc is not null ? data.goods_text_ftc:'#333333',
+			goods_title_ftc: data.goods_title_ftc is not null ? data.goods_title_ftc:'#333333',
+			market_ftc:data.market_ftc is not null ? data.market_ftc:'#9B9B9B',
+
+			discount_text:data.discount_text is not null ? data.discount_text:'text',
+			discount_height:data.discount_height|default(50),
+			discount_width:data.discount_width|default(50),
+			discount_fts:data.discount_fts|default(16),
+			discount_off_fts:data.discount_off_fts|default(12),
+			discount_off_ftc:data.discount_off_ftc is not null ? data.discount_off_ftc:'#FFFFFF',
+			discount_marginR:data.discount_marginR|default(0),
+			discount_marginT:data.discount_marginT|default(0),
+			discount_bgImage:data.discount_bgImage|default(""),
+			discount_bgc:data.discount_bgc is not null ? data.discount_bgc:'#FEC455',
+			discount_ftc:data.discount_ftc is not null ? data.discount_ftc:'#FFFFFF',
+
+			shop_btn_bgc:data.shop_btn_bgc is not null ? data.shop_btn_bgc:'#CC0000',
+			shop_btn_hover_bgc:data.shop_btn_hover_bgc is not null ? data.shop_btn_hover_bgc:'#E00101',
+			shop_btn_color:data.shop_btn_color is not null ? data.shop_btn_color:'#FFFFFF',
+			shop_btn_hover_color:data.shop_btn_hover_color is not null ? data.shop_btn_hover_color:'#FFFFFF',
+			shop_car_bgc:data.shop_car_bgc is not null ? data.shop_car_bgc:'#FF8A00',
+			shop_car_hover_bgc:data.shop_car_bgc is not null ? data.shop_car_bgc:'#CC0000',
+
+			buy_text:data.buy_text,
+			shop_text_size:data.shop_text_size|default(18),
+
+			discount_active:data.discount_active|default(1),
+			goods_title_active:data.goods_title_active|default(1),
+			market_active:1,
+			baseWidth:330,
+
+    }
+%}
+
+
+
+<div class="geshop-component-box component-drag component-sync clearfix geshop-gb-component ui-{{ pageInstanceId }}" data-gid="U000123_default" data-key="U000123" data-id="{{ pageInstanceId }}"
+	data-editenv="{{data.isEditEnv}}"  style="
+	width:330px; margin: 0 {{pageData.base_magin_right}}{{suffix}} {{pageData.base_magin_bottom}}{{suffix}} {{pageData.base_magin_left}}{{suffix}};
+	 {# padding-left:{{pageData.base_magin_left}}{{suffix}}; #}
+	 {# padding-right:{{pageData.base_magin_right}}{{suffix}}; #}
+	">
+	<style type="text/css">
+	[data-id="{{ pageInstanceId }}"] .gs-goods-wrap{
+		position:relative;
+		padding:0!important;
+		width:220px;
+		height:220px;
+		margin:0 auto 10px;
+	}
+	[data-id="{{ pageInstanceId }}"] .gs-goods-title {
+		text-align:left;
+	}
+	[data-id="{{ pageInstanceId }}"] .gs-goods-title a{
+		color:{{pageData.goods_title_ftc}};
+	}
+	[data-id="{{ pageInstanceId }}"] ul .gs-list-item{
+		background:{{pageData.base_bgc}};
+	}
+	[data-id="{{ pageInstanceId }}"] .gs-shop-price strong{
+		color:{{pageData.goods_shop_ftc}};
+		font-size:{{pageData.goods_shop_fts}}{{suffix}};
+	}
+	[data-gid="U000123_default"][data-id="{{ pageInstanceId }}"] .gs-goods-price .gs-market-price{
+		color:{{pageData.market_ftc}};
+	}
+	[data-gid="U000123_default"][data-id="{{ pageInstanceId }}"] .gs-goods-buy{
+		text-align:left;
+	}
+	[data-gid="U000123_default"][data-id="{{ pageInstanceId }}"] .gs-goods-buy a.buyLink{
+		background:{{pageData.shop_btn_bgc}};
+		color:{{pageData.shop_btn_color}};
+		width:195px!important;
+		height:40px;
+		border-radius:2px;
+		margin-right:6px;
+		font-size:{{pageData.shop_text_size}}px;
+
+	}
+	[data-gid="U000123_default"][data-id="{{ pageInstanceId }}"] .gs-goods-buy a.buyLink:hover{
+		background:{{pageData.shop_btn_hover_bgc}};
+		color:{{pageData.shop_btn_hover_color}};
+	}
+	.gb_contents{
+		color:{{pageData.goods_text_ftc}};
+	}
+	[data-gid="U000123_default"][data-id="{{ pageInstanceId }}"] .gs-goods-buy .js-addCart{
+		width:97px;
+		height:40px;
+		background:{{pageData.shop_car_bgc}};
+		border-radius:2px;
+	}
+	[data-gid="U000123_default"][data-id="{{ pageInstanceId }}"] .gs-goods-buy .js-addCart:hover{
+		background:{{pageData.shop_car_hover_bgc}};
+	}
+
+	[data-id="{{ pageInstanceId }}"] .gb_discount{
+		position:absolute;
+		bottom:{{pageData.discount_marginT}}px;
+		right:{{pageData.discount_marginR}}px;
+		height:{{pageData.discount_height}}px;
+		width:{{pageData.discount_width}}px;
+		{% if pageData.discount_bgImage == "" %}
+			border-radius:50%;
+			background:{{pageData.discount_bgc}};
+		{% else %}
+			background:url({{data.discount_bgImage}}) no-repeat 0 0/100% 100%;
+		{% endif %}
+		text-align:center;
+		display:table;
+	}
+	[data-id="{{ pageInstanceId }}"] .gb_discount div{
+		width:{{pageData.discount_width}}px;
+		height:{{pageData.discount_height}}px;
+		display:table-cell;
+		vertical-align:middle;
+		line-height:1;
+	}
+	[data-id="{{ pageInstanceId }}"] .gb_discount strong {
+		display:block;
+		font-size:{{pageData.discount_fts}}px;
+		color:{{pageData.discount_ftc}};
+	}
+	[data-id="{{ pageInstanceId }}"] .gb_discount span {
+		font-size:{{pageData.discount_off_fts}}px;
+		color:{{pageData.discount_off_ftc}};
+	}
+
+	[data-gid="U000123_default"][data-id="{{ pageInstanceId }}"] .gb_contents {
+		color: {{pageData.goods_text_ftc}};
+    }
+	
+	{# 取消li的阴影 #}
+	[data-id="{{ pageInstanceId }}"] ul .gs-list-item{
+		-webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+		box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+		width:100%;
+		-webkit-box-sizing: border-box;
+    	box-sizing: border-box;
+		padding:10px;
+		margin:0 auto;
+	}
+	[data-id="{{ pageInstanceId }}"] .gs-goods-desc{
+		padding:0 !important;
+	}
+	
+    /*背景图*/
+.geshop-gb-component.ui-{{ pageInstanceId }} .gb_wrapper_common{
+   padding-top: 0;
+{% if data.base_box_bgImage %}
+	background-image:url({{ data.base_box_bgImage }});
+{% endif %}
+{% if data.component_bg_value %}
+{{ data.component_bg_value }}
+{% endif %}
+}
+	
+	{#/*动态价格粗细*/#}
+{#.geshop-gb-component.ui-{{ pageInstanceId }} .gs-shop-price strong,.geshop-gb-component.ui-{{ pageInstanceId }} .gs-sale-price{#}
+{#{% if pageData.price_ft_weight == '1' %}#}
+	{#font-weight:bold !important;#}
+{#{% else %}#}
+	{#font-weight:normal !important;#}
+{#{% endif %}#}
+{#}#}
+{#/*投影*/#}
+{#{% if pageData.base_bg_shadow == '0'%}#}
+{#.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item,.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item_tag {#}
+	{#box-shadow: none !important;#}
+{#}#}
+
+{#{% else %}#}
+{#.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item,.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item_tag {#}
+	{#box-shadow: 0px 0px 10px {{data.base_bg_shadow_color|default('#CCCCCC')}} !important;#}
+	{#-webkit-box-shadow: 0px 0px 10px {{data.base_bg_shadow_color|default('#CCCCCC')}} !important;#}
+{#}#}
+
+{#{% endif %}#}
+</style>
+
+	<div class="gb_wrapper_common">
+		<ul  class="clearfix gb-list-default gb-global-wrapper" >
+			{% for key,item in data.goodsInfo|default([1])%}
+				{% set left_number =  (item.stock_num- item.activity_stock)>0?(item.stock_num - item.activity_stock):0 %}
+				{% set goodsStatus =  left_number == 0 and data.goodsInfo and pageData.limit_active!='1'? 'good_soldOut' :'goodsBuyPro'%}
+				{% set isLimitGoods = pageData.down_active == '1' ? 'is_goods_limit' : 'not_goods_limit'%}
+				{% set isPriceEqual =  item.market_price == item.shop_price? 'visible-hide':''%}
+				{# felix #}
+				<li class="gs-list-item gs-subjectGoodItem subjectGoodItem showProd js-showProd {{goodsStatus}} {{isLimitGoods}}" data-track-key="{{item.goods_sn}}">
+					<div class="item-content" style="padding-bottom:0">
+						{# 倒计时配置 #}
+						{{include ('@app/files/parts/temp/gb/common/default_pc/goodDown.twig')}}
+						<div class="gs-goods-wrap pr">
+							{# 商品图片配置 #}
+							{{include ('@app/files/parts/temp/gb/common/default_pc/goodImg.twig')}}
+							
+							{# 折扣标配置 #}
+							{% if item.discount > 0 or data.goodsInfo == null %}
+								<div class="gb_discount"  > <div> <strong>{{item.discount|default('50')}}%</strong> <span>OFF</span> </div> </div>
+							{% endif %}
+							{# 服务标  #}
+							{% set labelLeft = 0 %}
+							{{include ('@app/files/parts/temp/gb/common/default_pc/goodLabel.twig')}}
+						</div>
+						
+						<div class="gs-goods-desc">
+							{# 商品标题配置 #}
+							{{include ('@app/files/parts/temp/gb/common/default_pc/goodTitle.twig')}}
+							
+							{# 商品价格配置 #}
+							{{include ('@app/files/parts/temp/gb/common/default_pc/goodPrice.twig')}}
+						</div>
+						{# 商品购买配置 #}
+					
+					</div>
+					{# 购买按钮 #}
+					{{include ('@app/files/parts/temp/gb/common/default_pc/goodBuy.twig')}}
+					
+					
+					<div class="gb_content_box" style="margin-top:10px;">
+						{% if data.goodsInfo %}
+							{%  for key,item in data.contentList %}
+								<p class="gb_contents">{{item}}</p>
+							{% endfor %}
+						{% else %}
+							{%  for key,item in data.contentList|default(0..2) %}
+								<p class="gb_contents">This is a product description {{key + 1}} </p>
+							{% endfor %}
+						{% endif %}
+					</div>
+				</li>
+			
+			{% endfor %}
+		</ul>
+	</div>
+
+</div>
+

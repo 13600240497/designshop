@@ -1,0 +1,16 @@
+{#/**
+  *@author: 胡明
+  *@date: 2018/12/19 17:05:00
+  *@desc: dresslily商品销售价组件
+*/#}
+
+{% if options %}
+ <span class="geshop-goods-shopprice my-shop-price" data-orgp="{{options.value}}" style="
+      color: {{options.styleObj.color}};
+      font-size: {{options.styleObj.fontSize}}px;
+  ">
+    {{options.value}}
+ </span>
+{% else %}
+  {{ include ('@app/files/parts/common/components/argsErrors.twig') }}
+{% endif %}

@@ -1,0 +1,171 @@
+{% set dataJson = {
+    start_time: data.start_time ? data.start_time : '',
+    end_time: data.end_time ? data.end_time : ''
+} %}
+{% set formData = {
+    id: 'U000184',
+    name: '时间段Banner组件',
+    theme: 'template1_v1',
+    tabs: [
+        {
+            label: '样式配置',
+            components: [
+            {
+                type: 'diy',
+                src: 'lib/hidden.twig'
+            },
+            {
+                label: '常用配置',
+                desc: '(此组件只适用于通栏)',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '时间设置',
+                    name: 'active_time',
+                    type: 'dataRangePicker',
+                    start_time: dataJson.start_time,
+                    end_time: dataJson.end_time
+                },
+                {
+                    label: '图片位置',
+                    type: 'radio',
+                    name: 'img_align',
+                    default: 'center',
+                    options: [
+                    {
+                        label: '居左',
+                        value: 'flex-start'
+                    },
+                    {
+                        label: '居中',
+                        value: 'center'
+                    },
+                    {
+                        label: '居右',
+                        value: 'flex-end'
+                    }
+                ]
+                },
+                {
+                    label: '图片跳转链接',
+                    name: 'img_jump_url'
+                }
+            ]
+            },
+            {
+                label: '蒙版配置',
+                type: 'fieldset',
+                components:[
+                {
+                    label: '背景蒙版颜色',
+                    type: 'colorPicker',
+                    name: 'mask_bg_color',
+                    default: '#000000'
+                },
+                {
+                    label: '蒙版透明度',
+                    desc: '(请输入0-1)',
+                    name: 'mask_bg_opacity',
+                    default: 0.3
+                },
+                {
+                    label: '文字颜色',
+                    type: 'colorPicker',
+                    name: 'mask_font_color',
+                    default: '#FFFFFF'
+                },
+                {
+                    label: '文字背景颜色',
+                    type: 'colorPicker',
+                    name: 'mask_font_bgc',
+                    default: '#000000'
+                },
+                {
+                    label: '文字背景透明度',
+                    desc: '(请输入0-1)',
+                    name: 'mask_circle_opacity',
+                    default: 0.3
+                },
+            ]
+            },
+            {
+                type: 'platData-dl',
+                componentsData: [
+                {
+                    label: '上边距(px)',
+                    name: 'box_margin_top',
+                    default:0,
+                    col: 2
+                },
+                {
+                    label: '下边距(px)',
+                    name: 'box_margin_bottom',
+                    default:0,
+                    col: 2
+                },
+
+                {
+                    label: '左边距(px)',
+                    name: 'box_margin_left',
+                    default:0,
+                    col: 2
+                },
+                {
+                    label: '右边距(px)',
+                    name: 'box_margin_right',
+                    default:0,
+                    col: 2
+                },
+                {
+                    label: 'Banner图片',
+                    name: 'image_url',
+                    type:'image',
+                    default: '',
+                },
+                {
+                    label: '蒙版圆角',
+                    name: 'mask_radius',
+                    default: 0
+                },
+                {
+                    label: '文字背景大小',
+                    desc: '(直径)',
+                    name: 'font_w',
+                    default: 220,
+                    default_m: 110,
+                }
+            ]
+            }
+        ]
+        }
+    ],
+    beforeSubmit: 'onSubmit'
+
+} %}
+
+    {# 引入渲染函数 #}
+    {{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+<script>
+
+function onSubmit (progress) {
+    /* 格式化rgba颜色 */
+    var $id = $("#U000184-template1_v1");
+    var mask_bg_color = $('input[name=mask_bg_color]',$id).val();
+    var mask_bg_opacity = $('input[name=mask_bg_opacity]',$id).val();
+    var mask_font_bgc = $('input[name=mask_font_bgc]',$id).val();
+    var mask_circle_opacity = $('input[name=mask_circle_opacity]',$id).val();
+    var mask_bg_rgba = GS_GOODS_UTILS.hexToRgba(mask_bg_color,Number(mask_bg_opacity));
+    var mask_circle_rgba = GS_GOODS_UTILS.hexToRgba(mask_font_bgc,Number(mask_circle_opacity));
+    $('input[name=mask_bg_rgba]',$id).val(mask_bg_rgba);
+    $('input[name=mask_circle_rgba]',$id).val(mask_circle_rgba);
+
+    var active_time = $('[name=active_time]',$id).val();
+    /* 设置banner时间提示 */
+    if(!!!active_time){
+        layui.layer.msg('请设置banner时间');
+        return false;
+    }
+    progress.next();
+};
+</script>

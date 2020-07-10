@@ -1,0 +1,26 @@
+{%
+	set pageData = {
+		titleColor:data.titleColor is not null?data.titleColor:'#1c1c1c',
+		viewColor:data.viewColor is not null?data.viewColor:'#1c1c1c',
+
+		boxMarginBottom:(data.boxMarginBottom|default(10)),
+		titleFont:(data.titleFont|default(24)),
+		viewFont:(data.viewFont|default(12)),
+	}
+%}
+<div class="geshop-component-box component-drag" id="U000060_{{pageInstanceId}}" data-gid="U000060_withLineMore" data-key="U000060" data-id="{{ pageInstanceId }}" attr="nav_flag">
+	<div class="geshop-component-title" style="text-align:center;">
+		<div class="gs-titlt-contant">
+			<p class="{% if data.buyFtW|default('bold') == 'bold' %}site-bold-strict{% endif %}"
+					style="{% if pageData.titleFont %}font-size:{{pageData.titleFont}}px;{% endif %}
+			{% if pageData.titleColor %}color:{{pageData.titleColor}}{% endif %};
+			{% if data.buyFtW %}font-weight:{{data.buyFtW|default('bold')}};{% endif %}">{% if data.titleText %}{{data.titleText}}{% else %}请设置导航标题{% endif %}
+			</p>
+		</div>
+		<a href="{{data.viewHref}}" style="{% if pageData.viewFont %}font-size:{{pageData.viewFont}}px;{% endif %}
+		{% if pageData.viewColor %}color:{{pageData.viewColor}}{% endif %};margin-top:12px;display:block;">
+			{{data.viewMoreText|default('view more')}}
+		</a>
+		<div class="gs-titlt-spacing" style="{% if data.boxMarginBottom %}height:{{data.boxMarginBottom|default(10)}}px;{% endif %}"></div>
+	</div>
+</div>

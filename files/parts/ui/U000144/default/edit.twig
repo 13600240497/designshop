@@ -1,0 +1,71 @@
+{# {% if  data.defaultTimeSlotImgItem is empty or data.defaultTimeSlotImgItem == "[]" %}
+	<div class="text-container" data-num="123">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.
+ 	</div>
+{% else %} #}
+	{% for key,item in data.defaultTimeSlotImgItem|default([1]) %}
+		<style>
+			{% if item.textPosition == "sides" %}	
+				[data-key="U000144"][data-id="{{ pageInstanceId }}"] .text-container[data-loopindex="{{key}}"]::after{
+					content: "";
+					display: inline-block;
+					width: 100%;
+				}
+			{% endif %}
+			[data-key="U000144"][data-id="{{ pageInstanceId }}"] .text-container[data-loopindex="{{key}}"] {
+				display: none;
+				{% if data.firstActive|default(1) == '1' %}
+					text-indent:2em;
+				{% endif %}
+				{% if item.textPosition|default('left') == 'left' %}
+					text-align: left;
+				{% elseif item.textPosition == 'center' %}
+					text-align: center;
+				{% elseif item.textPosition == 'right' %}
+					text-align: right;
+				{% else %}
+					text-align:justify;
+				{% endif %}
+				{% if data.isEditEnv == '1'%}
+					overflow-y: scorll;
+				{% else %}
+					overflow-y: auto;
+				{% endif %}
+				width: {{ item.boxWidth|default(1200)}}px;
+				height: {{ item.boxHeight|default(132)}}px;
+				padding: {{ item.boxPaddingTB|default(30) }}px {{ item.boxPaddingLR|default(30) }}px;
+				font-weight: {{ item.titleWeight }};
+				font-size: {{ item.textSize|default(18) }}px;
+				color: {{ item.textColor }};
+				letter-spacing: {{ item.textMargin }}px;
+				box-sizing: border-box;
+				{% if item.boxBgImg %}
+					background:url({{item.boxBgImg}}) no-repeat 0 0/100% 100%;
+				{% else %}
+					background-color: {{ item.boxBgC|default("#f8f8f8") }};	
+				{% endif %}
+				
+				{% if data.rowSpacing == 1 %}
+					{% if data.rowSpacingSize is not null %}
+						line-height: {{ data.rowSpacingSize }}px;
+					{% endif %}
+				{% endif %}
+				{% if data.position|default('center') == 'center' %}
+					margin: 0 auto;
+				{% elseif data.position == 'right' %}
+					margin-left:auto;
+				{% else %}
+					margin-right:auto;
+				{% endif %}
+			}
+			
+		</style>
+		<div class="text-container {% if item.titleWeight == 'bold' %}site-bold-strict{% endif %}" data-loopindex="{{key}}" data-starttime="{{item.startTimeStamp}}" data-endtime="{{item.endTimeStamp}}" >
+			{% if key == 0 %}
+				{{ item.textContent | default('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.') }}
+			{% else %}
+				{{ item.textContent }}
+			{% endif %}
+		</div>
+	{% endfor %}
+{# {% endif %} #}

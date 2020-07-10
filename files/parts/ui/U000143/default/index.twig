@@ -1,0 +1,92 @@
+{% set suffix ='rem'%}
+{% set remUnit = 75 %}
+{%
+	set pageData = {
+				price_ft_weight:data.price_ft_weight|default(1),
+				base_bg_shadow:data.base_bg_shadow|default(0),
+    lang:data.lang|default('en'),
+    nav_height:(data.nav_height|default(90)/remUnit)|number_format(3, '.')~suffix,
+		nav_bgc:data.nav_bgc is not null?data.nav_bgc:'#FF8A00',
+		notChoose_ftc:data.notChoose_ftc is not null?data.notChoose_ftc:'#ffffff',
+		choose_ftc:data.choose_ftc is not null?data.choose_ftc:'#333333',
+    nav_fts:(data.nav_fts|default(24)/remUnit)|number_format(3, '.')~suffix,
+    choosed_item_type:data.choosed_item_type|default(1),
+		choosed_item_bgc:data.choosed_item_bgc is not null?data.choosed_item_bgc:'#FFBE42',
+    nav_item_margin:(data.nav_item_margin|default(0)/remUnit)|number_format(3, '.')~suffix,
+	}
+%}
+
+<div class="geshop-component-box component-drag u000143 {% if data.isEditEnv == 0 %}pos-fixed {% else %} pos-static{% endif %} geshop-gb-component ui-{{ pageInstanceId }}"
+data-static-domain="{{staticDomain}}" data-gid="u000143_default"
+style="overflow:hidden; height:{{ (pageData.nav_height) }}" data-key="U000143" data-id="{{ pageInstanceId }}">
+  <!-- embed stylesheet begin -->
+  <style type="text/css">
+    .u000143 .m-current{
+      {% if pageData.choosed_item_type == 0 %}
+        border-bottom:6px solid {{pageData.choosed_item_bgc}};
+        border-radius:0;
+      {% endif %}
+    }
+    .u000143 .m-current strong {
+      color: {{ pageData.choose_ftc }} !important;
+      {% if pageData.choosed_item_type == 1 %}
+      background-color:{{pageData.choosed_item_bgc}};
+      {% endif %}
+    }
+      /*背景图*/
+.geshop-gb-component.ui-{{ pageInstanceId }} .gb_wrapper_common{
+{% if data.base_box_bgImage %}
+	background-image:url({{ data.base_box_bgImage }});
+{% endif %}
+{% if data.component_bg_value %}
+{{ data.component_bg_value }}
+{% endif %}
+}
+/*动态价格粗细*/
+.geshop-gb-component.ui-{{ pageInstanceId }} .gs-shop-price strong,.geshop-gb-component.ui-{{ pageInstanceId }} .gs-sale-price{
+{% if pageData.price_ft_weight == '1' %}
+	font-weight:bold !important;
+{% else %}
+	font-weight:normal !important;
+{% endif %}
+}
+/*投影*/
+{% if pageData.base_bg_shadow == '0'%}
+.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item,.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item_tag {
+	box-shadow: none !important;
+}
+
+{% else %}
+.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item,.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item_tag {
+	box-shadow: 0px 0px 10px {{data.base_bg_shadow_color|default('#CCCCCC')}} !important;
+	-webkit-box-shadow: 0px 0px 10px {{data.base_bg_shadow_color|default('#CCCCCC')}} !important;
+}
+
+{% endif %}
+</style>
+  <!-- embed stylesheet end -->
+  <nav class="component-m-nav" id="js_topNav" style="height: {{pageData.nav_height}};background-color:{{ pageData.nav_bgc }}">
+    <ul class="component-m-nav-ul  swiper-wrapper" id="nav-m-ul" data-isedit="{{ data.isEditEnv }}" style="background-color:{{ pageData.nav_bgc }}">
+      {% if data.navData %}
+        {% for id,item in data.navData %}
+          {% if id in data.nav_menu %}
+            <li class="component-m-nav-item swiper-slide" data-id="{{ id }}"
+            style="padding-left: {{pageData.nav_item_margin}};padding-right: {{pageData.nav_item_margin}};">
+              <strong style="
+								color: {{ pageData.notChoose_ftc}};
+                font-size:{{ pageData.nav_fts}};
+              ">{{ item }}</strong>
+            </li>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <li class="component-m-nav-item swiper-slide" data-id="{{ id }}">
+          <strong style="
+						color: {{ pageData.notChoose_ftc}};
+            font-size:{{ pageData.nav_fts}};
+          ">请配置数据</strong>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>

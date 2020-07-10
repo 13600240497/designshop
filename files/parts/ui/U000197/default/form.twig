@@ -1,0 +1,222 @@
+<style type="text/css">
+    .ad-form-radio .layui-form-radio {
+        width: 123px;
+    }
+    .ad-form-table .layui-form-item {
+        margin-bottom: 16px;
+    }
+    .ad-form-table .layui-input-block {
+        margin: 10px 0 10px 15px;
+    }
+    .ad-form-table .goods-tab-item {
+        margin-bottom: 24px;
+    }
+</style>
+
+{{ include ('@app/files/parts/temp/goods_manager.twig') }}
+
+{# Form 表单数据配置 #}
+{%
+    set formData = {
+        id: 'U000197',
+        name: '广告图组件',
+        theme: 'default',
+        tabs: [
+            {
+                label: '组件内容',
+                components: [
+                    {
+                        label: '商品数据',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                type: 'diy',
+                                src: 'template_column.twig'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                label: '样式设置',
+                components: [
+                    {
+                        label: '常用配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件上边距(px)',
+                                name: 'base_magin_top',
+                                type: 'input',
+                                col: 2,
+                                default: 0,
+                            },
+                            {
+                                label: '组件下边距(px)',
+                                name: 'base_magin_bottom',
+                                type: 'input',
+                                col: 2,
+                                default: 32,
+                            },
+                            {
+                                label: '广告图是否描边',
+                                name: 'base_is_border',
+                                type: 'radio',
+                                default: '0',
+                                options: [
+                                    { label: '是', value: '1' },
+                                    { label: '否', value: '0' },
+                                ]
+                            },
+                            {
+                                label: '描边颜色',
+                                name: 'base_border_color',
+                                type: 'colorPicker',
+                                public: false,
+                                default: '',
+                            },
+                            {
+                                label: '描边粗细(px)',
+                                name: 'base_border_width',
+                                type: 'input',
+                                default: 0,
+                            },
+                            {
+                                label: '广告图是否有圆角',
+                                name: 'base_is_radius',
+                                type: 'radio',
+                                default: '0',
+                                options: [
+                                    { label: '是', value: '1' },
+                                    { label: '否', value: '0' },
+                                ]
+                            },
+                            {
+                                label: '圆角大小(px)',
+                                name: 'base_radius_size',
+                                type: 'input',
+                                default: 0,
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        moreConfig: []
+    }
+%}
+ 
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+<script type="text/javascript">
+    var designFormClose = $('.design-form-close');
+    if (designFormClose) {
+        designFormClose.removeClass('icon-close').addClass('gb-icon-close')
+    }
+
+    $(function() {
+        function radioSelect() {
+            layui.use('form', function() {
+                var form = layui.form;
+                form.on('radio(from_radio_typeX)', function (data) {
+                    var radioVm = data.value;
+                });
+            })
+        }
+
+        function radioSwift() {
+            layui.form.on('radio(from_radio_type)', function (data) {
+                var value = Number(data.value);
+                var $radioTabSelect = $('.design-form').find('.radio-tab-group [data-target=from_radio_type-' + value + '],.goods-data-wrapper [data-target=from_radio_type-' + value + ']');
+                
+                switch(value) {
+                    case 0:
+                        $('.layui-input1').val('');
+                        break;
+                    case 1:
+                        $('.layui-input2').val('');
+                        break;
+                    case 2:
+                        $('.layui-input3').val('');
+                        break;
+                    case 3:
+                        $('.layui-input4').val('');
+                        break;
+                }
+                $radioTabSelect.addClass('goods-visible').siblings().removeClass('goods-visible');
+            });
+        }
+        radioSwift();
+
+        $('.resourceImg').on('blur', function () {
+            var $this = $(this),
+                value = $this.val(), 
+                inputForm = $("input[name='from_radio_type']:checked").val();
+            if (value) {
+                if (inputForm && inputForm == '0') {
+                    if ($this.attr('name') == 'resourceImg1') {
+                        var image = new Image(),
+                            orImg = '';
+                        image.src = value;
+                        image.onload = function () {
+                            $('input[name=imgHeight1]').attr({
+                                'data-vw': image.width,
+                                'data-vh': image.height  
+                            });
+                            orImg = Math.floor((1000 * image.height) / image.width );
+                            $('input[name=imgHeight1]').val(orImg);
+                        };
+                    }
+                } else if (inputForm && inputForm == '1') {
+                    if ($this.attr('name') == 'resourceImg21') {
+                        var image = new Image(),
+                            orImg = '';
+                        image.src = value;
+                        image.onload = function () {
+                            $('input[name=imgHeight2]').attr({
+                                'data-vw': image.width,
+                                'data-vh': image.height  
+                            });
+                            orImg = Math.floor((495 * image.height) / image.width );
+                            $('input[name=imgHeight2]').val(orImg);
+                        };
+                    }  
+                } else if (inputForm && inputForm == '2') {
+                    if ($this.attr('name') == 'resourceImg31') {
+                        var image = new Image(),
+                            orImg = '';
+                        image.src = value;
+                        image.onload = function () {
+                            $('input[name=imgHeight3]').attr({
+                                'data-vw': image.width,
+                                'data-vh': image.height  
+                            });
+                            orImg = Math.floor((328 * image.height) / image.width );
+                            $('input[name=imgHeight3]').val(orImg);
+                        };
+                    }
+                } else if (inputForm && inputForm == '3') {
+                    if ($this.attr('name') == 'resourceImg41') {
+                        var image = new Image(),
+                            orImg = '';
+                        image.src = value;
+                        image.onload = function () {
+                            $('input[name=imgHeight4]').attr({
+                                'data-vw': image.width,
+                                'data-vh': image.height  
+                            });
+                            orImg = Math.floor((246 * image.height) / image.width );
+                            $('input[name=imgHeight4]').val(orImg);
+                        };
+                    }
+                }
+            }
+        });
+
+        $('.js_submitDesignForm').on('click', function() {
+            var imgForm = $('.imgInput').val();
+            var inputForm = $("input[name='from_radio_type']:checked").val();
+        });
+    })
+</script>

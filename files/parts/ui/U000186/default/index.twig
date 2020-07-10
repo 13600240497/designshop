@@ -1,0 +1,32 @@
+{%
+	set pageData = {
+		bg_color:data.bg_color|default('#0e91d1'),
+		hover_color:data.hover_color is not null?data.hover_color:'#ffffff',
+		font_color:data.font_color is not null?data.font_color:'#666666',
+		font_size:data.font_size is not null?data.font_size:28,
+		hover_font_color:data.hover_font_color is not null?data.hover_font_color:'#fd6462',
+		nav_h:data.nav_h is not null?data.nav_h:88,
+		nav_gap:data.nav_gap is not null?data.nav_gap:24,
+	}
+%}
+
+<div class="geshop-component-box U000186 component-drag geshop-U000186-default geshop-U000186-default-{{ pageInstanceId }}"  data-static-domain="{{staticDomain}}" style="overflow:hidden;" data-key="U000186" data-id="{{ pageInstanceId }}">
+  {{ include('style.twig') }}
+  <nav class="component-m-nav" id="js_topNav">
+    <ul class="component-m-nav-ul  swiper-wrapper" id="nav-m-ul" data-isedit="{{ data.isEditEnv }}">
+      {% if data.navData %}
+        {% for id,item in data.navData %}
+          {% if id in data.nav_menu %}
+            <li class="component-m-nav-item swiper-slide" data-id="{{ id }}">
+              <strong>{{ item }}</strong>
+            </li>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <li class="component-m-nav-item" >
+          <strong>请配置数据</strong>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>

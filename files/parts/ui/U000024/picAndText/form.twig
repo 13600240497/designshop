@@ -1,0 +1,197 @@
+{% set fontFamily = [
+	{name:'OpenSans-Semibold (zaful)',value:'OpenSans-Semibold'},
+  {name:'OpenSans-Bold (zaful)',value:'OpenSans-Bold'},
+  {name:'OpenSans-Regular (zaful)',value:'OpenSans-Regular'},
+  {name:'Trebuchet MS (RG)',value:'Trebuchet MS'},
+  {name:'Tahoma (RW)',value:'Tahoma'},
+  {name:'Arial (RW)',value:'Arial'},
+  {name:'Helvetica (RW)',value:'Helvetica'},
+  {name:'sans-serif (RW)',value:'sans-serif'},
+  {name:'AvenirLTStd_Book (RW)',value:'AvenirLTStd_Book'},
+  {name:'Georgia (RW)',value:'Georgia'},
+  {name:'Times New Roman (RW)',value:'Times New Roman'},
+  {name:'Verdana (RW)',value:'Verdana'},
+]%}
+
+
+{%
+	set titleData = {
+		titleWidth:data.titleWidth is not null?data.titleWidth:400,
+	}
+%}
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>标题组件配置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+  <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+    <div class="layui-tab">
+      <ul class="layui-tab-title">
+        <li class="layui-this">模板选择</li>
+        <li>样式设置</li>
+      </ul>
+      <div class="layui-tab-content layui-tab-content-parent">
+        <div class="layui-tab-item layui-show">
+          <style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+					{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+        </div>
+        <div class="layui-tab-item">
+          <div class="layui-carousel" id="form_carousel">
+            <div carousel-item>
+              <div>
+                <fieldset class="layui-elem-field">
+                  <legend>常用配置</legend>
+                  <div class="layui-field-box">
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">标题栏高度(px)</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="height" autocomplete="off" class="layui-input" value="{{ data.height|default(100) }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">下间距(px)</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="boxMarginBottom" autocomplete="off" class="layui-input" value="{{ data.boxMarginBottom|default(10) }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">标题栏背景颜色</label>
+                      <div class="layui-input-block">
+                        <div class="color-picker-selector" data-hidden-name="bgColor"><div style="background-color: {{ data.bgColor }};"></div></div>
+                        <input type="text" class="layui-input" name="bgColor" autocomplete="off" value="{{ data.bgColor }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">标题文案</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="titleText" autocomplete="off" class="layui-input" value="{{ data.titleText }}" data-public-tag="true">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">标题文案导航命名</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="titleNavText" autocomplete="off" class="layui-input" value="{{ data.titleNavText }}" data-public-tag="true">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">标题文案颜色</label>
+                      <div class="layui-input-block">
+                        <div class="color-picker-selector" data-hidden-name="titleColor"><div style="background-color: {{ data.titleColor|default('#333333') }};"></div></div>
+                        <input type="text" class="layui-input" name="titleColor" autocomplete="off" value="{{ data.titleColor|default('#333333') }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">标题文字字体</label>
+                      <div class="layui-input-block">
+                        <select name="fontFamily" lay-verify="required" value="{{data.fontFamily}}">
+                        {% for item in fontFamily %}
+                          <option value="{{item.value}}" {% if item.value == data.fontFamily %}selected{% endif %}>{{item.name}}</option>
+                        {% endfor %}
+                        </select>
+                      </div>
+                    </div>
+                    <div class="layui-form-item imgLeft">
+                      <label class="layui-form-label">左侧装饰图<span class="geshop-prompt">(建议宽度小于400px,高度低于标题栏高度)</span></label>
+                      <div class="layui-input-block">
+                        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                        <input type="text" name="imgSrcLeft" autocomplete="off" class="layui-input" value="{{ data.imgSrcLeft }}" data-height="imgHeight" data-width="imgWidth">
+                      </div>
+                    </div>
+                    <div class="layui-form-item imgLeft">
+                      <label class="layui-form-label">右侧装饰图<span class="geshop-prompt">(建议宽度小于400px,高度低于标题栏高度)</span></label>
+                      <div class="layui-input-block">
+                        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                        <input type="text" name="imgSrcRight" autocomplete="off" class="layui-input" value="{{ data.imgSrcRight }}">
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                <div class="text-right">
+                  <button type="button" id="js_moreConfig" class="layui-btn layui-btn-normal layui-btn-sm">更多配置</button>
+                </div>
+              </div>
+              <div>
+                <div class="layui-tab layui-tab-vertical">
+                  <ul class="layui-tab-title">
+                    <li class="layui-this">基础配置</li>
+                  </ul>
+                  <div class="layui-tab-content" style="width:220px">
+                    <div class="layui-tab-item layui-show">
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">标题文字左右边距(px)</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="textMargin" autocomplete="off" class="layui-input" value="{{ data.textMargin|default(20) }}">
+                        </div>
+                      </div> 
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">标题文字大小(px)</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="titleFont" autocomplete="off" class="layui-input" value="{{ data.titleFont|default(24) }}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">标题文字粗细</label>
+                        <div class="layui-input-block">
+                          <input type="radio" name="titleWeight" value="normal" title="正常"{% if data.titleWeight|default('normal') == 'normal' %} checked{% endif %}>
+                          <input type="radio" name="titleWeight" value="bold" title="加粗"{% if data.titleWeight|default('normal') != 'normal' %} checked{% endif %}>
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">跳转链接</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="viewHref" autocomplete="off" class="layui-input" value="{{ data.viewHref }}" data-public-tag="true">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <button type="button" id="js_baseConfig" class="layui-btn layui-btn-normal layui-btn-sm">基础配置</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>
+
+<style>
+ 	.layui-form-select .layui-edge {
+  	right: 20px;
+	}
+	.layui-form-item.imgLeft .layui-form-label {
+	  width: 100%;
+		text-align: left; 
+	}
+	.layui-form-item.imgLeft .design-open-resource {
+	  top: 39px;
+	}
+</style>
+
+<script>
+  $('.js_submitDesignForm').click(function(){
+    var titleNav = $("input[name='titleNavText']").val();
+    var title = $("input[name='titleText']").val();
+    if (titleNav) {
+      if(titleNav.length > 100) {
+        layer.msg('导航文案不能超过100个字符');
+        return false;
+      }
+    }else {
+      if(title.length > 100) {
+        layer.msg('导航文案不能超过100个字符');
+        return false;
+      }
+    }
+  });
+</script>
+

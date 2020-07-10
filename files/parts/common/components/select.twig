@@ -1,0 +1,28 @@
+{#/**
+*@author: 任贸华
+*@date: 2018/11/24 16:31:41
+*@desc: input组件
+* @param {string} full 是否通栏显示input
+* @param {string} active 初始值
+* @param {array} list 数组 [{'a':1}]
+* @param {string} label input标题
+* @param {string} name 名称
+*/#}
+{% if options %}
+    <div class="layui-form-item">
+        <label class="{% if options.full %}gst-label-block{% else %}layui-form-label{% endif %} ">
+        {{ options.label }}
+        </label>
+        <div class="layui-input-block">
+            <select name={{ options.name }} lay-verify="required">
+                <option value=""></option>
+                {% for obj in options.list%}
+                    <option value="{{obj.value}}" {% if obj.value == options.active%}selected{% endif %}>{{obj.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+{% else %}
+    {{include ('@app/files/parts/common/components/argsErrors.twig')}}
+{% endif %}

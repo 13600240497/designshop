@@ -1,0 +1,36 @@
+{#/**
+*@author: 任贸华
+*@date: 2018/11/24 16:31:41
+*@desc: input组件
+* @param {string} layItemClass layui 自定义样式
+* @param {string} labelClass label 自定义样式
+* @param {string} full 是否通栏显示input
+* @param {string} colorPrefix 颜色选择器
+* @param {string} imgPrefix 图片选择器
+* @param {string} name 参数名
+* @param {string} value 参数值
+* @param {string} label input标题
+* @param {string} subLabel input小标题
+*/#}
+{% if options %}
+    <div class="layui-form-item {{options.layItemClass|default('')}}">
+      {#  {{ options.cs|default('') }}#}
+        <label class="{% if options.full %}gst-label-block{% else %}layui-form-label{% endif %} {{ options.labelClass|default('') }}">
+            {{ options.label }}{% if options.subLabel %}<span style="font-size: 12px; color: #9e9e9e;">{{ options.subLabel }}</span>{% endif %}
+        </label>
+        <div class="layui-input-block">
+            {% if options.colorPrefix %}
+                <div class="color-picker-selector" data-hidden-name={{ options.name }}>
+                    <div style="background-color: {{ options.value|default('') }};"></div>
+                </div>
+            {% elseif options.imgPrefix %}
+                <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+            {% else %}
+            {% endif %}
+            <input type={{ options.type|default('text') }} name={{ options.name }} autocomplete="off"
+                   class="layui-input" value="{{ options.value|default('') }}">
+        </div>
+    </div>
+{% else %}
+    {{include ('@app/files/parts/common/components/argsErrors.twig')}}
+{% endif %}

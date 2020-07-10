@@ -1,0 +1,37 @@
+{% set root = '#U000207_'~pageInstanceId %}
+{% set classSpace = '.geshop-component-body' %}
+{% set body = root~' '~classSpace %}
+
+{{ body }}{
+    background-color: {{ data.box_bg_color|default('#F8F8F8') }};
+}
+
+{# tab #}
+{{ body }} .gs-goods-bd .on.swiper-slide{
+    color:{{ data.tab_selectTextC|default('#FFFFFF') }};
+    background-color: {{ data.tab_selectBgc|default('#000000') }};
+}
+
+{{ body }} .gs-goods-bd .swiper-slide{
+    color:{{ data.tab_unselectTextC|default('#FFFFFF') }};
+    background-color: {{ data.tab_unselectBgc|default('#999999') }};
+}
+
+{# button #}
+{{ body }} .geshop-button-buynow{
+    color:{{ data.buy_btn_font_color|default('#FFFFFF') }};
+    background-color: {{ data.buy_btn_bg_color|default('#000000') }};
+}
+{# prev,next button #}
+{{ body }} .swiper-button-prev,{{ body }} .swiper-button-next{
+    background-color: {{ data.tab_unselectBgc|default('#999999') }};
+}
+
+{# pc 端配置 #}
+{{ body }} .list-item{
+    border-radius: {{ data.goods_radius|default(18) }}px;
+}
+
+{{ include('style-m.twig') }}
+
+{% include '@app/files/parts/formTemplate/components/margin-dl-style.twig' with{'space':root} %}

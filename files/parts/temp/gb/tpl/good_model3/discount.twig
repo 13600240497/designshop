@@ -1,0 +1,15 @@
+{# model3 折扣标配置#}
+{% if pageData.discount_active == '1' and item.discount > 0 and item.market_price > item.shop_price %}
+	<div class="discount-foot">
+		<span>{{ item.discount|number_format }}%</span>
+		<span class="gb-off-text">OFF</span>
+	</div>
+{% endif %}
+
+
+{% if pageData.discount_active == '1' and (data.goodsInfo|default([]))|length == 0 %}
+	<div class="discount-foot">
+		<span>{{ item.discount|default(50) }}%</span>
+		<span class="gb-off-text">OFF</span>
+	</div>
+{% endif %}

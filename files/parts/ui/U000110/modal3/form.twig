@@ -1,0 +1,217 @@
+{% set formData = {
+    id: 'U000110',
+    name: '排行榜',
+    theme: 'model3',
+    tabs: [
+            {
+                label: '商品数据',
+                type: 'fieldset',
+                components: [
+                    {
+                        type: 'diy',
+                        src: 'diy/diy.twig'
+                    }
+                ]
+            },
+            {
+                label: '样式设置',
+                components: [
+                    {
+                        label: '常用配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件背景颜色',
+                                name: 'box_bg_color',
+                                type: 'colorPicker',
+                                default: '#F2F2F2',
+                            },
+                            {
+                                label: '组件下边距',
+                                name: 'box_margin_bottom',
+                                default: 40,
+                            },
+                        ]
+                    },
+                    {
+                        label: 'banner',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '图片地址',
+                                desc: '（建议高300px）',
+                                type: 'image',
+                                name: 'bannerImg',
+                                default: 'https://geshopimg.logsss.com/uploads/XVbaglsB9icvKSeMTxdC2PFY4WQ8tyuA.png',
+                            },
+                            {
+                                label: 'banner是否显示',
+                                name: 'banner_show',
+                                type: 'radio',
+                                default: 0,
+                                options: [
+                                    { label: '是', value: 1 },
+                                    { label: '否', value: 0 },
+                                ]
+                            },
+                        ]
+                    },
+                    {
+                        label: 'Tab导航',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '背景颜色',
+                                name: 'tabBgc',
+                                type: 'colorPicker',
+                                default: '#FFFFFF',
+                            },
+                            {
+                                label: '选中文字颜色',
+                                name: 'tabSelectedTextColor',
+                                type: 'colorPicker',
+                                default: '#FFA800',
+                            },
+                            {
+                                label: '未选中文字颜色',
+                                name: 'tabTextColor',
+                                type: 'colorPicker',
+                                default: '#333333',
+                            },
+                            {
+                                label: '圆角大小',
+                                name: 'tabBorderRadius',
+                                default: 12,
+                            },
+                        ]
+                    },
+                    {
+                        label: '排行榜标签',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '第一名图标',
+                                name: 'iconFirstImg',
+                                type: 'image',
+                                default: '',
+                            },
+                            {
+                                label: '第二名图标',
+                                name: 'iconSecondImg',
+                                type: 'image',
+                                default: '',
+                            },
+                            {
+                                label: '第三名图标',
+                                name: 'iconThirdImg',
+                                type: 'image',
+                                default: '',
+                            },
+                            {
+                                label: '其他名次图标',
+                                name: 'iconOtherImg',
+                                type: 'image',
+                                default: '',
+                            },
+                            {
+                                label: '其他名次文字颜色',
+                                name: 'iconOtherTextColor',
+                                type: 'colorPicker',
+                                default: '#FFFFFF',
+                            },
+                        ]
+                    },
+                    {
+                        label: '折扣信息',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '背景颜色',
+                                name: 'discount_bg_color',
+                                type: 'colorPicker',
+                                default: '#FFEECC',
+                            },
+                            {
+                                label: '文字颜色',
+                                name: 'discount_font_color',
+                                type: 'colorPicker',
+                                default: '#FFA800',
+                            },
+                        ]
+                    },
+                    {
+                        label: '销售价',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '文字颜色',
+                                name: 'shop_price_color',
+                                type: 'colorPicker',
+                                default: '#333333',
+                            },
+                        ]
+                    },
+                    {
+                        label: '购物袋',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '图片地址',
+                                name: 'buy_img',
+                                type: 'image',
+                                default: 'https://geshopimg.logsss.com/uploads/HUMSCLlQox95nA20Nchpv8iVKBjr3yz6.png',
+                            },
+                        ]
+                    },
+
+                ]
+            }
+    ],
+    moreConfig: [
+                    {
+                        label: '数据显示配置',
+                        type: 'collapse',
+                        items: [
+                            {
+                                label: '数据显示配置',
+                                components: [
+                                    {
+                                        label: '数据显示个数',
+                                        desc: '（最多100个）',
+                                        name: 'goodsNum',
+                                        default: 20,
+                                        public: true,
+                                    }
+                                ]
+                            },
+                    ]
+                    }
+    ],
+    beforeSubmit: 'onSubmit'
+
+} %}
+
+    {# 引入渲染函数 #}
+    {{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+<script>
+    function onSubmit(progress) {
+        var goodsIds = [];
+        $('.goods-tab-lists .goods-tab-item').each(function(index,element){
+            var category = $(element).find('.goods-category').val(),
+                cateid = $(element).find('.goods-cateid').val(),
+                defaultIco = $(element).find('.goods-defaultIco').val(),
+                checkIco= $(element).find('.goods-checkIco').val(),
+                dateObject = {
+                    'category': category,
+                    'cateid': cateid,
+                    'defaultIco': defaultIco,
+                    'checkIco': checkIco
+                };
+            goodsIds.push(dateObject);
+        });
+        $('input[name="goodsIds"]').val(JSON.stringify(goodsIds));
+        progress.next();
+
+    }
+</script>

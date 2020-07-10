@@ -1,0 +1,18 @@
+
+{# View More 按钮 和 view View All 按钮  #}
+{% set  sku_num = skuNum ? skuNum : data.goodsInfo|default(0..3)|length %}
+{% if pageData.view_all_link or (data.defaultGoodsCount < sku_num  and data.defaultGoodsCount > 0) %}
+	<div class="view-more" style="margin-right: .2667rem" >
+		{% if data.defaultGoodsCount < sku_num  and data.defaultGoodsCount > 0 %}
+			<p class="view-more-btn" data-moretext="{{pageData.view_more_text|default(gb_component_trans(lang , 'view_more' )) }}" data-lesstext="{{pageData.view_less_text|default(gb_component_trans(lang , 'view_less' ))}}">
+				<span style="display:inline-block;max-width:3rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;vertical-align:top;">{{pageData.view_more_text|default(gb_component_trans(lang , 'view_more' ))}}</span>
+				<i style="color:#333333;" class="gs-iconfont gs-icon-down1"></i>
+			</p>
+		{% endif %}
+		{% if pageData.view_all_link != '' %}
+			<a  href="{{pageData.view_all_link}}" style="margin-right:.1rem" class="view-all-btn">
+				<span style="display:inline-block;white-space:nowrap;padding:0 0.2rem;max-width: 2.3rem;overflow:hidden;vertical-align: middle;text-overflow: ellipsis">{{pageData.view_all_text|default(gb_component_trans(lang , 'view_all' ))}}</span>>
+			</a>
+		{% endif %}
+	</div>
+{% endif %}

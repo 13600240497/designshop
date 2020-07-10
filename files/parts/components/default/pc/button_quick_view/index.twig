@@ -1,0 +1,31 @@
+{#
+    quick view 购买按钮
+    @params href              商品详情链接
+    @style color              文字颜色
+    @style background-color   背景颜色
+    @style background-image   背景图片
+    @style border-radius      圆角大小
+
+ #}
+
+
+{# 输出HTMl段落 #}
+{% if params is not empty %}
+    <div class="geshop-components-default-button-quick-view button-quick-view-{{ pageInstanceId }}">
+        <table>
+            <tr><td><a href="javascript:GEShopSiteCommon.dialog.iframe('{{ params.href }}', 1080, 597, true);">{{ params.text ?? '+Quick View' }}</a></td></tr>
+        </table>
+    </div>
+{% endif %}
+
+
+{# 输出定制化 stylesheet #}
+{% if style is not empty %}
+
+    .button-quick-view-{{ pageInstanceId }} a {
+        color: {{ style.color | default('#333333') }};
+        background-color: {{ style['background-color'] | default('#FFFFFF') }};
+    }
+
+{% endif %}
+

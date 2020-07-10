@@ -1,0 +1,61 @@
+<div class="geshop-component-box component-drag geshop-U000074-fixedbottom geshop-U000074-fixedbottom-{{ pageInstanceId }}" data-key="U000074" data-id="{{ pageInstanceId }}" data-static-domain="{{staticDomain}}">
+	{{ include('style.twig') }}
+	<input type="hidden" name="editEnv" value="{{data.isEditEnv}}"/>
+	<div class="overlay"></div>
+	<div class="main-container">
+		<div class="center">
+			<div class="drawer-trigger">
+				<div class="center-align">
+					<h3 class="deal-button">{{data.btn_text | default("Today's deals")}}</h3>
+					<img class="img-fold" width="18" height="18" data-unfold-src="{{data.close_image | default('https://geshoptest.s3.amazonaws.com/uploads/u9eVA6tyf4qzgC0OPHpdSWw5IX8hnvlD.png')}}" data-fold-src="{{data.dropdown_image | default('https://geshopimg.logsss.com/uploads/14XwdPGioNhlWe5zKm8bLBctp9I6fVgU.png')}}" />
+					{# <i class="ico-fold"></i> #}
+				</div>
+			</div>
+		</div>
+		<input name="slideLen" type="hidden" value="{{data.imgList|length}}">
+		<div class="deals-main-container">
+			<div class="slider">
+				<div class="swiper-container">
+						<div class="swiper-wrapper">
+								{% if data.imgList|length == 0 %}
+										<a class="swiper-slide">
+											<img class="swiper-img" src="https://geshopimg.logsss.com/uploads/8fuoUzVlbRWMQYvTOsIe5EwJacSmjHKx.png">
+										</a>
+										<a class="swiper-slide">
+											<img class="swiper-img" src="https://geshopimg.logsss.com/uploads/8fuoUzVlbRWMQYvTOsIe5EwJacSmjHKx.png">
+										</a>
+										<a class="swiper-slide">
+											<img class="swiper-img" src="https://geshopimg.logsss.com/uploads/8fuoUzVlbRWMQYvTOsIe5EwJacSmjHKx.png">
+										</a>
+										<a class="swiper-slide">
+											<img class="swiper-img" src="https://geshopimg.logsss.com/uploads/8fuoUzVlbRWMQYvTOsIe5EwJacSmjHKx.png">
+										</a>
+								{% endif %}
+							{% if (data.imgList |length) < 4 %}
+								{% for item in data.imgList%}
+									<a class="swiper-slide" {% if item.imgLink %} href="{{item.imgLink}}" {% endif %}  {% if data.is_openNew == 1 %}target="_blank"{%endif%}><img class="swiper-img swiper-lazy" data-src="{{item.imgUrl}}" src="{{item.imgUrl}}"></a>
+								{% endfor %}
+							{% endif %}
+							{% if (data.imgList |length) >= 4 %}
+								{% for item in data.imgList%}
+									<a class="swiper-slide" {% if item.imgLink %} href="{{item.imgLink}}" {% endif %}  {% if data.is_openNew == 1 %}target="_blank"{%endif%}><img class="swiper-img swiper-lazy" data-src="{{item.imgUrl}}"></a>
+								{% endfor %}
+							{% endif %}
+
+
+
+
+						</div>
+						<!-- 如果需要导航按钮 -->
+				</div>
+
+				<div class="swiper-button-prev  btn-prev swiper-button">
+					<img class="pagation-img" src="{{data.left_image | default('https://geshopimg.logsss.com/uploads/EaNZVUbo6CzvPFrD2uinyWhdf18OlKMp.png')}}"/>
+				</div>
+				<div class="swiper-button-next btn-next swiper-button">
+					<img class="pagation-img" src="{{data.right_image | default('https://geshopimg.logsss.com/uploads/evcirNHbFqMXKULtIk8GBlCTdoZYupsy.png')}}"/>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

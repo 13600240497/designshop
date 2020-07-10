@@ -1,0 +1,30 @@
+<style>{{ include ('form.css') }}</style>
+{%
+    set formData = {
+        id: 'U0000226',
+        name: '轮播广告配置项',
+        theme: 'default',
+        tabs: [
+            {
+                label: '样式配置',
+                components: [
+                    {
+                        type: 'diy',
+                        src: 'data.twig'
+                    }
+                ]
+            },
+            
+        ],
+        moreConfig: [],
+        beforeSubmit: 'beforeSubmit'
+    }
+%}
+ 
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+{# 引入自定义函数 #}
+<script>
+{% include 'form.js' %}
+</script>

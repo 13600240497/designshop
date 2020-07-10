@@ -1,0 +1,41 @@
+{#
+    立即购买按钮
+    @params href              商品详情链接
+    @params text              按钮文案
+    @style color              文字颜色
+    @style background-image   背景图片，优先级高于背景颜色
+    @style background-color   背景颜色
+    @style border-radius      圆角大小
+
+ #}
+
+
+{# 输出HTMl段落 #}
+{% if params is not empty %}
+        <div class="geshop-components-default-button-buy button-buy-{{ pageInstanceId }}">
+            <a href="{{ params.href }}" class="btn__site-default">{{ params.text | default(get_component_trans(lang, 'btn_buy_now')) }}</a>
+        </div>
+{% endif %}
+
+
+{# 输出定制化 stylesheet #}
+{% if style is not empty %}
+    .button-buy-{{ pageInstanceId }} {
+        {% if style['display'] is not empty and style['display'] == 0 %}
+            display: none;
+        {% else %}
+            display: block;
+        {% endif %}
+    }
+    .button-buy-{{ pageInstanceId }} a {
+        color: {{ style.color | default('#ffffff') }};
+        {% if style['background-image'] is not empty %}
+            background-image: url({{ style['background-image'] }});
+            border-radius: {{ style['border-radius'] | default(0) }}px;
+        {% else %}
+            background-color: {{ style['background-color'] | default('#333') }};
+            border-radius: {{ style['border-radius'] | default(35) }}px;
+        {% endif %}
+    }
+
+{% endif %}

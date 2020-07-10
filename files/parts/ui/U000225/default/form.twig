@@ -1,0 +1,258 @@
+{%
+    set formData = {
+        id: 'U0000225',
+        name: '文本组件',
+        theme: 'default',
+        tabs: [
+            {
+                label: '样式配置',
+                components: [
+                    
+                    {
+                        label: '内容配置',
+                        type: 'fieldset',
+                        components: [
+                             {
+                                type: 'tab',
+                                items: [
+                                    {
+                                        label: 'PC',
+                                        components: [
+                                            {
+                                                label: '是否显示',
+                                                name: 'pc_is_show',
+                                                type: 'radio',
+                                                default: '1',
+                                                options: [
+                                                    { label: '是', value: '1' },
+                                                    { label: '否', value: '0' }
+                                                ],
+                                                public: false
+                                            },
+                                            {
+                                                label: '组件上边距(px)',
+                                                name: 'pc_box_margin_top',
+                                                default: '0',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '组件下边距(px)',
+                                                name: 'pc_box_margin_bottom',
+                                                default: '32',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '组件宽度(%)',
+                                                name: 'pc_box_width',
+                                                default: '100',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '组件内上下边距(px)',
+                                                name: 'pc_box_paddingTB',
+                                                default: '32',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '组件内左右边距(px)',
+                                                name: 'pc_box_paddingRL',
+                                                default: '300',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '背景图片',
+                                                name: 'pc_box_bgImg',
+                                                default: '',
+                                                type:'image',
+                                                public: false,
+                                            },
+                                             {
+                                                label: '字体大小',
+                                                name: 'pc_font_size',
+                                                default: '13',
+                                                public: false,
+                                            }
+
+                                           
+                                        ]
+                                    },
+                                    {
+                                        label: 'PAD',
+                                        components: [
+                                            {
+                                                label: '是否显示',
+                                                name: 'pad_is_show',
+                                                type: 'radio',
+                                                default: '0',
+                                                options: [
+                                                    { label: '是', value: '1' },
+                                                    { label: '否', value: '0' }
+                                                ],
+                                                public: false
+                                            },
+                                            {
+                                                label: '组件上边距(px)',
+                                                name: 'pad_box_margin_top',
+                                                default: '0',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '组件下边距(px)',
+                                                name: 'pad_box_margin_bottom',
+                                                default: '32',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '组件宽度(%)',
+                                                name: 'pad_box_width',
+                                                default: '100',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '组件内上下边距(px)',
+                                                name: 'pad_box_paddingTB',
+                                                default: '32',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '组件内左右边距(px)',
+                                                name: 'pad_box_paddingRL',
+                                                default: '100',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '背景图片',
+                                                name: 'pad_box_bgImg',
+                                                default: '',
+                                                type:'image',
+                                                public: false,
+                                            },
+                                             {
+                                                label: '字体大小',
+                                                name: 'pad_font_size',
+                                                default: '13',
+                                                public: false,
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        label: 'M',
+                                        components: [
+                                            {
+                                                label: '是否显示',
+                                                name: 'm_is_show',
+                                                type: 'radio',
+                                                default: '0',
+                                                options: [
+                                                    { label: '是', value: '1' },
+                                                    { label: '否', value: '0' }
+                                                ],
+                                                public: false
+                                            },
+                                            {
+                                                label: '组件上边距(px)',
+                                                name: 'm_box_margin_top',
+                                                default: '0',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '组件下边距(px)',
+                                                name: 'm_box_margin_bottom',
+                                                default: '20',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '组件宽度(%)',
+                                                name: 'm_box_width',
+                                                default: '100',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '组件内上下边距(px)',
+                                                name: 'm_box_paddingTB',
+                                                default: '32',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '组件内左右边距(px)',
+                                                name: 'm_box_paddingRL',
+                                                default: '32',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '背景图片',
+                                                name: 'm_box_bgImg',
+                                                default: '',
+                                                type:'image',
+                                                public: false,
+                                            },
+                                             {
+                                                label: '字体大小',
+                                                name: 'm_font_size',
+                                                default: '13',
+                                                public: false,
+                                            }
+                                            
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                type: 'fieldset',
+                                label: '样式配置',
+                                components: [
+                                    {
+                                        label: '文案',
+                                        name: 'content',
+                                        type: 'textarea',
+                                        default: 'DressLily.com Casual Style: Welcome to DressLily.com! We not only strive to offer the latest casual style wear for women and men, but also supply the best home essentials, including dresses, outerwear, sweaters, bags, shoes, home decors, bedding, accessories and more. Enjoy our entire range at affordable prices and special discounts. Shop at DressLily and dress to express .',
+                                        public: false,
+                                    },
+                                    {
+                                        label: '背景颜色',
+                                        name: 'component_bg_color',
+                                        default: '#FBF8F7',
+                                        type: 'colorPicker',
+                                        public: false,
+                                    },
+                                    {
+                                        label: '字体颜色',
+                                        name: 'text_font_color',
+                                        default: '#8C8C8C',
+                                        type: 'colorPicker',
+                                        public: false,
+                                    },
+                                    {
+                                        label: '字体是否加粗',
+                                        name: 'font_weight',
+                                        type: 'radio',
+                                        default: 'normal',
+                                        options: [
+                                            { label: '是', value: 'bold' },
+                                            { label: '否', value: 'normal' }
+                                        ],
+                                        public: false
+                                    },
+                                ]
+                            },
+                            
+                            
+                        ]
+                    }
+                ]
+            }
+        ],
+        moreConfig: [
+            
+        ],
+        beforeSubmit: 'beforeSubmit'
+    }
+%}
+ 
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+{# 引入自定义函数 #}
+<script>
+{% include 'form.js' %}
+</script>

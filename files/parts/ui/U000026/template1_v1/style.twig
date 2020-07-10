@@ -1,0 +1,37 @@
+{% set wrap = '#U000026_'~pageInstanceId  %}
+
+{{ wrap }} .U0000026_banner_wrap {
+    text-align: {{ data.img_align  ?? 'center'}};
+}
+{{ wrap }} .img_box {
+    margin-top: {{ data.box_margin_top ?? 0/75 }}rem;
+    margin-right: {{ data.box_margin_right ?? 0/75 }}rem;
+    margin-left: {{ data.box_margin_left ?? 0/75 }}rem;
+    margin-bottom: {{ data.box_margin_bottom ?? 0/75 }}rem;
+}
+
+{{ wrap }} .img_box{
+    border-radius: {{ data.mask_radius ?? 0 /75}}rem;
+    overflow: hidden;
+}
+
+{{ wrap }} .mask{
+    background:{{ data.mask_bg ?? '#000000' }};
+    opacity: {{ data.mask_opacity ?? 0.5 }};
+}
+
+{{ wrap }} .time-bg {
+    background:{{ data.font_bg ?? '#000000' }};
+    opacity: {{ data.font_opacity ?? 0.3 }};
+    color: {{ data.font_color ?? '#FFFFFF' }};
+}
+
+{{ wrap }} .time-text {
+    color: {{ data.font_color ?? '#FFFFFF' }};
+}
+
+{{ wrap }} .time-text , {{ wrap }} .time-bg {
+    width: {{ data.font_w ?? 220 /75}}rem;
+    height: {{ data.font_w ?? 220 /75}}rem;
+    line-height: {{ data.font_w ?? 220 /75}}rem;
+}

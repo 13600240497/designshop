@@ -1,0 +1,30 @@
+{#/**
+*@author: 任贸华
+*@date: 2018/11/24 16:31:41
+*@desc: tab选项卡组件
+* @param {string} layclass layui 自定义样式
+* @param {array} list 数组 [{a:1}]
+* @param {string} class content 内容部分样式
+* @param {string} title 选项卡tab标题
+* @param {string} content 选项卡content内容
+*/#}
+{% if options %}
+    <div class="layui-tab {{options.layclass|default('')}}">
+        <ul class="layui-tab-title">
+            {% for obj in options.list %}
+                <li class="{% if loop.first %}layui-this{% endif %}">{{ obj.title|raw }}</li>
+            {% endfor %}
+        </ul>
+        <div class="layui-tab-content {{options.class|default('')}}" data-goodsType="tab_new">
+            {% for obj in options.list %}
+                <div class="layui-tab-item {% if loop.first %}layui-show{% endif %}">
+                    <div class="content">
+                    {{ obj.content|raw}}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% else %}
+    {{ include ('@app/files/parts/common/components/argsErrors.twig') }}
+{% endif %}

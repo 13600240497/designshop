@@ -1,0 +1,133 @@
+{%
+	set titleData = {
+		titleWidth:data.titleWidth is not null?data.titleWidth:400,
+	}
+%}
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>标题组件配置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+  <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+    <div class="layui-tab">
+      <ul class="layui-tab-title">
+        <li class="layui-this">模板选择</li>
+        <li>样式设置</li>
+      </ul>
+      <div class="layui-tab-content layui-tab-content-parent">
+        <div class="layui-tab-item layui-show">
+          <style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+					{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+        </div>
+        <div class="layui-tab-item">
+          <div class="layui-carousel" id="form_carousel">
+            <div carousel-item>
+              <div>
+                <fieldset class="layui-elem-field">
+                  <legend>常用配置</legend>
+                  <div class="layui-field-box">
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">下间距(px)</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="boxMarginBottom" autocomplete="off" class="layui-input" value="{{ data.boxMarginBottom|default(10) }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">标题文案</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="titleText" autocomplete="off" class="layui-input" value="{{ data.titleText }}" data-public-tag="true">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">标题文案导航命名</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="titleNavText" autocomplete="off" class="layui-input" value="{{ data.titleNavText }}" data-public-tag="true">
+                      </div>
+                    </div>
+                    {# <div class="layui-form-item">
+                      <label class="layui-form-label">是否显示View more</label>
+                      <div class="layui-input-block">
+                        <input type="radio" name="textVis" value="block" title="是"{% if data.textVis|default('block') == 'block' %} checked{% endif %}>
+                        <input type="radio" name="textVis" value="none" title="否"{% if data.textVis|default('block') != 'block' %} checked{% endif %}>
+                      </div>
+				            </div> #}
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">View more 标题文案</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="viewMoreText" autocomplete="off" class="layui-input" value="{{ data.viewMoreText|default('view more') }}" data-public-tag="true">
+                      </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">View more URL链接</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="viewHref" autocomplete="off" class="layui-input" value="{{ data.viewHref }}" data-public-tag="true">
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                <div class="text-right">
+                  <button type="button" id="js_moreConfig" class="layui-btn layui-btn-normal layui-btn-sm">更多配置</button>
+                </div>
+              </div>
+              <div>
+                <div class="layui-tab layui-tab-vertical">
+                  <ul class="layui-tab-title">
+                    <li class="layui-this">基础配置</li>
+                  </ul>
+                  <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">标题文字大小(px)</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="titleFont" autocomplete="off" class="layui-input" value="{{ data.titleFont|default(24) }}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">标题文字颜色</label>
+                        <div class="layui-input-block">
+                          <div class="color-picker-selector" data-hidden-name="titleColor"><div style="background-color: {{ data.titleColor|default('#1c1c1c') }};"></div></div>
+                          <input type="text" class="layui-input" name="titleColor" autocomplete="off" value="{{ data.titleColor|default('#1c1c1c') }}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">标题文字粗细</label>
+                        <div class="layui-input-block">
+                          <input type="radio" name="buyFtW" value="normal" title="正常"{% if data.buyFtW|default('bold') != 'bold' %} checked{% endif %}>
+                          <input type="radio" name="buyFtW" value="bold" title="加粗"{% if data.buyFtW|default('bold') == 'bold' %} checked{% endif %}>
+                        </div>
+				              </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">View more 文字大小(px)</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="viewFont" autocomplete="off" class="layui-input" value="{{ data.viewFont|default(12) }}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">View more 文字颜色</label>
+                        <div class="layui-input-block">
+                          <div class="color-picker-selector" data-hidden-name="viewColor"><div style="background-color: {{ data.viewColor|default('#1c1c1c') }};"></div></div>
+                          <input type="text" class="layui-input" name="viewColor" autocomplete="off" value="{{ data.viewColor|default('#1c1c1c') }}">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <button type="button" id="js_baseConfig" class="layui-btn layui-btn-normal layui-btn-sm">基础配置</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>

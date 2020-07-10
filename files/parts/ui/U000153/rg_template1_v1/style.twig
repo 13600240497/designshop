@@ -1,0 +1,35 @@
+{% set space = '#U000153_'~pageInstanceId %}
+
+
+{{ space }}  {
+    margin-bottom: {{ data.box_margin_bottom ?? 12/37.5}}rem;
+    background-color: {{ data.box_bg_color ?? '#F8F8F8' }};
+}
+{{ space }} .goods-list-item {
+    border-radius:{{ data.goods_border_radius ?? 2/37.5 }}rem;
+    border:1px solid {{ data.hover_border_color ?? '#FFFFFF' }};
+}
+
+{{ space }} .u000153-swiper {
+    background-color: {{ data.tab_unselectBgc | default('#333333') }};
+}
+
+{{ space }} .u000153-swiper li {
+    color: {{ data.tab_unselectTextC | default('#999') }};
+    background-color: {{ data.tab_unselectBgc | default('#333333') }};
+}
+{{ space }} .u000153-swiper li.is-active {
+    color: {{ data.tab_selectTextC | default('#fff') }};
+    background-color: {{ data.tab_selectBgc | default('#333333') }};
+}
+
+{{ space }} .geshop-button-buynow {
+    border-radius:{{ data.buynow_radius ?? 2/37.5 }}rem;
+    border:1px solid {{ data.buynow_bg_color ?? '#999999' }};
+    color: {{ data.buynow_font_color ?? '#222222'}};
+    {% if data.buynow_show == 1  %}
+        display: block;
+    {% else %}
+        display: none;
+    {% endif %}
+}

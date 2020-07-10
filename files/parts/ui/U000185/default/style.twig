@@ -1,0 +1,106 @@
+<!-- embed stylesheet begin -->
+<style type="text/css">
+			.geshop-U000185-{{ pageInstanceId }} .title-wrap{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				text-align:center;
+				{# background-size: 100% 100%; #}
+				background-repeat: no-repeat;
+    		    background-position: center;
+				background-color: {{data.moduleBgColor | default('#FFFFFF')}};
+				{% if data.bgImg %}background-image: url({{data.bgImg}});{% endif %}
+				padding-top: {{data.paddingTop | default(20)}}px;
+				padding-bottom: {{data.paddingBottom | default(20)}}px;
+			}
+			.geshop-U000185-{{ pageInstanceId }} .title-wrap .center-block{
+				margin-left: {{data.titlePadding}}px;
+				margin-right: {{data.titlePadding}}px;
+			}
+			.geshop-U000185-{{ pageInstanceId }} .title-wrap .title{
+				color: {{data.titleFontColor | default('#000000')}};
+				font-size: {{data.titleFontSize | default(34)}}px;
+				line-height: {{data.titleFontSize | default(34)}}px;
+				{% if data.titleFontWeightBold | default(1) == 1 %}
+					 font-weight: bold;
+				{% else %}
+					font-weight: normal;
+				{% endif %}
+
+			}
+			.geshop-U000185-{{ pageInstanceId }} .title-wrap .more{
+				color: {{data.linkFontColor | default('#000000')}};
+				display: block;
+				text-decoration: underline;
+				margin-top: {{data.linkPaddingTop | default(10)}}px;
+				font-size: {{data.linkFontSize | default(12)}}px;
+				line-height: {{data.linkFontSize | default(12)}}px;
+				{% if data.linkFontWeightBold | default(0) == 0 %}
+					 font-weight: normal;
+				{% else %}
+					font-weight: bold;
+				{% endif %}
+			}
+			.geshop-U000185-{{ pageInstanceId }} .title-wrap .short-line{
+				margin-top: {{data.shortLinePaddingTop | default(15)}}px;
+				background-color: {{data.shorLineBgColor | default('#000000')}};
+				width: 145px;
+				margin-left: auto;
+				margin-right: auto;
+				height: {{data.shortLineHeight | default(5)}}px;
+			}
+  {% set space = '.geshop-U000185-'~ pageInstanceId %}
+  {% include '@app/files/parts/formTemplate/components/margin-dl-style.twig' with{'space':space} %}
+
+  @media (max-width: 767px) {
+      .geshop-U000185-{{ pageInstanceId }} .title-wrap{
+          display: flex;
+          justify-content: center;
+          overflow: hidden;
+          align-items: center;
+          text-align:center;
+          background-repeat: no-repeat;
+          background-position: center;
+          {% if data.bgImg_m %}background-image: url({{data.bgImg_m}});{% endif %}
+          padding-top: {{data.paddingTop_m | default(20)}}px;
+          padding-bottom: {{data.paddingBottom_m | default(20)}}px;
+      }
+
+      .geshop-U000185-{{ pageInstanceId }} .title-wrap .center-block{
+          margin-left: {{data.titlePadding_m}}px;
+          margin-right: {{data.titlePadding_m}}px;
+      }
+
+      .geshop-U000185-{{ pageInstanceId }} .title-wrap .title{
+          font-size: {{data.titleFontSize_m | default(34)}}px;
+          line-height: {{data.titleFontSize_m | default(34)}}px;
+          {% if data.titleFontWeightBold_m | default(1) == 1 %}
+              font-weight: bold;
+          {% else %}
+              font-weight: normal;
+          {% endif %}
+      }
+
+      .geshop-U000185-{{ pageInstanceId }} .title-wrap .more{
+          display: block;
+          text-decoration: underline;
+          margin-top: {{data.linkPaddingTop_m | default(10)}}px;
+          font-size: {{data.linkFontSize_m | default(12)}}px;
+          line-height: {{data.linkFontSize_m | default(12)}}px;
+      {% if data.linkFontWeightBold_m | default(0) == 0 %}
+          font-weight: normal;
+      {% else %}
+          font-weight: bold;
+      {% endif %}
+      }
+      .geshop-U000185-{{ pageInstanceId }} .title-wrap .short-line{
+          margin-top: {{data.shortLinePaddingTop_m | default(15)}}px;
+          background-color: {{data.shorLineBgColor_m | default('#000000')}};
+          width: 145px;
+          margin-left: auto;
+          margin-right: auto;
+          height: {{data.shortLineHeight_m | default(5)}}px;
+      }
+  }
+</style>
+<!-- embed stylesheet end -->

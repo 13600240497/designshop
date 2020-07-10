@@ -1,0 +1,138 @@
+<!-- embed stylesheet begin -->
+<style type="text/css">
+.geshop-U000204-default-{{ pageInstanceId }}{
+  margin-bottom: {{data.component_margin_bottom | default(32)}}px;
+  margin-top: {{data.component_margin_top | default(0)}}px;
+}
+.geshop-U000204-default-{{ pageInstanceId }} .coupon-container{
+  {% if data.pc_component_bgImage %}
+    background-image: url({{ data.pc_component_bgImage }});
+  {% endif %}
+  background-color: {{data.component_bgColor | default('#EDEDED')}};
+  margin: 0 auto;
+  width: {{data.pc_component_width | default(400)}}px;
+  height: {{data.pc_component_height | default(284)}}px;
+  {% if data.component_align == 'left' %}
+    float: left;
+  {% elseif data.component_align == 'right' %}
+    float: right;
+  {% endif %}
+}
+.geshop-U000204-default-{{ pageInstanceId }} .coupon-container .coupon-top-info{
+  color: {{data.discount_fontColor | default('#333333')}};
+  padding-top: {{data.pc_discount_pt | default(48)}}px;
+  padding-left: {{data.pc_discount_pl | default(49)}}px;
+}
+.geshop-U000204-default-{{ pageInstanceId }} .coupon-container .coupon-top-info .ct-left {
+  font-size: {{data.pc_discount_fontSize_around | default(20)}}px;
+}
+
+.geshop-U000204-default-{{ pageInstanceId }} .coupon-container .coupon-top-info .ct-center {
+  font-size: {{data.pc_discount_fontSize | default(80)}}px;
+  line-height: {{data.pc_discount_fontSize | default(80)}}px;
+}
+.geshop-U000204-default-{{ pageInstanceId }} .coupon-container .coupon-top-info .ct-right {
+  font-size: {{data.pc_discount_fontSize_around | default(20)}}px;
+}
+
+.geshop-U000204-default-{{ pageInstanceId }} .coupon-container .code-info{
+  color: {{data.code_fontColor | default('#333333')}};
+  padding-top: {{data.pc_code_pt | default(16)}}px;
+  padding-left: {{data.pc_code_pl | default(90)}}px;
+}
+.geshop-U000204-default-{{ pageInstanceId }} .coupon-container .code-info{
+  font-size: {{data.pc_code_fontSize | default(30)}}px;
+}
+.geshop-U000204-default-{{ pageInstanceId }} .coupon-container .btn-copy{
+  width: {{data.pc_btn_width | default(140)}}px;
+  height: {{data.pc_btn_height | default(40)}}px;
+  line-height: {{data.pc_btn_height | default(40)}}px;
+  margin-top: {{data.pc_btn_mt | default(16)}}px;
+  font-size: {{data.pc_btn_fontSize | default(16)}}px;
+  color: {{data.unactive_fontColor | default('#ffffff')}};
+  background-color: {{data.unactive_bgColor | default('#333333')}};
+}
+
+@media screen and (max-width: 1024px) and (min-width: 768px){
+  .geshop-U000204-default-{{ pageInstanceId }} .coupon-container{
+    width: {{data.pad_component_width | default(400)}}px;
+    height: {{data.pad_component_height | default(284)}}px;
+    {% if data.pad_component_bgImage %}
+      background-image: url({{ data.pad_component_bgImage }});
+    {% endif %}
+  }
+  .geshop-U000204-default-{{ pageInstanceId }} .coupon-container .coupon-top-info .ct-left {
+    font-size: {{data.pad_discount_fontSize_around | default(20)}}px;
+  }
+
+  .geshop-U000204-default-{{ pageInstanceId }} .coupon-container .coupon-top-info .ct-center {
+    font-size: {{data.pad_discount_fontSize | default(80)}}px;
+    line-height: {{data.pad_discount_fontSize | default(80)}}px;
+  }
+  .geshop-U000204-default-{{ pageInstanceId }} .coupon-container .coupon-top-info .ct-right {
+    font-size: {{data.pad_discount_fontSize_around | default(20)}}px;
+  }
+  .geshop-U000204-default-{{ pageInstanceId }} .coupon-container .coupon-top-info{
+    padding-top: {{data.pad_discount_pt | default(48)}}px;
+    padding-left: {{data.pad_discount_pl | default(49)}}px;
+  }
+
+  .geshop-U000204-default-{{ pageInstanceId }} .coupon-container .code-info{
+    padding-top: {{data.pad_code_pt | default(16)}}px;
+    padding-left: {{data.pad_code_pl | default(90)}}px;
+    font-size:{{data.pad_code_fontSize | default(30)}}px;
+  }
+  .geshop-U000204-default-{{ pageInstanceId }} .coupon-container .btn-copy{
+    width: {{data.pad_btn_width | default(140)}}px;
+    height: {{data.pad_btn_height | default(40)}}px;
+    line-height: {{data.pad_btn_height | default(40)}}px;
+    margin-top: {{data.pad_btn_mt | default(16)}}px;
+    font-size: {{data.pad_btn_fontSize | default(16)}}px;
+  }
+}
+
+@media screen and (max-width: 767px){
+  .geshop-U000204-default-{{ pageInstanceId }} .coupon-container{
+    width: {{data.m_component_width | default(174)}}px;
+    height: {{data.m_component_height | default(142)}}px;
+    {% if data.m_component_bgImage %}
+      background-image: url({{ data.m_component_bgImage }});
+    {% endif %}
+  }
+  .geshop-U000204-default-{{ pageInstanceId }} .coupon-container .coupon-top-info .ct-left {
+    font-size: {{data.m_discount_fontSize_around | default(12)}}px;
+  }
+
+  .geshop-U000204-default-{{ pageInstanceId }} .coupon-container .coupon-top-info .ct-center {
+    
+    font-size: {{data.m_discount_fontSize | default(32)}}px;
+    line-height: {{data.m_discount_fontSize | default(32)}}px; 
+  }
+  .geshop-U000204-default-{{ pageInstanceId }} .coupon-container .coupon-top-info .ct-right {
+    font-size: {{data.m_discount_fontSize_around | default(12)}}px;
+    line-height: {{data.m_discount_fontSize_around | default(12)}}px;
+  }
+  .geshop-U000204-default-{{ pageInstanceId }} .coupon-container .coupon-top-info{
+    padding-top: {{data.m_discount_pt | default(18)}}px;
+    padding-left: {{data.m_discount_pl | default(15)}}px;
+  }
+
+  .geshop-U000204-default-{{ pageInstanceId }} .coupon-container .code-info{
+    padding-top: {{data.m_code_pt | default(4)}}px;
+    padding-left: {{data.m_code_pl | default(35)}}px;
+    font-size: {{data.m_code_fontSize | default(14)}}px;
+  }
+  .geshop-U000204-default-{{ pageInstanceId }} .coupon-container .code-info .code-info-label{
+    
+  }
+  .geshop-U000204-default-{{ pageInstanceId }} .coupon-container .btn-copy{
+    width: {{data.m_btn_width | default(92)}}px;
+    height: {{data.m_btn_height | default(30)}}px;
+    line-height: {{data.m_btn_height | default(30)}}px;
+    margin-top: {{data.m_btn_mt | default(4)}}px;
+    font-size: {{data.m_btn_fontSize | default(12)}}px;
+  }
+  
+}
+</style>
+<!-- embed stylesheet end -->

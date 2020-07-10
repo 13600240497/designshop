@@ -1,0 +1,61 @@
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>多个商品轮播组件设置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  
+  {{include ('@app/htdocs/resources/template/pc/templateList/index.twig')}}
+
+  <div class="component-form-configure-item component-form-setting-item" style="padding-bottom:40px;">
+    <h4 class="title" style="margin-top:0">常用配置</h4>
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 商品价格字体颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="priceC"><div style="background-color: {{ data.priceC|default('#333') }};"></div></div>
+        <input type="text" class="layui-input" name="priceC" autocomplete="off" value="{{ data.priceC|default('#333') }}">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 商品价格字体大小(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="priceFt" autocomplete="off" class="layui-input" value="{{ data.priceFt | default(14) }}">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 商品名称字体颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="goodsFtC"><div style="background-color: {{ data.goodsFtC|default('#333') }};"></div></div>
+        <input type="text" class="layui-input" name="goodsFtC" autocomplete="off" value="{{ data.goodsFtC|default('#333') }}">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 商品名称字体大小(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="goodsFtS" autocomplete="off" class="layui-input" value="{{ data.goodsFtS | default(14) }}">
+      </div>
+    </div>
+
+		<div class="layui-form-item">
+			<label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 商品数据来源</label>
+			<div class="layui-input-block">
+				<input type="radio"  name="goodsFromType" value="0" title="人工智能接口调用"{% if data.goodsFromType|default('0') == '0' %} checked{% endif %}>
+				{# <input type="radio" name="goodsFromType" value="normal" title="正常"{% if data.titleWeight|default('1') != '1' %} checked{% endif %}> #}
+			</div>
+		</div>
+
+  </div>
+</div>
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>
+
+
+<script>
+  $('#current_template_name').text($('input[name="tpl_id"]').attr('title'));
+</script>
+

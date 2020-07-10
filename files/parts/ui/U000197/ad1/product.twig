@@ -1,0 +1,14 @@
+<div class="geshop-col-12">
+  {% if data.img1Src %}
+  <a class="logsss_event" {% if data.img1Href %}href="{{ data.img1Href }}"{% endif %} style="display: block; width: {{ data.img1Width }}px; height: {{ data.img1Height }}px;"
+    {% if data.isOpenNew == 1 %}target="_blank"{% endif %}
+  >
+    <img alt="{{ data.img1Alt }}" src="{{ data.img1Src }}" data-original="{{ data.img1Src }}" style="display: block; vertical-align: top;" width="{{ data.img1Width }}" height="{{ data.img1Height }}" class="js-lazyload"
+    >
+  </a>
+  {% else %}
+  <p style="border: 1px solid #dddddd; height: 64px; line-height: 64px; text-align: center; font-size: 16px; font-weight: bold; color: #dddddd;">
+    图片宽度限为1200px
+  </p>
+  {% endif %}
+</div>

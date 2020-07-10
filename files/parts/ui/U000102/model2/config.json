@@ -1,0 +1,45 @@
+{
+  "name": "pc danpin",
+  "version": "v1.0.0.1",
+	"platform":"wap",
+  "commjs": {
+    "jquery": false
+  },
+  "commcss": {
+    "main": true
+  },
+  "min-width": "auto",
+  "min-height": "inherit",
+	"fields": {
+		"base_box_bgImage": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"component_bg_value": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"component_bg_repeat": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"component_bg_position": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"price_ft_weight": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"base_bg_shadow": { "is_public": "0", "is_m": "0", "is_app": "0" },
+
+
+    "goodsSKU":{ "is_public": "1", "is_m": "1", "is_app": "1" },
+		"right_sku": {"is_public": "1", "is_m": "1", "is_app": "1"},
+	  "right_code":{ "is_public": "1", "is_m": "1", "is_app": "1" },
+	  "discount_active":{ "is_public": "1", "is_m": "1", "is_app": "1" },
+	  "recommended_active":{ "is_public": "1", "is_m": "1", "is_app": "1" },
+
+		"main_goods_img":{ "is_public": "1", "is_m": "1", "is_app": "1" },
+
+		"base_box_bgc":{"is_public": "1", "is_m": "1", "is_app": "1"},
+		"base_box_bgImage":{"is_public": "1", "is_m": "1", "is_app": "1"},
+		"discount_price_color":{"is_public": "1", "is_m": "1", "is_app": "1"},
+		"goods_label_bgc":{"is_public": "1", "is_m": "1", "is_app": "1"},
+		"goods_label_ftc":{"is_public": "1", "is_m": "1", "is_app": "1"},
+
+		"buy_ftc":{"is_public": "1", "is_m": "1", "is_app": "1"},
+		"buy_bgc":{"is_public": "1", "is_m": "1", "is_app": "1"},
+
+		"price_before_text_color":{"is_public": "1", "is_m": "1", "is_app": "1"},
+		"cart_btn_active":{"is_public": "1", "is_m": "1", "is_app": "1"},
+		"cart_btn_ftc":{"is_public": "1", "is_m": "1", "is_app": "1"},
+		"cart_btn_bgc":{"is_public": "1", "is_m": "1", "is_app": "1"}
+	}
+
+}

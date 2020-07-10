@@ -1,0 +1,17 @@
+.activity-component-from-item .layui-tab-vertical .layui-tab-title {
+  width: 110px;
+}
+
+.layui-form-select .layui-edge {
+  right: 15px;
+}
+
+.gs-default-clothes {
+  width:140px!important;
+  height:124px!important;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  display: block;
+}

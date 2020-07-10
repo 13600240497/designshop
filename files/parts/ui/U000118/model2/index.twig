@@ -1,0 +1,199 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+{% set suffix='px'%}
+
+{% if data.colNum == '1'%}
+    {% set colClass = liCol[0] %}
+{% elseif data.colNum == '2' %}
+    {% set colClass = liCol[1] %}
+{% elseif data.colNum == '3' %}
+    {% set colClass = liCol[2] %}
+{% elseif data.colNum == '4' %}
+    {% set colClass = liCol[3] %}
+{% elseif data.colNum == '5' %}
+    {% set colClass = liCol[4] %}
+{% else %}
+    {% set colClass = liCol[3] %}
+{% endif %}
+
+{# tab_bothBdType 1,2,3 直角,圆角,半圆 #}
+{% set goodsData = {
+	goodsBgc:data.goodsBgc is not null?data.goodsBgc:'#ffffff',
+	goodsBdC:data.goodsBdC is not null?data.goodsBdC:'#E33194',
+	goodsFtC:data.goodsFtC is not null?data.goodsFtC:'#333',
+	buyHeight:data.buyHeight|default(34),
+	buyRadius:data.buyRadius|default(20),
+	buyFtS:data.buyFtS|default(16),
+	buyBgC:data.buyBgC is not null?data.buyBgC:'#E33194',
+	buyBorderC:data.buyBorderC is not null?data.buyBorderC:'#E33194',
+	buyBorderW:data.buyBorderW|default('0'),
+	buyText:data.buyText|default( get_component_trans(lang,'btn_buy_now') ),
+	priceC:data.priceC is not null?data.priceC:'#E33194',
+	priceFt:data.priceFt|default('20'),
+	discountOffsetT:data.discountOffsetT|default('-10'),
+	discountOffsetR:data.discountOffsetR|default('-10'),
+	discountOffsetL:data.discountOffsetL|default('10'),
+	discountRadius:data.discountRadius|default('50'),
+	discountFtC:data.discountFtC,
+	discountBgc:data.discountBgc is not null?data.discountBgc:'#E33194',
+	discountTop:data.discountTop|default(0),
+	discountType:data.discountType|default(1),
+	discountArea:data.discountArea|default(1),
+	colNum:data.colNum|default('4'),
+	baseWidth:data.baseWidth|default(1200),
+
+} %}
+
+{% set pageData = {
+	tab_headerTitle:data.tab_headerTitle|default('Daily Flash Sale'),
+	tab_headerBgC:data.tab_headerBgC|default('#666666'),
+	tab_headerFtC:data.tab_headerFtC|default('#ffffff'),
+	tab_selectBgc: data.tab_selectBgc|default('#E33194'),
+	tab_bothBdType:data.tab_bothBdType|default('1'),
+	tab_endBgc:data.tab_endBgc|default('#F6F6F6'),
+	tab_endTextC:data.tab_endTextC|default('#999999'),
+	tab_endBdC:data.tab_endBdC|default(''),
+	tab_ingBgc:data.tab_ingBgc|default('#E33194'),
+	tab_ingTextC:data.tab_ingTextC|default('#FFFFFF'),
+	tab_ingBdC:data.tab_ingBdC|default('#E33194'),
+	tab_soonBgc:data.tab_soonBgc|default('#F6F6F6'),
+	tab_soonTextC:data.tab_soonTextC|default('#FFFFFF'),
+	tab_soonBdC:data.tab_soonBdC|default('#999999'),
+	tab_marginBottow:data.tab_marginBottow|default(40),
+
+	downFtS:data.downFtS|default(16),
+	downTextC:data.downTextC|default('#333333'),
+	downBfText: get_component_trans(lang,'coming_soon'),
+	downIngText: get_component_trans(lang,'on_going'),
+	downAfText: get_component_trans(lang,'already_ended'),
+	yesterday: get_component_trans(lang,'yesterday'),
+	today: get_component_trans(lang,'today'),
+	tomorrow: get_component_trans(lang,'tomorrow')
+}
+%}
+
+{% set liLength = ( data.goodsSKUSort|default(0..3))|length %}
+{% set liVis = liLength>4?4:liLength %}
+{% set liWidth = (goodsData.baseWidth - 350)/liVis %}
+{% set liLength = ( data.goodsSKUSort|default(0..3))|length %}
+{% set sizeSacle = 16/24 %}
+{% set sizeWidth = pageData.downFtS/sizeSacle %}
+
+
+<div class="geshop-component-box component-drag component-sync clearfix" data-gid="U000118_default" data-key="U000118" data-id="{{ pageInstanceId }}"
+	data-editenv="{{data.isEditEnv}}" data-static-domain="{{staticDomain}}" data-vis="{{liLength}}" data-lang="{{lang}}" style="margin-bottom:{{pageData.tab_marginBottow}}px;">
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+        [data-id="{{ pageInstanceId }}"][data-gid="U000118_default"] .component-self-goodWrap:hover, [data-id="{{ pageInstanceId }}"] .current {
+            border-color:{{goodsData.goodsBdC|default('transparent')}};
+        }
+				[data-gid="U000118_default"][data-id="{{ pageInstanceId }}"] .gs-tab_going{
+					background-color:{{pageData.tab_ingBgc}} ;
+					color:{{pageData.tab_ingTextC}};
+    			border-color: {{pageData.tab_ingBdC}} !important;
+				}
+				[data-gid="U000118_default"][data-id="{{ pageInstanceId }}"] .bd-main li {
+    			border-color: {{pageData.tab_soonBdC}};
+				}
+
+				[data-gid="U000118_default"][data-id="{{ pageInstanceId }}"] [data-class='gs-tab-already']{
+					background-color:{{pageData.tab_ingBgc}};
+					color:{{pageData.tab_ingTextC}};
+    			border-color: {{pageData.tab_ingBdC}} !important;
+				}
+				[data-gid="U000118_default"][data-id="{{ pageInstanceId }}"] [data-class='gs-tab-end']{
+					background-color:{{pageData.tab_endBgc}};
+					color:{{pageData.tab_endTextC}};
+    			border-color: {{pageData.tab_endBdC}} !important;
+				}
+
+				[data-gid="U000118_default"][data-id="{{ pageInstanceId }}"] [data-class='gs-tab-soon']{
+					background-color:{{pageData.tab_soonBgc}};
+					color:{{pageData.tab_soonTextC}};
+    			border-color: {{pageData.tab_soonBdC}} !important;
+				}
+				[data-gid="U000118_default"][data-id="{{ pageInstanceId }}"] .gs-tab_select{
+						border-width:1px;
+						border-color:{{pageData.tab_ingBgc}} !important;
+				}
+				[data-gid="U000118_default"][data-id="{{ pageInstanceId }}"] .gs-option .prev,[data-gid="U000118_default"][data-id="{{ pageInstanceId }}"] .gs-option .next{
+					background-color:{{pageData.tab_soonBgc}}
+				}
+
+				[data-gid="U000118_default"][data-id="{{ pageInstanceId }}"] .gs-time-inner{
+					color:{{pageData.downTextC}};
+				}
+				[data-gid="U000118_default"][data-id="{{ pageInstanceId }}"] .gs_component_countDown em{
+					font-size:{{pageData.downFtS}}{{suffix}};
+					width:{{sizeWidth}}{{suffix}};
+					height:{{sizeWidth}}{{suffix}};
+					line-height:{{sizeWidth}}{{suffix}};
+					border-color:{{pageData.downTextC}};
+					color:{{pageData.downTextC}};
+					background: {{data.downTimeBgC|default('transparent')}};
+				}
+    </style>
+    <!-- embed stylesheet end -->
+
+    <div class="geshop-col-12" style="
+		{% if data.boxMarginTop %}margin-top: {{ data.boxMarginTop }}px;{% endif %}
+		{% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}
+    ">
+
+			<div class="gs-goods-tab" style="width:{{goodsData.baseWidth}}px" data-isEditEnv="{{data.isEditEnv}}" data-tplStatus="0" data-sitedomain="{{siteDomain}}">
+				{% if liLength >4 %}
+				<div class="gs-option">
+					<a class="prev"><span></span></a>
+					<a class="next"><span></span></a>
+				</div>
+				{% endif %}
+				<div class="gs-main" style="width:{{data.baseWidth|default(1200)}}px;">
+					<div class="gs-goods-hd hide">
+						<ul>
+							{% for key,item in data.goodsSKUSort|default(0..3) %}
+								<li>{{loop.index}}</li>
+							{% endfor %}
+						</ul>
+					</div>
+
+					<div class="gs-goods-bd" style="background-color:{{pageData.tab_headerBgC}};">
+						<div class="gs-goods-title" style="color:{{pageData.tab_headerFtC}};font-size:30px;line-height: 72px;
+											{% if data.tab_headerBgImg %}background:url({{data.tab_headerBgImg}}) no-repeat 0 0/100% 100%;{% endif %}">{{pageData.tab_headerTitle}}</div>
+						<ul class="bd-main">
+							{% for key,item in data.goodsSKUSort|default(0..3)|sort('dataStartTime') %}
+
+								{% if data.isEditEnv == '0' and data.goodsSKUSort %}
+								<li style="width:{{liWidth}}px;" data-index="{{loop.index0}}" data-start-time="{{item.dataStartTime}}" data-end-time="{{item.dataEndTime}}">
+									<span class="gs-date_day">{{ get_component_trans(lang,'yesterday') }}</span>
+									<span class="gs-goods-date_hours" style="font-size:20px;">10:00 am</span>
+									<span class="gs-date-status">{{ get_component_trans(lang,already_ended) }}</span>
+								</li>
+								{% else %}
+								<li style="width:{{liWidth}}px;" data-index="{{loop.index0}}">
+									<span class="gs-date_day">{{ get_component_trans(lang,'yesterday') }}</span>
+									<span class="gs-goods-date_hours" style="font-size:20px;">10:00 am</span>
+									<span class="gs-date-status">{{ get_component_trans(lang,'already_ended') }}</span>
+								</li>
+								{% endif %}
+
+							{% endfor %}
+						</ul>
+					</div>
+					<div class="gs-tab-content">
+						{% for key,item in data.goodsSKUSort|default(0..3) %}
+						{# gs_tab_show #}
+						<div class="gs-tab-item gs-goodsWrap" data-index="{{loop.index0}}" data-skus="{{item.lists}}">
+							{# start wrap #}
+								{{include ('@app/files/parts/temp/count_down_arr.twig')}}
+							{# end wrap #}
+							{{include ('@app/htdocs/resources/template/pc/goodsList_sync/killDefault/index.twig')}}
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+
+
+			{# {{include ('@app/htdocs/resources/template/pc/goodsList/default/index.twig')}} #}
+    </div>
+</div>
+

@@ -1,0 +1,280 @@
+{% set suffix ='rem'%}
+{% set remUnit = 75 %}
+	{%
+        set pageData = {
+			price_ft_weight:data.price_ft_weight|default(1),
+			base_bg_shadow:data.base_bg_shadow|default(0),
+			lang:data.lang|default('en'),
+			base_magin_top: (data.base_magin_top/remUnit)|number_format(3, '.')~suffix,
+			base_magin_bottom: (data.base_magin_bottom/remUnit)|number_format(3, '.')~suffix,
+			base_bgc: data.base_bgc is not null?data.base_bgc:'#f8f8f8',
+			coupon_bgc: data.coupon_bgc is not null?data.coupon_bgc:'#c00',
+			discount_bgc: data.discount_bgc is not null?data.discount_bgc:'#ff8a00',
+			discount_ftc: data.discount_ftc is not null?data.discount_ftc:'#fff',
+			buy_ftc: data.buy_ftc is not null?data.buy_ftc:'#fff',
+			buy_bgc: data.buy_bgc is not null?data.buy_bgc:'#ff8a00',
+			coupon_bgc: data.coupon_bgc is not null?data.coupon_bgc:'#c00',
+			coupon_block_bgc: data.coupon_block_bgc|default('#ff8a00'),
+			surplus_coupon_bgc: data.surplus_coupon_bgc is not null?data.surplus_coupon_bgc:'#ff8a00',
+			coupon_ftc: data.coupon_ftc is not null?data.coupon_ftc:'#ff8a00',
+			time_limit_bgc: data.time_limit_bgc is not null?data.time_limit_bgc:'#333',
+			time_limit_ftc: data.time_limit_ftc is not null?data.time_limit_ftc:'#fff',
+			sale_price_isShow: data.sale_price_isShow|default(1),
+			after_coupon_fts: (data.after_coupon_fts|default(24)/remUnit)|number_format(3, '.')~suffix,
+			discount_active: data.discount_active|default(1),
+			discount_marginLeft: ((data.discount_marginLeft|default(16))/remUnit)|number_format(3, '.')~suffix,
+			discount_marginTop: ((data.discount_marginTop|default(16))/remUnit)|number_format(3, '.')~suffix,
+			discount_width: ((data.discount_width|default(74))/remUnit)|number_format(3, '.')~suffix,
+			discount_height: ((data.discount_height|default(74))/remUnit)|number_format(3, '.')~suffix,
+			discount_bgImage: data.discount_bgImage,
+			discount_fts: (data.discount_fts|default(24)/remUnit)|number_format(3, '.')~suffix,
+			off_fts: (data.off_fts|default(24)/remUnit)|number_format(3, '.')~suffix,
+			buy_text:  data.buy_text,
+			buy_fts:  (data.buy_fts|default(24)/remUnit)|number_format(3, '.')~suffix,
+			surplus_coupon_fts:  (data.surplus_coupon_fts|default(24)/remUnit)|number_format(3, '.')~suffix,
+			surplus_couponCode_fts:  (data.surplus_couponCode_fts|default(24)/remUnit)|number_format(3, '.')~suffix,
+			coupon_border_type: data.coupon_border_type|default(1),
+			copy_coupon_ftc: data.copy_coupon_ftc,
+			coupon_number_ftc: data.coupon_number_ftc|default('#c70400'),
+			coupon_left_ftc: data.coupon_left_ftc|default('#333333'),
+			is_show_copy: data.is_show_copy|default(1),
+			coupon_after_ftc: data.coupon_after_ftc|default('#f3023e'),
+			coupon_border_color: data.coupon_border_color is not null?data.coupon_border_color:'#ff8a00',
+
+			view_more_ftc:data.view_more_ftc is not null ? data.view_more_ftc : "#333333",
+			view_more_bgc:data.view_more_bgc is not null ? data.view_more_bgc : "#FFFFFF",
+			view_more_text:data.view_more_text,
+			view_less_text:data.view_less_text,
+			view_more_border_color:data.view_more_border_color is not null ? data.view_more_border_color : "#333333",
+			view_more_fts:(data.view_more_fts|default(24)/remUnit)|number_format(3, '.'),
+			view_more_radius:(data.view_more_radius|default(4)/remUnit)|number_format(3, '.')~suffix,
+
+			view_all_ftc:data.view_all_ftc is not null ? data.view_all_ftc : "#333333",
+			view_all_text:data.view_all_text,
+			view_all_link:data.view_all_link|default(""),
+			view_all_fts:(data.view_all_fts|default(28)/remUnit)|number_format(3, '.'),
+			view_all_weight:data.view_all_weight|default(0),
+			view_all_active:data.view_all_active|default(1),
+
+			limit_active: data.limit_active|default(1),
+			down_active: data.down_active|default(1),
+			coupon_limt_num: data.coupon_limt_num|default(1),
+			server_label_active: data.server_label_active|default(0)
+    	}
+    %}
+<div class="geshop-component-box component-drag geshop-component-goods component-sync clearfix geshop-gb-component ui-{{ pageInstanceId }}" data-gid="U000106_default" data-key="U000106" data-id="{{ pageInstanceId }}" data-editenv="{{data.isEditEnv}}" data-static-domain="{{staticDomain}}" data-vis="{{liLength}}" data-lang="{{lang}}" style="{% if data.boxMarginTop %}margin-top: {{ data.boxMarginTop }}px;{% endif %} {% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}position:relative;z-index:3;">
+    <!-- embed stylesheet begin -->
+	<style type="text/css">
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] {
+			margin-top: {{ pageData.base_magin_top }};
+			margin-bottom:{{pageData.base_magin_bottom}};
+			position: relative;
+		}
+
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .gb_goodsWrap{
+			position: relative;
+		}
+
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .gb_goodsWrap .gb-list-default{
+			margin-right: -0.5667rem
+		}
+		{# 限时抢购 #}
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .gs-gb-timer .gs-goods-time--m {
+			background-color: {{pageData.time_limit_bgc}};
+		}
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .gs-gb-timer .gs-goods-time--m .gs-goodsRushDown {
+			color: {{pageData.seckill_time_ftc}};
+		}
+
+		{# Coupon码 #}
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .discountBlock {
+			color: {{ pageData.coupon_ftc }};
+			border: 0;
+			position: relative;
+			z-index: 3;
+			background-color: {{ pageData.coupon_block_bgc }};
+		}
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .discountBlock .discountBlock_leftNum {
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			padding: 0 {{ (18/remUnit)|number_format(3, '.')~suffix }};
+		}
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .discountBlock .discountBlock_copy {
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			color: {{ pageData.copy_coupon_ftc }};
+			padding: {{ (4/remUnit)|number_format(3, '.')~suffix }} {{ (18/remUnit)|number_format(3, '.')~suffix }} 0 {{ (18/remUnit)|number_format(3, '.')~suffix }};
+		}
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .setBlockHeight {
+			line-height: {{ (56/remUnit)|number_format(3, '.')~suffix }};
+		}
+		
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .hidden-x .discountBlock_leftNum {
+			display: none;
+		}
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .hidden-x .discountBlock_copy {
+			line-height: {{ (56/remUnit)|number_format(3, '.')~suffix }};
+		}
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .discountBlock:before {
+			content: '';
+			width: {{ (12/remUnit)|number_format(3, '.')~suffix }};
+			height: {{ (16/remUnit)|number_format(3, '.')~suffix }};
+			position: absolute;
+			top: 50%;
+			left: {{ (-3/remUnit)|number_format(3, '.')~suffix }};;
+			margin-top: {{ (-6/remUnit)|number_format(3, '.')~suffix }};
+			background-color: #ffffff;
+			border-radius: 0 {{ (40/remUnit)|number_format(3, '.')~suffix }} {{ (40/remUnit)|number_format(3, '.')~suffix }} 0;
+		}
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .discountBlock:after {
+			content: '';
+			width: {{ (12/remUnit)|number_format(3, '.')~suffix }};
+			height: {{ (16/remUnit)|number_format(3, '.')~suffix }};
+			position: absolute;
+			top: 50%;
+			right: {{ (-3/remUnit)|number_format(3, '.')~suffix }};
+			margin-top: {{ (-6/remUnit)|number_format(3, '.')~suffix }};
+			background-color: #ffffff;
+			border-radius: {{ (40/remUnit)|number_format(3, '.')~suffix }} 0 0 {{ (40/remUnit)|number_format(3, '.')~suffix }};
+		}
+
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .discountBlock_copy {
+			display: block;
+			font-weight: bold;
+			text-decoration: none;
+		}
+
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .after_coupon-price {
+			line-height: 0.5rem;
+		}
+
+		{# 折扣标 #}
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .gs-goods-discount--m{
+			background-color:{{pageData.discount_bgc}};
+			color:{{pageData.discount_ftc}};
+			width:{{pageData.discount_width}};
+			height:{{pageData.discount_height}};
+			top:{{pageData.discount_marginTop}};
+			right:{{pageData.discount_marginLeft}};
+			{% if pageData.discount_bgImage %}
+				background:url({{pageData.discount_bgImage}}) no-repeat center center/100% 100%;
+				border-radius:0;
+				border-radius: 50%;
+			{% endif %}
+		}
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .gs-goods-discount--m .curtoff-box{
+			font-size:{{pageData.discount_fts}};
+		}
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .gs-goods-discount--m .curtoff-text{
+			font-size:{{pageData.discount_off_fts}};
+		}
+		{# 库存相关 #}
+		[data-gid=U000106_default][data-id="{{ pageInstanceId }}"] .gs-goods-progress .num {
+			color: {{pageData.inventory_count_ftc}};
+		}
+		[data-gid=U000106_default][data-id="{{ pageInstanceId }}"] .gs-goods-progress i {
+			background-color: {{pageData.inventory_progress_ftc}};
+		}
+		{# 售价 #}
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .gs-goods-price--m {
+			margin: 0 !important;
+		}
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .gs-goods-price--m .gs-shop-price{
+			font-size: {{ (32/remUnit)|number_format(3, '.')~suffix }};
+			color: {{ data.price_ftc|default('#f3023e') }};
+		}
+
+		{# view 按钮样式 #}
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .view-more{
+				min-height:{{2 * pageData.view_all_fts}}rem;
+		}
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .view-more-btn{
+			margin-top:{{pageData.view_all_fts - pageData.view_more_fts}}rem;
+			color:{{pageData.view_more_ftc}};
+			background-color:{{pageData.view_more_bgc}};
+			line-height: {{ pageData.view_all_fts - pageData.view_more_fts > 0 ? 1.5 * pageData.view_all_fts : 1.5 * pageData.view_more_fts }}rem;
+			font-size:{{pageData.view_more_fts}}rem;
+			border-radius: {{pageData.view_more_radius}};
+			border: 1px solid {{pageData.view_more_border_color}};
+		}
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .view-all-btn{
+			color:{{pageData.view_all_ftc}};
+			line-height: {{ pageData.view_all_fts - pageData.view_more_fts > 0 ? 1.5 * pageData.view_all_fts : 1.5 * pageData.view_more_fts }}rem;
+			font-size:{{pageData.view_all_fts}}rem;
+			{% if pageData.view_all_weight %}
+			font-weight: bold;
+			{% endif %}
+		}
+		/*after coupon*/
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .after-text {
+			color: {{ pageData.coupon_after_ftc }};
+			display: block;
+			font-weight: bold;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			margin-top: {{ (14/remUnit)|number_format(3, '.')~suffix }};
+			font-size: {{ (24/remUnit)|number_format(3, '.')~suffix }};
+		}
+
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .gs-goods-title {
+			height: {{ (60/remUnit)|number_format(3, '.')~suffix }} !important;
+			line-height: {{ (30/remUnit)|number_format(3, '.')~suffix }} !important;
+		}
+
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .gs-goods-item-common {
+			width: 4.2rem;
+			height: 5.6rem;
+			text-align: center;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+			position: relative;
+		}
+
+		[data-gid="U000106_default"][data-id="{{ pageInstanceId }}"] .gs-goods-item-thumb .child-thumb {
+			width: 4.2rem;
+			height: 4.2rem;
+			position: relative;
+			background-color: #fff;
+		}
+
+		.geshop-gb-component.ui-{{ pageInstanceId }} .gs-goods-buy--m{
+			position: relative;
+			z-index: 2;
+		}
+
+{% if pageData.base_bg_shadow == '0'%}
+.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item,.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item_tag {
+	box-shadow: none;
+}
+
+{% else %}
+.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item,.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item_tag {
+	box-shadow: 0px 0px 10px {{data.base_bg_shadow_color|default('#CCCCCC')}};
+	-webkit-box-shadow: 0px 0px 10px {{data.base_bg_shadow_color|default('#CCCCCC')}};
+}
+
+{% endif %}
+</style>
+	<!-- embed stylesheet end -->
+    <div class="geshop-col-12">
+		<div class="gb_goodsWrap gb_wrapper_common" data-skus="{{data.goodsSKUList}}" data-isEditEnv="{{data.isEditEnv}}" data-limitEndActive="{{ pageData.limit_end_active }}" style="{% if data.baseFtFa %}font-family:{{data.baseFtFa}};{% endif %}">
+            {%
+                set marginBottom = (data.base_magin_bottom/remUnit)|number_format(3, '.')~suffix
+            %}
+            <ul class="clearfix gb-list gb-lists-default gb-list-default" data-shownum ="{{data.defaultGoodsCount}}" data-isEditEnv="{{ data.isEditEnv }}" style="
+                    margin-bottom: {{ data.base_magin_bottom }};
+                    background-color: {{ data.base_bgc }};
+                    ">
+                {% for key,item in data.goodsInfo|default(0..3)%}
+					{% set isHide = ((loop.index-1) >= data.defaultGoodsCount and data.defaultGoodsCount > 0) ? 'isHide' : "" %}
+                    {{include ('@app/files/parts/temp/basic-ggg/m/index_default_m.twig')}}
+                {% endfor %}
+    		</ul>
+			{{include ('@app/files/parts/temp/gb/common/default_m/goodMoreBtn.twig')}}
+		</div>
+    </div>
+</div>
+

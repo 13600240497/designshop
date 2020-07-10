@@ -1,0 +1,222 @@
+{%
+	set pageData = {
+		back_bgcolor:data.back_bgcolor is not null?data.back_bgcolor:'#fd9e62',
+		back_font_color:data.back_font_color is not null?data.back_font_color:'#ffffff',
+		item_bgcolor:data.item_bgcolor is not null?data.item_bgcolor:'#fd9e62',
+		font_color:data.font_color is not null?data.font_color:'#f7f7f7',
+        component_show_always:data.component_show_always|default('0')
+	}
+%}
+<div class="geshop-component-box component-drag clearfix u000029 wrap-u000029-default wrap-{{ pageInstanceId }}" data-key="U000029" data-id="{{ pageInstanceId }}">
+  {{ include('style.twig') }}
+  <nav class="component-vertical-nav {% if data.isEditEnv != '1' and pageData.component_show_always == '1' %}component-show-always{% endif %}" style="
+    {% if data.isEditEnv %}
+      {% if data.position %} float:{{data.position}} {% endif %};
+    {% else %}
+      {% if data.position %} {{data.position}}: 0 {% endif %}; display: none;
+    {% endif %}
+  ">
+    <div class="nav-decorate top-pic bg-format" style="display: block;">
+      {% if data.top_bgimg %}
+      <p style="
+        margin-left: auto;
+        margin-right: auto;
+        background-image: url({{ data.top_bgimg }});
+        width: {{ data.top_bgimg_width }}px;
+        height: {{ data.top_bgimg_height }}px;
+        margin-bottom: {{ data.top_margin_bottom | default(0) }}px;
+      "></p>
+      {% endif %}
+    </div>
+     
+    <div class="nwrap-u000029-default-av-vertical-ul-wrap" style="position:relative;margin-left:auto;margin-right:auto">
+    {% if data.qrcode_position  | default('botton') == 'top' and (  data.qrcode_show == 1 or data.share_data|length > 0) %}
+        <div style="	
+          {% if pageData.item_bgcolor%} background-color: {{ pageData.item_bgcolor }};{% endif %} margin: 5px 0 5px 0;width: {{ data.item_width | default(160) }}px;
+          padding: {{ data.item_padding_vertical | default(10) }}px {{ data.item_padding_horizontal | default(10) }}px;  
+          width: {{ data.item_width | default(160) }}px;
+          margin: {{ data.item_margin_top | default(0) }}px 0 {{ data.item_margin_bottom | default(2) }}px 0;
+        ">
+        {% if data.qrcode_show == 1  %}
+          <div class="qrcode">
+            <img src="{{data.qrcode_img | default('https://geshopimg.logsss.com/uploads/S8iCI1xqGZaujB5JXcy7lrURw4s6PATK.png')}}" />
+            <p class="qrcode-text">{{data.qrcode_text | default('Download to Get $100 of Free Coupons')}}</p>
+          </div>
+        {% endif %}
+
+          <span class="dib vm addthis_toolbox clearfix" style="{% if data.share_data|length == 0 %}margin-top: 0;{% endif %}">
+              
+            {% for shareItem in data.share_data  %}
+              {% if shareItem == 'FB' %}
+                <a class="addthis_button_facebook"  title="Facebook" href="javascript:void(0)">
+                  <img src="https://geshopimg.logsss.com/uploads/xkFzB6ioMtegWrEabLsHKJTl0mU1YcG4.png">
+                </a> 
+              {% elseif shareItem == 'Twitter' %}
+                <a class="addthis_button_twitter" title="Twitter"  href="javascript:void(0)">
+                  <img src="https://geshopimg.logsss.com/uploads/DVmzyZUjwlga1epXhKH2r4tfAYsbT85Q.png">
+                </a> 
+              {% elseif shareItem == 'Messenger' %}
+                <a class="addthis_button_messenger" title="messenger"  href="javascript:void(0)">
+                  <img src="https://geshopimg.logsss.com/uploads/MfXj9eEt3LOVR1zyPr2FcQaUd8oC6wA4.png ">
+                </a>
+              {% elseif shareItem == 'Pinterest' %}
+                <a class="addthis_button_pinterest" title="pinterest"  href="javascript:void(0)">
+                  <img src="https://geshopimg.logsss.com/uploads/1XY5jecPErZpDJbMh2lRWasv7TNqtULy.png">
+                </a> 
+              {% endif %}
+            {% endfor %}
+          </span>
+        </div>
+      {% endif %}
+    <ul id="nav-vertical-ul" class="nwrap-u000029-default-av-vertical-ul clearfix bg-format" data-isedit="{{ data.isEditEnv }}">
+      
+      {% if data.navData %}
+        {% for id,item in data.navData %}
+          {% if id in data.nav_menu %}
+            <li class="component-nav-vertical-item bg-format" data-id="{{ id }}" style="
+              margin: {{ data.item_margin_top | default(0) }}px 0 {{ data.item_margin_bottom | default(2) }}px 0;
+              padding: {{ data.item_padding_vertical | default(10) }}px {{ data.item_padding_horizontal | default(10) }}px;
+							{% if pageData.item_bgcolor%} background-color: {{ pageData.item_bgcolor }};{% endif %}
+              width: {{ data.item_width | default(160) }}px;
+              {% if data.item_radius %}border-radius: {{ data.item_radius }}px;{% endif %}
+              {% if loop.last %}
+              {# border-bottom-left-radius: {{ data.item_radius | default(20) }}px;
+              border-bottom-right-radius: {{ data.item_radius | default(20) }}px; #}
+              margin-bottom: 0;
+              {% endif %}
+            ">
+              <strong style="
+							{% if pageData.font_color%} color: {{ pageData.font_color }};{% endif %}
+              font-size: {{ data.font_size | default(16) }}px;
+              font-weight: {{ data.font_weight | default('normal') }};
+              line-height: {{ data.item_line_height | default(20) }}px;
+              ">{{ item }}</strong>
+            </li>
+          {% endif %}
+        {% endfor %}
+
+        {% if data.qrcode_position | default('bottom') == 'bottom' and (  data.qrcode_show == 1 or data.share_data|length > 0) %}
+          <li style="	
+            {% if pageData.item_bgcolor%} background-color: {{ pageData.item_bgcolor }};{% endif %} margin: 5px 0 5px 0;
+            padding: {{ data.item_padding_vertical | default(10) }}px {{ data.item_padding_horizontal | default(10) }}px;
+            width: {{ data.item_width | default(160) }}px;
+            margin: {{ data.item_margin_top | default(0) }}px 0 {{ data.item_margin_bottom | default(2) }}px 0;
+            ">
+           {% if data.qrcode_show == 1  %}
+              <div class="qrcode">
+                <img src="{{data.qrcode_img | default('https://geshopimg.logsss.com/uploads/S8iCI1xqGZaujB5JXcy7lrURw4s6PATK.png')}}" />
+                <p class="qrcode-text">{{data.qrcode_text | default('Download to Get $100 of Free Coupons')}}</p>
+              </div>
+            {% endif %}
+            <span class="dib vm addthis_toolbox clearfix" style="{% if data.share_data|length == 0 %}margin-top: 0;{% endif %}">
+             
+                {% for shareItem in data.share_data  %}
+                  {% if shareItem == 'FB' %}
+                    <a class="addthis_button_facebook"  title="Facebook" href="javascript:void(0)">
+                      <img src="https://geshopimg.logsss.com/uploads/xkFzB6ioMtegWrEabLsHKJTl0mU1YcG4.png">
+                    </a> 
+                  {% elseif shareItem == 'Twitter' %}
+                    <a class="addthis_button_twitter" title="Twitter" href="javascript:void(0)">
+                      <img src="https://geshopimg.logsss.com/uploads/DVmzyZUjwlga1epXhKH2r4tfAYsbT85Q.png">
+                    </a> 
+                  {% elseif shareItem == 'Messenger' %}
+                    <a class="addthis_button_messenger" title="messenger" href="javascript:void(0)">
+                      <img src="https://geshopimg.logsss.com/uploads/MfXj9eEt3LOVR1zyPr2FcQaUd8oC6wA4.png ">
+                    </a>
+                  {% elseif shareItem == 'Pinterest' %}
+                    <a class="addthis_button_pinterest" title="pinterest" href="javascript:void(0)">
+                      <img src="https://geshopimg.logsss.com/uploads/1XY5jecPErZpDJbMh2lRWasv7TNqtULy.png">
+                    </a> 
+                  {% endif %}
+                {% endfor %}
+
+              
+            </span>
+          </li>
+        {% endif %}
+        
+        <li class="component-nav-vertical-item to-top" style="width: {{ data.back_size | default(60) }}px;">
+          <p style="margin: 0 auto; width: 2px; height: 16px;{% if pageData.back_bgcolor%} background-color: {{ pageData.back_bgcolor }};{% endif %}"></p>
+          <span style="
+					{% if pageData.back_bgcolor%} background-color: {{ pageData.back_bgcolor }};{% endif %}
+					{% if pageData.back_font_color%} color: {{ pageData.back_font_color }};{% endif %}
+            font-size: {{ data.back_font_size | default(16) }}px;
+            height: {{ data.back_size | default(60) }}px;
+            width: {{ data.back_size | default(60) }}px;
+            line-height: {{ data.back_size | default(60) }}px;
+          ">{{ data.back_text | default('TOP') }}</span>
+        </li>
+      
+      {% else %}
+        <li class="component-nav-vertical-item bg-format" style="
+          margin: {{ data.item_margin_top | default(0) }}px 0 {{ data.item_margin_bottom | default(2) }}px 0;
+          padding: {{ data.item_padding_vertical | default(10) }}px {{ data.item_padding_horizontal | default(10) }}px;
+					{% if pageData.item_bgcolor%} background-color: {{ pageData.item_bgcolor }};{% endif %}
+          {% if data.item_radius %}border-radius: {{ data.item_radius }}px;{% endif %}
+        ">
+          <strong style="
+					{% if pageData.font_color%} color: {{ pageData.font_color }};{% endif %}
+          font-size: {{ data.font_size | default(16) }}px;
+          font-weight: {{ data.font_weight | default('normal') }};
+          line-height: 40px;
+          ">请配置导航数据</strong>
+        </li>
+      {% endif %}
+    </ul>
+     <div class="component-vertical-nav-ctronlFlag component-vertical-nav-ctronlFlag-{{data.position}} "  data-position = "{{ data.position }}" >
+      <span style="color:{{pageData.font_color }}"></span>
+     </div>
+    </div>
+  </nav>
+
+  <!-- embed stylesheet begin -->
+  <style type="text/css">
+    .wrap-{{ pageInstanceId }} .component-nav-vertical-item:hover,
+    .wrap-{{ pageInstanceId }} .vertical-current {
+      background-color: {{ data.item_bgcolor_hover | default('#fd6462') }}!important;
+    }
+    .wrap-{{ pageInstanceId }} .component-nav-vertical-item.to-top:hover span {
+      color: {{ data.back_font_color_hover | default('#ffffff') }}!important;
+      background-color: {{ data.back_bgcolor_hover | default('#fd6462') }}!important;
+    }
+    .wrap-{{ pageInstanceId }} .component-nav-vertical-item.to-top:hover {
+      background-color: transparent!important;
+    }
+    .wrap-{{ pageInstanceId }} .component-nav-vertical-item:hover strong, .wrap-{{ pageInstanceId }} .vertical-current strong {
+      color: {{ data.hover_font_color | default('#f7f7f7') }}!important;
+    }
+    .wrap-{{ pageInstanceId }} .component-vertical-nav-ctronlFlag{
+      background-color:{{pageData.item_bgcolor }}
+    }
+    .wrap-{{ pageInstanceId }} .component-vertical-nav-ctronlFlag:hover{
+      background-color: {{ data.item_bgcolor_hover | default('#fd6462') }};
+    }
+    
+    .wrap-{{ pageInstanceId }} .component-vertical-nav-ctronlFlag-narrowLef:hover span{
+      
+       border-left-color: {{ data.font_color | default('#ffffff') }};
+        border-bottom-color:{{ data.font_color | default('#ffffff') }};
+    }
+    .wrap-{{ pageInstanceId }} .component-vertical-nav-ctronlFlag-narrowLeft span{
+      
+        border-left-color: {{pageData.font_color  | default('#ffffff')}};
+        border-bottom-color:{{pageData.font_color  | default('#ffffff')}};
+       
+    } 
+    .wrap-{{ pageInstanceId }} .component-vertical-nav-ctronlFlag-narrowRight:hover span{
+     
+       border-top-color:{{ data.font_color | default('#ffffff') }};
+       border-right-color:{{ data.font_color | default('#ffffff') }};
+    }
+    .wrap-{{ pageInstanceId }} .component-vertical-nav-ctronlFlag-narrowRight span{
+     
+      border-top-color: {{ data.font_color | default('#ffffff') }};;
+      border-right-color:{{ data.font_color | default('#ffffff') }};
+ 
+    } 
+  </style>
+  <!-- embed stylesheet end -->
+  
+</div>
+
+

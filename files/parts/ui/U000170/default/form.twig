@@ -1,0 +1,150 @@
+{% set viewBorderSArr = [
+	{name:'无',value:'none'},
+	{name:'实线',value:'solid'},
+	{name:'虚线',value:'dashed'},
+	{name:'点状',value:'dotted'},
+	{name:'双线',value:'double'},
+	{name:'继承上级',value:'inherit'},
+]%}
+
+{%
+	set pageData = {
+		price_ft_weight:data.price_ft_weight|default(1),
+	  base_bg_shadow:data.base_bg_shadow|default(0),
+    titleText:data.titleText|default('Please enter a title name'),
+    title_height:data.title_height|default(80),
+    title_width:data.title_width|default(640),
+    title_fts:data.title_fts|default(32),
+    title_radius:data.title_radius|default(60),
+		title_bgc:data.title_bgc is not null?data.title_bgc:'#D8D8D8',
+		title_ftc:data.title_ftc is not null?data.title_ftc:'#333333',
+		title_bdcolor:data.title_bdcolor is not null?data.title_bdcolor:'#D8D8D8',
+    title_bdwidth:data.title_bdwidth|default(2),
+    title_ftw:data.title_ftw|default(1),
+    base_bottom:data.base_bottom|default(64),
+    base_margin_top:data.base_margin_top|default(0),
+	}
+%}
+
+<style type="text/css">
+  .layui-form-select dl {
+    top: -230px;
+  }
+</style>
+
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>带弧度的标题栏配置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm gb-icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+  <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+    <div class="layui-tab">
+      <ul class="layui-tab-title">
+        <li class="layui-this">模板选择</li>
+        <li>样式设置</li>
+      </ul>
+      <div class="layui-tab-content layui-tab-content-parent">
+        <div class="layui-tab-item layui-show">
+						<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+						{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				</div>
+        <div class="layui-tab-item">
+          <div class="layui-carousel" id="form_carousel">
+            <div carousel-item>
+              <div>
+                <fieldset class="layui-elem-field">
+                  <legend>常用配置</legend>
+                  <div class="layui-field-box">
+                    <div class="layui-form-item">
+                      <label class="layui-form-label public-data">标题名称</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="titleText" autocomplete="off" class="layui-input" value="{{ pageData.titleText }}" data-public-tag="true">
+                      </div>
+                    </div>
+					<div class="layui-form-item">
+                      <label class="layui-form-label">组件上边距(PX)</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="base_margin_top" autocomplete="off" class="layui-input" value="{{ pageData.base_margin_top }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">组件下边距(PX)</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="base_bottom" autocomplete="off" class="layui-input" value="{{ pageData.base_bottom }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">标题栏高度(PX)</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="title_height" autocomplete="off" class="layui-input" value="{{ pageData.title_height }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">标题栏宽度(PX)</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="title_width" autocomplete="off" class="layui-input" value="{{ pageData.title_width }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">文字大小(PX)</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="title_fts" autocomplete="off" class="layui-input" value="{{ pageData.title_fts }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">圆角大小(PX)</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="title_radius" autocomplete="off" class="layui-input" value="{{ pageData.title_radius }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">背景颜色</label>
+                      <div class="layui-input-block">
+                        <div class="color-picker-selector" data-hidden-name="title_bgc"><div style="background-color: {{ pageData.title_bgc }};"></div></div>
+                        <input type="text" class="layui-input" name="title_bgc" autocomplete="off" value="{{ pageData.title_bgc }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">文字颜色</label>
+                      <div class="layui-input-block">
+                        <div class="color-picker-selector" data-hidden-name="title_ftc"><div style="background-color: {{ pageData.title_ftc  }};"></div></div>
+                        <input type="text" class="layui-input" name="title_ftc" autocomplete="off" value="{{ pageData.title_ftc }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">边框颜色</label>
+                      <div class="layui-input-block">
+                        <div class="color-picker-selector" data-hidden-name="title_bdcolor"><div style="background-color: {{ pageData.title_bdcolor }};"></div></div>
+                        <input type="text" class="layui-input" name="title_bdcolor" autocomplete="off" value="{{ pageData.title_bdcolor }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">边框粗细(PX)</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="title_bdwidth" autocomplete="off" class="layui-input" value="{{ pageData.title_bdwidth }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">文字加粗</label>
+                      <div class="layui-input-block">
+                          <input type="radio" name="title_ftw" value="1" title="不加粗"{% if pageData.title_ftw == '1' or pageData.title_ftw is empty %} checked="checked"{% endif %}>
+                          <input type="radio" name="title_ftw" value="0" title="加粗"{% if pageData.title_ftw == '0' %} checked="checked" {% endif %}>
+                      </div>
+                    </div>
+                  <div>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>

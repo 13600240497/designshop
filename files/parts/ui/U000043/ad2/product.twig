@@ -1,0 +1,30 @@
+<div class="geshop-col-6" style="text-align: left;">
+  {% if data.img1Src %}
+  <a href="{{ data.img1Href }}" class="logsss_event"
+    data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.img1Src }}','cporder':'{{ layoutIndex }}','rank':'1'} }"
+  >
+    <img alt="{{ data.img1Alt }}" src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{ data.img1Src }}" style="display: block; vertical-align: top; width: 4.68rem;" class="js_gdexp_lazy js-geshopImg-lazyload js_gbexp_lazy"
+      data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.img1Src }}','cporder':'{{ layoutIndex }}','rank':'1'} }"
+    >
+  </a>
+  {% else %}
+  <p style="border: 1px solid #dddddd; height: 64px; line-height: 64px; text-align: center; font-size: 16px; font-weight: bold; color: #dddddd;">
+    图片一
+  </p>
+  {% endif %}
+</div>
+<div class="geshop-col-6" style="text-align: right;">
+  {% if data.img2Src %}
+  <a href="{{ data.img2Href }}" class="logsss_event"
+    data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.img2Src }}','cporder':'{{ layoutIndex }}','rank':'2'} }"
+  >
+    <img alt="{{ data.img2Alt }}" src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{ data.img2Src }}" style="display: block; vertical-align: top; width: 4.68rem;" class="js_gdexp_lazy js-geshopImg-lazyload js_gbexp_lazy"
+      data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.img2Src }}','cporder':'{{ layoutIndex }}','rank':'2'} }"
+    >
+  </a>
+  {% else %}
+  <p style="border: 1px solid #dddddd; height: 64px; line-height: 64px; text-align: center; font-size: 16px; font-weight: bold; color: #dddddd;">
+    图片二1
+  </p>
+  {% endif %}
+</div>

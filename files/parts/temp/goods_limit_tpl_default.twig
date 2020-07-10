@@ -1,0 +1,120 @@
+{# 产品库存 #}
+
+{% set goodLimit = {
+	activity_number :item.activity_number|default(0),
+	activity_volume_number:item.activity_volume_number|default(0),
+	activity_left_persent :((goodLimit.activity_number - goodLimit.activity_number)*100)/(goodLimit.activity_number|default(1)),
+}%}
+
+<div class="gs-goods-limit">
+
+			<%#
+				var activity_number = parseInt(item.activity_number);
+				var left_persent = (item.activity_left_number/item.activity_number)*100;
+				var langLeft = "{{get_component_trans(lang,'left')}}";
+				var itemKillLeft = item.activity_left_number;
+				var langKillLeftValue = langLeft.replace('XX','<b>'+item.activity_left_number+'</b>');
+				var volume_persent = item.activity_volume_number/item.activity_number;
+
+				if(activity_number && volume_persent > 0.9){ %>
+				<span class="goods-limit-tips_left">
+					<% langKillLeftValue %>
+				</span>
+				<span class="process-bar">
+					<em class="process-inner"
+						style="{% if pageData.buyBgC %}background-color:{{pageData.buyBgC}};{% endif %}
+						width:<% left_persent %>%;
+						"></em>
+				</span>
+
+				<%# } else if(activity_number && volume_persent <= 0.9) { %>
+				<span class="goods-limit-tips_left">
+					<b style="{% if pageData.buyBgC %}color:{{pageData.buyBgC}};{% endif %}">
+						<% item.activity_volume_number %>
+					</b>{{get_component_trans(lang,'sold')}}
+				</span>
+				<span class="process-bar">
+					<em class="process-inner"
+						style="{% if pageData.buyBgC %}background-color:{{pageData.buyBgC}};{% endif %}
+						width:<% left_persent %>%;
+						"></em>
+				</span>
+				<%# }%>
+
+</div>
+<style>
+  [data-id="{{ pageInstanceId }}"] .gs-goods-limit {
+    width: 210px;
+		margin: 20px auto 5px;
+    height: 28px;
+    position: relative;
+		text-align: left;
+  }
+
+  [data-id="{{ pageInstanceId }}"] .gs-goods-limit .process-bar {
+    position: absolute;
+    right: 0;
+    top: -40px;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+    background: #ddd;
+  }
+
+  [data-id="{{ pageInstanceId }}"] .gs-goods-limit .process-bar,
+  [data-id="{{ pageInstanceId }}"] .gs-goods-limit .process-inner {
+		display:block;
+    height: 8px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+		width: 100%;
+  }
+
+  [data-id="{{ pageInstanceId }}"] .gs-goods-limit .process-inner {
+		display: block;
+    top: 0;
+    background: {{goodsData.buyBgC}};
+    width: 0px;
+  }
+
+  [data-id="{{ pageInstanceId }}"] .gs-goods-limit .goods-limit-tips_left {
+		position:relative;
+    font: normal 12px/25px Arial;
+		width: 100%;
+    display: block;
+  }
+
+  [data-id="{{ pageInstanceId }}"] .gs-goods-limit .goods-limit-tips_left b,[data-id="{{ pageInstanceId }}"] .goods-limit-tips_sold b{
+    color: {{goodsData.buyBgC}};
+    padding-right: 5px;
+  }
+
+  [data-id="{{ pageInstanceId }}"] .gs-goods-limit .goods-limit-tips_left em {
+    position: absolute;
+    display: block;
+    bottom: -10px;
+    left: 10px;
+    border-width: 5px;
+    border-style: solid;
+  }
+
+  [data-id="{{ pageInstanceId }}"] .gs-goods-limit .goods-limit-tips_left em.tri_bd {
+    border-color: #ddd transparent transparent;
+    bottom: -11px;
+    z-index: 1;
+  }
+
+  [data-id="{{ pageInstanceId }}"] .gs-goods-limit .goods-limit-tips_left em.tri_bg {
+    border-color: #fff transparent transparent;
+    z-index: 2;
+  }
+
+	[data-id="{{ pageInstanceId }}"] .gs-goods-limit{
+		margin-bottom: 10px;
+	}
+
+	[data-id="{{ pageInstanceId }}"] .goods-limit-tips_sold{
+		position:relative;
+		text-align:center;
+	}
+</style>

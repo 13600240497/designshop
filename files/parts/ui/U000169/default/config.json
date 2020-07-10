@@ -1,0 +1,49 @@
+{
+  "name": "pc goodsList",
+  "version": "v1.0.0.1",
+  "description": "pc goodsList",
+  "author": "xingtao",
+  "doc":"http://wiki.hqygou.com:8090/pages/viewpage.action?pageId=39029806",
+  "commjs": {
+    "jquery": true
+  },
+  "commcss": {
+    "main": true
+  },
+  "min-width": "auto",
+  "min-height": "inherit",
+  "fields": {
+		"base_box_bgImage": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"component_bg_value": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"component_bg_repeat": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"component_bg_position": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"price_ft_weight": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"base_bg_shadow": { "is_public": "0", "is_m": "0", "is_app": "0" },
+
+
+    "titleText":{ "is_public": "1", "is_m": "1", "is_app": "1" },
+    "title_height":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "title_width":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "title_fts":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "title_radius":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "title_bgc":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "title_ftc":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "title_bdcolor":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "title_bdwidth":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+    "title_ftw":{ "is_public": "0", "is_m": "1", "is_app": "1" }
+  },
+  "languages":{
+    "off":{
+      "en":"off",
+      "de":"off",
+      "es":"DTO.",
+      "fr":"",
+      "it":"off",
+      "pt":"off",
+      "ru":"скидку",
+      "ar":"الخصم",
+      "ja":"オフ",
+      "ro":"reducere"
+    }
+  }
+}

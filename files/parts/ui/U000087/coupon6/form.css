@@ -1,0 +1,10 @@
+.layui-col-xs6 {
+  padding: 5px;
+  margin-bottom: 5px;
+}
+.layui-col-space20>* {
+  padding: 5px;
+}
+.layui-tab-title li{
+  padding: 0 7px;
+}

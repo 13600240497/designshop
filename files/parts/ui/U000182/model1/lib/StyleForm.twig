@@ -1,0 +1,128 @@
+<h4 class="column-title">常用配置<span></span></h4>
+
+<div class="layui-form-item">
+    <label class="form-item-label">组件下边距(px)</label>
+    <div class="layui-input-block">
+        <input type="text" name="box_margin_bottom" autocomplete="off" class="layui-input" value="{{ data.box_margin_bottom | default(32) }}">
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">组件背景颜色</label>
+    <div class="layui-input-block">
+        {{
+            include ('lib/ColorPicker.twig', {
+                'cmpt_name': 'componentBgColor',
+                'cmpt_value': data.componentBgColor,
+                'cmpt_default': '#f8f8f8'
+            })
+        }}
+    </div>
+</div>
+
+<h5 class="column-title">折扣标配置</h5>
+
+<div class="layui-form-item">
+    <label class="form-item-label">
+        
+        折扣标是否显示</label>
+    <div class="layui-input-block">
+        <input type="radio" name="isDiscountVis" value="1" {% if data.isDiscountVis|default(1) == 1 %} checked{% endif %} title="是">
+        <input type="radio" name="isDiscountVis" value="0" {% if data.isDiscountVis|default(1) == 0 %} checked{% endif %} title="否">
+    </div>
+</div>
+
+<div class="layui-form-item">
+	<div class="layui-row layui-col-space20">
+		<div class="layui-col-xs5">
+            <div class="layui-form-item">
+                <label class="form-item-label">背景颜色</label>
+                <div class="layui-input-block">
+                    {{
+                        include ('lib/ColorPicker.twig', {
+                            'cmpt_name': 'discountBgColor',
+                            'cmpt_value': data.discountBgColor,
+                            'cmpt_default': '#000000'
+                        })
+                    }}
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs5">
+            <div class="layui-form-item">
+                <label class="form-item-label">文本颜色</label>
+                <div class="layui-input-block">
+                    {{
+                        include ('lib/ColorPicker.twig', {
+                            'cmpt_name': 'discountFontColor',
+                            'cmpt_value': data.discountFontColor,
+                            'cmpt_default': '#FFFFFF'
+                        })
+                    }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">背景图片</label>
+    <div class="layui-input-block">
+        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+        <input class="layui-input" type="text" name="discountBgImg" value="{{data.discountBgImg|default('')}}">
+    </div>
+</div>
+<div class="layui-form-item">
+    <div class="layui-row layui-col-space20">
+        <div class="layui-col-xs5">
+            <div class="layui-form-item">
+                <label class="form-item-label">折扣标高度(px)</label>
+                <div class="layui-input-block">
+                    <input type="text" name="discountHeight" autocomplete="off" class="layui-input" value="{{ data.discountHeight | default(50) }}">
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs5">
+            <div class="layui-form-item">
+                <label class="form-item-label">折扣标宽度(px)</label>
+                <div class="layui-input-block">
+                    <input type="text" name="discountwidth" autocomplete="off" class="layui-input" value="{{ data.discountwidth | default(50) }}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h5 class="column-title">商品信息设置</h5>
+<div class="layui-form-item">
+	<div class="layui-row layui-col-space20">
+		<div class="layui-col-xs5">
+            <div class="layui-form-item">
+                <label class="form-item-label">销售价文字颜色</label>
+                <div class="layui-input-block">
+                    {{
+                        include ('lib/ColorPicker.twig', {
+                            'cmpt_name': 'shopPriceBgColor',
+                            'cmpt_value': data.shopPriceBgColor,
+                            'cmpt_default': '#FF4545'
+                        })
+                    }}
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs5">
+            <div class="layui-form-item">
+                <label class="form-item-label">营销信息文字颜色</label>
+                <div class="layui-input-block">
+                    {{
+                        include ('lib/ColorPicker.twig', {
+                            'cmpt_name': 'saleInfoFontColor',
+                            'cmpt_value': data.saleInfoFontColor,
+                            'cmpt_default': '#000000'
+                        })
+                    }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

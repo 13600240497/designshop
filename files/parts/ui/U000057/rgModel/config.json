@@ -1,0 +1,9 @@
+{
+  "fields": {
+    "fontSize": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "boxMarginBottom": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "marquee": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "boxHeight": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "boxWidth": { "is_public": "0", "is_m": "0", "is_app": "0" }
+  }
+}

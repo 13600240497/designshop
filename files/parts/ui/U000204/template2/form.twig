@@ -1,0 +1,357 @@
+{{ include ('@app/files/parts/temp/goods_manager.twig') }}
+
+{% set formData = {
+    id: 'U000204',
+    name: '优惠券组件',
+    theme: 'template2',
+    tabs: [
+        {
+            label: '样式设置',
+            components: [
+                {
+                    label: '常用配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '库存条显示方式',
+                            name: 'count_range_type',
+                            type: 'radio',
+                            default: 0,
+                            options: [
+                                { label: '00% Left', value: 0 },
+                                { label: '数量', value: 1 }
+                            ]
+                        },
+                        {
+                            label: '总库存条颜色',
+                            name: 'stock_bgcolor',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            col: 2,
+                        },
+                        {
+                            label: '剩余库存条颜色',
+                            name: 'd_stock_bgcolor',
+                            type: 'colorPicker',
+                            default: '#000000',
+                            col: 2,
+                        },
+                        {
+                            label: '库存文字颜色',
+                            name: 'stock_color',
+                            type: 'colorPicker',
+                            default: '#000000',
+                        },
+                    ]
+                },
+                {
+                    label:'',
+                    isshow: 'dl-app',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '组件上边距',
+                            name: 'box_margin_top_m',
+                            default: 0,
+                            col: 2,
+                        },
+                        {
+                            label: '组件下边距',
+                            name: 'box_margin_bottom_m',
+                            default: 0,
+                            col: 2,
+                        },
+                        {
+                            label: '背景图片',
+                            desc: '(留一个空格为删除背景)',
+                            name: 'box_bg_m',
+                            type: 'image',
+                            default: 'https://geshoptest.s3.amazonaws.com/uploads/IXbsUjSLnyheE2JVK1grfD4QYRiFMz6x.png'
+                        },
+                        {
+                            label: '背景图片宽度（px）',
+                            name: 'bg_w_m',
+                            default: 351,
+                            col: 2
+                        },
+                        {
+                            label: '背景图片高度（px）',
+                            name: 'bg_h_m',
+                            default: 176,
+                            col: 2
+                        },
+                        {
+                            label: '库存条和按钮之间间距（px）',
+                            name: 'stock_mb_m',
+                            default: 10,
+                        },
+                        {
+                            label: '库存条和按钮整体下偏移（px）',
+                            name: 'stock_bottom_m',
+                            default: 56,
+                        },
+                        {
+                            label: '库存条和按钮整体右偏移（px）',
+                            name: 'stock_right_m',
+                            default: 192,
+                        },
+                        {
+                            label: '按钮圆角（px）',
+                            name: 'btn_radius_m',
+                            default: 2,
+                        }
+                    ]
+                },
+                {
+                    label: '三端配置',
+                    type: 'fieldset',
+                    isshow: 'dl-web',
+                    components: [
+                        {
+                            type: 'tab',
+                            items: [
+                                {
+                                    label: 'PC',
+                                    components: [
+                                        {
+                                            label: '优惠券对齐方式',
+                                            name: 'coup_align',
+                                            type: 'radio',
+                                            default: 'center',
+                                            options: [
+                                                { label: '左', value: 'left' },
+                                                { label: '中', value: 'center' },
+                                                { label: '右', value: 'right' },
+                                            ]
+                                        },
+                                        {
+                                            label: '组件上边距',
+                                            name: 'box_margin_top',
+                                            default: 0,
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '组件下边距',
+                                            name: 'box_margin_bottom',
+                                            default: 0,
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '背景图片',
+                                            desc: '(留一个空格为删除背景)',
+                                            name: 'box_bg',
+                                            type: 'image',
+                                            default: 'https://geshoptest.s3.amazonaws.com/uploads/3cOQkVMADmxH4YyKdLt9lgZJUNGrFWsq.png'
+                                        },
+                                        {
+                                            label: '背景图片宽度（px）',
+                                            name: 'bg_w',
+                                            default: 389,
+                                            col: 2
+                                        },
+                                        {
+                                            label: '背景图片高度（px）',
+                                            name: 'bg_h',
+                                            default: 176,
+                                            col: 2
+                                        },
+                                        {
+                                            label: '库存条和按钮之间间距（px）',
+                                            name: 'stock_mb',
+                                            default: 16,
+                                        },
+                                        {
+                                            label: '库存条和按钮整体下偏移（px）',
+                                            name: 'stock_bottom',
+                                            default: 52,
+                                        },
+                                        {
+                                            label: '库存条和按钮整体右偏移（px）',
+                                            name: 'stock_right',
+                                            default: 209,
+                                        },
+                                        {
+                                            label: '按钮圆角（px）',
+                                            name: 'btn_radius',
+                                            default: 2,
+                                        }
+                                    ]
+                                },
+                                {
+
+                                    label: 'PAD',
+                                    components: [
+                                        {
+                                            label: '组件上边距',
+                                            name: 'box_margin_top_pad',
+                                            default: 0,
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '组件下边距',
+                                            name: 'box_margin_bottom_pad',
+                                            default: 0,
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '背景图片',
+                                            desc: '(留一个空格为删除背景)',
+                                            name: 'box_bg_pad',
+                                            type: 'image',
+                                            default: 'https://geshoptest.s3.amazonaws.com/uploads/3cOQkVMADmxH4YyKdLt9lgZJUNGrFWsq.png'
+                                        },
+                                        {
+                                            label: '背景图片宽度（百分比1 - 100）',
+                                            name: 'bg_w_pad',
+                                            default: 100,
+                                        },
+                                        {
+                                            label: '背景图片高度（百分比 设计稿 高度/宽度*100）',
+                                            name: 'bg_h_pad',
+                                            default: 23,
+                                        },
+                                        {
+                                            label: '库存条和按钮之间间距（px）',
+                                            name: 'stock_mb_pad',
+                                            default: 10,
+                                        },
+                                        {
+                                            label: '库存条和按钮整体下偏移（百分比1 - 100）',
+                                            name: 'stock_bottom_pad',
+                                            default: 34,
+                                        },
+                                        {
+                                            label: '库存条和按钮整体右偏移（百分比1 - 100）',
+                                            name: 'stock_right_pad',
+                                            default: 52,
+                                        },
+                                        {
+                                            label: '按钮圆角（px）',
+                                            name: 'btn_radius_pad',
+                                            default: 2,
+                                        }
+                                    ]
+                                },
+                                {
+                                    label: 'M',
+                                    components: [
+                                        {
+                                            label: '组件上边距',
+                                            name: 'box_margin_top_m',
+                                            default: 0,
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '组件下边距',
+                                            name: 'box_margin_bottom_m',
+                                            default: 0,
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '背景图片',
+                                            desc: '(留一个空格为删除背景)',
+                                            name: 'box_bg_m',
+                                            type: 'image',
+                                            default: 'https://geshoptest.s3.amazonaws.com/uploads/IXbsUjSLnyheE2JVK1grfD4QYRiFMz6x.png'
+                                        },
+                                        {
+                                            label: '背景图片宽度（百分比1 - 100）',
+                                            name: 'bg_w_m',
+                                            default: 100,
+                                        },
+                                        {
+                                            label: '背景图片高度（百分比 设计稿 高度/宽度*100）',
+                                            name: 'bg_h_m',
+                                            default: 45.2,
+                                        },
+                                        {
+                                            label: '库存条和按钮之间间距（px）',
+                                            name: 'stock_mb_m',
+                                            default: 10,
+                                        },
+                                        {
+                                            label: '库存条和按钮整体下偏移（百分比1 - 100）',
+                                            name: 'stock_bottom_m',
+                                            default: 34,
+                                        },
+                                        {
+                                            label: '库存条和按钮整体右偏移（百分比1 - 100）',
+                                            name: 'stock_right_m',
+                                            default: 56,
+                                        },
+                                        {
+                                            label: '按钮圆角（px）',
+                                            name: 'btn_radius_m',
+                                            default: 2,
+                                        }
+                                    ]
+                                },
+                            ]
+                        },
+                    ],
+                },
+                {
+                    label: '按钮配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            type: 'tab',
+                            items: [
+                                {
+                                    label: '未开始/已领完/已结束',
+                                    components: [
+                                        {
+                                            label: '背景颜色',
+                                            name: 'btn_off_bgcolor',
+                                            type: 'colorPicker',
+                                            default: '#999999',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '字体颜色',
+                                            name: 'btn_off_color',
+                                            type: 'colorPicker',
+                                            default: '#FFFFFF',
+                                            col: 2,
+                                        },
+                                    ]
+                                },
+                                {
+                                    label: '可领取/已领取',
+                                    components: [
+                                        {
+                                            label: '背景颜色',
+                                            name: 'btn_bgcolor',
+                                            type: 'colorPicker',
+                                            default: '#000000',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '字体颜色',
+                                            name: 'btn_color',
+                                            type: 'colorPicker',
+                                            default: '#FFFFFF',
+                                            col: 2,
+                                        },
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    beforeSubmit: 'onSubmit'
+
+} %}
+
+
+<script>
+    {#  自定义保存函数 #}
+    function onSubmit(progress) {
+        progress.next();
+    }
+</script>
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

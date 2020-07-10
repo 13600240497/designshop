@@ -1,0 +1,9 @@
+{# m #}
+@media screen and (max-width: 767px){
+    {{ body }} .list-item{
+    border-radius: {{ data.goods_radius_m|default(15) }}px;
+    }
+    {{ body }}.geshop_dl_m .gs-goods-bd{
+        background-color: {{ data.tab_unselectBgc|default('#999999') }};
+    }
+}

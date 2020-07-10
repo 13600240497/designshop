@@ -1,0 +1,112 @@
+{% set unit = 'rem' %}
+{% set unitrange = 75 %}
+{%
+    set pageData = {
+
+        boxWidth : data.boxWidth is defined ? ('%' in data.boxWidth ? data.boxWidth : data.boxWidth / unitrange ~ unit) : '100%',
+        boxHeight : (data.boxHeight | default(270)) / unitrange,
+        boxMarginBottom : (data.boxMarginBottom | default(0)) / unitrange,
+        boxBackgroundColor : data.boxBackgroundColor | default('#EDEDED'),
+        boxBackgroundImage : data.boxBackgroundImage | default(''),
+        discountTextSize : (data.discountTextSize | default(64)) / unitrange,
+        discountTextColor : data.discountTextColor | default('#333333'),
+        discountTermTextSize : (data.discountTermTextSize | default(28)) / unitrange,
+        discountTermTextColor : data.discountTermTextColor | default('#333333'),
+        validText : data.validText | default('Validity：Nov.23-Nov.25'),
+        validTextSize : (data.validTextSize | default(24)) / unitrange,
+        validTextColor : data.validTextColor | default('#333333'),
+        validTextMarginBottom : (data.validTextMarginBottom | default(10)) / unitrange,
+        btnRadius : (data.btnRadius | default(24)) / unitrange,
+        btnSize : (data.btnSize | default(24)) / unitrange,
+        btnUnreceivedBgColor : data.btnUnreceivedBgColor | default('#333333'),
+        btnUnreceivedTextColor : data.btnUnreceivedTextColor | default('#ffffff'),
+        btnUnreceivedTextBorderColor : data.btnUnreceivedTextBorderColor | default('transparent'),
+        btnReceivedBgColor : data.btnReceivedBgColor | default('#dddddd'),
+        btnReceivedTextColor : data.btnReceivedTextColor | default('#ffffff'),
+        btnReceivedTextBorderColor : data.btnReceivedTextBorderColor | default('transparent'),
+        btnFailedBgColor : data.btnFailedBgColor | default('#dddddd'),
+        btnFailedTextColor : data.btnFailedTextColor | default('#ffffff'),
+        btnFailedTextBorderColor : data.btnFailedTextBorderColor | default('transparent'),
+        alignType : data.alignType | default('2'),
+    }
+%}
+<!-- embed stylesheet begin -->
+<style type="text/css">
+    .geshop-u000087-multiple-{{ pageInstanceId }}{
+        width : {{ pageData.boxWidth }};
+        height:{{pageData.boxHeight}}{{ unit }};
+        line-height:{{pageData.boxHeight}}{{ unit }};
+        background-color:{{ pageData.boxBackgroundColor }};
+        {% if data.boxBackgroundImage %}background-image: url("{{ data.boxBackgroundImage }}");{% endif %}
+        padding: 0 {{4 / unitrange}}rem;
+        {% if pageData.alignType == 1 %}
+            float:left;
+            {% elseif pageData.alignType == 2 %}
+            float: none;
+            margin:0 auto;
+            {% elseif pageData.alignType == 3 %}
+            float:right;
+        {% endif %}
+        margin-bottom : {{ pageData.boxMarginBottom }}{{ unit }};
+        box-sizing: border-box;
+    }
+
+    .geshop-u000087-multiple-{{ pageInstanceId }} .coupon-body .coupon-top .coupon-discount{
+        line-height:{{pageData.discountTextSize}}{{ unit }};
+        font-size:{{pageData.discountTextSize}}{{ unit }};
+        color:{{pageData.discountTextColor}};
+    }
+    .geshop-u000087-multiple-{{ pageInstanceId }} .coupon-body .coupon-top .coupon-discount-term{
+        font-size:{{pageData.discountTermTextSize}}{{ unit }};
+        color:{{pageData.discountTermTextColor}};
+    }
+    .geshop-u000087-multiple-{{ pageInstanceId }} .coupon-body .coupon-middle{
+        font-size:{{pageData.validTextSize}}{{unit}};
+        line-height:{{ pageData.validTextSize}}{{unit}};
+        margin:{{pageData.validTextMarginBottom}}{{unit}} 0;
+        color:{{pageData.validTextColor}};
+    }
+
+    .geshop-u000087-multiple-{{ pageInstanceId }} .coupon-body .coupon-top {
+        margin-top: {{ (data.discountTextMarginTop | default(40)) / unitrange }}{{ unit }};
+        margin-bottom: {{ (data.discountTextMarginBottom | default(0)) / unitrange }}{{ unit }};
+        margin-left: {{ (data.discountTextMarginLeft | default(56)) / unitrange }}{{ unit }};
+    }
+
+    .geshop-u000087-multiple-{{ pageInstanceId }} .coupon-body .coupon-middle {
+        margin-left: {{ (data.validTextMarginLeft | default(56)) / unitrange }}{{ unit }};
+    }
+
+    {# 按钮默认状态 #}
+    .geshop-u000087-multiple-{{ pageInstanceId }} .coupon-body .coupon-layout .coupon-btn{
+        cursor: pointer;
+        padding:0 {{ 24 / unitrange }}{{ unit }};
+        font-size:{{ pageData.btnSize }}{{ unit }};
+        line-height:{{ pageData.btnSize * 2 }}{{ unit }};
+        border: {{ 1 / unitrange }}{{ unit }} solid transparent;
+        border-radius : {{ pageData.btnRadius }}{{ unit }};
+    }
+    
+    {# 按钮未领取状态 #}
+    .geshop-u000087-multiple-{{ pageInstanceId }} .coupon-body .coupon-layout .coupon-btn.un-received{
+        background-color : {{ pageData.btnUnreceivedBgColor }};
+        color: {{ pageData.btnUnreceivedTextColor }};
+        border-color : {{ pageData.btnUnreceivedTextBorderColor }};
+    }
+    {# 按钮已领取状态 #}
+    .geshop-u000087-multiple-{{ pageInstanceId }} .coupon-body .coupon-layout .coupon-btn.received{
+        background-color : {{ pageData.btnReceivedBgColor }};
+        color: {{ pageData.btnReceivedTextColor }};
+        border-color : {{ pageData.btnReceivedTextBorderColor }};
+    }
+    {# 按钮失效状态 #}
+    .geshop-u000087-multiple-{{ pageInstanceId }} .coupon-body .coupon-layout .coupon-btn.failed{
+        background-color : {{ pageData.btnFailedBgColor }};
+        color: {{ pageData.btnFailedTextColor }};
+        border-color : {{ pageData.btnFailedTextBorderColor }};
+    }
+    .geshop-u000087-multiple-{{ pageInstanceId }} .coupon-body .coupon-bottom .coupon-text{
+        color:{{ pageData.countDownTitleTextColor }};
+    }
+</style>
+<!-- embed stylesheet end -->

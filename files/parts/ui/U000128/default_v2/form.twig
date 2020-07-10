@@ -1,0 +1,133 @@
+a{%
+    set formData = {
+        id: 'U0000128',
+        name: '赠品组件',
+        theme: 'default_v2',
+        tabs: [
+            {
+                label: '商品数据',
+                components: [
+                    {
+                        label: '赠品区域配置',
+                        type: 'diy',
+						src: 'form-data.twig'
+                    }
+                ]
+            },
+            {
+                label: '样式配置',
+                components: [
+                    {
+                        label: '常用配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件下边距(px)',
+                                name: 'box_margin_bottom',
+                                default: '40',
+                                col: 2,
+                            },
+                            {
+                                label: '背景颜色',
+                                name: 'box_bg_color',
+                                default: '#f8f8f8',
+                                type: 'colorPicker',
+                                col: 2,
+                            }
+                        ]
+                    },
+					{
+						label: 'Tab导航',
+                        type: 'fieldset',
+						components: [
+							{
+                                label: '高度',
+                                name: 'tabHeight',
+                                default: '112',
+                            },
+							{
+                                label: '文字大小',
+                                name: 'tabFontSize',
+                                default: '28',
+                            },
+							{
+                                label: '选中的背景颜色',
+                                name: 'tabSelectedBgColor',
+                                type: 'colorPicker',
+                                default: '#999999',
+                            },
+							{
+                                label: '选中的背景图片',
+                                name: 'tabSelectBgurl',
+                                type: 'image',
+                            },
+							{
+                                label: '选中的文字颜色',
+                                name: 'tabSelectedTextColor',
+                                type: 'colorPicker',
+                                default: '#FFFFFF',
+                            },
+							{
+                                label: '未选中的背景颜色',
+                                name: 'tabUnselectedBgColor',
+                                type: 'colorPicker',
+                                default: '#D8D8D8',
+                            },
+							{
+                                label: '未选中的背景图片',
+                                name: 'tabunSelectBgurl',
+                                type: 'image',
+                            },
+							{
+                                label: '未选中的文字颜色',
+                                name: 'tabUnselectedTextColor',
+                                type: 'colorPicker',
+                                default: '#ffffff',
+                            },
+						]
+					},
+                    {
+                        label: '商品信息',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '总库存条颜色',
+                                name: 'tabStockBarTotalColor',
+                                type: 'colorPicker',
+                                default: '#D8D8D8',
+                            },
+                            {
+                                label: '剩余库存条颜色',
+                                name: 'tabStockBarLavelColor',
+                                type: 'colorPicker',
+                                default: '#333333',
+                            },
+                            {
+                                label: '价格文字颜色',
+                                name: 'tabPriceTextColor',
+                                type: 'colorPicker',
+                                default: '#000000',
+                            },
+                            {
+                                label: '已领取赠品/总赠品文本颜色',
+                                name: 'tabSellTextColor',
+                                type: 'colorPicker',
+                                default: '#333333',
+                            },
+                        ]
+                    },
+                ]
+            }
+        ],
+        moreConfig: [],
+        beforeSubmit: 'beforeSubmit'
+    }
+%}
+ 
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+{# 引入自定义函数 #}
+<script>
+{% include 'form.js' %}
+</script>

@@ -1,0 +1,17 @@
+@media screen and (max-width: 1024px) and (min-width: 768px){
+    {{ class_box }} .geshop-goods-discount {
+    {% if data.pad_discount_bgImage %}
+        background-image: url({{data.pad_discount_bgImage}});
+        border-radius:0;
+    {% endif %}
+        font-size: {{data.pad_discount_fontSize ?? 14}}px;
+    }
+
+    {{ class_box }} .geshop-goods-discount p:first-child  {
+        padding-top: {{data.pad_discount_pt ?? 0}}px;
+    }
+
+    {{ class_box }} .geshop-goods-discount p{
+        padding-left: {{data.pad_discount_pl ?? 0}}px;
+    }
+}

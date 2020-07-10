@@ -1,0 +1,23 @@
+<div class="geshop-component-box component-drag" data-key="U000048" data-id="{{ pageInstanceId }}">
+    <div style="text-align: center;
+        padding-top: {{ data.paddingTop | default(0) }}px;
+        padding-bottom: {{ data.paddingBottom | default(0) }}px;
+    ">
+        {% if data.videoCode %}
+        
+        <iframe type="text/html"
+            width="{{ data.videoWidth | default(640) }}"
+            height="{{ data.videoHeight | default(360) }}"
+            src="https://www.youtube.com/embed/{{ data.videoCode }}{% if data.loop == 1 or data.autoPlay == 1 %}?{% if data.loop == 1 %}loop=1&playlist={{ data.videoCode }}&{% endif %}{% if data.autoPlay == 1 %}autoplay=1{% endif %}{% endif %}"
+            frameborder="0" 
+             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+        {% else %}
+        <p style="{% if data.default.video is not empty %}background-image: url({{ data.default.video }});background-repeat: no-repeat; background-position: center;{% endif %}
+            width: {{ data.videoWidth | default(640) }}px;
+            height: {{ data.videoHeight | default(360) }}px;
+            display: inline-block;"></p>
+        {% endif %}
+    </div>
+</div>

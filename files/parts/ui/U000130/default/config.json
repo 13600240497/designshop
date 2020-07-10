@@ -1,0 +1,20 @@
+{
+  "fields": {
+    "titleFtW": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "titleFtC": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "titleFtS": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "tab_headerBgC": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "tab_headerFtC": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "downStatusTextC": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "downTextC": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "downTimeBgC": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "priceC": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "marketPriceC": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "presaleTimeBgC": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "presaleFtS": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "presaleTextC": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "presaleStatusFtS": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "presaleStatusTextC": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "tab_marginBottow": { "is_public": "0", "is_m": "0", "is_app": "1" }
+  },
+}

@@ -1,0 +1,30 @@
+{# M #}
+@media screen and (max-width: 767px){
+    {{ body }}{
+    margin-top: {{ data.box_margin_top_m|default(0) }}px;
+    margin-bottom: {{ data.box_margin_bottom_m|default(0) }}px;
+    }
+
+
+    {# 优惠券信息 #}
+    {{ body }} .list_item{
+    width:{{ data.item_bg_width_m|default(351) }}px;
+    height:{{ data.item_bg_height_m|default(160) }}px;
+    {% if data.item_bgImage_m %}
+        background-image:url({{ data.item_bgImage_m }});
+    {% endif %}
+    }
+
+    {{ body }} .btn-group-state{
+    margin-top:{{ data.stock_btn_padding_m|default(10) }}px;
+    }
+
+    {{ body }} .btn-group-state .btn-item{
+    border-radius:{{ data.item_btn_radius_m|default(2) }}px;
+    }
+
+    {{ body }} .coupon-info-group{
+    bottom: {{ data.item_offset_bottom_m|default(50) }}px;
+    }
+
+}

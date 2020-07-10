@@ -1,0 +1,44 @@
+{
+    "fields": {
+        "box_margin_bottom": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "componentBgColor": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "shopPriceBgColor": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "saleInfoFontColor": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "isOriginalPriceVis": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "shopPriceFontSize": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "btnBgColor": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "btnBorderColor": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "shopIconImg": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "shopNowFontColor": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "shopNowFontSize": { "is_public": "1", "is_m": "1", "is_app": "1" },
+
+        "goodsSKU": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "goodsDataFrom": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "ipsMethods": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "ipsInfo": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "ipsFilterInfo": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "ipsGoodsSKU": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "ipsAutoInfo": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "ipsAutoRuleSKU": { "is_public": "1", "is_m": "1", "is_app": "1" }
+    },
+    "languages":{
+        "SOLDOUT":{
+            "en":"SOLD OUT",
+            "de":"SOLD OUT",
+            "es":"AGOTADO",
+            "fr":"ÉPUISÉ",
+            "it":"ESAURITO",
+            "pt":"ESGOTADO",
+            "ru":"Продано",
+            "ar":"بيعت كلها",
+            "ja":"売り切れ",
+            "ro":"VANDUT"
+        },
+        "SHOPNOW": {
+            "en":"shop now",
+            "fr":"je fonce",
+            "ja":"今すぐ購入",
+            "ro":"cumpara acum"
+        }
+    }
+}

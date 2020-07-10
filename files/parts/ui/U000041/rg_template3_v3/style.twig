@@ -1,0 +1,42 @@
+{% set box = '#U000041_'~pageInstanceId~'.geshop-U000041-rg_template3_v3' %}
+{{ box }} {
+    margin-bottom: {{ data.box_margin_bottom ?? 32 }}px;
+}
+
+{{ box }} .gs-tab-content {
+    background-color: {{ data.box_bg_color ?? '#F8F8F8' }};
+}
+
+{{ box }} .tab-wrap {
+    background-color: {{ data.box_bg_color ?? '#F8F8F8' }};
+}
+
+{{ box }} .tab-nav-box {
+    background-color: {{ data.tabBgC ?? '#EEEEEE' }};
+}
+
+{{ box }} .swiper-button-prev, {{ box }} .swiper-button-next {
+    background-color: {{ data.arrow_bg_color ?? '#FFFFFF' }};
+}
+
+{{ box }} .swiper-button-prev:after, {{ box }} .swiper-button-next:after {
+    content: "";
+    border-top: 2px solid {{ data.arrow_color ?? '#222222' }};
+    border-right: 2px solid {{ data.arrow_color ?? '#222222' }};
+}
+
+{{ box }} .gs-tab-list {
+    color: {{ data.tabFtC ?? '#222222' }};
+}
+
+{{ box }} li.list-item {
+    border-radius:{{ data.list_bd_rd ?? 4}}px;
+    border:1px solid {{ data.list_bd_color ?? '#FFFFFF' }};
+}
+
+{{ box }} .gs-tab-list.on {
+    color: {{ data.tabFtCA ?? '#FFFFFF' }};
+    background-color: {{ data.tabBgCA ?? '#222222'}};
+}
+
+

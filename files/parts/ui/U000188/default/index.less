@@ -1,0 +1,613 @@
+.wrap_U0000188 {
+
+    .gs-dialog-U000188-container {
+        display: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: rgba(0, 0, 0, .3);
+        z-index: 10008;
+
+        .loading-text {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+
+            .lds-default {
+                display: inline-block;
+                position: relative;
+                width: 64px;
+                height: 64px;
+            }
+            .lds-default div {
+                position: absolute;
+                width: 5px;
+                height: 5px;
+                background: #fff;
+                border-radius: 50%;
+                animation: lds-default 1.2s linear infinite;
+            }
+            .lds-default div:nth-child(1) {
+                animation-delay: 0s;
+                top: 29px;
+                left: 53px;
+            }
+            .lds-default div:nth-child(2) {
+            animation-delay: -0.1s;
+            top: 18px;
+            left: 50px;
+            }
+            .lds-default div:nth-child(3) {
+            animation-delay: -0.2s;
+            top: 9px;
+            left: 41px;
+            }
+            .lds-default div:nth-child(4) {
+            animation-delay: -0.3s;
+            top: 6px;
+            left: 29px;
+            }
+            .lds-default div:nth-child(5) {
+            animation-delay: -0.4s;
+            top: 9px;
+            left: 18px;
+            }
+            .lds-default div:nth-child(6) {
+            animation-delay: -0.5s;
+            top: 18px;
+            left: 9px;
+            }
+            .lds-default div:nth-child(7) {
+            animation-delay: -0.6s;
+            top: 29px;
+            left: 6px;
+            }
+            .lds-default div:nth-child(8) {
+            animation-delay: -0.7s;
+            top: 41px;
+            left: 9px;
+            }
+            .lds-default div:nth-child(9) {
+            animation-delay: -0.8s;
+            top: 50px;
+            left: 18px;
+            }
+            .lds-default div:nth-child(10) {
+            animation-delay: -0.9s;
+            top: 53px;
+            left: 29px;
+            }
+            .lds-default div:nth-child(11) {
+            animation-delay: -1s;
+            top: 50px;
+            left: 41px;
+            }
+            .lds-default div:nth-child(12) {
+            animation-delay: -1.1s;
+            top: 41px;
+            left: 50px;
+            }
+            @keyframes lds-default {
+            0%, 20%, 80%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            }
+
+        }
+    }
+
+    .geshop-188d-container {
+        position: relative;
+        display: block;
+        width: 100%;
+        // height: 100%;
+        height: 16.08rem;
+    }
+
+    .geshop-188d-head {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+    }
+
+    .geshop-188d-rule-btn {
+        position: absolute;
+        width: 1.6rem;
+        height: .586667rem;
+        line-height: .586667rem;
+        font-size: .32rem;
+        text-align: center;
+        z-index: 9;
+        border-top-left-radius: .533333rem;
+        border-bottom-left-radius: .533333rem;
+    }
+
+    .geshop-188d-turntable {
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 20 / 75rem;
+        img {
+            width: 100%;
+        }
+    }
+
+    .geshop-188d-pointer {
+        position: absolute;
+        img {
+            transition: all 5s ease-out;
+        }
+    }
+
+    .geshop-188d-pointer-text {
+        position: absolute;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        left: -.053333rem;
+        top: 0;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .geshop-188d-spins {
+        position: absolute;
+        span {
+            font-weight: bold;
+        }
+    }
+
+    .geshop-188d-points {
+        position: absolute;
+        text-align: center;
+        line-height: 1.7em;
+        span {
+            font-weight: bold;
+        }
+    }
+
+    .geshop-188d-list {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        border: 1px solid transparent;
+
+        .geshop-188d-list-warning {
+            text-align: center;
+            line-height: .96rem;
+
+            .time {
+                i {
+                    font-style: normal;
+                }
+            }
+        }
+    }
+
+    .geshop-188d-list-title {
+        position: absolute;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .geshop-188d-list-uname {
+        display: block;
+        margin: 0px;
+        // margin-top: 60px;
+        // height: 396px;
+        height: .96rem;
+        overflow: hidden;
+        box-sizing: border-box;
+        position: relative;
+        ul {
+            position: relative;
+            // transition: all .5s;
+            // transform: translateY(-8px);
+        }
+        li {
+            margin: .215rem 0rem;
+            // padding: 0 .85rem;
+            padding: 0 .35rem;
+            height: .59rem;
+            line-height: .59rem;
+            font-size: .373333rem;
+            span {
+                float: right;
+                text-overflow: ellipsis;
+                width: 3.733333rem;
+                text-align: right;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+        }
+    }
+
+    .geshop-188d-list-warning {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        width: 100;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        color: #333;
+        padding: 0 52px;
+        box-sizing: border-box;
+        opacity: 0;
+        z-index: -1;
+    }
+
+    .geshop-188d-share {
+        position: absolute;
+        .geshop-188d-share-text {
+            margin-bottom: 8px;
+        }
+        img {
+            display: inline-block;
+            width: 1.28rem;
+            height: 1.28rem;
+            margin-right: .426667rem;
+            margin-bottom: .426667rem;
+        }
+        img:last-child {
+            margin-right: 0;
+        }
+    }
+
+    .geshop-188d-app-share.is-hidden {
+        display: none;
+    }
+
+    .geshop-188d-app-share.is-visible {
+        display: block;
+    }
+
+    .geshop-188d-app-share {
+        .geshop-188d-app-share-icons {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 10rem;
+            height: 5.04rem;
+            background-color: #ffffff;
+            z-index: 12;
+            padding: .933333rem .933333rem 0;
+            text-align: center;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+
+            .share-icon-item {
+                text-align: center;
+                width: 1.5rem;
+                height: 2rem;
+                margin-right: .426667rem;
+                .share-icon {
+                    width: 1.28rem;
+                    height: 1.28rem;
+                }
+                .share-icon:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+
+
+        .geshop-188d-app-share-close {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            z-index: 12;
+            width: 10rem;
+            height: 1.253333rem;
+            line-height: 1;
+            text-align: center;
+            border-top: 1px solid #DCDDDC;
+            .close {
+                display: inline-block;
+                width: 1.253333rem;
+                height: 1.253333rem;
+                background-image: url(/resources/images/icon/share-close.png);
+                background-position: center center;
+                background-size: 60%;
+                background-repeat: no-repeat;
+            }
+
+        }
+    }
+
+    .geshop-188d-app-share-btn {
+        border: none;
+        background: none;
+        border-radius: .666667rem;
+        position: absolute;
+        top: 14.186666666666667rem;
+        left: 50%;
+        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        background-size: cover;
+        background-position: top center;
+    }
+
+}
+
+
+// 不展示名单的时候
+.wrap_U0000188.hide-list {
+    .geshop-188d-turntable {
+        text-align: center;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+    }
+    .geshop-188d-turntable-container {
+        position: relative;
+        display: inline-block;
+    }
+}
+
+// 倒计时准备开始
+.wrap_U0000188.is-ready {
+    .geshop-188d-list-uname li {
+        display: none;
+    }
+    .geshop-188d-list-warning {
+        opacity: 1;
+        z-index: 1;
+    }
+}
+
+
+// START 弹窗基础公共样式 ============================================
+.geshop-188d-dialog {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 1000;
+}
+.geshop-188d-dialog-mask {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: #000;
+    opacity: .3;
+    z-index: 1002;
+}
+.geshop-188d-dialog-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #fff;
+    border-radius: 8px;
+    z-index: 1003;
+}
+.geshop-188d-dialog-body {
+    padding: 0 40px;
+    text-align: center;
+    p {
+        color: #333;
+        font-size: 16px;
+        line-height: 1.4em;
+        i {
+            font-style: normal;
+        }
+    }
+    .winning-tips-text {
+        font-size: .32rem !important;
+        color: #999 !important;
+        margin: .266667rem 0 .8rem;
+    }
+}
+.geshop-188d-dialog-footer {
+    position: relative;
+    padding-bottom: 1.066667rem;
+    text-align: center;
+    font-size: 0px;
+    button {
+        display: inline-block;
+        width: 3.44rem;
+        height: .906667rem;
+        margin: 0px .16rem;
+        line-height: 1;
+        border-radius: .64rem;
+        font-size: .373333rem;
+        color: #ffffff;
+        background: #333;
+    }
+}
+.geshop-188d-dialog-close {
+    @px: .586667rem;
+    position: absolute;
+    top: -@px / 2;
+    right: -@px / 2;
+    height: @px;
+    width: @px;
+    border-radius: @px;
+}
+// END 弹窗基础公共样式 =============================================
+
+
+// START 转盘规则弹窗 ==============================================
+.geshop-188d-dialog-rule {
+    display: none;
+    .geshop-188d-dialog-container {
+        box-sizing: border-box;
+        width: 8.533333rem;
+        padding: .96rem;
+        transform: translate(-50%, -50%);
+    }
+    h2 {
+        height: .586667rem;
+        line-height: .586667rem;
+        font-size: 0.7466666666666667rem;
+        font-weight: bold;
+        text-align: center;
+        color: #333;
+        margin-bottom: .32rem;
+    }
+    p {
+        line-height: 1.6em;
+        font-size: .426667rem;
+        max-height: 9.333333rem;
+        overflow-y: scroll;
+    }
+}
+// END 转盘规则弹窗 ================================================
+
+
+// START 失败弹窗 =================================================
+.geshop-188d-dialog-fail,
+.geshop-188d-dialog-fail-not-start {
+    display: none;
+    .geshop-188d-dialog-container {
+        width: 8.533333rem;
+        height: 6.4rem;
+        margin-left: -4.266667rem;
+        margin-top: -2.72rem;
+    }
+    .geshop-188d-dialog-body {
+        min-height: 3.4rem;
+        padding-top: 0.96rem;
+    }
+}
+.geshop-188d-dialog-fail-not-start.is-visible {
+    display: block;
+    visibility: visible;
+}
+.geshop-188d-dialog-fail-not-start.is-hidden {
+    display: block;
+    visibility: hidden;
+}
+// END 失败弹窗 ===================================================
+
+
+// START 分享弹窗 =================================================
+.geshop-188d-dialog-share {
+    display: none;
+    .geshop-188d-dialog-container {
+        width: 8.533333rem;
+        min-height: 10.293333rem;
+        transform: translate(-50%, -50%);
+    }
+    .geshop-188d-dialog-body {
+        padding: 0 .96rem;
+        padding-top: .96rem;
+        min-height: 7.4rem;
+        text-align: center;
+    }
+    .geshop-188d-dialog-footer {
+        padding-top: .8rem;
+    }
+    .geshop-188d-dialog-share-icons {
+        margin-top: .853333rem;
+        font-size: 0px;
+        text-align: center;
+        > * {
+            display: inline-block;
+            width: 1.28rem;
+            height: 1.28rem;
+            margin: 0 .2rem;
+        }
+    }
+    button {
+        width: 3.44rem;
+    }
+}
+// END 分享弹窗 ===================================================
+
+
+// START 中奖SKU弹窗 ==============================================
+.geshop-188d-dialog-sku {
+    display: none;
+    .geshop-188d-dialog-container {
+        width: 8.533333rem;
+        min-height: 10.293333rem;
+        transform: translate(-50%,-50%);
+        text-align: center;
+    }
+    .geshop-188d-dialog-body {
+        padding-top: 24px;
+        min-height: 7.466666666666667rem;
+        h2 {
+            height: .48rem;
+            line-height: 1;
+            font-size: 18px;
+            color: #333;
+            margin-top: .426667rem;
+            margin-bottom: .213333rem;
+        }
+    }
+    .geshop-188d-dialog-sku-image {
+        display: block;
+        margin: 0 auto;
+        width: 130px;
+        height: 130px;
+        text-align: center;
+        img {
+            display: inline-block;
+            height: 100%;
+            width:  auto;
+        }
+    }
+
+}
+// END 中奖SKU弹窗 ================================================
+
+
+// START 中奖other弹窗 ==============================================
+.geshop-188d-dialog-other {
+    display: none;
+    .geshop-188d-dialog-container {
+        width: 8.533333rem;
+        min-height: 10.293333rem;
+        transform: translate(-50%,-50%);
+        text-align: center;
+    }
+    .geshop-188d-dialog-body {
+        padding-top: 24px;
+        min-height: 7.466666666666667rem;
+        h2 {
+            height: .426667rem;
+            line-height: .426667rem;
+            font-size: 18px;
+            color: #333;
+            margin-top: .426667rem;
+            margin-bottom: .213333rem;
+        }
+    }
+    .geshop-188d-dialog-other-image {
+        display: block;
+        margin: 0 auto;
+        width: 130px;
+        height: 130px;
+        text-align: center;
+        img {
+            display: inline-block;
+            height: auto;
+            width:  100%;
+        }
+    }
+
+}
+// END 中奖other弹窗 ================================================
+

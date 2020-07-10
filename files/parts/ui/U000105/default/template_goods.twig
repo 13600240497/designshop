@@ -1,0 +1,16 @@
+{# 商品SKU #}
+
+<div class="goods-hide goods-visible" data-target="goodsDataFrom-1">
+    <div class="layui-form-item">
+        {# <input type="hidden" class="js-goodsSKU" name="goodsSKU" value=""> #}
+        
+        <label class="layui-form-label">商品数据</label>
+        <div class="layui-input-block" style="margin-left: 0;">
+            <textarea placeholder="请输入商品SKU,不同SKU用英文逗号隔开" class="layui-textarea js-goodsSKU-input" name="goodsSKU" data-skuvalid="true" data-public-tag="true">{{ data.goodsSKU }}</textarea>
+        </div>
+    </div>
+
+    {#<div class="layui-form-item tab-add-btn" style="margin-top: 10px;">#}
+        {#<span class="el-button el-button--primary el-button--small el-button--blue" id="gs_getList" style="float:right">商品管理</span>#}
+    {#</div>#}
+</div>

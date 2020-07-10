@@ -1,0 +1,129 @@
+{% set pageData = {
+    activeFontColor:data.activeFontColor is not null?data.activeFontColor:'#eb1942',
+    saleFontColor: data.saleFontColor is not null ? data.saleFontColor : '#FA386A'
+}%}
+<div data-key="U000133" data-id="{{ pageInstanceId }}" data-static-domain="{{staticDomain}}" data-gid="U000133" class="geshop-component-box component-drag gs-index-main rgindex-pc-notab warp-{{pageInstanceId}}" >
+    <div class="geshop geshop-index-goods">
+
+        <div class="tab-container tab-no-swipe">
+            <!-- embed stylesheet begin -->
+            <style type="text/css">
+                .warp-{{pageInstanceId}}{
+                    margin-top: {{ data.marginTop | default(0) }}px;
+                }
+                .warp-{{pageInstanceId}} .nav-container li.current {
+                    color: {{pageData.activeFontColor|default('none')}}!important;
+                }
+                .warp-{{pageInstanceId}} .my-shop-price{
+                    color: {{ pageData.saleFontColor }};
+                }
+                .warp-{{pageInstanceId}} .my_old_price{
+                    color: #666666;
+                }
+            </style>
+            <!-- embed stylesheet end -->
+
+            {% if data.goodsInfo|json_encode() != '[{"label":"","lists":[]}]' and data.goodsInfo|json_encode() != 'null' %}
+                {% if data.navVis == 0 %}
+                    <div class="nav-container" style="{% if data.titleActive == '1' %} display:none;  {% endif %} ">
+                        <div class="nav-con-ul swiper-container">
+                            <ul class="clearfix swiper-wrapper">
+                                {% for item in data.navList %}
+                                    <li class="swiper-slide" style="font-size: {{data.titleFontSize}}px;color: {{data.navFontColor}}">{{item.categoryName}}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="pagination-btn swiper-button-prev hide"></div>
+                        <div class="pagination-btn swiper-button-next hide"></div>
+                    </div>
+                {% endif %}
+
+
+                <div class="goods-list">
+                    {% for key, content in data.goodsInfo | default(0..3) %}
+                        <ul class="clearfix">
+                            {% for item in content.lists %}
+
+                                <li class="goods-item-black">
+                                    <div class="goods-img">
+                                        <a href="{{item.url_title}}" class="hover-img logsss_event" data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+                                            {% if data.isEditEnv == 1 %}
+                                                <img src="{{item.goods_img|default(data.default.good)}}"  style="width: 250px; height: 250px;" >
+                                            {% else %}
+                                                <img class="js-lazyload js_gdexp_lazy"  data-original="{{item.goods_img|default(data.default.good)}}" src="{{data.default.lazyImg|default(data.default.good)}}"  style="width: 250px; height: 250px;" data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+                                            {% endif %}
+                                        </a>
+                                    </div>
+                                    {% if item.goods_title | length > 1 %}
+                                        <p id='pro-name'>
+                                            <a href="{{item.url_title}}" title="{{item.goods_title}}" class="logsss_event" data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }" >{{item.goods_title|default("请添加描述")}}</a>
+                                        </p>
+                                        <p id='pro-price'>
+                                            <strong id="new-price" class="my_shop_price my-shop-price" data-orgp="{{item.shop_price}}">{{item.shop_price}}</strong>
+                                            <del id="old-price" class="my_shop_price my_old_price js_market_wrap" data-orgp="{{item.market_price}}">{{item.market_price}}</del>
+                                        </p>
+                                    {% else %}
+                                        <p id='pro-name' class="hover-title">
+                                            <a href="{{item.url_title}}" title="{{item.goods_title}}">{{item.goods_title|default("请添加描述")}}</a>
+                                        </p>
+                                        <p id='pro-price' class="hover-price">
+                                            <strong id="new-price" class="my_shop_price my-shop-price" data-orgp="{{item.shop_price}}">{{item.shop_price}}</strong>
+                                            <del id="old-price" class="my_shop_price my_old_price js_market_wrap" data-orgp="{{item.market_price}}">{{item.market_price}}</del>
+                                        </p>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endfor %}
+                </div>
+
+            {% else %}
+                <div class="nav-container" style="{% if data.titleActive == '1' %} display:none;  {% endif %} ">
+                    <div class="nav-con-ul">
+                        <ul class="clearfix swiper-wrapper">
+                            {% for index,item in [1,2,3,4,5,6,7] %}
+                                <li class="swiper-slide" style="font-size: {{data.titleFontSize}}px;color: {{data.navFontColor}}">Category{{index+1}}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="goods-list">
+                    {% for key, content in [1,2,3,4] | default(0..3) %}
+                        <ul class="clearfix">
+                            {% for item in [1,2,3,4] %}
+
+                                <li class="goods-item-black">
+                                    <div class="goods-img">
+                                        <a href="{{item.url_title}}" class="hover-img logsss_event" data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+                                            <img class="" data-original="{{item.goods_img|default(data.default.good)}}" src="{{item.goods_img|default(data.default.good)}}" style="width: 250px; height: 250px;" data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+                                        </a>
+                                    </div>
+                                    {% if item.goods_title | length > 1 %}
+                                        <p id='pro-name'>
+                                            <a href="{{item.url_title}}" title="{{item.goods_title}}" class="logsss_event" data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }" >{{item.goods_title|default("请添加描述")}}</a>
+                                        </p>
+                                        <p id='pro-price'>
+                                            <strong id="new-price" class="my_shop_price my-shop-price" data-orgp="{{item.shop_price}}">{{item.shop_price}}</strong>
+                                            <del id="old-price" class="my_shop_price my_old_price" data-orgp="{{item.market_price}}">{{item.market_price}}</del>
+                                        </p>
+                                    {% else %}
+                                        <p id='pro-name' class="hover-title">
+                                            <a href="{{item.url_title}}" title="{{item.goods_title}}">{{item.goods_title|default("This is the descript")}}</a>
+                                        </p>
+                                        <p id='pro-price' class="hover-price">
+                                            <span class="my_shop_price my-shop-price my_shop_price_demo site-bold-strict">$0.00</span>
+                                            <del id="old-price" class="my_shop_price my_old_price" data-orgp="{{item.market_price}}">$0.00</del>
+                                        </p>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

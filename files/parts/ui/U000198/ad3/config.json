@@ -1,0 +1,15 @@
+{
+  "fields": {
+    "boxMarginTop": { "is_public": "1", "is_m": "1", "is_app": "1" },
+    "boxMarginBottom": { "is_public": "1", "is_m": "1", "is_app": "1" },
+    "img1Src": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "img1Alt": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "img1Href": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "img2Src": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "img2Alt": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "img2Href": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "img3Src": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "img3Alt": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "img3Href": { "is_public": "0", "is_m": "1", "is_app": "1" }
+  }
+}

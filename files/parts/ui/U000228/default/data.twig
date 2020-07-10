@@ -1,0 +1,358 @@
+<section>
+    <div class="slider-list-setting component-form-setting-ite component-form-configure-item">
+        <h4 class="column-title">基础配置</h4>
+        <div class="layui-tab layui-tab-brief">
+
+            <div class="layui-tab layui-tab-brief">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">PC</li>
+                    <li>PAD</li>
+                    <li>M</li>
+                </ul>
+
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show" data-type="pc">
+                        <input class="hidden_data" name="pc_datas" type="hidden">
+
+                        <div class="layui-row layui-col-space20">
+                            <div class="layui-col-xs6">
+                                <div class="layui-form-item">
+                                    <label class="form-item-label">图片宽度(PX)</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="box_pc_img_width" autocomplete="off"
+                                               class="layui-input"
+                                               value="{{ data.box_pc_img_width?data.box_pc_img_width:data.pc_datas[0].box_img_width }}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="layui-col-xs6">
+                                <div class="layui-form-item">
+                                    <label class="form-item-label">图片高度(PX)</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="box_pc_img_height" autocomplete="off"
+                                               class="layui-input"
+                                               value="{{ data.box_pc_img_height?data.box_pc_img_height:data.pc_datas[0].box_img_height }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-xs6 " filter="" name="filter">
+                                    <div class="layui-form-item "><label class="layui-form-label "> 上间距 <span></span>
+                                        </label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="comp_margin_top"
+                                                   autocomplete="off" class="layui-input "
+                                                   value="{{ data.comp_margin_top }}" placeholder=""
+                                                   data-public-tag="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-col-xs6 " filter="" name="filter">
+                                    <div class="layui-form-item "><label class="layui-form-label "> 下间距 <span></span>
+                                        </label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="comp_margin_bottom"
+                                                   autocomplete="off" class="layui-input "
+                                                   value="{{ data.comp_margin_bottom }}" placeholder=""
+                                                   data-public-tag="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-col-xs6 " filter="" name="filter">
+                                    <div class="layui-form-item "><label class="layui-form-label "> 左间距 <span></span>
+                                        </label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="comp_margin_left"
+                                                   autocomplete="off" class="layui-input "
+                                                   value="{{ data.comp_margin_left }}" placeholder=""
+                                                   data-public-tag="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-col-xs6 " filter="" name="filter">
+                                    <div class="layui-form-item "><label class="layui-form-label "> 右间距 <span></span>
+                                        </label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="comp_margin_right"
+                                                   autocomplete="off" class="layui-input "
+                                                   value="{{ data.comp_margin_right }}" placeholder=""
+                                                   data-public-tag="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {% for key, item in data.pc_datas | default(0..2) %}
+                            <div class="slider-item">
+                                <p class="nav-title">轮播图{{ key + 1 }}设置</p>
+                                <div class="layui-block">
+
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label" style="margin-bottom: 4px;">Banner图片</label>
+                                        <div class="layui-input-block">
+                                            <a href="javascript:;" class="js_openResource design-open-resource"><i
+                                                        class="layui-icon">&#xe64a;</i></a>
+                                            <input class="layui-input Unwanted slider-img" type="text"
+                                                   name="pc_slider_bg{{ key+1 }}" value="{{ item.imgUrl }}"
+                                                   img-width="{{ item.box_img_width }}"
+                                                   img-height="{{ item.box_img_height }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-form-item" style="margin-top: 10px;">
+                                        <label class="form-item-label">图片链接</label>
+                                        <div class="layui-input-block" style="margin-top: 5px;">
+                                            <input type="text" name="slider_link" class="Unwanted layui-input"
+                                                   type="text" value="{{ item.imgLink }}">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="geshop-third-value" data-type="pc">
+                                    <span class="img-btn up-class"><i class='icon-up'></i><b class="tips">上移</b></span>
+                                    <span class="img-btn down-class"><i class='icon-down'></i><b
+                                                class="tips">下移</b></span>
+                                    <span class="img-btn remove-class"><i class='icon-delete'></i><b class="tips">删除</b></span>
+                                    <span class="img-btn add-class"><i class='icon-add'></i><b
+                                                class="tips">新增</b></span>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+                    </div>
+                    <div class="layui-tab-item" data-type="pad">
+                        <input class="hidden_data" name="pad_datas" type="hidden">
+
+                        <div class="layui-row layui-col-space20">
+                            <div class="layui-col-xs6">
+                                <div class="layui-form-item">
+                                    <label class="form-item-label">图片宽度(PX)</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="box_pad_img_width" autocomplete="off"
+                                               class="layui-input"
+                                               value="{{ data.box_pad_img_width?data.box_pad_img_width:data.pad_datas[0].box_img_width }}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="layui-col-xs6">
+                                <div class="layui-form-item">
+                                    <label class="form-item-label">图片高度(PX)</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="box_pad_img_height" autocomplete="off"
+                                               class="layui-input"
+                                               value="{{ data.box_pad_img_height?data.box_pad_img_height:data.pad_datas[0].box_img_height }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-xs6 " filter="" name="filter">
+                                    <div class="layui-form-item "><label class="layui-form-label "> 上间距 <span></span>
+                                        </label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="comp_margin_top_pad"
+                                                   autocomplete="off" class="layui-input "
+                                                   value="{{ data.comp_margin_top_pad }}" placeholder=""
+                                                   data-public-tag="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-col-xs6 " filter="" name="filter">
+                                    <div class="layui-form-item "><label class="layui-form-label "> 下间距 <span></span>
+                                        </label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="comp_margin_bottom_pad"
+                                                   autocomplete="off" class="layui-input "
+                                                   value="{{ data.comp_margin_bottom_pad }}" placeholder=""
+                                                   data-public-tag="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-col-xs6 " filter="" name="filter">
+                                    <div class="layui-form-item "><label class="layui-form-label "> 左间距 <span></span>
+                                        </label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="comp_margin_left_pad"
+                                                   autocomplete="off" class="layui-input "
+                                                   value="{{ data.comp_margin_left_pad }}" placeholder=""
+                                                   data-public-tag="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-col-xs6 " filter="" name="filter">
+                                    <div class="layui-form-item "><label class="layui-form-label "> 右间距 <span></span>
+                                        </label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="comp_margin_right_pad"
+                                                   autocomplete="off" class="layui-input "
+                                                   value="{{ data.comp_margin_right_pad }}" placeholder=""
+                                                   data-public-tag="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {% for key, item in data.pad_datas | default(0..2) %}
+                            <div class="slider-item">
+                                <p class="nav-title">轮播图{{ key + 1 }}设置</p>
+                                <div class="layui-block">
+
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label" style="margin-bottom: 4px;">Banner图片</label>
+                                        <div class="layui-input-block">
+                                            <a href="javascript:;" class="js_openResource design-open-resource"><i
+                                                        class="layui-icon">&#xe64a;</i></a>
+                                            <input class="layui-input Unwanted slider-img" type="text"
+                                                   name="pad_slider_bg{{ key+1 }}" value="{{ item.imgUrl }}"
+                                                   img-width="{{ item.box_img_width }}"
+                                                   img-height="{{ item.box_img_height }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-form-item" style="margin-top: 10px;">
+                                        <label class="form-item-label">图片链接</label>
+                                        <div class="layui-input-block" style="margin-top: 5px;">
+                                            <input type="text" name="slider_link" class="Unwanted layui-input"
+                                                   type="text" value="{{ item.imgLink }}">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="geshop-third-value" data-type="pad">
+                                    <span class="img-btn up-class"><i class='icon-up'></i><b class="tips">上移</b></span>
+                                    <span class="img-btn down-class"><i class='icon-down'></i><b
+                                                class="tips">下移</b></span>
+                                    <span class="img-btn remove-class"><i class='icon-delete'></i><b class="tips">删除</b></span>
+                                    <span class="img-btn add-class"><i class='icon-add'></i><b
+                                                class="tips">新增</b></span>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+                    </div>
+                    <div class="layui-tab-item" data-type="m">
+                        <input class="hidden_data" name="m_datas" type="hidden">
+
+                        <div class="layui-row layui-col-space20">
+                            <div class="layui-col-xs6">
+                                <div class="layui-form-item">
+                                    <label class="form-item-label">图片宽度(PX)</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="box_m_img_width" autocomplete="off"
+                                               class="layui-input box_img_width"
+                                               value="{{ data.box_m_img_width?data.box_m_img_width:data.m_datas[0].box_img_width }}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="layui-col-xs6">
+                                <div class="layui-form-item">
+                                    <label class="form-item-label">图片高度(PX)</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="box_m_img_height" autocomplete="off"
+                                               class="layui-input box_img_height"
+                                               value="{{ data.box_m_img_height?data.box_m_img_height:data.m_datas[0].box_img_height }}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="layui-row layui-col-space20">
+                                <div class="layui-col-xs6 " filter="" name="filter">
+                                    <div class="layui-form-item "><label class="layui-form-label "> 上间距 <span></span>
+                                        </label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="comp_margin_top_m"
+                                                   autocomplete="off" class="layui-input "
+                                                   value="{{ data.comp_margin_top_m }}" placeholder=""
+                                                   data-public-tag="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-col-xs6 " filter="" name="filter">
+                                    <div class="layui-form-item "><label class="layui-form-label "> 下间距 <span></span>
+                                        </label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="comp_margin_bottom_m"
+                                                   autocomplete="off" class="layui-input "
+                                                   value="{{ data.comp_margin_bottom_m }}" placeholder=""
+                                                   data-public-tag="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-col-xs6 " filter="" name="filter">
+                                    <div class="layui-form-item "><label class="layui-form-label "> 左间距 <span></span>
+                                        </label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="comp_margin_left_m"
+                                                   autocomplete="off" class="layui-input "
+                                                   value="{{ data.comp_margin_left_m }}" placeholder=""
+                                                   data-public-tag="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-col-xs6 " filter="" name="filter">
+                                    <div class="layui-form-item "><label class="layui-form-label "> 右间距 <span></span>
+                                        </label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="comp_margin_right_m"
+                                                   autocomplete="off" class="layui-input "
+                                                   value="{{ data.comp_margin_right_m }}" placeholder=""
+                                                   data-public-tag="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {% for key, item in data.m_datas | default(0..2) %}
+                            <div class="slider-item">
+                                <p class="nav-title">轮播图{{ key + 1 }}设置</p>
+                                <div class="layui-block">
+
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label" style="margin-bottom: 4px;">Banner图片</label>
+                                        <div class="layui-input-block">
+                                            <a href="javascript:;" class="js_openResource design-open-resource"><i
+                                                        class="layui-icon">&#xe64a;</i></a>
+                                            <input class="layui-input Unwanted slider-img" type="text"
+                                                   name="m_slider_bg{{ key+1 }}" value="{{ item.imgUrl }}"
+                                                   img-width="{{ item.box_img_width }}"
+                                                   img-height="{{ item.box_img_height }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-form-item" style="margin-top: 10px;">
+                                        <label class="form-item-label">图片链接</label>
+                                        <div class="layui-input-block" style="margin-top: 5px;">
+                                            <input type="text" name="slider_link" class="Unwanted layui-input"
+                                                   type="text" value="{{ item.imgLink }}">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="geshop-third-value" data-type="m">
+                                    <span class="img-btn up-class"><i class='icon-up'></i><b class="tips">上移</b></span>
+                                    <span class="img-btn down-class"><i class='icon-down'></i><b
+                                                class="tips">下移</b></span>
+                                    <span class="img-btn remove-class"><i class='icon-delete'></i><b class="tips">删除</b></span>
+                                    <span class="img-btn add-class"><i class='icon-add'></i><b
+                                                class="tips">新增</b></span>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+$(function () {
+    $('input[name=box_pad_img_height]');
+});
+
+</script>

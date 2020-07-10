@@ -1,0 +1,97 @@
+{% set remUnit = 75 %}
+
+{% set goodsData = {
+	marginBottom:(data.marginBottom|default(40))/remUnit,
+	componentBgc:data.componentBgc is not null?data.componentBgc:'#ffffff',
+	salePriceText:data.salePriceText|default('Now'),
+	disVis:data.disVis|default('show'),
+	discountType:data.discountType|default(1),
+
+	inforColor:data.inforColor is not null?data.inforColor :'#333333',
+	originalPriceColor:data.originalPriceColor is not null?data.originalPriceColor :'#999999',
+	salePriceFtS:data.salePriceFtS|default(16),
+	salePriceColor:data.salePriceColor is not null?data.salePriceColor:'#333333',
+
+	buyBtnBgc:data.buyBtnBgc is not null?data.buyBtnBgc:'#ffffff',
+	buyBtnTextColor:data.buyBtnTextColor is not null?data.buyBtnTextColor:'#333333',
+
+	dislocation:data.dislocation|default('right'),
+	disWidth:(data.disWidth|default(90))/remUnit,
+	disHeight:(data.disHeight|default(90))/remUnit,
+	disFtS:(data.disFtS|default(32))/remUnit,
+	disOffFtS:(data.disOffFtS|default(28))/remUnit,
+	disTextColor:data.disTextColor is not null?data.disTextColor:'#ffffff',
+	disTextBgc:data.disTextBgc is not null?data.disTextBgc:'#333333',
+} %}
+
+
+<div class="geshop-component-box component-drag clearfix" data-gid="U000056" data-key="U000056" data-unique="true" data-id="{{ pageInstanceId }}" attr="nav_flag" data-static-domain="{{staticDomain}}"
+style="margin-bottom: {{ goodsData.marginBottom }}px;background-color:{{ data.componentBgc|default('#ffffff') }}">
+
+	{{include ('@app/htdocs/resources/template/m/navTitle/default/index.twig')}}
+
+  	<div class="gs-list-product">
+		<ul class="clearfix">
+		{% for key,item in data.goodsInfo|default(0..3) %}
+			<li class="goods-item-bigPromote">
+				<div class="gs-img">
+				{% if item.goods_img != '' %}
+					<a class="gs-img-bgc logsss_event" href="{{item.url_title|default('javascript:;')}}"
+					data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'},'skuinfo':{'sku':'{{ item.goods_sn }}','pam':'0','pc':'{{ item.catid }}','k':'{{ item.warecode }}'} }">
+						<img src="{{item.goods_img}}" class="gs-bgc-pic">
+					</a>
+				{% else %}
+					<a class="gs-img-default-bgc">
+						<img src="{{data.default.clothes}}" class="gs-default-clothes">
+					</a>
+				{% endif %}
+				</div>
+				<div class="gs-goods-describe">
+					<a href="{{item.url_title|default('javascript:;')}}" class="logsss_event"
+						data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'},'skuinfo':{'sku':'{{ item.goods_sn }}','pam':'0','pc':'{{ item.catid }}','k':'{{ item.warecode }}'} }"
+					style="color:{{ goodsData.inforColor }};">{{item.goods_title|default('Here is the description name of commodity information')}}</a>
+				</div>
+				<div class="gs-goods-price">
+					<del style="color:{{ goodsData.originalPriceColor }};">${{item.market_price|default('0.00')}}</del>
+					<span style="font-size:{{ goodsData.salePriceFtS }}px;color:{{ goodsData.salePriceColor }};">
+						{{ goodsData.salePriceText }}
+						<b> ${{item.shop_price|default('0.00')}}</b>
+					</span>
+				</div>
+
+				{% if goodsData.discountType|default(1) == '1' and item.discount != '' %}
+          <div class="gs-discount" style="width:{{ goodsData.disWidth }}rem;
+						height:{{ goodsData.disHeight }}rem;
+            background-color:{{ goodsData.disTextBgc }};
+            font-size:{{ goodsData.disSize }}rem;
+            color:{{ goodsData.disTextColor }};
+						border-radius:{{goodsData.discountRadius}}%;
+						{% if data.disBgImg %}background:url({{data.disBgImg}}) no-repeat 0 0/100% 100%;border-radius:0;{% endif %}
+            visibility:{{ goodsData.disVis }};
+						{{ goodsData.dislocation }}:0px !important;">
+					  <div class="gs-discount-box" >
+              <p style="font-weight:bold;font-size:{{ goodsData.disFtS }}rem;">{{item.discount}}%</p>
+              <p style="font-size:{{ goodsData.disOffFtS }}rem;">OFF</p>
+					  </div>
+				  </div>
+        {% elseif goodsData.discountType|default(1) != '1' and item.discount != '' %}
+          <div class="gs-discount"  style="width:{{ goodsData.disWidth }}rem;
+						height:{{ goodsData.disHeight }}rem;
+            background-color:{{ goodsData.disTextBgc }};
+            font-size:{{ goodsData.disSize }}rem;
+            color:{{ goodsData.disTextColor }};
+						border-radius:{{goodsData.discountRadius}}%;
+            {% if data.disBgImg %}background:url({{data.disBgImg}}) no-repeat 0 0/100% 100%;border-radius:0;{% endif %}
+            visibility:{{ goodsData.disVis }};
+						{{ goodsData.dislocation }}:0px !important;">
+					  <div class="gs-discount-box">
+              <p style="font-weight:bold;font-size:{{ goodsData.disFtS }}rem;">-{{item.discount}}%</p>
+					  </div>
+				  </div>
+        {% endif %}
+			</li>
+			{% endfor %}
+		</ul>
+  	</div>
+</div>
+

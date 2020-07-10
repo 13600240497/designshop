@@ -1,0 +1,190 @@
+{% set formData = {
+    id: 'U000182',
+    name: '商品列表组件',
+    theme: 'template1_v2',
+    tabs: [
+        {
+            label: '数据配置',
+            components: [
+            {
+                type:'tab',
+                items: [
+                {
+                    label: 'M',
+                    components: [
+                    {
+                        label: '默认每页显示商品数量',
+                        desc: '(建议输入4的倍数)',
+                        name: 'page_show_goods_number'
+                    }
+                ]
+                }
+            ]
+            },
+            {
+                type: 'fieldset',
+                components: [
+                {
+                    label: '商品数据',
+                    type: 'goods-manager',
+                    ipsMethodsArr: ['1','2','3','4']
+                }
+            ]
+            }
+        ]
+        },
+        {
+            label: '样式配置',
+            components: [
+            {
+                label: '基础配置',
+                type: 'fieldset',
+                components: [
+                {
+                    type: 'margin-dl'
+                },
+                {
+                    label: '背景颜色',
+                    name: 'box_bg_color',
+                    default: '#f8f8f8',
+                    type: 'colorPicker',
+                    col: 1
+                },
+            ]
+            },
+            {
+                label: '商品信息',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '销售价文字颜色',
+                    name: 'shop_price_color',
+                    type: 'colorPicker',
+                    default: '#FF4545',
+                    col: 2
+                },
+                {
+                    label: '营销信息文字颜色',
+                    name: 'saleInfoFontColor',
+                    type: 'colorPicker',
+                    default: '#000000',
+                    col: 2
+                },
+                {
+                    label: '原价是否显示',
+                    name: 'isOriginalPriceVis',
+                    type: 'radio',
+                    default: '1',
+                    options: [
+                    { label: '是', value: '1' },
+                    { label: '否', value: '0' },
+                ]
+                },
+                {
+                    label: '销售价文字大小(px)',
+                    name: 'shop_price_size_m',
+                    default: '18',
+                    isshow:'dl-app'
+                },
+                {
+                    type: 'tab',
+                    isshow: 'dl-web',
+                    items:[
+                    {
+                        label:'PC / PAD',
+                        components:[
+                        {
+                            label: '销售价文字大小(px)',
+                            name: 'shop_price_size',
+                            default: '22',
+                        }
+                    ]
+                    },
+                    {
+                        label:'M',
+                        components:[
+                        {
+                            label: '销售价文字大小(px)',
+                            name: 'shop_price_size_m',
+                            default: '18',
+                        },
+                    ]
+                    }
+
+                ]
+                }
+            ]
+            },
+            {
+                label: '折扣标',
+                type: 'discount-dl'
+            },
+            {
+                label: '购买按钮',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '背景颜色',
+                    name: 'btnBgColor',
+                    type: 'colorPicker',
+                    default: '#FFFFFF',
+                    col: 2
+                },
+                {
+                    label: '边框颜色',
+                    name: 'btnBorderColor',
+                    type: 'colorPicker',
+                    default: '#000000',
+                    col: 2
+                },
+                {
+                    label: '文字颜色',
+                    name: 'shopNowFontColor',
+                    type: 'colorPicker',
+                    default: '#000000',
+                    col: 2
+                },
+                {
+                    label: '文字大小(px)',
+                    name: 'shopNowFontSize',
+                    default: '16',
+                    col: 2
+                },
+                {
+                    label: '图标图片',
+                    name: 'shopIconImg',
+                    type: 'image'
+                },
+            ],
+            },
+            {
+                label: 'View More配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '背景颜色',
+                    name: 'view_more_bg_color',
+                    type: 'colorPicker',
+                    default: '#222222',
+                    col: 2
+                },
+                {
+                    label: '文字颜色',
+                    name: 'view_more_font_color',
+                    type: 'colorPicker',
+                    default: '#FFFFFF',
+                    col: 2
+                }
+            ]
+            }
+        ]
+        }
+    ],
+    isAutoRefresh: 1
+} %}
+
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+

@@ -1,0 +1,585 @@
+{% set formData = {
+    id: 'U000207',
+    name: '秒杀组件配置',
+    theme: 'default',
+    tabs: [
+        {
+            label: '商品数据',
+            components: [
+                {
+                    label: '时间区间',
+                    name: 'dataRange',
+                    type: 'dataRangePicker'
+                },
+                {
+                    label: '商品SKU',
+                    type: 'textarea',
+                    src: './lib/goods_manege.twig'
+                },
+                {
+                    type: 'diy',
+                    src: '/diy.twig'
+                }
+            ]
+        },
+        {
+            label: '样式设置',
+            components: [
+                {
+                    label: '常用配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            type: 'margin-dl'
+                        },
+                        {
+                            label: '组件圆角(px)',
+                            name: 'box_borderRadius_m',
+                            public: false,
+                            default: '0',
+                            isshow:'dl-app'
+                        },
+                        {
+                            type: 'tab',
+                            isshow: 'dl-web',
+                            items:[
+                            {
+                                label:'PC / PAD',
+                                components:[
+                                {
+                                    label: '组件圆角(px)',
+                                    name: 'box_borderRadius',
+                                    public: false,
+                                    default: '0',
+                                }
+                            ]
+                            },
+                            {
+                                label:'M',
+                                components:[
+                                {
+                                    label: '组件圆角(px)',
+                                    name: 'box_borderRadius_m',
+                                    public: false,
+                                    default: '0',
+                                }
+                            ]
+                            }
+
+                        ]
+                        },
+                        {
+                            label: '整体组件背景颜色',
+                            name: 'box_bgColor',
+                            type: 'colorPicker',
+                            default: '#F8F8F8',
+                        }
+                    ]
+                },
+                {
+                    label: '标题配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '标题文案',
+                            name: 'title_text',
+                            default: 'FLASH SALE',
+                        },
+                        {
+                            label: '标题文案颜色',
+                            name: 'title_color',
+                            type: 'colorPicker',
+                            default: '#000000',
+                            public: false,
+                        },
+                        {
+                            label: '提示小图标',
+                            desc: '(建议宽30px,高30px)',
+                            name: 'title_icon',
+                            type: 'image',
+                            default: '',
+                        },
+                        {
+                            label: '倒计时标题颜色',
+                            name: 'time_titleColor',
+                            type: 'colorPicker',
+                            default: '#000000',
+                        },
+                        {
+                            label: '倒计时时间文字颜色',
+                            name: 'time_color',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                        },
+                        {
+                            label: '倒计时时间背景颜色',
+                            name: 'time_bgColor',
+                            type: 'colorPicker',
+                            default: '#000000',
+                        },
+                        {
+                            label: '倒计时未开始标题文案',
+                            name: 'time_startText',
+                            default: 'Starts in',
+                        },
+                        {
+                            label: '倒计时进行中标题文案',
+                            name: 'time_ingText',
+                            default: 'End in',
+                        },
+                        {
+                            label: '倒计时已结束标题文案',
+                            name: 'time_endText',
+                            default: 'Already Ended',
+                        },
+                    ]
+                },
+                {
+                    label: '商品信息配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '折扣标显示类型',
+                            type: 'radio',
+                            name: 'price_type',
+                            default: 0,
+                            options: [
+                                { label: '***%OFF', value: 0 },
+                                { label: '***-%', value: 1 }
+                            ],
+                        },
+                        {
+                            label: '折扣标宽度',
+                            name: 'price_width',
+                            default: '50',
+                            col: 2
+                        },
+                        {
+                            label: '折扣标高度',
+                            name: 'price_height',
+                            default: '50',
+                            col: 2
+
+                        },
+                        {
+                            label: '折扣标背景颜色',
+                            name: 'price_bgColor',
+                            type: 'colorPicker',
+                            default: '#000000',
+                            col: 2
+                        },
+                        {
+                            label: '折扣标文字颜色',
+                            name: 'price_color',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            col: 2
+                        },
+                        {
+                            label: '折扣标背景图片',
+                            desc:'(建议上传宽50px,高50px的图片)',
+                            name: 'price_bg',
+                            type: 'image',
+                        },
+                        {
+                            label: '库存提示文案颜色',
+                            name: 'stock_color',
+                            type: 'colorPicker',
+                            default: '#000000'
+                        },
+                        {
+                            label: '总库存条颜色',
+                            name: 'stock_bgColor',
+                            type: 'colorPicker',
+                            default: '#EDEDED',
+                            col: 2
+                        },
+                        {
+                            label: '已卖库存条颜色',
+                            name: 'stock_sale_bgColor',
+                            type: 'colorPicker',
+                            default: '#D0D0D0',
+                            col: 2
+                        },
+                        {
+                            label: '销售价文字颜色',
+                            name: 'sale_color',
+                            type: 'colorPicker',
+                            default: '#FF4545'
+                        },
+                    ]
+                }
+            ]
+        }
+    ],
+    moreConfig: [
+        {
+            type: 'collapse',
+            items: [
+                {
+                    label: '标题配置',
+                    components: [
+                        {
+                            type: 'tab',
+                            isshow: 'dl-web',
+                            items: [
+                                {
+                                    label: 'PC',
+                                    components: [
+                                        {
+                                            label: '标题文字大小(px)',
+                                            name: 'title_fontSize',
+                                            default: '34',
+                                        },
+                                        {
+                                            label: '倒计时标题文字大小(px)',
+                                            name: 'time_title_fontSize',
+                                            default: '24',
+                                        },
+                                        {
+                                            label: '倒计时时间文字大小(px)',
+                                            name: 'time_fontSize',
+                                            default: '24',
+                                        },
+                                    ]
+                                },
+                                {
+                                    label: 'PAD',
+                                    components: [
+                                        {
+                                            label: '标题文字大小(px)',
+                                            name: 'title_fontSize_pad',
+                                            default: '34',
+                                        },
+                                        {
+                                            label: '倒计时标题文字大小(px)',
+                                            name: 'time_title_fontSize_pad',
+                                            default: '24',
+                                        },
+                                        {
+                                            label: '倒计时时间文字大小(px)',
+                                            name: 'time_fontSize_pad',
+                                            default: '22',
+                                            isshow: 'dl-web',
+                                        },
+                                    ]
+                                },
+                                {
+                                    label: 'M',
+                                    components: [
+                                        {
+                                            label: '标题文字大小(px)',
+                                            name: 'title_fontSize_m',
+                                            default: '22',
+                                        },
+                                        {
+                                            label: '倒计时标题文字大小(px)',
+                                            name: 'time_title_fontSize_m',
+                                            default: '18',
+                                        },
+                                        {
+                                            label: '倒计时时间文字大小(px)',
+                                            name: 'time_fontSize_m',
+                                            default: '18',
+                                        },
+                                    ]
+                                },
+                            ],
+                        },
+                        {
+                            label: '标题文字大小(px)',
+                            name: 'title_fontSize_m',
+                            default: '22',
+                            isshow: 'dl-app',
+                        },
+                        {
+                            label: '倒计时标题文字大小(px)',
+                            name: 'time_title_fontSize_m',
+                            default: '18',
+                            isshow: 'dl-app',
+                        },
+                        {
+                            label: '倒计时时间文字大小(px)',
+                            name: 'time_fontSize_m',
+                            default: '18',
+                            isshow: 'dl-app',
+                        },
+                    ]
+                },
+                {
+                    label: '折扣标配置',
+                    components: [
+                        {
+                            label: '上偏移 (PX)',
+                            name: 'discount_top_m',
+                            default: '0',
+                            col: 2,
+                            isshow: 'dl-app',
+                        },
+                        {
+                            label: '右偏移 (PX)',
+                            name: 'discount_right_m',
+                            default: '0',
+                            col: 2,
+                            isshow: 'dl-app',
+                        },
+                        {
+                            label: '文字上边距 (PX)',
+                            name: 'discount_text_top_m',
+                            default: '10',
+                            col: 2,
+                            isshow: 'dl-app',
+                        },
+                        {
+                            label: '文字右边距 (PX)',
+                            name: 'discount_text_right_m',
+                            default: '0',
+                            col: 2,
+                            isshow: 'dl-app',
+                        },
+                        {
+                            label: '文字大小 (PX)',
+                            name: 'discount_fontSize_m',
+                            default: '14',
+                            isshow: 'dl-app',
+                        },
+                        {
+                            type: 'tab',
+                            isshow: 'dl-web',
+                            items: [
+                                {
+                                    label: 'PC',
+                                    components: [
+                                        {
+                                            label: '上偏移 (PX)',
+                                            name: 'discount_top',
+                                            default: '0',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '右偏移 (PX)',
+                                            name: 'discount_right',
+                                            default: '0',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '文字上边距 (PX)',
+                                            name: 'discount_text_top',
+                                            default: '10',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '文字右边距 (PX)',
+                                            name: 'discount_text_right',
+                                            default: '0',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '文字大小 (PX)',
+                                            name: 'discount_fontSize',
+                                            default: '15',
+                                        },
+                                    ]
+                                },{
+                                    label: 'PAD',
+                                    components: [
+                                        {
+                                            label: '上偏移 (PX)',
+                                            name: 'discount_top_pad',
+                                            default: '0',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '右偏移 (PX)',
+                                            name: 'discount_right_pad',
+                                            default: '0',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '文字上边距 (PX)',
+                                            name: 'discount_text_top_pad',
+                                            default: '10',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '文字右边距 (PX)',
+                                            name: 'discount_text_right_pad',
+                                            default: '0',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '文字大小 (PX)',
+                                            name: 'discount_fontSize_pad',
+                                            default: '15',
+                                        },
+                                    ]
+                                },
+                                {
+                                    label: 'M',
+                                    components: [
+                                        {
+                                            label: '上偏移 (PX)',
+                                            name: 'discount_top_m',
+                                            default: '0',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '右偏移 (PX)',
+                                            name: 'discount_right_m',
+                                            default: '0',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '文字上边距 (PX)',
+                                            name: 'discount_text_top_m',
+                                            default: '10',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '文字右边距 (PX)',
+                                            name: 'discount_text_right_m',
+                                            default: '0',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '文字大小 (PX)',
+                                            name: 'discount_fontSize_m',
+                                            default: '14',
+                                        },
+                                    ]
+                                },
+                            ]
+                        },
+                    ],
+                },
+                {
+                    label: 'PC鼠标悬浮购买按钮配置',
+                    isshow: 'dl-web',
+                    components: [
+                        {
+                            label: '背景颜色',
+                            name: 'goods_bgColor',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            col: 2,
+                            isshow: 'dl-web',
+                        },
+                        {
+                            label: '边框颜色',
+                            name: 'goods_bdColor',
+                            type: 'colorPicker',
+                            default: '#000000',
+                            col: 2,
+                            isshow: 'dl-web',
+                        },
+                        {
+                            label: 'SHOP NOW文字颜色',
+                            name: 'shop_color',
+                            type: 'colorPicker',
+                            default: '#000000',
+                            isshow: 'dl-web',
+                        },
+                        {
+                            label: 'SHOP NOW文字大小(px)',
+                            name: 'shop_fontSize',
+                            default: '16',
+                            isshow: 'dl-web',
+                        },
+                    ]
+                }
+            ]
+        }
+    ],
+    beforeSubmit: 'onSubmit'
+
+} %}
+
+    {# 引入渲染函数 #}
+    {{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+<script>
+    var submit = true;
+    function onSubmit(progress) {
+         if ($("input[name = 'dataRange']").val() !== '') {
+             var date = $("input[name = 'dataRange']").val().split(' - ');
+             var start = Date.parse(new Date(date[0]));
+             var end = Date.parse(new Date(date[1]));
+             if (!(date && start && end && start < end)) {
+                 submit = false ;
+                 layui.layer.msg('请填写正确时间格式');
+                 return false
+             } else {
+                 submit = true;
+             }
+             var serverTime = new Date().getTime();
+             {# if(dataStartTime <= serverTime){
+                 layui.layer.msg('请选择大于当前时间段')
+             } #}
+
+            /*状态*/
+            var status = 0,
+                leftTime = 0,
+                textCont = "",
+                textArr = ['未开始', '已开始', '已结束'];
+            if (start > serverTime) {
+                leftTime = start - serverTime;
+            } else if (start <= serverTime && end > serverTime) {
+                status = 1;
+                leftTime = end - serverTime;
+            } else if (end < serverTime) {
+                status = 2;
+                leftTime = 0;
+            }
+            textCont = textArr[status];
+
+            $("input[name = 'start']").val(start);
+            $("input[name = 'end']").val(end);
+            $("input[name = 'states']").val(status);
+            $("input[name = 'left_time']").val(leftTime / 1000);
+            $("input[name = 'state_text']").val(textCont);
+        }
+        var $textAre = $("textarea[name='goodsSKU']");
+        if ($textAre.val() !== '' && $textAre.val() !== null) {
+            submit = false;
+            if( ($textAre.val().split(',')).length > 100 ) {
+                layui.layer.msg("商品SKU数不能超过100")
+            }
+            var coupunParam = {
+                lang: GESHOP_LANG || 'en',
+                goodsSn: $textAre.val(),
+                client: GESHOP_PLATFORM || 'web'
+            };
+            $.ajax({
+                url: GESHOP_INTERFACE.timeseckilldetail.url,
+                data: { content : JSON.stringify(coupunParam) },
+                dataType: 'jsonp',
+                jsonp: 'callback',
+                success: function(res) {
+                    var snArr = [];
+                    res.data.goodsInfo.forEach(function (index) {
+                        snArr.push(index.goods_sn);
+                    });
+                    if (snArr.length > 1) {
+                        $textAre.val(snArr.join(','))
+                    } else {
+                        $textAre.val(snArr[0] ? snArr[0] :'')
+                    }
+                    if (res.data.invalid_goods_id.length > 0) {
+                       layui.layer.msg(res.data.invalid_goods_id.join(',')+"数据无效，请重新填写", { time: 1000 }, function () {
+                           return false;
+                       });
+                    } else {
+                        progress.next();
+                    }
+
+                },
+                error: function (err) {
+                    layui.layer.msg(err)
+                }
+            });
+        }
+        if (submit) {
+            progress.next();
+        }
+    }
+</script>

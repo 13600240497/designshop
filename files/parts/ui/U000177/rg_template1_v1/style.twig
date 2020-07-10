@@ -1,0 +1,42 @@
+{% set space = '#U000177_'~pageInstanceId %}
+{% set body =  space~' .component-body' %}
+
+{{ body }}{
+    margin-bottom: {{ data.boxMarginBottom|default(32) }}px;
+}
+
+{{ body }} .swiper-wrap{
+background-color: {{ data.box_bg_color | default('#F8F8F8') }};
+    {% if data.bgImage %}
+        background-image: url('{{ data.bgImage }}');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 100% 100%;
+    {% endif %}
+}
+
+{{ body }} .ranking-icon{
+    width:{{ data.iconWidth|default(40) }}px;
+    height:{{ data.iconHeight|default(48) }}px;
+    left: 0;
+    top: 0;
+}
+
+{{ body }} .swiper-slide{
+    border-radius: {{ data.goods_border_radius|default(2) }}px;
+    border: 1px solid {{ data.hover_border_color|default('#FFFFFF') }};
+}
+
+{{ body }} .swiper-slide:hover{
+    border-color: #333333
+}
+
+
+{# rank #}
+{{ body }} .ranking-icon{
+    color: {{ data.iconOtherTextColor|default('#FFFFFF') }}
+}
+
+{{ body }} .item_sell_point{
+    color: {{ data.discount_color|default('#222222') }}
+}

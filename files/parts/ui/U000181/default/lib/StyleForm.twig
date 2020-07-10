@@ -1,0 +1,209 @@
+<h4 class="column-title">常用配置<span></span></h4>
+<div class="layui-form-item">
+    <label class="form-item-label">数据来源</label>
+    <div class="layui-input-block">
+        <input type="radio" checked name="goodsFromType" title="人工智能接口">
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">组件上边距(px)</label>
+    <div class="layui-input-block">
+        <input type="text" name="boxMarginTop" autocomplete="off" class="layui-input" value="{{ data.boxMarginTop | default(32) }}">
+    </div>
+</div>
+
+<h5 class="column-title">右上角标签配置</h5>
+<div class="layui-form-item">
+    <label class="form-item-label">
+        <span class="layui-badge-dot layui-bg-orange"></span>
+        显示方式</label>
+    <div class="layui-input-block">
+        <input type="radio" name="isMarkLeft" value="1" {% if data.isMarkLeft|default(0) == 1 %} checked{% endif %} title="左边">
+        <input type="radio" name="isMarkLeft" value="0" {% if data.isMarkLeft|default(0) == 0 %} checked{% endif %} title="右边">
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">标签文字颜色</label>
+    <div class="layui-input-block">
+        {{
+            include ('lib/ColorPicker.twig', {
+                'cmpt_name': 'labelFontColor',
+                'cmpt_value': data.labelFontColor,
+                'cmpt_default': '#ffffff'
+            })
+        }}
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">标签背景颜色</label>
+    <div class="layui-input-block">
+        {{
+            include ('lib/ColorPicker.twig', {
+                'cmpt_name': 'labelBgColor',
+                'cmpt_value': data.labelBgColor,
+                'cmpt_default': '#999999'
+            })
+        }}
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">标签背景图片</label>
+    <div class="layui-input-block">
+        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+        <input class="layui-input" type="text" name="labelBgImg" value="{{data.labelBgImg|default('')}}">
+    </div>
+</div>
+<div class="layui-form-item">
+	<div class="layui-row layui-col-space20">
+		<div class="layui-col-xs5">
+            <div class="layui-form-item">
+                <label class="form-item-label">标签宽度(px)</label>
+                <div class="layui-input-block">
+                    <input type="text" name="labelwidth" autocomplete="off" class="layui-input" value="{{ data.labelwidth | default(140) }}">
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs5">
+            <div class="layui-form-item">
+                <label class="form-item-label">标签高度(px)</label>
+                <div class="layui-input-block">
+                    <input type="text" name="labelHeight" autocomplete="off" class="layui-input" value="{{ data.labelHeight | default(48) }}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h5 class="column-title">折扣标配置</h5>
+<div class="layui-form-item">
+    <label class="form-item-label">
+        <span class="layui-badge-dot layui-bg-orange"></span>
+        折扣标显示位置</label>
+    <div class="layui-input-block">
+        <input type="radio" name="isDiscountLeft" value="1" {% if data.isDiscountLeft|default(1) == 1 %} checked{% endif %} title="左边">
+        <input type="radio" name="isDiscountLeft" value="0" {% if data.isDiscountLeft|default(1) == 0 %} checked{% endif %} title="右边">
+    </div>
+</div>
+<div class="layui-form-item">
+    <label class="form-item-label">
+        <span class="layui-badge-dot layui-bg-orange"></span>
+        折扣标是否显示</label>
+    <div class="layui-input-block">
+        <input type="radio" name="isDiscountVis" value="1" {% if data.isDiscountVis|default(1) == 1 %} checked{% endif %} title="是">
+        <input type="radio" name="isDiscountVis" value="0" {% if data.isDiscountVis|default(1) == 0 %} checked{% endif %} title="否">
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">
+        <span class="layui-badge-dot layui-bg-orange"></span>
+        折扣标显示方式</label>
+    <div class="layui-input-block">
+        <input type="radio" name="isDiscountStyle" value="1" {% if data.isDiscountStyle|default(1) == 1 %} checked{% endif %} title="**%OFF">
+        <input type="radio" name="isDiscountStyle" value="0" {% if data.isDiscountStyle|default(1) == 0 %} checked{% endif %} title="**%">
+    </div>
+</div>
+
+<div class="layui-form-item">
+	<div class="layui-row layui-col-space20">
+		<div class="layui-col-xs5">
+            <div class="layui-form-item">
+                <label class="form-item-label">折扣背景颜色</label>
+                <div class="layui-input-block">
+                    {{
+                        include ('lib/ColorPicker.twig', {
+                            'cmpt_name': 'discountBgColor',
+                            'cmpt_value': data.discountBgColor,
+                            'cmpt_default': '#333333'
+                        })
+                    }}
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs5">
+            <div class="layui-form-item">
+                <label class="form-item-label">折扣文本颜色</label>
+                <div class="layui-input-block">
+                    {{
+                        include ('lib/ColorPicker.twig', {
+                            'cmpt_name': 'discountFontColor',
+                            'cmpt_value': data.discountFontColor,
+                            'cmpt_default': '#FFFFFF'
+                        })
+                    }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# <h5 class="column-title">左下角标签配置</h5>
+<div class="layui-form-item">
+	<div class="layui-row layui-col-space20">
+		<div class="layui-col-xs5">
+            <div class="layui-form-item">
+                <label class="form-item-label">文字颜色</label>
+                <div class="layui-input-block">
+                    {{
+                        include ('lib/ColorPicker.twig', {
+                            'cmpt_name': 'leftMarkFontColor',
+                            'cmpt_value': data.leftMarkFontColor,
+                            'cmpt_default': '#FFFFFF'
+                        })
+                    }}
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs5">
+            <div class="layui-form-item">
+                <label class="form-item-label">背景颜色</label>
+                <div class="layui-input-block">
+                    {{
+                        include ('lib/ColorPicker.twig', {
+                            'cmpt_name': 'leftMarkBgColor',
+                            'cmpt_value': data.leftMarkBgColor,
+                            'cmpt_default': '#999999'
+                        })
+                    }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div> #}
+
+<h5 class="column-title">底部提示配置</h5>
+<div class="layui-form-item">
+    <label class="form-item-label">
+        <span class="layui-badge-dot layui-bg-orange"></span>
+        是否显示</label>
+    <div class="layui-input-block">
+        <input type="radio" name="isBottomTextVis" value="1" {% if data.isBottomTextVis|default(1) == 1 %} checked{% endif %} title="是">
+        <input type="radio" name="isBottomTextVis" value="0" {% if data.isBottomTextVis|default(1) == 0 %} checked{% endif %} title="否">
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">文案</label>
+    <div class="layui-input-block">
+        <input type="text" name="bottomCopywriter" autocomplete="off" class="layui-input" value="{{ data.bottomCopywriter | default('It has come to an end') }}">
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">文字颜色</label>
+    <div class="layui-input-block">
+        {{
+            include ('lib/ColorPicker.twig', {
+                'cmpt_name': 'bottomCopywriterColor',
+                'cmpt_value': data.bottomCopywriterColor,
+                'cmpt_default': '#999999'
+            })
+        }}
+    </div>
+</div>
+
+

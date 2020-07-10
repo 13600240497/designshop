@@ -1,0 +1,31 @@
+<div class="geshop-component-box geshop-U000089-model2-{{ siteCode | split('-')[0] }} component-drag geshop-U000089-model2 geshop-U000089-model2-{{ pageInstanceId }}" data-key="U000089" data-id="{{ pageInstanceId }}">
+	{{ include('style.twig') }}
+	<input type="hidden" name="isEditEnv" value="{{data.isEditEnv}}" />
+	<input type="hidden" name="nav_height" value="{{data.nav_height}}" />
+	<div class="swp-container">
+		<nav class="component-m-nav fixed "  id="fixed-nav-m" >
+			<ul class="component-m-nav-ul  swiper-wrapper" data-isedit="{{ data.isEditEnv }}" style="background-color:{{ pageData.bg_color }}">
+				{% if data.navList %}
+					{% for item in data.navList %}
+						<li class="component-m-nav-item swiper-slide" style="
+						{% if item.nav_img %}
+								background-image: url({{item.nav_img}});
+						{% endif %}
+								">
+							<a {% if item.nav_link %}href="{{item.nav_link}}"{% endif %}  target="_blank">{{ item.nav_text }}</a>
+						</li>
+					{% endfor %}
+				{% else %}
+					<li class="component-m-nav-item swiper-slide">Classify</li>
+					<li class="component-m-nav-item swiper-slide">Classify</li>
+					<li class="component-m-nav-item swiper-slide">Classify</li>
+				{% endif %}
+			</ul>
+			<!-- Add Arrows -->
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+		</nav>
+	</div>
+</div>
+
+

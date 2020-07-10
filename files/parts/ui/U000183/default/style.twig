@@ -1,0 +1,50 @@
+<!-- embed stylesheet begin -->
+<style type="text/css">
+  .geshop-U000183-{{ pageInstanceId }} .ad-container img{
+    transition: all 1.5s;
+    width: 100%;
+     display:block;
+  }
+  .geshop-U000183-{{ pageInstanceId }} .ad-container .ad{
+    display: block;
+    overflow: hidden;
+  }
+  .geshop-U000183-{{ pageInstanceId }} .ad-container picture{
+    {% if data.isDiscountVis | default(1) == 1 %} float: left; {% endif %}
+		{% if data.isDiscountVis | default(1) == 2 %} margin:0 auto; {% endif %}
+		{% if data.isDiscountVis | default(1) == 3 %} float: right; {% endif %}
+    display: block;
+    overflow: hidden;
+  }
+
+  @media screen and (min-width: 1025px){
+    .geshop-U000183-{{ pageInstanceId }} .ad-container  picture{
+      width: {{ data.pcDisplayScale}}%;
+    }
+  }
+
+  @media screen and (max-width: 1024px) and (min-width: 768px){
+    .geshop-U000183-{{ pageInstanceId }} .ad-container  picture{
+      width: {{ data.padDisplayScale}}%;
+    }
+  }
+  @media screen and (max-width: 767px) and (min-width: 320px){
+    .geshop-U000183-{{ pageInstanceId }} .ad-container  picture{
+      width: {{ data.mDisplayScale }}%;
+    }
+  }
+  
+  {% if data.isDiscountVis != 3 %} 
+  @media screen and (min-width: 1025px){
+    .geshop-U000183-{{ pageInstanceId }} .ad-container img:hover {
+      transition: all 1.5s;
+      transform: scale(1.01);
+      //transform: translateX(8px);
+    }
+  }
+  {% endif %}
+
+  {% set space = '.geshop-U000183-'~ pageInstanceId %}
+  {% include '@app/files/parts/formTemplate/components/margin-dl-style.twig' with{'space':space} %}
+</style>
+<!-- embed stylesheet end -->

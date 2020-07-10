@@ -1,0 +1,273 @@
+{% set static = {
+	discountFtS:data.discountFtS|default(16)
+	}
+%}
+<div class="gs-goodsWrap"
+ 	data-gid="gs-goods-prePromotion"
+	style="{% if data.baseBgC%}background-color:{{data.baseBgC}};{% endif %}"
+>
+	<ul class="clearfix">
+		{# {% if data.prePromotionGoodsInfo|default('') == '' %}
+		{% for key,item in data.prePromotionGoodsInfo|default(0..3) %} #}
+		{% if data.goodsInfo|default('') == '' %}
+			{% for key,item in data.goodsInfo|default(0..3) %}
+				<li class="goods-item goods-pre-promotion-item" data-test="{{data.gsPadding}}">
+					<div class="component-self-goodBox">
+						<div class="component-self-goodWrap" style="{% if goodsData.goodsBgc %}background-color:{{goodsData.goodsBgc}}{% endif %};
+							{% if data.gsRadius%}border-radius:{{data.gsRadius}}px;{% endif %}">
+								<div class="gs-img" data-editEnv="{{data.isEditEnv}}" style="background-color: #EDEDED;">
+
+									<a href="{{item.url_title|default('javascript:;')}}">
+										{% if data.isEditEnv == '1' and data.goodsInfo %}
+											<img src="{{data.default.clothes}}"style="width:2.6667rem;height:2.37333rem;">
+										{% elseif  data.isEditEnv == '0' and data.goodsInfo %}
+											<img src="{{data.default.clothes}}" data-original="{{data.default.clothes}}" style="max-width: 100%;height:100%;" class="js_gdexp_lazy js-geshopImg-lazyload js_gbexp_lazy"
+												data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }"
+											>
+										{% else %}
+											<img src="{{data.default.clothes}}" style="width:2.6667rem;height:2.37333rem;">
+										{% endif %}
+
+										{# 上架状态 #}
+										{% if data.goodsLimitActive == '1' and item.activity_number and item.activity_number == activity_volume_number %}
+											<span class="goodStatus">{{ get_component_trans(lang,'sold_out') }}</span>
+										{% endif %}
+									</a>
+									{% if data.discountActive|default(1) == '1' %}
+										<div class="discont-wrap discont-curtoff google-sprite text-center"
+												style="{% if data.discountBgImg %}background:url({{data.discountBgImg}}) no-repeat 0 0/100% 100%;{% endif %}
+												{% if goodsData.discountTextC %}color:{{goodsData.discountTextC}};{% endif %}
+												{% if goodsData.discountBgColor %}background-color:{{goodsData.discountBgColor}};{% endif %}
+											">
+												<div class="gs-curtoff-wrap">
+													{# 折扣方式 #}
+													<div class="curtoff-box">
+														{% if data.discountType|default(1) == '1' %}
+															<strong style="display:block;font-size:{{goodsData.discountFtS}}rem;">{{item.discount|default(0)}}%</strong>
+															{% if data.discountSuffix|default(1) == '1' %}<span style="display:block;">{{ get_component_trans(lang,'off') }}</span>{% endif %}
+														{% else %}
+															<strong style="font-size:{{goodsData.discountFtS}}rem">-{{item.discount}}%</strong>
+														{% endif %}
+													</div>
+												</div>
+										</div>
+									{% endif %}
+							</div>
+
+							{% if data.buyActive|default(1) == '1' %}
+								<div class="price-wrap">
+									<a href="{{item.url_title|default('javascript:;')}}" class="price-btn current-price" style="color: #fff; background-color: #333;">
+										<span class="price-title">Upcoming</span>
+										<span class="price-text">
+											<strong class="bizhong"></strong>
+											<span class="bz_icon"></span>
+											<span class="my_shop_price" data-orgp="6.99">$6.99</span>
+										</span>
+									</a>
+								</div>
+							{% endif %}
+
+							<div class="gs-desc">
+								{% if data.goodsActive|default(1) == '1' %}
+									<a href="{{item.url_title|default('javascript:;')}}" class="logsss_event" data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'},'skuinfo':{'sku':'{{ item.goods_sn }}','pam':'0','pc':'{{ item.catid }}','k':'{{ item.warecode }}'} }"
+										>	
+										<span class="item-name" style="{% if goodsData.goodsTitleC %}color:{{goodsData.goodsTitleC}};{% endif %}{% if data.goodsFtS %}font-size:{{data.goodsFtS}}px;{% endif %}">{{item.goods_title|default('Floral Print Mini Wrap Tea Dress - … ')}}</span>
+									</a>
+								{% endif %}
+							</div>
+
+							{% if data.buyActive|default(1) == '1' %}
+								<div class="gs-btn-area text-center">
+									<a href="{{item.url_title|default('javascript:;')}}" class="price-btn surprice-price" style=" {% if data.hasNotStarted_marketTC %}color:{{ data.hasNotStarted_marketTC }};{% endif %}">
+										<span class="price-title" style="font-size: 0.34rem;">Now</span>
+										<span class="price-text" style="font-size: 0.48rem;">
+											<strong class="bizhong"></strong>
+											<span class="bz_icon"></span>
+											<span class="my_shop_price" data-orgp="6.99">$6.99</span>
+										</span>
+									</a>
+								</div>
+							{% endif %}
+						</div>
+					</div>
+				</li>
+			{% endfor %}
+		{% endif %}
+	</ul>
+</div>
+
+<script type="text/html" class="gs_syncDefault" data-tplid="{{pageInstanceId}}">
+	/**
+	* { discount } - 折扣（当前折扣百分比数字）
+	* { itemDiscountClass } - 折扣标是否显示
+	*	{ soldClass } - 售出状态类名
+	*	{ soldStatu } - 售出状态
+	* { itemSkuClass } - sku是否已过结束时间类名
+	* { itemSkuStatu } - 活动未开始，活动已开始状态
+	**/
+ 	<%#
+		var result = d;
+		for(var i in result){
+			var item = result[i];
+			item.discount = parseFloat(item.discount).toFixed(0);
+			var itemDiscountClass = item.discount > 0 ? '' : 'hide';
+			var soldClass = Number(item.goods_number) > 0 ? '' : 'prePromotion_soldout';
+			var soldStatu = Number(item.goods_number) > 0 ? true : false;
+			var nowTime = Date.parse(new Date()) * 0.001;
+			var itemSkuClass = Number(item.promotion_end) > nowTime ? '' : 'hide';
+			var itemSkuStatu = Number(item.promotion_start) > nowTime ? true : false;
+
+ 	%>
+
+	<li class="goods-item goods-pre-promotion-item <% soldClass %> <% itemSkuClass %>" data-test="{{data.gsPadding}}">
+
+			<div class="component-self-goodBox">
+				<div class="component-self-goodWrap" style="{% if goodsData.goodsBgc %}background-color:{{goodsData.goodsBgc}}{% endif %};
+				{% if data.gsRadius%}border-radius:{{data.gsRadius}}px;{% endif %}">
+						<div class="gs-img" data-editEnv="{{data.isEditEnv}}">
+							{# 上架状态 #}
+								<%#
+								if(!soldStatu){ %>
+
+									{# {% if get_component_trans(lang,'sold_out')|length > 6 %}
+										<div class="gs-sold-statu"><span class="goodStatus" style="width:110px;height:110px;border-radius:50%;padding:40px 8px;margin-left:-55px;top:30%;">{{ get_component_trans(lang,'sold_out') }}</span></div>
+									{% else %}
+										<div class="gs-sold-statu"><span class="goodStatus">{{ get_component_trans(lang,'sold_out') }}</span></div>
+									{% endif %} #}
+										<div class="gs-sold-statu"><span class="goodStatus">{{ get_component_trans(lang,'sold_out') }}</span></div>
+								<%# }%>
+
+							<a href="<% geshopUrlToApp(item.url_title, item.goods_id) %>"
+								class="logsss_event"
+								style="{% if pageData.goodsMarginLR == 32 %}height:5.92rem;{% elseif pageData.goodsMarginLR == 24 %}height:6.08rem;{% endif %}"
+								data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'<% item.goods_sn %>','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'},'skuinfo':{'sku':'<% item.goods_sn %>','pam':'0','pc':'<% item.cateid %>','k':'<% item.warehousecode %>'} }"
+							>
+
+								{% if data.isEditEnv == '1' %}
+									<img src="<% item.goods_img %>" style="width: 100%;height:100%;">
+								{% elseif  data.isEditEnv == '0' %}
+									<img src="{{data.default.lazyImg}}"
+										data-original="<% item.goods_img %>"
+										style="width: 100%;height:100%;"
+										class="js_gdexp_lazy js-geshopImg-lazyload js_gbexp_lazy"
+										data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'<% item.goods_sn %>','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }"
+									>
+								{% else %}
+									<img  src="{{data.default.good}}" style="width: 100%;height:100%;">
+								{% endif %}
+							</a>
+
+							{% if data.discountActive|default(1) == '1' %}
+									<div class="discont-wrap discont-curtoff google-sprite text-center <% itemDiscountClass %>"
+										style="
+										{% if data.discountBgImg %}background:url({{data.discountBgImg}}) no-repeat 0 0/100% 100%;{% endif %}
+										{% if goodsData.discountTextC %}color:{{goodsData.discountTextC}};{% endif %}
+										{% if goodsData.discountBgColor %}background-color:{{goodsData.discountBgColor}};{% endif %}
+									">
+											<div class="gs-curtoff-wrap">
+												{# 折扣方式 #}
+												<div class="curtoff-box">
+													{% if data.discountType|default(1) == '1' %}
+														<strong style="display:block;font-size:{{goodsData.discountFtS}}rem;"><% item.discount %>%</strong>
+														{% if data.discountSuffix|default(1) == '1' %}<span style="display:block;font-size:{{goodsData.discountSymbolFts}}rem">{{ get_component_trans(lang,'off') }}</span>{% endif %}
+													{% else %}
+														<strong style="font-size:{{goodsData.discountFtS}}rem">-<% item.discount %>%</strong>
+													{% endif %}
+												</div>
+											</div>
+									</div>
+							{% endif %}
+					</div>
+					{% if data.goodsActive|default(1) == '1' %}
+						<div class="price-wrap">
+							<%# if(itemSkuStatu){ %>
+								<a href="<% geshopUrlToApp(item.url_title, item.goods_id) %>" class="price-btn current-price" style="
+									{% if goodsData.hasNotStarted_upcomingTc %}color:{{goodsData.hasNotStarted_upcomingTc}};{% endif %}
+									{% if goodsData.hasNotStarted_upcomingBgC %}background-color:{{goodsData.hasNotStarted_upcomingBgC}};{% endif %}
+									{% if goodsData.hasNotStarted_upcomingBgH %}height:{{goodsData.hasNotStarted_upcomingBgH}}rem;{% endif %}
+									{% if goodsData.hasNotStarted_upcomingBgH %}line-height:{{goodsData.hasNotStarted_upcomingBgH}}rem;{% endif %}
+									{% if goodsData.hasNotStarted_upcomingImg %}background-image: url({{goodsData.hasNotStarted_upcomingImg}}); background-size: 100% 100%;{% endif %}
+								">
+									<span class="price-title" style="
+										{% if goodsData.goodsPriceTitleFts %}font-size:{{goodsData.goodsPriceTitleFts}}rem;{% endif %}
+										{% if goodsData.hasNotStarted_upcomingBgH %}height:{{goodsData.hasNotStarted_upcomingBgH}}rem;{% endif %}
+										{% if goodsData.hasNotStarted_upcomingBgH %}line-height:{{goodsData.hasNotStarted_upcomingBgH}}rem;{% endif %}
+									">{{goodsData.hasNotStarted_upcomingPriceT}}</span>
+									<span class="price-text" style="{% if goodsData.goodsPriceFts %}font-size:{{goodsData.goodsPriceFts}}rem;{% endif %}
+										{% if goodsData.hasNotStarted_upcomingBgH %}height:{{goodsData.hasNotStarted_upcomingBgH}}rem;{% endif %}
+										{% if goodsData.hasNotStarted_upcomingBgH %}line-height:{{goodsData.hasNotStarted_upcomingBgH}}rem;{% endif %}
+									">
+										<strong class="bizhong"></strong>
+										<span class="bz_icon"></span>
+										<span class="my_shop_price" data-orgp="<% item.preview_price %>">$<% item.preview_price %></span>
+									</span>
+								</a>
+							<%# } else { %>
+								<a href="<% geshopUrlToApp(item.url_title, item.goods_id) %>" class="price-btn current-price" style="
+									{% if goodsData.hasStarted_prePriceTC %}color:{{ goodsData.hasStarted_prePriceTC }};{% endif %}
+									{% if goodsData.hasStarted_prePriceBgC %}background-color:{{goodsData.hasStarted_prePriceBgC}};{% endif %}
+									{% if goodsData.hasStarted_preHeight %}height:{{goodsData.hasStarted_preHeight}}rem;{% endif %}
+									{% if goodsData.hasStarted_preHeight %}line-height:{{goodsData.hasStarted_preHeight}}rem;{% endif %}
+									{% if goodsData.hasStarted_preBgImg %}background-image: url({{goodsData.hasStarted_preBgImg}}); background-size: 100% 100%;{% endif %}
+								">
+									<span class="price-title" style="
+										{% if goodsData.goodsPriceTitleFts %}font-size:{{goodsData.goodsPriceTitleFts}}rem;{% endif %}
+										{% if goodsData.hasStarted_preHeight %}height:{{goodsData.hasStarted_preHeight}}rem;{% endif %}
+										{% if goodsData.hasStarted_preHeight %}line-height:{{goodsData.hasStarted_preHeight}}rem;{% endif %}
+									">{{ goodsData.hasStarted_preText }}</span>
+									<span class="price-text" style="{% if goodsData.goodsPriceFts %}font-size:{{goodsData.goodsPriceFts}}rem;{% endif %}
+										{% if goodsData.hasStarted_preHeight %}height:{{goodsData.hasStarted_preHeight}}rem;{% endif %}
+										{% if goodsData.hasStarted_preHeight %}line-height:{{goodsData.hasStarted_preHeight}}rem;{% endif %}
+									">
+										<strong class="bizhong"></strong>
+										<span class="bz_icon"></span>
+										<span class="my_shop_price" data-orgp="<% item.preview_price %>">$<% item.preview_price %></span>
+									</span>
+								</a>
+							<%# } %>
+						</div>
+					{% endif %}
+
+					<div class="gs-desc">
+						{% if data.goodsActive|default(1) == '1' %}
+							<a href="<% geshopUrlToApp(item.url_title, item.goods_id) %>">
+								<span class="item-name" style="{% if goodsData.goodsTitleC %}color:{{goodsData.goodsTitleC}};{% endif %}{% if data.goodsFtS %}font-size:{{data.goodsFtS}}px;{% endif %}"><% item.goods_title %></span>
+							</a>
+						{% endif %}
+					</div>
+
+
+					{% if data.buyActive|default(1) == '1' %}
+						<div class="gs-btn-area text-center">
+								<%# if(itemSkuStatu){ %>
+									<a href="<% geshopUrlToApp(item.url_title, item.goods_id) %>" class="price-btn surprice-price" style="
+										{% if goodsData.hasNotStarted_marketTC %}color:{{goodsData.hasNotStarted_marketTC}};{% endif %}
+									"
+									>
+										<span class="price-title" style="font-size: 0.34rem;">{{goodsData.hasNotStarted_marketText}}</span>
+										<span class="price-text" style="font-size: 0.48rem;">
+											<strong class="bizhong"></strong>
+											<span class="bz_icon"></span>
+											<span class="my_shop_price" data-orgp="<% item.shop_price %>">$<% item.shop_price %></span>
+										</span>
+									</a>
+								<%# } else { %>
+									<a href="<% geshopUrlToApp(item.url_title, item.goods_id) %>" class="price-btn surprice-price">
+										<span class="price-title" style="
+											{% if goodsData.goodsPriceTitleFts %}font-size:{{goodsData.goodsPriceTitleFts}}rem;{% endif %}
+										"></span>
+										<span class="price-text hasStarted-price" style="fontsize: 0.48rem;">
+											<strong class="bizhong"></strong>
+											<span class="bz_icon"></span>
+											<span class="my_shop_price" data-orgp="<% item.shop_price %>">$<% item.shop_price %></span>
+										</span>
+									</a>
+								<%# } %>
+						</div>
+					{% endif %}
+
+				</div>
+			</div>
+	</li>
+	<%# } %>
+</script>

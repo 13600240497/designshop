@@ -1,0 +1,715 @@
+{{ include ('@app/files/parts/temp/goods_manager.twig') }}
+
+{% set formData = {
+    id: 'U000203',
+    name: '商品列表tab组件',
+    theme: 'template3',
+    tabs: [
+        {
+            label: '商品数据',
+            components: [
+                {
+                    label: '页面显示信息配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '每个tab显示商品总数',
+                            name: 'tab_total_number'
+                        },
+                        {
+                            type: 'tab',
+                            brief: true,
+                            isshow: 'dl-web',
+                            items: [
+                                {
+                                    label: 'PC/PAD',
+                                    components: [
+                                        {
+                                            label: '每行显示tab个数',
+                                            name: 'row_tab_num'
+                                        },
+                                        {
+                                            label: '每页显示商品个数',
+                                            desc: '(备注：不填写分页数量，每页默认显示20个, 不超过100个)',
+                                            name: 'page_goods_num',
+                                            default: '20'
+                                        }
+                                    ]
+                                },
+                                {
+                                    label: 'M',
+                                    components: [
+                                        {
+                                            label: 'tab展开每行显示tab个数',
+                                            type: 'radio',
+                                            default: 2,
+                                            name: 'm_tab_show_num',
+                                            options: [
+                                                { label: '两个', value: '2' },
+                                                { label: '三个', value: '3' },
+                                                { label: '四个', value: '4' },
+                                            ]
+                                        },
+                                        {
+                                            label: '默认显示商品个数',
+                                            name: 'm_goods_num',
+                                            desc: '(备注：默认显示4个, 不超过100个)',
+                                            default: '4'
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            type: 'tab',
+                            brief: true,
+                            isshow: 'dl-app',
+                            items: [
+                                {
+                                    label: 'M',
+                                    components: [
+                                        {
+                                            label: 'tab展开每行显示tab个数',
+                                            type: 'radio',
+                                            default: 2,
+                                            name: 'm_tab_show_num',
+                                            options: [
+                                                { label: '两个', value: '2' },
+                                                { label: '三个', value: '3' },
+                                                { label: '四个', value: '4' },
+                                            ]
+                                        },
+                                        {
+                                            label: '默认显示商品个数',
+                                            name: 'm_goods_num',
+                                            desc: '(备注：默认显示4个, 不超过100个)',
+                                            default: '4'
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    label: '商品分类数据配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            type: 'diy',
+                            src: 'lib/goods.twig'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            label: '样式设置',
+            components: [
+                {
+                    label: '常用配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '导航是否吸顶',
+                            type: 'radio',
+                            default: 1,
+                            name: 'is_fixed',
+                            options: [
+                                { label: '是', value: '1' },
+                                { label: '否', value: '0' },
+                            ]
+                        },
+                        {
+                            label: '组件背景颜色',
+                            name: 'box_bg_color',
+                            type: 'colorPicker',
+                            default: '#F8F8F8'
+                        }
+                    ]
+                },
+                {
+                    label: 'tab标签配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            type: 'tab',
+                            brief: true,
+                            isshow: 'dl-web',
+                            items: [
+                                {
+                                    label: 'PC选中/鼠标划过状态',
+                                    components: [
+                                        {
+                                            label: '文字颜色',
+                                            type: 'colorPicker',
+                                            name: 'tab_check_font_color',
+                                            default: '#FFFFFF',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '背景颜色',
+                                            type: 'colorPicker',
+                                            name: 'tab_check_bg_color',
+                                            default: '#000000',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '描边颜色',
+                                            type: 'colorPicker',
+                                            name: 'tab_check_border_color',
+                                            default: '#000000',
+                                            col: 2
+                                        }
+                                    ]
+                                },
+                                {
+                                    label: 'PC未选中状态',
+                                    components: [
+                                        {
+                                            label: '文字颜色',
+                                            type: 'colorPicker',
+                                            name: 'tab_font_color',
+                                            default: '#000000',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '背景颜色',
+                                            type: 'colorPicker',
+                                            name: 'tab_bg_color',
+                                            default: '#FFFFFF',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '描边颜色',
+                                            type: 'colorPicker',
+                                            name: 'tab_border_color',
+                                            default: '#000000',
+                                            col: 2
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    label: '商品信息配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '销售价文字颜色',
+                            name: 'shop_price_color',
+                            type: 'colorPicker',
+                            default: '#FF4545'
+                        },
+                        {
+                            label: '营销信息是否显示',
+                            type: 'radio',
+                            default: 1,
+                            name: 'market_info_show',
+                            options: [
+                                { label: '是', value: '1' },
+                                { label: '否', value: '0' },
+                            ]
+                        },
+                        {
+                            type: 'tab',
+                            brief: true,
+                            isshow: 'dl-web',
+                            items: [
+                                {
+                                    label: 'PC/PAD',
+                                    components: [
+                                        {
+                                            label: '组件上边距',
+                                            desc: '(px)',
+                                            name: 'box_margin_top',
+                                            default: '0',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '组件下边距',
+                                            desc: '(px)',
+                                            name: 'box_margin_bottom',
+                                            default: '32',
+                                            col: 2
+                                        },
+                                        {
+                                            label: 'tab整体背景颜色',
+                                            type: 'colorPicker',
+                                            name: 'tab_cont_bg_color',
+                                            default: '#F8F8F8',
+                                            col: 2
+                                        },
+                                        {
+                                            label: 'tab整体背景图片',
+                                            type: 'image',
+                                            name: 'tab_cont_bg_img',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '分页颜色',
+                                            type: 'colorPicker',
+                                            name: 'page_color',
+                                            default: '#000000'
+                                        }
+                                    ]
+                                },
+                                {
+                                    label: 'M',
+                                    components: [
+                                        {
+                                            label: '组件上边距',
+                                            desc: '(px)',
+                                            name: 'm_box_margin_top',
+                                            default: '0',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '组件下边距',
+                                            desc: '(px)',
+                                            name: 'm_box_margin_bottom',
+                                            default: '32',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '默认tab背景颜色',
+                                            type: 'colorPicker',
+                                            name: 'm_tab_bg_color',
+                                            default: '#FFFFFF',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '选中tab背景颜色',
+                                            type: 'colorPicker',
+                                            name: 'm_tab_check_bg_color',
+                                            default: '#333333',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '默认tab字体颜色',
+                                            type: 'colorPicker',
+                                            name: 'm_tab_font_color',
+                                            default: '#333333',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '选中tab字体颜色',
+                                            type: 'colorPicker',
+                                            name: 'm_tab_check_font_color',
+                                            default: '#FFFFFF',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '默认tab边框颜色(展开)',
+                                            type: 'colorPicker',
+                                            name: 'm_tab_border_color',
+                                            default: '#999999',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '选中tab边框颜色(展开)',
+                                            type: 'colorPicker',
+                                            name: 'm_tab_check_border_color',
+                                            default: '#999999',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '展开收起箭头颜色',
+                                            type: 'colorPicker',
+                                            name: 'm_tab_icon_color',
+                                            default: '#333333',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '展开区域背景颜色',
+                                            type: 'colorPicker',
+                                            name: 'm_tab_area_bg_color',
+                                            default: '#FFFFFF',
+                                            col: 2
+                                        },
+                                        {
+                                            label: 'View More按钮',
+                                            type: 'fieldset',
+                                            components: [
+                                                {
+                                                    label: '文字颜色',
+                                                    type: 'colorPicker',
+                                                    name: 'm_btn_font_color',
+                                                    default: '#000000'
+                                                },
+                                                {
+                                                    label: '按钮圆角',
+                                                    desc: '(px)',
+                                                    name: 'm_btn_radius_size',
+                                                    default: '2'
+                                                },
+                                                {
+                                                    label: '背景颜色',
+                                                    type: 'colorPicker',
+                                                    name: 'm_btn_bg_color',
+                                                    default: '#FFFFFF',
+                                                    col: 2
+                                                },
+                                                {
+                                                    label: '描边颜色',
+                                                    type: 'colorPicker',
+                                                    name: 'm_btn_border_color',
+                                                    default: '#000000',
+                                                    col: 2
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            type: 'tab',
+                            brief: true,
+                            isshow: 'dl-app',
+                            items: [
+                                {
+                                    label: 'M',
+                                    components: [
+                                        {
+                                            label: '组件上边距',
+                                            desc: '(px)',
+                                            name: 'm_box_margin_top',
+                                            default: '0',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '组件下边距',
+                                            desc: '(px)',
+                                            name: 'm_box_margin_bottom',
+                                            default: '32',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '默认tab背景颜色',
+                                            type: 'colorPicker',
+                                            name: 'm_tab_bg_color',
+                                            default: '#FFFFFF',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '选中tab背景颜色',
+                                            type: 'colorPicker',
+                                            name: 'm_tab_check_bg_color',
+                                            default: '#333333',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '默认tab字体颜色',
+                                            type: 'colorPicker',
+                                            name: 'm_tab_font_color',
+                                            default: '#333333',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '选中tab字体颜色',
+                                            type: 'colorPicker',
+                                            name: 'm_tab_check_font_color',
+                                            default: '#FFFFFF',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '默认tab边框颜色(展开)',
+                                            type: 'colorPicker',
+                                            name: 'm_tab_border_color',
+                                            default: '#999999',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '选中tab边框颜色(展开)',
+                                            type: 'colorPicker',
+                                            name: 'm_tab_check_border_color',
+                                            default: '#999999',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '展开收起箭头颜色',
+                                            type: 'colorPicker',
+                                            name: 'm_tab_icon_color',
+                                            default: '#333333',
+                                            col: 2
+                                        },
+                                        {
+                                            label: '展开区域背景颜色',
+                                            type: 'colorPicker',
+                                            name: 'm_tab_area_bg_color',
+                                            default: '#FFFFFF',
+                                            col: 2
+                                        },
+                                        {
+                                            label: 'View More按钮',
+                                            type: 'fieldset',
+                                            components: [
+                                                {
+                                                    label: '文字颜色',
+                                                    type: 'colorPicker',
+                                                    name: 'm_btn_font_color',
+                                                    default: '#000000'
+                                                },
+                                                {
+                                                    label: '按钮圆角',
+                                                    desc: '(px)',
+                                                    name: 'm_btn_radius_size',
+                                                    default: '2'
+                                                },
+                                                {
+                                                    label: '背景颜色',
+                                                    type: 'colorPicker',
+                                                    name: 'm_btn_bg_color',
+                                                    default: '#FFFFFF',
+                                                    col: 2
+                                                },
+                                                {
+                                                    label: '描边颜色',
+                                                    type: 'colorPicker',
+                                                    name: 'm_btn_border_color',
+                                                    default: '#000000',
+                                                    col: 2
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+
+                    ]
+                },
+                {
+                    label: '折扣标配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            type: 'discount-dl'
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    beforeSubmit: 'onSubmit',
+    skuValidConfig: 'skuValidConfig'
+} %}
+
+
+<script>
+
+    function skuValidConfig () {
+        return {
+            check_type: 'goods',
+            check_rules: 'GOODS_VALIDATE_SAME_SPU'
+        }
+    }
+
+    {#  自定义保存函数 #}
+    function onSubmit(progress) {
+        var navData = [];
+        var goodsData = [];
+        var status = 1;
+
+        $wrap.find('.wrap-config').each(function (index, item) {
+            var obj = {};
+            obj.navName = $(this).find('input[name="navName"]').val();
+
+            $(this).find('.list-group-item').each(function (childIndex, item) {
+                var obj2 = {};
+                obj2.goods = $(this).find('textarea[name="goodsSKU"]').val();
+                obj2.lists = $(this).find('textarea[name="goodsSKU"]').val();
+                obj2.catIds = $(this).find('textarea[name="catIds"]').val();
+                /* 是否异步数据 */
+                obj2.isAsync = 1;
+                obj2.key = index + '-' + childIndex;
+
+                /* ipsJson 获取IPS数据*/
+                var ipsJson = GESHOP_IPS.getIPSItemJson($(this));
+                obj2 = Object.assign({},obj2,ipsJson);
+                obj = Object.assign({},obj,obj2,ipsJson);
+
+                goodsData.push(obj2);
+            });
+            navData.push(obj)
+        });
+
+        $('.nav-list-arr').val(JSON.stringify(navData));
+        $('input[name=goodsSKU]').val(JSON.stringify(navData));
+
+        /**校验大于等于1整数**/
+        var rStatus = getValitorNumber($('input[name=tab_total_number]'));
+        var pStatus = getValitorNumber($('input[name=row_tab_num]'));
+        var dStatus = getValitorNumber($('input[name=page_goods_num]'), '1');
+        var iStatus = getValitorNumber($('input[name=m_goods_num]'), '1');
+
+        if (!rStatus || !pStatus || !dStatus || !iStatus) {
+            return false;
+        }
+
+        /** 分类ID去重 **/
+        $('textarea[name=catIds]').each(function (idx, item) {
+            getUniqueForm(item, function (newArr, repeatList) {
+                if (repeatList.length > 0) {
+                    var text = repeatList.join(',') + ' 分类Id重复, 是否清空？';
+                    layer.confirm(text, {
+                        title: '提示',
+                        btn: ['否', '是'],
+                        area: '420px',
+                        icon: 3,
+                        skin: 'element-ui-dialog-class'
+                    }, function (index) {
+                        layer.close(index);
+                    }, function (index) {
+                        $(item).val(newArr.join(','));
+                        layer.close(index);
+                    });
+                    status = 0;
+                }
+            });
+        });
+        if (status == 1) {
+            progress.next();
+        }
+    }
+
+    function getUniqueForm(target, callback) {
+        var val = $.trim($(target).val());
+
+        if (val.indexOf(',') !== -1) {
+            var idArr = val.split(',');
+            /*去重*/
+            var newArr = [];
+            var repeatList = [];
+            for (var i = 0; i < idArr.length; i++) {
+                var idItem = idArr[i];
+                if (newArr.indexOf(idItem) === -1) {
+                    newArr.push(idItem);
+                }else{
+                    if(repeatList.indexOf(idItem) === -1){
+                        repeatList.push(idItem);
+                    }
+                }
+            }
+
+            if( callback && typeof callback === 'function'){
+                callback(newArr, repeatList);
+            }
+        }
+        return ''
+    }
+
+    /* 校验整数 */
+    function getValitorNumber(target, type) {
+        var val = $.trim($(target).val());
+        if (val != '') {
+            if (!/^([1-9][0-9]*)$/.test(val) || val < 1) {
+                layer.msg('请输入为大于等于1的整数');
+                $(target).val('');
+                return false;
+            };
+            if (type && type == 1) {
+                if (val > 100) {
+                    layer.msg('显示商品个数不超过100个!');
+                    $(target).val('100');
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**分类ID**/
+    $('textarea[name=catIds]').on('blur', function (e) {
+        var $this = $(e.target);
+        var val = $this.val();
+        if (val != '') {
+            {% verbatim %}
+                var reg = /^[\\d,]*$/;
+            {% endverbatim %}
+
+            if (val.indexOf(',') != -1) {
+                var arr = val.split(',');
+                var newArr = [];
+                var isVid = false;
+                for (var i =0; i<arr.length; i++) {
+                    var _val = $.trim(arr[i]);
+                    if (reg.test(_val) && _val > 0) {
+                        newArr.push(arr[i]);
+                    } else {
+                        isVid = true;
+                    }
+                }
+                if (isVid) {
+                    layer.confirm('商品分类ID,请输入大于等于1的整数', {
+                        title: '提示',
+                        btn: ['否', '是'],
+                        area: '420px',
+                        icon: 3,
+                        skin: 'element-ui-dialog-class'
+                    }, function (index) {
+                        layer.close(index);
+                    }, function (index) {
+                        $this.val(newArr.join(','));
+                        layer.close(index);
+                    });
+                };
+            } else {
+                if (!reg.test($.trim(val)) || val == 0) {
+                    layer.confirm('商品分类ID,请输入大于等于1的整数', {
+                        title: '提示',
+                        btn: ['否', '是'],
+                        area: '420px',
+                        icon: 3,
+                        skin: 'element-ui-dialog-class'
+                    }, function (index) {
+                        layer.close(index);
+                    }, function (index) {
+                        $this.val('');
+                        layer.close(index);
+                    });
+                };
+            }
+            return false;
+        }
+    });
+
+    var $form = $('#component_form');
+    var $nav = $form.find('.gs-form-nav');
+
+    $nav.on('click', '.layui-form-radio', function () {
+        var $this = $(this);
+        var $prev = $this.prev('.tabItemRadio');
+
+        if ($prev.prop('checked') == true) {
+            var $group = $this.parents('.goods-tab-lists');
+            var $sku = $group.find('textarea[name=goodsSKU]');
+            var $cateIds = $group.find('textarea[name=catIds]');
+            var $visible = $group.find('.goods-visible');
+            $sku.removeClass('js-valid-skus');
+            $cateIds.removeClass('js-valid-cateIds');
+
+            var _val = $prev.val();
+            switch (Number(_val)) {
+                case 1:
+                    /* sku */
+                    if (!($visible.find('textarea').hasClass('js-valid-skus'))) {
+                        $visible.find('textarea').addClass('js-valid-skus');
+                    }
+                    break;
+                case 3:
+                    /* 分类id */
+                    if (!($visible.find('textarea').hasClass('js-valid-cateIds'))) {
+                        $visible.find('textarea').addClass('js-valid-cateIds');
+                    }
+                    break;
+            }
+        }
+    });
+
+</script>
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

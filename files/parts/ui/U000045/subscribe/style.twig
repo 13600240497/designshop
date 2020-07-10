@@ -1,0 +1,55 @@
+{% set namespace = '.U000045_' ~ pageInstanceId %}
+
+{{ namespace }} button.subscribe {
+    margin-top: {{ (data.margin_top | default(20))/75 }}rem;
+    margin-bottom: {{ (data.margin_bottom | default(20))/75 }}rem;
+    width: {{ (data.width | default(480))/75 }}rem;
+    height: {{ (data.height | default(80))/75 }}rem;
+    line-height: {{ (data.height | default(80))/75 }}rem;
+    font-size: {{ (data.font_size | default(32))/75 }}rem;
+    font-weight: {{ data.font_weight | default('normal') }};
+    border-radius: {{ (data.border_radius | default(4))/75 }}rem;
+    border-width: {{ (data.border_width | default(0))/75 }}rem;
+    border-style: {{ data.border_style | default('solid') }};
+    background-size: 100% 100%;
+}
+
+{{ namespace }} button.ready {
+    color: {{ data.ready_text_color | default('#FFFFFF') }};
+    border-color: {{ data.ready_bd_color | default('#000000') }};
+    {% if data.ready_bg_image is not empty %}
+        background-image: url("{{ data.ready_bg_image }}");
+    {% else %}
+        background-color: {{ data.ready_bg_color | default('#000000') }};
+    {% endif %}
+}
+
+{{ namespace }} button.unclick {
+    color: {{ data.unclick_text_color | default('#FFFFFF') }};
+    border-color: {{ data.unclick_bd_color | default('#000000') }};
+    {% if data.unclick_bg_image is not empty %}
+        background-image: url("{{ data.unclick_bg_image }}");
+    {% else %}
+        background-color: {{ data.unclick_bg_color | default('#000000') }};
+    {% endif %}
+}
+
+{{ namespace }} button.clicked {
+    color: {{ data.clicked_text_color | default('#000000') }};
+    border-color: {{ data.clicked_bd_color | default('#d0d0d0') }};
+    {% if data.clicked_bg_image is not empty %}
+        background-image: url("{{ data.clicked_bg_image }}");
+    {% else %}
+        background-color: {{ data.clicked_bg_color | default('#d0d0d0') }};
+    {% endif %}
+}
+
+{{ namespace }} button.disabled {
+    color: {{ data.disabled_text_color | default('#999999') }};
+    border-color: {{ data.disabled_bd_color | default('#d0d0d0') }};
+    {% if data.disabled_bg_image is not empty %}
+        background-image: url("{{ data.disabled_bg_image }}");
+    {% else %}
+        background-color: {{ data.disabled_bg_color | default('#d0d0d0') }};
+    {% endif %}
+}

@@ -1,0 +1,110 @@
+{%
+set formData = {
+    id: 'U000227',
+    name: '跑马灯配置',
+    theme: 'default',
+    tabs: [
+        {
+            label: '组件内容',
+            components: [
+                {
+                    label: '内容配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            type: 'platData-dl-target',
+                            name: 'is_open_new',
+                        },
+                        {
+                            label: '数据配置',
+                            type: 'diy',
+                            src: 'form-data-template.twig'
+                        }    
+                    ]
+                }             
+            ]
+        },
+        {
+            label: '样式配置',
+            components: [
+                {
+                    label: '常用配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '跑马灯切换的秒数',
+                            name: 'lamp_switchTime',
+                            default: 3,
+                        },
+                        {
+                            label: '背景颜色',
+                            name: 'lamp_bgColor',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            type: 'colorPicker',
+                        },
+                        {
+                            label: '字体颜色',
+                            name: 'lamp_fontColor',
+                            type: 'colorPicker',
+                            default: '#ffffff',
+                            type: 'colorPicker',
+                        },
+                        {
+                            label: '字体是否加粗',
+                            name: 'lamp_fontIsBold',
+                            type: 'radio',
+                            default: '1',
+                            options: [
+                                { label: '是', value: '1' },
+                                { label: '否', value: '0' },
+                            ]
+                        },
+                        {
+                            type: 'diy',
+                            src: 'form-plat-template.twig'
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    moreConfig: [],
+    beforeSubmit: 'beforeSubmit'
+}
+%}
+ 
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+<style>
+    .tab-field-item {
+        width: auto !important;
+        border-radius: 4px;
+        border: 1px solid #e6e6e6;
+        padding: 16px 16px !important;
+    }
+    .form-item-bottom {
+        margin-bottom: 16px !important;
+    }
+    .geshop-third-value {
+        margin-top: 16px;
+    }
+    .layui-this {
+        color: #333 !important;
+    }
+    .layui-input-block2 {
+        margin-top: 5px !important;
+    }
+    .layui-loop .tab-add-btn .class-up {
+        display: none;
+    }
+    .layui-loop .tab-add-btn .class-close {
+        display: none;
+    }
+</style>
+
+{# 引入自定义函数 #}
+<script>
+    {% include 'form.js' %}
+</script>

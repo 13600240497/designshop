@@ -1,0 +1,115 @@
+{% set space = '#U000223_'~pageInstanceId %}
+
+ 
+
+{{space}} .geshop-u000223-default-body {
+    background-color: {{ data.component_bg_color | default('#FFFFFF') }};
+    text-align: {{ data.components_align | default('left') }};
+    margin-top: {{ data.pc_box_margin_top | default(0) }}px;
+    margin-bottom: {{ data.pc_box_margin_bottom | default(32) }}px;
+	height: {{ data.pc_title_height | default(70) }}px;
+	{% if data.pc_text_bgImg %}
+		background-image: url({{ data.pc_text_bgImg }});
+	{% endif %}
+}
+
+{{space}} .title-wrap{
+	margin-top: {{ data.pc_title_height | default(70) /2 }}px
+}
+
+{{space}} .title-wrap .title{
+	color: {{ data.text_color | default('#333333') }};
+	border-bottom-color: {{ data.underline_color | default('#DCDCDC') }};
+	{% if data.is_underline == 1 %}
+		border-bottom-width: {{ data.pc_underline_height | default(1)  }}px;
+	{% else %}
+		border-bottom-width: 0px;
+	{% endif %}
+	line-height:  {{ data.pc_title_height  | default(70) }}px;
+	font-size: {{ data.pc_text_fz  | default(24) }}px;
+}
+
+{{space}} .left-img{
+	{% if data.pc_left_img %}
+		background-image: url({{ data.pc_left_img }});
+	{% endif %}
+	margin-right: {{ data.pc_icon_gap | default(10) }}px;
+}
+
+{{space}} .right-img{
+	{% if data.pc_right_img %}
+		background-image: url({{data.pc_right_img}});
+	{% endif %}
+	margin-left: {{ data.pc_icon_gap | default(10) }}px;
+}
+
+{# pad #}
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+    {{space}} .geshop-u000223-default-body {
+        margin-top: {{ data.pad_box_margin_top | default(0) }}px;
+        margin-bottom: {{ data.pad_box_margin_bottom | default(32) }}px;
+		height: {{ data.pad_title_height | default(70) }}px;
+		{% if data.pad_text_bgImg %}
+			background-image: url({{ data.pad_text_bgImg }});
+		{% endif %}
+	}
+	
+	{{space}} .title-wrap {
+		margin-top: {{ data.pad_title_height | default(70) /2 }}px
+	}
+
+	{{space}} .title-wrap .title {
+		border-bottom-width: {{ data.pad_underline_height | default(1)  }}px;
+		line-height:  {{ data.pad_title_height  | default(70) }}px;
+		font-size: {{ data.pad_text_fz  | default(24) }}px;
+	}
+
+	{{space}} .left-img {
+		{% if data.pad_left_img %}
+			background-image: url({{ data.pad_left_img }});
+		{% endif %}
+		margin-right: {{ data.pad_icon_gap | default(10) }}px;
+	}
+
+	{{space}} .right-img {
+		{% if data.pad_right_img %}
+			background-image: url({{data.pad_right_img}});
+		{% endif %}
+		margin-left: {{ data.pad_icon_gap | default(10) }}px;
+	}
+}
+
+{# m #}
+@media screen and (max-width: 767px){
+	{{space}} .geshop-u000223-default-body {
+		margin-top: {{ data.m_box_margin_top | default(0) }}px;
+		margin-bottom: {{ data.m_box_margin_bottom | default(16) }}px;
+		height: {{ data.m_title_height | default(42) }}px;
+		{% if data.m_text_bgImg %}
+			background-image: url({{ data.m_text_bgImg }});
+		{% endif %}
+	}
+
+	{{space}} .title-wrap {
+		margin-top: {{ data.m_title_height | default(42) / 2 }}px
+	}
+
+	{{space}} .title-wrap .title {
+		border-bottom-width: {{ data.m_underline_height | default(1) }}px;
+		line-height:  {{ data.m_title_height  | default(42) }}px;
+		font-size: {{ data.m_text_fz  | default(16) }}px;
+	}
+	{{space}} .left-img {
+		{% if data.m_left_img %}
+			background-image: url({{ data.m_left_img }});
+		{% endif %}
+		margin-right: {{ data.m_icon_gap | default(5) }}px;
+	}
+
+	{{space}} .right-img{
+		{% if data.m_right_img %}
+			background-image: url({{ data.m_right_img }});
+		{% endif %}
+		margin-left: {{ data.m_icon_gap | default(5) }}px;
+	}
+}

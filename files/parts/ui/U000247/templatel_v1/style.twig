@@ -1,0 +1,131 @@
+{% set space = '#U000247_'~pageInstanceId %}
+{% set body =  space~' .U000247_lottery_wrap' %}
+
+
+{{ body }} {
+    background: {{ data.box_bg_color ?? '#131523' }} url("{{ data.box_bg ?: 'https://uidesign.drlcdn.com/DL/image/2019/20191029_13494/bg.png' }}") 50% 0 no-repeat;
+    height: {{ data.box_bg_h ?? 530 }}px;
+    margin-top: {{ data.box_margin_top ?? 0 }}px
+}
+
+{{ body }} .lottery-box {
+    margin-top: {{ data.lott_margin_top ?? 20 }}px;
+    margin-left: {{ data.lott_margin_left ?? 34 }}px;
+}
+
+{{ body }} .lottery-content {
+    background: url("{{ data.lottery_bg ?: 'https://uidesign.drlcdn.com/DL/image/2019/20191029_13494/aammb3.png?imbypass=true' }}") 50% 50%/ 100% 100% no-repeat;
+}
+
+{{ body }} .btn-start {
+    background: url("{{ data.start_bg ?: 'https://uidesign.drlcdn.com/DL/image/2019/20191029_13494/aammb2.png?1' }}") 50% 50%/ 100% 100% no-repeat;
+}
+
+{{ body }} .titel {
+    color: {{ data.utitle_color ?? '#000000' }};
+    font-size: {{ data.utitle_font ?? 26 }}px;
+    margin-top: {{ data.utitle_margin_top ?? 60 }}px;
+    margin-bottom: {{ data.utitle_margin_bottom?? 24 }}px;
+}
+
+{{ body }} .user-list-wrap .list-wrap .user-list li {
+    color: {{ data.u_color ?? '#000000' }}
+}
+
+{{ body }} .lottery-user-list {
+    background: url("{{ data.user_list_bg ?: 'https://uidesign.drlcdn.com/DL/image/2019/20191029_13494/md.png' }}") 50% 50%/ 100% 100% no-repeat;
+    margin-left: {{ data.user_margin_left ?? 56 }}px;
+    top: {{ data.user_margin_top ?? 40 }}px;
+    width: {{ data.user_list_w ?? 513 }}px;
+    height: {{ data.user_list_h ?? 475 }}px;
+    {% if data.show_list == 'hide' %}
+        display: none;
+    {% endif %}
+}
+
+
+{{ body }} .user-list-wrap .list-wrap .user-list li > p {
+    font-size: {{ data.u_font ?? 16 }}px;
+}
+
+{{ body }} .btn-rule {
+    left: {{ data.rule_left ?? 15 }}px;
+    top: {{ data.rule_top ?? 0 }}px;
+    font-size: {{ data.rule_font ?? 12 }}px;
+    background:{{ data.rule_bg_color ?? '#0a2251' }};
+    color: {{ data.rule_color ?? '#16A5F7' }};
+}
+
+{{ body }}  .merber {
+    color: {{ data.chances_color ?? '#16A5F7' }};;
+    font-size: {{ data.chances_font ?? 18 }}px;
+    bottom: -{{ data.chances_margin_top ?? 36 }}px;
+    left: {{ data.chances_margin_left ?? 174 }}px;
+}
+
+{{ body }} .btn-changes {
+    color: {{ data.chances_span_color ?? '#FFFFFF' }};
+}
+
+@media (max-width: 767px) {
+    {{ body }} {
+        background: {{ data.box_bg_color_m ?? '#131523' }} url("{{ data.box_bg_m ?: 'https://uidesign.drlcdn.com/DL/image/2019/20191029_13494/mbg.png' }}") 50% 0/ 100% 100% no-repeat;
+        height: {{ data.box_bg_h_m ?? 562 }}px;
+        margin-top: {{ data.box_margin_top_m ?? 0 }}px
+    }
+
+    {{ body }} .lottery-content {
+        background: url("{{ data.lottery_bg_m ?: 'https://uidesign.drlcdn.com/DL/image/2019/20191029_13494/aamm5.png' }}") 50% 50%/ 100% 100% no-repeat;
+    }
+
+
+
+    {{ body }} .lottery-box {
+        margin-top: {{ data.lott_margin_top_m ?? 10 }}px;
+        margin-left: {{ data.lott_margin_left_m ?? 0 }}px;
+    }
+
+    {{ body }} .btn-start {
+        background: url("{{ data.start_bg_m ?: 'https://uidesign.drlcdn.com/DL/image/2019/20191029_13494/aamm2.png?1' }}") 50% 50%/ 100% 100% no-repeat;
+    }
+
+
+    {{ body }}  .merber {
+        font-size: {{ data.chances_font_m ?? 12 }}px;
+        margin-top: {{ data.chances_margin_top_m ?? 10  }}px;
+        left: initial;
+        bottom: initial;
+        margin-left: {{ data.chances_margin_left_m ?? 0 }}px;
+    }
+
+
+    {{ body }} .titel {
+        font-size: {{ data.utitle_font_m ?? 14 }}px;
+        margin-top: {{ data.utitle_margin_top_m?? 30 }}px;
+        margin-bottom: {{ data.utitle_margin_bottom_m?? 16 }}px;
+    }
+
+
+    {{ body }} .lottery-user-list {
+        background: url("{{ data.user_list_bg_m ?: 'https://uidesign.drlcdn.com/DL/image/2019/20191029_13494/md.png' }}") 50% 50%/ 100% 100% no-repeat;
+        margin-left: {{ data.user_margin_left_m ?? 0 }}px;
+        top: {{ data.user_margin_top_m ?? 20 }}px;
+        width: {{ data.user_list_w_m ?? 300 }}px;
+        height: {{ data.user_list_h_m ?? 184 }}px;
+        {% if data.show_list_m == 'hide' %}
+            display: none;
+        {% endif %}
+    }
+
+
+    {{ body }} .user-list-wrap .list-wrap .user-list li > p {
+        font-size: {{ data.u_font_m ?? 12 }}px;
+    }
+
+    {{ body }} .btn-rule {
+        left: {{ data.rule_left_m ?? 10 }}px;
+        top: {{ data.rule_top_m ?? 0 }}px;
+        font-size: {{ data.rule_font_m ?? 12 }}px;
+    }
+
+}

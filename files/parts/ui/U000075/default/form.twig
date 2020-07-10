@@ -1,0 +1,101 @@
+
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>自定义广告
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+  <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+    <div class="layui-tab">
+      <ul class="layui-tab-title">
+        <li class="layui-this">模板选择</li>
+        <li>样式设置</li>
+      </ul>
+      <div class="layui-tab-content layui-tab-content-parent">
+        <div class="layui-tab-item layui-show">
+						<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+						{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				</div>
+        <div class="layui-tab-item">
+          <div class="layui-collapse" lay-accordion>
+            <div class="layui-colla-item">
+              <h2 class="layui-colla-title">基础设置</h2>
+              <div class="layui-colla-content layui-show">
+                <div class="layui-form-item">
+                  <label class="layui-form-label">上边距(px)</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="marginTop" autocomplete="off" class="layui-input" value="{{ data.marginTop | default(0) }}">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">下边距(px)</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="marginBottom" autocomplete="off" class="layui-input" value="{{ data.marginBottom | default(0) }}">
+                  </div>
+                </div>
+								{{include ('@app/files/parts/formModules/userGroupItem.twig')}}
+              </div>
+            </div>
+            <div class="layui-colla-item">
+              <h2 class="layui-colla-title">广告图设置</h2>
+              <div class="layui-colla-content">
+                <div class="layui-form-item">
+                  <label class="layui-form-label">图片宽度(px)</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="ImgWidth" autocomplete="off" class="layui-input" value="{{ data.ImgWidth }}">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">图片高度(px)</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="ImgHeight" autocomplete="off" class="layui-input" value="{{ data.ImgHeight }}">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">图片链接</label>
+                  <div class="layui-input-block">
+                    <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                    <input type="text" lay-verify="required" autocomplete="off" class="layui-input" name="imgSrc" value="{{ data.imgSrc }}" data-width="ImgWidth" data-height="ImgHeight">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">图片跳转链接</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="link" autocomplete="off" class="layui-input" value="{{ data.link }}">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">图片描述(Alt)</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="imgAlt" autocomplete="off" class="layui-input" value="{{ data.imgAlt }}">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">位置信息</label>
+                  <div class="layui-input-block">
+                    <input type="radio" name="imgAlign" value="left" title="居左" {% if data.imgAlign == 'left' %} checked{% endif %}>
+                    <input type="radio" name="imgAlign" value="center" title="居中" {% if data.imgAlign != 'left' and data.imgAlign != 'right' %} checked{% endif %}>
+                    <input type="radio" name="imgAlign" value="right" title="居右" {% if data.imgAlign == 'right' %} checked{% endif %}>
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="gs-lable-block">链接是否打开新窗口</label>
+                  <div class="layui-input-block">
+                    <input type="radio" name="target_active" data-public-tag="true" value="1" title="是" {% if data.target_active == '1' %} checked="checked" {% endif %}>
+                    <input type="radio" name="target_active" data-public-tag="true" value="0" title="否" {% if data.target_active|default(0) == '0'  %} checked="checked" {% endif %}>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>

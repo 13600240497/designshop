@@ -1,0 +1,169 @@
+[data-gid="U000102_default"] {
+  overflow: hidden;
+  li {
+    list-style: none;
+  }
+  .gb_goodsWrap {
+    .gb_price1 {
+      font-size: 0.32rem;
+      margin: 0 0.2667rem;
+    }
+    .gb_price2 {
+      font-size: 0.48rem;
+    }
+    .gb_buy {
+      margin-top: 0.2133rem;
+      cursor: pointer;
+      display: inline-block;
+      height: 0.8rem;
+      line-height: 0.8rem;
+      padding:  0 0.533rem;
+      border-radius:0.053rem;
+    }
+    .gb_cart {
+      padding:0.106rem 0.383rem;
+      position: absolute;
+      right: -0.7rem;
+      bottom: -0.7rem;
+      // top:0;
+      // left:0;
+      display: inline-block;
+      height: 1.8333rem;
+      width: 1.8333rem;
+      line-height: 1.200rem;
+      border-radius: 0.6667rem;
+      font-size: 0.56rem;
+      border-radius: 50%;
+      text-align: left;
+      color: #ffffff !important;
+      box-sizing: border-box;
+    }
+    .gb_goodsName {
+      margin: 0.32rem 0 0.08rem 0;
+      text-align: left;
+      font-size: 0.3733rem;
+      padding: 0  0.266rem 0.1333rem  0.266rem;
+    }
+    .gb_leftInfo{
+      height:100%;
+      width:3.2rem;
+      float:left;
+    }
+    .gb_rightInfo {
+      position:relative;
+      height:100%;
+      width:6rem;
+      padding-right:0.266rem;
+      float:right;
+      overflow:hidden;
+      padding-bottom: 0.266rem;
+      min-height:3.4rem;
+      box-sizing: border-box;
+    }
+    .gb_endTime {
+      margin: 0.2133rem 0;
+    }
+    .gb_times em {
+      margin-right: 0.2111rem;
+    }
+    .gb_contents{
+      word-wrap:break-word;
+      padding-left:0.213rem;
+      margin-bottom:0.08rem;
+      max-height:0.856rem;
+      position:relative;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      display:-webkit-box;
+      -webkit-box-orient:vertical;
+      -webkit-line-clamp:2;
+      line-height: 1.3;
+    }
+    .gb_contents::after {
+      content: "";
+      width: 0.1rem;
+      height: 0.1rem;
+      border-radius: 0.05rem;
+      position: absolute;
+      left: 0rem;
+      top: 0.24rem;
+      margin-top: -0.08rem;
+      background:#FF8A00;
+    }
+  }
+  .gb_stylenone {
+    overflow: hidden;
+  }
+  .gb_main {
+    padding: 0 !important;
+    height: auto !important;
+  }
+  .gb_imgBox {
+    margin:0 auto;
+    width:2.667rem;
+  }
+  .gb_imgBox img{
+    width:100%;
+		height:100%;
+  }
+  /* 售空 */
+  .gb_imgBox>a {
+    display: block;
+  }
+  .gs-goods-status {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    padding: 20px 10px;
+    font-size: 20px;
+    line-height: 20px;
+    color: #fff;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    visibility: visible;
+    background: rgba(0, 0, 0, .6);
+    border-radius: 50%;
+    font-style: normal;
+    display: none;
+    white-space:normal;
+    word-break:break-word;
+  }
+  .good_soldOut {
+    .gs-goods-status {
+      display: block;
+    }
+  }
+  .gb_after_coupon{
+    font-size:0.32rem;
+		margin-bottom: 0;
+  }
+  .gb_copy{
+    padding:0 0.16rem;
+  }
+  .gb_coupon_box{
+    margin:0.21333rem 0;
+  }
+
+  // 服务标
+  @import '../../../temp/gb/css/good_label_m.less';
+}
+
+[data-gid="U000102_default"] .good_dealEnded .buyLink,
+[data-gid="U000102_default"] .cart_good_soldOut,
+[data-gid="U000102_default"] .good_soldOut .buyLink {
+  background-color: #999 !important;
+  color: #fff !important;
+  pointer-events: none;
+  cursor: default;
+}
+
+li {
+  list-style: none;
+}

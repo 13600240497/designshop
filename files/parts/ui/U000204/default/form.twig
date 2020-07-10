@@ -1,0 +1,712 @@
+<style>{{ include ('form.css') }}</style>
+
+{%
+
+set formData = {
+    id: 'U000204',
+    name: '优惠券配置',
+    theme: 'default',
+    tabs: [
+        {
+            label: '样式配置',
+            components: [
+                {
+                    label: '常用配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '组件上边距(px)',
+                            name: 'component_margin_top',
+                            default: 0,
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: '组件下边距(px)',
+                            name: 'component_margin_bottom',
+                            default: 32,
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: '组件排列方式',
+                            name: 'component_align',
+                            type: 'radio',
+                            default: 'center',
+                            options: [
+                                { label: '居左', value: 'left' },
+                                { label: '居中', value: 'center' },
+                                { label: '居右', value: 'right' },
+                            ],
+                            public: false,
+                        },
+                        {
+                          type: 'tab',
+                          isshow: 'dl-web',
+                            items: [
+                            {
+                                label: 'PC',
+                                components: [
+                                    {
+                                        label: '组件宽度(px)',
+                                        name: 'pc_component_width',
+                                        default: 400,
+                                        public: false,
+                                        col:2
+                                    },
+                                    {
+                                        label: '组件高度(px)',
+                                        name: 'pc_component_height',
+                                        default: 284,
+                                        public: false,
+                                        col:2
+                                    },
+                                    {
+                                        label: '组件背景图片',
+                                        name: 'pc_component_bgImage',
+                                        desc: '建议宽400px，高284px',
+                                        type: 'image',
+                                        public: false,
+                                    }
+                                ]
+                            },
+                            {
+                                label: 'PAD',
+                                components: [
+                                    {
+                                        label: '组件宽度(px)',
+                                        name: 'pad_component_width',
+                                        default: 400,
+                                        public: false,
+                                        col:2
+                                    },
+                                    {
+                                        label: '组件高度(px)',
+                                        name: 'pad_component_height',
+                                        default: 284,
+                                        public: false,
+                                        col:2
+                                    },
+                                    {
+                                        label: '组件背景图片',
+                                        name: 'pad_component_bgImage',
+                                        desc: '建议宽400px，高284px',
+                                        type: 'image',
+                                        public: false,
+                                    }
+                                ]
+                            },
+                            {
+                                label: 'M',
+                                components: [
+                                    {
+                                        label: '组件宽度(px)',
+                                        name: 'm_component_width',
+                                        default: 174,
+                                        public: false,
+                                        col:2
+                                    },
+                                    {
+                                        label: '组件高度(px)',
+                                        name: 'm_component_height',
+                                        default: 142,
+                                        public: false,
+                                        col:2
+                                    },
+                                    {
+                                        label: '组件背景图片',
+                                        name: 'm_component_bgImage',
+                                        desc: '建议宽174px，高142px',
+                                        type: 'image',
+                                        public: false,
+                                    }
+                                ]
+                            },
+                        ]
+                        },
+                        {
+                            label: '组件宽度(px)',
+                            name: 'pc_component_width',
+                            default: 400,
+                            public: false,
+                            col:2,
+                            isshow: 'dl-app'
+
+                        },
+                        {
+                            label: '组件高度(px)',
+                            name: 'pc_component_height',
+                            default: 284,
+                            public: false,
+                            col:2,
+                            isshow: 'dl-app'
+                        },
+                        {
+                            label: '组件背景图片',
+                            name: 'pc_component_bgImage',
+                            desc: '建议宽400px，高284px',
+                            type: 'image',
+                            public: false,
+                            isshow: 'dl-app'
+                        }
+                    ]
+                },
+                {
+                    label: '折扣文案配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '折扣左边文案',
+                            name: 'discount_left_text',
+                            default: 'UP TO',
+                            public: false,
+                        },
+                        {
+                            label: '折扣要突出的文案',
+                            name: 'discount_important_text',
+                            default: '$18',
+                            public: false,
+                        },
+                        {
+                            label: '折扣右边上方的文案',
+                            name: 'discount_rt_text',
+                            default: 'All Order',
+                            public: false,
+                        },
+                        {
+                            label: '折扣右边下方的文案',
+                            name: 'discount_rb_text',
+                            default: 'Over $50',
+                            public: false,
+                        },
+                        {
+                            label: 'Code文案',
+                            name: 'code_text',
+                            default: 'CODE',
+                            public: false
+                        },
+                        {
+                            label: 'Code码',
+                            name: 'code_val',
+                            default: 'SCHOOL',
+                            public: false
+                        },
+                        {
+                          type: 'tab',
+                          isshow: 'dl-web',
+                              items: [
+                                {
+                                    label: 'PC',
+                                    components: [
+                                      {
+                                          label: '折扣突出文案文字大小',
+                                          name: 'pc_discount_fontSize',
+                                          default: 80,
+                                          public: false,
+                                          col:2
+                                      },
+                                      {
+                                          label: '折扣两侧文案大小',
+                                          name: 'pc_discount_fontSize_around',
+                                          default: 20,
+                                          public: false,
+                                          col:2
+                                      }
+                                    ]
+                                },
+                                {
+                                    label: 'PAD',
+                                    components: [
+                                        {
+                                          label: '折扣突出文案文字大小',
+                                          name: 'pad_discount_fontSize',
+                                          default: 80,
+                                          public: false,
+                                          col:2
+                                      },
+                                      {
+                                          label: '折扣两侧文案大小',
+                                          name: 'pad_discount_fontSize_around',
+                                          default: 20,
+                                          public: false,
+                                          col:2
+                                      }
+                                    ]
+                                },
+                                {
+                                    label: 'M',
+                                    components: [
+                                        {
+                                          label: '折扣突出文案文字大小',
+                                          name: 'm_discount_fontSize',
+                                          default: 32,
+                                          public: false,
+                                          col:2
+                                      },
+                                      {
+                                          label: '折扣两侧文案大小',
+                                          name: 'm_discount_fontSize_around',
+                                          default: 12,
+                                          public: false,
+                                          col:2
+                                      }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            label: '折扣突出文案文字大小',
+                            name: 'm_discount_fontSize',
+                            default: 32,
+                            public: false,
+                            col:2,
+                            isshow: 'dl-app'
+                        },
+                        {
+                            label: '折扣两侧文案大小',
+                            name: 'm_discount_fontSize_around',
+                            default: 12,
+                            public: false,
+                            col:2,
+                            isshow: 'dl-app'
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    moreConfig: [
+        {
+            type: 'collapse',
+            items: [
+                {
+                    label: '基础配置',
+                    components: [
+                        {
+                            label: '背景颜色',
+                            name: 'component_bgColor',
+                            type: 'colorPicker',
+                            default: '#EDEDED',
+                            public: false,
+                        },
+                        {
+                            label: '折扣文案文字颜色',
+                            name: 'discount_fontColor',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                        },
+                        {
+                          type: 'tab',
+                          isshow: 'dl-web',
+                              items: [
+                                {
+                                    label: 'PC',
+                                    components: [
+                                      {
+                                          label: '折扣文字上边距(px)',
+                                          name: 'pc_discount_pt',
+                                          default: 48,
+                                          public: false,
+                                          col:2
+                                      },
+                                      {
+                                          label: '折扣文字左边距(px)',
+                                          name: 'pc_discount_pl',
+                                          default: 49,
+                                          public: false,
+                                          col:2
+                                      }
+                                    ]
+                                },
+                                {
+                                    label: 'PAD',
+                                    components: [
+                                        {
+                                          label: '折扣文字上边距(px)',
+                                          name: 'pad_discount_pt',
+                                          default: 48,
+                                          public: false,
+                                          col:2
+                                      },
+                                      {
+                                          label: '折扣文字左边距(px)',
+                                          name: 'pad_discount_pl',
+                                          default: 49,
+                                          public: false,
+                                          col:2
+                                      }
+                                    ]
+                                },
+                                {
+                                    label: 'M',
+                                    components: [
+                                        {
+                                          label: '折扣文字上边距(px)',
+                                          name: 'm_discount_pt',
+                                          default: 24,
+                                          public: false,
+                                          col:2
+                                      },
+                                      {
+                                          label: '折扣文字左边距(px)',
+                                          name: 'm_discount_pl',
+                                          default: 14,
+                                          public: false,
+                                          col:2
+                                      }
+                                    ]
+                                }
+                            ]
+                        },
+                         {
+                            label: '折扣文字上边距(px)',
+                            name: 'm_discount_pt',
+                            default: 24,
+                            public: false,
+                            col:2,
+                            isshow: 'dl-app'
+                        },
+                        {
+                            label: '折扣文字左边距(px)',
+                            name: 'm_discount_pl',
+                            default: 14,
+                            public: false,
+                            col:2,
+                            isshow: 'dl-app'
+                        }
+                    ]
+                },
+                {
+                    label: 'Code文案配置',
+                    components: [
+                        {
+                            label: 'Code文字颜色',
+                            name: 'code_fontColor',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                        },
+                        {
+                          type: 'tab',
+                          isshow: 'dl-web',
+                              items: [
+                                {
+                                    label: 'PC',
+                                    components: [
+                                      {
+                                          label: 'Code文案上边距(px)',
+                                          name: 'pc_code_pt',
+                                          default: 16,
+                                          public: false,
+                                          col:2
+                                      },
+                                      {
+                                          label: 'Code文案左边距(px)',
+                                          name: 'pc_code_pl',
+                                          default: 90,
+                                          public: false,
+                                          col:2
+                                      },
+                                      {
+                                          label: 'Code文案字体大小(px)',
+                                          name: 'pc_code_fontSize',
+                                          default: 30,
+                                          public: false
+                                      }
+                                    ]
+                                },
+                                {
+                                    label: 'PAD',
+                                    components: [
+                                      {
+                                          label: 'Code文案上边距(px)',
+                                          name: 'pad_code_pt',
+                                          default: 16,
+                                          public: false,
+                                          col:2
+                                      },
+                                      {
+                                          label: 'Code文案左边距(px)',
+                                          name: 'pad_code_pl',
+                                          default: 90,
+                                          public: false,
+                                          col:2
+                                      },
+                                      {
+                                          label: 'Code文案字体大小(px)',
+                                          name: 'pad_code_fontSize',
+                                          default: 30,
+                                          public: false
+                                      }
+                                    ]
+                                },
+                                {
+                                    label: 'M',
+                                    components: [
+                                       {
+                                          label: 'Code文案上边距(px)',
+                                          name: 'm_code_pt',
+                                          default: 4,
+                                          public: false,
+                                          col:2
+                                      },
+                                      {
+                                          label: 'Code文案左边距(px)',
+                                          name: 'm_code_pl',
+                                          default: 35,
+                                          public: false,
+                                          col:2
+                                      },
+                                      {
+                                          label: 'Code文案字体大小(px)',
+                                          name: 'm_code_fontSize',
+                                          default: 14,
+                                          public: false
+                                      }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            label: 'Code文案上边距(px)',
+                            name: 'm_code_pt',
+                            default: 12,
+                            public: false,
+                            col:2,
+                            isshow: 'dl-app'
+                        },
+                        {
+                            label: 'Code文案左边距(px)',
+                            name: 'm_code_pl',
+                            default: 35,
+                            public: false,
+                            col:2,
+                            isshow: 'dl-app'
+                        },
+                        {
+                            label: 'Code文案字体大小(px)',
+                            name: 'm_code_fontSize',
+                            default: 14,
+                            public: false,
+                            isshow: 'dl-app'
+                        }
+                    ]
+                },
+                {
+                    label: '按钮配置',
+                    components: [
+                        
+                        {
+                          type: 'tab',
+                          isshow: 'dl-web',
+                              items: [
+                                {
+                                    label: 'PC',
+                                    components: [
+                                      {
+                                        label: '上边距(px)',
+                                        name: 'pc_btn_mt',
+                                        default: 16,
+                                        public: false,
+                                        col:2
+                                      },
+                                      {
+                                          label: '文字大小(px)',
+                                          name: 'pc_btn_fontSize',
+                                          default: 16,
+                                          public: false,
+                                          col:2
+                                      },
+                                      {
+                                          label: '宽度(px)',
+                                          name: 'pc_btn_width',
+                                          default: 140,
+                                          public: false,
+                                          col:2
+                                      },
+                                      {
+                                          label: '高度(px)',
+                                          name: 'pc_btn_height',
+                                          default: 40,
+                                          public: false,
+                                          col:2
+                                      }
+                                      
+                                    ]
+                                },
+                                {
+                                    label: 'PAD',
+                                    components: [
+                                      {
+                                        label: '上边距(px)',
+                                        name: 'pad_btn_mt',
+                                        default: 16,
+                                        public: false,
+                                        col:2
+                                      },
+                                      {
+                                          label: '文字大小(px)',
+                                          name: 'pad_btn_fontSize',
+                                          default: 16,
+                                          public: false,
+                                          col:2
+                                      },
+                                      {
+                                          label: '宽度(px)',
+                                          name: 'pad_btn_width',
+                                          default: 140,
+                                          public: false,
+                                          col:2
+                                      },
+                                      {
+                                          label: '高度(px)',
+                                          name: 'pad_btn_height',
+                                          default: 40,
+                                          public: false,
+                                          col:2
+                                      }
+                                    ]
+                                },
+                                {
+                                    label: 'M',
+                                    components: [
+                                      {
+                                        label: '上边距(px)',
+                                        name: 'm_btn_mt',
+                                        default: 4,
+                                        public: false,
+                                        col:2
+                                      },
+                                       {
+                                          label: '文字大小(px)',
+                                          name: 'm_btn_fontSize',
+                                          default: 12,
+                                          public: false,
+                                          col:2
+                                      },
+                                       {
+                                          label: '宽度(px)',
+                                          name: 'm_btn_width',
+                                          default: 92,
+                                          public: false,
+                                          col:2
+                                      },
+                                      {
+                                          label: '高度(px)',
+                                          name: 'm_btn_height',
+                                          default: 30,
+                                          public: false,
+                                          col:2
+                                      }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            label: '上边距(px)',
+                            name: 'm_btn_mt',
+                            default: 8,
+                            public: false,
+                            col:2,
+                            isshow: 'dl-app'
+                        },
+                        {
+                            label: '文字大小(px)',
+                            name: 'm_btn_fontSize',
+                            default: 12,
+                            public: false,
+                            col:2,
+                            isshow: 'dl-app'
+                        },
+                        {
+                            label: '宽度(px)',
+                            name: 'm_btn_width',
+                            default: 92,
+                            public: false,
+                            col:2,
+                            isshow: 'dl-app'
+                        },
+                        {
+                            label: '高度(px)',
+                            name: 'm_btn_height',
+                            default: 30,
+                            public: false,
+                            col:2,
+                            isshow: 'dl-app'
+                        },
+                        {
+                          type: 'tab',
+                              items: [
+                                {
+                                    label: '未点击',
+                                    components: [
+                                      {
+                                          label: '未点击按钮方案',
+                                          name: 'unactive_text',
+                                          default: 'Copy Code',
+                                          public: false,
+                                      },
+                                      {
+                                          label: '未点击文字颜色',
+                                          name: 'unactive_fontColor',
+                                          type: 'colorPicker',
+                                          default: '#FFFFFF',
+                                          public: false,
+                                      },
+                                      {
+                                          label: '未点击背景颜色',
+                                          name: 'unactive_bgColor',
+                                          type: 'colorPicker',
+                                          default: '#333333',
+                                          public: false,
+                                      },
+                                    ]
+                                },
+                                {
+                                    label: '点击后',
+                                    components: [
+                                      {
+                                          label: '点击后按钮方案',
+                                          name: 'active_text',
+                                          default: 'Copied!',
+                                          public: false,
+                                      },
+                                      {
+                                          label: '点击后文字颜色',
+                                          name: 'active_fontColor',
+                                          type: 'colorPicker',
+                                          default: '#FFFFFF',
+                                          public: false,
+                                      },
+                                      {
+                                          label: '点击后背景颜色',
+                                          name: 'active_bgColor',
+                                          type: 'colorPicker',
+                                          default: '#999999',
+                                          public: false,
+                                      }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    onSubmit: 'onSubmit'
+}
+
+%}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+<script>
+    
+
+    {#  自定义保存函数 #}
+    function onSubmit(progress) {
+        progress.next()
+    };
+</script>  

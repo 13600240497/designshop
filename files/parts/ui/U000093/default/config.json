@@ -1,0 +1,73 @@
+{
+  "name": "pc goodsList",
+  "version": "v1.0.0.1",
+  "description": "pc goodsList",
+  "author": "xingtao",
+  "doc":"http://wiki.hqygou.com:8090/pages/viewpage.action?pageId=39029806",
+  "commjs": {
+    "jquery": true
+  },
+  "commcss": {
+    "main": true
+  },
+  "min-width": "auto",
+  "min-height": "inherit",
+	"fields": {
+		"base_box_bgImage": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"component_bg_value": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"component_bg_repeat": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"component_bg_position": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"price_ft_weight": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"base_bg_shadow": { "is_public": "0", "is_m": "0", "is_app": "0" },
+
+
+    "goodsSKU": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"base_magin_bottom": { "is_public": "0", "is_m": "0", "is_app": "0" }
+		,"base_bgc": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"base_bgImage": { "is_public": "0", "is_m": "0", "is_app": "0" }
+		,"discount_bgc": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"discount_ftc": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"buy_ftc": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"buy_bgc": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"buy_hover_bgc": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"buy_hover_ftc": { "is_public": "0", "is_m": "0", "is_app": "0" }
+		,"buy_cart_bgc": { "is_public": "0", "is_m": "0", "is_app": "0" }
+		,"buy_cart_hover_bgc": { "is_public": "0", "is_m": "0", "is_app": "0" }
+		,"market_active": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"price_color":{ "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"price_fts": { "is_public": "0", "is_m": "0", "is_app": "0" }
+		,"discount_active": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"discount_right": { "is_public": "0", "is_m": "0", "is_app": "0" }
+		,"discount_top": { "is_public": "0", "is_m": "0", "is_app": "0" }
+		,"discount_height": { "is_public": "0", "is_m": "0", "is_app": "0" }
+		,"discount_width": { "is_public": "0", "is_m": "0", "is_app": "0" }
+		,"discount_fts": { "is_public": "0", "is_m": "0", "is_app": "0" }
+		,"discount_bgImage": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"buy_text": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"buy_fts": { "is_public": "0", "is_m": "0", "is_app": "0" }
+
+		,"down_bgc": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"down_ftc": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"limit_progress_bgc": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"limit_left_color": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"limit_type": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"limit_end_active": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"base_bg_shadow": { "is_public": "0", "is_m": "0", "is_app": "0" }
+		,"base_bg_shadow_color": { "is_public": "0", "is_m": "0", "is_app": "0" }
+		,"goods_img_one": { "is_public": "1", "is_m": "1", "is_app": "1" }
+	},
+	"languages":{
+		"off":{
+			"en":"off",
+			"de":"off",
+			"es":"DTO.",
+			"fr":"",
+			"it":"off",
+			"pt":"off",
+			"ru":"скидку",
+			"ar":"الخصم",
+			"ja":"オフ",
+			"ro":"reducere"
+		}
+	}
+}

@@ -1,0 +1,63 @@
+{#
+   value,value_m 配置pc/pad,m默认值,pc默认[_blank新窗口打开]，m默认[_self当前窗口打开]
+ * @Author: wuxingtao
+ * @Date: 2020-03-04 10:50:52
+ * @Last Modified by: wuxingtao
+ * @Last Modified time: 2020-03-04 10:50:52
+#}
+
+{% set components = [
+    {
+        type:'platData-dl',
+        componentsData:[
+        {
+            label: '链接是否打开新窗口',
+            desc: '',
+            name: 'is_open_new',
+            filter: 'is_open_new',
+            type: 'radio',
+            options: [
+            { label: '是', value: '_blank' },
+            { label: '否', value: '_self' }
+        ],
+            default: value|default('_blank') ,
+            default_m: value_m|default('_self')
+        }
+    ]
+    }
+] %}
+
+<div class="component-margin-dl">
+    {{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}
+</div>
+<style>
+    /* 兼容老组件样式 */
+    .component-margin-dl .layui-form-item>.layui-form-label{
+        display: block;
+        width: 100%;
+        padding: 0 0 4px 0;
+        text-align: left;
+        float: none;
+        box-sizing: border-box;
+    }
+    .component-margin-dl .layui-row.layui-col-space20 .layui-tab{
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .component-margin-dl .layui-row.layui-col-space20 .layui-tab-content{
+        padding: 10px 0;
+    }
+    .component-margin-dl .layui-tab-content{
+        padding-bottom: 0 !important;
+    }
+    /* 兼容上下增加配置项*/
+    .component-margin-dl .layui-row.layui-col-space20:last-child> div[class*=layui-col]:first-child{
+        margin-top: 0 !important;
+    }
+    .component-margin-dl .layui-row.layui-col-space20:last-child> div[class*=layui-col]{
+        margin-bottom: 0 !important;
+    }
+    .component-margin-dl .layui-row.layui-col-space20 .layui-col-xs12{
+        margin-top: 16px;
+    }
+</style>

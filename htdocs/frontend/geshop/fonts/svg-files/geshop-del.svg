@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>svg_16x16_del</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="切圖" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="SVG" transform="translate(-150.000000, -24.000000)" fill="#333333">
+            <g id="svg_16x16_del" transform="translate(152.000000, 26.000000)">
+                <path d="M3.00027784,1 C3.00027784,0.443864822 3.44390533,0 3.99114756,0 L8.00996378,0 C8.54981657,0 9.00083351,0.44771525 9.00083351,1 L10.9985452,1 C11.5453082,1 12.0011113,1.44771525 12.0011113,2 L12.0011113,3 L0,3 L0,2 C0,1.44386482 0.448864148,1 1.00256614,1 L3.00027784,1 Z M1,4 L11,4 L11,8 C11,10.2046438 9.20476795,12 6.990237,12 L5.009763,12 C2.7877996,12 1,10.209139 1,8 L1,4 Z" id="Rectangle-227"></path>
+            </g>
+        </g>
+    </g>
+</svg>

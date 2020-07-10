@@ -1,0 +1,425 @@
+.wrap_U0000187 {
+
+    .geshop-187d-container {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    .geshop-187d-head {
+        position: absolute;
+    }
+
+    .geshop-187d-rule-btn {
+        position: absolute;
+        width: 80px;
+        height: 24px;
+        line-height: 24px;
+        text-align: center;
+        border-radius:4px;
+    }
+    
+    .geshop-187d-turntable {
+        position: absolute;
+    }
+
+    .geshop-187d-pointer {
+        position: absolute;
+        img {
+            // transition: all 5s ease-out;
+        }
+    }
+
+    .geshop-187d-pointer-text {
+        cursor: pointer;
+        position: absolute;
+        // display: flex;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        // justify-content: center;
+        // align-items: center;
+        
+        .inner-text {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+    }
+    
+    .geshop-187d-spins {
+        position: absolute;
+        span {
+            font-weight: bold;
+        }
+    }
+    .geshop-187d-points {
+        position: absolute;
+        span {
+            font-weight: bold;
+        }
+    }
+    
+    .geshop-187d-list {
+        position: absolute;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+
+    .geshop-187d-list-title {
+        position: absolute;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    .geshop-187d-list-uname {
+        display: block;
+        margin: 0px;
+        margin-top: 60px;
+        height: 396px;
+        overflow: hidden;
+        box-sizing: border-box;
+        position: relative;
+        ul {
+            position: relative;
+        }
+        li {
+            margin: 16px 0px;
+            padding: 0 32px;
+            height: 22px;
+            line-height: 22px;
+            font-size: 16px;
+            span {
+                float: right;
+            }
+        }
+    }
+
+    .geshop-187d-list-warning {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        width: 100;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        color: #333;
+        padding: 0 52px;
+        box-sizing: border-box;
+        opacity: 0;
+        z-index: -1;
+
+        .time {
+            i {
+                font-style: normal;
+            }
+        }
+    }
+    
+    .geshop-187d-share {
+        position: absolute;
+        .geshop-187d-share-text {
+            margin-bottom: 8px;
+        }
+        .geshop-187d-share-icons {
+            overflow: hidden;
+            text-align: center;
+        }
+        img {
+            max-width: 100px;
+            max-height: 100px;
+            cursor: pointer;
+            display: inline-block;
+            margin-right: 4px;
+            margin-bottom: 4px;
+        }
+    }
+
+}
+
+
+// 不展示名单的时候
+.wrap_U0000187.hide-list {
+    .geshop-187d-turntable {
+        text-align: center;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+    }
+    .geshop-187d-turntable-container {
+        position: relative;
+        display: inline-block;
+    }
+}
+
+// 倒计时准备开始
+.wrap_U0000187.is-ready {
+    .geshop-187d-list-uname li {
+        display: none;
+    }
+    .geshop-187d-list-warning {
+        opacity: 1;
+        z-index: 1;
+    }
+}
+
+.geshop-187d-turntable-container {
+    .turntable-bg-image {
+        display: inline-block;
+        
+    }
+    .turntable-pointer-image {
+        // display: inline-block;
+        // width: 150px;
+        // height: 196px;
+    }
+}
+
+
+// START 弹窗基础公共样式 ============================================
+.geshop-187d-dialog {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 1000;
+}
+.geshop-187d-dialog-mask {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: #000;
+    opacity: .3;
+    z-index: 1001;
+}
+.geshop-187d-dialog-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #fff;
+    border-radius: 8px;
+    z-index: 1003;
+}
+.geshop-187d-dialog-body {
+    padding: 0 40px;
+    text-align: center;
+    p {
+        color: #333;
+        font-size: 18px;
+        line-height: 1.4em;
+    }
+    .winning-tips-text {
+        font-size: 12px !important;
+        color: #999 !important;
+        margin: 10px 0 30px;
+    }
+}
+.geshop-187d-dialog-footer {
+    padding-bottom: 40px;
+    position: relative;
+    text-align: center;
+    font-size: 0px;
+    button {
+        display: inline-block;
+        width: 200px;
+        height: 40px;
+        margin: 0px 16px;
+        line-height: 40px;
+        border-radius: 24px;
+        font-size: 20px;
+        color: #ffffff;
+        background: #333;
+    }
+}
+.geshop-187d-dialog-close {
+    @px: 30px;
+    position: absolute;
+    top: -@px / 2;
+    right: -@px / 2;
+    height: @px;
+    width: @px;
+    border-radius: @px;
+    cursor: pointer;
+}
+// END 弹窗基础公共样式 =============================================
+
+
+// START 转盘规则弹窗 ==============================================
+.geshop-187d-dialog-rule {
+    display: none;
+    .geshop-187d-dialog-container {
+        width: 600px;
+        padding-bottom: 40px;
+        margin-left: -300px;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+    }
+    h2 {
+        padding-top: 40px;
+        height: 50px;
+        font-size: 36px;
+        font-weight: bold;
+        text-align: center;
+        color: inherit;
+    }
+    p {
+        padding: 0 40px;
+        line-height: 1.4em;
+        font-size: inherit;
+        max-height: 500px;
+        overflow-y: scroll;
+    }
+}
+// END 转盘规则弹窗 ================================================
+
+
+// START 失败弹窗 =================================================
+.geshop-187d-dialog-fail,
+.geshop-187d-dialog-fail-not-start {
+    display: none;
+    .geshop-187d-dialog-container {
+        width: 415px;
+        height: 264px;
+        margin-left: -415 / 2px;
+        margin-top: -264 / 2px;
+    }
+    .geshop-187d-dialog-body {
+        min-height: 105px;
+        padding-top: 80px;
+    }
+}
+.geshop-187d-dialog-fail-not-start.is-visible {
+    display: block;
+    visibility: visible;
+}
+.geshop-187d-dialog-fail-not-start.is-hidden {
+    display: block;
+    visibility: hidden;
+}
+// END 失败弹窗 ===================================================
+
+
+// START 分享弹窗 =================================================
+.geshop-187d-dialog-share {
+    display: none;
+    .geshop-187d-dialog-container {
+        width: 600px;
+        height: 400px;
+        margin-left: -300px;
+        margin-top: -200px;
+    }
+    .geshop-187d-dialog-body {
+        padding: 0 40px;
+        padding-top: 80px;
+        height: 215 + 26px;
+        text-align: center;
+    }
+    .geshop-187d-dialog-share-icons {
+        font-size: 0px;
+        text-align: center;
+        position: absolute;
+        width: 520px;
+        top: 200px;
+        > * {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            margin: 0 8px;
+            cursor: pointer;
+        }
+    }
+    button {
+        width: 200px;
+    }
+}
+// END 分享弹窗 ===================================================
+
+
+// START 中奖SKU弹窗 ==============================================
+.geshop-187d-dialog-sku {
+    display: none;
+    .geshop-187d-dialog-container {
+        width: 600px;
+        min-height: 400px;
+        margin-left: -300px;
+        margin-top: -200px;
+        text-align: center;
+    }
+    .geshop-187d-dialog-body {
+        padding-top: 24px;
+        min-height: 270px;
+        h2 {
+            height: 50px;
+            line-height: 50px;
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 16px;
+        }
+    }
+    .geshop-187d-dialog-sku-image {
+        display: block;
+        margin: 0 auto;
+        width: 130px;
+        height: 130px;
+        text-align: center;
+        img {
+            display: inline-block;
+            height: 100%;
+            width:  auto;
+        }
+    }
+
+}
+// END 中奖SKU弹窗 ================================================
+
+
+// START 中奖other弹窗 ==============================================
+.geshop-187d-dialog-other {
+    display: none;
+    .geshop-187d-dialog-container {
+        width: 600px;
+        min-height: 400px;
+        margin-left: -300px;
+        margin-top: -200px;
+        text-align: center;
+    }
+    .geshop-187d-dialog-body {
+        padding-top: 24px;
+        min-height: 270px;
+        h2 {
+            height: 50px;
+            line-height: 50px;
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 16px;
+        }
+    }
+    .geshop-187d-dialog-other-image {
+        display: block;
+        margin: 0 auto;
+        width: 130px;
+        height: 130px;
+        text-align: center;
+        img {
+            display: inline-block;
+            height: auto;
+            width:  100%;
+        }
+    }
+
+}
+// END 中奖other弹窗 ================================================
+

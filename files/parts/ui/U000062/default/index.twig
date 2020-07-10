@@ -1,0 +1,27 @@
+{% set pageData = {
+	blogImgWidth:data.ImgWidth is not null?data.ImgWidth:'400',
+	blogImgHeight:data.ImgHeight is not null?data.ImgHeight:'400',
+	blogItemWidth:data.blogItemWidth is not null?data.blogItemWidth:'400',
+	marginTop:data.marginTop is not null?data.marginTop:'30',
+	marginBottom:data.marginBottom is not null?data.marginBottom:'30',
+}%}
+<div class="geshop-component-box component-drag" data-gid="U000062" data-key="U000062" data-id="{{ pageInstanceId }}" attr="nav_flag">
+	{% if data.imgItem  %}
+	<div class="index-blogs" style="
+	{% if pageData.marginTop %}margin-top:{{pageData.marginTop}}px;{% endif %}
+	{% if pageData.marginBottom %}margin-bottom:{{pageData.marginBottom}}px;{% endif %}
+	">
+		{% for item in data.imgItem %}
+			<div class="js-geshop-ga-click js-geshop-ga-view" geshop-component-name="{{item.ga_name}}">
+			{% if data.isEditEnv == 1 %}
+				{{ include('edit.twig') }}
+			{% else %}
+				{{ include('product.twig') }}
+			{% endif %}
+			</div>
+		{% endfor %}
+	</div>
+	{% else %}
+	<div style="height:520px;background-repeat:no-repeat;background-size:cover;background-position: center center;background-image:url('{{ data.default.blog }}')"></div>
+	{% endif %}
+</div>

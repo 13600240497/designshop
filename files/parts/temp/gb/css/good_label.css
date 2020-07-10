@@ -1,0 +1,32 @@
+.gs-goods-wrap,
+.gs-good-label-box {
+  position: relative;
+}
+.gs-goods-wrap .gs-goods-label,
+.gs-good-label-box .gs-goods-label {
+  position: absolute;
+  bottom: 15px;
+  left: 10px;
+  font-size: 12px;
+  max-width: 90%;
+}
+.gs-goods-wrap .gs-goods-label p,
+.gs-good-label-box .gs-goods-label p,
+.gs-goods-wrap .gs-goods-label a,
+.gs-good-label-box .gs-goods-label a {
+  display: block;
+  max-width: 100%;
+  padding: 2px 5px;
+  margin-bottom: 5px;
+  border-radius: 0 30px 30px 0;
+  text-align: center;
+  height: 20px;
+  line-height: 16px;
+  background: rgba(30, 30, 30, 0.3);
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

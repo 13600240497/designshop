@@ -1,0 +1,44 @@
+
+{% set suffix='px'%}
+{% set pageData = {
+	tabBgCA:data.tabBgCA is not null?data.tabBgCA:'#f7e2b7',
+	left_time:data.left_time|default(0),
+	downFtS:data.downFtS|default(26),
+	downTimeFtS:data.downTimeFtS|default(24),
+	count_textStatus:data.count_textStatus|default(0),
+	downBfText:data.downBfText|default('Comming soon'),
+	downIngText:data.downIngText|default('Hot sale'),
+	downAfText:data.downAfText|default('Ends')
+} %}
+
+{% set count_type = 'default' %}
+
+<div class="geshop-component-box component-drag clearfix gs-count-down" data-gid="U000053" data-key="U000053" data-id="{{ pageInstanceId }}">
+	<!-- embed stylesheet begin -->
+	<style type="text/css">
+		{% if pageData %}
+		[data-gid="U000053"] .component-self-goodWrap:hover, [data-gid="U000053"] .current {
+			border-color:{{pageData.goodsBdC|default('none')}};
+		}
+		{% endif %}
+
+		{% if pageData %}
+		[data-gid="U000053"] .gs-tab-label .current span{
+			color:{{pageData.tabFtCA|default('transparent')}} !important;
+			background:{{pageData.tabBgCA|default('transparent')}} !important;
+		}
+		{% endif %}
+
+		[data-gid="U000053"] .gs_component_countDown em {
+				background: {{data.downTimeBgC|default('transparent')}} !important;
+		}
+	</style>
+  <!-- embed stylesheet end -->
+	<div class="geshop-col-12" style="background-color:{{data.downBgC|default('#ffffff')}}">
+	{# start wrap #}
+		{{include ('@app/files/parts/temp/count_down.twig')}}
+	{# end wrap #}
+	</div>
+</div>
+
+

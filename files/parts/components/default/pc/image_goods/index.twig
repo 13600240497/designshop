@@ -1,0 +1,38 @@
+{#
+    商品图片控件
+    @params src 图片地址
+    @params analytics 曝光埋点的参数
+ #}
+
+
+
+{# 输出HTML #}
+{% if params is not null %}
+    <div class="geshop-components-default-image-goods image-goods-{{ pageInstanceId }}">
+        <span>
+            {% if params.type == 'vue' %}
+                <img
+                    class="js_gdexp_lazy js-geshopImg-lazyload js_gbexp_lazy"
+                    :src="{{ params.src }}"
+                    :data-logsss-browser-value="{{ params.analytics }}" >
+            {% else %}
+                {# 不要懒加载 #}
+                {% if params.disabled_lazy == true or data.isEditEnv == '1' %}
+                    <img src="{{ params.src | default('https://geshopimg.logsss.com/uploads/nxQshzC1wXTYy8BmHD6GE39vLWjciKaR.png') }}" data-logsss-browser-value="{{ params.analytics }}">
+                {% else %}
+                {# 开启懒加载 #}
+                    <img
+                        class="js_gdexp_lazy js-geshopImg-lazyload js_gbexp_lazy"
+                        src="{{data.default.lazyImg|default('https://geshopcss.logsss.com/imagecache/geshop/resources/images/rg/loading_big.gif')}}"
+                        data-original="{{ params.src }}"
+                        data-logsss-browser-value="{{ params.analytics }}" >
+                {% endif %}
+            {% endif %}
+        </span>
+    </div>
+{% endif %}
+
+{# 定制样式 #}
+{% if style is not null %}
+
+{% endif %}

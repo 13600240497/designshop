@@ -1,0 +1,32 @@
+
+ {% set remUnit = 37.5 %}
+<div class="geshop-component-box component-drag wrap-U000057_default warp-{{ pageInstanceId }}" data-gid="U000057" data-key="U000057" data-id="{{ pageInstanceId }}" attr="nav_flag">
+	<div class="free_tips clearfix js_freeTips" >
+		<div class="free_tipsList">
+			{% for item in data.marquee %}
+				<p style="
+				{% if data.textColor %}color: {{ data.textColor }};{% endif %}
+				{% if data.fontFamily %}font-family: {{ data.fontFamily }};{% endif %}
+				{% if data.fontSize %}font-size: {{ data.fontSize }}px;{% endif %}
+				"><i class="fsb">{{ item.text }}</i></p>
+			{% endfor %}
+		</div>
+	</div>
+	<!-- embed stylesheet begin -->
+	<style type="text/css">
+		.warp-{{ pageInstanceId }} .free_tips{
+			{% if data.bgColor %}background-color: {{ data.bgColor }};{% endif %}
+			{% if data.bgimgSrc is not empty %}background-image:url({{data.bgimgSrc}});
+			background-repeat:repeat;
+			background-size:cover;{% endif %}
+			{% if data.viewBorderC %}border-color: {{ data.viewBorderC }};{% endif %}
+			{% if data.height %}height: {{ data.height/37.5 | number_format(3, '.') }}rem;{% endif %}
+			{% if data.height %}line-height: {{ data.height/37.5 | number_format(3, '.') }}rem;{% endif %}
+			margin: {% if data.boxMarginTop is not empty %}{{ data.boxMarginTop/37.5 | number_format(3, '.') }}{% else %} 0{% endif %}rem {% if data.boxMarginRight is not empty %}{{ data.boxMarginRight/37.5 | number_format(3, '.') }}{% else %} 0{% endif %}rem {% if data.boxMarginBottom is not empty %}{{ data.boxMarginBottom/37.5 | number_format(3, '.') }}{% else %} 0{% endif %}rem {% if data.boxMarginLeft is not empty %}{{ data.boxMarginLeft/37.5 | number_format(3, '.') }}{% else %} 0{% endif %}rem;
+		}
+		.warp-{{ pageInstanceId }} .free_tipsList{
+
+		}
+	</style>
+	<!-- embed stylesheet end -->
+</div>

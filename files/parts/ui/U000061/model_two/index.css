@@ -1,0 +1,117 @@
+.wrap-U000061 {
+  width:1200px;
+ overflow: hidden;
+  margin-left: auto;
+  margin-right:auto;
+  position: relative;
+}
+
+.wrap-U000061 .swiper-wrapper{
+  white-space: nowrap;
+}
+.wrap-U000061  .geshop-swiper-slide{
+
+  position:relative;
+  width: 300px;
+  display: inline-block;
+
+}
+.wrap-U000061  .geshop-swiper-slide .swiper-item-wrap{
+  padding: 0 25px;
+  margin: 10px 0;
+  position: relative;
+}
+.wrap-U000061  .geshop-pro-name {
+  height: 30px;
+  line-height: 1.2;
+  overflow: hidden;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.wrap-U000061  .geshop-price {
+  margin-right: 10px;
+}
+.wrap-U000061  .geshop-del-price{
+  text-decoration: line-through;
+}
+
+.wrap-U000061 .geshop-pre-btn,.wrap-U000061 .geshop-next-btn {
+  width: 32px;
+  height: 64px;
+  position: absolute;
+  z-index: 100;
+  font-size: 0;
+  line-height: 0;
+  display: block;
+  top: 50%;
+  margin-top: -60px;
+  border: none;
+}
+.wrap-U000061 .geshop-pre-btn{
+  border-top-right-radius: 32px;
+  border-bottom-right-radius: 32px;
+}
+.wrap-U000061  .geshop-pre-btn {
+  background:#fff url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABDUlEQVRYR82XPQrCQBCFv1xBECwELSw8gZ0IVl7Bc1rZif92Np5D8ARhwIUlJGaz2dkxfXjfmzeTmRQYP4WxPn0AZsAOeALbWCOxAFPgBoyAPbDJCSDiJ2AMvIAl8M4FkFRcoLtEII6l7Emcu4qFAojoGZikKLsfVwiAmnhIBNLldw3nIRGIuHS7zLvM+rpPtzdNSVMEVfEV8IkdtV/v1QEMgavnXE28rgdE/AjMv2VXFa8CZBevAhwAcSwNp+68bgoewMISYABccub/d03oYjEdQwdh+iHKCtG2Df1lpLIP2gCkGqbr2MWhBhFSAR/C7CRzEKZHqQpElwj8u8L0x8SBmP6aJbvOYiNIBlACeoxQIbByED0AAAAASUVORK5CYII=') no-repeat 0 center;
+}
+.wrap-U000061  .geshop-pre-btn:hover {
+  background:#fff url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABOklEQVRYR82XsU4CQRCGv/EsrE1IKEi0oPAJ7AwJla/gS9gSX0AChS9jZWdQATsan8PEWh1DNuQ4jmPJurvD9Zf/m/3/2ZkVjD8x1icYQBl2oXgEXQiDm9BCggCU4TkUM6AN+iQMrrMBOPGjF5AO6Af8Xgl3n1kAYosvofe2QBl1gFmsylcntheAE5dX4CzGsa/b5QVIKe61QBm3gXmKyr0WOHFdpr0LLOCn/5+0N3XJVgvq4ic94fYrtNV2/VcDUO5bUEzLytOJ1zLgxI8nwIU79rTiFQAL8Q2A8TPQy1V5rQuU0TvIpSHAwyl8v+X0/7BCuPLEtA1LiM1bMF07Ng6jXLfhzmlYHUZp5sFhj+MyE4YLSRXCaCUrIeJuxN6NaNscj70Ze0PYDGH0MFmzw+5pFnM1C7IgJsAfL42pIfeagRkAAAAASUVORK5CYII=') no-repeat 0 center;
+
+}
+
+.wrap-U000061  .geshop-next-btn {
+  right: 0;
+  border-top-left-radius: 32px;
+  border-bottom-left-radius: 32px;
+}
+
+.wrap-U000061  .geshop-next-btn {
+  background:#fff url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABEElEQVRYR8XXOw7CMAyA4b874iqwIPE+AGycD3EDboCQ2JiZGUBiQOISyFJAaegjpHGSpUMHf7UT1ynIvIrM8ekK2AJLYAVcQz6mK2APbIAnsAhBdAX0gRMwDEV0BUjWXcQEuPmWIwbARTxMObwQsQDBiJiAD+IAjADJhJRDnrUrNkAC9YCjQdyBeRNCA/AXQgtQhRibo1oqhybARUinlGYlTeu7tAGtiBSAKsQUeMmLVAAXcTZHNBvgAgxSZsDuDaXNmKIEtcFTZMDtij+9QDMDXi1ZC+AVXKsE3sE1AHbw5L9jGc3sWUD6futUFGsP2HNh8pEs61CafSzPfjHZATNgHXIr0jiGvveRpBNRI+oN+CxQIQKEknMAAAAASUVORK5CYII=') no-repeat 0 center;
+}
+.wrap-U000061  .geshop-next-btn:hover {
+  background:#fff url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABOElEQVRYR8XXsU7DMBCA4f92xKu0CxKhlAeAjYdpVd4ga6VuiDfoGyAkNubOHUBiqMSMxJK6stohiUPl2L44S4Ykui93jnMnZD4kc3yiAIbyGeQOqnthsQ15mVjAGuQR2EE1DUFEApaX8PcOjEMRUQCbcoODKITFp285ogEuwnzD3pbDC5EEEINIBqghXoErsJmgEOb2/O+RFHBErC7g9+2I4AvM7TlEckBfhAqgG8G1MNu1a6EGcBFmCzJtI1QBPgh1QDeiuhGefuy1QQAdiA9hXmQEsBFmo8EAzb2huRjVS3AuuHoG3F3R3QvUMuC7JasAfIOrlKBP8OSA1oIb9nd8as1qvYBfV5RkDTT7woFbsqxNaUfw3rNBVAkMZe7BpHwBJrB/CJmKkn+GvsNI/b6oEoQEbD9zAFbiviFm6f5jAAAAAElFTkSuQmCC') no-repeat 0 center;
+
+}
+
+.wrap-U000061  .geshop-slide-img {
+  position: relative;
+}
+
+.wrap-U000061  .geshop-quickShop {
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  bottom: 10px;
+  opacity: 0;
+  transition: all .5s linear;
+}
+
+.wrap-U000061  .geshop-swiper-slide:hover .geshop-quickShop {
+  bottom: 30px;
+  opacity: 1;
+}
+
+.wrap-U000061  .geshop-quickShop i {
+  display: inline-block;
+  vertical-align: middle;
+  width: 11px;
+  height: 18px;
+  background:url('https://geshopcss.logsss.com/imagecache/geshop/resources/images/icon/rw-icon.png') no-repeat -240px -120px;
+}
+
+.wrap-U000061  .gs-curtoff-wrap {
+  display: block;
+  z-index: 100;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.wrap-U000061  .gs-curtoff-wrap .curtoff-box {
+  text-align: center;
+  margin-top: 55%;
+  transform: translateY(-50%);
+}

@@ -1,0 +1,18 @@
+.geshop-component-box-U000130 .geshop-flash-sale-price-sale .bz_icon {
+  display: none;
+}
+
+.geshop-component-box-U000130 .geshop-flash-sale-price-market .bz_icon {
+  display: none;
+}
+
+.geshop-component-box-U000130 .geshop-loading-img {
+  background: url("https://uidesign.rglcdn.com/RG/image/z_promo/20190311_8431/loading_tm.gif") no-repeat center center;
+  width: 2rem;
+  height: 2rem;
+  background-size: 50%;
+  margin: 3.7rem auto;
+ transform:rotate(0);
+  animation:none;
+  
+}

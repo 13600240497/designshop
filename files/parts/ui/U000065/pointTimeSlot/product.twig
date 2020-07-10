@@ -1,0 +1,70 @@
+
+{% 
+	set pageData = {
+		defaultBannerPointData: data.pointTimeSlotImgItem|slice(0,1)
+	} 
+%}
+
+{% 
+	set imagePointData = ""
+%}
+
+{# 过滤处于当前时段的banner时段数据 #}
+{% for key,item in data.pointTimeSlotImgItem %}
+  {# {% if ('now'|date('U')) > (item.startTime |date('U')) and ('now'|date('U')) < (item.endTime |date('U')) %} #}
+  {% if ('now'|date('U')) > item.startTimeStamp and ('now'|date('U')) < item.endTimeStamp %}
+    {% set imagePointData = item %}
+  {% endif %}
+{% endfor %}
+
+{% if  data.pointTimeSlotImgItem is empty or data.pointTimeSlotImgItem == "[]" %}{#图片数据为空显示默认图片#}
+  <div class="swiper-slide" >
+    <a href="###" style="display:block; height:{% if data.ImgHeight %}{{ (data.ImgHeight / 75) | number_format(3, '.') }}{% else %}{{(400/75)| number_format(3, '.')}}{% endif %}rem; width:100%; background-image:url({{data.default.bannerView}});background-size:4.667rem 3.6rem;background-position:center center;background-repeat:no-repeat;background-color:#EDEDED;">
+    </a>
+  </div>
+{% else %}
+
+  {# 没有匹配时间段数据 #}
+  {% if imagePointData|length == 0 %}
+    {% for key,item in pageData.defaultBannerPointData %}
+      {% for it in item.imgSrc %}
+        <div class="swiper-slide">
+          {% if loop.index ==1 %}{#第一张图片直接输出不做懒加载#}
+            <a href="{{it.imgLink}}" class="logsss_event"
+              data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ it.imgSource }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+              <img src="{{it.imgSource}}" class="js-swiper-img"  style="border: 0; width: {% if data.isEditEnv %}100%{% else %}{{ (data.ImgWidth / 75) | number_format(3, '.') }}rem{% endif %}; height: {{ (data.ImgHeight / 75) | number_format(3, '.') }}rem;"
+                data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ it.imgSource }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+            </a>
+          {% else %}
+            <a href="{{it.imgLink}}" class="logsss_event"
+              data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ it.imgSource }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+              <img class="swiper-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-src="{{it.imgSource}}" data-original="{{it.imgSource}}" style="border: 0; width: {% if data.isEditEnv %}100%{% else %}{{ (data.ImgWidth / 75) | number_format(3, '.') }}rem{% endif %}; height: {{ (data.ImgHeight / 75) | number_format(3, '.') }}rem;"
+                data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ it.imgSource }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+            </a>
+            <div class="swiper-lazy-preloader"></div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    {% endfor %}
+  {% else %}
+    {% for it in imagePointData.imgSrc %}
+      <div class="swiper-slide">
+        {% if loop.index ==1 %}{#第一张图片直接输出不做懒加载#}
+          <a href="{{it.imgLink}}" class="logsss_event"
+            data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ it.imgSource }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+            <img src="{{it.imgSource}}" class="js-swiper-img"  style="border: 0; width: {% if data.isEditEnv %}100%{% else %}{{ (data.ImgWidth / 75) | number_format(3, '.') }}rem{% endif %}; height: {{ (data.ImgHeight / 75) | number_format(3, '.') }}rem;"
+              data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ it.imgSource }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+          </a>
+        {% else %}
+          <a href="{{it.imgLink}}" class="logsss_event"
+            data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ it.imgSource }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+            <img class="swiper-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-src="{{it.imgSource}}" data-original="{{it.imgSource}}" style="border: 0; width: {% if data.isEditEnv %}100%{% else %}{{ (data.ImgWidth / 75) | number_format(3, '.') }}rem{% endif %}; height: {{ (data.ImgHeight / 75) | number_format(3, '.') }}rem;"
+              data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ it.imgSource }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+          </a>
+          <div class="swiper-lazy-preloader"></div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% endif %}
+
+{% endif %}

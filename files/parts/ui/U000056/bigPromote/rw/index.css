@@ -1,0 +1,16 @@
+.gs-img-default-bgc {
+  width: 50%;
+  height: 204px;
+  background-color:#EDEDED !important;
+  position: relative;
+}
+
+.gs-default-clothes {
+  width:140px!important;
+  min-height:124px!important;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  display: block;
+}

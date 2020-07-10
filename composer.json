@@ -1,0 +1,44 @@
+{
+    "autoload": {
+        "psr-4": {
+            "app\\": ""
+        }
+    },
+    "require": {
+        "2amigos/qrcode-library": "~1.1",
+        "aws/aws-sdk-php": ">=3.25.7",
+        "ego/yii-base": "^1.0",
+        "gargron/fileupload": "~1.4.0",
+        "globalegrow/php-gateway": "^1.0",
+        "linslin/yii2-curl": "*",
+        "phpoffice/phpexcel": "^1.8",
+        "yiisoft/yii2-imagine": "^2.1",
+        "yiisoft/yii2-twig": "^2.2",
+		"clothing/service-tracing": "^1.0",
+        "clothing/utils": "^1.0"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
+		{
+            "url": "git@gitlab.egomsl.com:clothing/packages/service-tracing.git",
+            "type": "git"
+        },
+        {
+            "url": "git@gitlab.egomsl.com:clothing/packages/utils.git",
+            "type": "git"
+         }
+
+    ],
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "secure-http":false
+    },
+    "require-dev": {
+        "yiisoft/yii2-gii": "^2.0"
+    }
+}

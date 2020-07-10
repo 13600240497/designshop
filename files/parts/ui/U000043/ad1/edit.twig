@@ -1,0 +1,11 @@
+<div class="geshop-col-12">
+  {% if data.img1Src %}
+  <a href="{{ data.img1Href }}" style="display: block; width: 10rem;">
+    <img alt="{{ data.img1Alt }}" src="{{ data.img1Src }}" style="display: block; vertical-align: top;" width="100%">
+  </a>
+  {% else %}
+  <p style="border: 1px solid #dddddd; height: 64px; line-height: 64px; text-align: center; font-size: 16px; font-weight: bold; color: #dddddd;">
+    图片
+  </p>
+  {% endif %}
+</div>

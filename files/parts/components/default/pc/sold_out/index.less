@@ -1,0 +1,60 @@
+.geshop-components-default-soldout {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    display: none;
+    &.rg{
+        background: rgba(0, 0, 0, 0.4);
+        .geshop-soldout-wrapper {
+            background: rgba(0, 0, 0, 0);
+        }
+        label {
+            font-size: 32px;
+        }
+        .geshop-soldout-wrapper {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 70px;
+            display: inline-block;
+            overflow: hidden;
+            width: 100%;
+            height: auto;
+        }
+    }
+    .geshop-soldout-wrapper {
+        display: inline-block;
+        width: 160px;
+        height: 160px;
+        border-radius: 100%;
+        background: rgba(0, 0, 0, .4);
+        overflow: hidden;
+    }
+    .geshop-soldout-table {
+        display: table;
+        width: 100%;
+        height: 100%;
+    }
+    table {
+        width: 100%;
+        height: 100%;
+    }
+    td {
+        text-align: center;
+        vertical-align: middle;
+    }
+    label {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 24px;
+        line-height: 1.1em;
+        color: #fff;
+        padding: 0 20px;
+    }
+}

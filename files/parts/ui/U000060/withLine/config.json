@@ -1,0 +1,9 @@
+{
+  "fields": {
+    "boxMarginBottom": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "titleText": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "titleFont": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "titleColor": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "buyFtW": { "is_public": "0", "is_m": "0", "is_app": "0" }
+  }
+}

@@ -1,0 +1,117 @@
+<div class="left">
+	{% if data.communitySkuList %}
+		{% for item in data.communitySkuList|slice(0,2) %}
+			<div class="buyer-show-item first js_show_item_{{ loop.index }}" data-index="{{ loop.index }}">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{ item.imageSrc }}" alt="" class="{{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy"
+					data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.imageSrc }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }"
+				>
+				<div class="view-it">
+					<div class="inner">
+						<img src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{staticDomain}}/resources/images/icon/rw-icon-camer.png" class="icon-camer {{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy" alt="rosewholesale">
+						<a href="javascript:void(0)" rel="nofollow" class="btn">{{ pageData.viewText }}</a>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	{% else %}
+		<div class="buyer-show-item first js_show_item_1" data-index="1">
+			<img src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{staticDomain}}/resources/images/default/community-default-bg-1.jpg" alt="" class="{{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy">
+			<div class="view-it">
+				<div class="inner">
+					<img src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{staticDomain}}/resources/images/icon/rw-icon-camer.png" class="icon-camer {{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy" alt="rosewholesale">
+					<a href="javascript:void(0)" rel="nofollow" class="btn">VIEW IT</a>
+				</div>
+			</div>
+		</div>
+		<div class="buyer-show-item first js_show_item_2" data-index="2">
+			<img src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{staticDomain}}/resources/images/default/community-default-bg-2.jpg" alt="" class="{{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy">
+			<div class="view-it">
+				<div class="inner">
+					<img src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{staticDomain}}/resources/images/icon/rw-icon-camer.png" class="icon-camer {{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy" alt="rosewholesale">
+					<a href="javascript:void(0)" rel="nofollow" class="btn">VIEW IT</a>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+</div>
+<div class="center">
+	{% if data.communitySkuList %}
+		{% for item in data.communitySkuList|slice(2,1) %}
+			<div class="buyer-show-item js_show_item_{{ loop.index + 2 }}" data-index="{{ loop.index + 2 }}">
+				<img width="470" height="470" src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{ item.imageSrc }}" alt="" class="{{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy"
+					data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.imageSrc }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index + 2 }}'} }"
+				>
+				<div class="view-it">
+					<div class="inner">
+						<img src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{staticDomain}}/resources/images/icon/rw-icon-camer.png" class="icon-camer {{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy" alt="rosewholesale">
+						<a href="javascript:void(0)" rel="nofollow" class="btn">{{ pageData.viewText }}</a>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	{% else %}
+		<div class="buyer-show-item js_show_item_3" data-index="3">
+			<img width="470" height="470" src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{staticDomain}}/resources/images/default/community-default-bg-3.jpg" alt="" class="{{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy">
+			<div class="view-it">
+				<div class="inner">
+					<img src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{staticDomain}}/resources/images/icon/rw-icon-camer.png" class="icon-camer {{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy" alt="rosewholesale">
+					<a href="javascript:void(0)" rel="nofollow" class="btn">VIEW IT</a>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+</div>
+<div class="right">
+	{% if data.communitySkuList %}
+		{% for item in data.communitySkuList|slice(3,4) %}
+			<div class="buyer-show-item js_show_item_{{ loop.index + 3 }}" data-index="{{ loop.index + 3 }}">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{ item.imageSrc }}" alt="" class="{{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy"
+					data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.imageSrc }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index + 3 }}'} }"
+				>
+				<div class="view-it">
+					<div class="inner">
+						<img src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{staticDomain}}/resources/images/icon/rw-icon-camer.png" class="icon-camer {{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy" alt="rosewholesale">
+						<a href="javascript:void(0)" rel="nofollow" class="btn">{{ pageData.viewText }}</a>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	{% else %}
+	<div class="buyer-show-item  js_show_item_4" data-index="4">
+		<img src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{staticDomain}}/resources/images/default/community-default-bg-4.jpg" alt="" class="{{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy">
+		<div class="view-it">
+			<div class="inner">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{staticDomain}}/resources/images/icon/rw-icon-camer.png" class="icon-camer {{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy" alt="rosewholesale">
+				<a href="javascript:void(0)" rel="nofollow" class="btn">VIEW IT</a>
+			</div>
+		</div>
+	</div>
+	<div class="buyer-show-item  js_show_item_5" data-index="5">
+		<img src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{staticDomain}}/resources/images/default/community-default-bg-5.jpg" alt="" class="{{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy">
+		<div class="view-it">
+			<div class="inner">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{staticDomain}}/resources/images/icon/rw-icon-camer.png" class="icon-camer {{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy" alt="rosewholesale">
+				<a href="javascript:void(0)" rel="nofollow" class="btn">VIEW IT</a>
+			</div>
+		</div>
+	</div>
+	<div class="buyer-show-item  js_show_item_6" data-index="6">
+		<img src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{staticDomain}}/resources/images/default/community-default-bg-6.jpg" alt="" class="{{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy">
+		<div class="view-it">
+			<div class="inner">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{staticDomain}}/resources/images/icon/rw-icon-camer.png" class="icon-camer {{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy" alt="rosewholesale">
+				<a href="javascript:void(0)" rel="nofollow" class="btn">VIEW IT</a>
+			</div>
+		</div>
+	</div>
+	<div class="buyer-show-item  js_show_item_7" data-index="7">
+		<img src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{staticDomain}}/resources/images/default/community-default-bg-7.jpg" alt="" class="{{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy">
+		<div class="view-it">
+			<div class="inner">
+				<img src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{staticDomain}}/resources/images/icon/rw-icon-camer.png" class="icon-camer {{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy" alt="rosewholesale">
+				<a href="javascript:void(0)" rel="nofollow" class="btn">VIEW IT</a>
+			</div>
+		</div>
+	</div>
+	{% endif %}
+</div>

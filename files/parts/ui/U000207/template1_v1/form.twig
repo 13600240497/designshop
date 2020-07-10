@@ -1,0 +1,199 @@
+{% set buyTextDefault = get_component_trans(lang,'btn_buy_now')|default('BUY NOW') %}
+
+{% set formData = {
+    id: 'U0000207',
+    name: '多时段TAB秒杀组件',
+    theme: 'template1_v1',
+    tabs: [
+        {
+            label: '商品数据',
+            components: [
+            {
+                label: '数据配置',
+                type: 'diy',
+                src: 'form-data.twig'
+            }
+        ]
+        },
+        {
+            label: '样式配置',
+            components: [
+            {
+                label: '常用配置',
+                type: 'fieldset',
+                components:[
+                {
+                    label: '组件背景颜色',
+                    name: 'box_bg_color',
+                    default: '#F8F8F8',
+                    type: 'colorPicker',
+                    col: 1
+                },
+                {
+                    label: 'M端展示样式',
+                    name: 'box_multi_column',
+                    default: '1',
+                    type: 'radio',
+                    options: [
+                    {
+                        label: '1行2列',
+                        value: '1',
+                    },
+                    {
+                        label: '1行1列',
+                        value: '2',
+                    }
+                ]
+                },
+                {
+                    type: 'margin-dl'
+                },
+                {
+                    label: 'tab时间导航配置',
+                    type: 'fieldset',
+                    components:[
+                    {
+                        label: '是否显示已结束时段的秒杀内容',
+                        name: 'tab_endShowActive',
+                        type: 'radio',
+                        default: '1',
+                        options: [
+                        {
+                            label: '是',
+                            value: '1'
+                        },
+                        {
+                            label: '否',
+                            value: '0'
+                        }
+                    ],
+                    },
+                    {
+                        label: '选中文字颜色',
+                        name: 'tab_selectTextC',
+                        type: 'colorPicker',
+                        default: '#FFFFFF',
+                        col: 2
+                    },
+                    {
+                        label: '选中背景颜色',
+                        name: 'tab_selectBgc',
+                        type: 'colorPicker',
+                        default: '#000000',
+                        col: 2
+                    },
+                    {
+                        label: '未选中文字颜色',
+                        name: 'tab_unselectTextC',
+                        type: 'colorPicker',
+                        default: '#FFFFFF',
+                        col: 2
+                    },
+                    {
+                        label: '未选中背景颜色',
+                        name: 'tab_unselectBgc',
+                        type: 'colorPicker',
+                        default: '#999999',
+                        col: 2
+                    }
+                ]
+                },
+                {
+                    label: '商品内容配置',
+                    type: 'fieldset',
+                    components:[
+                    {
+                        label: '库存提示文案',
+                        name: 'goodsLimitsTextType',
+                        type: 'radio',
+                        default: '1',
+                        options: [
+                        {
+                            label: 'Only xx% Left',
+                            value: '1'
+                        },
+                        {
+                            label: 'Only 0 Left',
+                            value: '2'
+                        }
+                    ]
+                    },
+                    {
+                        type: 'progress-dl'
+                    },
+                    {
+                        type: 'shop-price-dl'
+                    },
+                    {
+                        label: '折扣标',
+                        type: 'discount-dl'
+                    },
+                    {
+                        label: 'Buy Now按钮',
+                        type: 'fieldset',
+                        components:[
+                        {
+                            label: '是否显示',
+                            name: 'buy_btn_active',
+                            type: 'radio',
+                            default: '1',
+                            options: [
+                            { label: '是', value: '1' },
+                            { label: '否', value: '2' },
+                        ]
+                        },
+                        {
+                            label: '文字颜色',
+                            name: 'buy_btn_font_color',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            col: 2
+                        },
+                        {
+                            label: '背景颜色',
+                            name: 'buy_btn_bg_color',
+                            type: 'colorPicker',
+                            default: '#000000',
+                            col: 2
+                        },
+                        {
+                            type: 'platData-dl',
+                            componentsData:[
+                            {
+                                label: '商品圆角大小（px）',
+                                name: 'goods_radius',
+                                default: '18',
+                                default_m: '15'
+                            }
+                            ]
+                        }
+                    ]
+                    }
+                ]
+                }
+            ]
+            }
+        ]
+        }
+    ],
+    moreConfig: [],
+    beforeSubmit: 'beforeSubmit',
+    skuValidConfig: 'skuValidConfig'
+} %}
+
+{# 引入自定义函数 #}
+<script>
+/** 自定义校验规则 */
+function skuValidConfig () {
+     return {
+           check_type: 'goods',
+           check_rules: 'GOODS_VALIDATE_SECKILL'
+     }
+};
+
+
+{% include 'form.js' %}
+</script>
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

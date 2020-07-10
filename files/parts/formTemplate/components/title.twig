@@ -1,0 +1,10 @@
+<fieldset class="layui-elem-field">
+    {% if componentData.label is not empty %}
+        <legend style="margin-bottom:0;">
+            {{ componentData.label }}
+            {% if componentData.desc is not empty %}
+                <span style="color: #999999;font-size: 14px">{{ componentData.desc }}</span>
+            {% endif %}
+        </legend>
+    {% endif %}
+</fieldset>

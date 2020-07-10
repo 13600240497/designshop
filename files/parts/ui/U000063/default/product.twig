@@ -1,0 +1,11 @@
+<div class="community-item {% if loop.last %}last-child{% endif %}">
+  <img src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" alt="img" width="190" height="190" data-original="{{item.img}}" class="{{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy"
+    data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ item.img }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+  <p>
+    <span></span>
+    <br>
+    <a href="{{item.url}}" class="view-it logsss_event" style="color:{{pageData.textColor}}"
+      data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ item.img }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }"
+    >{{pageData.viewText}}</a>
+  </p>
+</div>

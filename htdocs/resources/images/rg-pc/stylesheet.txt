@@ -1,0 +1,41 @@
+.sprite {
+    background-image: url(spritesheet.png);
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.sprite-arrowdleft {
+    width: 17px;
+    height: 30px;
+    background-position: -5px -5px;
+}
+
+.sprite-arrowdright {
+    width: 17px;
+    height: 30px;
+    background-position: -32px -5px;
+}
+
+.sprite-insfb {
+    width: 30px;
+    height: 30px;
+    background-position: -59px -5px;
+}
+
+.sprite-insp {
+    width: 30px;
+    height: 30px;
+    background-position: -5px -45px;
+}
+
+.sprite-instw {
+    width: 30px;
+    height: 30px;
+    background-position: -45px -45px;
+}
+
+.sprite-insview {
+    width: 42px;
+    height: 42px;
+    background-position: -99px -5px;
+}

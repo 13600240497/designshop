@@ -1,0 +1,14 @@
+<div class="layui-form-item {{ componentData.extendClass }}">
+    <label class="layui-form-label {% if componentData.public %} public-data {% endif %}">{{ componentData.label }}</label>
+    <div class="layui-input-block js-color-tracker">
+        <div class="js-color-tracker-icon" style="background-color: {{ componentData.value }};"></div>
+        <input
+            type="text" 
+            class="layui-input" 
+            autocomplete="off" 
+            readonly 
+            name="{{ componentData.name }}" 
+            value="{{ componentData.value }}" 
+            data-public-tag="{{ componentData.public }}">
+    </div>
+</div>

@@ -1,0 +1,24 @@
+{% set pageData = {
+	viewText:data.viewText is not null?data.viewText:'VIEW IT',
+	textColor:data.textColor is not null?data.textColor:'#2d2d2d',
+	marginTop:data.marginTop is not null?data.marginTop:'30',
+	marginBottom:data.marginBottom is not null?data.marginBottom:'30'
+}%}
+<div class="geshop-component-box component-drag" data-gid="U000063_default" data-key="U000063" data-id="{{ pageInstanceId }}" attr="nav_flag">
+    {% if data.community %}
+	<div class="index-community" style="
+    {% if pageData.marginTop %}margin-top: {{ pageData.marginTop }}px;{% endif %}
+    {% if pageData.marginBottom %}margin-bottom: {{ pageData.marginBottom }}px;{% endif %}
+    ">
+        {% for item in data.community %}
+        {% if data.isEditEnv == 1 %}
+            {{ include('edit.twig') }}
+        {% else %}
+            {{ include('product.twig') }}
+        {% endif %}
+        {% endfor %}
+    </div>
+  {% else %}
+  <div style="height:300px;background-repeat:no-repeat;background-size:cover;background-position: center center;background-image:url('{{ data.default.banner }}')"></div>
+  {% endif %}
+</div>

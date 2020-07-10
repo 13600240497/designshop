@@ -1,0 +1,205 @@
+{{ include ('@app/files/parts/temp/goods_manager.twig') }}
+
+{% set formData = {
+    id: 'U000206',
+    name: '倒计时组件',
+    theme: 'template2',
+    tabs: [
+        {
+            label: '样式设置',
+            components: [
+            {
+                label: '基础配置',
+                type: 'fieldset',
+                components: [
+                    {
+                        label: '时间设置',
+                        name: 'dataRange',
+                        type: 'dataRangePicker',
+                    },
+                    {
+                        label: '组件背景颜色',
+                        name: 'box_bg_colo',
+                        type: 'colorPicker',
+                        default: '#FFFFFF',
+                    },
+                    {
+                        label: '倒计时方块背景颜色',
+                        name: 'cd_value_bcolor',
+                        type: 'colorPicker',
+                        default: '#000000',
+                    },
+                    {
+                        label: '倒计时文案文字颜色',
+                        name: 'cd_title_fcolor',
+                        type: 'colorPicker',
+                        default: '#000000',
+                    },
+                    {
+                        label: '倒计时数字文字颜色',
+                        name: 'cd_value_fcolor',
+                        type: 'colorPicker',
+                        default: '#FFFFFF',
+                    },
+                    {
+                        label: '预热文案',
+                        name: 'before_title',
+                        default: 'Coming Soon',
+                    },
+                    {
+                        label: '进行文案',
+                        type: 'input',
+                        name: 'started_title',
+                        default: 'Ends In',
+                    },
+                    {
+                        label: '结束文案',
+                        type: 'input',
+                        name: 'ended_title',
+                        default: 'Already Ended',
+                    },
+                ]
+            },
+            {
+                label:'',
+                isshow: 'dl-app',
+                type: 'fieldset',
+                components: [
+                    {
+                        label: '组件上边距',
+                        name: 'box_margin_top_m',
+                        default: 0,
+                        col: 2,
+                    },
+                    {
+                        label: '组件下边距',
+                        name: 'box_margin_bottom_m',
+                        default: 32,
+                        col: 2,
+                    },
+                    {
+                        label: '倒计时文案文字大小（px）',
+                        name: 'text_size_m',
+                        default: 18,
+                    },
+                    {
+                        label: '倒计时数字文字大小（px）',
+                        name: 'num_size_m',
+                        default: 18,
+                    },
+                    {
+                        label: '倒计时方块圆角（px）',
+                        name: 'cd_radius_m',
+                        default: 2,
+                    },
+                    {
+                        label: '倒计时内容上下边距',
+                        name: 'cd_margin_bt_m',
+                        default: 8,
+                    },
+                ]
+            },
+            {
+                label: '三端配置',
+                type: 'fieldset',
+                isshow: 'dl-web',
+                components: [
+                {
+                    type: 'tab',
+                    items: [
+                    {
+                        label: 'PC / PAD',
+                        components: [
+                            {
+                                label: '组件上边距',
+                                name: 'box_margin_top',
+                                default: 0,
+                                col: 2,
+                            },
+                            {
+                                label: '组件下边距',
+                                name: 'box_margin_bottom',
+                                default: 32,
+                                col: 2,
+                            },
+                            {
+                                label: '倒计时文案文字大小（px）',
+                                name: 'text_size',
+                                default: 24,
+                            },
+                            {
+                                label: '倒计时数字文字大小（px）',
+                                name: 'num_size',
+                                default: 20,
+                            },
+                            {
+                                label: '倒计时方块圆角（px）',
+                                name: 'cd_radius',
+                                default: 2,
+                            },
+                            {
+                                label: '倒计时内容上下边距',
+                                name: 'cd_margin_bt',
+                                default: 20,
+                            },
+                        ]
+                    },
+                    {
+                        label: 'M',
+                        components: [
+                            {
+                                label: '组件上边距',
+                                name: 'box_margin_top_m',
+                                default: 0,
+                                col: 2,
+                            },
+                            {
+                                label: '组件下边距',
+                                name: 'box_margin_bottom_m',
+                                default: 32,
+                                col: 2,
+                            },
+                            {
+                                label: '倒计时文案文字大小（px）',
+                                name: 'text_size_m',
+                                default: 18,
+                            },
+                            {
+                                label: '倒计时数字文字大小（px）',
+                                name: 'num_size_m',
+                                default: 18,
+                            },
+                            {
+                                label: '倒计时方块圆角（px）',
+                                name: 'cd_radius_m',
+                                default: 2,
+                            },
+                            {
+                                label: '倒计时内容上下边距',
+                                name: 'cd_margin_bt_m',
+                                default: 8,
+                            },
+                        ]
+                    },
+                ]
+                },
+            ],
+            },
+
+
+        ]
+        }
+    ],
+    beforeSubmit: 'onSubmit'
+
+} %}
+
+
+<script>
+    {#  自定义保存函数 #}
+    function onSubmit(progress) {
+        progress.next();
+    }
+</script>
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

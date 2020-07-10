@@ -1,0 +1,126 @@
+:root {
+    --mainC: #333;
+    --emphasizeC: #FF8A00;
+    --warningC: #CC0000;
+    --normalC: #666;
+    --assistC: #999;
+    --disableC: #CCC;
+    --borderC: #EEE;
+    --assistBgC: #F9F9F9;
+    --emphasizeFS: 36px;
+    --largeFS: 24px;
+    --bigFS: 18px;
+    --normalFS: 16px;
+    --smallFS: 14px;
+    --tinyFS: 13px;
+    --miniFS: 12px;
+}
+
+/* css绘制三角形 */
+@define-mixin triangle $width {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent;
+    border-width: $(width);
+}
+
+/* 多行文字超过部分显示 "..." */
+@define-mixin multiline $lineHeight, $line {
+    display: -webkit-box !important;
+    height: calc($lineHeight * $line);
+    line-height: $lineHeight;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line;
+}
+
+/* 单行文本超过部分显示 "..." */
+%nowrap {
+     overflow: hidden;
+     white-space: nowrap;
+     text-overflow: ellipsis;
+ }
+
+%full {
+     display: block;
+     width: 100%;
+     height: 100%;
+ }
+
+%cover {
+     position: absolute !important;
+     top: 0;
+     right: 0;
+     bottom: 0;
+     left: 0;
+ }
+
+%thumb {
+    display: table-cell;
+    vertical-align: middle;
+
+    & > img {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        margin: 0 auto;
+    }
+}
+
+%fontBase{
+    font-family: OpenSans, Arial, Helvetica, sans-serif;
+}
+
+%fontBold{
+    font-family: OpenSans-Bold, Arial, Helvetica, sans-serif
+}
+
+/* 清除浮动 */
+%clearfix{
+    &::after{
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
+/* 行快元素两队对齐，必须强制设置这个元素的高度，否则高度不可控 */
+%inline-justify{
+    font-size: 1px;
+    text-align: justify;
+    &:after{
+        display: inline-block;
+        content: '';
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+    }
+}
+/* 模块占位，用于异步加载 */
+%sectionModule-white{
+    position: relative;
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 1;
+    }
+    &::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        width: 111px;
+        height: 47px;
+        background: url("../../static/img/moduleLoading.png") no-repeat;
+        background-size: 100% 100%;
+        z-index: 1;
+    }
+}

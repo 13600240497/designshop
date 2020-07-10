@@ -1,0 +1,54 @@
+{%
+	set pageData = {
+		titleWidth:data.titleWidth is not null?data.titleWidth:400
+	}
+%}
+{# 站点区分 #}
+{% set siteData = {
+	font_weight: 'rg' in siteCode ? 'normal' : 'bold'
+} %}
+
+<style>
+	#U000024_{{ pageInstanceId }} .more_bg {
+		{% if data.imgSrc is not empty %}
+			background-image: url({{ data.imgSrc }});
+			background-position: center;
+			background-repeat: no-repeat;
+		{% endif %}
+	}
+</style>
+
+<div class="geshop-component-box component-drag" id="U000024_{{pageInstanceId}}"  data-gid="U000024_nomore" data-key="U000024" data-id="{{ pageInstanceId }}" attr="nav_flag" style="{% if data.boxMarginTop %} margin-top: {{ data.boxMarginTop|default(0) }}px;{% endif %}">
+	<div class="more_bg" style="
+		{% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}
+		{% if data.boxPaddingTop %}padding-top: {{ data.boxPaddingTop }}px;{% endif %}
+		{% if data.boxPaddingBottom %}padding-bottom: {{ data.boxPaddingBottom }}px;{% endif %}
+		padding-top: {{ data.boxPaddingTop|default(30) }}px;
+		padding-bottom: {{ data.boxPaddingBottom|default(30) }}px;
+		{# height:{{data.height|default(80)}}px; #}
+		{# line-height:{{data.height|default(80)}}px; #}
+		line-height: 1.5;
+		background-color: {% if data.bgColor %}{{ data.bgColor }}{% endif %};
+		text-align:center;
+		width:100%;
+		overflow: hidden;
+		position:relative;
+	">
+		<h2>
+				<a href="{{ data.viewHref|default('javascript:;') }}" class="site-font-bold" style="
+				display:block;
+				{% if data.viewHref %}cursor: pointer;{% else%} cursor:default; {% endif %}
+				font-size:{% if data.titleFont %}{{ data.titleFont }}{% else %} 16{% endif %}px;
+				color:{% if data.titleColor %}{{ data.titleColor }}{% else %} #333333{% endif %};
+				font-weight:{% if data.titleWeight %}{{ data.titleWeight }}{% else %} {{ siteData.font_weight }}{% endif %};
+				{% if pageData.titleWidth %}width:{{pageData.titleWidth}}px;{% endif %}
+				margin-left:auto;
+				margin-right:auto;
+				{% if data.titleBgI %}background:url('{{data.titleBgI}}') no-repeat center center/100%;{% endif %}
+			">
+				{% if data.titleText %}{{ data.titleText }}{% else %}请设置导航标题{% endif %}
+			</a>
+		</h2>
+
+	</div>
+</div>

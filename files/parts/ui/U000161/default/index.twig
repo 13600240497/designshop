@@ -1,0 +1,139 @@
+{% set pageData = {
+    labelPosRight: data.labelPosRight,
+    labelImgLeft: data.labelImgLeft is not null? data.labelImgLeft: 0,
+    labelImgTop: data.labelImgTop is not null? data.labelImgTop: 0,
+		quickshopText: get_component_trans(lang,'quick_shop'),
+		unavailableText: get_component_trans(lang,'failed')
+} %}
+
+
+
+<div class="geshop-component-box component-drag geshop-leaderboard-async geshop-active-top-goods" data-gid="U000161" data-key="U000161" data-id="{{ pageInstanceId }}" data-static-domain="{{ staticDomain }}" attr="nav_flag" style="margin-bottom:{{data.marginBottom}}px;">
+    <div class="leader-board-container" data-asyncdata-id="{{ pageData.goodsDataSource }}" data-editenv="{{data.isEditEnv}}" data-sitedomain="{{ siteDomain }}">
+        <style type="text/css">
+						[data-gid="U000161"][data-id="{{ pageInstanceId }}"] .leader-board-container .goods-price {
+								font-family: OpenSans-Bold;
+						}
+						{% if pageData.labelPosRight == '1' %}
+							[data-id="{{ pageInstanceId }}"] .left-banner{
+									float:right!important;
+									margin-right: 0!important;
+							}
+						{% endif %}
+				</style>
+				<div class="active-top-container clearfix">
+						{% if data.goodsInfo != 0 %}
+							<a class="left-banner" href="{{data.bannerLink}}" target="_blank">
+									{% if data.bannerImg %}
+											<img src="{{data.bannerImg}}"></img>
+									{% else %} 
+											<img src="../../resources/images/rw-pc/left-banner.png"></img>
+									{% endif %}
+								
+							</a>
+							<div class="right-goods">
+									<div class="proList clearfix" id="js_proList">
+											<ul>
+													{% for key, item in data.goodsInfo | slice(0, 8) %}
+															{# <p>{{ item|json_encode() }}</p> #}
+															<li class="{{item.goods_number == '0' ? 'disabled' : 'enabled'}}">
+															{% if item.goods_number == '0' %}
+																<div class="unavilable">{{pageData.unavailableText}}</div>
+															{% endif %}
+															
+																	<div class="mark" style="top:{{data.labelImgTop}}px;left:{{data.labelImgLeft}}px;">
+																		{% if data.labelImg %}
+																				<img src="{{data.labelImg}}"></img>
+																		{% else %} 
+																				<img src="../../resources/images/rw-pc/label-img.png"></img>
+																		{% endif %}
+																	</div>
+																	<p class="pro_img pr">
+																			<a class="logsss_event" href="{{item.url_title}}" style="display: inline;"
+																				data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'},'skuinfo':{'sku':'{{ item.goods_sn }}','pam':'0','pc':'{{ item.cateid }}','k':'{{ item.warehousecode }}'} }"
+																			>
+																					<img class="goods-img js_gdexp_lazy js-geshopImg-lazyload js_gbexp_lazy" src="{{data.default.lazyImg|default(data.default.good)}}" data-original="{{ item.goods_img|default(data.default.good) }}" width="{{ item.default.lazyWidth }}" height="{{ item.default.lazyHeight }}" data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+																			</a>
+																			{# <a href="javascript:void(0);" rel="nofollow" class="quickShop js_quickShop" style="background-color:{{data.qsBgColor}}" data-href="{{ siteDomain }}/m-goods_fast-a-info.htm?goods_id={{item.goods_id}}&ids=">
+																					<i class="tag_c"></i>
+																					<span style="color:{{data.qsFontColor}}">{{pageData.quickshopText}}</span>
+																			</a> #}
+																			<a href="javascript:void(0);" rel="nofollow" class="quickShop js_quickShop" style="background-color:{{data.qsBgColor}}" data-href="{{ item.url_quick }}">
+																					<i class="tag_c"></i>
+																					<span style="color:{{data.qsFontColor}}">{{pageData.quickshopText}}</span>
+																			</a>
+																	</p>
+																	<h3 class="pro_name pt10">
+																			<a class="log_sku" title="{{item.goods_title}}" data-sku="{{ item.goods_sn }}">{{item.goods_title}}</a>
+																	</h3>
+																	<p class="pro_price pt5 pr">
+																			<strong data-orgp="{{item.shop_price}}" class="my_shop_price f16"  data-bz="{{item.shop_price}}" style="color:{{data.saleFontColor}}">${{item.shop_price}}</strong>
+																			<strong data-orgp="{{item.market_price}}" class="my_shop_price original_price" data-bz="{{item.market_price}}">${{item.market_price}}</strong>
+																			<a href="javascript:void(0)" rel="nofollow" data-src="/m-flow-a-drop_to_collect-id-847994.htm" class="addToFav js_addToFav">
+																					<i class="tag_c"></i>
+																					<span></span></a>
+																	</p>
+															</li>
+
+													{% endfor %}
+											</ul>
+									</div>
+							</div>
+						{% else %} 
+								<a class="left-banner" href="{{data.bannerLink}}" target="_blank">
+									{% if data.bannerImg %}
+											<img src="{{data.bannerImg}}"></img>
+									{% else %} 
+											<img src="../../resources/images/rw-pc/left-banner.png"></img>
+									{% endif %}
+							</a>
+							<div class="right-goods">
+									<div class="proList clearfix" id="js_proList">
+											<ul>
+													{% for key, item in [1,2,3,4,5,6,7,8]  | slice(0, 8) %}
+															<li>
+															{% if item.activity_number == '0' %}
+																<div class="unavilable">Unavailable</div>
+															{% endif %}
+															
+																	<div class="mark" style="top:{{data.labelImgTop}}px;left:{{data.labelImgLeft}}px;">
+																				{% if data.labelImg %}
+																						<img src="{{data.labelImg}}"></img>
+																				{% else %} 
+																						<img src="../../resources/images/rw-pc/label-img.png"></img>
+																				{% endif %}
+																	</div>
+																	<p class="pr">
+																			<a class="js_gdexp_lazy" href="{{item.url_title}}" data-sku="{{ item.goods_sn }}" data-module="product" data-ubcta="{{ item.goods_sn }}" style="display: inline;">
+																					<img class="goods-img" src="../../resources/images/rw-pc/default-goods.png" width="{{ item.default.lazyWidth }}" height="{{ item.default.lazyHeight }}" data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+																			</a>
+																			{# <a href="javascript:void(0);" rel="nofollow" class="quickShop js_quickShop" style="background-color:{{data.qsBgColor}}" data-href="{{ siteDomain }}/m-goods_fast-a-info.htm?goods_id={{item.goods_id}}&ids=">
+																					<i class="tag_c"></i>
+																					<span style="color:{{data.qsFontColor}}">Quick Shop</span>
+																			</a> #}
+																			<a href="javascript:void(0);" rel="nofollow" class="quickShop js_quickShop" style="background-color:{{data.qsBgColor}}" data-href="{{ item.url_quick }}">
+																					<i class="tag_c"></i>
+																					<span style="color:{{data.qsFontColor}}">Quick Shop</span>
+																			</a>
+																	</p>
+																	<h3 class="pro_name pt10">
+																			<a class="log_sku" title="{{item.goods_title}}" data-sku="{{ item.goods_sn }}">Here is the descript</a>
+																	</h3>
+																	<p class="pro_price pt5 pr">
+																			<strong data-orgp="{{item.shop_price}}" class="my_shop_price f16"  data-bz="{{item.shop_price}}" style="color:{{data.saleFontColor}}">$0.00</strong>
+																			<strong data-orgp="{{item.market_price}}" class="my_shop_price original_price" data-bz="{{item.market_price}}">$0.00</strong>
+																			<a href="javascript:void(0)" rel="nofollow" data-src="/m-flow-a-drop_to_collect-id-847994.htm" class="addToFav js_addToFav">
+																					<i class="tag_c"></i>
+																					<span></span></a>
+																	</p>
+															</li>
+
+													{% endfor %}
+											</ul>
+									</div>
+							</div>
+							
+						{% endif %}
+        </div>
+    </div>
+</div>

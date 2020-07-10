@@ -1,0 +1,9 @@
+<div class="layui-form-item">
+    <label class="layui-form-label">{{cmpt_label}}</label>
+    <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="{{cmpt_name}}">
+            <div style="background-color: {{cmpt_value|default(cmpt_default)}};"></div>
+        </div>
+        <input type="text" class="layui-input" name="{{cmpt_name}}" autocomplete="off" value="{{cmpt_value|default(cmpt_default)}}">
+    </div>
+</div>

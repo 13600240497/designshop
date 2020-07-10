@@ -1,0 +1,49 @@
+
+{% set _blockClass = _block is defined ? 'block-from' : '' %}
+{% set _tmpType = _type | default(0) %}
+{% set _line = _col | default(12) %}
+{% set _radios = _subs | default([]) %}
+{% set _flag = _class | default('') %}
+{% set _ig = _ignore is defined ? '忽略表单的class' : '' %}
+{# 
+    TODO  一切参数要用下横线来区分 怕跟php那边有冲突
+    外部入参  
+    @param _block 用来定义是横向显示的还是竖着显示的  不传值的话默认就是横向(横向代表左边label 右边input)
+    @param _type 是用来区分那种类型的  目前有的类型是  正常表单类型(0)  颜色(1)  背景图(2) radio(3)
+    @param _col 一行展示几个from 参考 https://www.layui.com/demo/grid.html
+    @param _subs 用来表单的子数据的 比如说radio  可能会有多个  或者checkbox  参数格式  [{value,label}]
+    @param _class 用来获取表单的元素 方便JQ 建议直接获取name因为name是唯一的标识
+    @param _ignore 如果当前表单对象不用提交  这个参数随便写什么  都不会提交 
+ #}
+
+<div class="layui-col-xs{{ _line }}" data-class="{{ _flag }}">
+    <div class="layui-form-item {{ _blockClass }}">
+        <label class="layui-form-label">{{ _label }}</label>
+        <div class="layui-input-block">
+            {% if _tmpType == 0 %}
+                <input type="text" name="{{ _name }}" autocomplete="off" class="layui-input" value="{{ _value }}">
+            {% elseif _tmpType == 1 %}
+                <div class="color-picker-selector" data-hidden-name="{{ _name }}"><div style="background-color: {{ _value }};"></div></div>
+                <input type="text" class="layui-input" name="{{ _name }}" autocomplete="off" value="{{ _value }}">
+            {% elseif _tmpType == 2 %}
+                <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                <input type="text" name="{{ _name }}" autocomplete="off" class="layui-input" value="{{ _value }}">
+            {% elseif _tmpType == 3 %}
+                {% for radio in _radios %}
+                    <input type="radio" name="{{ _name}}" value="{{ radio.value }}" title="{{ radio.label }}" {% if _value == radio.value %}checked{% endif %}>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+<style>
+    body .layui-form-item.block-from .layui-form-label{
+        padding-left:10px;
+        padding-right:0;
+        text-align:left;
+        width:100%;
+    }
+    body .layui-form-item.block-from .layui-input-block{
+        margin-left:10px;
+    }
+</style>

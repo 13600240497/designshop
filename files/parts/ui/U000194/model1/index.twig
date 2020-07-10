@@ -1,0 +1,136 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+{% set suffix ='px'%}
+
+{% if data.colNum == '1'%}
+    {% set colClass = liCol[0] %}
+{% elseif data.colNum == '2' %}
+    {% set colClass = liCol[1] %}
+{% elseif data.colNum == '3' %}
+    {% set colClass = liCol[2] %}
+{% elseif data.colNum == '4' %}
+    {% set colClass = liCol[3] %}
+{% elseif data.colNum == '5' %}
+    {% set colClass = liCol[4] %}
+{% else %}
+    {% set colClass = liCol[3] %}
+{% endif %}
+
+{%
+    set pageData = {
+		base_magin_bottom:data.base_magin_bottom|default(32)~suffix,
+		base_magin_top:data.base_magin_top|default(0)~suffix,
+    }
+%}
+
+<div class="geshop-component-box component-drag geshop-component-goods component-sync clearfix geshop-gb-component ui-{{ pageInstanceId }}" data-gid="U000194_default" data-key="U000194" data-id="{{ pageInstanceId }}"
+	data-editenv="{{data.isEditEnv}}" data-static-domain="{{staticDomain}}" data-vis="{{liLength}}" data-lang="{{lang}}"
+	style="margin-bottom: {{ pageData.base_magin_bottom }};margin-top:{{pageData.base_magin_top}}">
+<!-- embed stylesheet begin -->
+<style type="text/css">
+    [data-gid="U000194_default"][data-id="{{ pageInstanceId }}"] {
+        overflow: auto; 
+        zoom: 1;
+    }
+</style>
+<!-- embed stylesheet end -->
+	{# 专题页/落地页 埋点 pagePoint #}
+	{% if pageData.page_point_type|default('activityPage') ==  'activityPage' %}
+		{% set pagePoint = {
+			wrapLink: 'track-goodsItem',
+			goodLink: 'track-goodsLink',
+			prodLink:''
+		}%}
+
+	{% elseif pageData.page_point_type ==  'landPage' %}
+			{% set pagePoint = {
+			wrapLink: 'subjectGoodItem',
+			goodLink: 'js-link',
+			prodLink:'showProd'
+		}%}
+	{% else %}
+		{% set pagePoint = {
+			wrapLink: 'track-goodsItem',
+			goodLink: 'track-goodsLink',
+			prodLink:''
+		}%}
+
+	{% endif %}
+
+    <div class="geshop-col-12">
+		<div 
+			class="gb_goodsWrap gb_wrapper_common" 
+			data-skus="{{data.goodsSKUList}}" 
+			data-isEditEnv="{{data.isEditEnv}}"
+			style="padding:50px 96px;"
+		>
+			{# felix #}
+			<ul class="gb-list-imglist-box">
+			{% for key,item in data.goodsInfo|default(0..2)%}
+				<li 
+					class="gb-list-imglist" 
+					data-track-key="{{item.goods_sn}}"
+					data-is-default="{% if data.goodsInfo|length == 0 %}1{% endif %}"
+					data-have-product="{% if item.lists|length == 0 and (item.base_view_more_url is null or item.base_view_more_url == '') %}0{% elseif item.lists|length > 0 or (item.base_view_more_url is not null or item.base_view_more_url != '')%}1{% endif %}"
+					data-have-goodsimg="{% if item.goodsImg is null or item.goodsImg|length == 0 %}0{% else %}1{% endif %}"
+					style="background:{% if data.goodsInfo|length == 0 %}url('https://geshop.s3.amazonaws.com/uploads/FX0cEt92n3M74iWDdAeaILfypV6xqCbg.png'){% else %}url({{item.goodsImg}}){% endif %} no-repeat;background-size:328px 208px;"
+				>
+				    <div class="gb-list-product-box{% if (item.goodsImg is not null and item.goodsImg|length != 0) or data.goodsInfo|length == 0 %} box-hidden {% endif %}">
+					    {% if item.lists|length != 0 or data.goodsInfo|length == 0 %}
+							<ul>
+								{% for subKey,subItem in item.lists|default(0..2)%}
+									<li 
+										class="gb-list-product-list"
+									>
+										<a href="{{subItem.url_title}}" target="_special" class="{{pagePoint.goodLink}} {% if subItem.goods_img|default('') == '' %}has-cloth-not{% endif %}">
+										{% if data.isEditEnv == '1' and item.lists %}
+											<img class="js-lazyload" src="{{subItem.goods_img}}" style="width:100%;height:100%" data-lazy="{{subItem.goods_img}}">
+										{% elseif data.isEditEnv == '0' and item.lists %}
+											<img class="js-lazyload" src="{{subItem.goods_img}}" style="width:100%;height:100%" data-lazy="{{subItem.goods_img}}" title="{{subItem.goods_title}}" alt="{{subItem.goods_title}}">
+										{% else %}
+											<img class="gb_have_default_cloth" src="https://geshoptest.s3.amazonaws.com/uploads/ZXvRq9MBQSy60NPsIU5mTi3OnwFkpcK8.png" style="width:100%;height:100%">
+										{% endif %}
+										</a>
+										<p class="gs-goods-price">
+										{% if (item.lists|default([]))|length > 0 %}
+											{# {% if item.shop_price > 0 %} #}
+											<span class="gs-shop-price">
+												{% if subItem.shop_price %}
+												<strong class="js-currency" data-currency="{{subItem.shop_price}}" data-wrap="0" data-round="2">${{subItem.shop_price}}</strong>
+												{% else %}
+												<strong class="js-currency visible-hide" data-currency="{{subItem.shop_price}}" data-wrap="0" data-round="2">0</strong>
+												{% endif %}
+											</span>
+											{# {% endif %} #}
+										{% endif %}
+										{# 装修价格 #}
+										{% if (item.lists|default([]))|length == 0 %}
+											<span class="gs-shop-price">
+												<strong class="js-currency" data-currency="0.00" data-wrap="0" data-round="2">$0.00</strong>
+											</span>
+										{% endif %}
+										</p>
+									</li>
+								{% endfor %}
+							</ul>
+						{% endif %}
+						{% if (item.base_view_more_url is not null and item.base_view_more_url|length != 0) or data.goodsInfo|length == 0 %}
+							<a 
+								class="view-more-btn buyLink"
+								href="{% if item.base_view_more_url %}{{item.base_view_more_url}}{% else %}javascript:;{% endif %}"
+								target="_special"
+								style="border-radius:4px;"
+							>
+								<span class="buyLinkSpan">
+								{{gb_component_trans(lang , 'view_more' )}}
+								</span>
+							</a>
+						{% endif %}
+					</div>
+				</li>
+			{% endfor %}
+			</ul>
+		</div>
+
+    </div>
+</div>
+

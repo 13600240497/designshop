@@ -1,0 +1,128 @@
+{%
+	set pageData = {
+		bgColor: data.box_bg_color | default('#f8f8f8'),
+		leftSideImage: data.leftSideImage | default(''),
+		jumpLink:data.jumpLink is not null?data.jumpLink : 'javascript:;',
+		iconWidth:data.iconWidth is not null?data.iconWidth:40,
+		iconHeight:data.iconHeight is not null?data.iconHeight:48,
+		iconFirstImg:data.iconFirstImg | default(data.default.rankingFirst),
+		iconSecondImg: data.iconSecondImg | default(data.default.rankingSecond),
+		iconThirdImg:data.iconThirdImg | default(data.default.rankingThird),
+		iconOtherImg:data.iconOtherImg | default(data.default.rankingOther),
+		iconOtherTextColor:data.iconOtherTextColor is not null?data.iconOtherTextColor:'#ffffff',
+		shop_price_color:data.shop_price_color is not null?data.shop_price_color:'#333333',
+		priceHoverTextColor:data.priceHoverTextColor is not null?data.priceHoverTextColor:'#333333',
+		btnBgColor: data.btnBgColor | default('#ffecec'),
+		leaderBoardTextColor: data.leaderBoardTextColor | default('#ff5058'),
+		buyText:data.buyText is not null?data.buyText:'SNAP UP &gt;',
+		buyTextColor:data.buyTextColor is not null?data.buyTextColor:'#ffffff',
+		buyBtnTextBgColor:data.buyBtnTextBgColor is not null?data.buyBtnTextBgColor:'#fd953c',
+		leaderBoardIconPosition:data.leaderBoardIconPosition is not null?data.leaderBoardIconPosition:1,
+		goodsItemHoverShadowColor:data.goodsItemHoverShadowColor is not null?data.goodsItemHoverShadowColor:'#f78e7d',
+		btnSwitchColor:data.btnSwitchColor is not null?data.btnSwitchColor:'#ffffff',
+		goodsDataSource:data.goodsDataSource is not null?data.goodsDataSource:0,
+		cateId: data.cateId is not null?data.cateId:0,
+		priceTextFontSize:data.priceTextFontSize is not null?data.priceTextFontSize:20,
+		btnDefaultBorderColor: data.btnDefaultBorderColor | default('transparent'),
+		buyTextFontSize:data.buyTextFontSize is not null?data.buyTextFontSize:20,
+		buyBtnDefaultBorderColor:data.buyBtnDefaultBorderColor is not null?data.buyBtnDefaultBorderColor:'transparent',
+		btnHoverBorderColor:data.btnHoverBorderColor is not null?data.btnHoverBorderColor:'transparent',
+		leaderBoardOtherFontSize:data.leaderBoardOtherFontSize is not null?data.leaderBoardOtherFontSize:18,
+	}
+%}
+<div 
+	id="geshop-U000090-{{ pageInstanceId }}" 
+	class="geshop-component-box component-drag geshop-U000090-default-v2 geshop-U000090-{{ pageInstanceId }}" 
+	data-gid="U000090" 
+	data-key="U000090" 
+	data-id="{{ pageInstanceId }}" 
+	data-editEnv="{{data.isEditEnv}}"
+	attr="nav_flag">
+	<!-- embed stylesheet begin -->
+    <style type="text/css">
+        {% include 'style.twig' %}
+    </style>
+    <!-- embed stylesheet end -->
+	<div 
+		id="geshop-U000090-{{ pageInstanceId }}-wrapper" 
+		class="leader-board-container js-leader-board-container-U000090" 
+		data-asyncdata-id="{{ pageData.goodsDataSource }}" 
+		data-sitedomain="{{ siteDomain }}" 
+		data-cate-id="{{ pageData.cateId }}">
+		{# 左侧广告图 #}
+		<div class="leader-board-aside-link">
+			<a href="{{ pageData.jumpLink }}">
+				{% if pageData.leftSideImage %}
+					{% if data.isEditEnv == '1' %}
+					<img src="{{ pageData.leftSideImage }}" alt="{{ pageData.jumpLink }}" />
+					{% else %}
+						<img class="js_gdexp_lazy js-geshopImg-lazyload js_gbexp_lazy" src="{{ data.default.lazyImg }}" data-original="{{ pageData.leftSideImage }}" alt="{{ pageData.jumpLink }}" />
+					{% endif %}
+				{% else %}
+					<div style="background-color:#EDEDED;width:100%;height:100%;background-image:url({{ data.default.view }});background-repeat:no-repeat;background-position:center center;background-size:120px 94px;"></div>
+				{% endif %}
+			</a>
+		</div>
+		{# 右侧滚动区域 #}
+		<div class="swiper-parent-container" :style="{ 'display': show }">
+			<div class="swiper-container">
+				<ul class="swiper-wrapper" >
+					<li v-for="(item, index) in goodsInfo" class="swiper-slide leader-board-content-item">
+						<template v-if="index < 3">
+							<span class="ranking-icon" :data-index="index"></span>
+						</template>
+						<template v-else>
+							<span class="ranking-icon" :data-index="3"><% parseInt(index) + 1 %></span>
+						</template>
+						<a 
+							target="_blank" 
+							class="logsss_event" 
+							:href="item.url_title" 
+							:title="item.goods_title" 
+							:data-logsss-event-value="item.a_analytics">
+							{% 
+								include geshop.default.pc.image_goods with { params: {
+									type: 'vue',
+									src: 'item.goods_img',
+									analytics: 'item.img_analytics'
+								}}
+							%}
+						</a>
+						<p class="product-desc"><% item.goods_title %></p>
+						<div class="product-price">
+							<div class="geshop-components-default-label-shop-price label-shop-price-{{ pageInstanceId }}" style="margin-right: 8px;">
+								<span class="my_shop_price" :data-orgp="item.shop_price"><% item.shop_price %></span>
+							</div>
+							<div class="geshop-components-default-label-market-price label-market-price-{{ pageInstanceId }}">
+								<del><span class="my_shop_price js_market_wrap" :data-orgp="item.market_price">$<% item.market_price %></span></del>
+							</div>
+						</div>
+						<div class="product-button-groups">
+							<div>
+								{% include geshop.default.pc.button_buy with { params: { href: '<% item.url_title %>', text: pageData.buyText }} %}
+								<p class="product-selling-point" v-html="output_selling_point(item)"></p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			{% include geshop.default.pc.button_swiper %}
+		</div>
+	</div>
+	<textarea id="test_less" style="display: none;">{% include 'style.less' %}</textarea>
+</div>
+<script>
+{% set a_analytics = "{'pm':'mp','p':'p-"~pageId~"','ubcta':{'cpID':'"~pageInstanceId~"','cpnum':'"~compKey~"','cplocation':'"~uiIndex~"','sku':'%sku%','cporder':'"~layoutIndex~"','rank':'%columnIndex%'},'skuinfo':{'sku':'%sku%','pam':'0','pc':'%cateid%','k':'%warehousecode%'} }" %}
+{% set img_analytics = "{ 'pm':'mp','p':'p-"~pageId~"','bv':{'cpID':'"~pageInstanceId~"','cpnum':'"~compKey~"','cplocation':'"~uiIndex~"','sku':'%sku%','cporder':'"~layoutIndex~"','rank':'%columnIndex%'} }" %}
+$(function() {
+	var domID = '#geshop-U000090-{{ pageInstanceId }}-wrapper';
+	var type = '{{ data.goodsDataSource }}' || '1';
+	var cateId = '{{ data.cateId }}';
+	var img_analytics = "{{ img_analytics }}";
+	var a_analytics = "{{ a_analytics }}";
+	init_U000090_default_v2(domID, type, cateId, a_analytics, img_analytics);
+});
+
+</script>
+
+

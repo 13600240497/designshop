@@ -1,0 +1,214 @@
+<div class="geshop-component-box component-drag geshop-U000201-modal2 geshop-U000201-modal2-{{ pageInstanceId }} {% if data.isEditEnv == 1 %}is-edit{% endif %}"
+     data-key="U000201" data-id="{{ pageInstanceId }}">
+    {{ include('style.twig') }}
+    {% if data.qrcode_desc | length > 0 %}
+        {% set desc = data.qrcode_desc %}
+    {% else %}
+        {% set desc = 'New Users Enjoy $59 OFF Coupons & App-EXCLUSIVE Deals!' %}
+    {% endif %}
+    <div class="nav-container">
+        <div class="top-img-container">
+            <img class="top-img"
+                 src="{% if data.top_image %}{{ data.top_image }}{% else %}{{ staticDomain }}/frontend/sites/images/dl/U000201_model1_top.png{% endif %}">
+        </div>
+        {% if data.qrcode_positions == 1 %}
+            <div class="cont-box qr-top">
+                <div class="qrcode-wrap">
+                    {% if (data.qrcode_show ?? 0) == 1 %}
+                        <img class="qrcode-img"
+                             src="{{ data.qrcode_position ?: 'https://geshoptest.s3.amazonaws.com/uploads/VaYcwqOLUXdislPjt8M9f4zDG0J6NCWr.png' }}"
+                             alt="qrcode">
+                    {% endif %}
+                    <p class="qr-desc">{{ desc }}</p>
+                    <div class="share-list">
+                        {% if data.share_data %}
+                            {% for shareItem in data.share_data %}
+                                {% if shareItem == 'FB' %}
+                                    <a class="addthis_button_facebook" target="_blank" href="javascript:void(0)"
+                                       title="Facebook">
+                                        <img src="https://geshopimg.logsss.com/uploads/SF0CGlxjHn9guWAJt7i6YvKyspOz3mMN.png ">
+                                    </a>
+                                {% elseif shareItem == 'Twitter' %}
+                                    <a class="addthis_button_twitter" title="Twitter" href="javascript:void(0)">
+                                        <img src="https://geshopimg.logsss.com/uploads/QrTM27CExjzOGAD408YeplNWuLKnqydZ.png  ">
+                                    </a>
+                                {% elseif shareItem == 'Messenger' %}
+                                    <a class="addthis_button_messenger" title="messenger" href="javascript:void(0)">
+                                        <img src="https://geshopimg.logsss.com/uploads/zWb0TyoCePRJhdMQAtk6lDwjL4cNOiBK.png  ">
+                                    </a>
+                                {% elseif shareItem == 'Gmail' %}
+                                    <a class="addthis_button_gmail" title="Gmail" href="javascript:void(0)">
+                                        <img src="https://geshoptest.s3.amazonaws.com/uploads/yVmqQZofO5JkL39irdRa7HlFnjI8AtM2.png">
+                                    </a>
+                                {% elseif shareItem == 'Pinterest' %}
+                                    <a class="addthis_button_pinterest" title="pinterest" href="javascript:void(0)">
+                                        <img src="https://geshopimg.logsss.com/uploads/8CgT5LZtsuM7AhNXDxUb6HEQS9WY2a1r.png  ">
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            <a class="addthis_button_facebook" href="javascript:void(0)" title="Facebook">
+                                <img src="https://geshopimg.logsss.com/uploads/SF0CGlxjHn9guWAJt7i6YvKyspOz3mMN.png ">
+                            </a>
+                            <a class="addthis_button_twitter" title="Twitter" href="javascript:void(0)">
+                                <img src="https://geshopimg.logsss.com/uploads/QrTM27CExjzOGAD408YeplNWuLKnqydZ.png  ">
+                            </a>
+                            <a class="addthis_button_messenger" title="messenger" href="javascript:void(0)">
+                                <img src="https://geshopimg.logsss.com/uploads/zWb0TyoCePRJhdMQAtk6lDwjL4cNOiBK.png  ">
+                            </a>
+                            <a class="addthis_button_gmail" title="Gmail" href="javascript:void(0)">
+                                <img src="https://geshoptest.s3.amazonaws.com/uploads/yVmqQZofO5JkL39irdRa7HlFnjI8AtM2.png">
+                            </a>
+                            <a class="addthis_button_pinterest" title="pinterest" href="javascript:void(0)">
+                                <img src="https://geshopimg.logsss.com/uploads/8CgT5LZtsuM7AhNXDxUb6HEQS9WY2a1r.png  ">
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <nav class="nav-list">
+            {% if data.navData %}
+                {% for id, item in data.navData %}
+                    {% if id in data.nav_menu %}
+                        <div class="nav-item">
+                            <div class="nav-item-text" data-floor-id="{{ id }}">{{ item }}</div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <div class="nav-item">
+                    <div class="nav-item-text">请配置数据</div>
+                </div>
+            {% endif %}
+        </nav>
+
+        {% if data.qrcode_positions == 0 %}
+            <div class="cont-box qr-bot">
+                <div class="qrcode-wrap">
+                    {% if (data.qrcode_show ?? 0) == 1 %}
+                        <img class="qrcode-img"
+                             src="{{ data.qrcode_position ?: 'https://geshoptest.s3.amazonaws.com/uploads/VaYcwqOLUXdislPjt8M9f4zDG0J6NCWr.png' }}"
+                             alt="qrcode">
+                    {% endif %}
+                    <p class="qr-desc">{{ desc }}</p>
+                    <div class="share-list">
+                        {% if data.share_data %}
+                            {% for shareItem in data.share_data %}
+                                {% if shareItem == 'FB' %}
+                                    <a class="addthis_button_facebook" target="_blank" href="javascript:void(0)"
+                                       title="Facebook">
+                                        <img src="https://geshopimg.logsss.com/uploads/SF0CGlxjHn9guWAJt7i6YvKyspOz3mMN.png ">
+                                    </a>
+                                {% elseif shareItem == 'Twitter' %}
+                                    <a class="addthis_button_twitter" title="Twitter" href="javascript:void(0)">
+                                        <img src="https://geshopimg.logsss.com/uploads/QrTM27CExjzOGAD408YeplNWuLKnqydZ.png  ">
+                                    </a>
+                                {% elseif shareItem == 'Messenger' %}
+                                    <a class="addthis_button_messenger" title="Gmail" href="javascript:void(0)">
+                                        <img src="https://geshopimg.logsss.com/uploads/zWb0TyoCePRJhdMQAtk6lDwjL4cNOiBK.png  ">
+                                    </a>
+                                {% elseif shareItem == 'Gmail' %}
+                                    <a class="addthis_button_gmail" title="messenger" href="javascript:void(0)">
+                                        <img src="https://geshoptest.s3.amazonaws.com/uploads/yVmqQZofO5JkL39irdRa7HlFnjI8AtM2.png">
+                                    </a>
+                                {% elseif shareItem == 'Pinterest' %}
+                                    <a class="addthis_button_pinterest" title="pinterest" href="javascript:void(0)">
+                                        <img src="https://geshopimg.logsss.com/uploads/8CgT5LZtsuM7AhNXDxUb6HEQS9WY2a1r.png  ">
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            <a class="addthis_button_facebook" href="javascript:void(0)" title="Facebook">
+                                <img src="https://geshopimg.logsss.com/uploads/SF0CGlxjHn9guWAJt7i6YvKyspOz3mMN.png ">
+                            </a>
+                            <a class="addthis_button_twitter" title="Twitter" href="javascript:void(0)">
+                                <img src="https://geshopimg.logsss.com/uploads/QrTM27CExjzOGAD408YeplNWuLKnqydZ.png  ">
+                            </a>
+                            <a class="addthis_button_messenger" title="messenger" href="javascript:void(0)">
+                                <img src="https://geshopimg.logsss.com/uploads/zWb0TyoCePRJhdMQAtk6lDwjL4cNOiBK.png  ">
+                            </a>
+                            <a class="addthis_button_gmail" title="Gmail" href="javascript:void(0)">
+                                <img src="https://geshoptest.s3.amazonaws.com/uploads/yVmqQZofO5JkL39irdRa7HlFnjI8AtM2.png">
+                            </a>
+                            <a class="addthis_button_pinterest" title="pinterest" href="javascript:void(0)">
+                                <img src="https://geshopimg.logsss.com/uploads/8CgT5LZtsuM7AhNXDxUb6HEQS9WY2a1r.png  ">
+                            </a>
+
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="bottom-img-container">
+            <img class="bottom-img"
+                 src="{% if data.bottom_image %}{{ data.bottom_image }}{% else %}{{ staticDomain }}/frontend/sites/images/dl/U000201_model1_bottom.png{% endif %}">
+        </div>
+    </div>
+    {% if data.isEditEnv == 0 %}
+
+    {% endif %}
+    <span class="share-btn">
+            <img src="https://geshopimg.logsss.com/uploads/R64E1K9GoDtCZ2yQVi0srqIUHjYbmTvh.png">
+    </span>
+
+
+    <div class="layer-share">
+        <div class="share-content">
+            <input type="hidden" name="shareData" value="{{ shareData.place|json_encode() }}">
+            <input type="hidden" name="share_data_img" value="{{ data.share_data_img }}">
+            <input type="hidden" name="share_data_title" value="{{ data.share_data_title }}">
+            <input type="hidden" name="share_data_desc" value="{{ data.share_data_desc }}">
+            <input type="hidden" name="share_data_link" value="{{ data.share_data_link }}">
+
+            <span class="addthis_toolbox clearfix">
+                {% if data.share_data %}
+                    {% for shareItem in data.share_data %}
+                        {% if shareItem == 'FB' %}
+                            <a class="addthis_button_facebook" target="_blank" href="javascript:void(0)"
+                               title="Facebook">
+                          <img src="https://geshopimg.logsss.com/uploads/SF0CGlxjHn9guWAJt7i6YvKyspOz3mMN.png ">
+                        </a>
+                      {% elseif shareItem == 'Twitter' %}
+                            <a class="addthis_button_twitter" title="Twitter" href="javascript:void(0)">
+                          <img src="https://geshopimg.logsss.com/uploads/QrTM27CExjzOGAD408YeplNWuLKnqydZ.png  ">
+                        </a>
+                      {% elseif shareItem == 'Messenger' %}
+                            <a class="addthis_button_messenger" title="messenger" href="javascript:void(0)">
+                          <img src="https://geshopimg.logsss.com/uploads/zWb0TyoCePRJhdMQAtk6lDwjL4cNOiBK.png  ">
+                        </a>
+                      {% elseif shareItem == 'Gmail' %}
+                            <a class="addthis_button_gmail" title="Gmail" href="javascript:void(0)">
+                           <img src="https://geshoptest.s3.amazonaws.com/uploads/yVmqQZofO5JkL39irdRa7HlFnjI8AtM2.png">
+                        </a>
+                      {% elseif shareItem == 'Pinterest' %}
+                            <a class="addthis_button_pinterest" title="pinterest" href="javascript:void(0)">
+                          <img src="https://geshopimg.logsss.com/uploads/8CgT5LZtsuM7AhNXDxUb6HEQS9WY2a1r.png  ">
+                        </a>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                  <a class="addthis_button_facebook" href="javascript:void(0)" title="Facebook">
+                    <img src="https://geshopimg.logsss.com/uploads/SF0CGlxjHn9guWAJt7i6YvKyspOz3mMN.png ">
+                  </a>
+                  <a class="addthis_button_twitter" title="Twitter" href="javascript:void(0)">
+                    <img src="https://geshopimg.logsss.com/uploads/QrTM27CExjzOGAD408YeplNWuLKnqydZ.png  ">
+                  </a>
+                  <a class="addthis_button_messenger" title="messenger" href="javascript:void(0)">
+                    <img src="https://geshopimg.logsss.com/uploads/zWb0TyoCePRJhdMQAtk6lDwjL4cNOiBK.png  ">
+                  </a>
+                  <a class="addthis_button_gmail" title="Gmail" href="javascript:void(0)">
+                    <img src="https://geshoptest.s3.amazonaws.com/uploads/yVmqQZofO5JkL39irdRa7HlFnjI8AtM2.png">
+                  </a>
+                  <a class="addthis_button_pinterest" title="pinterest" href="javascript:void(0)">
+                    <img src="https://geshopimg.logsss.com/uploads/8CgT5LZtsuM7AhNXDxUb6HEQS9WY2a1r.png  ">
+                  </a>
+                {% endif %}
+
+            </span>
+            <div class="U000201-modal2-cancel-btn">{{ get_component_trans(lang, 'cancel') }}</div>
+        </div>
+    </div>
+
+</div>

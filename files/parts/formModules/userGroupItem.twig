@@ -1,0 +1,25 @@
+{#/**
+*@author: wuxingtao
+*@date: 2019/03/12
+*@desc: userGroup radio group
+*@param {Number} data.userGroupSelect
+*/#}
+<style>
+	.site-main-home .layui-form-label{
+		padding-left:0;
+	}
+	.site-main-home .layui-input-block{
+		margin-left:0 !important;
+	}
+	
+</style>
+
+<div class="layui-form-item ">
+	<label class="layui-form-label" style="display: block;float: none;width: auto;text-align: left;">组件展示人群</label>
+	<div class="layui-input-block" style="margin-left: 15px;">
+		<input type="radio" name="userGroupSelect" data-public-tag="true" value="0" title="全部用户" {% if data.userGroupSelect == '0' or data.userGroupSelect is empty %} checked="checked" {% endif %}>
+		<input type="radio" name="userGroupSelect" data-public-tag="true" value="1" title="新用户" {% if data.userGroupSelect == '1' %} checked="checked" {% endif %}>
+		<input type="radio" name="userGroupSelect" data-public-tag="true" value="2" title="老用户" {% if data.userGroupSelect == '2' %} checked="checked" {% endif %}>
+	</div>
+</div>
+

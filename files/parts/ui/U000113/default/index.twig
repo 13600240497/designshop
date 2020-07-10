@@ -1,0 +1,264 @@
+{% set remUnit = 37.5 %}
+{%
+	set pageData = {
+		height:(data.height is not null?data.height:200)/remUnit,
+		boxMarginBottom:(data.boxMarginBottom is not null?data.boxMarginBottom:40)/remUnit,
+		iconWidth:(data.iconWidth is not null?data.iconWidth:29)/remUnit,
+		iconHeight:(data.iconHeight is not null?data.iconHeight:36)/remUnit,
+		iconFirstImg:data.iconFirstImg is not null?data.iconFirstImg:'',
+		iconSecondImg:data.iconSecondImg is not null?data.iconSecondImg:'',
+		iconThirdImg:data.iconThirdImg is not null?data.iconThirdImg:'',
+		iconOtherImg:data.iconOtherImg is not null?data.iconOtherImg:'',
+		iconOtherTextColor:data.iconOtherTextColor is not null?data.iconOtherTextColor:'#333333',
+
+		priceDefaultTextColor:data.priceDefaultTextColor is not null?data.priceDefaultTextColor:'#333333',
+		
+		btnBgColor:data.btnBgColor is not null?data.btnBgColor:'#ffecec',
+		leaderBoardTextColor:data.leaderBoardTextColor is not null?data.leaderBoardTextColor:'#ff5058',
+		
+		buyText:data.buyText is not null?data.buyText:'SNAP UP &gt;',
+		buyTextColor:data.buyTextColor is not null?data.buyTextColor:'#ffffff',
+		buyBtnTextBgColor:data.buyBtnTextBgColor is not null?data.buyBtnTextBgColor:'#fd953c',
+
+		leaderBoardIconPosition:data.leaderBoardIconPosition is not null?data.leaderBoardIconPosition:1,
+
+		goodsDataSource:data.goodsDataSource is not null?data.goodsDataSource:0,
+		cateId: data.cateId is not null?data.cateId:0,
+		goodsQuantity:data.goodsQuantity is not null?data.goodsQuantity:3,
+
+		priceTextFontSize:(data.priceTextFontSize is not null?data.priceTextFontSize:16)/remUnit,
+		btnDefaultBorderColor:data.btnDefaultBorderColor is not null?data.btnDefaultBorderColor:'transparent',
+		
+		buyTextFontSize:data.buyTextFontSize is not null?data.buyTextFontSize:20,
+		buyBtnDefaultBorderColor:data.buyBtnDefaultBorderColor is not null?data.buyBtnDefaultBorderColor:'transparent',
+		leaderBoardOtherFontSize:(data.leaderBoardOtherFontSize is not null?data.leaderBoardOtherFontSize:16)/remUnit,
+	}
+%}
+
+{% if data.isEditEnv == 1 %}
+	<style type="text/css">
+		.wrap-U000113-default.wrap-{{ pageInstanceId }} .leader-board-container .goods-price {
+			font-family: OpenSans-Bold,arial,serif;
+		}
+	</style>
+{% endif %}
+
+<div class="geshop-component-box component-drag geshop-leaderboard-async wrap-U000113-default wrap-{{ pageInstanceId }}" data-gid="U000113" data-key="U000113" data-id="{{ pageInstanceId }}" data-static-domain="{{ staticDomain }}" attr="nav_flag">
+	<div class="leader-board-container js-leader-board-container-U000113" data-asyncdata-id="{{ pageData.goodsDataSource }}" data-asyncdata-count="{{ pageData.goodsQuantity }}" data-editEnv="{{data.isEditEnv}}" data-sitedomain="{{ siteDomain }}" data-cate-id="{{ pageData.cateId }}" style="
+		{% if pageData.boxMarginBottom %}margin-bottom: {{ pageData.boxMarginBottom }}rem;{% endif %}
+	">
+	{# layui tempate container start #}
+		<p style="height:40px;line-height:40px;">loading...</p>
+	{# layui tempate container end #}
+	</div>
+
+	{# layui template start #}
+	<script type="text/html" class="m-leader-board-template">
+		<ul class="leader-board-content">
+			<%# if(d.goodsInfo && d.goodsInfo.length > 0){ %>
+				<%#  $.each(d.goodsInfo, function(index, item){ %>
+				
+				<li class="leader-board-content-item">
+					<a href="<% geshopUrlToApp(item.url_title,item.goods_id) %>" 
+						target="_blank" 
+						class="logsss_event"
+						title="<% item.goods_title %>"
+						data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ key }}','cplocation':'{{ uiIndex }}','sku':'<% item.goods_sn %>','cporder':'{{ layoutIndex }}','rank':'<% index %>'},'skuinfo':{'sku':'<% item.goods_sn %>','pam':'0','pc':'<% item.cateid %>','k':'<% item.warehousecode %>'} }"
+						style="display:inline-block;{% if siteCode == 'rw-wap' or siteCode == 'rw-app'  or siteCode == 'rg-app' or siteCode == 'rg-wap' %}height:2.96rem;{% else %}width:2.96rem;height:3.9467rem;{% endif %}"
+					>
+						{% if data.isEditEnv == '1' %}
+						<img class="" 
+							src="<% item.goods_img %>"
+							alt="<% item.goods_title %>" 
+							style="display:inline-block;{% if siteCode == 'rw-wap' or siteCode == 'rw-app'  or siteCode == 'rg-app' or siteCode == 'rg-wap' %}height:2.96rem;{% else %}width:2.96rem;height:3.9467rem;{% endif %}"
+						/>
+						{% elseif data.isEditEnv == '0' %}
+						<img class="js_gdexp_lazy js-geshopImg-lazyload js_gbexp_lazy" 
+							src="{{ data.default.lazyImg }}"
+							data-original="<% item.goods_img %>" 
+							alt="<% item.goods_title %>" 
+							data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ key }}','cplocation':'{{ uiIndex }}','sku':'<% item.goods_sn %>','cporder':'{{ layoutIndex }}','rank':'<% index %>'} }"
+							style="display:inline-block;{% if siteCode == 'rw-wap' or siteCode == 'rw-app'  or siteCode == 'rg-app' or siteCode == 'rg-wap' %}height:2.96rem;{% else %}width:2.96rem;height:3.9467rem;{% endif %}"
+						/>
+						{% endif %}
+					</a>
+					<p class="product-price {% if pageData.priceHoverTextColor %}price-hover{% endif %}">
+						<span class="goods-price">
+							<strong class="bizhong">USD</strong>
+							<span class="bz_icon"></span>
+							<span class="my_shop_price" style="{% if pageData.priceTextFontSize %}font-size: {{ pageData.priceTextFontSize }}rem;{% endif %}color: {{ pageData.priceDefaultTextColor }};" data-orgp="<% item.shop_price %>" data-sku="<% item.goods_sn %>" data-bz="<% item.shop_price %>" orgp="<% item.shop_price %>">$<% item.shop_price %></span>
+						</span>
+					</p>
+					
+					<p class="product-selling-point" style="
+						{% if pageData.btnBgColor %}background-color: {{ pageData.btnBgColor }};{% endif %}
+						{% if pageData.leaderBoardTextColor %}color: {{ pageData.leaderBoardTextColor }};{% endif %}
+						{% if pageData.btnDefaultBorderColor %}border-color:{{ pageData.btnDefaultBorderColor }};{% endif %}
+					">
+					<%# if(d.type == 1){ %>
+						<%# if(d.lang == 'en'){ %>
+							<strong><% item.sale_number %></strong> Pieces Sold After <strong><% item.sale_days ? item.sale_days : 0 %></strong> Days Released
+						<%# }else if(d.lang == 'fr'){ %>
+							<strong><% item.sale_number %></strong> pièces vendues après <strong><% item.sale_days ? item.sale_days : 0 %></strong> jours de sortie
+						<%# }else if(d.lang == 'es'){ %>
+							<strong><% item.sale_number %></strong> prendas vendidas después de <strong><% item.sale_days ? item.sale_days : 0 %></strong> días desde su lanzamiento
+						<%# }else if(d.lang == 'de'){ %>
+							Nach <strong><% item.sale_days ? item.sale_days : 0 %></strong> Tagen werden <strong><% item.sale_number %></strong> Stücke verkauft
+						<%# }else if(d.lang == 'pt'){ %>
+							<strong><% item.sale_number %></strong> peças vendidas após <strong><% item.sale_days ? item.sale_days : 0 %></strong> dias lançados
+						<%# }else if(d.lang == 'it'){ %>
+							<strong><% item.sale_number %></strong> Pezzo Venduti Dopo <strong><% item.sale_days ? item.sale_days : 0 %></strong> giorni dal Lancio
+						<%# }else{ %>
+							<strong><% item.sale_number %></strong> Pieces Sold After <strong><% item.sale_days ? item.sale_days : 0 %></strong> Days Released
+						<%# } %>
+					<%# }else if(d.type == 2){ %>
+						<%# if(d.lang == 'en'){ %>
+							Already Sold <strong><% item.sale_number %></strong> Pieces
+						<%# }else if(d.lang == 'fr'){ %>
+							<strong><% item.sale_number %></strong> pièces vendues
+						<%# }else if(d.lang == 'es'){ %>
+							Ya se han vendido <strong><% item.sale_number %></strong> piezas
+						<%# }else if(d.lang == 'de'){ %>
+							<strong><% item.sale_number %></strong> Stücke werden bereits verkauft
+						<%# }else if(d.lang == 'pt'){ %>
+							Já Vendi <strong><% item.sale_number %></strong> Peças
+						<%# }else if(d.lang == 'it'){ %>
+							<strong><% item.sale_number %></strong> Pezzi Sono Stati Venduti
+						<%# }else{ %>
+							Already Sold <strong><% item.sale_number %></strong> Pieces
+						<%# } %>
+					<%# }else if(d.type == 3){ %>
+						<%# if(d.lang == 'en'){ %>
+							<strong><% item.discount %></strong>% OFF
+						<%# }else if(d.lang == 'fr'){ %>
+							<strong><% item.discount %></strong>% de réduction
+						<%# }else if(d.lang == 'es'){ %>
+							<strong><% item.discount %></strong>% de descuento
+						<%# }else if(d.lang == 'de'){ %>
+							<strong><% item.discount %></strong>% Rabatt
+						<%# }else if(d.lang == 'pt'){ %>
+							<strong><% item.discount %></strong>% de desconto
+						<%# }else if(d.lang == 'it'){ %>
+							Sconto del <strong><% item.discount %></strong>%
+						<%# }else{ %>
+							<strong><% item.discount %></strong>% OFF
+						<%# } %>
+					<%# } %>
+					</p>
+
+					<%# if(index == 0){ %>
+					{% if pageData.iconFirstImg %}
+						<span class="ranking-icon" style="
+							{% if pageData.iconFirstImg %}background-image:url({{ pageData.iconFirstImg }});{% endif %}
+							{% if pageData.iconWidth %}width:{{pageData.iconWidth}}rem;{% endif %}
+							{% if pageData.iconHeight %}height:{{pageData.iconHeight}}rem;{% endif %}
+							{% if pageData.leaderBoardIconPosition == 2 %}right:-0.1333rem;{% else %}left:-0.1333rem;{% endif %}
+						"></span>
+					{% else %}
+						<span class="ranking-icon" style="
+							background-image:url({{ data.default.rankingFirst }});
+							width:{{pageData.iconWidth}}rem;
+							height:{{pageData.iconHeight}}rem;
+							{% if pageData.leaderBoardIconPosition == 2 %}right:-0.1333rem;{% else %}left:-0.1333rem;{% endif %}
+						"></span>
+					{% endif %}
+					<%# } %>
+
+					<%# if(index == 1){ %>
+					{% if pageData.iconSecondImg %}
+						<span class="ranking-icon" style="
+							{% if pageData.iconSecondImg %}background-image:url({{ pageData.iconSecondImg }});{% endif %}
+							{% if pageData.iconWidth %}width:{{pageData.iconWidth}}rem;{% endif %}
+							{% if pageData.iconHeight %}height:{{pageData.iconHeight}}rem;{% endif %}
+							{% if pageData.leaderBoardIconPosition == 2 %}right:-0.1333rem;{% else %}left:-0.1333rem;{% endif %}
+						"></span>
+					{% else %}
+						<span class="ranking-icon" style="
+							background-image:url({{ data.default.rankingSecond }});
+							width:{{pageData.iconWidth}}rem;
+							height:{{pageData.iconHeight}}rem;
+							{% if pageData.leaderBoardIconPosition == 2 %}right:-0.1333rem;{% else %}left:-0.1333rem;{% endif %}
+						"></span>
+					{% endif %}
+					<%# } %>
+
+					<%# if(index == 2){ %>
+					{% if pageData.iconThirdImg %}
+						<span class="ranking-icon" style="
+							{% if pageData.iconThirdImg %}background-image:url({{ pageData.iconThirdImg }});{% endif %}
+							{% if pageData.iconWidth %}width:{{pageData.iconWidth}}rem;{% endif %}
+							{% if pageData.iconHeight %}height:{{pageData.iconHeight}}rem;{% endif %}
+							{% if pageData.leaderBoardIconPosition == 2 %}right:-0.1333rem;{% else %}left:-0.1333rem;{% endif %}
+						"></span>
+					{% else %}
+						<span class="ranking-icon" style="
+							background-image:url({{ data.default.rankingThird }});
+							width:{{pageData.iconWidth}}rem;
+							height:{{pageData.iconHeight}}rem;
+							{% if pageData.leaderBoardIconPosition == 2 %}right:-0.1333rem;{% else %}left:-0.1333rem;{% endif %}
+						"></span>
+					{% endif %}
+					<%# } %>
+
+				</li>
+				<%# }); %>
+			<%# }else{ %>
+				<%# $.each(Array(3), function(index){ %>
+				<li class="leader-board-content-item">
+					<div class="default-slide-view" style="background-image:url({{ data.default.clothes }});"></div>
+					<p class="product-price">
+						<span class="goods-price">
+							<strong class="bizhong">USD</strong>
+							<span class="bz_icon"></span>
+							<span class="my_shop_price" data-orgp="0.00" data-sku="" data-bz="0.00" orgp="0.00">$0.00</span>
+						</span>
+					</p>
+					<p class="product-selling-point" style="background-color:#EDEDED;color:#4A4A4A;">
+						Already Sold <strong>5200</strong> Pieces
+					</p>
+					
+					<%# if(index == 0){ %>
+					<span class="ranking-icon" style="
+						background-image:url({{ data.default.rankingFirst }});
+						width:{{pageData.iconWidth}}rem;
+						height:{{pageData.iconHeight}}rem;
+						{% if pageData.leaderBoardIconPosition == 2 %}right:-0.1333rem;{% else %}left:-0.1333rem;{% endif %}
+					"></span>
+					<%# } %>
+
+					<%# if(index == 1){ %>
+					<span class="ranking-icon" style="
+						background-image:url({{ data.default.rankingSecond }});
+						width:{{pageData.iconWidth}}rem;
+						height:{{pageData.iconHeight}}rem;
+						{% if pageData.leaderBoardIconPosition == 2 %}right:-0.1333rem;{% else %}left:-0.1333rem;{% endif %}
+					"></span>
+					<%# } %>
+
+					<%# if(index == 2){ %>
+					<span class="ranking-icon" style="
+						background-image:url({{ data.default.rankingThird }});
+						width:{{pageData.iconWidth}}rem;
+						height:{{pageData.iconHeight}}rem;
+						{% if pageData.leaderBoardIconPosition == 2 %}right:-0.1333rem;{% else %}left:-0.1333rem;{% endif %}
+					"></span>
+					<%# } %>
+				</li>
+				<%# }); %>
+			<%# } %>
+		</ul>
+	</script>
+	{# layui template end #}
+	<!-- embed stylesheet begin -->
+	<style type="text/css">
+		{% if siteCode == 'rw-wap' %}
+		.wrap-U000113-default.wrap-{{ pageInstanceId }} .leader-board-container .leader-board-content-item .default-slide-view {
+			height:2.96rem;
+		}
+		{% endif %}
+	</style>
+	<!-- embed stylesheet end -->
+</div>
+
+
+

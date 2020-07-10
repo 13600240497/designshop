@@ -1,0 +1,51 @@
+{
+  "name": "pc goodsList",
+  "version": "v1.0.0.1",
+  "description": "pc goodsList",
+  "author": "xingtao",
+  "doc":"http://wiki.hqygou.com:8090/pages/viewpage.action?pageId=39029806",
+  "commjs": {
+    "jquery": true
+  },
+  "commcss": {
+    "main": true
+  },
+  "min-width": "auto",
+  "min-height": "inherit",
+  "fields": {
+		"base_box_bgImage": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"component_bg_value": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"component_bg_repeat": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"component_bg_position": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"price_ft_weight": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"base_bg_shadow": { "is_public": "0", "is_m": "0", "is_app": "0" },
+
+
+		"goodsSKU": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"coupons": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"couponsImg": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  ,"coupon_num": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  ,"coupon_magin_bottom": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  ,"brand_bgc": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  ,"brand_ftc": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  ,"coupon_bgc": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  ,"coupon_ftc": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  ,"getBtn_border_bgc": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  ,"getBtn_arrow_bgc": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  ,"getBtn_ftc": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  ,"coupon_msg_fts": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  ,"coupon_discount_ftc": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  ,"coupon_name_fts": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  ,"coupon_limit_fts": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  ,"getBtn_border": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  ,"getBtn_fts": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  ,"getBtn_comming_soon": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  ,"getBtn_useable_bgc": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  ,"goLink_bgc": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  ,"getBtn_expired": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  ,"getBtn_all_taken": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  ,"getBtn_disable_bgc": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  ,"goGoods_bool": { "is_public": "1", "is_m": "1", "is_app": "1" }
+
+  },
+}

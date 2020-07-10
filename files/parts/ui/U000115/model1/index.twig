@@ -1,0 +1,40 @@
+ {% set remUnit = 37.5 %}
+<div data-key="U000115" data-id="{{ pageInstanceId }}" data-static-domain="{{staticDomain}}" data-gid="U000115_mobile"
+	class="geshop-component-box component-drag wrap-U000115_mobile wrap-{{pageInstanceId}}">
+	<!-- embed stylesheet begin -->
+	<style type="text/css">
+			.wrap-{{pageInstanceId}} {
+				
+				width: {% if data.isEditEnv == 1 %}100%{% else %}{{ (data.ImgWidth | default(750) / 75) | number_format(3, '.') }}rem{% endif %};
+				{% if data.ImgHeight is not empty %}height: {{ (data.ImgHeight / 75) | number_format(3, '.') }}rem;{% endif %}
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: {{ ((data.marginTop | default(0)) / 75) | number_format(3, '.') }}rem;
+				margin-bottom: {{ ((data.marginBottom | default(0)) / 75) | number_format(3, '.') }}rem;
+				overflow: hidden;
+			}
+	</style>
+	<!-- embed stylesheet end -->
+	{% if data.imgItem | length  == 0 %}
+	<a href="javascript:;" height="">
+		<img  src="https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/banner.png" style="border: 0; width: {% if data.isEditEnv %}100%{% else %}{{ (data.ImgWidth |default(750) / 75) | number_format(3, '.') }}rem{% endif %};">
+	</a>
+	
+	{% else %}
+	<div class="swiper-container geshop-index-banner geshop-index-banner-{{ pageInstanceId }}" data-id="{{ pageInstanceId }}" style="height: 100%;">
+		<div class="swiper-wrapper">
+				{% for item in data.imgItem %}
+				<div class="swiper-slide">
+					{% if data.isEditEnv == 1 %}
+						{{ include('./edit.twig') }}
+					{% else %}
+						{{ include('./product.twig', {length: data.imgItem|length}) }}
+					{% endif %}
+				</div>
+				{% endfor %}
+			
+		</div>
+		<div class="swiper-pagination"></div>
+ 	</div>
+	{% endif %}
+</div>

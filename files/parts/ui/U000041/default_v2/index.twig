@@ -1,0 +1,80 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+
+{% if data.colNum == '1'%}
+    {% set colClass = liCol[0] %}
+{% elseif data.colNum == '2' %}
+    {% set colClass = liCol[1] %}
+{% elseif data.colNum == '3' %}
+    {% set colClass = liCol[2] %}
+{% elseif data.colNum == '4' %}
+    {% set colClass = liCol[3] %}
+{% elseif data.colNum == '5' %}
+    {% set colClass = liCol[4] %}
+{% else %}
+    {% set colClass = liCol[3] %}
+{% endif %}
+	{# tabFtC:data.tabFtC|default('#d84d52'), #}
+{% set pageData = {
+	tabBgCA:data.tabBgCA is not null?data.tabBgCA:'#d8d8d8',
+	tabFtCA:data.tabFtCA is not null?data.tabFtCA:'#333333',
+	tabBgC:data.tabBgC is not null?data.tabBgC:'#EDEDED',
+	tabFtC:data.tabFtC is not null?data.tabFtC:'#333333',
+	goodsBgc:data.goodsBgc is not null?data.goodsBgc:'#ffffff',
+	priceC:data.priceC is not null?data.priceC:'#eb1942',
+	buyBgC:data.buyBgC is not null?data.buyBgC:'#333333',
+	buyHeight:data.buyHeight|default(55),
+	priceFt:data.priceFt|default('20'),
+	discountOffsetT:data.discountOffsetT|default('3'),
+	discountOffsetR:data.discountOffsetR|default('4'),
+	discountRadius:data.discountRadius|default('0'),
+	gsMarginBottom:data.gsMarginBottom|default('10'),
+	gsPadding:data.gsPadding|default('10'),
+	colNum:data.colNum|default('4')
+} %}
+
+{% set liLength = ( data.goodsInfo|default(0..2))|length %}
+{% set liWidth = 1200/liLength %}
+{% set static = {
+	discountFtS:data.discountFtS|default(18)
+	}
+%}
+
+
+<div class="geshop-component-box component-drag clearfix geshop-U000041-default-0227 geshop-U000041-default-0227-{{ pageInstanceId }}" data-gid="U000041" data-key="U000041" data-id="{{ pageInstanceId }}">
+		<!-- embed stylesheet begin -->
+		<style type="text/css">
+			{% include 'style.twig' %}
+		</style>
+    <!-- embed stylesheet end -->
+    <div class="geshop-col-12">
+		{# start wrap #}
+			<div class="gs-tab" style="width:{{data.baseWith|default(1200)}}px;{% if data.tabMargin %}margin-top:{{data.tabMargin}}px;margin-bottom:{{data.tabMargin}}px{% endif %}">
+				<ul class="gs-tab-label">
+				{% for key,item in data.goodsInfo|default(0..2)%}
+					<li {% if loop.index0 == 0%} class="current" {% endif %} style="{% if loop.index0 == liLength-1 %}width:{{liWidth}}px;{% else %}width:{{liWidth-5}}px;{% endif %}">
+						<span style="{% if pageData.tabFtC %}color:{{pageData.tabFtC}};{% endif %}
+						{% if pageData.tabBgC %}background:{{pageData.tabBgC}};{% endif %}
+						{% if data.tabHeight %}height:{{data.tabHeight}}px;line-height:{{data.tabHeight}}px;{% endif %}
+						{% if data.tabFtS %} font-size:{{data.tabFtS}}px; {% endif %}">{{ item.label | default('Tab') }}</span>
+					</li>
+				{% endfor %}
+				</ul>
+				{# start gs-tab-content #}
+				<div class="gs-tab-content" style="{% if pageData.tabBgCA %}background-color:{{ pageData.tabBgCA }};{% endif %}">
+					{% for tabKey,tabItem in data.goodsInfo|default(0..2)%}
+					<div class="gs-tab-item gs-goodsWrap {% if loop.index0 == 0%}gs-tab-show{% endif %}">
+                        <ul class="clearfix">
+                            {% for key, item in data.goodsInfo[loop.index0].lists|default([{},{},{},{}]) %}
+                                {% include 'index-goods-item.twig' with item %}
+							{% endfor %}
+                        </ul>
+					</div>
+					{% endfor %}
+				</div>
+				{# end gs-tab-content #}
+			</div>
+            {# end wrap #}
+    </div>
+</div>
+
+

@@ -1,0 +1,99 @@
+<!-- embed stylesheet begin -->
+<style type="text/css">
+	{% set class_sapce = '.geshop-U000195-default.wraper_'~pageInstanceId %}
+    {% set unit = 'px' %}
+
+    {{ class_sapce }} {
+        margin: {{ data.component_margin_top | default(0) ~ unit }} auto {{ data.component_margin_bottom | default(32) ~ unit }};
+        width: 1200px;
+        height: {{ data.component_height | default(510) ~ unit }};
+        
+        {% if data.component_bgImage %}
+        background-image: url('{{ data.component_bgImage }}');
+        background-size: 100%;
+        {% else %}
+        background-image: url('{{ data.default.view }}');
+        background-size: 8%;
+        background-position: center 84px;
+        background-repeat: no-repeat;
+        background-color: #ECECEC;
+        {% endif %}
+    }
+
+    {# 榜单 #}
+    {{ class_sapce }} .amount-list-outer-wraper {
+        top: {{ data.amount_list_top | default(240) ~ unit }};
+        left: {{ data.amount_list_left | default(420) ~ unit }};
+    }
+
+    {{ class_sapce }} .amount-list-outer-wraper .amount-list-container .amount-list-item {
+        color: {{ data.amount_list_text_color | default('#333333') }};
+        font-size: {{ data.amount_list_fontsize | default(14) ~ unit }};
+        line-height: {{ data.amount_list_lineheight | default(30) ~ unit }};
+    }
+
+    {{ class_sapce }} .amount-list-outer-wraper .amount-list-container .amount-list-item .payment-amount {
+        color: {{ data.amount_list_payments_text_color | default('#000000') }};
+    }
+
+    {# 查看排名按钮 #} 
+    {{ class_sapce }} .amount-list-ranking-btn {
+        width: {{ data.person_info_btn_width | default(260) ~ unit }};
+        height: {{ data.person_info_btn_height | default(40) ~ unit }};
+        font-size: {{ data.person_info_btn_fontsize | default(18) ~ unit }};
+        top: {{ data.person_info_btn_top | default(430) ~ unit }};
+        left: {{ data.person_info_btn_left | default(470) ~ unit }};
+        color: {{ data.person_info_btn_text_color | default('#FFFFFF') }};
+        background-color: {{ data.person_info_btn_bg_color | default('#000000') }};
+        background-image: url('{{ data.person_info_btn_bg_image }}');
+        {% if data.person_info_btn_bg_image %}
+        border-radius: 0;
+        {% else %}
+        border-radius: {{ data.person_info_btn_radius | default(0) ~ unit }};
+        {% endif %}
+    }
+
+    {# 个人排名弹窗 #}
+    {{ class_sapce }} .ge-195d-dialog-my-ranking .ge-195d-dialog-container {
+        width: {{ data.person_info_dialog_width | default(640) ~ unit }};
+        height: {{ data.person_info_dialog_height | default(320) ~ unit }};
+        background-image: url('{{ data.person_info_dialog_bg_image }}');
+    }
+
+    {{ class_sapce }} .ge-195d-dialog-my-ranking .ge-195d-dialog-container .title {
+        font-size: {{ data.person_info_dialog_title_fontsize | default(30) ~ unit }};
+        top: {{ data.person_info_dialog_title_top | default(20) ~ unit }};
+        color: {{ data.amount_list_title_color | default('#333333') }};
+    }
+
+    {{ class_sapce }} .ge-195d-dialog-my-ranking .ge-195d-dialog-container .content {
+        color: {{ data.amount_list_payment_text_color | default('#333333') }};
+        top: {{ data.person_info_dialog_payment_text_top | default(116) ~ unit }};
+    }
+
+    {{ class_sapce }} .ge-195d-dialog-my-ranking .ge-195d-dialog-container .content .amount {
+        color: {{ data.amount_list_payment_money_color | default('#000000') }};
+    }
+
+    {{ class_sapce }} .ge-195d-dialog-my-ranking .ge-195d-dialog-container .ranking-item {
+        font-size: {{ data.person_info_dialog_payment_fontsize | default(18) ~ unit }};
+        line-height: {{ data.person_info_dialog_content_lineheight | default(36) ~ unit }};
+    }
+
+    {{ class_sapce }} .rule-btn {
+        top: {{ data.rule_btn_top | default(40) ~ unit }};
+        right: {{ data.rule_btn_left | default(120) ~ unit }};
+        font-size: {{ data.rule_content_fontsize | default(16) ~ unit }};
+        color: {{ data.rule_content_text_color | default('#666666') }};
+    }
+
+    {{ class_sapce }} .ge-195d-dialog-rule .content {
+        color: {{ data.rule_dialog_content_color | default('#666666') }};
+    }
+
+    {{ class_sapce }} .ge-195d-dialog-rule .title {
+        color: {{ data.rule_dialog_title_color | default('#000000') }};
+        background-color: {{ data.rule_dialog_title_bg_color | default('#F0F0F0') }};
+    }
+</style>
+<!-- embed stylesheet end -->

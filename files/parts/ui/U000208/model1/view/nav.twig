@@ -1,0 +1,31 @@
+ {# 导航为空的时候 #}
+ {% if categoryList %}
+ <div class="rank-nav-container">
+    <div class="rank-nav-inner">
+        <div class="rank-nav">
+            <div class="rank-nav-pre"></div>
+            <div class="rank-nav-content">
+                {% for key, item in categoryList %}
+                <div class="rank-nav-item {{ key == 0 ? 'active' : ''}}" data-index="{{ item.index }}"><span class="rank-nav-text">{{ item.categoryName }}</span></div>
+                {% endfor %}
+            </div>
+            <div class="rank-nav-next"></div>
+        </div>
+    </div>
+</div>
+{# 组件没有设置过，并且是在装修界面，显示必要的默认信息 #}
+{% elseif data.isEditEnv == 1 and formHasSaved == 'n' %}
+<div class="rank-nav-container">
+    <div class="rank-nav-inner">
+        <div class="rank-nav">
+            <div class="rank-nav-pre"></div>
+            <div class="rank-nav-content">
+                {% for key in 0..9 %}
+                <div class="rank-nav-item {{ key == 0 ? 'active' : ''}}" data-index="{{ key + 1 }}"><span class="rank-nav-text">Category name</span></div>
+                {% endfor %}
+            </div>
+            <div class="rank-nav-next"></div>
+        </div>
+    </div>
+</div>
+{% endif %}

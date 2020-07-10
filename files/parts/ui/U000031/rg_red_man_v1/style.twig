@@ -1,0 +1,18 @@
+{% set root = '#U000031_'~pageInstanceId %}
+{% set classSpace = '.geshop-component-body' %}
+{% set body = root~' '~classSpace%}
+{% set remUnit = 75 %}
+
+{{ body }}{
+    margin-bottom: {{ (data.box_margin_bottom|default(32))/remUnit}}rem;
+    background-color:{{ data.box_bg_color ?? '#F8F8F8' }};
+}
+
+{{ body }} .goods_list_wrap .list_item{
+    border: 1px solid {{ data.hover_bdColor ?? '#FFFFFF' }};
+    border-radius: {{ (data.goods_border_radius ?? 4)/remUnit }}rem;
+}
+
+{{ body }} .redman_list .active{
+    border-color: {{ data.small_color_ative ?? '#FA386A' }};
+}

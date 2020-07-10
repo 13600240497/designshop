@@ -1,0 +1,22 @@
+<div class="geshop-component-box component-drag geshop-U000201-model1 geshop-U000201-model1-{{ pageInstanceId }} {% if data.isEditEnv == 1 %}is-edit{% endif %}" data-key="U000201" data-id="{{ pageInstanceId }}">
+    {{ include('style.twig') }}
+    <div class="nav-container">
+        <div class="top-img-container">
+            <img class="top-img" src="{% if data.top_image %}{{ data.top_image }}{% else %}{{staticDomain}}/frontend/sites/images/dl/U000201_model1_top.png{% endif %}">
+        </div>
+        <nav class="nav-list">
+            {% if data.navData %}
+                {% for id, item in data.navData %}
+                    {% if id in data.nav_menu %}
+                        <div class="nav-item"><div class="nav-item-text" data-floor-id="{{ id }}">{{ item }}</div></div>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <div class="nav-item"><div class="nav-item-text">请配置数据</div></div>
+            {% endif %}
+        </nav>
+        <div class="bottom-img-container">
+            <img class="bottom-img" src="{% if data.bottom_image %}{{ data.bottom_image }}{% else %}{{staticDomain}}/frontend/sites/images/dl/U000201_model1_bottom.png{% endif %}">
+        </div>
+    </div>
+</div>

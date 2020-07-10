@@ -1,0 +1,7 @@
+{# 展示商个数 #}
+<div class="layui-form-item">    
+    <label class="layui-form-label">展示的商品个数 <span>(注：剩余的商品用于替换下架或售罄的商品，不填写则展示所有)</span></label>  
+    <div class="layui-input-block">
+        <input type="text" name="maxCount" autocomplete="off" class="layui-input" value="{{ data.maxCount }}" placeholder="" data-public-tag="" onkeyup="value = value.replace(/[^\\d{1,}\\d{1,}|\\d{1,}]/g,'')">    
+    </div>
+</div>

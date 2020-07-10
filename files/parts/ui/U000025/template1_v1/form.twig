@@ -1,0 +1,133 @@
+{% set formData = {
+    id: 'U000025',
+    name: '时区banner',
+    theme: 'template1_v1',
+    tabs: [
+        {
+            label: '样式设置',
+            components: [
+                {
+                    label: '常用配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '上边距 (PX)',
+                            name: 'box_margin_top',
+                            default: 0,
+                            col: 2,
+                        },
+                        {
+                            label: '下边距 (PX)',
+                            name: 'box_margin_bottom',
+                            default: 0,
+                            col: 2,
+                        },
+                        {
+                            label: '左边距 (PX)',
+                            name: 'box_margin_left',
+                            default: 0,
+                            col: 2,
+                        },
+                        {
+                            label: '右边距 (PX)',
+                            name: 'box_margin_right',
+                            default: 0,
+                            col: 2,
+                        },
+                        {
+                            label: '图片位置',
+                            type: 'radio',
+                            default: 'center',
+                            name: 'img_align',
+                            options: [
+                                { label: '居左', value: 'left' },
+                                { label: '居中', value: 'center' },
+                                { label: '居右', value: 'right' },
+                            ]
+                        },
+                        {
+                            label: '时间设置',
+                            name: 'active_time',
+                            type: 'dataRangePicker',
+                            default: '',
+                        },
+                        {
+                            label: 'Banner图片',
+                            desc: '(建议宽高为1200 * 500px)',
+                            name: 'banner_img',
+                            type: 'image',
+                            default: '',
+                        },
+                        {
+                            label: '图片跳转链接',
+                            name: 'banner_href',
+                            default: '',
+                        }
+                    ]
+                },
+                {
+                    label: '蒙版配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '背景蒙版颜色',
+                            name: 'mask_bg',
+                            type: 'colorPicker',
+                            default: '#000000',
+                        },
+                        {
+                            label: '蒙版透明度',
+                            desc: '(请输入0-1)',
+                            name: 'mask_opacity',
+                            default: 0.5,
+                        },
+                        {
+                            label: '蒙版圆角(px)',
+                            name: 'mask_radius',
+                            default: 0,
+                        },
+                        {
+                            label: '文字颜色',
+                            name: 'font_color',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                        },
+                        {
+                            label: '文字背景颜色',
+                            name: 'font_bg',
+                            type: 'colorPicker',
+                            default: '#000000',
+                        },
+                        {
+                            label: '文字背景透明度',
+                            desc: '(请输入0-1)',
+                            name: 'font_opacity',
+                            default: 0.3,
+                        },
+                        {
+                            label: '文字背景大小',
+                            desc: '(直径)',
+                            name: 'font_w',
+                            default: 220,
+                        },
+                    ]
+                },
+            ]
+        }
+    ],
+    beforeSubmit: 'onSubmit'
+} %}
+
+<script>
+    function onSubmit(process) {
+        var time = $('#U000025-template1_v1').find('input[name="active_time"]').val();
+        if (time) {
+            process.next();
+        } else {
+            layer.msg('请设置banner时间（时间为必填项）');
+        }
+    }
+</script>
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

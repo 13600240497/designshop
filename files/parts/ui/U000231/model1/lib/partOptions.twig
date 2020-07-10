@@ -1,0 +1,160 @@
+<section>
+    <div class="component-form-setting-ite component-form-configure-item">
+        <div class="nav-list-setting row-lists-content">
+            <input type="hidden" data-public-tag="true" name="partsArr">
+            <input type="hidden" data-public-tag="true" name="partsDataAble">
+            {% for index, item in data.partsArr | default([""]) %}
+                <div class="nav-item" data-col="{{item.col|default('1')}}">
+                    <p class="nav-title">分会场{{index+1}}设置</p>
+                    <div class="layui-block">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">一行显示会场数</label>
+                            <div class="layui-input-block">
+                                <input type="radio" name="line_row{{ index }}" class="Unwanted line_row" value="1" title="1" {% if item.col|default('1') == '1'%} checked="checked" {% endif %}>
+                                <input type="radio" name="line_row{{ index }}" class="Unwanted line_row" value="2" title="2" {% if item.col|default('1') == '2'%} checked="checked" {% endif %}>
+                            </div>
+                        </div>
+                        {% for key,partItem in item.colArr|default([{},{}]) %}
+                        <div class="item_{{ key }} item-content">
+                            </br>
+                            <div class="layui-form-item line-row-text{{ key+1 }}">
+                                <label class="form-item-label line-item-text">分会场{{ key+1 }}文案</label>
+                                <div class="layui-input-block">
+                                    <input type="text" class="layui-input line-text Unwanted" type="text" value="{{partItem.text}}">
+                                </div>
+                            </div>
+                            </br>
+                            <div class="layui-form-item line-row-text{{ key+1 }}">
+                                <label class="layui-form-label line-item-link">分会场{{ key+1 }}链接</label>
+                                <div class="layui-input-block rest-input">
+                                    <input type="text" autocomplete="off" class="layui-input line-link Unwanted" value="{{partItem.link}}" name="link">
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+
+                    <div class="geshop-third-value">
+                        <span class="img-btn btn-delete"><i class='icon-delete'></i><b class="tips">删除</b></span>
+                        <span class="img-btn btn-up"><i class='icon-up'></i><b class="tips">上移</b></span>
+                        <span class="img-btn btn-down"><i class='icon-down'></i><b class="tips">下移</b></span>
+                        <span class="img-btn add-class"><i class='icon-add'></i><b class="tips">新增</b></span>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<script>
+    $(function(){
+        initItemIndex();
+        labelTextRender();
+        $('.component-form-setting-ite').on('click','.add-class',function(e){
+            var flagIndex =  $('.nav-list-setting .nav-item').length;
+            var clone = $('.nav-item').eq(0).clone();
+
+/*            var part_content = $('.nav-item-template').html();
+            clone.find('.item-content').html(part_content);*/
+
+            clone.find('input.line-text').val('');
+            clone.find('input.line-link').val('');
+            clone.find('.nav-title').html('分会场'+flagIndex+1+'设置');
+            clone.find('.line_row').attr('name','line_row'+flagIndex);
+            clone.attr('data-col','1');
+            $('.nav-list-setting').append(clone);
+            clone.find('.line_row:eq(0)').prop('checked',true);
+            layui.form.render('radio');
+            initItemIndex();
+        });
+
+        $('body').on('click','.btn-up',function () {
+            var target = $(this).closest('.nav-item');
+            if (target.prev('.nav-item').length > 0) {
+                target.prev('.nav-item').before(target.clone());
+                target.remove();
+                initItemIndex();
+                layui.form.render('radio')
+            }
+        });
+
+        $('body').on('click', '.btn-down', function () {
+            var target = $(this).closest('.nav-item');
+
+            if (target.next('.nav-item').length > 0) {
+                target.next('.nav-item').after(target.clone());
+                target.remove();
+                initItemIndex();
+                layui.form.render('radio')
+            }
+        });
+
+        $('body').on('click', '.btn-delete', function () {
+            var imgLen = $('.nav-list-setting .nav-item').length;
+            if (imgLen == 1){
+                layui.layer.msg('最后一项不能删除');
+            }else{
+                var target = $(this).closest('.nav-item');
+                layui.layer.confirm('确认删除吗？', {
+                    btn: ['取消', '确定'],
+                    area: '420px',
+                    skin: 'element-ui-dialog-class',
+                    icon: 3,
+                    title: '提示'
+                }, function (index) {
+                    layui.layer.close(index);
+                }, function (index) {
+                    target.remove();
+                    initItemIndex();
+                });
+            }
+        });
+
+        layui.form.on('radio', function(data){
+            var $content = $(data.elem).parents('.row-lists-content');
+            if($content.length>0){
+                var $item = $(data.elem).parents('.nav-item');
+                var value = Number(data.value);
+                $item.attr('data-col',value);
+                labelTextRender();
+            }
+        });
+
+        function initItemIndex(){
+            $('.nav-item').each(function(index){
+                var $this = $(this);
+                var listNum = index + 1;
+                $this.find('.nav-title').html('分会场'+listNum+'设置');
+            });
+            if($('.nav-item').length === 1){
+                $('#component_form .btn-delete').hide()
+            }else{
+                $('#component_form .btn-delete').show()
+            }
+        }
+
+        function labelTextRender(){
+            $('.nav-item').each(function(index){
+                var $this = $(this);
+                var col = $this.attr('data-col');
+                if(col === '1'){
+                    $('.line-item-text',$this).text('分会场文案');
+                    $('.line-item-link',$this).text('分会场链接');
+                }else{
+                    $('.line-item-text',$this).each(function(textIndex){
+                        var num = Number(textIndex)+1;
+                       $(this).text('分会场'+num+'文案');
+                    });
+                    $('.line-item-link',$this).each(function(linkIndex){
+                        var num = Number(linkIndex)+1;
+                        $(this).text('分会场'+num+'链接');
+                    });
+
+                }
+            })
+        }
+
+    })
+</script>

@@ -1,0 +1,165 @@
+@background_color_1: #ffffff;
+
+[data-gid="U000133"] {
+    overflow: hidden;
+    #pro-name {
+        height: 20px;
+        line-height: 1.2;
+        overflow: hidden;
+        margin-top: 16px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 200px;
+        text-align: center;
+        margin: 10px auto 0;
+    }
+    .tab-no-swipe {
+        .my_shop_price {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .my_shop_price_demo {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .my_old_price {
+            font-size: 12px;
+        }
+        .goods-img {
+            width: 260px;
+            height: 346px;
+            overflow: hidden;
+            position: relative;
+            img {
+                width: 260px !important;
+                height: auto !important;
+                vertical-align: top;
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+            }
+        }
+    }
+    .rgindex-pc-notab {
+        width: 1200px;
+        margin: 0 auto;
+    }
+    .clearfix {
+        &:after {
+            content: "";
+            height: 0;
+            line-height: 0;
+            display: block;
+            visibility: hidden;
+            clear: both;
+        }
+    }
+    .layui-panel {
+        border: solid 1px #E6E6E6;
+        padding: 15px;
+        margin-bottom: 15px;
+        margin-top: 15px;
+    }
+    .tab-container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .tab-container.tab-no-swipe {
+        .goods-list {
+            ul {
+                display: none;
+                padding-left: 50px;
+                li {
+                    float: left;
+                    margin-right: 20px;
+                    margin-bottom: 30px;
+                    text-align: center;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .tab-no-swipe {
+        .nav-container {
+            position: relative;
+            margin: 20px 0;
+            height: 40px;
+            line-height: 40px;
+            .nav-con-ul {
+                width: 1150px;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+            ul {
+                li {
+                    //margin: 0 0 10px;
+                    text-align: center;
+                    //width: 230px;
+                    float: left;
+                    cursor: pointer;
+                    font-size: 24px;
+                    box-sizing: border-box;
+                }
+                //overflow: hidden;
+                //transition: all 1s;
+                margin: 0 auto;
+            }
+            i {
+                position: absolute;
+                top: 6px;
+                width: 28px;
+                height: 28px;
+                z-index: 100;
+                font-size: 0;
+                line-height: 0;
+                border: none;
+                background-color: @background_color_1;
+                border-top-right-radius: 32px;
+                border-bottom-right-radius: 32px;
+                display: inline-block;
+                cursor: pointer;
+                background-repeat: no-repeat;
+            }
+        }
+        .img-table {
+            margin-top: 20px;
+        }
+    }
+    .nav-container {
+        overflow: hidden;
+        i.right-btn {
+            display: none;
+        }
+    }
+    // 轮播改动
+    .swiper-slide{
+        width:auto;
+        padding: 0 12px;
+        float:left;
+    }
+    .swiper-button-prev{
+        background-image: url(../../../resources/images/rg-pc/arrow_left2.1.png);
+        left:0;
+    }
+    .swiper-button-next{
+        background-image: url(../../../resources/images/rg-pc/arrow_right2.1.png);
+        right: 0;
+    }
+    .pagination-btn{
+        width: 28px;
+        height: 28px;
+        margin-top: -16px;
+        background-size: 100%;
+        z-index: 1;
+    }
+    .swiper-button-disabled{
+        display:none;
+    }
+    .hide{
+        display:none;
+    }
+}

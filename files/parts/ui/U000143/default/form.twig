@@ -1,0 +1,141 @@
+{%
+	set pageData = {
+				price_ft_weight:data.price_ft_weight|default(1),
+			base_bg_shadow:data.base_bg_shadow|default(0),
+    nav_height:data.nav_height|default(90),
+		nav_bgc:data.nav_bgc is not null?data.nav_bgc:'#FF8A00',
+		notChoose_ftc:data.notChoose_ftc is not null?data.notChoose_ftc:'#ffffff',
+		choose_ftc:data.choose_ftc is not null?data.choose_ftc:'#333333',
+    nav_fts:data.nav_fts|default(24),
+    choosed_item_type:data.choosed_item_type|default(1),
+		choosed_item_bgc:data.choosed_item_bgc is not null?data.choosed_item_bgc:'#FFBE42',
+    nav_item_margin:data.nav_item_margin|default(0),
+	}
+%}
+<style>
+  .activity-component-from-item .app-vip-item.layui-input-block {
+     margin-left: 20px;
+  }
+</style>
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>水平导航组件配置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm gb-icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+  <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+    <div class="layui-tab">
+      <ul class="layui-tab-title">
+        <li class="layui-this">模板选择</li>
+        <li>内容配置</li>
+        <li>样式设置</li>
+      </ul>
+      <div class="layui-tab-content layui-tab-content-parent">
+        <div class="layui-tab-item layui-show">
+						<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+						{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				</div>
+        <div class="layui-tab-item">
+          <div class="layui-form-item">
+              <label class="public-data">导航内容选择</label>
+              <div class="app-vip-item layui-input-block">
+                {% if data.navData %}
+                {% for id,item in data.navData %}
+                <input type="checkbox" name="nav_menu" value="{{ id }}" lay-skin="primary" title="{{ item }}" {% if id in data.nav_menu %} checked {% endif %} data-public-tag="true"><br>
+                {% endfor %}
+                <input type="checkbox" lay-filter="check_all" data-name="nav_menu" lay-skin="primary" title="全选">
+                {% endif %}
+              </div>
+          </div>
+        </div>
+        <div class="layui-tab-item">
+          <div class="layui-carousel" id="form_carousel">
+            <div carousel-item>
+              <div>
+                <fieldset class="layui-elem-field">
+                  <legend>常用配置</legend>
+                  <div class="layui-field-box">
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">导航栏高度(px)</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="nav_height" autocomplete="off" class="layui-input" value={{ pageData.nav_height }}>
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">背景颜色</label>
+                      <div class="layui-input-block">
+                        <div class="color-picker-selector" data-hidden-name="nav_bgc"><div style="background-color: {{ pageData.nav_bgc }};"></div></div>
+                        <input type="text" class="layui-input" name="nav_bgc" autocomplete="off" value="{{ pageData.nav_bgc }}">
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                <fieldset class="layui-elem-field">
+                  <legend>导航区域配置</legend>
+                  <div class="layui-field-box">
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">未选中文字颜色</label>
+                      <div class="layui-input-block">
+                        <div class="color-picker-selector" data-hidden-name="notChoose_ftc"><div style="background-color: {{ pageData.notChoose_ftc }};"></div></div>
+                        <input type="text" class="layui-input" name="notChoose_ftc" autocomplete="off" value="{{ pageData.notChoose_ftc }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">选中文字颜色</label>
+                      <div class="layui-input-block">
+                        <div class="color-picker-selector" data-hidden-name="choose_ftc"><div style="background-color: {{ pageData.choose_ftc }};"></div></div>
+                        <input type="text" class="layui-input" name="choose_ftc" autocomplete="off" value="{{ pageData.choose_ftc }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">文字大小(px)</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="nav_fts" autocomplete="off" class="layui-input" value={{ pageData.nav_fts }}>
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="gs-label-block">选中时交互效果</label>
+                      <div class="layui-input-block">
+                          <input type="radio" name="choosed_item_type" lay-filter="choosed_item_type" data-public-tag="true" value="1" title="矩形框" {% if pageData.choosed_item_type == '1' or pageData.choosed_item_type is empty %} checked="checked" {% endif %}>
+                          <input type="radio" name="choosed_item_type" lay-filter="choosed_item_type" data-public-tag="true" value="0" title="下划线" {% if pageData.choosed_item_type == '0' %} checked="checked" {% endif %}>
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label" id="isBorder">选中背景颜色</label>
+                      <div class="layui-input-block">
+                        <div class="color-picker-selector" data-hidden-name="choosed_item_bgc"><div style="background-color: {{ pageData.choosed_item_bgc }};"></div></div>
+                        <input type="text" class="layui-input" name="choosed_item_bgc" autocomplete="off" value="{{ pageData.choosed_item_bgc }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">导航菜单间距(px)</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="nav_item_margin" autocomplete="off" class="layui-input" value={{ pageData.nav_item_margin }}>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>
+
+<script type="text/javascript">
+;layui.form.on('radio(choosed_item_type)', function (data) {
+      if(data.value=='1'){
+        $('#isBorder').html('选中背景颜色')
+      }else{
+        $('#isBorder').html('选中下划线颜色')
+      }
+	  });
+</script>

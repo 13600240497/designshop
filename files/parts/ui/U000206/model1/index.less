@@ -1,0 +1,71 @@
+// base
+.geshop-U000206-model1 {
+    overflow: hidden; // margin不合并
+
+    .cd-container {
+        position: relative;
+        background-repeat: no-repeat;
+        background-position: top;
+        background-size: 100% auto;
+    }
+
+    .cd {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: 0 auto;
+        border-radius: 1000px; // 用一个很大的值模拟高度50%的效果
+        overflow: hidden;
+        text-align: center;
+        font-size: 0;
+
+        &:before {
+            content: '';
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        &:after {
+            content: "";
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+        }
+    }
+
+    .cd-inner {
+        position: relative;
+        z-index: 2;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .cd-title {}
+
+    .cd-value {
+        display: inline-block;
+        padding: 6px;
+        border-radius: 8px;
+        box-sizing: border-box;
+        min-width: 36px;
+        min-height: 36px;
+    }
+
+    @media screen and (max-width: 767px) {
+        .cd-value {
+            min-width: 30px;
+            min-height: 30px;
+        }
+    }
+
+    .cd-split {
+        display: inline-block;
+        font-style: normal;
+        padding: 2px;
+    }
+}

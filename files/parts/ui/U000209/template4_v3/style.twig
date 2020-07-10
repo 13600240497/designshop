@@ -1,0 +1,60 @@
+{% set box = '#U000209_'~pageInstanceId~'.geshop-U000209-template4_v3' %}
+{% set suffix = 'rem' %}
+
+{{ box }}{
+    margin-bottom: {{ (data.box_margin_bottom|default(32))/75 }}{{ suffix }};
+    background-color: {{ data.box_bg_color|default('#F8F8F8') }};
+}
+
+{{ box }} .gs-tab-item li{
+    border-radius: {{ (data.goods_radius_size|default(24))/75 }}{{ suffix }}
+}
+
+{# tab配置 #}
+{{ box }} .tab-wrap{
+    background-color:{{ data.tab_bg_color|default('#FFFFFF') }}
+}
+
+{{ box }} .gs-tab-list span, {{ box }} .expand_arrow,{{ box }} .nav_tab li span{
+    color: {{ data.tab_label_text_color|default('#333333') }};
+}
+
+{{ box }} .gs-tab-list{
+    border-color: {{ data.tab_label_border_color|default('#333333') }};
+}
+
+{{ box }} .gs-tab-list.current{
+    background-color:{{ data.tab_label_select_bg_color|default('#333333') }};
+    border-color: {{ data.tab_label_select_border_color|default('#333333') }};
+
+}
+
+{{ box }} .gs-tab-list.current span{
+    color: {{ data.tab_label_select_text_color|default('#FFFFFF') }};
+}
+
+{# tab扩展 #}
+{{ box }} .nav_tab li span{
+    border: 1px solid {{ data.tab_label_border_color|default('#333333') }};
+    background-color:{{ data.tab_bg_color|default('#FFFFFF') }}
+}
+{{ box }} .nav_tab li.current span{
+    background-color:{{ data.tab_label_select_bg_color|default('#333333') }};
+    border-color: {{ data.tab_label_select_border_color|default('#333333') }};
+    color: {{ data.tab_label_select_text_color|default('#FFFFFF') }};
+}
+{{ box }} .nav_tab{
+    background-color: {{ data.expand_bg_color|default('#FFFFFF') }};
+}
+{{ box }} .expand_arrow i{
+    color: {{ data.tab_arrow_color|default('#333333') }};
+}
+
+
+{# view more #}
+{{ box }} .view_more{
+    background-color: {{ data.view_more_bg_color|default('#333333') }};
+    border:1px solid {{ data.view_more_border_color|default('#333333') }};
+    color: {{ data.view_more_font_color|default('#FFFFFF') }};
+    border-radius:  {{ 30 }}px;
+}

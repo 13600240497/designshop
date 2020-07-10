@@ -1,0 +1,50 @@
+/* multi-dateRange */
+.multi-dateRange[data-key="U000053"] {
+
+    [data-source] {
+        display: none;
+    }
+
+    .multi-dateRange-inner {
+        text-align: center;
+        display: none;
+        &.active {
+            display: block;
+        }
+    }
+
+    .multi-dateRange-text {
+        display: inline-block;
+        padding-right: 15px;
+        font-size: 24px;
+        height: 100%;;
+        color: #000;
+        vertical-align: middle;
+    }
+
+    .multi-dateRange-numbers {
+        display: inline-block;
+        font-size: 0px;
+        vertical-align: middle;
+        > * {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        > label {
+            width:52px;
+            height:54px;
+            background:rgba(51,51,51,1);
+            border-radius:2px;
+            font-size: 24px;
+            color: #FFFFFF;
+            text-align: center;
+        }
+
+        > span {
+            padding: 0 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+    }
+}

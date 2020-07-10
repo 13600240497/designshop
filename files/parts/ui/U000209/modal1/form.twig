@@ -1,0 +1,230 @@
+{{ include ('@app/files/parts/temp/goods_manager.twig') }}
+
+{% set formData = {
+    id: 'U000209',
+    name: '商品列表tab',
+    theme: 'modal1',
+    tabs: [
+        {
+            label: '商品设置',
+            components: [
+            {
+                type: 'diy',
+                src: 'lib/goods.twig'
+            }
+        ]
+        },
+        {
+            label: '样式设置',
+            components: [
+            {
+                label: '常用配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '组件上边距 (PX)',
+                    name: 'box_margin_top',
+                    default: 0,
+                    col: 2,
+                },
+                {
+                    label: '组件下边距 (PX)',
+                    name: 'box_margin_bottom',
+                    default: 16,
+                    col: 2,
+                },
+                {
+                    type: 'siteParam-rg',
+                    componentType: 'background-rg'
+                },
+                {
+                    label: '导航是否吸顶',
+                    type: 'radio',
+                    default: 0,
+                    name: 'is_fixed',
+                    options: [
+                    { label: '是', value: '1' },
+                    { label: '否', value: '0' },
+                ]
+                },
+                {
+                    type: 'stock-rg'
+                }
+            ]
+            },
+            {
+                label: '导航配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '一级导航高度 (PX)',
+                    name: 'nav1_height',
+                    default: 88,
+                    col: 2,
+                },
+                {
+                    label: '一级背景颜色',
+                    name: 'nav1_bgcolor',
+                    type: 'colorPicker',
+                    default: '#FFFFFF',
+                    col: 2,
+                },
+                {
+                    label: '一级字体颜色',
+                    name: 'nav1_color',
+                    type: 'colorPicker',
+                    public: false,
+                    default: '#333333',
+                    col: 2,
+                },
+                {
+                    label: '二级字体颜色',
+                    name: 'nav2_color',
+                    type: 'colorPicker',
+                    public: false,
+                    default: '#666666',
+                    col: 2,
+                },
+                {
+                    label: '选中状态字体颜色',
+                    name: 'hover_color',
+                    type: 'colorPicker',
+                    public: false,
+                    default: '#EA5455',
+                },
+            ]
+            },
+            {
+                label: '商品配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '营销信息是否显示',
+                    type: 'radio',
+                    default: 1,
+                    name: 'marketing_is_show',
+                    options: [
+                    { label: '是', value: '1' },
+                    { label: '否', value: '0' },
+                ]
+                },
+                {
+                    label: '商品标题是否显示',
+                    type: 'radio',
+                    default: 1,
+                    name: 'title_is_show',
+                    options: [
+                    { label: '是', value: '1' },
+                    { label: '否', value: '0' },
+                ]
+                },
+                {
+                    label: '本店售价颜色',
+                    name: 'shop_price_color',
+                    type: 'colorPicker',
+                    default: '#FA386A',
+                },
+            ]
+            },
+            {
+                label: '折扣标配置',
+                type: 'fieldset',
+                components: [
+                {
+                    type: 'discount-rg'
+                }
+            ]
+            },
+        ]
+        }
+    ],
+    beforeSubmit: 'onSubmit',
+    skuValidConfig: 'skuValidConfig'
+
+} %}
+
+
+<script>
+
+    {#  自定义保存函数 #}
+    function onSubmit(progress) {
+        /* 增加子tab验证 */
+        var childLen = $wrap.find('.list-group-item').length;
+        var skuValidLen = 0;
+        $wrap.find('.list-group-item').each(function(index,item){
+            var skufrom = $(this).find('.tabItemRadio:checked').val();
+            if(skufrom == 1 && $(this).find('.js-valid-skus').val() == ""){
+                skuValidLen += 1;
+            }
+        });
+        /* if(skuValidLen > 0){
+            layui.layer.msg('sku数据不可为空');
+            return false;
+        } */
+
+        /*数据保存*/
+        var navData = [];
+        var skuLen = $wrap.find('.wrap-config').length;
+        var skuExLen = 0;
+        var goodsData = [];
+        var checkForm = false;
+        $wrap.find('.wrap-config').each(function (index, item) {
+            if ($(this).find('.js-valid-skus').val() != "") {
+                skuExLen++;
+            }
+            var obj = {};
+            obj.list = [];
+            obj.navName = $(this).find('input[name="navName"]').val();
+            $(this).find('.list-group-item').each(function (childIndex, item) {
+                var obj2 = {};
+                obj2.listName = $(this).find('input[name="tab_name"]').val();
+                obj2.goods = $(this).find('textarea[name="goodsSKU"]').val();
+
+                /* 是否异步数据 */
+                obj2.isAsync = 1;
+                obj2.lists = $(this).find('textarea[name="goodsSKU"]').val();
+                obj2.key = index + '-' + childIndex;
+                obj2.label = $(this).find('input[name="tab_name"]').val();
+                /* ipsJson 获取IPS数据*/
+                var ipsJson = GESHOP_IPS.getIPSItemJson($(this));
+                obj2 = Object.assign({},obj2,ipsJson);
+                obj.list.push(obj2);
+                goodsData.push(obj2);
+            });
+            navData.push(obj)
+        });
+
+        var val =$('.tab-num-info').val();
+        if (val < 1) {
+            layui.layer.msg('tab数请输入大于等于1的整数数值');
+        } else {
+            $('.nav-list-arr').val(JSON.stringify(navData));
+            $('input[name=goodsSKU]').val(JSON.stringify(goodsData));
+            progress.next()
+        }
+/*        if (skuExLen == skuLen) {
+            var val =$('.tab-num-info').val();
+            if (val < 1) {
+                layui.layer.msg('tab数请输入大于等于1的整数数值');
+            } else {
+                $('.nav-list-arr').val(JSON.stringify(navData));
+                $('input[name=goodsSKU]').val(JSON.stringify(goodsData));
+                progress.next()
+            }
+
+        } else {
+            layui.layer.msg('sku数据不可为空');
+        }*/
+
+
+    }
+    {# 自定义校验函数 #}
+    function skuValidConfig() {
+        return {
+            check_type: 'goods',
+            check_rules: 'GOODS_VALIDATE_SAME_SPU'
+        }
+    }
+</script>
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

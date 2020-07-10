@@ -1,0 +1,73 @@
+{# 装修默认商品模板：不需要完整的展示，只需要展示必要的部分就可以了 #}
+<ul class="top-goods clearfix">
+    {% for i in 1..3 %}
+    <li class="rank-good top-good top-good-1">
+        <div class="rank-good-inner clearfix">
+            <div class="rank-good-img-container">
+                <a class="rank-good-img-link" href="javascript:;">
+                    <img class="rank-good-img" src="https://geshopimg.logsss.com/uploads/pP4a0Y7WDXqIRV5U2noN8LrJcSlibBAC.png" />
+                    <div class="rank-cutoff">
+                        <div class="rank-cutoff-content">
+                            <div class="rank-cutoff-value">0%</div><div class="rank-cutoff-label">OFF</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="rank-good-other">
+                {% if i == 1 %}
+                <img class="top-good-logo" src="https://geshopimg.logsss.com/uploads/thJ9szge1MDmuHjQG06ZyNviREdCqwOP.png"/>
+                {% elseif i == 2 %}
+                <img class="top-good-logo" src="https://geshopimg.logsss.com/uploads/cK5FxiuoRhgaGm9NrXeqAlOvfYdZtVH6.png"/>
+                {% elseif i == 3 %}
+                <img class="top-good-logo" src="https://geshopimg.logsss.com/uploads/bvnGEH4XNSoZ6xJD5ja2r7ltWKTUphwA.png"/>
+                {% endif %}
+                <a href="javascript:;" target="_blank" class="rank-good-title">Trendy PU Leather Embellished Pocket Stand Collar Slimming Fabric Splicing Long Sleeves Men's Coat</a>
+                <div class="rank-good-price-container">
+                    <span class="rank-good-price my-shop-price" data-orgp="0.00"><span class="icon">$</span>0.00</span>
+                    <span class="rank-good-market-price my-shop-price" data-orgp="0.00"><span class="icon">$</span>0.00</span>
+                </div>
+                <div class="rank-good-promotion has-more">
+                    <div class="rank-good-promotion-text-container"><div class="rank-good-promotion-text">Buy 1 Get <em>10% Off</em></div></div>
+                    <div class="rank-good-promotion-more">
+                        <div class="rank-good-promotion-more-text">Buy 1 Get <em>10% Off</em></div>
+                        <div class="rank-good-promotion-more-text">Buy 2 Get <em>8% Off</em></div>
+                    </div>                               
+                </div>
+                <a href="javascript:;" target="_blank" class="js_logsss_click_delegate_ps top-good-shop-btn">SHOP NOW</a>
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+<ul class="other-goods clearfix">
+    {% for j in 1..4 %}
+    <li class="rank-good other-good">
+        <div class="rank-good-inner clearfix">
+            <div class="rank-good-img-container">
+                <a class="rank-good-img-link" href="javascript:;">
+                    <img class="rank-good-img" src="https://geshopimg.logsss.com/uploads/pP4a0Y7WDXqIRV5U2noN8LrJcSlibBAC.png">
+                        <div class="rank-cutoff">
+                            <div class="rank-cutoff-content">
+                                <div class="rank-cutoff-value">0%</div><div class="rank-cutoff-label">OFF</div>
+                            </div>
+                        </div>
+                </a>
+            </div>
+            <div class="rank-good-other">
+                <a href="javascript:;" target="_blank" class="rank-good-title">Trendy PU Leather Embellished Pocket Stand Collar Slimming Fabric Splicing Long Sleeves Men's Coat</a>
+                <div class="rank-good-price-container">
+                    <span class="rank-good-price my-shop-price" data-orgp="0.00"><span class="icon">$</span>0.00</span>
+                    <span class="rank-good-market-price my-shop-price" data-orgp="0.00"><span class="icon">$</span>0.00</span>
+                </div>
+                <div class="rank-good-promotion has-more">
+                    <div class="rank-good-promotion-text-container"><div class="rank-good-promotion-text">Buy 1 Get <em>10% Off</em></div></div>
+                    <div class="rank-good-promotion-more">
+                        <div class="rank-good-promotion-more-text">Buy 1 Get <em>10% Off</em></div>
+                        <div class="rank-good-promotion-more-text">Buy 2 Get <em>8% Off</em></div>
+                    </div>                               
+                </div>                
+            </div>            
+        </div>        
+    </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,19 @@
+
+{% if options.isShow == 1 and options.value != 0 %}
+  <div class="geshop-goods-discount">
+    <p class="geshop-goods-discount-value"> 
+    	{% if lang == 'fr' %} 
+        -{{options.value}}%
+      {% else %}
+        {{options.value}}%
+      {% endif %}
+    </p></br>
+    {% if options.isDiscountStyle == 1 %}
+      {% if lang != 'fr' %} 
+        <p class="geshop-goods-discount-offtext">
+          OFF
+        </p>
+      {% endif %}
+    {% endif %}
+  </div>
+{% endif %}

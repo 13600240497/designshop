@@ -1,0 +1,130 @@
+{{ include ('@app/files/parts/temp/goods_manager.twig') }}
+
+<style>
+    .gs-lable-block {
+	    margin: 0 0 5px 0;
+    }
+    .layui-this {
+        color: #333 !important;
+    }
+    .layui-input-bottom {
+        margin-bottom: 30px !important;
+    }
+</style>
+
+{# Form 表单数据配置 #}
+{%
+    set formData = {
+        id: 'U000181',
+        name: '发现好货组件配置',
+        theme: 'model1',
+        tabs: [
+            {
+                label: '样式设置',
+                components: [
+                    {
+                        label: '整体组件',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件下边距(px)',
+                                name: 'boxMarginBottom',
+                                type: 'input',
+                                default: 32,
+                            },
+                            {
+                                label: '组件背景颜色',
+                                name: 'componentBgC',
+                                type: 'colorPicker',
+                                public: false,
+                                default: '#ffffff',
+                            },
+                        ]
+                    },
+                    {
+                        label: '商品组件',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '商品圆角大小(px)',
+                                name: 'goodsBRadius',
+                                type: 'input',
+                                default: 12,
+                            },
+                        ]
+                    },
+                    {
+                        label: '折扣标',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '折扣标显示',
+                                name: 'isDiscountVis',
+                                type: 'radio',
+                                default: '1',
+                                options: [
+                                    { label: '是', value: '1' },
+                                    { label: '否', value: '0' },
+                                ]
+                            },
+                            {
+                                label: '折扣标显示方式',
+                                name: 'isDiscountStyle',
+                                type: 'radio',
+                                default: '1',
+                                options: [
+                                    { label: '***%OFF', value: '1' },
+                                    { label: '-***%', value: '0' },
+                                ]
+                            },
+                            {
+                                label: '背景颜色',
+                                name: 'discountBgColor',
+                                type: 'colorPicker',
+                                public: false,
+                                default: '#333333',
+                            },
+                            {
+                                label: '背景图片',
+                                name: 'discountImg',
+                                type: 'image'
+                            },
+                            {
+                                label: '折扣文字颜色',
+                                name: 'discountFontColor',
+                                type: 'colorPicker',
+                                public: false,
+                                default: '#ffffff'
+                            },  
+                        ]
+                    },
+                    {
+                        label: '销售价',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '文字颜色',
+                                name: 'shopPriceColor',
+                                type: 'colorPicker',
+                                public: false,
+                                default: '#333333',
+                                extendClass: 'layui-input-bottom'
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        moreConfig: []
+    }
+%}
+
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+
+<script type="text/javascript">
+  
+</script>
+

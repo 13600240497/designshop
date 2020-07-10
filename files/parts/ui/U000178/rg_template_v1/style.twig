@@ -1,0 +1,47 @@
+{% set space = '#U000178_'~pageInstanceId %}
+{% set body =  space~' .component-body' %}
+
+{# 装修页间距调整 #}
+{{ space }}{
+    border: 0;
+}
+
+{{ body }}{
+    background-color: {{ data.box_bg_color | default('#F8F8F8') }};
+{% if data.bgImage %}
+    background-image: url('{{ data.bgImage }}');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+{% endif %}
+    margin-bottom: {{ (data.boxMarginBottom|default(16) )/37.5}}rem;
+}
+
+{{ body }} .list-item{
+    border-radius: {{ (data.goods_border_radius|default(2))/37.5 }}rem;
+    border: {{ (1/37.5) }}rem solid {{ data.hover_border_color|default('#FFFFFF') }};
+}
+
+
+
+{{ body }} .ranking-icon{
+{#    width:{{ data.iconWidth|default(40) }}px;#}
+{#    height:{{ data.iconHeight|default(48) }}px;#}
+    left: 0;
+    top: 0;
+}
+
+{# rank #}
+{{ body }} .ranking-icon{
+    color: {{ data.iconOtherTextColor|default('#FFFFFF') }}
+}
+
+{{ body }} .item_sell_point{
+    color: {{ data.discount_color|default('#999999') }}
+}
+
+
+{# 整体式 #}
+{{ body }}.is-whole .goods-list-wrap{
+    border-radius: {{ (data.goods_border_radius|default(2))/37.5 }}rem;
+}

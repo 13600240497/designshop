@@ -1,0 +1,13 @@
+<a 
+  href="{{item.blogLink}}" 
+  target="_blank" 
+  class="index-blog logsss_event {% if loop.last %}last-child{% endif %}" 
+  style="
+  {% if pageData.blogItemWidth %}width:{{pageData.blogItemWidth}}px;{% endif %}
+  " data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ item.blogSrc }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+  <img src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{item.blogSrc}}" alt="{{item.blogTitle}}" class="{{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy" width="400" height="400"
+    data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ item.blogSrc }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+  <span class="index-blog-content">
+  <span class="index-blog-title site-bold-strict">{{item.blogTitle}}</span>
+  <span class="index-blog-desc">{{item.blogDesc}}</span>
+</a>

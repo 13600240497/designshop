@@ -1,0 +1,282 @@
+/*
+ * 商品基础样式
+*/
+.geshop-U000208-model1 {
+    .rank-good {}
+
+    .rank-good-inner {
+        background-color: #fff;
+        padding-bottom:16px;
+        //padding-bottom: 24px;
+    }
+
+    .rank-good-img-container {
+        position: relative;
+    }
+
+    .rank-good-img-link {
+        position: relative;
+        display: block;
+    }
+
+    .rank-good-img {
+        width: 100%;
+    }
+
+    .rank-good-other {
+        padding-top: 1px; // 阻止第一个子元素的margin合并
+    }
+
+    // pc shop new 遮罩 begin
+    .rank-shop {
+        display: none;
+    }
+
+    @media screen and (min-width: 1025px) {
+        .rank-shop {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            opacity: 0.75;
+            text-align: center;
+            font-size: 0;
+
+            &:before {
+                content: '';
+                display: inline-block;
+                height: 100%;
+                vertical-align: middle;
+            }
+        }
+
+        .rank-good-img-link:hover .rank-shop {
+            display: block;
+        }
+
+        .rank-shop-inner {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .rank-bag-img {
+            display: inline-block;
+            background: url(https://geshopimg.logsss.com/uploads/XGNQimMYqJsgLAxkPUjy6WeFOBRoIt3D.png) no-repeat;
+            width: 22px;
+            height: 22px;
+            background-size: 100% 100%;
+        }
+
+        .rank-shop-text {
+            font-size: 16px;
+        }
+    }
+
+    // pc shop new 遮罩 end
+
+    // 折扣标 begin
+    .rank-cutoff {
+        position: absolute;
+        z-index: 10;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+    }
+
+    .has-cutoff-image .rank-cutoff {
+        background-color: transparent;
+        border-radius: 0;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .rank-cutoff-content {
+        position: absolute;
+        text-align: center;
+        white-space: nowrap;
+        top: 0;
+        right: 0;
+        line-height: 1.05;
+        //line-height: 1.1;
+    }
+
+    .rank-cutoff-value {
+        font-family: 'LatoBold', Arial, sans-serif;
+    }
+
+    .rank-cutoff-label {}
+
+    // 折扣标 end
+
+    // 商品sold out遮罩
+    .rank-good-sold-out {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: url(https://geshopimg.logsss.com/uploads/LqFN2DGEOs0ySK7uJvWrZ4echVHdBntl.png) no-repeat;
+        background-size: cover;
+    }
+
+    .rank-good-other {}
+
+    .rank-good-title {
+        display: block;
+        margin-top: 12px;
+        font-size: 14px;
+        line-height: 20px;
+        color: #000000;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .rank-good-price-container {
+        margin-top: 4px;
+        line-height: 27px;
+        height: 27px;
+        font-size: 0;
+        overflow: hidden;
+    }
+
+    .rank-good-price {
+        display: inline-block;
+        font-size: 22px;
+        font-family: 'LatoBold', Arial, sans-serif;
+    }
+
+    .rank-good-market-price {
+        display: inline-block;
+        font-size: 14px;
+        text-decoration: line-through;
+        margin-left: 8px;
+        color: #999;
+    }
+
+    // 商品营销信息(满减) begin
+    .rank-good-promotion {
+        margin-top: 4px;
+        font-size: 14px;
+        line-height: 18px;
+        color: #333;
+
+        &.has-more {
+            position: relative;
+            cursor: pointer;
+        }
+    }
+
+    .rank-good-promotion-text-container {
+        position: relative;
+        height: 18px;
+    }
+
+    .rank-good-promotion-text {
+        display: inline-block;
+        white-space: nowrap;
+        max-width: 100%;
+        overflow: hidden;
+    }
+    .rank-good-promotion-more {
+        display: none;
+        position: absolute;
+        z-index: 100;
+        bottom: 24px;
+        left: 0;
+        border: 1px solid #000;
+        border-radius: 6px;
+        padding: 10px 20px;
+        background-color: #fff;
+
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            left: 34px;
+            width: 0;
+            height: 0;
+            font-size: 0;
+            border: 6px solid transparent;
+        }
+
+        &:before {
+            bottom: -12px;
+            border-top-color: #000;
+        }
+
+        &:after {
+            bottom: -11px;
+            border-top-color: #fff;
+        }
+    }
+
+    .rank-good-promotion-more-text {
+        padding-top: 4px;
+        &:first-child {
+            padding-top: 0;
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+        .has-more .rank-good-promotion-text-container {
+            padding-right: 16px;
+
+            &:after {
+                content: '';
+                display: inline-block;
+                position: absolute;
+                top: 3px;
+                margin-left: 4px;
+                width: 5px;
+                height: 5px;
+                border: 1px solid transparent;
+                border-right-color: #000;
+                border-bottom-color: #000;
+                transform-origin: 5px 5px;
+                transform: rotate(45deg);
+                transition: transform .3s;
+            }
+        }
+
+        .rank-good-promotion.opened {
+            .rank-good-promotion-text-container:after {
+                transform: rotate(-135deg);
+            }
+
+            .rank-good-promotion-more {
+                display: block;
+            }
+        }
+
+        .rank-good-promotion-text {
+            text-overflow: ellipsis;
+        }
+    }
+
+    @media screen and (min-width: 1025px) {
+        .rank-good-promotion:hover .rank-good-promotion-more {
+            display: block;
+        }
+
+        .has-more .rank-good-promotion-text-container {
+            padding-right: 16px;
+
+            &:after {
+                content: '···';
+                position: absolute;
+                height: 18px;
+                bottom: 0;
+                padding: 0 2px;
+                background-color: #fff;
+            }
+        }
+    }
+
+    // 商品营销信息(满减) end
+}

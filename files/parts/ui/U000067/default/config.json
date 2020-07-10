@@ -1,0 +1,14 @@
+{
+  "fields": {
+		"priceC": { "is_public": "0", "is_m": "0", "is_app": "0" },
+		"priceFt": { "is_public": "0", "is_m": "0", "is_app": "0" },
+		"goodsFtC": { "is_public": "0", "is_m": "0", "is_app": "0" },
+		"goodsFtS": { "is_public": "0", "is_m": "0", "is_app": "0" },
+		"goodsFromType": { "is_public": "0", "is_m": "0", "is_app": "0" }
+		,"discountType": { "is_public": "1", "is_m": "0", "is_app": "1" }
+		,"goodsDataFrom": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"gsSelectLevel0": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"gsSelectLevel1": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"gsSelectLevel2": { "is_public": "1", "is_m": "1", "is_app": "1" }
+	},
+}

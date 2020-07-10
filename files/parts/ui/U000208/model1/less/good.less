@@ -1,0 +1,199 @@
+/*
+ * 商品具体的样式
+*/
+
+.geshop-U000208-model1 {
+    @media screen and (max-width: 767px) {
+        // 前三商品  begin
+        .top-goods {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .top-good-shop-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        .rank-good-price-container{
+            .rank-good-price{
+                font-size:18px;
+            }
+            .rank-good-market-price{
+                font-size:13px;
+            }
+            .rank-good-promotion-text{
+                font-size:13px;
+            }
+        }
+
+
+        .top-good {
+            margin-bottom: 10px;
+
+            .rank-good-inner {
+                padding-bottom: 10px;
+            }
+
+            .rank-good-img-container {
+                float: left;
+                padding: 25px 10px 15px 10px;
+                width: 48%;
+                box-sizing: border-box;
+            }
+
+            .rank-good-other {
+                position: relative;
+                margin-left: 48%;
+                width: 52%;
+                box-sizing: border-box;
+                padding-right: 10px;
+            }
+
+            .rank-good-title {
+                margin-top: 6px;
+                display: block;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+                font-size: 14px;
+                line-height: 20px;
+                max-height: 40px;
+                white-space: normal;
+                word-break: break-all;
+                overflow: hidden;
+            }
+
+            .rank-good-price-container {
+                margin-top: 4px;
+            }
+            .rank-good-promotion{
+                margin-top: 4px;
+            }
+            .rank-good-promotion-empty {
+                display: none;
+            }
+            .top-good-shop-btn{
+                margin-top:4px;
+            }
+        }
+
+
+        // 前三商品 end
+
+        // 其他商品 begin
+        .other-goods {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        .other-good {
+            float: left;
+            width: 50%;
+
+            .rank-good-inner {
+                margin: 5px;
+                padding-bottom:10px;
+                //padding-bottom: 16px;
+            }
+
+            .rank-good-other {
+                margin-left: 3.5%;
+                margin-right: 3.5%;
+            }
+
+            .rank-good-title {
+                margin-top: 8px;
+            }
+            .rank-good-promotion{
+                margin-top: 4px;
+            }
+        }
+        .rank-good-promotion{
+            line-height:16px;
+        }
+        .rank-good-promotion-text-container{
+            height:16px;
+        }
+
+        // 其他商品end
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+        .top-goods,
+        .other-goods {
+            margin-left: 22px;
+            margin-right: 22px;
+            //margin-left: 3.4%;
+            //margin-right: 3.4%;
+        }
+
+        .top-good .rank-good-inner {
+            //padding: 5.8% 3.6%;
+            padding:16px;
+        }
+        .top-good .rank-good-other{
+            padding-left:9px;
+            padding-right:9px;
+        }
+
+        .other-good .rank-good-other {
+            margin-left: 3.5%;
+            margin-right: 3.5%;
+        }
+    }
+
+    @media screen and (min-width: 1025px) {
+        .top-goods,
+        .other-goods {
+            margin-left: 22px;
+            margin-right: 22px;
+        }
+
+        .top-good .rank-good-inner {
+            position: relative;
+            margin: 8px;
+            padding: 25px 25px 16px;
+            //padding: 5.6% 10%;
+        }
+
+        .other-good .rank-good-other {
+            margin-left: 12px;
+            margin-right: 12px;
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        .top-goods {
+            margin-top: -8px;
+        }
+
+        .top-good {
+            float: left;
+            width: 33.33333333%;
+        }
+
+        .top-good .rank-good-inner,
+        .other-good .rank-good-inner {
+            position: relative;
+            margin: 8px;
+        }
+
+        .top-good-logo {
+            position: absolute;
+            z-index: 11;
+            top: 0;
+            left: 0;
+        }
+
+        .top-good-shop-btn { 
+            display: none;
+        }
+
+        .other-good {
+            float: left;
+            width: 25%;
+        }
+    }
+}

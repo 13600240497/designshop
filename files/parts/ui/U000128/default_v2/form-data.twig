@@ -1,0 +1,75 @@
+<div class="layui-row layui-col-space20">   
+    <div class="layui-col-xs12">
+        <div class="layui-form-item">
+            <label class="layui-form-label">Tab显示商品数量<span>(建议产品数量4的倍数,不超过100)</span></label>
+            <div class="layui-input-block">
+                <input type="text" name="productsNum" autocomplete="off" class="layui-input" value="{{ data.productsNum | default('') }}">
+            </div>
+        </div>
+    </div>
+    {#  #}
+    <div class="goods-tab-lists radio-tab-true" id="dataIDs">
+        <div id="goodsIDs">
+            <input type="hidden" name="goodsID">
+            <input type="hidden" name="goodsIDnum">
+            <input type="hidden" name="goodsPrice">
+        </div>
+        {% if data.goodsID  %}
+            {% for key,item in data.goodsID |default(0..0)%}
+                <div class="goods-tab-item goods-tab-item{{key+1}}">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">满赠数据<span class="title-index">{{key+1}}</span> ID</label>
+                        <div class="layui-input-block">
+                            <input class="layui-input goodsIDitem Unwanted" data-ids="true"  autocomplete="off"  value="{{item}}">
+                        </div>
+                    </div>
+                    <div class="geshop-third-value mr-10">
+                        <span class="img-btn class-up">
+                            <i class='icon-up'></i>
+                            <b class="tips">上移</b>
+                        </span>
+                        <span class="img-btn class-down">
+                            <i class='icon-down'></i>
+                            <b class="tips">下移</b>
+                        </span>
+                        <span class="img-btn class-close">
+                            <i class='icon-delete' data="{{key+1}}"></i>
+                            <b class="tips" >删除</b>
+                        </span>
+                        <span class="img-btn class-add">
+                            <i class='icon-add'></i>
+                            <b class="tips">新增</b>
+                        </span>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else  %}
+            <div class="goods-tab-item goods-tab-item1">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">满赠数据<span class="title-index">1</span> ID</label>
+                    <div class="layui-input-block">
+                        <input class="layui-input goodsIDitem Unwanted" data-ids="false"  autocomplete="off"  value="">
+                    </div>
+                </div>
+                <div class="geshop-third-value mr-10">
+                    <span class="img-btn class-up">
+                        <i class='icon-up'></i>
+                        <b class="tips">上移</b>
+                    </span>
+                    <span class="img-btn class-down">
+                        <i class='icon-down'></i>
+                        <b class="tips">下移</b>
+                    </span>
+                    <span class="img-btn class-close">
+                        <i class='icon-delete' data="{{key+1}}"></i>
+                        <b class="tips" >删除</b>
+                    </span>
+                    <span class="img-btn class-add">
+                        <i class='icon-add'></i>
+                        <b class="tips">新增</b>
+                    </span>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>

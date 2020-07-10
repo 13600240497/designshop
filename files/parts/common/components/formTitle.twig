@@ -1,0 +1,14 @@
+{#/**
+*@author: 任贸华
+*@date: 2018/11/24 16:31:41
+*@desc: 表单头部组件
+*/#}
+{% if options %}
+    <h3 class='component-form-title {{  options.class|default('') }}'>{{ options.title|default('') }}
+        <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+            <i class="el-icon-close"></i>
+        </a>
+    </h3>
+{% else %}
+    {{include ('@app/files/parts/common/components/argsErrors.twig')}}
+{% endif %}

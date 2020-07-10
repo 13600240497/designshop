@@ -1,0 +1,33 @@
+<!-- embed stylesheet begin -->
+<style type="text/css">
+.geshop-U000213-default-{{ pageInstanceId }} .share-content{
+    {% if data.isEditEnv == 1 %}
+      background: #ddd;
+      padding: 10px;
+    {% endif %}
+    
+} 
+
+.addthis_toolbox  a{
+  border-radius: {{data.share_icon_br | default(55)}}px;
+}
+
+.addthis_toolbox  .addthis_button_facebook{
+  background: {{data.fb_bgColor ?? 'linear-gradient(180deg,rgba(57,89,151,1) 0%,rgba(57,89,151,1) 100%)'}};
+}
+
+.addthis_toolbox  .addthis_button_pinterest{
+  background: {{data.pt_bgColor ?? 'linear-gradient(180deg,rgba(202,33,39,1) 0%,rgba(183,17,23,1) 100%)'}};
+}
+
+
+.addthis_toolbox .addthis_button_twitter{
+  background: {{data.tt_bgColor ?? 'linear-gradient(180deg,rgba(29,156,235,1) 0%,rgba(29,156,235,1) 100%)'}};
+}
+
+ .addthis_toolbox  .addthis_button_messenger{
+  background: {{data.ms_bgColor ?? 'linear-gradient(180deg,rgba(2,161,247,1) 0%,rgba(0,111,247,1) 100%)'}};
+}
+
+</style>
+<!-- embed stylesheet end -->

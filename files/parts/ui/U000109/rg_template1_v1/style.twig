@@ -1,0 +1,70 @@
+{% set space = '#U000109_'~pageInstanceId %}
+{% set body =  space~' .geshop-U000109-rg_template1_v1' %}
+
+{{ body }} {
+    margin-bottom: {{ data.box_margin_bottom | default(32) }}px;
+    background-color: {{ data.box_bg_color ?? '#F8F8F8' }};
+    {% if data.is_show == 0 %}
+        padding-top : 44px;
+    {% endif %}
+}
+
+{{ body }} .goods-list li {
+    border-radius: {{ data.goods_border_radius | default(2) }}px;
+    border: 1px solid {{ data.hover_border_color | default('#FFFFFF') }};
+}
+
+{{ body }} .gs-banner {
+    {% if data.is_show == 0 %}
+        display : none;
+    {% endif %}
+}
+
+
+{{ body }} .top-swiper-container,{{ body }} .nav-top, {{ body }} .fixed {
+    background-color: {{ data.tb_bg_color ?? '#D8D8D8' }};
+}
+
+{{ body }} .nav-item {
+    color: {{ data.tb_bg_color_off ?? '#FFFFFF' }};
+}
+
+{{ body }} .nav-item.on, {{ body }} .nav-item:hover {
+    color: {{ data.tb_bg_color_on ?? '#333333' }};
+}
+
+{{ body }} .swiper-button-next, {{ body }} .swiper-button-prev {
+    background-color: {{ data.tb_bg_color ?? '#D8D8D8' }};
+}
+
+{{ body }} .icon_rank {
+    width: {{ data.img_width ?? 40 }}px;
+    height: {{ data.img_height ?? 48 }}px;
+    line-height: {{ (data.img_height - 6) ?: 42 }}px;
+}
+
+{{ body }} .icon_rank.icon-1 {
+    background: url("{{ data.icon_rank_1 ?: 'https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/rankingFirst.png' }}") 0 0 no-repeat;
+}
+
+{{ body }} .icon_rank.icon-2 {
+    background: url("{{ data.icon_rank_2 ?: 'https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/rankingSecond.png' }}") 0 0 no-repeat;
+}
+
+{{ body }} .icon_rank.icon-3{
+    background: url("{{ data.icon_rank_3 ?: 'https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/rankingThird.png' }}") 0 0 no-repeat;
+}
+
+{{ body }} .icon_rank.icon-other {
+    color: {{ data.rank_color ?? '#FFFFFF' }};
+    background: url("{{ data.icon_rank_other ?: 'https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/rankingOther.png' }}") 0 0 no-repeat;
+}
+
+{{ body }} .promot-info {
+    color: {{ data.font_color ?? '#222222' }};
+}
+
+{{ body }} .btn-buy {
+    color: {{ data.buy_color ?? '#FFFFFF' }};
+    background:{{ data.buy_bg_color ?? '#333333' }};
+}

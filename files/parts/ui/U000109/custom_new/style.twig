@@ -1,0 +1,9 @@
+{% set space = '#U000109_'~pageInstanceId %}
+
+{{ space }}  .geshop-components-discount {
+   {# right: {{ data.discount_right|default(0) }}px;
+    left: initial !important;#}
+}
+
+
+{{ include ('@app/files/parts/formTemplate/components/siteParam-rg.twig', {'root': space}) }}

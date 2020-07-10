@@ -1,0 +1,39 @@
+<div class="geshop-component-box component-drag" data-gid="U000200_default" data-key="U000199" data-id="{{ pageInstanceId }}" style="
+    {% if data.boxMarginTop %} margin-top: {{ data.boxMarginTop }}px;{% endif %}
+    {% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}
+">
+    <div style="
+        position: relative;
+        height: {{ data.imgHeight|default(500) }}px;
+        min-width: 1200px;
+        overflow: hidden;
+    ">
+        {% if data.imgURL %}
+            <a 
+                href="{{data.imgURL}}" 
+                style="
+                position: relative;
+                display:block;
+                width: 100%;
+                height: 100%;
+                "
+                target="_special"
+            >
+        {% endif %}
+                <img 
+                    src="{% if data.imgSrc %}{{ data.imgSrc }}{% else %} {{ data.default.banner }}{% endif %}" 
+                    alt="{{data.imgText}}" 
+                    title="{{data.imgTitle}}"
+                    style="
+                        position: absolute;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        {% if data.imgWidth %}width: {{ data.imgWidth }}px{% elseif data.imgSrc is null or data.imgSrc == '' %}width: 100%{% endif %};
+                        {% if data.imgHeight %}height: {{ data.imgHeight }}px{% elseif data.imgSrc is null or data.imgSrc == '' %}height: 500px{% endif %};
+                    "
+                >
+        {% if data.imgURL %}
+            </a>
+        {% endif %}
+    </div>
+</div>

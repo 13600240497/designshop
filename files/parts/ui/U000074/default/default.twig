@@ -1,0 +1,3 @@
+<a {% if data.link %}href="{{ data.link }}"{% endif %} style="display: block; text-align: {{ data.imgAlign }};">
+  <img width="{{ data.ImgWidth }}" height="{{ data.ImgHeight }}" alt="{{ data.imgAlt }}" src="{{ data.default.banner }}" style="{% if data.imgSrc|length == 0 %}max-width: 100%;{% endif %}vertical-align:top;">
+</a>

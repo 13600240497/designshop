@@ -1,0 +1,74 @@
+{% set remUnit = 37.5 %}
+
+{% set titleData = {
+	title_height:(data.title_height|default(100))/remUnit,
+	title_viewPaddingTB:(data.title_viewPaddingTB|default(0))/remUnit,
+	title_viewPaddingLR:(data.title_viewPaddingLR|default(0))/remUnit,
+	title_titleWidth:(data.title_titleWidth|default(250))/remUnit,
+	title_titleHeight:(data.title_titleHeight|default(60))/remUnit,
+	title_titleFont:(data.title_titleFont|default(16))/remUnit,
+	title_viewFont:(data.title_viewFont|default(12))/remUnit,
+	title_viewMarginT:(data.title_viewMarginT|default(0))/remUnit,
+}%}
+<div data-gid="gs-m-title-default" data-key="U000032" attr="nav_flag">
+	<div class="gs-title-wrap" style="
+		{% if data.title_boxMarginTop %}margin-top: {{ data.title_boxMarginTop / 75 | number_format(3, '.') }}rem;{% endif %}
+		{% if data.title_boxMarginBottom %}margin-bottom: {{ data.title_boxMarginBottom / 75 | number_format(3, '.') }}rem;{% endif %}
+		{# {% if data.title_boxPaddingTop %}padding-top: {{ data.title_boxPaddingTop / 75 | number_format(3, '.') }}rem;{% endif %}
+		{% if data.title_boxPaddingBottom %}padding-bottom: {{ data.title_boxPaddingBottom / 75 | number_format(3, '.') }}rem;{% endif %} #}
+		padding-top: {{ (data.boxPaddingTop|default(40)) /75 | number_format(3, '.') }}rem;
+		padding-bottom: {{ (data.boxPaddingBottom|default(40)) /75 | number_format(3, '.') }}rem;
+		{# height:{{titleData.title_height}}rem; #}
+		background-image: url({% if data.title_imgSrc %}{{ data.title_imgSrc }}{% else %}{% endif %});
+		background-position: center;
+		background-repeat: no-repeat;
+		background-color:{% if data.title_bgColor %}{{ data.title_bgColor }}{% else %} #b2dff2{% endif %};
+		background-size: 50%;
+		text-align:center;
+		width:100%;
+		overflow: hidden;
+	">
+		<div class="gs-title-box">
+			<p style="
+				display:block;
+				font-size:{{titleData.title_titleFont}}rem;
+				color:{% if data.title_titleColor %}{{ data.title_titleColor }}{% else %} #000{% endif %};
+				font-weight:{% if data.title_titleWeight %}{{ data.title_titleWeight }}{% else %} bold{% endif %};
+				width:{{titleData.title_titleWidth}}rem;
+				{# height:{{titleData.title_titleHeight}}rem; #}
+				{# line-height:{{titleData.title_titleHeight}}rem; #}
+				line-height: 1.5;
+				{# {% if data.viewHref == ''  %}line-height:{{titleData.title_height}}rem;{% endif %} #}
+				margin-left:auto;
+				margin-right:auto;
+				max-width:320px;
+				{% if data.title_titleBgI %}background:url('{{data.title_titleBgI}}') no-repeat center center/100%;{% endif %}
+				{# margin-top:
+				{% if data.title_titleFont %}
+					{% if data.title_height %}{{ data.title_height / 2 - data.title_titleFont / 2 }}{% else %}{{ 40 - data.title_titleFont / 2 }}{% endif %}px
+				{% else %}
+					{% if data.title_height %}{{ data.title_height / 2 - 8 }}{% else %}32{% endif %}px
+				{% endif %}; #}
+			">
+				{% if data.titleText %}{{ data.titleText }}{% else %}请设置导航标题{% endif %}
+			</p>
+			{% if data.viewHref and (data.title_isShow is not defined or data.title_isShow == 1) %}
+			<a href="{{ data.viewHref }}" style="
+				{% if data.viewHref %}cursor: pointer;{% else%} cursor:default; {% endif %}
+				font-size:{{titleData.title_viewFont}}rem;
+				color:{% if data.title_viewColor %}{{ data.title_viewColor }}{% else %} #000{% endif %};
+				font-weight:{% if data.title_viewWeight %}{{ data.title_viewWeight }}{% else %} normal{% endif %};
+				display:inline-block;
+				{% if data.title_viewRadius %}border-radius:{{data.title_viewRadius}}px;{% endif %}
+				{% if data.title_viewBgColor %}background-color:{{data.title_viewBgColor}};{% endif %}
+				{% if titleData.title_viewMarginT %}margin-top:{{titleData.title_viewMarginT}}rem;{% endif %}
+				padding:{{titleData.title_viewPaddingTB}}rem {{titleData.title_viewPaddingLR}}rem {{titleData.title_viewPaddingTB}}rem {{titleData.title_viewPaddingLR}}rem;
+				{% if data.title_viewBorderC %}border-color:{{data.title_viewBorderC}};{% endif %}
+				border-width:{{data.title_viewBorderW|default('0')}}px;
+				{% if data.title_viewBorderS %}border-style:{{data.title_viewBorderS}};{% endif %}
+			">{% if data.title_viewText %}{{ data.title_viewText }}{% else %}View More{% endif %}
+			</a>
+			{% endif %}
+		</div>
+	</div>
+</div>

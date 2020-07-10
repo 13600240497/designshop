@@ -1,0 +1,53 @@
+{
+	"name": "a goodsList tab",
+	"version": "v1.0.0.1",
+	"description": "a goodsList tab",
+	"author": "xingtao",
+	"commjs": {
+		"jquery": true
+	},
+	"commcss": {
+		"main": true
+	},
+	"min-width": "auto",
+	"min-height": "inherit",
+	"fields": {
+		"goodsIds": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"boxMarginBottom": { "is_public": "0", "is_m": "0", "is_app": "0" },
+		"boxBgC": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"goodsNum": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"bannerImg": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"tabBgcImg": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"tabBgc": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "tabTextColor": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "tabTextColorCheck": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"iconWidth": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"iconHeight": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"iconFirstImg": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"iconSecondImg": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"iconThirdImg": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"iconOtherImg": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"iconOtherTextColor": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"salePicTextColor": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"disBgc": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"disTextColor": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"btnBgImg": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"btnWidth": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"btnHeight": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"btnBgcColor": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"btnTextColor": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"salePicColorHover": { "is_public": "1", "is_m": "0", "is_app": "0" },
+		"marginTop": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"leaderBoardIconPosition": { "is_public": "1", "is_m": "1", "is_app": "0" },
+		"goodsBorderColorHover": { "is_public": "1", "is_m": "0", "is_app": "0" },
+		"goodsShadowColorHover": { "is_public": "1", "is_m": "0", "is_app": "0" },
+		"salePriceSize": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"btnText": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"btnTextSize": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"btnBorderColor": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"btnBorderColorHover": { "is_public": "1", "is_m": "0", "is_app": "0" },
+		"btnTextColorHover": { "is_public": "1", "is_m": "0", "is_app": "0" },
+		"btnBorderSize": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"tabFixed": { "is_public": "1", "is_m": "1", "is_app": "1" }
+	}
+}

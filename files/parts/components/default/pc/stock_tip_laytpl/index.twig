@@ -1,0 +1,29 @@
+{# laytpl 库存告急
+itemType 1.'group' 同款商品数据结构 2.'normal' 普通商品数据
+存在商品库存告急> promotions 不存在营销信息 + 存在库存告急标识 is_stock_urgent = 1 + 组件开启库存告急
+ #}
+{% if data.stock_urgent|default(1) == '1' %}
+    {% if itemType == 'group' %}
+        <%#
+        var item_value = item[0];
+        var stock_value = window.GESHOP_LANGUAGES.left && window.GESHOP_LANGUAGES.left.replace('XX',item_value.goods_number);
+        var promotion_length = item_value.promotions && item_value.promotions.length;
+        if( parseInt(item_value.goods_number) && item_value.is_stock_urgent == '1' && (!promotion_length)){ %>
+        <div class="geshop__mask--stocktip geshop-pc">
+            <% item.is_stock_urgent %>
+            <p><% stock_value %></p>
+        </div>
+        <%# } %>
+    {% else %}
+        <%#
+        var stock_value = window.GESHOP_LANGUAGES.left && window.GESHOP_LANGUAGES.left.replace('XX',item.goods_number);
+        var promotion_length = item.promotions && item.promotions.length;
+        if( parseInt(item.goods_number) && item.is_stock_urgent == '1' && (!promotion_length)){ %>
+        <div class="geshop__mask--stocktip geshop-pc">
+            <p><% stock_value %></p>
+        </div>
+        <%# } %>
+    {% endif %}
+{% endif %}
+
+

@@ -1,0 +1,131 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+{% set remUnit = 37.5 %}
+{% set scale = 	(data.default.lazyWidth/data.default.lazyHeight)|default(1) %}
+{# default value #}
+{% set pageData = {
+	boxMarginTop:data.boxMarginTop/remUnit,
+	boxMarginBottom:data.boxMarginBottom/remUnit,
+	gsPadding:data.gsPadding|default(5),
+	gsMarginBottom:(data.gsMarginBottom|default(0))/remUnit,
+	gsInnerPadding:(data.gsInnerPadding|default(0))/remUnit,
+	goodsFtW:data.goodsFtW|default('bold'),
+	goodsFtS:(data.goodsFtS|default('12'))/remUnit,
+	discountWidth:(data.discountWidth|default(50))/remUnit,
+	discountHeight:(data.discountHeight|default(50))/remUnit,
+	discountRadius:data.discountRadius|default('50'),
+	discountBgc:data.discountBgc|default('#fd894c'),
+	discountTop:(data.discountTop|default(2))/remUnit,
+	priceC:data.priceC|default('#333'),
+	priceFt:(data.priceFt|default(15))/remUnit,
+	marketPriceFt:data.marketPriceFt/remUnit,
+	buyWidth:(data.buyWidth|default(80))/remUnit,
+	buyHeight:(data.buyHeight|default(34))/remUnit,
+	scale:(data.default.lazyWidth/data.default.lazyHeight)|default(1),
+	goodScaleHeight:((178/scale)/remUnit)|slice(0,5),
+} %}
+
+<div data-key="U000068" data-gid="U000068_zaful_index"  data-id="{{ pageInstanceId }}" data-static-domain="{{staticDomain}}"
+  class="geshop-component-box component-drag gs-index-main wrap-u000068 wrap-{{ pageInstanceId }}" style="margin-top: {{ data.marginTop | default(0) }}px; margin-bottom: {{ data.marginBottom | default(0) }}px;">
+
+    <div class="geshop-col-12" style="
+		{% if data.boxMarginTop %}margin-top: {{ data.boxMarginTop }}px;{% endif %}
+		{% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}
+    ">
+		{{include ('@app/htdocs/resources/template/m/goodsList/zafulSync/index.twig')}}
+    </div>
+</div>
+<script>
+	var gidPage = {{ pageInstanceId }};
+
+
+	if (!my_array || my_array.length == 0) {
+		var my_array = new Array();
+		my_array['USD'] = 1;
+		my_array['EUR'] = 0.88080759;
+		my_array['GBP'] = 0.78612381;
+		my_array['AUD'] = 1.491039;
+		my_array['CAD'] = 1.3569735;
+		my_array['NZD'] = 1.5183642;
+		my_array['BRL'] = 3.8955321;
+		my_array['RUB'] = 64.761456;
+		my_array['AED'] = 3.782675;
+		my_array['SAR'] = 3.8625;
+		my_array['KWD'] = 0.31219918;
+		my_array['OMR'] = 0.396035;
+		my_array['QAR'] = 3.7492;
+		my_array['TRY'] = 4.8813039;
+		my_array['JOD'] = 0.73027;
+		my_array['BHD'] = 0.38728;
+		my_array['IQD'] = 1222.6924;
+		my_array['PLN'] = 3.8119476;
+		my_array['SGD'] = 1.4073817;
+		my_array['MXN'] = 19.498724;
+		my_array['MYR'] = 4.1889894;
+		my_array['THB'] = 34.479662;
+		my_array['IDR'] = 14951.9126;
+		my_array['INR'] = 71.020148;
+		my_array['PHP'] = 55.008489;
+		my_array['TWD'] = 31.59628;
+	};
+
+	if (!my_array_sign || my_array_sign.length == 0) {
+		var my_array_sign = new Array();
+		my_array_sign['USD'] = '$';
+		my_array_sign['EUR'] = '€';
+		my_array_sign['GBP'] = '£';
+		my_array_sign['AUD'] = 'AU$';
+		my_array_sign['CAD'] = 'CA$';
+		my_array_sign['NZD'] = 'NZ$';
+		my_array_sign['BRL'] = 'R$';
+		my_array_sign['RUB'] = 'руб';
+		my_array_sign['AED'] = 'د.إ';
+		my_array_sign['SAR'] = 'ر.س';
+		my_array_sign['KWD'] = 'د.ك';
+		my_array_sign['OMR'] = 'ر.ع';
+		my_array_sign['QAR'] = 'ر.ق';
+		my_array_sign['TRY'] = 'TL';
+		my_array_sign['JOD'] = 'JD';
+		my_array_sign['BHD'] = 'د.ب';
+		my_array_sign['IQD'] = 'د.ع';
+		my_array_sign['PLN'] = 'zł';
+		my_array_sign['SGD'] = 'S$';
+		my_array_sign['MXN'] = 'MXN$';
+		my_array_sign['MYR'] = 'RM';
+		my_array_sign['THB'] = '฿';
+		my_array_sign['IDR'] = 'Rp';
+		my_array_sign['INR'] = 'Rs';
+		my_array_sign['PHP'] = 'PHP';
+		my_array_sign['TWD'] = 'NT$';
+	};
+	if (!my_array_position || my_array_position.length == 0) {
+		var my_array_position = new Array();
+		my_array_position['USD'] = '1';
+		my_array_position['EUR'] = '2';
+		my_array_position['GBP'] = '1';
+		my_array_position['AUD'] = '1';
+		my_array_position['CAD'] = '1';
+		my_array_position['NZD'] = '1';
+		my_array_position['BRL'] = '1';
+		my_array_position['RUB'] = '1';
+		my_array_position['AED'] = '1';
+		my_array_position['SAR'] = '1';
+		my_array_position['KWD'] = '1';
+		my_array_position['OMR'] = '1';
+		my_array_position['QAR'] = '1';
+		my_array_position['TRY'] = '1';
+		my_array_position['JOD'] = '1';
+		my_array_position['BHD'] = '1';
+		my_array_position['IQD'] = '1';
+		my_array_position['PLN'] = '1';
+		my_array_position['SGD'] = '1';
+		my_array_position['MXN'] = '1';
+		my_array_position['MYR'] = '1';
+		my_array_position['THB'] = '1';
+		my_array_position['IDR'] = '1';
+		my_array_position['INR'] = '1';
+		my_array_position['PHP'] = '1';
+		my_array_position['TWD'] = '1';
+
+	};
+
+</script>

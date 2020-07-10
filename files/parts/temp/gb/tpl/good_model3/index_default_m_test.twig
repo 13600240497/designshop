@@ -1,0 +1,86 @@
+{# 默认商品列表模板 #}
+
+{# css属性单位 #}
+{% set suffix='rem'%}
+
+{#
+    set pageData = {
+        imgSrc:'',// 图片地址
+				baseWidth:1100,//容器宽度
+				col:4,//容器分栏
+				marginRight:12//容器右间距
+    }
+#}
+
+
+{# {% set liWidth = (pageData.baseWidth-3*pageData.marginRight)/pageData.col %} #}
+{# 限时限量商品 #}
+{# {% if pageData.limit_active == '1' %}
+	{% set left_number =  (item.stock_num|number_format - item.activity_stock|number_format)>0?(item.stock_num|number_format - item.activity_stock|number_format):0 %}
+	{% set goodsStatus =  left_number==0 and data.goodsInfo? 'good_soldOut' :'goodsBuyPro'%}
+{% endif %} #}
+	{% set left_number =  (item.stock_num- item.activity_stock)>0?(item.stock_num - item.activity_stock):0 %}
+	{% set goodsStatus =  left_number == 0 and data.goodsInfo and pageData.limit_active!='1'? 'good_soldOut' :'goodsBuyPro'%}
+	{% set isLimitGoods = pageData.down_active == '1' ? 'is_goods_limit' : 'not_goods_limit'%}
+	{% set isPriceEqual =  item.market_price <= item.shop_price or item.market_price<=0 or item.discount<=0 ? 'visible-hide':''%}
+
+	{# 专题页/落地页 埋点 pagePoint #}
+
+	{% if pageData.page_point_type|default('activityPage') ==  'activityPage' %}
+		{% set pagePoint = {
+			wrapLink: 'track-goodsItem',
+			goodLink: 'track-goodsLink'
+		}%}
+
+	{% elseif pageData.page_point_type ==  'landPage' %}
+			{% set pagePoint = {
+			wrapLink: 'subjectGoodItem',
+			goodLink: 'js-link'
+		}%}
+	{% else %}
+		{% set pagePoint = {
+			wrapLink: 'track-goodsItem',
+			goodLink: 'track-goodsLink'
+		}%}
+
+	{% endif %}
+
+    {# felix #}
+			<li class="gs-list-item_tag gs-list-item--m  {{pagePoint.wrapLink}} {{goodsStatus}} {{isLimitGoods}} {{isHide}}" data-track-key="{{item.goods_sn}}">
+
+				{# 倒计时 #}
+					{{include ('@app/files/parts/temp/gb/common/default_m/goodDown.twig')}}
+				<div class="item-content">
+					<div class="gs-goods-wrap--m">
+					{# 商品图片配置 #}
+					{{include ('@app/files/parts/temp/gb/common/default_m/goodImg.twig')}}
+
+
+						{# 折扣标配置 #}
+					{#{{include ('@app/files/parts/temp/gb/common/default_m/goodDiscount.twig')}}#}
+
+					{# 服务标 #}
+					{{include ('@app/files/parts/temp/gb/common/default_m/goodLabel.twig')}}
+
+
+					</div>
+					{# 库存配置 #}
+					{#{{include ('@app/files/parts/temp/gb/common/default_m/goodLimit.twig')}}#}
+
+					<div class="gs-goods-desc--m">
+						{# 商品标题配置 #}
+						{{include ('@app/files/parts/temp/gb/common/default_m/goodTitle.twig')}}
+
+						{# 商品价格配置 #}
+						<div style="position: relative">
+							{{include ('@app/files/parts/temp/gb/tpl/good_model3/goodPrice.twig')}}
+							{{include ('@app/files/parts/temp/gb/tpl/good_model3/discount.twig')}}
+						</div>
+						{#{{include ('@app/files/parts/temp/gb/common/default_m/goodPrice.twig')}}#}
+					</div>
+
+					{# 商品购买配置 #}
+						{#{{include ('@app/files/parts/temp/gb/common/default_m/goodBuy.twig')}}#}
+					<a {% if item.url_title %}href="{{item.url_title}}"{% endif %} class="pmGoodsItem_link {{pagePoint.goodLink}}" data-app="product" data-app-sku="{{item.web_goods_sn}}" data-app-wcode="{{item.wh_code}}"></a>
+				</div>
+			</li>

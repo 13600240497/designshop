@@ -1,0 +1,16 @@
+{
+    "fields": {
+        "goodsSKU": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "navList": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "box_multi_column": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "box_margin_bottom": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "box_bg_color": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "goods_border_radius": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "hover_border_color": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "shop_price_font_size": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "shop_price_color": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "see_more_font_size": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "see_more_color": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "see_more_border_color": {"is_public": "0", "is_m": "1", "is_app": "1"}
+    }
+}

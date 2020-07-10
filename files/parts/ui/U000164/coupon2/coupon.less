@@ -1,0 +1,176 @@
+.geshop-u000164-coupon2 {
+  max-width: 1200px;
+  font-size: 0;
+  margin: 0 auto;
+
+  .btn-close {
+    cursor: pointer;
+    font-size: 0;
+    position: absolute;
+    width:36px;
+    height:36px;
+    right: -18px;
+    top: -18px;
+    background: url("//geshopimg.logsss.com/uploads/kToQgDdH7sfCv4EehtORAKLnzcBV0Iia.png") 0 0 no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .u000164-coupon2-box {
+    display: inline-block;
+    font-size: 14px;
+    position: relative;
+    color: #222222;
+    font-weight: 500;
+  }
+
+  .coupon2-info-group {
+    position: absolute;
+    text-align: center;
+    overflow: hidden;
+
+    .good-range-box {
+      width: 100%;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+
+      .good-range-bar {
+        width: 100%;
+        height: 6px;
+        border-radius: 4px;
+        overflow: hidden;
+        position: relative;
+        margin: 0 auto;
+
+        .good-range-left {
+          transition: width ease-in .3s;
+          position: absolute;
+          left: 0;
+          height: 100%;
+          border-radius: 4px;
+        }
+      }
+    }
+
+    .btn-group-state {
+      display: block;
+      width: 100%;
+      margin-top: 16px;
+
+      > li {
+        display: block;
+        width: 100%;
+        height: 28px;
+        line-height: 28px;
+        border-radius: 2px;
+        box-sizing: border-box;
+        padding: 0 12px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        &.btn-cursor {
+          cursor: pointer;
+        }
+
+        >a {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .dia-coupon-getting {
+    position: fixed;
+    z-index: 101;
+    background: rgba(0, 0, 0, .4);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    .getting-main {
+      font-size: 14px;
+      border-radius: 8px;
+      text-align: center;
+      position: absolute;
+      width: 660px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      .getting-info {
+
+        p {
+          height:28px;
+          margin: 60px auto;
+          font-size: 14px;
+
+          span {
+            font-size: 24px;
+          }
+        }
+
+        .btn-sure {
+          display: inline-block;
+          width:240px;
+          height:40px;
+          border-radius:2px;
+          margin-bottom: 40px;
+          font-size:16px;
+          line-height:40px;
+          cursor: pointer;
+        }
+
+      }
+
+    }
+
+  }
+
+  .dia-coupon-noEnough {
+    position: fixed;
+    z-index: 101;
+    background: rgba(0, 0, 0, .4);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    .noEnough-main {
+      font-size: 14px;
+      text-align: center;
+      width: 660px;
+      border-radius: 8px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      .noEnough-info {
+
+        h3 {
+          font-size: 24px;
+          margin: 60px auto 24px;
+        }
+
+        .coupon-gif {
+          display: block;
+          margin: 24px auto;
+        }
+        p {
+          margin-bottom: 8px;
+        }
+
+        .btn-sure {
+          display: inline-block;
+          width:240px;
+          height:40px;
+          border-radius:2px;
+          margin-bottom: 40px;
+          margin-top: 35px;
+          font-size:16px;
+          line-height:40px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

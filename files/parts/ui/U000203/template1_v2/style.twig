@@ -1,0 +1,99 @@
+{% set namespace = '.U000203_' ~ pageInstanceId %}
+
+{{namespace}} {
+  margin-bottom: {{data.component_margin_bottom | default(32)}}px;
+  margin-top: {{data.component_margin_top | default(0)}}px;
+  border-radius: {{data.component_border_radius | default(0)}}px;
+  background-color: {{data.component_bgColor | default('#FDFDFD')}};
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+{{namespace}} .nav-list li{
+  width: {{data.nav_width | default(172)}}px;
+  height: {{data.nav_height | default(44)}}px;
+  border-radius: {{data.nav_borderRadius | default(2)}}px;
+  background-color: {{data.inactive_nav_bgColor | default('#FFFFFF')}};
+  border-color: {{data.inactive_nav_borderColor | default('#333333')}};
+  {% if data.inactive_nav_bgImage is not empty %}
+    background-image: url({{data.inactive_nav_bgImage}});
+  {% endif %}
+  font-size: {{data.nav_fontsize | default(18)}}px;
+}
+{{namespace}} .nav-list li span {
+    color: {{data.inactive_nav_fontcolor | default('#000000')}};
+    line-height: {{ (data.nav_height|default(44) - 4 ) | default(40)}}px;
+}
+
+{{namespace}} .nav-list li.active, {{namespace}} .nav-list li:hover{
+    background-color: {{data.active_nav_bgColor | default('#000000')}};
+    border-color: {{data.active_nav_borderColor | default('#000000')}};
+    {% if data.active_nav_bgImage is not empty %}
+        background-image: url({{data.active_nav_bgImage}});
+    {% endif %}
+    color: {{data.active_nav_fontcolor | default('#FFFFFF')}};
+}
+
+{{namespace}} .nav-list li.active span, {{namespace}} .nav-list li:hover span{
+   color: {{data.active_nav_fontcolor | default('#FFFFFF')}};
+}
+{{namespace}} .btn-seemore{
+  font-size: {{data.seemore_fontSize | default(18)}}px;
+  width: {{data.seemore_width | default(240)}}px;
+  height: {{data.seemore_height | default(44)}}px;
+  line-height: {{data.seemore_height | default(44)}}px;
+  background-color: {{data.seemore_bgColor | default('#FFFFFF')}};
+  border-color: {{data.seemore_borderColor | default('#000000')}};
+  {% if data.seemore_bgImage %}
+    background-image: url({{data.seemore_bgImage}});
+  {% endif %}
+  color: {{data.seemore_fontColor | default('#000000')}};
+}
+
+{{namespace}} .goods-item-head .shop-now-container{
+    background-color: {{data.buyBtn_bgColor | default('#FFFFFF')}};
+    border-color: {{data.buyBtn_borderColor | default('#000')}};
+}
+{{namespace}} .goods-item-head .shop-now-container .shop-now-text{
+    color: {{data.shopnow_fontColor | default('#000')}};
+    font-size: {{data.shopnow_fontSize | default(16)}}px;
+}
+
+
+  {{namespace}} .geshop-goods-shopprice {
+    color: {{data.shopprice_fontColor | default('#FF4545')}};
+  }
+  {{namespace}}  .discount{
+    color: {{data.discount_fontColor | default('#000000') }}
+  }
+  {{namespace}} .geshop-goods-promotions {
+    color: {{ data.promotion_fontColor | default('#000000') }}
+  }
+{{namespace}} .view_more{
+    color:{{ data.view_more_font_color|default('#FFFFFF') }};
+    background-color:{{ data.view_more_bg_color|default('#222222') }};
+}
+
+{%
+    set space = '#U000203_' ~ pageInstanceId
+%}
+
+{% include '@app/files/parts/formTemplate/components/margin-dl-style.twig' with{'space':space} %}
+
+{# M #}
+@media screen and (max-width: 767px){
+    {{ space }} {
+        border-radius: {{data.component_border_radius_m | default(0)}}px;
+    }
+
+    {{ space }} .nav-list li{
+        font-size: {{data.nav_fontsize_m | default(18)}}px;
+        width: {{data.nav_width_m | default(172)}}px;
+        height: {{data.nav_height_m | default(44)}}px;
+        border-radius: {{data.nav_borderRadius_m | default(2)}}px;
+    }
+    {{ space }} .nav-list li span{
+        line-height: {{ (data.nav_height_m|default(44) - 4 ) | default(40)}}px;
+    }
+}

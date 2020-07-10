@@ -1,0 +1,21 @@
+{#/**
+*@author: 任贸华
+*@date: 2018/11/24 16:31:41
+*@desc: textarea 多行输入框
+* @param {string} type form{头部提示文字}/tab{内容部分标题文字}
+* @param {string} subLabel 小标题
+* @param {string} label 标题
+* @param {string} class 样式名
+*/#}
+{% if options %}
+    {% if options.type=='form' %}
+    <blockquote class="component-form-quote {{ options.class|default('') }}">{{ options.msg|default('切换模板后，无蓝色标识的配置数据将被重置') }}</blockquote>
+    {% elseif  options.type=='Tab' %}
+        <h4 class="title  {{ options.class|default('') }}">
+            {{ options.label|default('') }}
+            <span class='des-title'>{{ options.subLabel|default('') }}</span>
+        </h4>
+    {% endif %}
+{% else %}
+    {{include ('@app/files/parts/common/components/argsErrors.twig')}}
+{% endif %}

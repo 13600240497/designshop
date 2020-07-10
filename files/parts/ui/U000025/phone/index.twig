@@ -1,0 +1,13 @@
+<div class="geshop-component-box component-drag geshop-U000025-phone geshop-U000025-phone-{{ pageInstanceId }}"
+     data-key="U000025" data-id="{{ pageInstanceId }}">
+    {{ include('style.twig') }}
+    <div class="gs-bg-img">
+        {% if data.btn_title %}
+            <a href="javascript:;" class="dialog-btn">{{ data.btn_title }}</a>
+        {% endif %}
+    </div>
+    {{ include('form-dialog.twig') }}
+</div>
+<script>
+    var $rootPhone = $('.geshop-U000025-phone-{{ pageInstanceId }}');
+</script>

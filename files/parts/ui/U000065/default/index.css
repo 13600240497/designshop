@@ -1,0 +1,18 @@
+[data-gid="U000065_mobile"] .geshop-index-banner {
+  position: relative;
+  height: auto;
+}
+
+[data-gid="U000065_mobile"] .geshop-index-banner .swiper-slide {
+  font-size: 0;
+}
+
+[data-gid="U000065_mobile"] .geshop-index-banner .swiper-slide img {
+  opacity: 1!important;
+}
+
+[data-gid="U000065_mobile"] .geshop-index-banner .swiper-pagination {
+  bottom: .32rem;
+  height: .053rem;
+}
+

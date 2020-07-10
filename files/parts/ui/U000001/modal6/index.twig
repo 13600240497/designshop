@@ -1,0 +1,65 @@
+
+
+<div
+        class="geshop-component-box component-drag geshop-U000001-modal6 geshop-U000001-modal6-{{ pageInstanceId }}"
+        data-gid="U000001-modal6" data-key="U000001" data-id="{{ pageInstanceId }}">
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+        {% include 'style.twig' %}</style>
+    <!-- embed stylesheet end -->
+    <div class="geshop-U000001-modal6-wrapper clearfix">
+        <ul>
+            {% for key, item in data.goodsInfo|default(0..3) %}
+                <li>
+                    <div class="geshop-U000001-modal6-list-img">
+                        <a href="{{ item.url_title }}">
+                            {% include geshop.default.pc.discount_float with { params: { value: item.discount, type: data.discount_type }} %}
+                            {% include geshop.default.pc.image_goods with { params: { src: item.goods_img }} %}
+                            {% include geshop.default.pc.button_quick_view with { params: {
+                                href: item.url_quick,
+                                text: data.quick_view_label
+                            }} %}
+                            {% if item.goods_number is not empty %}
+                                {% include geshop.default.pc.sold_out with { params: { show: item.goods_number - 0 <= 0 ? true : false }} %}
+                            {% endif %}
+                        </a>
+                    </div>
+                    <div class="geshop-U000001-modal6-list-title">
+                        <a href="{{ item.url_title }}">{{ item.goods_title | default('ZAFUL Fleece Vest And Corduroy JackJackJackJack') }}</a>
+                    </div>
+                    <div style="margin: 4px 0px;height: 29px">
+                        <div class="shop_price">
+{#                            <span class="price-text" >{{ data.shop_price_text }}</span>#}
+                            {% include geshop.default.pc.shop_price with { params: { value: item.shop_price }} %}
+                        </div>
+                        {% if data.market_price_active|default(0) == '1' %}
+                            <span class="market_price">{% include geshop.default.pc.market_price with { params: { value: item.market_price }} %}</span>
+                        {% endif %}
+
+                    </div>
+                    <div class="promotion-box">
+                        {% if item.promotions is defined %}
+                            {% if item.promotions | length == 1 %}
+                                <span>{{ item.promotions[0] }}</span>
+                            {% elseif item.promotions | length > 1 %}
+                                <span> {{ item.promotions[0] }}... </span>
+
+                                <ul>
+                                    {% for val in item.promotions %}
+                                        <li>{{ val }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        {% else %}
+                            <span>Buy 1 Get 10% off</span>
+                        {% endif %}
+
+                    </div>
+{#                    <div style="position: relative; z-index:1; margin-top: 12px">#}
+{#                        {% include geshop.default.pc.button_buy with { params: { href: item.url_title }} %}#}
+{#                    </div>#}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

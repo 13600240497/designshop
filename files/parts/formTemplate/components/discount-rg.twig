@@ -1,0 +1,333 @@
+{#
+config 配置项参考
+
+"discount_bg_image": { "is_public": "1", "is_m": "1", "is_app": "1" },
+"discount_bg_color": { "is_public": "1", "is_m": "1", "is_app": "1" },
+"discount_font_color": { "is_public": "1", "is_m": "1", "is_app": "1" },
+"discount_show": { "is_public": "1", "is_m": "1", "is_app": "1" },
+"discount_type": { "is_public": "1", "is_m": "1", "is_app": "1" },
+"discount_style": { "is_public": "1", "is_m": "1", "is_app": "1" },
+
+"discount_width": { "is_public": "1", "is_m": "0", "is_app": "1" },
+"discount_height": { "is_public": "1", "is_m": "0", "is_app": "1" },
+"discount_top": { "is_public": "1", "is_m": "0", "is_app": "1" },
+"discount_left": { "is_public": "1", "is_m": "0", "is_app": "1" },
+"discount_font_top": { "is_public": "1", "is_m": "0", "is_app": "1" },
+"discount_font_left": { "is_public": "1", "is_m": "0", "is_app": "1" },
+
+"discount_border_radius_left_top": { "is_public": "1", "is_m": "0", "is_app": "1" },
+"discount_border_radius_right_top": { "is_public": "1", "is_m": "0", "is_app": "1" },
+"discount_border_radius_left_bottom": { "is_public": "1", "is_m": "0", "is_app": "1" },
+"discount_border_radius_right_bottom": { "is_public": "1", "is_m": "0", "is_app": "1" },
+
+#}
+
+{# PC端 和 M端 的宽高，文字边距配置项默认值不一样的, 有四种默认值 1. 显示方式-***% and 样式方形 #}
+{%
+    set discount_default = {
+        width: platform == 'pc' ? '60' : '78',
+        height: platform == 'pc' ? '30' : '36',
+        top: platform == 'pc' ? '24' : '32',
+        left: platform == 'pc' ? '0' : '0',
+        font_top: platform == 'pc' ? '9' : '8',
+        font_left: platform == 'pc' ? '10' : '9',
+        radius_left_top: platform == 'pc' ? '0' : '0',
+        radius_right_top: platform == 'pc' ? '2' : '4',
+        radius_left_bottom: platform == 'pc' ? '0' : '0',
+        radius_right_bottom: platform == 'pc' ? '2' : '4'
+    }
+%}
+
+{# 2. 显示方式-***% and 样式圆形 #}
+
+{%
+    set discount_default_1 = {
+        width: platform == 'pc' ? '60' : '80',
+        height: platform == 'pc' ? '60' : '80',
+        top: platform == 'pc' ? '10' : '12',
+        left: platform == 'pc' ? '10' : '12',
+        font_top: platform == 'pc' ? '23' : '26',
+        font_left: platform == 'pc' ? '9' : '9',
+        radius_left_top: platform == 'pc' ? '30' : '40',
+        radius_right_top: platform == 'pc' ? '30' : '40',
+        radius_left_bottom: platform == 'pc' ? '30' : '40',
+        radius_right_bottom: platform == 'pc' ? '30' : '40'
+    }
+%}
+
+{# 3. 显示方式***%OFF and 样式方形 #}
+
+{%
+    set discount_default_2 = {
+        width: platform == 'pc' ? '84' : '118',
+        height: platform == 'pc' ? '30' : '36',
+        top: platform == 'pc' ? '24' : '32',
+        left: platform == 'pc' ? '0' : '0',
+        font_top: platform == 'pc' ? '8' : '6',
+        font_left: platform == 'pc' ? '9' : '7',
+        radius_left_top: platform == 'pc' ? '0' : '0',
+        radius_right_top: platform == 'pc' ? '2' : '4',
+        radius_left_bottom: platform == 'pc' ? '0' : '0',
+        radius_right_bottom: platform == 'pc' ? '2' : '4'
+    }
+%}
+
+
+{# 4. 显示方式***%OFF and 样式圆形 #}
+
+{%
+    set discount_default_3 = {
+        width: platform == 'pc' ? '60' : '80',
+        height: platform == 'pc' ? '60' : '80',
+        top: platform == 'pc' ? '10' : '12',
+        left: platform == 'pc' ? '10' : '12',
+        font_top: platform == 'pc' ? '16' : '20',
+        font_left: platform == 'pc' ? '14' : '14',
+        radius_left_top: platform == 'pc' ? '30' : '40',
+        radius_right_top: platform == 'pc' ? '30' : '40',
+        radius_left_bottom: platform == 'pc' ? '30' : '40',
+        radius_right_bottom: platform == 'pc' ? '30' : '40'
+    }
+%}
+
+
+{# 公共的配置项，无需区分端的 #}
+{% set components = [
+    {
+        label: '是否显示',
+        name: 'discount_show',
+        default: '1',
+        type: 'radio',
+        options: [
+            { label: '是', value: '1' },
+            { label: '否', value: '0' }
+        ]
+    },
+    {
+        label: '显示方式',
+        name: 'discount_type',
+        default: '0',
+        type: 'radio',
+        options: [
+            { label: '***%OFF', value: '1' },
+            { label: '-***%', value: '0' }
+        ]
+    },
+    {
+        label: '显示样式',
+        name: 'discount_style',
+        default: '0',
+        type: 'radio',
+        options: [
+            { label: '圆形', value: '1' },
+            { label: '方形', value: '0' }
+        ]
+    },
+
+    { label: '宽度(px)', name: 'discount_width', default: discount_default.width, col: 2 },
+    { label: '高度(px)', name: 'discount_height', default: discount_default.height, col: 2 },
+    { label: '整体上偏移(px)', name: 'discount_top', default: discount_default.top, col: 2 },
+    { label: '整体左偏移(px)', name: 'discount_left', default: discount_default.left, col: 2 },
+    { label: '文字上偏移(px)', name: 'discount_font_top', default: discount_default.font_top, col: 2 },
+    { label: '文字左偏移(px)', name: 'discount_font_left', default: discount_default.font_left, col: 2 },
+
+    { label: '背景颜色', name: 'discount_bg_color', default: '#FA386A', type: 'colorPicker', col: 2 },
+    { label: '文字颜色', name: 'discount_font_color', default: '#ffffff', type: 'colorPicker', col: 2 },
+    { label: '背景图片', name: 'discount_bg_image', default: '', type: 'image' },
+
+    { label: '左上圆角大小(px)', name: 'discount_border_radius_left_top', default: discount_default.radius_left_top, col: 2 },
+    { label: '右上圆角大小(px)', name: 'discount_border_radius_right_top', default: discount_default.radius_right_top, col: 2 },
+    { label: '左下圆角大小(px)', name: 'discount_border_radius_left_bottom', default: discount_default.radius_left_bottom, col: 2 },
+    { label: '右下圆角大小(px)', name: 'discount_border_radius_right_bottom', default: discount_default.radius_right_bottom, col: 2 },
+]%}
+
+{# 合并当前端的配置项 #}
+<fieldset class="layui-elem-field">
+    <div class="layui-field-box">
+        {{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}
+    </div>
+</fieldset>
+
+<script>
+
+    $(function () {
+        var $input = $('input[name=discount_type]');
+        var $style = $('input[name=discount_style]');
+
+        var $inputs = $input.parents('.layui-input-block').find('.layui-unselect');
+        var $styles = $style.parents('.layui-input-block').find('.layui-unselect');
+        var styleVal = 0;
+        var typeVal = 0;
+        var data = {};
+
+        /** 折扣标-显示方式 **/
+        $inputs.on('click', function () {
+            var _val = $(this).prev().val();
+            getVal();
+            if (_val == 1) {
+                if (styleVal == 1) {
+                    data = {
+                        discount_width: {{ discount_default_3.width }},
+                        discount_height: {{ discount_default_3.height }},
+                        discount_top: {{ discount_default_3.top }},
+                        discount_left: {{ discount_default_3.left }},
+                        discount_font_top: {{ discount_default_3.font_top }},
+                        discount_font_left: {{ discount_default_3.font_left }},
+                        discount_border_radius_left_top: {{ discount_default_3.radius_left_top }},
+                        discount_border_radius_right_top: {{ discount_default_3.radius_right_top }},
+                        discount_border_radius_left_bottom: {{ discount_default_3.radius_left_bottom }},
+                        discount_border_radius_right_bottom: {{ discount_default_3.radius_right_bottom }}
+                    }
+                } else {
+                    data = {
+                        discount_width: {{ discount_default_2.width }},
+                        discount_height: {{ discount_default_2.height }},
+                        discount_top: {{ discount_default_2.top }},
+                        discount_left: {{ discount_default_2.left }},
+                        discount_font_top: {{ discount_default_2.font_top }},
+                        discount_font_left: {{ discount_default_2.font_left }},
+                        discount_border_radius_left_top: {{ discount_default_2.radius_left_top }},
+                        discount_border_radius_right_top: {{ discount_default_2.radius_right_top }},
+                        discount_border_radius_left_bottom: {{ discount_default_2.radius_left_bottom }},
+                        discount_border_radius_right_bottom: {{ discount_default_2.radius_right_bottom }}
+                    }
+                }
+            } else if (_val == 0) {
+                if (styleVal == 0) {
+                    data = {
+                        discount_width: {{ discount_default.width }},
+                        discount_height: {{ discount_default.height }},
+                        discount_top: {{ discount_default.top }},
+                        discount_left: {{ discount_default.left }},
+                        discount_font_top: {{ discount_default.font_top }},
+                        discount_font_left: {{ discount_default.font_left }},
+                        discount_border_radius_left_top: {{ discount_default.radius_left_top }},
+                        discount_border_radius_right_top: {{ discount_default.radius_right_top }},
+                        discount_border_radius_left_bottom: {{ discount_default.radius_left_bottom }},
+                        discount_border_radius_right_bottom: {{ discount_default.radius_right_bottom }}
+                    }
+                } else {
+                    data = {
+                        discount_width: {{ discount_default_1.width }},
+                        discount_height: {{ discount_default_1.height }},
+                        discount_top: {{ discount_default_1.top }},
+                        discount_left: {{ discount_default_1.left }},
+                        discount_font_top: {{ discount_default_1.font_top }},
+                        discount_font_left: {{ discount_default_1.font_left }},
+                        discount_border_radius_left_top: {{ discount_default_1.radius_left_top }},
+                        discount_border_radius_right_top: {{ discount_default_1.radius_right_top }},
+                        discount_border_radius_left_bottom: {{ discount_default_1.radius_left_bottom }},
+                        discount_border_radius_right_bottom: {{ discount_default_1.radius_right_bottom }}
+                    }
+                }
+            }
+            renderForm(data);
+        });
+
+        /** 折扣标-显示样式 **/
+        $styles.on('click', function () {
+            var _val = $(this).prev().val();
+            getVal();
+
+            /*** 圆形及off ***/
+            if (_val == 1) {
+                if (typeVal == 1) {
+                    data = {
+                        discount_width: {{ discount_default_3.width }},
+                        discount_height: {{ discount_default_3.height }},
+                        discount_top: {{ discount_default_3.top }},
+                        discount_left: {{ discount_default_3.left }},
+                        discount_font_top: {{ discount_default_3.font_top }},
+                        discount_font_left: {{ discount_default_3.font_left }},
+                        discount_border_radius_left_top: {{ discount_default_3.radius_left_top }},
+                        discount_border_radius_right_top: {{ discount_default_3.radius_right_top }},
+                        discount_border_radius_left_bottom: {{ discount_default_3.radius_left_bottom }},
+                        discount_border_radius_right_bottom: {{ discount_default_3.radius_right_bottom }}
+                    }
+                } else {
+                    data = {
+                        discount_width: {{ discount_default_1.width }},
+                        discount_height: {{ discount_default_1.height }},
+                        discount_top: {{ discount_default_1.top }},
+                        discount_left: {{ discount_default_1.left }},
+                        discount_font_top: {{ discount_default_1.font_top }},
+                        discount_font_left: {{ discount_default_1.font_left }},
+                        discount_border_radius_left_top: {{ discount_default_1.radius_left_top }},
+                        discount_border_radius_right_top: {{ discount_default_1.radius_right_top }},
+                        discount_border_radius_left_bottom: {{ discount_default_1.radius_left_bottom }},
+                        discount_border_radius_right_bottom: {{ discount_default_1.radius_right_bottom }}
+                    }
+                }
+            } else if (_val == 0) {
+                if (typeVal == 0) {
+                    data = {
+                        discount_width: {{ discount_default.width }},
+                        discount_height: {{ discount_default.height }},
+                        discount_top: {{ discount_default.top }},
+                        discount_left: {{ discount_default.left }},
+                        discount_font_top: {{ discount_default.font_top }},
+                        discount_font_left: {{ discount_default.font_left }},
+                        discount_border_radius_left_top: {{ discount_default.radius_left_top }},
+                        discount_border_radius_right_top: {{ discount_default.radius_right_top }},
+                        discount_border_radius_left_bottom: {{ discount_default.radius_left_bottom }},
+                        discount_border_radius_right_bottom: {{ discount_default.radius_right_bottom }}
+                    }
+                } else {
+                    data = {
+                        discount_width: {{ discount_default_2.width }},
+                        discount_height: {{ discount_default_2.height }},
+                        discount_top: {{ discount_default_2.top }},
+                        discount_left: {{ discount_default_2.left }},
+                        discount_font_top: {{ discount_default_2.font_top }},
+                        discount_font_left: {{ discount_default_2.font_left }},
+                        discount_border_radius_left_top: {{ discount_default_2.radius_left_top }},
+                        discount_border_radius_right_top: {{ discount_default_2.radius_right_top }},
+                        discount_border_radius_left_bottom: {{ discount_default_2.radius_left_bottom }},
+                        discount_border_radius_right_bottom: {{ discount_default_2.radius_right_bottom }}
+                    }
+                }
+            };
+            renderForm(data);
+        });
+
+        function getVal() {
+            $input.each(function (index, item) {
+                if ($(item).prop('checked')) {
+                    typeVal = $(item).val();
+                };
+            });
+
+            $style.each(function (index, item) {
+                if ($(item).prop('checked')) {
+                    styleVal = $(item).val();
+                };
+            });
+        }
+
+        function renderForm(data) {
+            var $width = $('input[name=discount_width]');
+            var $height = $('input[name=discount_height]');
+            var $top = $('input[name=discount_top]');
+            var $left = $('input[name=discount_left]');
+            var $fontTop = $('input[name=discount_font_top]');
+            var $fontLeft = $('input[name=discount_font_left]');
+            var $radiusTop = $('input[name=discount_border_radius_left_top]');
+            var $radiusRight = $('input[name=discount_border_radius_right_top]');
+            var $radiusLeftBottom = $('input[name=discount_border_radius_left_bottom]');
+            var $radiusRightBottom = $('input[name=discount_border_radius_right_bottom]');
+
+            $width.val(data.discount_width);
+            $height.val(data.discount_height);
+            $top.val(data.discount_top);
+            $left.val(data.discount_left);
+            $fontTop.val(data.discount_font_top);
+            $fontLeft.val(data.discount_font_left);
+            $radiusTop.val(data.discount_border_radius_left_top);
+            $radiusRight.val(data.discount_border_radius_right_top);
+            $radiusLeftBottom.val(data.discount_border_radius_left_bottom);
+            $radiusRightBottom.val(data.discount_border_radius_right_bottom);
+        }
+        getVal();
+    });
+
+</script>

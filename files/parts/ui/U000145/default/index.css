@@ -1,0 +1,105 @@
+[data-gid="U000065_mobile_timeslot"] .geshop-index-banner {
+  position: relative;
+  height: auto;
+}
+
+[data-gid="U000065_mobile_timeslot"] .geshop-index-banner .swiper-slide {
+  font-size: 0;
+}
+
+[data-gid="U000065_mobile_timeslot"] .geshop-index-banner .swiper-slide img {
+  opacity: 1!important;
+}
+
+[data-gid="U000065_mobile_timeslot"] .geshop-index-banner .swiper-pagination {
+  bottom: .32rem;
+  height: .053rem;
+}
+
+
+#defaultTimeSlotBanbox .layui-tab-content {
+  padding: 10px 0px;
+  width: 320px;
+}
+#defaultTimeSlotBanbox{
+  margin-top: 16px;
+}
+#defaultTimeSlotBanbox .layui-tab-title li.layui-this{
+  background: #1E9FFF !important;
+  color: #fff; 
+  font-size: 16px;   
+  margin-right: 48px;
+  border: none !important;
+}
+
+#defaultTimeSlotBanbox .layui-tab-title li.layui-this i{ 
+  color: #fff !important; 
+}
+#defaultTimeSlotBanbox .layui-tab-title li .layui-tab-close:hover {
+  border-radius: 2px;
+  background-color: #fff;
+  color: #c2c2c2;
+}
+#defaultTimeSlotBanbox .layui-tab-title li.layui-this .layui-tab-close:hover {
+  border-radius: 2px;
+  background-color: #1E9FFF;
+  color: #fff;
+}
+
+#defaultTimeSlotBanbox .layui-tab-title li{
+  font-size: 16px;   
+  height: 40px;
+  padding: 0 5px  ;
+  margin-left: -54px;
+  background: #fff;
+  border: 1px solid #E6E6E6;
+  border-bottom: 0px solid;
+  max-width: 90px;
+  width: 78px;
+}
+#defaultTimeSlotBanbox .layui-tab-title li.init{
+  margin-left: 0px !important;
+  background: #fff; 
+}
+
+#defaultTimeSlotBanbox .layui-tab-title li .tab-item {
+  display: inline-block;
+  width: 48px;
+  overflow: hidden;
+  float: left;
+  text-overflow: ellipsis;
+}
+
+#defaultTimeSlotBanbox .imgSrc{
+  width: 113% !important;
+  border-top-left-radius: 0; 
+  border-bottom-left-radius: 0;
+}
+#defaultTimeSlotBanbox .js_openResource{
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+#defaultTimeSlotBanbox .js_start_time,#defaultTimeSlotBanbox .js_end_time{
+  border: none;
+  text-align: center;
+}
+#defaultTimeSlotBanbox .dateTime{
+  border: 1px solid #e6e6e6;
+}
+.li-add{
+  width: 40px;
+  height: 40px!important;
+  line-height: 38px;
+  position: absolute;
+  text-align: center;
+  right: 0;
+  font-size: 30px;
+  top: 0;
+  border: 1px solid #E6E6E6;
+  border-bottom: 0px solid #ddd; 
+  border-top-right-radius: 4px;
+}
+.li-add a{
+display: block;
+color: #1e9fff;
+}

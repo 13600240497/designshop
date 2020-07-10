@@ -1,0 +1,9 @@
+{# 自定义组件：时间区间选择 #}
+<div class="layui-form-item" pane="">
+    <label class="form-item-label">{{ componentData.label }}</label>
+    <div class="layui-input-block">
+        <input type="hidden" name="{{ componentData.startName }}" value="{{ data[componentData.startName] }}">
+        <input type="hidden" name="{{ componentData.endName }}" value="{{ data[componentData.endName] }}">
+        <input class="js-dateRange layui-input" type="text" value="" readonly>
+    </div>
+</div>

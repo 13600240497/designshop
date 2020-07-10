@@ -1,0 +1,60 @@
+{%
+    set components = [
+                {
+            label: '是否显示',
+            name: 'discount_show',
+            default: '1',
+            type: 'radio',
+            options: [
+                {
+                    label: '是',
+                    value: '1'
+                },
+                {
+                    label: '否',
+                    value: '0'
+                }
+            ]
+        },
+        {
+            label: '显示方式',
+            name: 'discount_type',
+            default: '1',
+            type: 'radio',
+            options: [
+                {
+                    label: '***%OFF',
+                    value: '1'
+                },
+                {
+                    label: '-***%',
+                    value: '0'
+                }
+            ]
+        },
+        {
+            label: '背景图片',
+            name: 'discount_bg_image',
+            default: '',
+            type: 'image'
+        },
+        {
+            label: '背景颜色',
+            name: 'discount_bg_color',
+            default: '#333333',
+            type: 'colorPicker'
+        },
+        {
+            label: '文字颜色',
+            name: 'discount_font_color',
+            default: '#ffffff',
+            type: 'colorPicker'
+        }
+    ]
+%}
+<fieldset class="layui-elem-field">
+    <legend>折扣标</legend>
+    <div class="layui-field-box">
+        {{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}
+    </div>
+</fieldset>

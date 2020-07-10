@@ -1,0 +1,13 @@
+{# 商品图片配置 #}
+{% set img_common_width = (312/remUnit)~suffix %}
+{% set img_common_height = data.goods_img_one == '0'?(312/remUnit)~suffix:(312/0.75/remUnit)~suffix%}
+<figure class="gs-goods-item-thumb {% if item.goods_img|default('') == '' %} has-cloth-not{% endif %} {% if data.goods_img_one == '1' %}gs-goods-item-common{% endif %}"">
+	{% if data.isEditEnv == '1' and data.goodsInfo %}
+		<img class="js-lazyload" src="{{item.goods_img}}" style="width:{{img_common_width}};height: {{img_common_height}};" data-lazy="{{item.goods_img}}" >
+	{% elseif data.isEditEnv == '0' and data.goodsInfo %}
+		<img class="js-lazyload" src="{{data.default.good_gb}}" style="width:{{img_common_width}};height: {{img_common_height}};" data-lazy="{{item.goods_img}}" title="{{item.goods_title}}" alt="{{item.goods_title}}">
+	{% else %}
+		<img class="gs-default-clothes" src="{{data.default.clothes}}" class="gs-default-clothes" style="width:{{img_common_width}};height: {{img_common_height}};">
+	{% endif %}
+	<i class="gs-goods-status"><span>{{gb_component_trans(lang , 'sold_out' )}}</span></i>
+</figure>

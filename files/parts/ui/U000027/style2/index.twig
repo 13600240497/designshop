@@ -1,0 +1,40 @@
+<div class="geshop-component-box component-drag geshop-U000027-style2 geshop-U000027-style2-{{ pageInstanceId }}" data-key="U000027" data-id="{{ pageInstanceId }}">
+    <!-- embed stylesheet begin -->   
+    <style type="text/css">
+        {{ include('style.twig') }}
+    </style>
+    <!-- embed stylesheet end -->
+    <div class="geshop-U000027-style2-wrapper">
+        <ul>
+            {% if data.nav_menu is null %}
+                {% if data.navData is not null %}
+                    {% for id, item in data.navData %}
+                        <li data-pid="{{ id }}">
+                            <a href="{{ data.nav_link[id] | default('javascript:;') }}" target="_blank">{{ id }}{{ item }}</a>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <li data-pid="0">
+                        <a href="javascript:;" target="_blank">请配置数据</a>
+                    </li>
+                {% endif %}
+            {% else %}
+                {% if data.navData is not null %}
+                    {% for id, item in data.navData %}
+                        {% if id in data.nav_menu %}
+                            <li data-pid="{{ id }}">
+                                <a href="{{ data.nav_link[id] | default('javascript:;') }}" target="_blank">{{ data.navData[id] }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <li data-pid="0">
+                        <a href="javascript:;" target="_blank">请配置数据</a>
+                    </li>
+                {% endif %}
+            {% endif %}
+        </ul>
+    </div>
+</div>
+{# 初始化JS #}
+<script>$(function(){ geshop_U000027_style2_init('{{ pageInstanceId }}', '{{ data.isEditEnv }}'); });</script>

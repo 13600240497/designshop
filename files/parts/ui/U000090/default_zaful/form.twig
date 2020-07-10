@@ -1,0 +1,291 @@
+{%
+
+    set formData = {
+        id: 'U000090',
+        name: '轮播排行榜组件设置',
+        theme: 'default_zaful',
+        tabs: [
+            {
+                label: '数据配置',
+                components: [
+                    {
+                        type: 'fieldset',
+                        components: [
+                            {
+                                type: 'diy',
+                                src: 'form-dataset.twig'
+                            },
+                            {
+                                label: '商品分类ID',
+                                placeholder: '请输入榜单ID，多个ID之间用英文逗号隔开',
+                                name: 'cateId',
+                                public: true,
+                            },
+                            {
+                                label: '自动切换时间',
+                                desc: '(时间的单位为小时，建议输入整数)',
+                                name: 'loop_hour',
+                                placeholder: '请输入自动切换时间的数值'
+                            },
+                            {
+                                name: 'last_save_time',
+                                type: 'hidden',
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                label: '样式配置',
+                components: [
+                    {
+                        label: '基础配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件下边距',
+                                name: 'boxMarginBottom',
+                                default: '32',
+                                type: 'input'
+                            },
+                            {
+                                label: '背景颜色',
+                                name: 'box_bg_color',
+                                default: '#f8f8f8',
+                                type: 'colorPicker'
+                            },
+                            {
+                                label: '背景图片',
+                                name: 'bgImage',
+                                default: '',
+                                type: 'image'
+                            }
+                        ]
+                    },
+                    {
+                        label: '左侧图片',
+                        type: 'fieldset',
+                        desc: '请上传宽为276px，高为480px的图片',
+                        components: [
+                            {
+                                label: '图片地址',
+                                name: 'leftSideImage',
+                                default: '',
+                                type: 'image'
+                            },
+                            {
+                                label: '图片链接',
+                                name: 'jumpLink',
+                                default: '',
+                                type: 'input'
+                            }
+                        ]
+                    },
+                    {
+                        label: '排行榜图标',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '宽度',
+                                name: 'iconWidth',
+                                default: '40',
+                                col: 2
+                            },
+                            {
+                                label: '高度',
+                                name: 'iconHeight',
+                                default: '48',
+                                col: 2
+                            },
+                            {
+                                label: '第一名图标',
+                                name: 'iconFirstImg',
+                                default: '',
+                                type: 'image'
+                            },
+                            {
+                                label: '第二名图标',
+                                name: 'iconSecondImg',
+                                default: '',
+                                type: 'image'
+                            },
+                            {
+                                label: '第三名图标',
+                                name: 'iconThirdImg',
+                                default: '',
+                                type: 'image'
+                            },
+                            {
+                                label: '其他名次图标',
+                                name: 'iconOtherImg',
+                                default: '',
+                                type: 'image'
+                            },
+                            {
+                                label: '其他名次文字颜色',
+                                name: 'iconOtherTextColor',
+                                default: '#333333',
+                                type: 'colorPicker'
+                            }
+                        ]
+                    },
+                    {
+                        label: '销售价',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '文字颜色',
+                                name: 'shop_price_color',
+                                default: '#333',
+                                type: 'colorPicker'
+                            }
+                        ]
+                    },
+                    {
+                        label: '已售信息',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '背景颜色',
+                                name: 'btnBgColor',
+                                default: '#999999',
+                                type: 'colorPicker',
+                                col: 2
+                            },
+                            {
+                                label: '文字颜色',
+                                name: 'leaderBoardTextColor',
+                                default: '#FFFFFF',
+                                type: 'colorPicker',
+                                col: 2
+                            }
+                        ]
+                    },
+                    {
+                        label: '抢购按钮',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '文案',
+                                name: 'buyText',
+                                default: 'SNAP UP',
+                            },
+                            {
+                                label: '背景颜色',
+                                name: 'buyBtnTextBgColor',
+                                default: '#333333',
+                                type: 'colorPicker',
+                                col: 2
+                            },
+                            {
+                                label: '文字颜色',
+                                name: 'buyTextColor',
+                                default: '#fff',
+                                type: 'colorPicker',
+                                col: 2
+                            }
+                        ]
+                    },
+                ]
+            }
+        ],
+        moreConfig: [],
+        beforeSubmit: 'beforeSubmit',
+    }
+    
+%}
+
+{# 保存提交表单的时间戳 #}
+<script>
+
+function valid_sku (ids, type, callback) {
+    var params = {
+        "pipeline": GESHOP_PIPELINE,
+        "lang": GESHOP_LANG,
+        "cateid": ids,
+        "type": type
+    };
+    $.ajax({
+        url: GESHOP_INTERFACE.getrankvalid.url,
+        type: 'get',
+        dataType: 'jsonp',
+        data: { content: JSON.stringify(params) },
+        success: function(res) {
+            if (res.code == 0) {
+                callback && callback(res);
+            } else {
+                layer.msg(res.message);
+            }
+        },
+        error: function() {
+            callback && callback({ data: "12312" });
+        }
+    });
+}
+
+function show_layer(message, fn1) {
+    layer.confirm(message, {
+        title: '提示',
+        btn: ['否', '是'],
+        area: '420px',
+        icon: 3,
+        skin: 'element-ui-dialog-class'
+    }, function (index) {
+        layer.close(index);
+    }, function (index) {
+        fn1();
+        layer.close(index);
+    });
+}
+
+
+function beforeSubmit (progress) {
+    Design.enableLayuiLoading();
+
+    /* 校验 自动切换时间 */
+    var loop_hour = $.trim($('[name="loop_hour"]').val());
+    if (loop_hour != '') {
+        if (isNaN(loop_hour) == true || loop_hour <= 0) {
+            Design.disableLayuiLoading();
+            layer.msg('请输入大于0的数值'); 
+            $('[name="loop_hour"]').val('');
+            return false;
+        }
+        $('[name="loop_hour"]').val(loop_hour);
+    }
+
+
+    /* 保存提交的时间 */
+    var now = new Date().getTime();
+    $('[name="last_save_time"]').val(now);
+
+    /* 校验商品分类ID是否正确 */
+    var current_ids = $.trim($('[name="cateId"]').val());
+    var current_type = $('[name="goodsDataSource"]:checked').val();
+    if (current_ids != '') {
+        valid_sku(current_ids, current_type, function(res) {
+            Design.disableLayuiLoading();
+            var valid_ids = res.data.split(',');
+            var input_ids = current_ids.split(',');
+            var invalid_ids = input_ids.filter(function(id) {
+                return valid_ids.indexOf(id) <= -1;
+            });
+            if (invalid_ids.length >= 1) {
+                var message = "商品分类 " + invalid_ids.join(',') + " 不存在，是否清空？";
+                show_layer(message, function() {
+                    $('[name="cateId"]').val(valid_ids.join(','));
+                });
+            } else {
+                progress.next();
+            }
+        });
+    } else {
+        Design.disableLayuiLoading();
+        progress.next();
+    }
+}
+</script>
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+

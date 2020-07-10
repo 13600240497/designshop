@@ -1,0 +1,236 @@
+
+<script>
+
+/* 新增 */
+$(".gs-select-item-wraper").on('click','.gs-select-item .class-add-ips',function(e){
+	var gs_select_length = $('.gs-select-box').length;
+	var paren_activity_id =$(this).closest('.gs-select-item').find('.gs-select-box-third').data('parent-activity-id') || 0;
+    var ipsAutoLimitClose = {% if ipsAutoLimitClose is not empty %}{{ ipsAutoLimitClose}} {% else %}''{% endif %};
+    var ips_auto_limit_class = ipsAutoLimitClose ? 'select-item layui-hide' : 'select-item' ;
+	var html = '';
+		html += '<div class="gs-select-item">';
+		html += '<label class="gs-block act-title-label">活动<span class="title-index">1</span></label>';
+		html += '<div class="gs-select-level3-wraper">';
+		html += '	<div class="select-item">';
+		html += '		<label class="gs-block">三级活动信息</label>';
+		html += '		<select class="gs-select-box gs-select-box-third gs-select-level'+gs_select_length+'"  data-level="5" data-parent-activity-id="'+paren_activity_id+'" data-activity-id = "0" lay-ignore placeholder="请输入活动名称">';
+		html += '			<option value="00">请选择活动</option>';
+		html += '		</select>';
+		html += '	</div>';
+		html += '	<div class="'+ips_auto_limit_class+'">';
+		html += '		<label class="gs-block">SKU显示数量</label>';
+		html += '		<input class="layui-input sku-select-input" type="number" name="" value="">';
+		html += '	</div>';
+		html += '</div>';
+		html += '<div class="geshop-third-value mr-10">';
+		html += '	<span class="img-btn class-up">';
+		html += '		<i class="icon-up"></i>';
+		html += '		<b class="tips">上移</b>';
+		html += '	</span>';
+		html += '	<span class="img-btn class-down">';
+		html += '		<i class="icon-down"></i>';
+		html += '		<b class="tips">下移</b>';
+		html += '	</span>';
+		html += '	<span class="img-btn class-close">';
+		html += '		<i class="icon-delete" data=""></i>';
+		html += '		<b class="tips" >删除</b>';
+		html += '	</span>';
+		html += '	<span class="img-btn class-add-ips">';
+		html += '		<i class="icon-add"></i>';
+		html += '		<b class="tips">新增</b>';
+		html += '	</span>';
+		html += '</div>';
+		html += '</div>';
+
+
+	$(".gs-select-item-wraper").append(html);
+
+	GsSelect.initSelect();
+	initItemIndex()
+});
+/* 排序 */
+function initItemIndex(){
+	$('.gs-select-item-wraper').find('.gs-select-item').each(function(index){
+		var $this = $(this);
+		$this.find('.title-index').text(index+1);
+	})
+}
+/* 初始化新增三级活动信息 */
+function initThirdSelectInfo (data, targetIndex) {
+
+	var targetIndex = targetIndex || 0;
+
+	var $box = $('.radio-tab-true .radio-tab-group');
+	$('.gs-select-box:eq(' + targetIndex + ')', $box).html('<option value="00">请选择活动</option>');
+	if (data.length === 0) {
+		return false;
+	}
+	var optionLists = '<option value="00">请选择活动</option>';
+	for (var i = 0; i < data.length; i++) {
+		optionLists += '<option value=' + data[i].activity_child_id + '>' + data[i].activity_child_id + ' ' + data[i].activity_child_title + '</option>';
+	}
+
+	$('.gs-select-box:eq(' + targetIndex + ')', $box).html(optionLists);
+
+	$('.gs-select-box:eq(' + targetIndex + ')', $box).select2({
+		width: '115',
+		language: {
+			noResults: function (params) {
+				return '无匹配数据'
+			}
+		}
+	});
+
+}
+
+/* 删除 */
+$(".gs-select-item-wraper").on('click','.gs-select-item .class-close',function (e) {
+	var gs_select_item_length = $('.gs-select-item-wraper .gs-select-item').length;
+	var target = $(this).parents('.gs-select-item');
+
+	if (gs_select_item_length == 1) {
+		layer.msg('至少保留一项三级活动信息');
+		return false;
+	}
+
+	layer.confirm(
+		'是否删除活动信息?',
+		{ btn: ['取消', '确定'], icon:3, title:'提示', skin: 'element-ui-dialog-class'},
+		function (index) {
+			layer.close(index)
+		},
+		function (index) {
+			target.remove();
+			layer.close(index);
+			initItemIndex();
+		}
+	);
+});
+
+/*下移 */
+$(".gs-select-item-wraper").on('click','.gs-select-item .class-down',function(e){
+		var $this = $(this),
+	$tr = $(this).parents('.gs-select-item:eq(0)'),
+	$trNext = $tr.next();
+			if (0 != $trNext.length) {
+					$trNext.after($tr);
+			}
+	initItemIndex();
+});
+
+/*上移 */
+$(".gs-select-item-wraper").on('click','.gs-select-item .class-up',function(e){
+		var $this = $(this),
+	$tr = $(this).parents('.gs-select-item:eq(0)'),
+	$trPrev = $tr.prev();
+	if(0 != $trPrev.length){
+		$trPrev.before($tr);
+	}
+	initItemIndex();
+});
+
+
+
+/* 移除添加按钮 */
+function initAddBtn(){
+	var gs_select_item_length = $('.gs-select-item-wraper .gs-select-item').length;
+	$('.gs-select-item-wraper').find('.gs-select-item:lt('+(gs_select_item_length - 1)+') .class-add-ips').hide()
+}
+
+/* 提交 */
+$('#gs_submit').on('click',function(){
+
+	$(".gs-select-box").each(function(index){
+		$('input[name=gsSelectLevel'+ index +']').val($(this).val());
+	});
+
+	var goodsDataFrom = $('input[name=goodsDataFrom]:checked').val();
+	var ipsMethods = $('input[name=ipsMethods]:checked').val();
+	var gsSelectLevel2 = $('input[name=gsSelectLevel2]').val();
+	var gsSelectLevel5 = $('input[name=gsSelectLevel5]').val();
+	var act_arr = [];
+	var act_auto_methods = { level1: {}, level2: {}, level3: {} };
+	var act_methods = { level0: {}, level1: {}, level2: {} ,ipsSkus:''};
+	var actid_required_status = false;
+
+	if(goodsDataFrom == '2' && ipsMethods == '2' && (!gsSelectLevel2 || gsSelectLevel2 == '0')){
+		layer.msg('请选择三级活动信息');
+		return false;
+	} else if (goodsDataFrom == '2' && ipsMethods == '1' && (!gsSelectLevel5 || gsSelectLevel5 == '0')) {
+		layer.msg('请选择三级活动信息');
+		return false;
+	}
+
+	/* 自动方式 */
+	if (ipsMethods == 1) {
+		$('.gs-select-item-wraper').find('.gs-select-item').each(function(index, item) {
+			var act_obj = {};
+			var act_id = $(item).find('.gs-select-box').find('option:checked').val();
+			var act_name = $(item).find('.gs-select-box').find('option:checked').text();
+			var sku_num = $(item).find('.sku-select-input').val().trim();
+			/* 三级活动信息必选 */
+			if (act_id == '0') {
+				actid_required_status = true;
+			}
+			act_obj.id = act_id;
+			act_obj.name = act_name;
+			act_obj.sku_num = sku_num || 0;
+			act_arr.push(act_obj);
+		});
+		act_auto_methods.level1.id = $('.gs-select-level3').find('option:checked').val();
+		act_auto_methods.level1.name = $('.gs-select-level3').find('option:checked').text();
+		act_auto_methods.level2.id = $('.gs-select-level4').find('option:checked').val();
+		act_auto_methods.level2.name = $('.gs-select-level4').find('option:checked').text();
+		act_auto_methods.level3 = act_arr;
+		$('input[name=ipsAutoInfo]').val(JSON.stringify(act_auto_methods));
+		{# $('input[name=ipsGoodsSKU],textarea[name=goodsSKU]').val(''); #}
+		/*清空手动选品*/
+		$('input[name=ipsInfo]').val('');
+		$('input[name=gsSelectLevel0]').val('');
+		$('input[name=gsSelectLevel1]').val('');
+		$('input[name=gsSelectLevel2]').val('');
+	}else if(ipsMethods == 2){
+		act_methods.level0.id = $('.gs-select-level0').find('option:checked').val();
+		act_methods.level0.name = $('.gs-select-level0').find('option:checked').text();
+
+		act_methods.level1.id = $('.gs-select-level1').find('option:checked').val();
+		act_methods.level1.name = $('.gs-select-level1').find('option:checked').text();
+		act_methods.level2.id = $('.gs-select-level2').find('option:checked').val();
+		act_methods.level2.name = $('.gs-select-level2').find('option:checked').text();
+		act_methods.ipsSkus = $('input[name="ipsGoodsSKU"]').val();
+		$('input[name=ipsInfo]').val(JSON.stringify(act_methods));
+		/*清空自动选品*/
+		$('input[name=ipsAutoInfo]').val('');
+	}else if(ipsMethods == 3){
+		var sku = $("[name=ips_auto_sku]").val();
+		var ips_activity_child_id = $("[name=ips_activity_child_id]").val();
+		if(goodsDataFrom == 2 && !sku){layui.layer.msg('请添加SKU！');return false;}
+		$('input[name="ipsGoodsSKU"]').val(sku);
+		$('input[name=ipsFilterInfo]').val(JSON.stringify({"ips_auto_sku":sku,"ips_activity_child_id":ips_activity_child_id }));
+		$('input[name=ipsAutoInfo]').val('');
+		$('input[name=ipsInfo]').val('')
+	}else if(ipsMethods == 4){
+		var sku = $("[name=ips_manual_sku]").val();
+		if(goodsDataFrom == 2 && !sku){layui.layer.msg('请添加SKU！');return false;}
+		$('input[name="ipsGoodsSKU"]').val(sku);
+		$('input[name=ipsFilterInfo]').val(JSON.stringify({"ips_manual_sku":sku }));
+		$('input[name=ipsAutoInfo]').val('');
+		$('input[name=ipsInfo]').val('')
+	}
+
+	/* 如果选择的是商品SKU */
+	if (goodsDataFrom == '1') {
+		actid_required_status = false;
+	}
+
+	if (actid_required_status) {
+		layer.msg('请选择三级活动信息');
+		return false;
+	}
+
+	$(this).next('button').trigger('click');
+});
+
+
+
+</script>

@@ -1,0 +1,778 @@
+<style>
+.layui-form-select .layui-edge{
+	right:20px;
+}
+</style>
+
+{% set SKU_encode = data.goodsSKU?json_encode_no_unicode(data.goodsSKU):''%}
+
+{% set buyBorderSArr = [
+	{name:'无',value:'none'},
+	{name:'实线',value:'solid'},
+	{name:'虚线',value:'dashed'},
+	{name:'点状',value:'dotted'},
+	{name:'双线',value:'double'},
+	{name:'继承上级',value:'inherit'},
+]%}
+
+{% set fontFamily = [
+	{name:'OpenSans-Semibold (zaful)',value:'OpenSans-Semibold'},
+  {name:'OpenSans-Bold (zaful)',value:'OpenSans-Bold'},
+  {name:'OpenSans-Regular (zaful)',value:'OpenSans-Regular'},
+  {name:'Trebuchet MS (RG)',value:'Trebuchet MS'},
+  {name:'Tahoma (RW)',value:'Tahoma'},
+  {name:'Arial (RW)',value:'Arial'},
+  {name:'Helvetica (RW)',value:'Helvetica'},
+  {name:'sans-serif (RW)',value:'sans-serif'},
+  {name:'AvenirLTStd_Book (RW)',value:'AvenirLTStd_Book'},
+  {name:'Georgia (RW)',value:'Georgia'},
+  {name:'Times New Roman (RW)',value:'Times New Roman'},
+  {name:'Verdana (RW)',value:'Verdana'},
+]%}
+
+{% set siteCodeOp = {
+	baseWidthDefault: siteCode == 'zf-pc'?1260:1200,
+
+}%}
+
+{%
+	set pageData = {
+		price_ft_weight:data.price_ft_weight|default(1),
+		base_bg_shadow:data.base_bg_shadow|default(0),
+		base_magin_top: data.base_magin_top|default(0),
+		base_magin_bottom:data.base_magin_bottom|default(32),
+		base_bgc:data.base_bgc is not null ? data.base_bgc:'#FFFFFF',
+		base_bgImage:data.base_bgImage,
+		discount_bgc:data.discount_bgc is not null ? data.discount_bgc:'#FF8A00',
+		discount_ftc:data.discount_ftc is not null ? data.discount_ftc:'#FFFFFF',
+		buy_ftc:data.buy_ftc is not null ? data.buy_ftc:'#FFFFFF',
+		buy_bgc:data.buy_bgc is not null ? data.buy_bgc:'#CC0001',
+		buy_cart_bgc:data.buy_cart_bgc is not null ? data.buy_cart_bgc:'#CC0000',
+		buy_cart_hover_bgc:data.buy_cart_hover_bgc is not null ? data.buy_cart_hover_bgc:'#E00101',
+		price_fts:data.price_fts|default(32),
+		price_color:data.price_color is not null ? data.price_color:'#f30240',
+		discount_active: data.discount_active|default(1),
+		discount_height:data.discount_height|default(70),
+		discount_width:data.discount_width|default(70),
+		discount_fts:data.discount_fts|default(24),
+		discount_off_fts:data.discount_off_fts|default(12),
+		discount_right:data.discount_right|default(12),
+		discount_top:data.discount_top|default(12),
+		discount_bgImage:data.discount_bgImage,
+		buy_text:data.buy_text,
+		buy_fts:data.buy_fts|default(24),
+
+		tab_bgc:data.tab_bgc is not null ? data.tab_bgc:'#333333',
+		tab_active_bgc:data.tab_active_bgc is not null ? data.tab_active_bgc:'#FF8A00',
+		tab_ftc:data.tab_ftc is not null ? data.tab_ftc:'#FFFFFF',
+		tab_active_ftc:data.tab_active_ftc is not null ? data.tab_active_ftc:'#FFFFFF',
+		tab_border_bottom_color:data.tab_border_bottom_color is not null ? data.tab_border_bottom_color:'#FF8A00',
+		market_active: data.market_active|default(1),
+
+
+		view_more_ftc:data.view_more_ftc is not null ? data.view_more_ftc : "#333333",
+		view_more_bgc:data.view_more_bgc is not null ? data.view_more_bgc : "#FFFFFF",
+		view_more_text:data.view_more_text,
+		view_less_text:data.view_less_text,
+		view_more_border_color:data.view_more_border_color is not null ? data.view_more_border_color : "#333333",
+		view_more_fts:data.view_more_fts|default(24),
+		view_more_radius:data.view_more_radius|default(4),
+
+		view_all_ftc:data.view_all_ftc is not null ? data.view_all_ftc : "#333333",
+		view_all_text:data.view_all_text,
+		view_all_link:data.view_all_link|default(""),
+		view_all_fts:data.view_all_fts|default(28),
+		view_all_weight:data.view_all_weight|default(0),
+		view_all_active:data.view_all_active|default(1),
+
+		server_label_active: data.server_label_active|default(0)
+	}
+%}
+
+<style>
+.gs-lable-block{
+	margin:0 0 5px 20px;
+}
+.gs-lable-block+.layui-input-block,.class-manage{
+	margin-left:20px
+}
+#killTabWrap{
+    margin: 15px 0 30px;
+}
+
+#goods_tab .tab-add-btn{
+	    margin: 15px 0;
+    height: 32px;
+    line-height: 36px;
+}
+
+</style>
+{{include ('@app/files/parts/temp/goods_manager.twig')}}
+
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>商品列表组件设置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm gb-icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+  <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+		<div class="layui-tab" id="goods_tab">
+			<ul class="layui-tab-title">
+				<li class="layui-this">模板选择</li>
+				<li>样式设置</li>
+			</ul>
+			<div class="layui-tab-content layui-tab-content-parent" data-goodsType="tab_new">
+			<div class="layui-tab-item layui-show">
+						<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+						{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				</div>
+				<div class="layui-tab-item">
+					<div class="layui-carousel" id="form_carousel">
+						<div carousel-item>
+							<div>
+
+									<fieldset class="layui-elem-field">
+										<legend>常用配置</legend>
+										{# 剩余秒数,倒计时状态0,1,2 未开始,已开始,已结束 #}
+											{# <input type="hidden" name="left_time" value="{{data.left_time}}">
+											<input type="hidden" name="serverTime" value="{{serverTime}}" data-public-tag="true"> #}
+											<input type="hidden" name="count_textStatus" value="{{data.count_textStatus}}" data-public-tag="true">
+											<input type="hidden" name='tab_num' value="">
+										<div class="layui-field-box">
+											<div class="layui-form-item" style="margin-top: 16px;">
+												<label class="gs-label-block">默认商品显示数量<span style="font-size: 12px; color: #9e9e9e;">（多余的商品会通过view more 加载）</span></label>
+												<div class="layui-input-block">
+													<input class="layui-input" type="text" data-public-tag="true" name="defaultGoodsCount" autocomplete="off" value="{{data.defaultGoodsCount}}" placeholder="建议输入2的倍数,如果配置数量不足输入值,按实际显示">
+												</div>
+											</div>
+
+											{# PO: 新增上边距 GMT+8 2018-12-22 14:13:10 #}
+											<div class="layui-form-item">
+												<label class="gs-lable-block">上边距(px)</label>
+												<div class="layui-input-block">
+													<input type="text" name="base_magin_top" autocomplete="off" class="layui-input" value="{{ pageData.base_magin_top }}">
+												</div>
+											</div>
+
+											<div class="layui-form-item">
+												<label class="gs-lable-block">下边距(px)</label>
+												<div class="layui-input-block">
+													<input type="text" name="base_magin_bottom" autocomplete="off" class="layui-input" value="{{ pageData.base_magin_bottom }}">
+												</div>
+											</div>
+											{{include ('@app/files/parts/temp/gb/common/default_pc/imgDisposition.twig')}}
+										</div>
+									</fieldset>
+									<fieldset class="layui-elem-field">
+										<legend style="margin-bottom: 20px;margin-left:20px;font-size:18px;">多商品模块设置</legend>
+										<span class="gs-tips">（当分类名称和分类图片同时填写时，显示分类图片）</span>
+										<div class="layui-field-box">
+
+									{# 商品数据列表 #}
+										<div class="layui-table goods-form-table">
+											<input type="hidden" name="goodsSKU"  data-public-tag="true" value='{{SKU_encode}}'>
+											<div class="goods-tab-item tab-template layui-hide">
+												<div class="goods-tab-box">
+														<div class="layui-form-item">
+															<div class="gs-lable-block">分类标签名称<span class="gs-tab-index"></span></div>
+															<div class="layui-input-block">
+																<input class="layui-input tab-item-label Unwanted" type="text" value="" >
+															</div>
+														</div>
+														<div class="layui-form-item">
+															<label class="gs-lable-block public-data">分类标签图片</label>
+															<div class="layui-input-block">
+																<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+																<input class="layui-input tab-item-img Unwanted" type="text" name="tabImg" value="" data-public-tag="true">
+															</div>
+														</div>
+														<div class="radio-tab-group-only">
+																<input type="hidden" name="gsSelectLevel0" class="Unwanted">
+																<input type="hidden" name="gsSelectLevel1" class="Unwanted">
+																<input type="hidden" name="gsSelectLevel2" class="Unwanted">
+																<div class="layui-form-item">
+																	<div class="layui-input-block" style="margin-left:0;">
+																		{# <input class="Unwanted tabItemRadio" type="radio" name="skuFrom_temp" value="2" title="选品系统"> #}
+																		<input class="Unwanted tabItemRadio" type="radio" name="skuFrom_temp" value="1" title="商品SKU" checked="checked">
+																	</div>
+																</div>
+																<div class="goods-hide {% if tabItem.skuFrom|default('1') == '2' %}goods-visible{% endif %}" data-target="skuFrom-2">
+																	<div class="select-item">
+																		<label class="gs-block">一级活动信息</label>
+																		<select class="gs-select-box gs-select-level0" lay-ignore placeholder="请输入活动名称" data-searchplaceholder="搜索分类">
+																			<option value="00">请选择活动</option>
+																		</select>
+																	</div>
+																	<div class="select-item">
+																		<label class="gs-block">二级活动信息</label>
+																		<select class="gs-select-box gs-select-level1" lay-ignore placeholder="请输入活动名称">
+																			<option value="00">请选择活动</option>
+																		</select>
+																	</div>
+																	<div class="select-item">
+																		<label class="gs-block">三级活动信息</label>
+																		<select class="gs-select-box gs-select-level2" lay-ignore placeholder="请输入活动名称">
+																			<option value="00">请选择活动</option>
+																		</select>
+																	</div>
+																</div>
+																<div class="goods-hide {% if tabItem.skuFrom|default('1') == '1' %}goods-visible{% endif %}" data-target="skuFrom-1">
+																		<textarea class="layui-textarea Unwanted" name="goodsSKU" data-skuvalid="true" data-public-tag="true" placeholder="请输入商品SKU,每个SKU用英文逗号隔开.">{{tabItem.lists}}</textarea>
+																</div>
+														</div>
+														<div class="layui-form-item">
+															<label class="gs-lable-block">View all跳转链接</label>
+															<div class="layui-input-block">
+																<input type="text" name="viewAllUrl" autocomplete="off" class="layui-input view-all-label" value="{{ tabItem.viewAllUrl }}">
+															</div>
+														</div>
+												</div>
+												<div class="geshop-third-value">
+														<span class="img-btn class-manage">
+															<i class='gb-icon-manage'></i>
+															<b class="tips">管理</b>
+														</span>
+														<span class="img-btn class-up">
+															<i class='gb-icon-up'></i>
+															<b class="tips">上移</b>
+														</span>
+														<span class="img-btn class-down">
+															<i class='gb-icon-down'></i>
+															<b class="tips">下移</b>
+														</span>
+														<span class="img-btn class-close">
+															<i class='gb-icon-delete'></i>
+															<b class="tips">删除</b>
+														</span>
+														<span class="img-btn class-add">
+															<i class='gb-icon-add'></i>
+															<b class="tips">新增</b>
+														</span>
+												</div>
+											</div>
+											<div class="goods-tab-lists radio-tab-true">
+												{% for key,tabItem in data.goodsSKU|default(0..1) %}
+													<div class="goods-tab-item">
+														<div class="goods-tab-box">
+															<div class="layui-form-item">
+																<div class="gs-lable-block">分类标签名称<span class="gs-tab-index">{{key+1}}</span></div>
+																<div class="layui-input-block">
+																	<input class="layui-input tab-item-label Unwanted" type="text" value="{{tabItem.label}}" >
+																</div>
+															</div>
+															<div class="layui-form-item">
+																<label class="gs-lable-block public-data">分类标签图片 <span style="font-size: 12px;">(建议图片高度88px)</span></label>
+																<div class="layui-input-block">
+																	<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+																	<input class="layui-input tab-item-img Unwanted img-tab" type="text" name="tabImg{{key+1}}" value="{{tabItem.tabImg}}" data-public-tag="true">
+																</div>
+															</div>
+															<div class="radio-tab-group-only">
+																	<input type="hidden" name="gsSelectLevel0" value="{{tabItem.ips.gsSelectLevel0}}" class="Unwanted">
+																	<input type="hidden" name="gsSelectLevel1" value="{{tabItem.ips.gsSelectLevel1}}" class="Unwanted">
+																	<input type="hidden" name="gsSelectLevel2" value="{{tabItem.ips.gsSelectLevel2}}" class="Unwanted">
+																	<div class="layui-form-item">
+																		<div class="layui-input-block" style="margin-left:0;">
+																			{# <input class="Unwanted tabItemRadio" type="radio" name="skuFrom{{key}}" lay-filter="skuFrom{{key}}" value="2" title="选品系统" {% if tabItem.skuFrom == '2' %} checked="checked" {% endif %}> #}
+																			<input class="Unwanted tabItemRadio" type="radio" name="skuFrom{{key}}" lay-filter="skuFrom{{key}}" value="1" title="商品SKU" {% if tabItem.skuFrom == '1' or tabItem.skuFrom is empty %} checked="checked" {% endif %}>
+																		</div>
+																	</div>
+																	<div class="goods-hide {% if tabItem.skuFrom|default('1') == '2' %}goods-visible{% endif %}" data-target="skuFrom-2">
+																		<div class="select-item">
+																			<label class="gs-block">一级活动信息</label>
+																			<select class="gs-select-box gs-select-level0" lay-ignore placeholder="请输入活动名称" data-searchplaceholder="搜索分类">
+																				<option value="00">请选择活动</option>
+																			</select>
+																		</div>
+																		<div class="select-item">
+																			<label class="gs-block">二级活动信息</label>
+																			<select class="gs-select-box gs-select-level1" lay-ignore placeholder="请输入活动名称">
+																				<option value="00">请选择活动</option>
+																			</select>
+																		</div>
+																		<div class="select-item">
+																			<label class="gs-block">三级活动信息</label>
+																			<select class="gs-select-box gs-select-level2" lay-ignore placeholder="请输入活动名称">
+																				<option value="00">请选择活动</option>
+																			</select>
+																		</div>
+																	</div>
+																	<div class="goods-hide {% if tabItem.skuFrom|default('1') == '1' %}goods-visible{% endif %}" data-target="skuFrom-1">
+																			<textarea class="layui-textarea Unwanted" name="goodsSKU" data-skuvalid="true" data-public-tag="true" placeholder="请输入商品SKU,每个SKU用英文逗号隔开.">{{tabItem.lists}}</textarea>
+																	</div>
+															</div>
+															<div class="layui-form-item">
+																<label class="gs-lable-block">View all跳转链接</label>
+																<div class="layui-input-block">
+																	<input type="text" name="viewAllUrl" autocomplete="off" class="layui-input view-all-label" value="{{ tabItem.viewAllUrl }}">
+																</div>
+															</div>
+														</div>
+														<div class="geshop-third-value">
+															<span class="img-btn class-manage">
+																<i class='gb-icon-manage'></i>
+																<b class="tips">管理</b>
+															</span>
+																<span class="img-btn class-up">
+																	<i class='gb-icon-up'></i>
+																	<b class="tips">上移</b>
+																</span>
+																<span class="img-btn class-down">
+																	<i class='gb-icon-down'></i>
+																	<b class="tips">下移</b>
+																</span>
+																<span class="img-btn class-close">
+																	<i class='gb-icon-delete'></i>
+																	<b class="tips">删除</b>
+																</span>
+																<span class="img-btn class-add">
+																	<i class='gb-icon-add'></i>
+																	<b class="tips">新增</b>
+																</span>
+														</div>
+													</div>
+												{% endfor %}
+											</div>
+											<div class="layui-form-item tab-add-btn layui-hide" style="margin-left: 20px;">
+												<span class="el-button el-button--primary el-button--small" id="gs_tab_add">新增</span>
+											</div>
+										</div>
+										{# 商品数据end #}
+
+											</div>
+										{# 常用商品信息设置 end #}
+									</fieldset>
+								
+									<fieldset class="layui-elem-field">
+										<legend style="margin-bottom: 20px;margin-left:20px;font-size:18px;">分类标签设置</legend>
+										<div class="layui-field-box">
+											{#  #}
+											<div class="layui-form-item">
+												<label class="gs-lable-block">默认标签背景颜色</label>
+												<div class="layui-input-block">
+														<div class="color-picker-selector" data-hidden-name="tab_bgc">
+															<div style="background-color: {{ pageData.tab_bgc }};"></div>
+														</div>
+														<input type="text" class="layui-input" name="tab_bgc" autocomplete="off" value="{{ pageData.tab_bgc }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="gs-lable-block">选中标签背景颜色</label>
+												<div class="layui-input-block">
+														<div class="color-picker-selector" data-hidden-name="tab_active_bgc">
+															<div style="background-color: {{ pageData.tab_active_bgc }};"></div>
+														</div>
+														<input type="text" class="layui-input" name="tab_active_bgc" autocomplete="off" value="{{ pageData.tab_active_bgc }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="gs-lable-block">默认分类文案颜色</label>
+												<div class="layui-input-block">
+														<div class="color-picker-selector" data-hidden-name="tab_ftc">
+															<div style="background-color: {{ pageData.tab_ftc }};"></div>
+														</div>
+														<input type="text" class="layui-input" name="tab_ftc" autocomplete="off" value="{{ pageData.tab_ftc }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="gs-lable-block">选中分类文案颜色</label>
+												<div class="layui-input-block">
+														<div class="color-picker-selector" data-hidden-name="tab_active_ftc">
+															<div style="background-color: {{ pageData.tab_active_ftc }};"></div>
+														</div>
+														<input type="text" class="layui-input" name="tab_active_ftc" autocomplete="off" value="{{ pageData.tab_active_ftc }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="gs-lable-block">选中标签下边框颜色</label>
+												<div class="layui-input-block">
+														<div class="color-picker-selector" data-hidden-name="tab_border_bottom_color">
+															<div style="background-color: {{ pageData.tab_border_bottom_color }};"></div>
+														</div>
+														<input type="text" class="layui-input" name="tab_border_bottom_color" autocomplete="off" value="{{ pageData.tab_border_bottom_color }}">
+												</div>
+											</div>
+											{#  #}
+										</div>
+									</fieldset>
+
+									{# view more 配置 start #}
+
+									{# view more 配置 end #}
+
+									{# view all 配置 start #}
+
+									{# view all 配置 end #}
+
+
+									<div class="text-right">
+										<button type="button" id="js_moreConfig" class="layui-btn layui-btn-normal layui-btn-sm">更多配置</button>
+									</div>
+
+							</div>
+
+							<div>
+									<div class="layui-tab layui-tab-vertical">
+										<ul class="layui-tab-title">
+											<li class="layui-this">折扣标内容设置</li>
+											<li>购买按钮设置</li>
+											<li>本店售价设置</li>
+											{# <li>分类标签设置</li> #}
+											<li>服务标设置</li>
+											<li>ViewMore设置</li>
+											<li style="border-bottom: 0;">View all设置</li>
+										</ul>
+										<div class="layui-tab-content">
+											<div class="layui-tab-item layui-show">
+												{# 折扣标内容设置 #}
+												<div class="layui-form-item">
+													<label class="layui-form-label">折扣标是否显示</label>
+													<div class="layui-input-block">
+														<input type="radio" name="discount_active" data-public-tag="true" value="1" title="是" {% if data.discount_active == '1' or data.discount_active is empty %} checked="checked" {% endif %}>
+														<input type="radio" name="discount_active" data-public-tag="true" value="0" title="否" {% if data.discount_active == '0' %} checked="checked" {% endif %}>
+													</div>
+												</div>
+
+												{# 折扣标内容设置 end #}
+											</div>
+											<div class="layui-tab-item">
+												{# 购买按钮设置 #}
+												<div class="layui-form-item">
+													<label class="layui-form-label">购买文案</label>
+													<div class="layui-input-block"><input class="layui-input" type="text" name="buy_text" value="{{pageData.buy_text}}">
+													</div>
+												</div>
+												<div class="layui-form-item">
+													<label class="layui-form-label">购买文案字体大小(px)</label>
+													<div class="layui-input-block"><input class="layui-input" type="text" name="buy_fts" value="{{pageData.buy_fts}}">
+													</div>
+												</div>
+												{# 购买按钮设置 end #}
+											</div>
+
+											<div class="layui-tab-item">
+												<div class="layui-form-item">
+													<label class="layui-form-label">本店售价是否显示</label>
+													<div class="layui-input-block">
+														<input type="radio" name="market_active" data-public-tag="true" value="1" title="是" {% if data.market_active == '1' or data.market_active is empty %} checked="checked" {% endif %}>
+														<input type="radio" name="market_active" data-public-tag="true" value="0" title="否" {% if data.market_active == '0' %} checked="checked" {% endif %}>
+													</div>
+												</div>
+											</div>
+
+											{# PO: 服务标设置 #}
+											<div class="layui-tab-item">
+												<div class="layui-form-item">
+													<label class="layui-form-label">服务标是否显示</label>
+													<div class="layui-input-block">
+														<input type="radio" name="server_label_active" data-public-tag="true" value="1" title="是" {% if pageData.server_label_active == '1' %} checked="checked" {% endif %}>
+														<input type="radio" name="server_label_active" data-public-tag="true" value="0" title="否" {% if pageData.server_label_active == '0' or pageData.market_active is empty %} checked="checked" {% endif %}>
+													</div>
+												</div>
+											</div>
+
+											{# view more 按钮设置 #}
+											<div class="layui-tab-item">
+											{# view more 按钮设置 start #}
+												<div class="layui-form-item">
+													<label class="gs-lable-block">圆角大小(px)</label>
+													<div class="layui-input-block">
+														<input type="text" name="view_more_radius" autocomplete="off" class="layui-input" value="{{ pageData.view_more_radius }}">
+													</div>
+												</div>
+											{# view more 按钮设置 end #}
+											</div>
+											
+											<div class="layui-tab-item">
+											{# view all 按钮设置 start #}
+												<div class="layui-form-item">
+													<label class="layui-form-label">是否加粗</label>
+													<div class="layui-input-block">
+														<input type="radio" name="view_all_weight" data-public-tag="true" value="1" title="是" {% if pageData.view_all_weight == '1' %} checked="checked" {% endif %}>
+														<input type="radio" name="view_all_weight" data-public-tag="true" value="0" title="否" {% if pageData.view_all_weight == '0' %} checked="checked" {% endif %}>
+													</div>
+												</div>
+											{# view all 按钮设置 end #}
+											</div>
+											{# <div class="layui-tab-item">
+												<div class="layui-form-item">
+													<label class="layui-form-label">鼠标滑过下边框颜色</label>
+													<div class="layui-input-block">
+															<div class="color-picker-selector" data-hidden-name="tab_hover_border_bottom_color">
+																<div style="background-color: {{ pageData.tab_hover_border_bottom_color }};"></div>
+															</div>
+															<input type="text" class="layui-input" name="tab_hover_border_bottom_color" autocomplete="off" value="{{ pageData.tab_hover_border_bottom_color }}">
+													</div>
+												</div>
+											</div> #}
+									</div>
+									<div class="text-right">
+										<button type="button" id="js_baseConfig" class="layui-btn layui-btn-normal layui-btn-sm">基础配置</button>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+	<button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+		<span type="button" class="layui-btn layui-btn-normal" id="gs_submit">提交</span>
+	<button type="button" class="layui-btn layui-btn-normal js_submitDesignForm layui-hide">提交</button>
+</div>
+<style>
+	.goods-form-table .layui-icon{
+		cursor: pointer;	display: inline-block; margin: 2px 8px 2px 0;
+	}
+	.layui-tab-item{
+		position: relative;
+	}
+	#goods_tab .tab-add-btn{
+		/*position: absolute;	bottom: -77px; */
+		left: 20px;
+	}
+
+	#goods_layer_wrap + .layui-form{
+		display:none !important;
+	}
+
+	#goods_layer .layui-icon{
+		cursor: pointer; margin: 2px 5px; display: inline-block;
+	}
+
+	#goods_layer .layui-icon-prev,#goods_layer .layui-icon-next{
+		transform:rotate(90deg); -webkit-transform:rotate(90deg);
+	}
+	.goods-tab-item .class-manage{
+		margin-left:0;
+	}
+	.radio-tab-group-only{
+			width: 90%;
+			margin-left: 20px;
+			margin-bottom: 20px;
+	}
+	.goods-tab-item{
+		margin-bottom:20px;
+	}
+	.goods-tab-box{
+		border:1px solid #e6e6e6;
+		margin: 10px 15px 20px 20px;
+		border-radius: 4px;
+		width:90%;
+	}
+	.geshop-third-value{
+		margin-right: 5px;
+	}
+	.class-add{
+		display:none;
+	}
+	.goods-tab-lists .goods-tab-item:last-child .class-add{
+		display:inline-block;
+	}
+
+	#goods_tab .select2-container{
+			max-width: 100%;
+	}
+</style>
+
+<script>
+
+
+
+
+$('#gs_submit').on('click',function(){
+	var goodsArr = [];
+	$('.goods-form-table textarea[name=goodsSKU]').each(function(index,element){
+		var $wrapper = $(element).closest('.radio-tab-group-only');
+		var skuFromValue = $wrapper.find('.tabItemRadio:checked').val();
+
+		var $val = $(this).val();
+		var $label = $(this).parents('.goods-tab-item:eq(0)').find('input.tab-item-label').val();
+		var $tabImg = $(this).parents('.goods-tab-item:eq(0)').find('.tab-item-img').val();
+		var $viewAllUrl = $(this).parents('.goods-tab-item:eq(0)').find('input.view-all-label').eq(0).val();
+
+		if(skuFromValue == '2'){
+
+			$(".gs-select-box",$wrapper).each(function(index){
+				$('input[name=gsSelectLevel'+ index +']',$wrapper).val($(this).val());
+			});
+			var gsSelectLevel0 = $wrapper.find('input[name=gsSelectLevel0]').val(),
+			gsSelectLevel1 = $wrapper.find('input[name=gsSelectLevel1]').val(),
+			gsSelectLevel2 = $wrapper.find('input[name=gsSelectLevel2]').val();
+
+			if($label && gsSelectLevel2){
+				goodsArr.push({
+					"skuFrom":skuFromValue,
+					"label":$label,
+					"tabImg":$tabImg,
+					"lists":$val,
+					"ips":{"gsSelectLevel0":gsSelectLevel0,"gsSelectLevel1":gsSelectLevel1,"gsSelectLevel2":gsSelectLevel2,},
+					"viewAllUrl": $viewAllUrl
+				})
+			}
+		};
+
+		if(skuFromValue == '1'){
+			if($label){
+				goodsArr.push({
+					"skuFrom":skuFromValue,
+					"label":$label,
+					"tabImg":$tabImg,
+					"lists":$val,
+					"ips":{},
+					"viewAllUrl": $viewAllUrl
+				})
+			}
+		};
+
+
+	});
+	if(goodsArr.length>0){
+		$('input[name=tab_num]').val(goodsArr.length);
+		$('.goods-form-table input[name=goodsSKU]').val(JSON.stringify(goodsArr));
+	}else{
+		$('.goods-form-table input[name=goodsSKU]').val("");
+		layui.layer.msg('请先填写tab标签内容');
+		return false
+	}
+	$(this).next('button').trigger('click');
+});
+
+
+/*radio list render*/
+function ipsRadioInit(){
+	$('.goods-form-table .goods-tab-lists .radio-tab-group-only').each(function(index,element){
+	var $radio = $(element).find('.tabItemRadio');
+	var $radioName = 'skuFrom'+index;
+	$radio.attr({'name':$radioName,'lay-filter':$radioName});
+	if($('input[name='+$radioName+']:checked').length === 0){
+		$('input[name='+$radioName+'][value=1]').prop('checked',true)
+	}
+
+	var $tr = $(element).closest('tr');
+	var skuFrom = $('input[name='+$radioName+']:checked').val();
+	if(skuFrom == '2'){
+		$tr.find('.class-manage').addClass('layui-hide');
+	}else{
+		$tr.find('.class-manage').removeClass('layui-hide');
+	}
+
+
+	layui.form.render();
+	layui.form.on('radio('+$radioName+')', function (data) {
+		var value = Number(data.value);
+		$(element).find("[data-target=skuFrom-" + value + "]").addClass('goods-visible').siblings().removeClass('goods-visible');
+		if(value == '2'){
+			$tr.find('.class-manage').addClass('layui-hide');
+		}else{
+			$tr.find('.class-manage').removeClass('layui-hide');
+		}
+	})
+	});
+
+}
+
+function tabIndexInit(){
+
+}
+
+$(function(){
+	ipsRadioInit();
+/*
+	GsSelect.initSelectFirstGroup();
+*/
+/*回填三级列表信息*/
+	$('.radio-tab-true').find('.radio-tab-group-only').each(function(index,element){
+		/*GsSelect.initSelectFirst($(element));*/
+
+		$(".gs-select-box",$(element)).each(function(index){
+			var val = $('input[name=gsSelectLevel'+ index +']',$(element)).val();
+			if(val){
+				$(this).val(val);
+			}
+
+		});
+	});
+
+
+	var $goodsTable = $('.goods-form-table');
+	$("#component_form").off('click');
+
+	function addOne(){
+		var clone = $('.tab-template',$goodsTable).clone(true);
+		clone.removeClass('tab-template layui-hide');
+		$('.goods-tab-lists',$goodsTable).append(clone);
+		ipsRadioInit();
+		/*
+		GsSelect.initSelect($('.radio-tab-true .goods-tab-item:last'));
+		GsSelect.initSelectFirst($('.radio-tab-true .goods-tab-item:last'));
+		*/
+
+	}
+
+	function initItemIndex(){
+		$('.goods-tab-lists').find('.goods-tab-item').each(function(index){
+			var $this = $(this);
+			var listNum = index + 1;
+			$this.find('.gs-tab-index').text(listNum);
+			$this.find('.tab-item-img').attr('name','tabImg'+listNum+'');
+		})
+	}
+
+	/*删除分类 */
+	$("#component_form").on('click','.goods-form-table .class-close',function(){
+		var $this = $('this');
+		$tr = $(this).parents('.goods-tab-item:eq(0)'),
+		layer.confirm('是否删除该分类?',{icon:3,title:'提示'},function(index){
+			$tr.remove();
+			initItemIndex();
+			layer.close(index);
+		});
+	});
+
+	/*新增分类 */
+	$("#component_form").on('click.addTab','.goods-tab-lists .class-add',function(e){
+		e.stopPropagation();
+		addOne();
+		initItemIndex();
+	});
+
+	$('#gs_tab_add').on('click',function(){
+		var clone = $('.tab-template',$goodsTable).clone();
+		clone.removeClass('tab-template layui-hide');
+		$('.goods-tab-lists',$goodsTable).append(clone);
+		ipsRadioInit();
+		GsSelect.initSelect($('.radio-tab-true tr:last'));
+		GsSelect.initSelectFirst($('.radio-tab-true tr:last'));
+	});
+	/*移动分类 */
+	$("#component_form").on('click','.goods-form-table .class-down',function(e){
+		var $this = $('this'),
+		$tr = $(this).parents('.goods-tab-item:eq(0)'),
+		$trNext = $tr.next();
+		if(0 != $trNext.length){
+			$trNext.after($tr);
+		}
+		initItemIndex();
+
+	});
+	$("#component_form").on('click','.goods-form-table .class-up',function(e){
+		var $this = $('this'),
+		$tr = $(this).parents('.goods-tab-item:eq(0)'),
+		$trPrev = $tr.prev();
+		if(0 != $trPrev.length){
+			$trPrev.before($tr);
+		}
+		initItemIndex();
+	});
+
+})
+
+</script>

@@ -1,0 +1,17 @@
+{
+  "fields": {
+		"base_box_bgImage": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"component_bg_value": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"component_bg_repeat": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"component_bg_position": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"price_ft_weight": { "is_public": "1", "is_m": "1", "is_app": "1" },
+		"base_bg_shadow": { "is_public": "0", "is_m": "0", "is_app": "0" },
+
+
+    "padding_top": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "padding_bottom": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "video_width": { "is_public": "1", "is_m": "0", "is_app": "1" },
+    "video_height": { "is_public": "1", "is_m": "0", "is_app": "1" },
+    "video_code": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  }
+}

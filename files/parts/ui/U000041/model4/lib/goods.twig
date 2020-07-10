@@ -1,0 +1,188 @@
+{# {{include ('@app/files/parts/temp/goods_manager.twig')}} #}
+<section>
+    <div class="component-form-setting-ite component-form-configure-item goods-form-table">
+        <div class="layui-form-item">
+            <label class="layui-form-label">tab二级分类导航是否吸顶</label>
+            <div class="layui-input-block">
+              <input type="radio" name="is_fixed" value="1" title="是" {% if data.is_fixed == '1' or data.is_fixed is empty %} checked="checked" {% endif %}>
+              <input type="radio" name="is_fixed" value="0" title="否" {% if data.is_fixed == '0'%} checked="checked" {% endif %}>
+            </div>
+        </div>
+        <div class="nav-container">
+          <input name="navList" type="hidden"/>
+          <input name="goodsSKU" type="hidden" />
+          {% for key,item in data.navList | default([""]) %}
+            <div class="first-level">
+              <h3 class="label">TAB一级分类{{key+1}}</h3>
+              <div class="item-wrap">
+
+                <div class="layui-form-item">
+                  <label class="layui-form-label">分类名</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="tab_name" autocomplete="off" class="layui-input Unwanted" value="{{ item.navName }}">
+                  </div>
+                </div>
+
+                <div class="layui-form-item">
+                  <label class="layui-form-label">
+                    分类Banner
+                    <span class="label-form-label">(建议宽1200px,高300px)</span>
+                  </label>
+                  <div class="layui-input-block">
+                    <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                    <input class="layui-input Unwanted tab_bgImage" type="text" name="tab_bgImage{{key}}" value="{{item.banner}}">
+                  </div>
+                </div>
+
+                <div class="layui-form-item">
+                  <label class="layui-form-label">二级分类数量</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="second_tab_num" autocomplete="off" class="layui-input Unwanted" value="{{ item.secondNum }}">
+                    <input type="hidden" class="Unwanted" name="secondNum" value="{{ item.secondNum }}">
+                  </div>
+                </div>
+
+                <div class="layui-form-item">
+                  <label class="layui-form-label">二级分类数据配置</label>
+                  <div class="layui-input-block">
+                    <select class="Unwanted" name="second_level" lay-filter="second_level">
+                    {% if item.secondNum %}
+                      {% for index in range(0, item.secondNum-1) %}
+                        <option value="{{index+1}}">二级分类{{index+1}}</option>
+                      {% endfor %}
+                    {% endif %}
+                      
+                    </select>
+                  </div>
+                </div>
+
+                <div class="second_tab_container">
+                  <div class="item-divide">
+                    <div class="clearfix">
+                      <span class="item-title">二级分类</span>
+                      <span class="img-btn second-delete">
+                        <i class='icon-delete'></i>
+                        <b class="tips">删除</b>
+                      </span>
+                    </div>
+                    <div class="line"></div>
+                  </div>
+                  {% for sIndex,secondLevel in item.children | default([""]) %}
+                    <div class="second_tab_item goods-form-table" data-val="{{sIndex+1}}">
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">分类名</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="second_tab_name" autocomplete="off" class="layui-input Unwanted" value="{{ secondLevel.navName }}">
+                        </div>
+                      </div>
+
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">分类SKU图</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="second_tab_sku" autocomplete="off" class="layui-input Unwanted" value="{{ secondLevel.secondTabSku }}">
+                          <input type="hidden" name="sku_img" value="{{secondLevel.sku_img}}" class="Unwanted" />
+                        </div>
+                      </div>
+
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">分类图&nbsp;<span class="label-form-label">(建议宽80px,高80px)</span></label>
+                        <div class="layui-input-block">
+                          <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                          <input class="layui-input Unwanted second_tab_img" type="text" name="second_tab_img_{{key}}_{{sIndex}}" value="{{secondLevel.secondTabImg}}">
+                        </div>
+                      </div>
+
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">分类背景颜色</label>
+                        <div class="layui-input-block">
+                          <div class="color-picker-selector" data-hidden-name="tabBgcolor">
+                            <div style="background-color: {{ secondLevel.tabBgcolor ?? '#D8D8D8' }};"></div>
+                          </div>
+                          <input type="text" class="layui-input Unwanted" name="tabBgcolor" autocomplete="off" value="{{ secondLevel.tabBgcolor ?? '#D8D8D8' }}">
+                        </div>
+                      </div>
+
+                      
+                      <div class="layui-form-item goods-tab-lists radio-tab-true">
+                        <label class="layui-form-label">分类数据</label>
+                        <div class="radio-tab-group">
+                          {% include '@app/files/parts/temp/tab_ips_form_backup.twig' with{'tabItem':secondLevel,key:sIndex} %}
+                        </div>
+                      </div>
+                    </div>
+                  {% endfor %}
+                  
+                </div>
+                
+              </div>
+              <div class="geshop-third-value">
+                <span class="img-btn">
+                  <i class='icon-up'></i>
+                  <b class="tips">上移</b>
+                </span>
+                <span class="img-btn">
+                  <i class='icon-down'></i>
+                  <b class="tips">下移</b>
+                </span>
+                <span class="img-btn delete-first-btn">
+                  <i class='icon-delete'></i>
+                  <b class="tips">删除</b>
+                </span>
+              </div>
+            </div>
+          {% endfor %}
+
+          
+      </div>
+    
+    <div class="layui-btn layui-btn-normal add-first-level">添加一级分类</div>
+
+  </div>
+</section>
+
+
+{# 以下为二级分类复制使用 #}
+<div class="clone">
+  <div class="second_tab_item goods-form-table hidden">
+    <div class="layui-form-item">
+      <label class="layui-form-label">分类名</label>
+      <div class="layui-input-block">
+        <input type="text" name="second_tab_name" autocomplete="off" class="layui-input Unwanted" value="{{ secondLevel.navName }}">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">分类SKU图</label>
+      <div class="layui-input-block">
+        <input type="text" name="second_tab_sku" autocomplete="off" class="layui-input Unwanted" value="{{ secondLevel.secondTabSku }}">
+        <input type="hidden" name="sku_img" value="{{secondLevel.sku_img}}" class="Unwanted" />
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">分类图&nbsp;<span class="label-form-label">(建议宽80px,高80px)</span></label>
+      <div class="layui-input-block">
+        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+        <input class="layui-input Unwanted" type="text" name="second_tab_img" value="{{secondLevel.secondTabImg}}">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">分类背景颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="tabBgcolor">
+          <div style="background-color: {{ secondLevel.tabBgcolor ?? '#D8D8D8' }};"></div>
+        </div>
+        <input type="text" class="layui-input Unwanted" name="tabBgcolor" autocomplete="off" value="{{ secondLevel.tabBgcolor ?? '#D8D8D8' }}">
+      </div>
+    </div>
+
+    
+    <div class="layui-form-item goods-tab-lists radio-tab-true">
+      <label class="layui-form-label">分类数据</label>
+      <div class="radio-tab-group">
+        {% include '@app/files/parts/temp/tab_ips_form_backup.twig' with{'tabItem':{}} %}
+      </div>
+    </div>
+  </div>
+</div>

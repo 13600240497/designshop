@@ -1,0 +1,46 @@
+.color-gray {
+    color: #999;
+}
+
+.layui-block {
+    border-radius: 4px;
+    border: 1px solid rgba(230, 230, 230, 1);
+    padding: 16px;
+
+}
+
+.nav-item {
+    margin-bottom: 16px;
+}
+
+/*.add-class {
+    display: none;
+}*/
+
+.nav-item:nth-of-type(1) .btn-up {
+    display: none;
+}
+
+.nav-item:last-child .geshop-third-value .add-class {
+    display: inline-block;
+}
+
+.nav-item:last-child .btn-down{
+    display:none;
+}
+
+.nav-title {
+    margin-bottom: 5px;
+}
+
+.line-row-text2 {
+    display: none;
+}
+
+[data-col='1'] .item_1 {
+    height: 0;
+}
+
+[data-col='2'] .line-row-text2 {
+    display: block;
+}

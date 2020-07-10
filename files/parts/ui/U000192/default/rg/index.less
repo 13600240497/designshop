@@ -1,0 +1,60 @@
+// RG 字体适配
+.geshop-U000192-default {
+    *{
+        font-family: inherit;
+    }
+    .combo-container .goods-list li .attribute-wrap .attribute-text{
+        padding-right: 0.133rem;
+    }
+    .arrows {
+        &::after{
+            content: '';
+            position: absolute;
+            top: 0.2866rem;
+            right: 0.1333rem;
+            width: 0.1rem;
+            height: 0.1rem;
+            -webkit-transform: rotate(135deg);
+            -moz-transform: rotate(135deg);
+            -ms-transform: rotate(135deg);
+            transform: rotate(135deg);
+            -moz-transition: all .2s;
+            transition: all .2s;
+            border-top: 1px solid #333333 !important;
+            border-right: 1px solid #333333 !important;
+        }
+    }
+    .ico-cart{
+        display: block;
+        width: 0.427rem;
+        height: 0.427rem;
+        margin: 0.187rem 0.16rem 0 0;
+        float: left;
+        background-size: 100% 100%;
+    }
+    .combo-container .combo-wrap .goods-list li .attribute-wrap .attribute-list{
+        z-index:2;
+    }
+
+}
+.geshop-U000192-default .combo-container .goods-list li .attribute-wrap .attribute-text {
+    width: 1.1rem;
+}
+
+.geshop-U000192-default  .ico-cart {
+    background: url(https://geshoptest.s3.amazonaws.com/uploads/XR6nmvfcejDVSgNbwHpLaqCyI08T1h9l.png) 50% 50% no-repeat;
+    width:40/75rem;
+    background-size: 40/75rem auto;
+    height:40/75rem;
+    display: inline-block;
+    right: 0;
+    top: 0.16rem;
+    vertical-align: middle;
+    margin-right: .1rem;
+}
+.geshop-U000192-default .combo-container .cart-wrap .cart-btn-wrap .cart-text {
+    max-width: 3.4rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

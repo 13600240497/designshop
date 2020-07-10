@@ -1,0 +1,429 @@
+<style>
+    .layui-tab-title li {
+        padding:0 7px;
+    }
+</style>
+{% set formData = {
+    id: 'U000086',
+    name: '优惠券-模板七',
+    theme: 'model7',
+    tabs: [
+        {
+            label: '商品数据',
+            components: [
+                {
+                    label: '优惠券ID',
+                    name: 'coupon_id',
+                    validClass: 'js-valid-couponIds'
+                },
+                {
+                    label: '领劵主标题',
+                    name: 'coupon_tit_main',
+                    default: ''
+                },
+                {
+                    label: '领劵副标题',
+                    name: 'coupon_tit_side',
+                    default: ''
+                },
+                {
+                    label: '使用链接',
+                    name: 'site_url',
+                    desc: '(不填链接跳转对应国家站的首页)',
+                    default: ''
+                }
+            ]
+        },
+        {
+            label: '样式设置',
+            components: [
+                {
+                    label: '常用配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '组件下边距(px)',
+                            name: 'box_margin_bottom',
+                            default: 32,
+                            col: 2,
+                        },
+                        {
+                            label: '组件上边距(px)',
+                            name: 'box_margin_top',
+                            default: 0,
+                            col: 2,
+                        },
+                        {
+                            label: '组件对齐方式',
+                            name: 'box_text_align',
+                            default: 'left',
+                            type: 'radio',
+                            options: [
+                                {
+                                    label: '居左',
+                                    value: 'left'
+                                },
+                                {
+                                    label: '居中',
+                                    value: 'center'
+                                },
+                                {
+                                    label: '居右',
+                                    value: 'right'
+                                }
+                            ]
+                        },
+                        {
+                            label: '优惠券背景图片',
+                            desc: '(请上传584*156px尺寸的图片)',
+                            name: 'coupon_bg',
+                            type: 'image',
+                            default: 'https://geshopimg.logsss.com/uploads/HF1Mi9B4dKevpCDXY38TIzNPhn02aEAW.png'
+                        },
+                    ]
+                },
+                {
+                    label: '发放数量配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '是否显示',
+                            name: 'limit_show',
+                            default: 1,
+                            type: 'radio',
+                            options: [
+                                {
+                                    label: '是',
+                                    value: 1
+                                },
+                                {
+                                    label: '否',
+                                    value: 0
+                                }
+                            ]
+                        },
+                        {
+                            label: '背景颜色',
+                            name: 'limit_bg_color',
+                            type: 'colorPicker',
+                            default: '#ECE9E9',
+                        },
+                        {
+                            label: '文字颜色',
+                            name: 'limit_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                        },
+                    ]
+                },
+                {
+                    label: '优惠券金额/力度配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '金额/力度文字颜色',
+                            name: 'dis_hd_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                        },
+                        {
+                            label: '金额/力度文字大小(px)',
+                            name: 'dis_hd_fontSize',
+                            default: 72,
+                        },
+                        {
+                            label: '货币符号/%文字颜色',
+                            name: 'currency_icon_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                        },
+                        {
+                            label: '货币符号/%文字大小(px)',
+                            name: 'currency_icon_fontSize',
+                            default: 22,
+                        },
+                    ]
+                },
+                {
+                    label: '优惠券信息配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            type: 'tab',
+                            items: [
+                                {
+                                    label: '主标题',
+                                    components: [
+                                    {
+                                        label: '文字颜色',
+                                        name: 'center_tit_hd_color',
+                                        type: 'colorPicker',
+                                        default: '#333333',
+                                    },
+                                ]
+                            },
+                            {
+                                label: '副标题',
+                                components: [
+                                    {
+                                        label: '文字颜色',
+                                        name: 'center_tit_bd_color',
+                                        type: 'colorPicker',
+                                        default: '#000000',
+                                    },
+                                ]
+                            },
+                            {
+                                label: '使用日期',
+                                components: [
+                                    {
+                                        label: '日期显示方式',
+                                        name: 'time_display',
+                                        default: 0,
+                                        type: 'radio',
+                                        options: [
+                                            {
+                                                label: '美式',
+                                                value: 0
+                                            },
+                                            {
+                                                label: '英式',
+                                                value: 1
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        label: '文字颜色',
+                                        name: 'time_color',
+                                        type: 'colorPicker',
+                                        default: '#333333',
+                                    },
+                                ]
+                            },
+                            {
+                                label: '适用平台',
+                                components: [
+                                    {
+                                        label: '适用平台是否显示',
+                                        name: 'platform_show',
+                                        default: 1,
+                                        type: 'radio',
+                                        options: [
+                                            {
+                                                label: '是',
+                                                value: 0
+                                            },
+                                            {
+                                                label: '否',
+                                                value: 1
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        label: '适用平台展示端口',
+                                        name: 'platform_type',
+                                        default: 'all',
+                                        type: 'radio',
+                                        options: [
+                                            {
+                                                label: 'ALL',
+                                                value: 'all'
+                                            },
+                                            {
+                                                label: 'PC',
+                                                value: 'pc'
+                                            },
+                                            {
+                                                label: 'M',
+                                                value: 'm'
+                                            },
+                                            {
+                                                label: 'APP',
+                                                value: 'app'
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        label: '文字颜色',
+                                        name: 'platform_color',
+                                        type: 'colorPicker',
+                                        default: '#333333',
+                                    },
+                                ]
+                            }
+                        ]
+                        },
+                    ]
+                },
+                {
+                    label: '领取信息配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            type: 'tab',
+                            items: [
+                                {
+                                    label: '可领状态',
+                                    components: [
+                                        {
+                                            label: '默认圈圈颜色',
+                                            name: 'canvas_out_color',
+                                            type: 'colorPicker',
+                                            default: '#414141',
+                                        },
+                                        {
+                                            label: '剩余圈圈颜色',
+                                            name: 'canvas_in_color',
+                                            type: 'colorPicker',
+                                            default: '#FFFFFF',
+                                        },
+                                        {
+                                            label: '剩余文字颜色',
+                                            name: 'canvas_text_color',
+                                            type: 'colorPicker',
+                                            default: '#FFFFFF',
+                                        },
+                                        {
+                                            label: '领取样式显示',
+                                            name: 'text_type',
+                                            default: 0,
+                                            type: 'radio',
+                                            options: [
+                                                {
+                                                    label: '100% Left',
+                                                    value: 0,
+                                                },
+                                                {
+                                                    label: '数量',
+                                                    value: 1,
+                                                },
+                                            ]
+                                        },
+                                        {
+                                            label: '领取按钮背景颜色',
+                                            name: 'claim_bg_color',
+                                            type: 'colorPicker',
+                                            default: '#FFFFFF',
+                                        },
+                                        {
+                                            label: '领取按钮文字颜色',
+                                            name: 'claim_color',
+                                            type: 'colorPicker',
+                                            default: '#333333',
+                                        },
+                                    ]
+                                },
+                                {
+                                    label: '可用状态',
+                                    components: [
+                                        {
+                                            label: '优惠券文字',
+                                            name: 'coupon_color',
+                                            type: 'colorPicker',
+                                            default: '#FFFFFF',
+                                        },
+                                        {
+                                            label: '提示文字',
+                                            name: 'coupons_received_color',
+                                            type: 'colorPicker',
+                                            default: '#FFFFFF',
+                                        },
+                                        {
+                                            label: '使用按钮背景颜色',
+                                            name: 'use_bg_color',
+                                            type: 'colorPicker',
+                                            default: '#FFFFFF',
+                                        },
+                                        {
+                                            label: '使用按钮文字颜色',
+                                            name: 'use_color',
+                                            type: 'colorPicker',
+                                            default: '#333333',
+                                        },
+                                    ]
+                                },
+                                {
+                                    label: '不可用状态',
+                                    components: [
+                                        {
+                                            label: '结束按钮背景颜色',
+                                            name: 'end_bg_color',
+                                            type: 'colorPicker',
+                                            default: '#414141',
+                                        },
+                                        {
+                                            label: '结束按钮文字颜色',
+                                            name: 'end_color',
+                                            type: 'colorPicker',
+                                            default: '#AEAEAE',
+                                        },
+                                    ]
+                                },
+                            ]
+                        }
+                    ]
+                },
+                {
+                    label: '领取弹窗设置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '背景颜色',
+                            name: 'dia_bg_color',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                        },
+                        {
+                            label: '内容文字颜色',
+                            name: 'dia_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                        },
+                        {
+                            label: '优惠力度文字颜色',
+                            name: 'dia_coup_color',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                        },
+                        {
+                            label: '优惠力度背景颜色',
+                            name: 'dia_coup_bg_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                        },
+                    ]
+                }
+            ]
+        }
+    ],
+    beforeSubmit: 'onSubmit',
+    skuValidConfig: 'skuValidConfig'
+} %}
+
+<script>
+    function onSubmit(progress) {
+        const coupon_id = $('#U000086-model7').find("input[name='coupon_id']").val();
+        if ($.trim(coupon_id) == '') {
+            $('#U000086-model7').find("input[name='coupon_id']").val('');
+            progress.next();
+        } else if (!isNaN(+coupon_id) && coupon_id > 0) {
+            progress.next(function () {
+                GESHOP_STORE.dispatch('zaful/getCoupon', Number(coupon_id));
+            });
+        } else {
+            $('#U000086-model7').find("input[name='coupon_id']").val('');
+            layer.msg('请输入正确的优惠券ID');
+        }
+
+    }
+
+    {# 自定义校验函数 #}
+    function skuValidConfig() {
+        return {
+            check_type: 'coupon',
+            check_rules: 'COUPON_VALIDATE_ID_EXITS'
+        }
+    }
+</script>
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

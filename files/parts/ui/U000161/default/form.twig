@@ -1,0 +1,171 @@
+{% set pageData = {
+    ImgWidth: data.ImgWidth is not null? data.ImgWidth: 276,
+    ImgHeight: data.ImgHeight is not null? data.ImgHeight: 480
+} %}
+{{include ('@app/files/parts/temp/goods_manager.twig')}}
+<div class='design-form design-form-component design-form-visible'>
+    <h3 class='component-form-title'>商品TOP列表配置
+        <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+            <i class="el-icon-close"></i>
+        </a>
+    </h3>
+    <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+    <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+        <div class="layui-tab">
+            <ul class="layui-tab-title">
+                <li class="layui-this">模板选择</li>
+                <li>商品数据</li>
+                <li>样式设置</li>
+            </ul>
+            <div class="layui-tab-content layui-tab-content-parent">
+                <div class="layui-tab-item layui-show">
+						<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+						{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				</div>
+                <div class="layui-tab-item">
+                     <label class="form-item-label">
+                            <span class="layui-badge-dot layui-bg-orange"></span>
+                            商品SKU
+                    </label>
+                    <div class="layui-form-item rest-input">
+                        <textarea placeholder="请输入商品SKU，每个SKU用英文逗号隔开，SKU不可重复" autocomplete="off" class="layui-textarea" name='goodsSKU' value="{{data.goodsSKU}}">{{data.goodsSKU}}</textarea>
+                    </div>
+                    <div class="layui-form-item tab-add-btn">
+                        <span class="el-button el-button--primary el-button--small" id="gs_getList" style="float:right">商品管理</span>
+                    </div>
+                </div>
+                <div class="layui-tab-item">
+                    <p class="geshop-title">常用配置</p>
+                    <div class="layui-form-item">
+                        <label class="form-label-item">
+                            <span class="layui-badge-dot layui-bg-orange "></span>
+                            组件下边距(PX)</label>
+                        <div class="layui-form-item ">
+                            <input type="text" name="marginBottom" autocomplete="off" class="layui-input" value="{{ data.marginBottom | default(32) }}">
+                        </div>
+                    </div>
+
+                    <p class="geshop-title">Banner图片</p>
+                    <div class="layui-form-item">
+                        <label class="form-item-label">
+                            <span class="layui-badge-dot layui-bg-orange"></span>
+                            Banner位置</label>
+                        <div class="layui-form-item">
+                            <input type="radio" name="labelPosRight" value="0" {% if data.labelPosRight|default('0') == '0' %} checked{% endif %}  title="左边">
+                            <input type="radio" name="labelPosRight" value="1" {% if data.labelPosRight|default('0') == '1' %} checked{% endif %} title="右边">
+                        </div>
+                    </div>
+                    
+                    <input type="hidden" name="ImgWidth" placeholder="请输入图片宽度" autocomplete="off" class="layui-input" value="{{ data.ImgWidth | default(280) }}">
+                    <input type="hidden" name="ImgHeight" placeholder="请输入图片高度" autocomplete="off" class="layui-input" value="{{ data.ImgHeight | default(540) }}">
+                    <div class="layui-form-item">
+                        <label class="form-item-label">
+                            <span class="layui-badge-dot layui-bg-orange"></span>
+                            Banner图片<span class="color-gray">(建议上传280*540尺寸)</span></label>
+                        <div class="layui-input-block ml0">
+                            <a href="javascript:;" class="js_openResource design-open-resource">
+                                <i class="layui-icon">&#xe64a;</i>
+                            </a>
+                            <input type="text" name="bannerImg" autocomplete="off" class="layui-input"  data-valid-width="ImgWidth" data-valid-height="ImgHeight" value="{{data.bannerImg}}">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="form-label-item">
+                            <span class="layui-badge-dot layui-bg-orange "></span>
+                            Banner链接</label>
+                        <div class="layui-form-item ">
+                            <input type="text" name="bannerLink" autocomplete="off" class="layui-input" value="{{ data.bannerLink | default('') }}">
+                        </div>
+                    </div>
+
+                    <p class="geshop-title">商品信息配置</p>
+                    <div class="layui-form-item">
+                        <label class="form-item-label">
+                            <span class="layui-badge-dot layui-bg-orange "></span>
+                            标签图片<span class="color-gray">(建议上传60*20尺寸)</span></label>
+                        <div class="layui-input-block ml0">
+                            <a href="javascript:;" class="js_openResource design-open-resource">
+                                <i class="layui-icon">&#xe64a;</i>
+                            </a>
+                            <input type="text" name="labelImg" autocomplete="off" class="layui-input" value="{{data.labelImg}}">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="form-label-item">
+                            <span class="layui-badge-dot layui-bg-orange "></span>
+                            标签图片上边距(PX)</label>
+                        <div class="layui-form-item ">
+                            <input type="text" name="labelImgTop" autocomplete="off" class="layui-input" value="{{ data.labelImgTop | default('0') }}">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="form-label-item">
+                            <span class="layui-badge-dot layui-bg-orange "></span>
+                            标签图片左边距(PX)</label>
+                        <div class="layui-form-item ">
+                            <input type="text" name="labelImgLeft" autocomplete="off" class="layui-input" value="{{ data.labelImgLeft | default('0') }}">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="form-label-item">
+                            <span class="layui-badge-dot layui-bg-orange "></span>
+                            销售价文字颜色
+                        </label>
+                        <div class="layui-input-block ml0">
+                            <div class="color-picker-selector" data-hidden-name="saleFontColor">
+                                <div style="background-color: {{ data.saleFontColor| default('#333333') }};"></div>
+                            </div>
+                            <input type="text" class="layui-input" name="saleFontColor" autocomplete="off" value="{{ data.saleFontColor | default('#333333') }}">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="form-label-item">
+                            <span class="layui-badge-dot layui-bg-orange "></span>
+                            Quick Shop背景颜色
+                        </label>
+                        <div class="layui-input-block ml0">
+                            <div class="color-picker-selector" data-hidden-name="qsBgColor">
+                                <div style="background-color: {{ data.qsBgColor| default('#FFFFFF') }};"></div>
+                            </div>
+                            <input type="text" class="layui-input" name="qsBgColor" autocomplete="off" value="{{ data.qsBgColor | default('#FFFFFF') }}">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item pb100">
+                        <label class="form-label-item">
+                            <span class="layui-badge-dot layui-bg-orange "></span>
+                            Quick Shop文字颜色
+                        </label>
+                        <div class="layui-input-block ml0">
+                            <div class="color-picker-selector" data-hidden-name="qsFontColor">
+                                <div style="background-color: {{ data.qsFontColor| default('#333333') }};"></div>
+                            </div>
+                            <input type="text" class="layui-input" name="qsFontColor" autocomplete="off" value="{{ data.qsFontColor | default('#333333') }}">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+    <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+    <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>
+
+<script>
+    $('textarea[name=goodsSKU]').blur(function () {
+        var $val = $('textarea[name=goodsSKU]').val();
+        var goodsArrLength = $val.split(',').length;
+        if(goodsArrLength > 8){
+            layui.layer.msg('界面只显示8个sku商品数据，其余sku不显示',{time: 3000});
+        }
+    });
+</script>

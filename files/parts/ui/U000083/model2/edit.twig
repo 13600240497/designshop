@@ -1,0 +1,12 @@
+<div class="geshop-four-goods clearfix">
+  <div class="geshop-four-good-item-wrap">
+    {% for item in data.goodsInfo %}
+    <div class="geshop-four-good-item">
+      <a href="{{ item.url_title }}" class="gs-img logsss_event" 
+        ><img src="{{ item.goods_img }}"></a>
+      <h3 class="geshop-four-good-title">{{ item.goods_title }}</h3>
+      <p class="geshop-four-good-price"><span class="my_shop_price" data-orgp="{{ item.shop_price }}">${{ item.shop_price }}</span></p>
+    </div>
+    {% endfor %}
+  </div>
+</div>

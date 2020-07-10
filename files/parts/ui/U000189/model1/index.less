@@ -1,0 +1,117 @@
+.rem(@d) {
+  width: (@d)/75rem
+}
+
+.geshop-u000189-model1 {
+  .geshop-containr {
+    .geshop-navswiper {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      z-index: 9;
+      background: #fff;
+      transform: translateZ(999)
+    }
+
+    .geshop-navswiper .swiper-slide {
+      padding: 30/75rem;
+      text-align: center;
+      //.rem(150);
+      display: inline-block;
+      width: auto;
+
+    }
+
+    .geshop-navswiper .swiper-slide.active{
+      border-bottom: 2px solid  #333333;
+    }
+
+    .geshop-navswiper .swiper-slide span {
+      color: #999999;
+      transition: all .3s ease;
+      display: block; 
+      width: 100%;
+      height: auto;
+      font-size: .373rem;
+      font-family: OpenSans-Bold,arial,serif;
+    }
+   
+    .geshop-navswiper .active span {
+      transform: scale(1.1);
+      color: #333333;
+    }
+
+    .list-swiper {
+      width: 100%;
+      height: 5rem;
+    }
+
+    .swiper-slide {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+     
+    }
+
+    .swiper-container2 {
+      padding-top: 20/75rem;
+      .minirefresh-wrap{
+        position: relative;
+      }
+      .d-grid {
+        position: relative;
+        width: 100%;
+        z-index: 1;
+
+        .d-grid-item {
+          width: 345/75rem;
+          margin: 0 0 20/75rem 20/75rem;
+          background: #e8ecef;
+          border-radius: 8/75rem;
+          display: flex;
+          align-items: center;
+          img {
+            width: 50%;
+            display: block;
+            margin: 0 auto;
+          }
+        }
+      }
+
+      .grid {
+        position: relative;
+        width: 100%;
+        z-index: 1;
+        .grid-item {
+          position: relative;
+          width: 345/75rem;
+          padding: 0 0 20/75rem 20/75rem;
+          img {
+            width: 100%;
+            border-radius: 8/75rem;
+
+            &:before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: .267rem;
+              right: 0;
+              bottom: .267rem;
+              background-color: #ededed;
+              background-image: url("https://geshopimg.logsss.com/uploads/fb4WJHk2lcCPOaxiFsNBeozy9R3hEGuT.png");
+              background-position: center;
+              background-repeat: no-repeat;
+            }
+          }
+        }
+      }
+    }
+  }
+}

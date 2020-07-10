@@ -1,0 +1,49 @@
+{% set siteData = {
+	buyRadius: 'rg' in siteCode ? 2 : 20
+} %}
+
+{% set pageData = {
+	buyBgC:data.buyBgC is not null?data.buyBgC:'#FD9E62',
+	buyBorderC:data.buyBorderC is not null?data.buyBorderC:'#FD9E62',
+	goodsBgc:data.goodsBgc|default('#ffffff'),
+	buyHeight:data.buyHeight|default(40),
+	buyWidth:data.buyWidth|default(240),
+	buyMarginT:data.buyMarginT|default(15),
+	buyMarginB:data.buyMarginB|default(15),
+	buyMarginL:data.buyMarginL|default(10),
+	buyMarginR:data.buyMarginR|default(10),
+	buyRadius:data.buyRadius|default(siteData.buyRadius),
+	buyFtS:data.buyFtS|default(16),
+	buyFtW:data.buyFtW|default(100),
+	buyBorderW:data.buyBorderW|default('0'),
+} %}
+
+<div class="geshop-component-box component-drag clearfix" data-gid="U000044" data-key="U000044" data-id="{{ pageInstanceId }}">
+	<!-- embed stylesheet begin -->
+	<style type="text/css">
+		[data-id="{{ pageInstanceId }}"] .component-self-goodWrap:hover, [data-id="{{ pageInstanceId }}"] .current {
+			border-color:{% if data.goodsBdC %}{{data.goodsBdC}}!important;{% endif %}
+		}
+	</style>
+  <!-- embed stylesheet end -->
+	<div class="geshop-col-12" style="
+	{% if data.boxMarginTop %}margin-top: {{ data.boxMarginTop }}px;{% endif %}
+	{% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}">
+		<div class="gs-btn-area text-center" style="margin:{{pageData.buyMarginT}}px {{pageData.buyMarginR}}px {{pageData.buyMarginB}}px {{pageData.buyMarginL}}px;">
+			<a href="{{data.buyLink|default('javascript:;')}}" {% if data.isOpenNew == 1 %}target="_blank"{% endif %}
+			   class="gs-btn btn-primary {% if pageData.buyFtW == 'bold' %}site-bold-strict{% endif %}"
+			   style="{% if pageData.buyBgC %}background-color:{{pageData.buyBgC}};{% endif %}{% if data.buyFtC %}color:{{data.buyFtC}};{% endif %}
+			{% if pageData.buyFtS %}font-size:{{pageData.buyFtS}}px;{% endif %}
+			{% if pageData.buyFtW %}font-weight:{{pageData.buyFtW}};{% endif %}
+			{% if data.buyBgImg %}background:url({{data.buyBgImg}}) no-repeat 0 0/100% 100%;border:none;{% endif %}
+			{% if pageData.buyRadius %}border-radius:{{pageData.buyRadius}}px;{% endif %};
+			{% if pageData.buyWidth %}width:{{pageData.buyWidth}}px;{% endif %}
+			{% if pageData.buyHeight %}height:{{pageData.buyHeight}}px;line-height:{{pageData.buyHeight}}px;{% endif %}
+			{% if pageData.buyBorderC %}border-color:{{pageData.buyBorderC}};{% endif %}
+			border-width:{{pageData.buyBorderW|default('0')}}px;
+			{% if data.buyBorderS %}border-style:{{data.buyBorderS}};{% endif %}">
+					{{data.buyText|default("Button")}}
+			</a>
+		</div>
+	</div>
+</div>

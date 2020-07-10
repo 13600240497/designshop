@@ -1,0 +1,86 @@
+{
+    "fields": {
+        "goodsDataSource": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "cateId": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "iconFirstImg": {
+            "is_public": "1",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "iconSecondImg": {
+            "is_public": "1",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "iconThirdImg": {
+            "is_public": "1",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "btnBgColor": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "leaderBoardTextColor": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "item_radius": {
+            "is_public": "1",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "goodsQuantity": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "shop_price_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        }
+    },
+    "languages": {
+        "new_rank_label": {
+            "en": "XX pcs sold in XX days",
+            "fr": "XX pièces vendues en XX jours",
+            "es": "XX piezas vendidas en XX días",
+            "de": "XX pcs in XX Tagen verkauft",
+            "pt": "XX pçs vendido em XX dias",
+            "it": "XX pz. venduti in XX giorni",
+            "ja": "XXpcsはXX日で販売されました",
+            "ro": "XX bucati vandute in ZZ zile"
+        },
+        "hotsale_rank_label": {
+            "en": "XX pcs sold",
+            "fr": "XX pièces vendus",
+            "es": "XX piezas vendidas",
+            "de": "XX Stücke verkauft",
+            "pt": "XX pcs vendidos",
+            "it": "XX pz. venduti",
+            "ja": "XX個が販売されました",
+            "ro": "XX bucati vandute"
+        },
+        "discount_rank_label": {
+            "en": "XX% OFF",
+            "fr": "XX% de réduction",
+            "es": "XX% de descuento",
+            "de": "XX% Rabatt",
+            "pt": "XX% de desconto",
+            "it": "Sconto del XX%",
+            "ja": "XX%オフ",
+            "ro": "XX% REDUCERE"
+        }
+    }
+}

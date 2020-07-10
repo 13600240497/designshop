@@ -1,0 +1,36 @@
+{% set static = {
+	discountFtS:data.discountFtS|default(12)
+	}
+%}
+
+{% set goodsData = {
+	boxMarginBottom:data.boxMarginBottom|default(40),
+	boxBgC:data.boxBgC is not null?data.boxBgC:'#ffd5ce',
+	tabBgc:data.tabBgc is not null?data.tabBgc:'#F8F8F8',
+	tabTextColor:data.tabTextColor is not null?data.tabTextColor:'#FFFFFF',
+	tagWidth:data.tagWidth|default(40),
+	tagHeight:data.tagHeight|default(48),
+	rankTextColor:data.rankTextColor is not null?data.rankTextColor:'#FFFFFF',
+	salePicTextColor:data.salePicTextColor is not null?data.salePicTextColor:'#333333',
+	salePicColorHover:data.salePicColorHover is not null?data.salePicColorHover:'#333333',
+	disBgc:data.disBgc is not null?data.disBgc:'#B8BEC4',
+	disTextColor:data.disTextColor is not null?data.disTextColor:'#FFFFFF',
+	btnWidth:data.btnWidth|default(150),
+	btnHeight:data.btnHeight|default(36),
+	btnBgcColor:data.btnBgcColor is not null?data.btnBgcColor:'#333333',
+	btnTextColor:data.btnTextColor is not null?data.btnTextColor:'#FFFFFF',
+	rankArea:data.rankArea|default(0),
+	goodsBorderColorHover:data.goodsBorderColorHover is not null?data.goodsBorderColorHover:'#FFFFFF',
+	goodsShadowColorHover:data.goodsShadowColorHover is not null?data.goodsShadowColorHover:'#D9D9D9',
+	salePriceSize:data.salePriceSize|default(24),
+	btnText:data.btnText|default('SNAP UP >'),
+	btnTextSize:data.btnTextSize|default(16),
+	btnBorderColor:data.btnBorderColor is not null?data.btnBorderColor:'#333333',
+	btnBorderColorHover:data.btnBorderColorHover is not null?data.btnBorderColorHover:'#333333',
+	btnTextColorHover:data.btnTextColorHover is not null?data.btnTextColorHover:'#FFFFFF',
+	btnBorderSize:data.btnBorderSize|default(1),
+} %}
+
+
+
+

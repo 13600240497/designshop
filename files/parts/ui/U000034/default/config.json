@@ -1,0 +1,7 @@
+{
+  "fields": {
+    "tpl_html": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "tpl_css": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "tpl_js": { "is_public": "0", "is_m": "0", "is_app": "1" }
+  }
+}

@@ -1,0 +1,13 @@
+{% set space = '#U000001_'~pageInstanceId %}
+{% set body =  space~' .geshop_U000001_template3_v3_wrapper' %}
+
+{{ body }} {
+    margin-bottom: {{ data.box_margin_bottom | default(32) }}px;
+    {% if data.box_bg_img is not empty %}
+        background-image: url("{{ data.box_bg_img }}");
+        background-size: cover;
+        background-repeat: no-repeat;
+    {% else %}
+        background-color: {{ data.box_bg_color ?? '#F8F8F8'}};
+    {% endif %}
+}

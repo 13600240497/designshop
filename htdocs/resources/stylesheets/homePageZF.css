@@ -1,0 +1,47 @@
+.geshop-index-lists .ge-home-list-operating .el-button {
+  padding: 0px 0px;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.geshop-index-lists .ge-home-list-operating .el-switch__label {
+  color: #333333;
+}
+.geshop-index-lists .ge-home-list-operating .el-switch__label.is-active {
+  color: #333333;
+}
+.geshop-index-lists .ge-home-list-operating .el-button:hover {
+  background-color: #F4F4F4;
+}
+.geshop-index-lists .ge-home-list-operating .el-button-group .el-button--default {
+  display: none;
+}
+.geshop-index-lists .ge-home-list-operating .el-button-group .el-dropdown__caret-button {
+  display: inline-block;
+  vertical-align: middle;
+}
+.geshop-index-lists .ge-home-list-operating .el-button-group .el-dropdown__caret-button:hover {
+  background-color: #F4F4F4;
+}
+.el-table__body .zf-home-page-title .page-title-tip {
+  position: relative;
+}
+.el-table__body .zf-home-page-title .page-title-tip i {
+  font-style: normal;
+  width: 70px;
+  display: inline-block;
+  padding: 0px 10px;
+  position: absolute;
+  background-color: #fef0f0;
+  color: #f56c6c;
+  margin-left: 5px;
+}
+.geshop-index-access-dialog .el-button.el-button--primary {
+  margin-bottom: 10px;
+}
+.geshop-index-preview-address .el-button.el-button--primary {
+  margin-bottom: 10px;
+}

@@ -1,0 +1,25 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "geshop frontend",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "geshop",
+    "frontend"
+  ],
+  "author": "前端组 - 创新项目部",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "gulp": "^4.0.0",
+    "gulp-better-rollup": "^3.4.0",
+    "gulp-changed": "^3.2.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-less": "^4.0.1",
+    "gulp-uglify": "^3.0.1",
+    "rollup-plugin-babel": "^4.3.2"
+  }
+}

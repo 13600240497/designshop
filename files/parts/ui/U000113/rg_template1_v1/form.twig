@@ -1,0 +1,155 @@
+{% set formData = {
+    id: 'U000113',
+    name: '轮播排行榜组件',
+    theme: 'rg_template1_v1',
+    tabs:[
+        {
+            label: '数据配置',
+            components: [
+            {
+                type: 'fieldset',
+                components: [
+                {
+                    type: 'diy',
+                    src: 'form-dataset.twig'
+                },
+                {
+                    label: '商品分类ID',
+                    name: 'cateId',
+                    public: true
+                }
+            ]
+            }
+        ]
+        },
+        {
+            label: '样式配置',
+            components: [
+            {
+                label: '常用配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '下边距',
+                    desc:'(px)',
+                    name: 'boxMarginBottom',
+                    default: '16',
+                    type: 'input',
+                    col: 2
+                },
+                {
+                    label: '组件背景颜色',
+                    name: 'box_bg_color',
+                    default: '#F8F8F8',
+                    type: 'colorPicker',
+                    col: 2
+                },
+                {
+                    label: '背景是否整体式',
+                    name: 'box_is_whole',
+                    default: '1',
+                    type: 'radio',
+                    options: [
+                    {
+                        label: '是',
+                        value: '1',
+                    },
+                    {
+                        label: '否',
+                        value: '0',
+                    }
+                ]
+                }
+            ]
+            },
+            {
+                label: '商品配置',
+                type: 'fieldset',
+                components: [
+                    {
+                        label: '商品数量',
+                        type: 'radio',
+                        default: 3,
+                        name: 'goods_quantity',
+                        options: [
+                        { label: '一行', value: '3' },
+                        { label: '二行', value: '6' },
+                        { label: '三行', value: '9' },
+                    ]
+                    },
+                    {
+                        type: 'border-style-rg'
+                    },
+                    {
+                        type: 'stock-rg'
+                    }
+                ]
+            },
+            {
+                label: '排行榜图标配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '第一名图标',
+                    name: 'iconFirstImg',
+                    default: '',
+                    type: 'image'
+                },
+                {
+                    label: '第二名图标',
+                    name: 'iconSecondImg',
+                    default: '',
+                    type: 'image'
+                },
+                {
+                    label: '第三名图标',
+                    name: 'iconThirdImg',
+                    default: '',
+                    type: 'image'
+                },
+                {
+                    label: '其他名次图标',
+                    name: 'iconOtherImg',
+                    default: '',
+                    type: 'image'
+                },
+                {
+                    label: '其他榜单文字颜色',
+                    name: 'iconOtherTextColor',
+                    default: '#FFFFFF',
+                    type: 'colorPicker'
+                }
+            ]
+            },
+            {
+                label: '销售价设置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '字体颜色',
+                    name: 'shop_price_color',
+                    default: '#FA386A',
+                    type: 'colorPicker'
+                }
+            ]
+            },
+            {
+                label: '新品/热卖/折扣信息配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '字体颜色',
+                    name: 'discount_color',
+                    default: '#999999',
+                    type: 'colorPicker'
+                }
+            ]
+            }
+        ]
+        }
+    ],
+    moreConfig: []
+} %}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

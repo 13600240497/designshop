@@ -1,0 +1,111 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+{% set suffix ='rem'%}
+{% set remUnit = 75 %}
+
+{% if data.colNum == '1'%}
+    {% set colClass = liCol[0] %}
+{% elseif data.colNum == '2' %}
+    {% set colClass = liCol[1] %}
+{% elseif data.colNum == '3' %}
+    {% set colClass = liCol[2] %}
+{% elseif data.colNum == '4' %}
+    {% set colClass = liCol[3] %}
+{% elseif data.colNum == '5' %}
+    {% set colClass = liCol[4] %}
+{% else %}
+    {% set colClass = liCol[3] %}
+{% endif %}
+
+
+
+
+
+{%
+	set pageData = {
+		price_ft_weight:data.price_ft_weight|default(1),
+		base_bg_shadow:data.base_bg_shadow|default(0),
+		lang:data.lang|default('en'),
+		imgSrc:'https://gloimg.gbtcdn.com/soa/gb/pdm-product-pic/Electronic/2018/01/19/goods_thumb_220-v2/20180119095740_68364.jpg',
+		base_magin_top:data.base_magin_top|default(50)/remUnit~suffix,
+		base_magin_bottom:data.base_magin_bottom|default(50)/remUnit~suffix,
+		base_bgc:data.base_bgc is not null ? data.base_bgc:'#F8F8F8',
+		price_color:data.price_color is not null ? data.price_color:'#f30240',
+		discount_bgc:data.discount_bgc is not null ? data.discount_bgc:'#FF8A00',
+		discount_ftc:data.discount_ftc is not null ? data.discount_ftc:'#FFFFFF',
+		buy_bgc:data.buy_bgc is not null ? data.buy_bgc:'#FF8A00',
+		buy_ftc:data.buy_ftc is not null ? data.buy_ftc:'#FFFFFF',
+		down_bgc: data.down_bgc is not null ? data.down_bgc:'#333333',
+		down_ftc: data.down_ftc is not null ? data.down_ftc:'#FFFFFF',
+		limit_progress_bgc: data.limit_progress_bgc is not null ? data.limit_progress_bgc:'#FF8A00',
+		limit_left_color: data.limit_left_color is not null ? data.limit_left_color:'#FF8A00',
+		limit_type: data.limit_type|default(1),
+		market_active: data.market_active|default(1),
+		price_fts:(data.price_fts|default(36)/remUnit)|number_format(3, '.')~suffix,
+		discount_active: data.discount_active|default(1),
+		discount_height:(data.discount_height|default(72)/remUnit)|number_format(3, '.')~suffix,
+		discount_width:(data.discount_width|default(72)/remUnit)|number_format(3, '.')~suffix,
+		discount_right:(data.discount_right|default(16)/remUnit)|number_format(3, '.')~suffix,
+		discount_top:(data.discount_top|default(16)/remUnit)|number_format(3, '.')~suffix,
+		discount_bgImage:data.discount_bgImage,
+		discount_fts:(data.discount_fts|default(24)/remUnit)|number_format(3, '.')~suffix,
+		discount_off_fts:(data.discount_off_fts|default(24)/remUnit)|number_format(3, '.')~suffix,
+		buy_text:data.buy_text,
+		buy_fts:data.buy_fts|default(24)/remUnit~suffix,
+		limit_end_active: data.limit_end_active|default(1),
+		goods_title_active: data.goods_title_active|default(1),
+		down_active: data.down_active|default(1),
+		limit_active: data.limit_active|default(1),
+		limit_stock_active: data.limit_stock_active|default(1),
+
+		baseWidth:1000,
+		col:2,
+		marginRight:12,
+		server_label_active:data.server_label_active|default(0),
+
+		view_more_ftc:data.view_more_ftc is not null ? data.view_more_ftc : "#333333",
+		view_more_bgc:data.view_more_bgc is not null ? data.view_more_bgc : "#FFFFFF",
+		view_more_text:data.view_more_text,
+		view_less_text:data.view_less_text,
+		view_more_border_color:data.view_more_border_color is not null ? data.view_more_border_color : "#333333",
+		view_more_fts:(data.view_more_fts|default(24)/remUnit)|number_format(3, '.'),
+		view_more_radius:(data.view_more_radius|default(4)/remUnit)|number_format(3, '.')~suffix,
+
+		view_all_ftc:data.view_all_ftc is not null ? data.view_all_ftc : "#333333",
+		view_all_text:data.view_all_text,
+		view_all_link:data.view_all_link|default(""),
+		view_all_fts:(data.view_all_fts|default(28)/remUnit)|number_format(3, '.'),
+		view_all_weight:data.view_all_weight|default(0),
+		view_all_active:data.view_all_active|default(1),
+	}
+%}
+
+{% set liWidth = (pageData.baseWidth-3*pageData.marginRight)/pageData.col %}
+
+
+<div class="geshop-component-box component-drag geshop-component-goods component-sync clearfix ui-U000094_model3 geshop-gb-component ui-{{ pageInstanceId }}" data-key="U000094"
+data-id="{{ pageInstanceId }}" data-editenv="{{data.isEditEnv}}" data-static-domain="{{staticDomain}}" data-vis="{{liLength}}"
+data-limitendactive = "{{pageData.limit_active}}"
+data-lang="{{lang}}"
+style="{% if data.boxMarginTop %}margin-top: {{ data.boxMarginTop }}px;{% endif %} {% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}">
+    <!-- embed stylesheet begin -->
+	{{ include ('@app/files/parts/ui/U000094/model3/style.twig') }}
+	<!-- embed stylesheet end -->
+
+    <div class="geshop-col-12">
+		<div class="gb_goodsWrap gb_wrapper_common" data-skus="{{data.goodsSKUList}}" data-isEditEnv="{{data.isEditEnv}}" style="{% if data.baseFtFa %}font-family:{{data.baseFtFa}};{% endif %}">
+    		{# felix #}
+    		<ul  class="clearfix gb-list-default gb-lists-default" data-shownum ="{{data.defaultGoodsCount}}">
+					{#广告图#}
+					{{ include ('@app/files/parts/temp/gb/common/default_m/goodAdImg.twig') }}
+					{#广告图#}
+    			{% for key,item in data.goodsInfo|default(0..2)%}
+					{% set isHide = (key >= data.defaultGoodsCount and data.defaultGoodsCount > 0) ? 'isHide' : "" %}
+					{{include ('@app/files/parts/temp/gb/index_default_m_test.twig')}}
+    			{% endfor %}
+    		</ul>
+			{# view 按钮 #}
+			{{include ('@app/files/parts/temp/gb/common/default_m/goodMoreBtn.twig')}}
+		</div>
+    </div>
+</div>
+

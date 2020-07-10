@@ -1,0 +1,13 @@
+{# DL 上下边距 公共配置样式#}
+{{ space }} {
+margin-top: {{ data.box_margin_top | default(0) }}px !important;
+margin-bottom: {{ data.box_margin_bottom | default(0) }}px !important;
+}
+
+{# M #}
+@media screen and (max-width: 767px){
+{{ space }}{
+margin-top: {{ data.box_margin_top_m | default(0) }}px !important;
+margin-bottom: {{ data.box_margin_bottom_m | default(0) }}px !important;
+}
+}

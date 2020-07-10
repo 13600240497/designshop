@@ -1,0 +1,88 @@
+{%
+    set classSpace = '.geshop-U000164-default-v2-'~pageInstanceId
+%}
+
+{{classSpace}} {
+    margin-bottom: {{ data.boxMarginBottom | default(32) }}px;
+}
+
+{{classSpace}} .geshop-BP-block {
+    background-color: {{ data.cmptBgColor | default('#F8F8F8') }};
+}
+
+{# 标题栏样式定制 #}
+{{classSpace}} .geshop-BP-header {
+    color: {{ data.titleFontColor | default('#333333') }};
+    font-size: {{ data.titleFontSize | default(40) }}px;
+    height: {{ data.titleHeight | default(100) }}px;
+    line-height: {{ data.titleHeight | default(100) }}px;
+    {% if data.titleBgImg is empty %}
+        background: {{ data.titleBgColor | default('#ededed') }};
+    {% else %}
+        background: {{ 'url('~data.titleBgImg~')' }};
+    {% endif %}
+}
+
+{# 商品标题 样式定制 #}
+{{classSpace}} .BP-goods-title {
+    color: {{ data.goodsFontColor | default('#999') }} !important;
+}
+
+{# 售价，积分 样式定制 #}
+{{classSpace}} .BP-goods-price {
+    color: {{ data.goodsSalePriceFontColor | default('#333333') }} !important;
+}
+
+{# 库存 样式定制 #}
+{{classSpace}} .BP-goods-left {
+    background: {{ data.goodsLeftBgColor | default('#ffffff') }} !important;
+    color: {{ data.goodsLeftFontColor | default('#666666')  }} !important;
+}
+
+{# 兑换按钮 样式定制 #}
+{{classSpace}} .BP-goods-buynow a {
+    width: {{ data.goodsBtnWidth }}px !important;
+    height: {{ data.goodsBtnHeight }}px !important;
+    line-height: {{ data.goodsBtnHeight }}px !important;
+    border-radius: {{ data.goodsBtnRadius }}px !important;
+    font-size: {{ data.goodsBtnFontSize }}px !important;
+    color: {{ data.goodsBtnFontColor | default('#ffffff') }} !important;
+    {% if data.goodsBtnImg %}
+        background-image: {{ 'url('~data.goodsBtnImg~')'}};
+    {% else %}
+        background-color: {{ data.goodsBtnBgColor | default('#333333') }} !important;
+    {% endif %}
+}
+
+{# 兑换按钮:滑动效果 样式定制 #}
+{{classSpace}} .BP-goods-buynow a:hover {
+    color: {{ data.goodsHoverBtnFontColor | default('#F8F8F8') }} !important;
+    {% if data.goodsHoverBtnImg %}
+        background-image: {{ 'url('~data.goodsHoverBtnImg~')'}};
+    {% else %}
+        background-color: {{ data.goodsHoverBtnBgColor }} !important;
+    {% endif %}
+}
+
+{# viewmore 样式定制 #}
+{{classSpace}} .geshop-BP-viewmore a {
+    color: {{ data.viewmoreFontColor | default('#333') }} !important;
+    background-color: {{ data.viewmoreBgColor | default('') }} !important;
+    border-color: {{ data.viewmoreBdColor | default('#333') }} !important;
+    font-size: {{ data.viewmoreFontSize | default('16') }}px !important;
+    border-radius: {{ data.viewmoreRadius | default('20') }}px !important;
+}
+{# viewmore滑动效果 样式定制 #}
+{{classSpace}} .geshop-BP-viewmore a:hover {
+    {% if data.viewmoreHoverBgColor %}
+        background-color: {{ data.viewmoreHoverBgColor }};
+    {% endif %}
+    color: {{ data.viewmoreHoverFontColor }} !important;
+    border-color: {{ data.viewmoreHoverBdColor }} !important;
+}
+
+{# 鼠标滑过商品的样式定制 #}
+{{classSpace}} .geshop-BP-good-list ul li:hover {
+    border-color: {{ data.goodsHoverBdColor | default('#999') }};
+    box-shadow: 0px 0px 18px 0px {{ data.goodsHoverShadow | default('#cccccc') }};
+}

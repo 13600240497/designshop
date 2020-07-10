@@ -1,0 +1,115 @@
+{% set sourceString = data.goodsInfo | json_encode | raw %}
+{% if (sourceString == '[{"label":"","lists":[]}]' or sourceString == '[]' or sourceString == 'null') %}
+    {% set _product = {
+        'goods_title': 'Halloween Theme Letter Printy Casual Hoodie - White M.',
+        'goods_img': '',
+        'url_title': '',
+        'shop_price': '0.00'
+    } %}
+    {% set goodsList = [
+        {
+            'label': 'test',
+            'lists': [ _product, _product, _product, _product ] 
+        }
+    ] %}
+{% else %}
+    {% set goodsList = data.goodsInfo %}
+{% endif %}
+{# {{ goodsList | json_encode }} #}
+ 
+<div
+    class="egeshop-component-box component-drag"
+    data-key="U000077"
+    data-theme="zaful"
+    data-id="{{ pageInstanceId }}"
+    data-unique="true"
+    data-fontColorActive="{{ data.fontColorActive | default('#e33194') }}"
+    data-fontColorBtn="{{ data.fontColorBtn | default('#000000') }}"
+    data-bgColorBtn="{{ data.bgColorBtn | default('#ffffff') }}"
+    data-borderColorBtn="{{ data.borderColorBtn | default('#000000') }}"
+>
+  <!-- embed stylesheet begin -->
+  <style type="text/css">
+    {% set namespace = '[data-key="U000077"][data-id="'~pageInstanceId~'"]' %}
+    
+    {{ namespace }} .egeshop-recommend-category-inline-list li a {
+        color: {{ data.fontColorCommon }};
+        font-size: {{ (data.fontSizeCommon|default(32)) / 75~'rem' }};
+    }
+    {{ namespace }} .egeshop-recommend-category-inline-list li.active a {
+        color: {{ data.fontColorActive }};
+        font-size: {{ (data.fontSizeActive|default(44)) / 75~'rem' }};
+    }
+    {{ namespace }} .egeshop-recommend-category-inline-list li.active a:after {
+      background-color: {{ data.fontColorActive | default('#e33194') }};
+    }
+    {{ namespace }} .egeshop-recommend-category-all li.active a {
+        color: {{ data.fontColorActive }};
+        border-color: {{ data.fontColorActive }};
+    }
+    {{ namespace }} .my_shop_price {
+        color: {{ data.priceColor }};
+    }
+  </style>
+  <!-- embed stylesheet end -->
+  {% if goodsList | length > 0 %}
+  <div class="egeshop-recommend-block js_geshopRecommendBlock" style="margin-bottom: {{ ((data.boxMarginBottom | default(98)) / 75) | number_format(3, '.') }}rem;">
+    <div class="egeshop-recommend-category-block-warp">
+      <div class="egeshop-recommend-category-block">
+      <div class="egeshop-recommend-category-inline">
+        <div class="egeshop-recommend-category-inline-list js_geshopRecommendCategoryInline">
+          <ul>
+            {% for index, item in goodsList %}
+            <li data-key="{{ index }}" {% if index == 0 %} class="active" {% endif %}>
+                <a href="javascript:;">{{ item.label }}</a>
+            </li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% if goodsList | length > 1 %}
+        <a href="javascript:;" class="egeshop-recommend-category-arrow js_geshopShowCategory"></a>
+        {% endif %}
+      </div>
+        <ul class="egeshop-recommend-category-all js_geshopRecommendCategoryAll">
+        {# egeshop-recommend-category-all-active #}
+            {% for index, item in goodsList %}
+            <li data-key="{{ index }}">
+                <a href="javascript:;">{{ item.label }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    </div>
+    <div class="egeshop-recommend-goods js_geshopRecommendGoods clearfix">
+        {% for index, item in goodsList %}
+            <div class="egeshop-recommend-goods-sub" data-key="{{ index }}" {% if index > 0 %} style="display: none;" {% endif %}>
+                {% for goodsIndex, goods in item.lists %}
+                <div class="egeshop-recommend-item">
+                    <div class="egeshop-recommend-item-inner">
+                        <a href="{{ goods.url_title | default(0) }}" class="egeshop-recommend-picture">
+                            <img class="" src="{{ goods.goods_img | default(data.default.clothes3x4) }}">
+                        </a>
+                        <p class="egeshop-recommend-title">{{ goods.goods_title }}</p>
+                        <p class="egeshop-recommend-price">
+                            <span class="egeshop-recommend-price-sale">
+                                <strong class="bizhong">USD</strong>
+                                <span class="bz_icon"></span>
+                                <span class="my_shop_price" data-orgp="{{ goods.shop_price }}">${{ goods.shop_price | default(0) }}</span>
+                            </span>
+                            {# <span class="egeshop-recommend-price-market">
+                                <strong class="bizhong">USD</strong>
+                                <span class="bz_icon"></span>
+                                <span class="my_shop_price" data-orgp="{{ goods.market_price }}">{{ goods.market_price | default(0) }}</span>
+                            </span> #}
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        
+        
+    </div>
+  </div>
+  {% endif %}
+</div>

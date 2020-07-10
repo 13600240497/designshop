@@ -1,0 +1,207 @@
+.wraper_U000196 {
+    position: relative;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-color: #ECECEC;
+
+    .rule-btn {
+        position: absolute;
+        font-weight: bold;       
+    }
+
+    .amount-list-outer-wraper {
+        position: absolute;
+        overflow: hidden;
+        height: 150px;
+        .amount-list-container {
+            position: relative;
+            .amount-list-item {
+                >span {
+                    display: inline-block;
+                }
+                .serial-number {
+                    font-weight: bold;
+                }
+    
+                .serial-number {
+                    width: 1.386667rem;
+                }
+    
+                .email {
+                    width: 2.133333rem;
+                }
+    
+                .bizhong {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+
+    .amount-list-ranking-btn {
+        position: absolute;
+        border: none;
+        background: none;
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        left: 50%;
+    }
+
+    // START 弹窗基础公共样式 ============================================
+    .ge-196d-dialog {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        z-index: 1000;
+        display: none;
+    }
+    .ge-196d-dialog-mask {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        background: #000;
+        opacity: .3;
+        z-index: 1002;
+    }
+    .ge-196d-dialog-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        -webkit-transform: translate(-50%,-50%);
+        -moz-transform: translate(-50%,-50%);
+        background: #fff;
+        z-index: 1005;
+
+        .title {
+            position: absolute;
+            width: 100%;
+            line-height: 30px;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .content {
+            position: absolute;
+        }
+    }
+    .ge-196d-dialog-body {
+        padding: 0 40px;
+        text-align: center;
+        p {
+            color: #333;
+            font-size: 18px;
+            line-height: 1.4em;
+        }
+    }
+    .ge-196d-dialog-footer {
+        padding-bottom: 40px;
+        position: relative;
+        text-align: center;
+        font-size: 0px;
+        button {
+            display: inline-block;
+            width: 160px;
+            height: 40px;
+            margin: 0px 16px;
+            line-height: 40px;
+            border-radius: 24px;
+            font-size: 20px;
+            color: #ffffff;
+            background: #333;
+        }
+    }
+    .ge-196d-dialog-close {
+        @px: 30px;
+        position: absolute;
+        top: -@px / 2;
+        right: -@px / 2;
+        height: @px;
+        width: @px;
+        border-radius: @px;
+        cursor: pointer;
+        z-index: 1006;
+    }
+
+    .ge-196d-dialog-my-ranking {
+        .ge-196d-dialog-container {
+            border-radius: .213333rem;
+            background-position: 0 0;
+            background-repeat: no-repeat;
+            background-size: 100%;
+
+            .title {
+                background-color: #F0F0F0;
+                border-top-left-radius: .213333rem;
+                border-top-right-radius: .213333rem;
+            }
+
+            .content {
+                width: 100%;
+                text-align: center;
+
+                .amount {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    .ge-196d-dialog-rule {
+        .ge-196d-dialog-container {
+            width: 7.2rem;
+            height: 10.88rem;
+            border-radius: .24rem;
+
+            .title {
+                height: 1.013333rem;
+                line-height: 1.013333rem;
+                background-color: #F0F0F0;
+                text-align: center;
+                font-size: .426667rem;
+                color: #333333;
+                border-top-left-radius: .24rem;
+                border-top-right-radius: .24rem;
+            }
+
+            .content {
+                width: 100%;
+                top: 1.466667rem;
+                font-size: .32rem;
+                padding: 0 .533333rem .533333rem;
+                box-sizing: border-box;
+                line-height: 1.5;
+                max-height: 7.8rem;
+                overflow-y: scroll;
+            }
+        }
+    }
+    .geshop-188d-dialog-footer {
+        position: absolute;
+        bottom: .533333rem;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        font-size: 0px;
+        button {
+            display: inline-block;
+            width: 2.666667rem;
+            height: .8rem;
+            margin: 0px .16rem;
+            line-height: 1;
+            border-radius: .64rem;
+            font-size: .32rem;
+            color: #ffffff;
+            background: #333;
+        }
+    }
+    // END 弹窗基础公共样式 =============================================
+}

@@ -1,0 +1,30 @@
+<div class="geshop-component-box component-drag" data-gid="U000200_model1_v1" data-key="U000200"
+     data-id="{{ pageInstanceId }}" style="
+        margin-top: {{ (data.boxMarginTop|default(0))/75 }}rem;
+        margin-bottom: {{ (data.boxMarginBottom|default(32))/75 }}rem;
+        ">
+    <div class="geshop-image-wrapper" style="position: relative;overflow: hidden;">
+        <a
+                href="{{ data.imgURL|default('javascript:;') }}"
+                target="{{ data.imgURL ? '_special' : '_self' }}"
+                style="{{ data.imgURL ? '':'cursor:initial;' }}"
+        >
+            <div class="geshop-components-default-image-goods">
+                {% if data.isEditEnv == 1 %}
+                    <img src="{% if data.imgSrc %}{{ data.imgSrc }}{% else %} {{ data.default.banner }}{% endif %}">
+                {% else %}
+                    <img src="{% if data.imgSrc %}{{ data.imgSrc }}{% else %} {{ data.default.banner }}{% endif %}">
+{#                    <img#}
+{#                            class="js-lazyload"#}
+{#                            src="{{ data.default.banner }}"#}
+{#                            data-lazy="{% if data.imgSrc %}{{ data.imgSrc }}{% else %} {{ data.default.banner }}{% endif %}"#}
+{#                            alt="{{ data.imgText }}"#}
+{#                            title="{{ data.imgTitle }}"#}
+{#                    >#}
+                {% endif %}
+
+            </div>
+
+        </a>
+    </div>
+</div>

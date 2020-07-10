@@ -1,0 +1,78 @@
+<!-- embed stylesheet begin -->
+{#站点兼容#}
+{% set siteData = {
+    price_color: 'rg' in siteCode ? '#FA386A' : null,
+} %}
+{% set root = '.geshop-U000192-default-'~pageInstanceId %}
+
+<style type="text/css">
+
+	{{ root }}{
+		margin-top: {{ (data.component_margin_top | default(32)) /75 | number_format(3, '.')}}rem;
+		margin-bottom: {{ (data.component_margin_bottom | default(32))  /75 | number_format(3, '.')}}rem;
+	}
+	{{ root }} .combo-container{
+
+	}
+	{{ root }} .combo-container  .cart-wrap{
+		background-color: {{data.buyarea_bgColor | default('#333333')}};
+	}
+	{{ root }} .combo-container .cart-wrap .group-price{
+		color: {{data.total_price_Color | default('#FFFFFF')}};
+		text-shadow: 0 -3px 0 {{data.buyarea_bgColor | default('#333333')}}, -3px 0 0 {{data.buyarea_bgColor | default('#333333')}}, 3px 0 0 {{data.buyarea_bgColor | default('#333333')}}, 0 -3px 0 {{data.buyarea_bgColor | default('#333333')}};
+	}
+	{{ root }} .combo-container .cart-wrap .total-price{
+		color: {{data.total_originalprice_color | default('#FFFFFF')}};
+	}
+	{{ root }} .combo-container .cart-wrap .cart-btn-wrap{
+		border-radius: {{(data.btn_borderRadius | default(30)) /75 | number_format(3, '.') }}rem;
+		background-color: {{data.cart_btn_bgColor | default('#FFFFFF')}};
+	{% if data.cart_bgImage %}
+		background-image: url({{data.cart_bgImage}})
+	{% endif %}
+	}
+	{{ root }} .combo-container .cart-wrap .cart-btn-wrap .cart-text{
+		color: {{data.buyBtn_fontColor | default('#333333')}};
+	}
+	{{ root }} .combo-container .goods-list li .attribute-wrap{
+		background-color: {{data.dropdown_bgColor | default('#F5F5F5')}};
+	}
+
+	{{ root }}  .combo-container .goods-list li .attribute-wrap .arrows.on {
+		border:1px solid {{siteData.price_color | default('#F5F5F5')}};
+	}
+	{{ root }} .combo-container .goods-list li .attribute-wrap .attribute-text{
+		color: {{data.dropdown_fontColor | default('#333333')}};
+	}
+	{{ root }} .combo-container .goods-list li .attribute-wrap .arrows::after {
+		border-top: 1px solid {{data.dropdown_fontColor | default('#333333')}};
+		border-right: 1px solid {{data.dropdown_fontColor | default('#333333')}};
+	}
+	{{ root }} .combo-container .combo-wrap .goods-list li .attribute-wrap .attribute-list{
+		background-color: {{data.dropdown_bgColor | default('#F5F5F5')}};
+		border: 1px solid {{data.dropdown_borderColor | default('#F5F5F5')}};
+	}
+	{{ root }} .combo-container .combo-wrap .goods-list li .attribute-wrap .attribute-list::after{
+		border-top: 1px solid {{data.dropdown_borderColor | default('#FFFFFF')}};
+		border-right: 1px solid {{data.dropdown_borderColor | default('#FFFFFF')}};
+		background-color: {{data.dropdown_bgColor | default('#e6e6e6')}};
+	}
+	{{ root }} .combo-container .combo-wrap .goods-list li .price-wrap .price{
+		color: {{data.shopprice_color | default(siteData.price_color|default('#000000'))}};
+	}
+	{{ root }} .combo-container .combo-wrap .goods-list li .attribute-wrap .attribute-list a{
+		color: {{data.dropdown_fontColor | default('#333333')}}
+	}
+	{{ root }} .combo-container .combo-wrap .goods-list li .attribute-wrap .attribute-list a:hover{
+		background-color: {{data.buyarea_activeColor | default('#e6e6e6')}};
+	}
+
+	{{ root }} .combo-container .combo-wrap .goods-list{
+	   background-color: {{ data.box_bg_color|default('#F8F8F8') }};
+			   }
+
+	{{ root }} .combo-container .cart-wrap .cart-btn-wrap .ico-cart{
+		background-image: url({{data.cart_image | default('https://geshoptest.s3.amazonaws.com/uploads/6QC3mEOrSG0ghkdDo2pKsPLBcvVZnXw7.png')}})
+	}
+</style>
+<!-- embed stylesheet end -->

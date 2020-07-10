@@ -1,0 +1,52 @@
+<div id="geshop-index-deals-zone-container">
+    {% if data.goodsInfo != 0 %}
+    <div class="index-deals-zone">
+        <div class="geshop_index_deals_zone">
+        {% for content in data.goodsInfo | default(0..3) %} 
+                {% for item in content.lists %}
+            <div class="logsss_event_ps">
+                <a href="{{item.url_title|default('javascript:;')}}">
+                    <img src="{% if content.label %}{{ content.label | default(data.default.good) }}{% else %}{{ item.goods_img | default(data.default.good) }}{% endif %}" alt="" width="375" height="500">
+                </a>
+            </div>
+            {% endfor %} 
+        {% endfor %}
+        </div>
+        <a href="javascript:;" class="index-deals-deal-screen-left"></a>
+        <a href="javascript:;" class="index-deals-deal-screen-right custom-right"></a>
+        {% for index,content in data.goodsInfo | default(0..3) %} 
+            {% for item in content.lists %}
+        <div class="geshop-index-deals-zone-item-{{ index }} index-deals-zone-item logsss_event_ps custom-item custom-area">
+            <h1 class="index-deals-zone-title site-bold-strict">{{data.Categories|default(item.category)}}</h1>
+            <a href="{{item.url_title|default('javascript:;')}}" class="logsss_event_cl" data-logsss-const-value="{'x':'sku','pm':'mp','isFromSearch':'true'}">
+                <p class="index-deals-zone-name">{{item.goods_title|default("请添加描述")}}</p>
+            </a>
+            <p class="index-deals-zone-desc">{{item.goods_title|default("请添加描述")}}</p>
+            <p class="index-deals-zone-price">
+                <span class="my_shop_price index-deals-zone-sale site-font--strict" data-orgp="{{ item.shop_price | default(0) }}">${{ item.shop_price | default(0) }}</span>
+                <span class="my_shop_price index-deals-zone-market" data-orgp="{{ item.market_price | default(0) }}">${{ item.market_price | default(0) }}</span>
+            </p>
+            <p class="index-deals-zone-review">
+                <i>
+                    <i style=" {% if item.score_rank %}width: {{ item.score_rank * 20 }}%;{% endif %}"></i>
+                </i>
+                {% if item.review_total > 0 %}
+                <span>{{item.score_rank}}</span>
+                <span>|</span>
+                <a href="javascript:;">{{item.review_total}}{{data.Comments|default("REVIEWS")}}</a>
+                {% else %}
+                <span class="vote-num">0
+                    <span>|</span> 0 {{data.Comments|default("REVIEWS")}}</span>
+                {% endif %}
+            </p>
+            <p class="index-deals-zone-shop">
+                <a href="{{item.url_title}}" class="site-font--strict logsss_event_cl" data-logsss-const-value="{'x':'sku','pm':'mp','isFromSearch':'true'}">{{data.BuyingText|default('SHOP NOW')}}</a>
+            </p>
+        </div>
+        {% endfor %} 
+        {% endfor %}
+    </div>
+    {% else %}
+    <img src="{{ data.default.recommendation }}" style="display:block;margin:0 auto;">
+    {% endif %}
+</div>

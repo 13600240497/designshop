@@ -1,0 +1,92 @@
+<style>
+    #U000183-default .layui-form-item>.form-item-label .color-gray{
+        color: #999999;
+    }
+</style>
+<style> {{ include('@app/htdocs/resources/stylesheets/design.activity.form.css') }} </style>
+<h4 class="column-title" style="margin-bottom:6px;">组件边距<span></span></h4>
+{# 分端上下间距#}
+{{ include ('@app/files/parts/formTemplate/components/margin-dl.twig') }}
+<h4 class="column-title">图片展示链接布局<span></span></h4>
+<div class="layui-form-item">
+    <label class="form-item-label">图片布局位置</label>
+    <div class="layui-input-block">
+        <input type="radio" name="isDiscountVis" value="1" {% if data.isDiscountVis|default(1) == 1 %} checked{% endif %} title="居左">
+        <input type="radio" name="isDiscountVis" value="2" {% if data.isDiscountVis|default(1) == 2 %} checked{% endif %} title="居中">
+        <input type="radio" name="isDiscountVis" value="3" {% if data.isDiscountVis|default(1) == 3 %} checked{% endif %} title="居右">
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">PC<span class="color-gray">(建议尺寸1920*640px)</span></label>
+    <div class="layui-input-block">
+        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+        <input class="layui-input" type="text" name="adPcImg" value="{{data.adPcImg|default('')}}">
+    </div>
+</div>
+
+
+<div class="layui-form-item">
+    <label class="form-item-label">iPAD<span class="color-gray">(建议尺寸1024*340px)</span></label>
+    <div class="layui-input-block">
+        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+        <input class="layui-input" type="text" name="adPadImg" value="{{data.adPadImg|default('')}}">
+    </div>
+</div>
+
+
+<div class="layui-form-item">
+    <label class="form-item-label">M<span class="color-gray">(建议尺寸750*500px)</span></label>
+    <div class="layui-input-block">
+        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+        <input class="layui-input" type="text" name="adMImg" value="{{data.adMImg|default('')}}">
+    </div>
+</div>
+
+<h4 class="column-title">图片跳转链接<span></span></h4>
+<div class="layui-form-item">
+    <label class="form-item-label">图片跳转链接</label>
+    <div class="layui-input-block">
+        <input type="text" name="imgUrl" autocomplete="off" class="layui-input" value="{{ data.imgUrl | default('') }}">
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="form-item-label">跳转链接是否新窗口打开</label>
+    <div class="layui-input-block">
+    <input type="radio" name="openInNewWindow" value="1" title="是"{% if data.openInNewWindow|default('1') == '1' %} checked{% endif %}>
+    <input type="radio" name="openInNewWindow" value="0" title="否"{% if data.openInNewWindow|default('1') == '0' %} checked{% endif %}>
+    </div>
+</div>
+<h4 class="column-title" style="margin-bottom:0;">图片显示比例 <span class="color-gray">(%)</span></h4>
+
+<div class="layui-form-item">
+    <div class="layui-row layui-col-space20">
+        <div class="layui-col-xs4" filter="" name="filter">
+            <div class="layui-form-item ">
+                <label class="layui-form-label " style="text-align: left;">PC</label>
+                <div class="layui-input-block">
+                    <input type="text" name="pcDisplayScale" autocomplete="off" class="layui-input scale-val" value="{{ data.pcDisplayScale | default(100) }}">
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs4" filter="" name="filter">
+            <div class="layui-form-item ">
+                <label class="layui-form-label " style="text-align: left;">PAD</label>
+                <div class="layui-input-block">
+                    <input type="text" name="padDisplayScale" autocomplete="off" class="layui-input scale-val" value="{{ data.padDisplayScale | default(100) }}">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-xs4" filter="" name="filter">
+            <div class="layui-form-item ">
+                <label class="layui-form-label " style="text-align: left;">M</label>
+                <div class="layui-input-block">
+                    <input type="text" name="mDisplayScale" autocomplete="off" class="layui-input scale-val" value="{{ data.mDisplayScale | default(100) }}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

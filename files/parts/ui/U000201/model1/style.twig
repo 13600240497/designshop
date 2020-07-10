@@ -1,0 +1,62 @@
+<!-- embed stylesheet begin -->
+{% set instanceClass = ".geshop-U000201-model1-#{pageInstanceId}" %}
+<style type="text/css">
+    @media screen and (min-width: 1366px) {
+        {{ instanceClass }} .nav-list {
+            {% if data.border_color %} border: 1px solid {{ data.border_color }}; {% endif %}
+            {% if data.border_radius or data.border_radius == '0' %} border-radius: {{ data.border_radius }}px; {% endif %}
+        }
+
+
+        {{ instanceClass }} .nav-item:first-child .nav-item-text {
+            {% if data.border_radius or data.border_radius == '0' %} border-radius: {{ data.border_radius }}px {{ data.border_radius }}px 0 0; {% endif %}
+        }
+
+        {{ instanceClass }} .nav-item:last-child .nav-item-text {
+            {% if data.border_radius or data.border_radius == '0' %} border-radius: 0 0 {{ data.border_radius }}px {{ data.border_radius }}px; {% endif %}
+        }
+
+        {{ instanceClass }} .nav-item-text {
+            {% if data.normal_color %} color: {{ data.normal_color }}; {% endif %}
+            {% if data.normal_bg_color %} background-color: {{ data.normal_bg_color }}; {% endif %}
+            {% if data.normal_bg_image %} background-image: url({{ data.normal_bg_image }}); {% endif %}
+            {% if data.padding_tb or data.padding_tb == '0' %} padding-top: {{ data.padding_tb }}px; padding-bottom: {{ data.padding_tb }}px; {% endif %}
+            {% if data.padding_lr or data.padding_lr == '0' %} padding-left: {{ data.padding_lr }}px; padding-right: {{ data.padding_lr }}px; {% endif %}
+            {% if data.font_size or data.font_size == '0' %} font-size: {{ data.font_size }}px; {% endif %}
+            {% if data.font_weight == 'bold' %} font-weight: bold; {% endif %}
+        }
+
+        {{ instanceClass }} .nav-item-text.active {
+            {% if data.active_color %} color: {{ data.active_color }}; {% endif %}
+            {% if data.active_bg_color %} background-color: {{ data.active_bg_color }}; {% endif %}
+            {% if data.active_bg_image %} background-image: url({{ data.active_bg_image }}); {% endif %}
+        }
+
+        {{ instanceClass }} .nav-container {
+            {% if data.position == 'left' %} left: 30px; right: auto; {% endif %}
+        } 
+    }
+
+    @media screen and (max-width: 1365px) {
+        {{ instanceClass }} .nav-item-text {
+            {% if data.h_height or data.h_height == '0' %} height: {{ data.h_height }}px; line-height: {{ data.h_height }}px; {% endif %}
+            {% if data.h_font_size or data.h_font_size == '0' %} font-size: {{ data.h_font_size }}px; {% endif %}
+            {% if data.h_color %} color: {{ data.h_color }}; {% endif %}
+            {% if data.h_bg_color %} background-color: {{ data.h_bg_color }}; {% endif %}
+        }
+
+        {{ instanceClass }} .nav-item-text.active {
+            {% if data.h_active_color %} color: {{ data.h_active_color }}; {% endif %}
+            {% if data.h_active_bg_color %} background-color: {{ data.h_active_bg_color }}; {% endif %}
+        }
+
+        {{ instanceClass }} .nav-item {
+            {% if data.h_gap or data.h_gap == '0' %} padding-left: {{ data.h_gap }}px; {% endif %}
+        }
+        
+        {{ instanceClass }} .nav-container {
+            {% if data.h_nav_bg_color %} background-color: {{ data.h_nav_bg_color }}; {% endif %}
+        }
+    }
+</style>
+<!-- embed stylesheet end -->

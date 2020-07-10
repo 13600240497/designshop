@@ -1,0 +1,29 @@
+<div class="geshop-component-box component-drag geshop-U000211-default geshop-U000211-default-{{ pageInstanceId }}" data-key="U000211" data-id="{{ pageInstanceId }}">
+    <!-- embed stylesheet begin -->  
+    <style>
+    {{ include('style.twig') }}
+    </style> 
+    <!-- embed stylesheet end -->
+    <div class="geshop-U000211-default-wrapper">
+        <a href="javascript:;" class="default-image-box">
+            {% if data.image is not empty %}
+                <img src="{{ data.image }}" />
+            {% else %}
+                <div class="geshop-U000211-default-wrapper-preview"></div>
+            {% endif %}
+        </a>
+        <button type="button" id="{% if data.isEditEnv == '0' %}editEnvButton{% endif %}" data-edit="{{ data.isEditEnv }}" class="btn__site-default"></button>
+    </div>
+
+    <script>
+        $(function(){ 
+            geshop_U000211_default_init({
+                lang: '{{ lang }}',
+                pid: '{{ pageInstanceId }}',
+                book_desc: '{{ data.book_desc }}',
+                book_link: '{{ data.book_link }}',
+                book_time: '{{ data.book_time }}',
+            });
+        });
+    </script>
+</div>

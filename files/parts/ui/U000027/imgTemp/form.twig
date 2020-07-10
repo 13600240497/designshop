@@ -1,0 +1,196 @@
+<style>{{ include ('form.css') }}</style>
+
+{%
+
+set formData = {
+    id: 'U000027',
+    name: '水平导航组件配置',
+    theme: 'default',
+    tabs: [
+        {
+            label: '导航配置',
+            components: [
+                {
+                    type: 'diy',
+                    src: 'lib/nav.twig'
+                }
+            ]
+        },
+        
+        {
+            label: '样式配置',
+            components: [
+                {
+                    label: '常用配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '组件下边距(px)',
+                            name: 'component_margin_bottom',
+                            default: 32,
+                            public: false,
+                        },
+                        {
+                            label: '图片宽度(px)',
+                            name: 'img_width',
+                            default: 90,
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: '图片高度(px)',
+                            name: 'img_height',
+                            default: 90,
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: '折行间距(px)',
+                            name: 'wrap_lineheight',
+                            default: 16,
+                            public: false,
+                        }
+                    ]
+                },
+                {
+                    label: '纯文本导航配置',
+                    type: 'fieldset',
+                    components: [
+                         {
+                            label: '背景颜色',
+                            name: 'text_bgColor',
+                            type: 'colorPicker',
+                            default: '#FDFDFD',
+                            public: false,
+                        },
+                         {
+                            label: '选中状态背景颜色',
+                            name: 'text_active_bgColor',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                        },
+                         {
+                            label: '文字颜色',
+                            name: 'text_fontColor',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                        },
+                         {
+                            label: '选中状态文字颜色',
+                            name: 'text_active_fontColor',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            public: false,
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    moreConfig: [
+        {
+            type: 'collapse',
+            items: [
+                {
+                    label: '纯文本导航配置',
+                    components: [
+                        {
+                            label: '文字大小',
+                            name: 'text_fontSize',
+                            default: '18',
+                            public: false,
+                        },
+                        {
+                            label: '导航菜单高度(PX)',
+                            name: 'nav_height',
+                            default: '60',
+                            public: false,
+                        },
+                        {
+                            label: '导航菜单间距(PX)',
+                            name: 'nav_gap',
+                            default: 40,
+                            public: false,
+                        }
+                    ]
+                },
+                {
+                    label: '图片导航配置',
+                    components: [
+                        {
+                            label: '未选中文字颜色',
+                            name: 'img_fontColor',
+                            type: 'colorPicker',
+                            default: '#666666',
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: '选中文字颜色',
+                            name: 'img_active_fontColor',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: '文字大小(PX)',
+                            name: 'img_fontSize',
+                            default: 16,
+                            public: false,
+                        },
+                        {
+                            label: '单个导航左边距(px)',
+                            name: 'nav_ml',
+                            default: 55,
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: '单个导航右边距(px)',
+                            name: 'nav_mr',
+                            default: 55,
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: '文字上边距(px)',
+                            name: 'font_mt',
+                            default: 4,
+                            public: false
+                        },
+                    ]
+                }
+            ]
+        }
+    ],
+    onSubmit: 'onSubmit'
+}
+
+%}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+<script>
+    
+
+    {#  自定义保存函数 #}
+    function onSubmit(progress) {
+      var navData = [];
+      $('.layui-form-item .nav-item').each(function(){
+        var navName = $(this).find('.layui-form-checkbox span').text();
+        var imgUrl = $(this).find('input.nav-img').val();
+        var navId = $(this).find('input[name=nav_menu]').val();
+        navData.push({
+          id: navId,
+          name: navName,
+          img:　imgUrl
+        });
+      });
+      $('input[name=navNewData]').val(JSON.stringify(navData));
+
+      progress.next();
+    };
+</script>  

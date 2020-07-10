@@ -1,0 +1,1 @@
+"use strict";$(function(){$(".geshop-U000210-default .gs-blog-content").each(function(o,n){$(n).hover(function(){$(n).addClass("hover-blog-content")},function(){$(n).removeClass("hover-blog-content")})})});

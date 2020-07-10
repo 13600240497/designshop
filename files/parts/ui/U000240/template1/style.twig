@@ -1,0 +1,27 @@
+<!-- embed stylesheet begin -->
+<style type="text/css" >
+    {% set class_root = '.geshop-u000240-template1-'~pageInstanceId %}
+    {% set class_box = '.geshop-u000240-template1-'~pageInstanceId~' .geshop-container' %}
+    {% set unit = 'rem' %}
+    {% if data.isEditEnv== 0 %}
+        .hotArea {
+            background: transparent;
+        }
+    {% else %}
+        .hotArea {
+            border: 1px dotted #ffffff;
+            background: rgba(30, 159, 255, .5);
+        }
+    {% endif %}
+    {{ class_root }} {
+        margin-top: {{ data.margin_top ?? 0  }}px;
+        margin-bottom: {{ data.margin_bot ?? 32 }}px;
+    }
+    {{ class_root }} .geshop-u000240-box {
+
+     }
+    {{ class_root }} .geshop-u000240-container{
+
+    }
+</style>
+<!-- embed stylesheet end -->

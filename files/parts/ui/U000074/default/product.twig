@@ -1,0 +1,8 @@
+<a {% if data.link %}href="{{ data.link }}"{% endif %} style="display: block; text-align: {{ data.imgAlign }};{% if data.ImgHeight %} height: {{ data.ImgHeight }}px;{% endif %}" class="logsss_event"
+  data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.imgSrc }}','cporder':'{{ layoutIndex }}','rank':'1'} }"
+   {% if data.target_active == "1" %} target="_blank" {% endif %}>
+  <img class="{{ data.loadImgClass | default('js_gdexp_lazy') }} js-geshopImg-lazyload js_gbexp_lazy js-lazyload" width="{{ data.ImgWidth }}" height="{{ data.ImgHeight }}" alt="{{ data.imgAlt }}"
+    data-original="{{ data.imgSrc | default(data.default.banner) }}" data-lazy="{{ data.imgSrc | default(data.default.banner) }}" src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs="
+    data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.imgSrc }}','cporder':'{{ layoutIndex }}','rank':'1'} }"
+    style="{% if data.imgSrc|length == 0 %}max-width: 100%;{% endif %}vertical-align: top;">
+</a>

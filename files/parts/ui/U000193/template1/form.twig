@@ -1,0 +1,50 @@
+{%
+
+set formData = {
+    id: 'U000193',
+    name: '首页老客弹窗',
+    theme: 'default',
+    tabs: [
+        {
+            label: '样式配置',
+            components: [
+                {
+                    label: '常用配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '组件宽度(px)',
+                            name: 'component_width',
+                            default: 780,
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: '组件高度(px)',
+                            name: 'component_height',
+                            default: 480,
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: '组件背景图片',
+                            name: 'component_bgImage',
+                            type: 'image',
+                            public: false,
+                        },
+                        {
+                            label: '跳转链接',
+                            name: 'href',
+                            public: false
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
+%}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

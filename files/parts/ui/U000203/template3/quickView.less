@@ -1,0 +1,92 @@
+.fast-goods {
+    float: left;
+    width: 100%;
+    position: relative;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+
+    // pc 才显示
+    @media (max-width: 1024px) {
+        display: none !important;
+    }
+}
+
+.fast-goods-arrow {
+    position: absolute;
+    top: -7px;
+    left: 300px;
+    border-top: 2px solid #000;
+    border-right: 2px solid #000;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    transform: rotateZ(-45deg);
+}
+
+.fast-goods-body {
+    overflow: hidden;
+}
+
+.fast-goods-content {
+    min-width: 800px;
+}
+
+.fast-goods-close {
+    z-index: 1;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #000;
+    border-radius: 50%;
+    transform: rotateZ(45deg);
+    cursor: pointer;
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background-color: #000;
+    }
+
+    &:before {
+        margin-top: -1px;
+        margin-left: -6px;
+        width: 12px;
+        height: 2px;
+    }
+
+    &:after {
+        margin-top: -6px;
+        margin-left: -1px;
+        width: 2px;
+        height: 12px;
+    }
+}
+
+.fast-good-mask {
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background-color: rgba(255, 255, 255, .5);
+}
+
+.fast-good-mask img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -16px;
+    margin-left: -16px;
+    vertical-align: top;
+}

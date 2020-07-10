@@ -1,0 +1,23 @@
+.wrap-U000058-model_fullscreen.gs-index-main{
+  margin: 0 auto;
+  width: 100%;
+}
+
+.wrap-U000058-model_fullscreen .icon-up{
+  background-image:url('../../../resources/images/carousel-image/up.png');
+}
+.wrap-U000058-model_fullscreen .icon-down{
+  background-image:url('../../../resources/images/carousel-image/down.png');
+} 
+.wrap-U000058-model_fullscreen .icon-delete{
+  background-image:url('../../../resources/images/carousel-image/delete.png');
+}
+
+.wrap-U000058-model_fullscreen .js_gdexp_lazy {
+  opacity: 1 !important;
+  display:inline !important;
+}
+
+.wrap-U000058-model_fullscreen .swiper-slide-item {
+  text-align: center;
+}

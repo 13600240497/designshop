@@ -1,0 +1,83 @@
+ {% set remUnit = 37.5 %}
+<div data-key="U000065" data-id="{{ pageInstanceId }}" data-static-domain="{{staticDomain}}" data-gid="U000065_mobile_timeslot"
+	class="geshop-component-box warp_U000065_mobile_timeslot component-drag warp-{{ pageInstanceId }}">
+	<!-- embed stylesheet begin -->
+	<style type="text/css">
+			.warp-{{ pageInstanceId }}{
+				min-height: 60px;
+				width: {% if data.isEditEnv %}100%{% else %}{{ (data.ImgWidth | default(750) / 75) | number_format(3, '.') }}rem{% endif %};
+				{% if data.ImgHeight %}
+					height: {{ (data.ImgHeight / 75) | number_format(3, '.') }}rem;
+				{% else %}
+					min-height:{{(400/75)| number_format(3, '.')}}rem;
+				{% endif %}
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: {{ ((data.marginTop | default(0)) / 75) | number_format(3, '.') }}rem;
+				margin-bottom: {{ ((data.marginBottom | default(0)) / 75) | number_format(3, '.') }}rem;
+				overflow: hidden;
+			}
+			.warp-{{ pageInstanceId}} .swiper-pagination-bullet {
+				position: relative;
+				margin: 0 .16rem!important;
+				vertical-align: top;
+				border-radius: 0;
+				background-color: rgba(255,255,255,.5);
+				width: .853rem;
+				height: .053rem;
+			}
+
+			.warp-{{ pageInstanceId }} .swiper-pagination-bullet:after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 0;
+				height: .053rem;
+				background-color: #fff;
+			}
+
+			.warp-{{ pageInstanceId }} .swiper-pagination-bullet.swiper-pagination-bullet-active:after {
+				width: .853rem;
+				-webkit-transition: width linear .3s;
+				-moz-transition: width linear .3s;
+				transition: width linear .3s;
+			}
+	</style>
+	<!-- embed stylesheet end -->
+	<div class="swiper-container geshop-index-banner init-not" style="height: 100%;" data-group='{{ json_encode_no_unicode(data.defaultTimeSlotImgItem) }}'>
+		<div class="swiper-wrapper">
+		
+			{% if data.isEditEnv == 1 %}
+				{% include 'edit.twig' with{"data":data}%}
+			{% else %}
+				{% include 'product.twig' with{"data":data} %}
+			{% endif %}
+		</div>
+		<div class="swiper-pagination"></div>
+
+		<script type="text/html" class="gs_time_banner">
+		{# 渲染banner #}
+		<%# $.each(d.imgSrc,function(index,it){ %>
+		<div class="swiper-slide">
+			{#第一张图片直接输出不做懒加载#}
+			<%# if (index + 1 == 1){ %>
+			<a href="<% it.imgLink %>" class="logsss_event"
+			   data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'<% it.imgSource %>','cporder':'{{ layoutIndex }}','rank':'<% index + 1 %>'} }">
+				<img src="<% it.imgSource %>" class="js-swiper-img"  style="border: 0; width: {% if data.isEditEnv %}100%{% else %}{{ (data.ImgWidth / 75) | number_format(3, '.') }}rem{% endif %}; height: {{ (data.ImgHeight / 75) | number_format(3, '.') }}rem;"
+					 data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'<% it.imgSource %>','cporder':'{{ layoutIndex }}','rank':'<% index + 1 %>'} }">
+			</a>
+			<%# } else { %>
+			<a href="<% it.imgLink %>" class="logsss_event"
+			   data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'<% it.imgSource %>','cporder':'{{ layoutIndex }}','rank':'<% index + 1 %>'} }">
+				<img class="swiper-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-src="<% it.imgSource %>" data-original="<% it.imgSource %>" style="border: 0; width: {% if data.isEditEnv %}100%{% else %}{{ (data.ImgWidth / 75) | number_format(3, '.') }}rem{% endif %}; height: {{ (data.ImgHeight / 75) | number_format(3, '.') }}rem;"
+					 data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'<% it.imgSource %>','cporder':'{{ layoutIndex }}','rank':'<% index + 1 %>'} }">
+			</a>
+			<div class="swiper-lazy-preloader"></div>
+			<%# } %>
+		</div>
+		<%# }); %>
+
+		</script>
+ </div>
+</div>

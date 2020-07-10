@@ -1,0 +1,27 @@
+{% set space = '#U000068_'~pageInstanceId %}
+{% set body =  space~' .geshop-component-body' %}
+{% set suffix = 'rem' %}
+{% set remUnit = 75 %}
+
+{{ body }}{
+margin-bottom: {{ (data.box_margin_bottom | default(32))/remUnit }}{{ suffix }};
+background-color: {{ data.box_bg_color|default('#F8F8F8') }};
+}
+
+{{ body }} .list_item{
+border-radius: {{ (data.goods_border_radius|default(4))/remUnit }}{{ suffix }};
+border: 1px solid {{ data.hover_border_color|default('#FFFFFF') }};
+}
+
+{{ body }} .my_shop_price{
+font-size:{{ (data.shop_price_font_size|default(32))/remUnit }}{{ suffix }}
+}
+
+{# view_more #}
+{{ body }} .view_more{
+border: 1px solid {{ data.see_more_border_color|default('#222222') }}
+}
+{{ body }} .view_more span{
+font-size:{{ (data.see_more_font_size|default(28))/remUnit }}{{ suffix }};
+color:{{ data.see_more_color|default('#222222') }};
+}

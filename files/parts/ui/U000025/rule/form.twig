@@ -1,0 +1,212 @@
+{% set formData = {
+    id: 'U000025',
+    name: 'Banner 组件',
+    theme: 'rule',
+    tabs: [
+        {
+            label: '内容配置',
+            components: [
+                {
+                    label: '内容配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '图片宽度(px)',
+                            name: 'img_width',
+                            default: '1200',
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: '图片高度(px)',
+                            name: 'img_height',
+                            default: '480',
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            type: 'diy',
+                            src: './form-img.twig'
+                        },
+                        {
+                            label: '跳转链接',
+                            name: 'jump_url',
+                            public: false
+                        }
+                    ]
+                },
+                {
+                    label: '规则配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '规则按钮是否开启',
+                            type: 'radio',
+                            name: 'rule_btn_type',
+                            default: 1,
+                            options: [
+                                { label: '是', value: 1 },
+                                { label: '否', value: 2 }
+                            ]
+                        },
+                        {
+                            label: '按钮/弹窗标题文案',
+                            name: 'btn_title',
+                            default: 'Rule',
+                            public: false
+                        },
+                        {
+                            label: '规则文案',
+                            name: 'rule_title',
+                            type: 'textarea',
+                            public: false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            label: '样式配置',
+            components: [
+                {
+                    label: '常用配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '组件上边距(px)',
+                            name: 'margin_top',
+                            public: false,
+                            default: '0',
+                            col: 2
+                        },
+                        {
+                            label: '组件下边距(px)',
+                            name: 'margin_bottom',
+                            public: false,
+                            default: '0',
+                            col: 2
+                        },
+                        {
+                            label: '按钮宽度(px)',
+                            name: 'btn_width',
+                            public: false,
+                            default: '88',
+                            col: 2
+                        },
+                        {
+                            label: '按钮高度(px)',
+                            name: 'btn_height',
+                            public: false,
+                            default: '38',
+                            col: 2
+                        },
+                        {
+                            label: '按钮上偏移(px)',
+                            name: 'btn_offset_up',
+                            public: false,
+                            default: '40',
+                            col: 2
+                        },
+                        {
+                            label: '按钮右偏移(px)',
+                            name: 'btn_offset_right',
+                            public: false,
+                            default: '40',
+                            col: 2
+                        },
+                        {
+                            label: '按钮文字颜色',
+                            name: 'btn_foot_color',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: '按钮背景颜色',
+                            name: 'btn_bg_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: '按钮背景图片',
+                            name: 'btn_bg_img',
+                            type: 'image'
+                        },
+                        {
+                            label: '按钮圆角',
+                            desc: '(请按格式填写：左上 右上 右下 左下，例如：8px 8px 8px 8px，请注意要写上px否则无效)',
+                            name: 'btn_border_radius',
+                            public: false,
+                            default: '4px 4px 4px 4px'
+                        },
+                        {
+                            label: '按钮文字大小(px)',
+                            name: 'btn_title_size',
+                            default: '14'
+                        }
+                    ]
+                },
+                {
+                    label: '规则弹窗设置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '背景图片',
+                            type: 'image',
+                            name: 'popup_bg_img_url',
+                            default: 'https://geshopimg.logsss.com/uploads/CKdHMiRSJycYEGvj7meBflap2s6hDQ3t.png',
+                            public: false
+                        },
+                        {
+                            label: '文字颜色',
+                            name: 'popup_font_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false
+                        },
+                        {
+                            label: '背景颜色',
+                            name: 'popup_bg_color',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            public: false
+                        },
+                        {
+                            label: '弹窗文案大小(px)',
+                            name: 'popup_title_size',
+                            default: '14'
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    beforeSubmit: 'onSubmit'
+
+} %}
+
+    {# 引入渲染函数 #}
+    {{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+<script>
+    $(function () {
+        $('input[name=img_url]').on('blur', function () {
+            var value = $(this).val();
+            if (value) {
+                var image = new Image();
+                image.src = value;
+                image.onload = function () {
+                    $('input[name=img_width]').val(image.width);
+                    $('input[name=img_height]').val(image.height);
+                };
+            };
+        });
+    });
+
+    function onSubmit(progress) {
+        progress.next();
+    };
+</script>

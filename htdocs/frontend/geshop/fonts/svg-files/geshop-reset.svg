@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>svg_24x24_reset</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="切圖" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="SVG" transform="translate(-90.000000, -50.000000)" fill="#333333" fill-rule="nonzero">
+            <g id="svg_24x24_reset" transform="translate(90.000000, 50.000000)">
+                <g id="refresh" transform="translate(3.000000, 2.000000)">
+                    <path d="M15.3505,3.637 C13.7195,2.00549999 11.4805,0.992999992 8.99449999,0.992999992 C4.02199999,0.992999992 0.00550000781,5.02049999 0.00550000781,9.99299999 C0.00550000781,14.9655 4.02199999,18.993 8.99449999,18.993 C13.1905,18.993 16.999,15.8815 18,12 L15.66,12 C14.7375,14.6215 11.9305,16.743 8.99449999,16.743 C5.27050001,16.743 2.24449999,13.717 2.24449999,9.99299999 C2.24449999,6.2695 5.27050001,3.24299999 8.99449999,3.24299999 C10.862,3.24299999 12.527,4.0195 13.742,5.24549999 L10.1195,9 L17.9945,9 L17.9945,0.992999992 L15.3505,3.637 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

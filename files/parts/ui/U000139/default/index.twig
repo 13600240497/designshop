@@ -1,0 +1,481 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+{% set suffix='px'%}
+
+{% if data.colNum == '1'%}
+    {% set colClass = liCol[0] %}
+{% elseif data.colNum == '2' %}
+    {% set colClass = liCol[1] %}
+{% elseif data.colNum == '3' %}
+    {% set colClass = liCol[2] %}
+{% elseif data.colNum == '4' %}
+    {% set colClass = liCol[3] %}
+{% elseif data.colNum == '5' %}
+    {% set colClass = liCol[4] %}
+{% else %}
+    {% set colClass = liCol[3] %}
+{% endif %}
+
+
+
+
+
+{%
+    set pageData = {
+				price_ft_weight:data.price_ft_weight|default(0),
+				base_bg_shadow:data.base_bg_shadow|default(1),
+			lang:data.lang|default('en'),
+        	imgSrc:'https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/good.png',
+
+			base_magin_bottom:data.base_magin_bottom|default(32)~suffix,
+			goodsModule:data.goodsModule|default(1),
+			activity_type:data.activity_type|default(1),
+			activity_id:data.activity_id,
+			sku_main1:data.sku_main1,
+			sku_parts1:data.sku_parts1,
+			sku_main0:data.sku_main0,
+			sku_parts0:data.sku_parts0,
+			base_magin_bottom:data.base_magin_bottom|default(32)~suffix,
+
+			discount_bgc:data.discount_bgc is not null ? data.discount_bgc:'#FF8A00',
+			discount_ftc:data.discount_ftc is not null ? data.discount_ftc:'#FFFFFF',
+			discount_height:data.discount_height|default(50)~suffix,
+			discount_width:data.discount_width|default(50)~suffix,
+			discount_fts:data.discount_fts|default(16)~suffix,
+			discount_marginR:data.discount_marginR|default(0)~suffix,
+			discount_marginT:data.discount_marginT|default(0)~suffix,
+			discount_bgImage:data.discount_bgImage|default(""),
+			discount_off:data.discount_off|default(12)~suffix,
+			discount_active:data.discount_active|default(1),
+
+			preferential_bgc:data.preferential_bgc is not null ? data.preferential_bgc:'#333333',
+			preferential_left_ftc:data.preferential_left_ftc is not null ? data.preferential_left_ftc:'#FFFFFF',
+			preferential_total:data.preferential_total is not null ? data.preferential_total:'#FFFFFF',
+			preferential_yousave:data.preferential_yousave is not null ? data.preferential_yousave:'#FFFFFF',
+			preferential_finalprice:data.preferential_finalprice is not null ? data.preferential_finalprice:'#FF8A00',
+
+			buy_ftc:data.buy_ftc is not null ? data.buy_ftc:'#FFFFFF',
+			buy_bgc:data.buy_bgc is not null ? data.buy_bgc:'#CC0000',
+			buy_borderc:data.buy_borderc is not null ? data.buy_borderc:'#CC0000',
+			buy_hover_bgc:data.buy_hover_bgc is not null ? data.buy_hover_bgc:'#FF8A00',
+			buy_hover_ftc:data.buy_hover_ftc is not null ? data.buy_hover_ftc:'#FFFFFF',
+
+
+			more_ftc:data.more_ftc is not null ? data.more_ftc:'#FFFFFF',
+			more_bgc:data.more_bgc is not null ? data.more_bgc:'#CC0000',
+			more_borderc:data.more_borderc is not null ? data.more_borderc:'#CC0000',
+			more_hover_bgc:data.more_hover_bgc is not null ? data.more_hover_bgc:'#FF8A00',
+			more_hover_ftc:data.more_hover_ftc is not null ? data.more_hover_ftc:'#FFFFFF',
+
+			part_bgc:data.part_bgc is not null ? data.part_bgc:'#FF8A00',
+			part_add:data.part_add is not null ? data.part_add:'#FFFFFF',
+			part_width:data.part_width|default(50),
+			part_height:data.part_height|default(50),
+			part_bgimage:data.part_bgimage|default(""),
+
+			base_bgImage:data.base_bgImage,
+
+			goods_title_active:data.goods_title_active|default(1),
+			market_active:data.market_active|default(1),
+			wrapperWidth:1000,
+			baseWidth:690,
+			marginRight:12,
+			base_magin_top:data.base_magin_top|default(0),
+			service_tag:data.service_tag|default(0),
+			our_shop_price:data.our_shop_price|default(1),
+			base_view_more_url:data.base_view_more_url|default(''),
+    }
+%}
+
+{% if data.goodsInfo == null %}
+		{# 没有商品数据返回的时候,默认是4, 解决多语言转换的时候同步配置项,但不同步sku问题 #}
+		{%  set col = 4 %}
+		{# 图标容器宽度 #}
+		{%  set partWidth = 60 %}
+		{% set imgWidth = 142 %}
+{% else  %}
+		{% if data.partsNum == '1'%}
+			{# 展示商品数量 #}
+			{%  set col = 2 %}
+			{# 图标容器宽度 #}
+			{%  set partWidth = 100 %}
+			{% set imgWidth = 220 %}
+		{% elseif data.partsNum == '2' %}
+			{# 展示商品数量 #}
+			{%  set col = 3 %}
+			{# 图标容器宽度 #}
+			{%  set partWidth = 80 %}
+			{% set imgWidth = 180 %}
+		{% else  %}
+			{# 展示商品数量 #}
+			{%  set col = 4 %}
+			{# 图标容器宽度 #}
+			{%  set partWidth = 60 %}
+			{% set imgWidth = 142 %}
+		{% endif %}
+{% endif %}
+
+{# 左边pading_top #}
+{% set leftPaddingTop = (355 - 100 - imgWidth) / 2 %}
+
+{# 商品宽度 #}
+{% set liWidth = (pageData.baseWidth - partWidth -  col * pageData.marginRight)/col %}
+
+<div class="geshop-component-box component-drag component-sync clearfix geshop-component-goods geshop-gb-component ui-{{ pageInstanceId }}" data-gid="U000139_default" data-key="U000139" data-id="{{ pageInstanceId }}"
+	data-editenv="{{data.isEditEnv}}" >
+    <!-- embed stylesheet begin -->
+	<p></p>
+{# 预览的时候,主商品无库存,隐藏该组件 #}
+{% if  data.goodsInfo.goods_list[0].stock_num > 0   or data.goodsInfo == null or data.isEditEnv == 1 %}
+
+    <style type="text/css">
+
+
+
+
+[data-gid="U000139_default"][data-id="{{ pageInstanceId }}"]{
+	margin-bottom:{{pageData.base_magin_bottom}};
+	margin-top: {{pageData.base_magin_top}}px;
+}
+[data-gid="U000139_default"][data-id="{{ pageInstanceId }}"] .js-addCart{
+	background-color:{{pageData.buy_cart_bgc}};
+}
+
+[data-gid="U000139_default"][data-id="{{ pageInstanceId }}"] .gb_goodsWrap{
+	background-color:#FFFFFF;
+	display:flex;
+	display:-webkit-flex;
+	justify-content:center;
+	align-items:center;
+	position: relative;
+}
+
+[data-gid="U000139_default"][data-id="{{ pageInstanceId }}"]  .gb_left_goods{
+	height:{{120 + imgWidth}}px;
+}
+
+{# 取消li的阴影 #}
+ {# [data-gid="U000139_default"][data-id="{{ pageInstanceId }}"] ul .gs-list-item{
+       -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+      box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+} #}
+
+{# 折扣标 #}
+	[data-id="{{ pageInstanceId }}"] .gb_discount{
+		position:absolute;
+		border-radius:50%;
+		text-align:center;
+		display:table;
+	}
+	[data-id="{{ pageInstanceId }}"] .gb_discount div{
+		display:table-cell;
+		vertical-align:middle;
+		line-height:1;
+	}
+	[data-id="{{ pageInstanceId }}"] .gb_discount strong{
+		display:block;
+	}
+	
+
+{# 购买按钮设置 #}
+[data-gid="U000139_default"][data-id="{{ pageInstanceId }}"] .gb_add{
+	cursor:pointer;
+	color: {{pageData.buy_ftc}};
+	border:1px solid {{pageData.buy_borderc}};
+	background-color:{{pageData.buy_bgc}};
+}
+[data-gid="U000139_default"][data-id="{{ pageInstanceId }}"]  .gb_add:hover{
+	border-color:{{pageData.buy_hover_bgc}};
+	color:{{pageData.buy_hover_ftc}};
+	background-color:{{pageData.buy_hover_bgc}};
+}
+
+{# 更多按钮 #}
+[data-gid="U000139_default"][data-id="{{ pageInstanceId }}"]  .gb_more{
+	cursor:pointer;
+	color: {{pageData.more_ftc}};
+	border:1px solid {{pageData.more_borderc}};
+	background-color:{{pageData.more_bgc}};
+}
+
+[data-gid="U000139_default"][data-id="{{ pageInstanceId }}"]  .gb_more:hover{
+	border-color:{{pageData.more_hover_bgc}};
+	color:{{pageData.more_hover_ftc}};
+	background-color:{{pageData.more_hover_bgc}};
+}
+
+{# 搭配图标 #}
+[data-gid="U000139_default"][data-id="{{ pageInstanceId }}"] .gb_part_box{
+	height:256px;
+	float: left;
+	position:relative;
+}
+[data-gid="U000139_default"][data-id="{{ pageInstanceId }}"] .gb_part_add{
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-top:-{{  pageData.part_height / 2 ~suffix}};
+	margin-left:-{{  (pageData.part_width + pageData.marginRight)  / 2   ~suffix}};
+	width:{{pageData.part_width ~suffix}};
+	height:{{pageData.part_height ~suffix}};
+	line-height: {{(pageData.part_height - 5) ~suffix}};
+	{% if pageData.part_bgimage == "" %}
+		border-radius:{{pageData.part_height / 2 ~suffix}};
+		background: {{pageData.part_bgc}};
+		color:{{pageData.part_add}};
+	{% else %}
+		background:url({{data.part_bgimage}}) no-repeat 0 0/100% 100%;
+	{% endif %}
+}
+
+
+
+
+{# 售价 #}
+[data-gid="U000139_default"][data-id="{{ pageInstanceId }}"] .gs-goods-price .gs-shop-price{
+		font-size:{{pageData.price_fts}};
+		color:{{pageData.price_color}};
+}
+
+[data-gid="U000139_default"][data-id="{{ pageInstanceId }}"] .gs-goods-wrap a{
+	height:{{imgWidth}}px;
+}
+
+[data-gid="U000139_default"][data-id="{{ pageInstanceId }}"] .gb_cell_left{
+	color:{{pageData.preferential_left_ftc}};
+}
+
+/*投影*/
+{# {% if pageData.base_bg_shadow == '0'%}
+.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item,.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item_tag {
+	box-shadow: none !important;
+}
+
+{% else %}
+.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item,.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item_tag {
+	box-shadow: 0px 0px 10px {{data.base_bg_shadow_color|default('#CCCCCC')}} !important;
+	-webkit-box-shadow: 0px 0px 10px {{data.base_bg_shadow_color|default('#CCCCCC')}} !important;
+}
+
+{% endif %} #}
+</style>
+    <!-- embed stylesheet end -->
+
+
+	{% if pageData.page_point_type|default('activityPage') ==  'activityPage' %}
+		{% set pagePoint = {
+			wrapLink: 'track-goodsItem',
+			goodLink: 'track-goodsLink',
+			prodLink:''
+		}%}
+
+	{% elseif pageData.page_point_type ==  'landPage' %}
+			{% set pagePoint = {
+			wrapLink: 'subjectGoodItem',
+			goodLink: 'js-link',
+			prodLink:'showProd'
+		}%}
+	{% else %}
+		{% set pagePoint = {
+			wrapLink: 'track-goodsItem',
+			goodLink: 'track-goodsLink',
+			prodLink:''
+		}%}
+
+	{% endif %}
+
+    <div class="geshop-col-12">
+	<section class="gb_wrapper_common" style="width:1000px;margin:0 auto;padding: 30px 98px;">
+
+	<div class="gb_goodsWrap gs-list-item" data-skus="{{data.goodsSKUList}}" data-isEditEnv="{{data.isEditEnv}}"
+		style="margin:auto;">
+    {# felix #}
+	<div class="gb_left_goods " style="width:{{pageData.baseWidth + 5}}{{suffix}};">
+    <ul  class="clearfix gb-list-default gb-global-wrapper" >
+    {% for key,item in data.goodsInfo.goods_list|default(0..3)%}
+    {# felix #}
+			{% if key == 0 %}
+			<li class="gs-list-item gs-subjectGoodItem {{pagePoint.wrapLink}}" data-track-key="{{item.goods_sn}}" style="
+				width:{{liWidth}}px;
+			">
+				<div class="item-content">
+				<input type="hidden" class="gb_goodsSn"  value="{{item.goods_sku}}">
+				<input type="hidden" class="gb_warehousecode"  value="{{item.wh_code}}">
+				<input type="hidden" class="gb_stockNum"  value="{{item.stock_num}}">
+					<div class="gs-goods-wrap pr">
+						{# 商品图片配置 #}
+						{# {{include ('@app/files/parts/temp/gb/common/default_pc/goodImg.twig')}} #}
+						<a href="{{item.url_title}}" style="{% if data.goods_img_one == '1' %}height:189px;{% endif %}" target="_special" class="track-goodsLink {% if item.goods_img|default('') == '' %} has-cloth-not{% endif %}">
+								{% if data.isEditEnv == '1' and data.goodsInfo %}
+									<img class="js-lazyload"  src="{{item.goods_img}}"  data-lazy="{{item.goods_img}}" title="{{item.goods_title}}" alt="{{item.goods_title}}">
+								{% elseif data.isEditEnv == '0' and data.goodsInfo %}
+									<img class="js-lazyload" src="{{data.default.good}}" data-lazy="{{item.goods_img}}" title="{{item.goods_title}}" alt="{{item.goods_title}}">
+								{% else %}
+									<img class="js-lazyload" data-lazy="{{item.goods_img}}" src="{{pageData.imgSrc}}" >
+								{% endif %}
+							{# <i class="gs-goods-status"><span>{{gb_component_trans(lang , 'sold_out')}}</span></i> #}
+						</a>
+						{# 折扣标配置 #}
+						{{include ('@app/files/parts/temp/gb/common/default_pc/goodDiscount.twig')}}
+						{# 服务标 #}
+						{% set labelLeft = 0 %}
+						{{include ('@app/files/parts/temp/gb/common/default_pc/goodLabel.twig')}}
+					</div>
+
+					<div class="gs-goods-desc">
+						{# 商品标题配置 #}
+							{{include ('@app/files/parts/temp/gb/common/default_pc/goodTitle.twig')}}
+
+						{# 商品价格配置 #}
+						<p class="gs-goods-price">
+							{% if pageData.our_shop_price == '1' %}
+								<span class="gs-market-price">
+									{% if item.discount > 0 %}
+										{% if item.market_price and item.shop_price != item.market_price and item.shop_price < item.market_price %}
+											<span class="gs-market-price js-currency" data-currency="{{ item.market_price }}" data-wrap="0" data-round="2">${{item.market_price}}</span>
+										{% endif %}
+									{% endif %}
+
+									{% if data.goodsInfo == null %}
+										<span class="gs-market-price js-currency" data-currency="0.00" data-wrap="0" data-round="2">$0.00</span>
+									{% endif %}
+								</span>
+							{% endif %}
+
+							{% if item.shop_price > 0 %}
+								<span class="gs-shop-price">
+									<strong 
+										class="js-currency" 
+										data-currency="{{item.shop_price}}" 
+										data-wrap="0" 
+										data-round="2"
+										style="white-space:nowrap;max-width: 100%;overflow:hidden;;text-overflow: clip"
+									>${{item.shop_price}}</strong>
+								</span>
+							{% endif %}
+
+							{# 装修价格 #}
+							{% if data.goodsInfo|length == 0 %}
+								<span class="gs-shop-price">
+									<strong style="white-space:nowrap;max-width: 100%;overflow:hidden;;text-overflow: clip" class="js-currency" data-currency="0.00" data-wrap="0" data-round="2">$0.00</strong>
+								</span>
+							{% endif %}
+						</p>
+					</div>
+					{# 商品购买配置 #}
+				</div>
+			</li>
+			{% endif %}
+    {% endfor %}
+    </ul>
+
+	<div class="gb_part_box" style="width:{{partWidth}}px">
+		<div class="gb_part_add"> <strong>+</strong> </div>
+	</div>
+
+	{# felix #}
+    <ul  class="clearfix gb-list-default gb-global-wrapper" >
+    {% for key,item in data.goodsInfo.goods_list|default(0..3)%}
+
+    {# felix #}
+			{% if key > 0 %}
+			<li class="gs-list-item gs-subjectGoodItem " data-track-key="{{item.goods_sn}}" style="
+				width:{{liWidth}}px;
+			">
+				<div class="item-content">
+				<input type="hidden" class="gb_goodsSn"  value="{{item.goods_sku}}">
+				<input type="hidden" class="gb_warehousecode"  value="{{item.wh_code}}">
+				<input type="hidden" class="gb_stockNum"  value="{{item.stock_num}}">
+
+					<div class="gs-goods-wrap pr">
+						{# 商品图片配置 #}
+						<a href="{{item.url_title}}" style="{% if data.goods_img_one == '1' %}height:189px;{% endif %}" target="_special" class="track-goodsLink {% if item.goods_img|default('') == '' %} has-cloth-not{% endif %}">
+							{% if data.isEditEnv == '1' and data.goodsInfo %}
+								<img class="js-lazyload" src="{{item.goods_img}}" style="display:block;width:100%;height:100%;" data-lazy="{{item.goods_img}}" title="{{item.goods_title}}" alt="{{item.goods_title}}">
+							{% elseif data.isEditEnv == '0' and data.goodsInfo %}
+								<img class="js-lazyload" src="{{data.default.good}}" style="display:block;width:100%;height:100%;" data-lazy="{{item.goods_img}}" title="{{item.goods_title}}" alt="{{item.goods_title}}">
+							{% else %}
+								<img class="js-lazyload" data-lazy="{{item.goods_img}}" style="display:block;width:100%;height:100%;" src="{{pageData.imgSrc}}" >
+							{% endif %}
+							{% if data.goodsInfo and item.stock_num <= '0'  %}
+								<i class="gs-goods-status" style="display:block;"><span>{{gb_component_trans(lang , 'sold_out')}}</span></i>
+							{% endif %}
+						</a>
+
+						{# 折扣标配置 #}
+						{{include ('@app/files/parts/temp/gb/common/default_pc/goodDiscount.twig')}}
+
+						{# 服务标 #}
+						{% set labelLeft = 0 %}
+						{{include ('@app/files/parts/temp/gb/common/default_pc/goodLabel.twig')}}
+					</div>
+
+					<div class="gs-goods-desc">
+						{# 商品标题配置 #}
+						{{include ('@app/files/parts/temp/gb/common/default_pc/goodTitle.twig')}}
+
+						{# 商品价格配置 #}
+						<p class="gs-goods-price">
+							{# {{include ('@app/files/parts/temp/gb/common/default_pc/goodPrice.twig')}} #}
+							{% if data.goodsInfo|length > 0 %}
+								{% if pageData.our_shop_price == '1' %}
+									{% if item.market_price and item.shop_price != item.market_price and item.shop_price < item.market_price %}
+										<span class="gs-market-price js-currency {{isPriceEqual}}" data-currency="{{item.market_price}}" data-wrap="0" data-round="2">${{item.market_price}}</span>
+									{% endif %}
+								{% endif %}
+
+								{# {% if item.shop_price > 0 %} #}
+								<span class="gs-shop-price">
+									{% if item.shop_price %}
+										<strong class="js-currency" data-currency="{{item.shop_price}}" data-wrap="0" data-round="2">${{item.shop_price}}</strong>
+									{% else %}
+										<strong class="js-currency visible-hide" data-currency="{{item.shop_price}}" data-wrap="0" data-round="2">0</strong>
+									{% endif %}
+								</span>
+								{# {% endif %} #}
+							{% endif %}
+							
+
+							{# 装修价格 #}
+							{% if data.goodsInfo|length == 0 %}
+								{% if pageData.our_shop_price == '1' %}
+									<span style="white-space:nowrap;max-width: 100%;overflow:hidden;;text-overflow: clip" class="gs-market-price js-currency" data-currency="0.00" data-wrap="0" data-round="2">$0.00</span>
+								{% endif %}
+								<span class="gs-shop-price">
+									<strong style="white-space:nowrap;max-width: 100%;overflow:hidden;;text-overflow: clip" class="js-currency" data-currency="0.00" data-wrap="0" data-round="2">$0.00</strong>
+								</span>
+							{% endif %}
+						</p>
+					</div>
+					{# 商品购买配置 #}
+
+				</div>
+			</li>
+		{% endif %}
+    {% endfor %}
+    </ul>
+
+	</div>
+	{# 右侧配置 #}
+	<div class="gb_right_options" style="background:{{pageData.preferential_bgc}} ">
+		<div class="gb_cell"><p class="gb_cell_left ">{{gb_component_trans(lang , 'total')}}</p><p class="gb_cell_right js-currency" style="color:{{pageData.preferential_total}} " data-currency="{{(data.goodsInfo.totalAmount|default('0.00'))|number_format(2, '.')}}" data-wrap="0" data-round="2">${{(data.goodsInfo.totalAmount|default('0.00'))|number_format(2, '.')}}</p></div>
+		<div class="gb_cell"><p class="gb_cell_left ">{{gb_component_trans(lang , 'you_save')}}</p><p class="gb_cell_right js-currency" style="color:{{pageData.preferential_yousave}} " data-currency="{{(data.goodsInfo.saveAmount|default('0.00'))|number_format(2, '.')}}" data-wrap="0" data-round="2">${{(data.goodsInfo.saveAmount|default('0.00'))|number_format(2, '.')}}</p></div>
+		<div class="gb_goodBorder"></div>
+		<div class="gb_cell gb_final_cell" >
+			<p class="gb_cell_left  ">{{gb_component_trans(lang , 'final_price')}}</p>
+			<p class="gb_cell_right js-currency gb_final" style="color:{{pageData.preferential_finalprice}};padding-bottom:3px;" data-currency="{{(data.goodsInfo.finalAmount|default('0.00'))|number_format(2, '.')}}" data-wrap="0" data-round="2">${{(data.goodsInfo.finalAmount|default('0.00'))|number_format(2, '.')}}</p>
+		</div>
+		<div class="gb_add js_addSale" data-qty="1" data-suorce="0"  data-activeType="{{data.activity_type}}"  data-img="{{ data.goodsInfo.goods_list[0].goods_img }}">{{gb_component_trans(lang , 'add_to_cart')}}</div>
+		<a style="display:block;" href="{{pageData.base_view_more_url}}"><div class="gb_more">{{gb_component_trans(lang , 'view_more')}} ></div></a>
+	</div>
+	{# 右侧配置 #}
+	</div>
+
+    </div>
+</div>
+
+<div>
+
+{% endif %}
+	</section>
+</div>
+

@@ -1,0 +1,167 @@
+@height: 56px;
+.geshop-U000109-rg_template1_v1 {
+  width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  font-size: 0;
+
+
+  .gs-banner {
+    img {
+      display: block;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  }
+
+  .top-swiper-wrap {
+    display: inline-block;
+    position: relative;
+    height: @height;
+
+  }
+  .sp-box {
+    height: @height;
+    position: relative;
+    z-index: 2;
+
+    width: 1164px;
+    margin: -28px auto 0;
+  }
+  .nav-top {
+    border-radius: 50px;
+    height: @height;
+    &.fixed {
+      position: fixed;
+      z-index: 100001;
+      left: 0;
+      right: 0;
+      margin: auto;
+      //background: #fff;
+      width: 1164px;
+      border-radius: 50px;
+      //border-bottom: 1px solid #f2f2f2;
+    }
+  }
+
+  .top-swiper-container{
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    height: @height;
+    display: block;
+    max-width: 1064px;
+  }
+
+  .nav-item {
+    display: inline-block;
+    width: auto;
+    height: 100%;
+    overflow: hidden;
+    padding: 0 32px;
+    cursor: pointer;
+
+
+    span {
+      font-size: 16px;
+      display: block;
+      line-height: @height;
+    }
+  }
+
+  .goods-list {
+    ul {
+      display: block;
+      font-size: 0;
+      width: 1180px;
+      margin: 0 auto;
+      padding: 8px 0;
+      text-align: left;
+
+      li {
+        display: inline-block;
+        vertical-align: top;
+        font-size: 12px;
+        width: 220px;
+        height: 393px;
+        box-sizing: border-box;
+        margin: 8px;
+        position: relative;
+        overflow: hidden;
+        background-color: #ffffff;
+        .item_img {
+          width: 218px;
+          height: 291px;
+          position: relative;
+        }
+        .item_goods_info {
+          overflow: hidden;
+          box-sizing: border-box;
+          padding: 12px;
+        }
+
+        .item-title {
+          margin-bottom: 4px;
+        }
+        .price-info {
+          margin-bottom: 16px;
+          height: 22px;
+          overflow: hidden;
+        }
+
+        .promot-info {
+          font-size:14px;
+          line-height:17px;
+          height: 17px;
+          text-align: right;
+        }
+        .btn-buy, .item-title, .price-info {
+          transition: all .3s ease;;
+        }
+        &:hover {
+
+          .btn-buy {
+            margin-top: -20px;
+          }
+          .item-title {
+            margin-top: -30px;
+          }
+          .price-info {
+            margin-top: 12px;
+          }
+        }
+        .btn-buy {
+          display: block;
+          height:36px;
+          line-height: 36px;
+          border-radius:2px;
+          margin-top: 15px;
+          position: relative;
+          text-align: center;
+          z-index: 2;
+          font-size:16px;
+          width: 100%;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+
+        .icon_rank {
+          position: absolute;
+          top: 4px;
+          left: 4px;
+          text-align: center;
+          font-size: 0;
+          font-family: Rubik-Medium,Arial;
+          background-size: 100% 100%!important;
+
+          &.icon-other {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+}

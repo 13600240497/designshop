@@ -1,0 +1,16 @@
+<div class="geshop-goods-img {% if options.goodsNum == 0 or options.isOnSale == 0 %} soldout-bg  {% endif %}">
+    {% if options.goodsNum == 0 or options.isOnSale == 0 %}
+      <p class="out-style-text">{{options.lang.soldout}}</p>
+     {% endif %}
+    <a href="{{options.urlTitle}}" class="js_logsss_click_delegate_ps">
+      <img src="https://geshopcss.logsss.com/imagecache/geshop/resources/images/dl/loading.gif" style="max-width: 100%;max-height:100%;"
+        data-original="{{options.goodsImg}}"
+        data-sku="{{options.goodsSku}}" class="js_gdexp_lazy js-lazy" data-module="product">
+      <div class="shop-now-container">
+        <div class="inner-wrapper">
+          <i class="bag-img"></i> 
+          <span class="shop-now-text"> {{options.lang.shopnow}} </span>
+        </div>
+      </div>
+    </a>
+  </div>

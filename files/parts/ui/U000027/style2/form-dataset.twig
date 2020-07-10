@@ -1,0 +1,15 @@
+
+<div class="U000027-form-dataset">
+{% if data.navData %}
+    {% for id, item in data.navData %}
+    <div class="layui-form-item" style="margin-bottom: 6px;">
+        <input type="checkbox" name="nav_menu" value="{{ id }}" lay-skin="primary" title="{{ item }}" {% if id in data.nav_menu %} checked {% endif %}>
+        <label class="layui-form-label" style="margin-top: 6px;">跳转链接</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" value="{{ data.nav_link[id] }}">
+        </div>
+    </div>
+    {% endfor %}
+{% endif %}
+<input type="hidden" name="nav_link" value="{{ data.nav_link | json_encode() }}"></input>
+</div>

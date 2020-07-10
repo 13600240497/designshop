@@ -1,0 +1,192 @@
+{% set buyTextDefault = get_component_trans(lang,'btn_buy_now')|default('BUY NOW') %}
+
+{%
+    set formData = {
+        id: 'U0000078',
+        name: '多时段TAB秒杀组件',
+        theme: 'default_v2',
+        tabs: [
+            {
+                label: '商品数据',
+                components: [
+                    {
+                        label: '数据配置',
+                        type: 'diy',
+                        src: 'form-data.twig'
+                    }
+                ]
+            },
+            {
+                label: '样式配置',
+                components: [
+                    {
+                        label: '常用配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件下边距(px)',
+                                name: 'box_margin_bottom',
+                                default: '0',
+                                col: 2,
+                            },
+                            {
+                                label: '背景颜色',
+                                name: 'box_bg_color',
+                                default: '#F8F8F8',
+                                type: 'colorPicker',
+                                col: 2,
+                            },
+                        ]
+                    },
+					{
+						label: 'tab时间导航',
+                        type: 'fieldset',
+						components: [
+                            {
+                                label: '秒杀时间是否显示',
+                                name: 'tab_timearea_Show',
+                                type: 'radio',
+                                default: '1',
+                                options: [
+                                {
+                                    label: '是',
+                                    value: '1',
+                                },
+                                {
+                                    label: '否',
+                                    value: '0',
+                                }
+                            ],
+                            },
+							{
+                                label: '是否显示已结束时段的秒杀内容',
+                                name: 'tab_endShowActive',
+                                type: 'radio',
+                                default: '1',
+                                options: [
+                                    {
+                                        label: '是',
+                                        value: '1',
+                                    },
+                                    {
+                                        label: '否',
+                                        value: '0',
+                                    }
+                                ],
+                            },
+                            {
+                                label: '选中文字颜色',
+                                name: 'tab_selectTextC',
+                                type: 'colorPicker',
+                                default: '#FFFFFF',
+                                col: 2,
+                            },
+                            {
+                                label: '选中背景颜色',
+                                name: 'tab_selectBgc',
+                                type: 'colorPicker',
+                                default: '#222222',
+                                col: 2,
+                            },
+                            {
+                                label: '未选中文字颜色',
+                                name: 'tab_unselectTextC',
+                                type: 'colorPicker',
+                                default: '#FFFFFF',
+                                col: 2,
+                            },
+                            {
+                                label: '未选中背景颜色',
+                                name: 'tab_unselectBgc',
+                                type: 'colorPicker',
+                                default: '#999999',
+                                col: 2,
+                            },
+						]
+					},
+                    {
+                        label: '商品配置',
+                        type: 'border-style-rg',
+                    },
+                    {
+                        label: '销售价',
+                        type: 'shop-price-rg',
+                    },
+                    {
+                        label: '库存条',
+                        type: 'progress',
+                    },
+                    {
+                        label: '库存提示文字颜色',
+                        name: 'goodsLimitsTextColor',
+                        type: 'colorPicker',
+                        default: '#333333',
+                    },
+                    {
+                        label: '折扣标',
+                        type: 'discount-rg-new',
+                    },
+                    {
+                        label: 'Buy Now 按钮',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '是否显示',
+                                name: 'buynow_show',
+                                default: 0,
+                                type: 'radio',
+                                options: [
+                                    {
+                                        label: '是',
+                                        value: 1
+                                    },
+                                    {
+                                        label: '否',
+                                        value: 0
+                                    }
+                                ]
+                            },
+                            {
+                                label: '背景颜色',
+                                name: 'buynow_bg_color',
+                                default: '#FFFFFF',
+                                type: 'colorPicker',
+                                col: 2,
+                            },{
+                                label: '背景描边颜色',
+                                name: 'buynow_bd_color',
+                                default: '#222222',
+                                type: 'colorPicker',
+                                col: 2,
+                            },
+                            {
+                                label: '文字颜色',
+                                name: 'buynow_font_color',
+                                default: '#222222',
+                                type: 'colorPicker',
+                                col: 2,
+                            },
+                            {
+                                label: '圆角大小',
+                                name: 'buynow_radius',
+                                default: 2,
+                                col: 2,
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        moreConfig: [],
+        beforeSubmit: 'beforeSubmit',
+        skuValidConfig: 'skuValidConfig'
+    }
+%}
+
+{# 引入自定义函数 #}
+<script>
+{% include 'form.js' %}
+</script>
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

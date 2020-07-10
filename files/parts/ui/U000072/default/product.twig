@@ -1,0 +1,19 @@
+<a href="{{ data.link }}" style="
+  display: block; text-align: {{ data.imgAlign }}; width: 100%;
+        margin-top: {{ (data.marginTop / 75) | number_format(3, '.') | default(0) }}rem;
+        margin-bottom: {{ (data.marginBottom / 75) | number_format(3, '.') | default(0) }}rem;
+  {% if data.ImgHeight %}height: {{ (data.ImgHeight / 75) | number_format(3, '.') }}rem;{% endif %}
+  " class="logsss_event"
+  data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.imgSrc }}','cporder':'{{ layoutIndex }}','rank':'1'} }"
+  {% if data.target_active == "1" %} target="_blank" {% endif %}>
+  <img class="js_gdexp_lazy js-geshopImg-lazyload js_gbexp_lazy" style="
+    width: {% if data.ImgWidth %}{{ (data.ImgWidth / 75) | number_format(3, '.') }}rem{% else %}100%{% endif %};
+    {% if data.ImgHeight %}height: {{ (data.ImgHeight / 75) | number_format(3, '.') }}rem;{% endif %}
+    {% if data.imgSrc|length == 0 %}max-width: 100%;{% endif %}
+          margin-left: {{ (data.marginLeft / 75) | number_format(3, '.') | default(0) }}rem;
+          margin-right: {{ (data.marginRight / 75) | number_format(3, '.') | default(0) }}rem;
+    vertical-align: top;"
+    alt="{{ data.imgAlt }}" src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{ data.imgSrc | default(data.default.banner) }}"
+    data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.imgSrc }}','cporder':'{{ layoutIndex }}','rank':'1'} }"
+  >
+</a>

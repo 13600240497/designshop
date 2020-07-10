@@ -1,0 +1,36 @@
+{{include ('@app/files/parts/temp/goods_manager.twig')}}
+<section>
+    <div class="component-form-setting-ite component-form-configure-item">
+        <div class="layui-form-item">
+            <label class="form-item-label">商品SKU</label>
+            <div class="layui-input-block">
+                <textarea
+                    cols="30"
+                    rows="3"
+                    class="layui-textarea js-valid-skus"
+                    name="goodsSKU"
+                    data-from="sku"
+                    placeholder="请输入商品SKU，每个SKU用英文逗号隔">{{ data.goodsSKU | default('') }}</textarea>
+            </div>
+        </div>
+
+        <div class="goods-manage-btn">
+            <a class="layui-btn layui-btn-normal layui-btn-sm" href="javascript:;" id="gs_getList" data-from="sku">商品管理</a>
+        </div>
+        <input type="hidden" name="imgs">
+        <div class="img-wrap">
+            {% for key,item in data.imgs %}
+                 <div class="layui-form-item">
+                    <label class="form-item-label">商品图片{{key+1}}</label>
+                    <div class="layui-input-block">
+                        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                        <input class="layui-input Unwanted" type="text" name="goodsImg{{key+1}}"}}" value="{{item.img}}">
+                    </div>
+                </div>
+                </br>
+            {% endfor %}
+        </div>
+
+
+    </div>
+</section>

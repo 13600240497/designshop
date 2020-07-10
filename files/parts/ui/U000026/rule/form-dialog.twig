@@ -1,0 +1,78 @@
+<div class="geshop-U000026-dialog-container geshop-U000026-dialog-rule">
+    <div class="geshop-U000026-dialog-body-{{ pageInstanceId }}">
+        <div class="title">{{ data.btn_title }}</div>
+        <div class="content">
+            {{ data.rule_title | nl2br }}
+        </div>
+        <div class="dialog-close">{{ get_component_trans(lang, 'rule_close') }}</div>
+    </div>
+</div>
+
+<style type="text/css">
+    {% set classRoot = '.geshop-U000026-dialog-body-'~pageInstanceId~'' %}
+    {{ classRoot }} .title {
+        font-size: {{ 32/75 }}rem;
+        height: {{ 76/75 }}rem;
+        line-height: {{ 76/75 }}rem;
+        color: #333333;
+        text-align: center;
+        background-color: #F0F0F0;
+        border-top-right-radius: {{ 18/75 }}rem;
+        border-top-left-radius: {{ 18/75 }}rem;
+    }
+    {{ classRoot }} .content {
+        padding: {{ 34 / 75 }}rem {{ 40 / 75 }}rem {{ 40 / 75 }}rem {{ 40 / 75 }}rem;
+        text-align: left;
+        line-height: {{ 35 / 75 }}rem;
+        background-color: {{ data.popup_bg_color|default('#FFFFFF') }};
+        font-size: {{ (data.popup_title_size|default(24)) / 75 }}rem;
+        color: {{ data.popup_font_color }};
+        {% if data.popup_bg_img_url %}
+            background-image: url({{ data.popup_bg_img_url }});
+            background-position: center;
+            background-repeat: no-repeat;
+        {% endif %}
+        min-height: {{ 227 / 75 }}rem;
+        max-height: {{ 400 / 75 }}rem;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    {{ classRoot }} .dialog-close{
+        text-align: center;
+        font-size: {{ 24/75 }}rem;
+        padding: {{ 16/75 }}rem {{ 85/75 }}rem;
+        color: {{ data.popup_btn_font_color | default('#FFFFFF') }};
+        background-color: {{ data.popup_btn_bg_color | default('#333333') }};
+        border-radius: {{ 30/75 }}rem;
+        margin-left: auto;
+        margin-right: auto;
+        width: {{ 200/75 }}rem;
+        margin-bottom: {{ 40/75 }}rem;
+    }
+
+    {{ classRoot }} .content::-webkit-scrollbar-track-piece {
+        background-color: rgba(0, 0, 0, 0);
+        border-left: 1px solid rgba(0, 0, 0, 0);
+    }
+    {{ classRoot }} .content::-webkit-scrollbar {
+        width: {{ 12/75 }}rem;
+        -webkit-border-radius: {{ 12/75 }}rem;
+        -moz-border-radius: {{ 12/75 }}rem;
+        border-radius: {{ 12/75 }}rem;
+    }
+    {{ classRoot }} .content::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.5);
+        background-clip: padding-box;
+        -webkit-border-radius: {{ 12/75 }}rem;
+        -moz-border-radius: {{ 12/75 }}rem;
+        border-radius: {{ 12/75 }}rem;
+    }
+    {{ classRoot }} .content::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+        -webkit-border-radius: {{ 12/75 }}rem;
+        -moz-border-radius: {{ 12/75 }}rem;
+        border-radius: {{ 12/75 }}rem;
+    }
+
+
+</style>

@@ -1,0 +1,14 @@
+{{include ('@app/files/parts/temp/goods_manager.twig')}}
+<!-- 商品SKU -->
+<div class="layui-col-xs12">
+    <div class="layui-form-item">
+        <label class="layui-form-label">商品SKU: </label>
+        <div class="layui-input-block rest-input">
+            <textarea class="layui-textarea js-valid-skus" name="goodsSKU" data-public-tag="true" placeholder="请输入商品编号（SKU ID），编号与编号间用英文逗号隔开.">{{data.goodsSKU}}</textarea>
+        </div>
+        <div class="layui-form-item">
+            <span class="el-button el-button--primary el-button--small class-manage" style="float: right;margin-top: 10px;">商品管理</span>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,15 @@
+{
+  "fields": {
+      "title_text_bgColor": { "is_public": "0", "is_m": "1", "is_app": "1" },
+      "titleText": { "is_public": "1", "is_m": "1", "is_app": "1" },
+      "titleNavText": { "is_public": "1", "is_m": "1", "is_app": "1" },
+      "title_text_bgImage": { "is_public": "1", "is_m": "1", "is_app": "1" },
+      "title_text_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+      "viewColor": { "is_public": "0", "is_m": "1", "is_app": "1" },
+      "viewBorderC": { "is_public": "0", "is_m": "1", "is_app": "1" },
+      "viewText": { "is_public": "0", "is_m": "1", "is_app": "1" },
+      "view_link_href": { "is_public": "1", "is_m": "1", "is_app": "1" },
+      "title_border_color": { "is_public": "1", "is_m": "1", "is_app": "1" },
+      "title_ico_color": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  }
+}

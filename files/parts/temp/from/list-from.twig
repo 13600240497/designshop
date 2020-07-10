@@ -1,0 +1,15 @@
+
+
+{% for cell in _cells %}
+    {% if _list2 == false %}
+        {% include '@app/files/parts/temp/from/cell-from.twig' with cell %} 
+        {% else %}
+        {% include '@app/files/parts/temp/from/cell-from-2.twig' with cell %} 
+    {% endif %}
+        
+{% endfor %}
+
+{# 
+    TODO 这个组件只是单纯渲染列表的 
+    @param _cells 列表的数组
+#}

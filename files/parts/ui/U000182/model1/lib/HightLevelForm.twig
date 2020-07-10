@@ -1,0 +1,153 @@
+<h4 class="column-title"><i class="layui-icon back" id="js_advanced_baseConfig">&#xe603;</i>返回</h4>
+<h5 class="column-title">高级配置</h5>
+<div class="layui-collapse">
+
+
+    <div class="layui-collapse">
+        <div class="layui-colla-item">
+            <h2 class="layui-colla-title">商品信息配置</h2>
+            <div class="layui-colla-content layui-show">
+                
+                <div class="layui-form-item">
+                    <label class="form-item-label">
+                        原价是否显示</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="isOriginalPriceVis" value="1" {% if data.isOriginalPriceVis|default(1) == 1 %} checked{% endif %} title="是">
+                        <input type="radio" name="isOriginalPriceVis" value="0" {% if data.isOriginalPriceVis|default(1) == 0 %} checked{% endif %} title="否">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="form-item-label">销售价文字大小(px)</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="shopPriceFontSize" autocomplete="off" class="layui-input" value="{{ data.shopPriceFontSize | default(22) }}">
+                    </div>
+                </div>              
+            </div>
+
+            <h2 class="layui-colla-title">折扣标配置</h2>
+            <div class="layui-colla-content layui-show">
+                <div class="layui-form-item">
+                    <label class="form-item-label">
+                        折扣标显示方式</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="isDiscountStyle" value="1" {% if data.isDiscountStyle|default(1) == 1 %} checked{% endif %} title="**%OFF">
+                        <input type="radio" name="isDiscountStyle" value="0" {% if data.isDiscountStyle|default(1) == 0 %} checked{% endif %} title="**%">
+                    </div>
+                </div>
+
+                <div class="layui-row layui-col-space10">
+                    <div class="layui-col-xs6">
+                        <div class="layui-form-item">
+                            <label class="form-item-label">折扣标左偏移(px)</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="discountLeft" autocomplete="off" class="layui-input" value="{{ data.discountLeft | default(0) }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-xs6">
+                        <div class="layui-form-item">
+                            <label class="form-item-label">折扣标下偏移(px)</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="discountTop" autocomplete="off" class="layui-input" value="{{ data.discountTop | default(0) }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-row layui-col-space10">
+                    <div class="layui-col-xs6">
+                        <div class="layui-form-item">
+                            <label class="form-item-label">文字上间距(px)</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="discountTextTop" autocomplete="off" class="layui-input" value="{{ data.discountTextTop | default(0) }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-xs6">
+                        <div class="layui-form-item">
+                            <label class="form-item-label">文字左间距(px)</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="discountTextLeft" autocomplete="off" class="layui-input" value="{{ data.discountTextLeft | default(0) }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item">
+                    <label class="form-item-label">折扣值文字大小(px)</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="discountFontSize" autocomplete="off" class="layui-input" value="{{ data.discountFontSize | default(15) }}">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="form-item-label">OFF文字大小(px)</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="offFontSize" autocomplete="off" class="layui-input" value="{{ data.offFontSize | default(12) }}">
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="layui-colla-title">购买按钮配置</h2>
+            <div class="layui-colla-content layui-show">
+                <div class="layui-row layui-col-space10">
+                    <div class="layui-col-xs6">
+                        <div class="layui-form-item">
+                            <label class="form-item-label">背景颜色</label>
+                            <div class="layui-input-block">
+                                {{
+                                    include ('lib/ColorPicker.twig', {
+                                        'cmpt_name': 'btnBgColor',
+                                        'cmpt_value': data.btnBgColor,
+                                        'cmpt_default': '#FFFFFF'
+                                    })
+                                }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-xs6">
+                        <div class="layui-form-item">
+                            <label class="form-item-label">边框颜色</label>
+                            <div class="layui-input-block">
+                                {{
+                                    include ('lib/ColorPicker.twig', {
+                                        'cmpt_name': 'btnBorderColor',
+                                        'cmpt_value': data.btnBorderColor,
+                                        'cmpt_default': '#000000'
+                                    })
+                                }}
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="layui-form-item">
+                    <label class="form-item-label">图标图片</label>
+                    <div class="layui-input-block">
+                        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                        <input class="layui-input" type="text" name="shopIconImg" value="{{data.shopIconImg|default('')}}">
+                    </div>
+                </div> 
+                <div class="layui-form-item">
+                    <label class="form-item-label">SHOP NOW文字颜色</label>
+                    <div class="layui-input-block">
+                        {{
+                            include ('lib/ColorPicker.twig', {
+                                'cmpt_name': 'shopNowFontColor',
+                                'cmpt_value': data.shopNowFontColor,
+                                'cmpt_default': '#000000'
+                            })
+                        }}
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="form-item-label">SHOP NOW文字大小(px)</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="shopNowFontSize" autocomplete="off" class="layui-input" value="{{ data.shopNowFontSize | default(16) }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>

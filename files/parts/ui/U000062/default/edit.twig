@@ -1,0 +1,7 @@
+<a href="{{item.blogLink}}" target="_blank" class="index-blog {% if loop.last %}last-child{% endif %}" style="
+  {% if pageData.blogItemWidth %}width:{{pageData.blogItemWidth}}px;{% endif %}">
+  <img src="{{item.blogSrc}}" alt="{{item.blogTitle}}" width="400" height="400">
+  <span class="index-blog-content">
+  <span class="index-blog-title site-bold-strict">{{item.blogTitle}}</span>
+  <span class="index-blog-desc">{{item.blogDesc}}</span>
+</a>

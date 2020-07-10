@@ -1,0 +1,52 @@
+.wrap-U000068_like {
+    overflow: hidden; 
+    text-align: center;
+}
+.wrap-U000068_like .clearfix:after {
+    content: "";
+    height: 0;
+    line-height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+.wrap-U000068_like li{
+    margin-bottom: 0.6rem;
+}
+.wrap-U000068_like .edit-style .proImg{
+    background: url('https://geshoptest.s3.amazonaws.com/uploads/1BWrycf2QRuG0dMZLtP5Hg4mqlUxaeYS.png') center center no-repeat;
+    background-color: #ededed;
+}
+.wrap-U000068_like .proImg{
+    position: relative;
+    margin: 0 auto;
+    width: 4.266667rem;
+    height: 4.266667rem;
+    overflow: hidden;
+}
+.wrap-U000068_like .proImg img{
+    display: block;
+    height: 100%;
+    margin: 0 auto;
+}
+.wrap-U000068_like .proOff{
+    height: 0.426667rem;
+}
+.wrap-U000068_like .see-more {
+    padding-bottom: 1px;
+}
+
+.wrap-U000068_like .see-more a{
+    display: inline-block;
+    width: 4.0rem;
+    height: 1.013333rem;
+    line-height: 1.013333rem;
+    border-radius: 0.08rem;
+    background-color: #fff;
+    border: 1px solid #333;
+}
+.wrap-U000068_like .gs_like_loading{
+    width: 100%;
+    height: 2.666667rem;
+    background: url(../../../resources/images/rg-pc/loading.gif) center center no-repeat;
+}

@@ -1,0 +1,15 @@
+<div class="layui-tab {% if componentData.brief %} layui-tab-brief {% endif %}">
+    <ul class="layui-tab-title">
+        {% for index, item in componentData.items %}
+        <li class="{% if index == 0 %} layui-this {% endif %}">{{ item.label }}</li>
+        {% endfor %}
+    </ul>
+    <div class="layui-tab-content">
+        {% for index, item in componentData.items %}
+        <div class="layui-tab-item {% if index == 0 %} layui-show {% endif %}">
+            {% set components = item.components %}
+            {{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}
+        </div>
+        {% endfor %}
+    </div>
+</div>

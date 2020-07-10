@@ -1,0 +1,156 @@
+{#
+
+Twig 引入 Vue 组件
+
+@author Cullen
+@date 2019.04.01
+@param {string} key 组件编码，如：U000001
+@param {string} theme 组件模版名，如：default
+@param {Boolean} style 是否引入 twig 的样式, 如：true
+@param {Boolean} preRender 是否开启组件骨架图效果，如：false,  2019.05.28 新增
+@param {String} preRenderType 骨架图类型，如: goodsList, block.... 2019.05.30 新增
+@param {Boolean} asyncData 是否异步请求自动刷新的数据，默认 false. 2019.07.03 新增
+@param geshop_user_ 用户人群分组 geshop_user_2 老用户 geshop_user_1 新用户 geshop_user_0 全部
+@param {String} inView 是否开启inView方法，默认true
+
+#}
+
+<div id="{{ key }}_{{ pageInstanceId }}"
+     data-couponid="{{ data.coupon_id }}"
+     data-0164_couponid="{{ data.active_id }}"
+     class="geshop-component-box component-drag geshop-{{ key }}-{{ theme }} {{ key }}_{{ pageInstanceId }}
+{% if data.userGroupSelect %} geshop_user_{{ data.userGroupSelect|default(0) }} {% endif %}"
+     data-key="{{ key }}"
+     data-id="{{ pageInstanceId }}" >
+
+    {# 判断当前组件是否开启了引入 style.twig 文件 #}
+    {% if style %}
+        <!-- embed stylesheet begin -->
+        <style type="text/css">
+            {% include '@app/files/parts/ui/'~key~'/'~theme~'/style.twig' %}
+        </style>
+        <!-- embed stylesheet end -->
+    {% endif %}
+
+    {# render dom #}
+    <div id="{{ key }}_{{ pageInstanceId }}_container" class="is-preloading">
+
+        {# 如果是商品列表类型的预渲染，默认的是 block 灰色图 #}
+        {% if preRender == true and preRenderType is not empty %}
+            {% include '@app/files/parts/template/loadingTemplate/'~preRenderType~'.twig' %}
+        {% else %}
+            {% include '@app/files/parts/template/loadingTemplate/block.twig' %}
+        {% endif %}
+
+        {# 正式组件 #}
+        <geshop-component
+            uikey="{{ key }}"
+            theme="{{ theme }}"
+            :pid="{{ pageInstanceId }}"
+            :data="data"
+            pre-render="{{ preRender | default('false') }}"
+            pre-type="{{ preRenderType | default('block') }}"
+            @on-pre-loaded="loadingComponentMounted">
+        </geshop-component>
+    </div>
+</div>
+
+<script>
+    {#
+        vue_root_data
+        1. 剔除 data.default 的数据
+        2. 保留 default.lazyImg 每个站点的 loading 图
+    #}
+    {%
+        set vue_root_data = data | merge({ 'default': {'lazyImg': data.default.lazyImg }})
+    %}
+
+    {# 通过 html_encoder_goods_promotions 过滤单双引号的问题，会导致 json.parse 报错 #}
+    {% set array = [] %}
+    {% if vue_root_data.goodsInfo %}
+        {% if (key == 'U000209' and theme == 'default_rg') or (key == 'U000209' and theme == 'modal1') or (key == 'U000041' and theme == 'default_rg') %}
+            {% set array = "" %}
+        {% else %}
+            {% set array = html_encoder_goods_promotions(vue_root_data.goodsInfo) %}
+        {% endif %}
+        {% set vue_root_data = vue_root_data | merge({'goodsInfo': array }) %}
+    {% endif %}
+
+    {# 如果接入了自动刷新的组件模版，清空 goodsInfo 字段，避免冗余. Cullen 2019.07.03 #}
+    {% if asyncData is not null and asyncData == true %}
+        {% set vue_root_data = vue_root_data | merge({'goodsInfo': [] }) %}
+    {% endif %}
+
+    {# 实例化 Vue #}
+    $(function() { 
+        var vm = null;
+        /* 是否开启inView */
+        try {
+            var open_inView = {% if disabled_inView == 1 %}false{% else %}true{% endif %};
+        } catch (err) {
+            var open_inView = true;
+        }
+
+        function init_vue_component () {
+            vm = new Vue({
+                el: '#{{ key }}_{{ pageInstanceId }}_container',
+                store: window.GESHOP_STORE,
+                data: function() {
+                    return {
+                        'is_edit_env': {{ data.isEditEnv }},
+                        pageId: '{{ pageId }}',
+                        pageInstanceId: '{{ pageInstanceId }}',
+                        compKey: '{{ compKey }}',
+                        theme: '{{ theme }}',
+                        uiIndex: '{{ uiIndex }}',
+                        layoutIndex: '{{ layoutIndex }}',
+                        data: {{ json_encode_no_unicode(vue_root_data) }},
+                        lang: GESHOP_LANG || 'en',
+                        languages: get_languages_by_code({{ json_encode_no_unicode(languages)}}, GESHOP_LANG),
+                        platform: window.GESHOP_PLATFORM || 'pc',
+                        sitecode: window.GESHOP_SITECODE || 'zf-pc'
+                    }
+                },
+                methods: {
+                    /**
+                    * 当 vue-loading 组件加载完毕，则把原生 html 的loading背景图去掉。
+                    */
+                    loadingComponentMounted: function () {
+                        this.$nextTick(function() {
+                            $('#{{ key }}_{{ pageInstanceId }}_container').removeClass('is-preloading');
+                        });
+                    }
+                },
+                /* 渲染成功后清除加载中的样式 */
+                mounted: function() {}
+            });
+        }
+
+        /**
+         * 装修页：直接渲染 vue 实例
+         * 非装修页：通过 inView 函数根据视图渲染 vue 实例
+         * open_inview 控制 2020-05-30
+         * RG首页没有inView的
+         */
+        if (window.GESHOP_PAGE_TYPE == '1' || window.hasOwnProperty('IntersectionObserver') == false || open_inView == false) {
+            init_vue_component();
+        } else if (window.inView) {
+            var timer = null;
+            inView.offset(100);
+            inView('.{{ key }}_{{ pageInstanceId }}')
+            .on('enter', function() {
+                timer = setTimeout(function() {
+                    if (vm == null) {
+                        init_vue_component();
+                    }
+                }, 200);
+            })
+            .on('exit', function() {
+                clearTimeout(timer);
+            });
+        } else {
+            init_vue_component();
+        }
+    });
+</script>
+

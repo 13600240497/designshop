@@ -1,0 +1,181 @@
+{% set suffix ='rem'%}
+{% set remUnit = 75 %}
+
+{# {% set lang = data.lang|default('en') %} #}
+
+{%
+set m_pixel ={
+    coupon_magin_bottom: (data.coupon_magin_bottom|default(16)/remUnit)|number_format(3, '.')~suffix,
+    base_magin_top: (data.base_magin_top|default(16)/remUnit)|number_format(3, '.')~suffix,
+    coupon_msg_fts: (data.coupon_msg_fts|default(36)/remUnit)|number_format(3, '.')~suffix,
+    coupon_name_fts: (data.coupon_name_fts|default(24)/remUnit)|number_format(3, '.')~suffix,
+    coupon_limit_fts: (data.coupon_limit_fts|default(24)/remUnit)|number_format(3, '.')~suffix,
+    getBtn_fts: (data.getBtn_fts|default(24)/remUnit)|number_format(3, '.')~suffix,
+
+    coupon_msg_maxHeight: (data.coupon_msg_fts|default(36)/remUnit*2)|number_format(3, '.')~suffix,
+    coupon_name_maxHeight: (data.coupon_name_fts|default(24)/remUnit*2)|number_format(3, '.')~suffix,
+}
+%}
+
+{% set pageData = {
+	price_ft_weight:data.price_ft_weight|default(1),
+	base_bg_shadow:data.base_bg_shadow|default(0),
+	getBtn_ftc: data.getBtn_ftc is not null?data.getBtn_ftc:'#FF8A00',
+	getBtn_border_bgc: data.getBtn_border_bgc is not null?data.getBtn_border_bgc:'#FF8A00',
+	coupon_ftc: data.coupon_ftc is not null?data.coupon_ftc:'#333',
+    getBtn_comming_soon: data.getBtn_comming_soon,
+    getBtn_expired: data.getBtn_expired,
+    getBtn_all_taken: data.getBtn_all_taken
+} %}
+
+
+<div class="geshop-component-box component-drag geshop-gb-component ui-{{ pageInstanceId }}" data-key="U000148" style="margin-top: {{ m_pixel.base_magin_top }}" data-gid="U000148_default" data-id="{{ pageInstanceId }}">
+    <style>
+        [data-key="U000148"] .gs-couponItem_header::after,
+        [data-key="U000148"] .gs-couponItem_header::before{
+            background: {{ data.radio_bgc|default('#f3f3f3') }}!important;
+        }
+				[data-key="U000148"][data-id="{{ pageInstanceId }}"] .coupon-gray{
+					color:{{ pageData.getBtn_ftc }} !important;
+					border-color:{{ pageData.getBtn_border_bgc }} !important;
+				}
+				[data-key="U000148"][data-id="{{ pageInstanceId }}"] .couponItem_body-order,[data-key="U000148"][data-id="{{ pageInstanceId }}"] .couponItem_body-date{
+					color:{{ pageData.coupon_ftc }} !important;
+				}
+    /*背景图*/
+.geshop-gb-component.ui-{{ pageInstanceId }} .gb_wrapper_common{
+{% if data.base_box_bgImage %}
+	background-image:url({{ data.base_box_bgImage }});
+{% endif %}
+{% if data.component_bg_value %}
+{{ data.component_bg_value }}
+{% endif %}
+}
+
+/*动态价格粗细*/
+.geshop-gb-component.ui-{{ pageInstanceId }} .gs-shop-price strong,.geshop-gb-component.ui-{{ pageInstanceId }} .gs-sale-price{
+{% if pageData.price_ft_weight == '1' %}
+	font-weight:bold !important;
+{% else %}
+	font-weight:normal !important;
+{% endif %}
+}
+/*投影*/
+{% if pageData.base_bg_shadow == '0'%}
+.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item,.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item_tag {
+	box-shadow: none !important;
+}
+
+{% else %}
+.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item,.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item_tag {
+	box-shadow: 0px 0px 10px {{data.base_bg_shadow_color|default('#CCCCCC')}} !important;
+	-webkit-box-shadow: 0px 0px 10px {{data.base_bg_shadow_color|default('#CCCCCC')}} !important;
+}
+
+{% endif %}
+</style>
+    <div  class="clearfix gb-list gs-couponList gb_wrapper_common" style="margin-bottom: {{ m_pixel.coupon_magin_bottom }};">
+        {% for key,item in data.couponInfo|default(0..1)%}
+                {% if (data.coupon_num|default(1)) == 0 %}
+                    {# 一行两个 #}
+                    <section class="coupon_line-2 gs-couponItem gs-list-item_tag">
+                        <div class="gs-couponItem_header" style="background: {{ data.brand_bgc }};">
+                            <div class="couponItem_header-discount" style="color: {{ data.brand_ftc }};">
+                                <span class="coupon_discount-num" style="font-size: {{ m_pixel.coupon_msg_fts }}; max-height: {{ m_pixel.coupon_msg_maxHeight }}">{{ item.pre_desc|default('0% OFF') }}</span>
+                                <span class="coupon_discount-brand" style="font-size: {{ m_pixel.coupon_name_fts }};max-height: {{ coupon_name_maxHeight }};">{{ item.coupon_name|default('Coupon 名字') }}</span>
+                            </div>
+                            <div class="couponItem_header-img">
+                                <img src="
+                                    {% if data.couponsImg[item.coupon_code] %}
+                                        {{ data.couponsImg[item.coupon_code] }}
+                                    {% else %}
+                                        {{ staticDomain }}/resources/images/gb/u000137_148/img.png?vs=12
+                                    {% endif %}
+                                " title="{{data.couponsImg[item.goods_img]}}" alt="{{data.couponsImg[item.goods_img]}}">
+                            </div>
+                        </div>
+                        <div class="gs-couponItem_body" style="font-size: {{ m_pixel.coupon_limit_fts }};background: {{ data.coupon_bgc }}; color: {{ data.coupon_ftc }};">
+                            <div class="couponItem_body-order">
+                                {% if item.norm_desc or data.couponInfo is null %}
+                                    {{ item.norm_desc|default('Min order $0') }};
+                                {% endif %}
+                                {{ item.platforms }}
+                            </div>
+                            <div class="couponItem_body-warehouse">Warehouse:{{ item.warehouses|default('Warehousefdafadf') }}</div>
+                            <div class="couponItem_body-date">{{ item.start_time|default('01/11/2017') }}-{{ item.end_time|default('01/11/2017') }}</div>
+                            <div class="couponItem_statusBtn">
+                                {% if item.current_time > item.receive_start_time and item.current_time < item.receive_end_time and item.grant_total_count > item.already_grant_total_count %}
+                                    <div class="couponItem_statusCode" data-clipboard-text="{{item.coupon_code|default('AFSHLKFAA')}}" style="border-color: {{ data.getBtn_border_bgc }}; color: {{ data.getBtn_ftc }}; {% if getBtn_border == 0 %} border-style: dotted; {% endif %}">
+                                        <span class="couponCode" style="font-size: {{ m_pixel.getBtn_fts }}px;">{{ item.coupon_code|default('AFSHLKFAA') }}</span>
+                                        <i class="icon-copy-new couponCode_copy"></i>
+                                    </div><a class="coupon_href" target="_blank" href="{{ item.url_link }}" style="color: {{ data.getBtn_arrow_bgc }}; border-color: {{ data.getBtn_arrow_bgc }}; background: {{ data.goLink_bgc }};">
+                                        <i class="icon-arrow-line"></i>
+                                    </a>
+                                {% else %}
+                                    <div class="coupon-gray" style="background: {{ data.getBtn_disable_bgc }};">
+                                        {% if item.current_time < item.receive_start_time %}
+                                            {{ pageData.getBtn_comming_soon|default(gb_component_trans(lang , 'coming_soon')) }}
+                                        {% elseif item.current_time > item.receive_end_time %}
+                                            {{ pageData.getBtn_expired|default(gb_component_trans(lang, 'have_expired')) }}
+                                        {% else %}
+                                            {{ pageData.getBtn_all_taken|default(gb_component_trans(lang, 'all_taken')) }}
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </section>
+                {% else %}
+                    {# 一行一个 #}
+                    <section class="coupon_line-1 gs-couponItem gs-list-item_tag">
+                        <div class="gs-couponItem_header" style="background: {{ data.brand_bgc }};">
+                            <div class="couponItem_header-img">
+                                <img src="
+                                    {% if data.couponsImg[item.coupon_code] %}
+                                        {{ data.couponsImg[item.coupon_code] }}
+                                    {% else %}
+                                        {{ staticDomain }}/resources/images/gb/u000137_148/img.png?vs=12
+                                    {% endif %}
+                                " title="{{data.couponsImg[item.goods_img]}}" alt="{{data.couponsImg[item.goods_img]}}">
+                            </div>
+                            <div class="couponItem_header-discount" style="color: {{ data.brand_ftc }};">
+                                <span class="coupon_discount-brand"  style="font-size: {{ m_pixel.coupon_name_fts }};max-height: {{ coupon_name_maxHeight }};">{{ item.coupon_name|default('Coupon 名字') }}</span>
+                            </div>
+                        </div>
+                        <div class="gs-couponItem_body" style="font-size: {{ m_pixel.coupon_limit_fts }};background: {{ data.coupon_bgc }}; color: {{ data.coupon_ftc }};">
+                            <span class="coupon_discount-num" style="font-size: {{ m_pixel.coupon_msg_fts }};color: {{ data.coupon_discount_ftc|default('#c00') }};">{{ item.pre_desc|default('0% OFF') }}</span>
+                            <div class="couponItem_body-order">
+                                {% if item.norm_desc or data.couponInfo is null %}
+                                    {{ item.norm_desc|default('Min order $0') }};
+                                {% endif %}
+                                {{ item.platforms }}
+                            </div>
+                            <div class="couponItem_body-date">{{ item.start_time|default('01/11/2017') }}-{{ item.end_time|default('01/11/2017') }}</div>
+                            <div class="couponItem_statusBtn">
+                                {% if item.current_time > item.receive_start_time and item.current_time < item.receive_end_time and item.grant_total_count > item.already_grant_total_count %}
+                                    <div class="couponItem_statusCode" data-clipboard-text="{{item.coupon_code|default('AFSHLKFAA')}}" style="border-color: {{ data.getBtn_border_bgc }}; color: {{ data.getBtn_ftc }}; {% if getBtn_border == 0 %} border-style: dotted; {% endif %}">
+                                        <span class="couponCode" style="font-size: {{ m_pixel.getBtn_fts }}px;">{{ item.coupon_code|default('AFSHLKFAA') }}</span>
+                                        <i class="icon-copy-new couponCode_copy"></i>
+                                    </div><a class="coupon_href" target="_blank" href="{{ item.url_link }}" style="color: {{ data.getBtn_arrow_bgc }}; border-color: {{ data.getBtn_arrow_bgc }}; background: {{ data.goLink_bgc }};">
+                                        <i class="icon-arrow-line"></i>
+                                    </a>
+                                {% else %}
+                                    <div class="coupon-gray" style="background: {{ data.getBtn_disable_bgc }};">
+                                        {% if item.current_time < item.receive_start_time %}
+                                            {{ pageData.getBtn_comming_soon|default(gb_component_trans(lang , 'coming_soon')) }}
+                                        {% elseif item.current_time > item.receive_end_time %}
+                                            {{ pageData.getBtn_expired|default(gb_component_trans(lang, 'have_expired')) }}
+                                        {% else %}
+                                            {{ pageData.getBtn_all_taken|default(gb_component_trans(lang, 'all_taken')) }}
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </section>
+                {% endif %}
+        {% endfor %}
+    </div>
+</div>
+

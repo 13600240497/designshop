@@ -1,0 +1,123 @@
+{%
+    set formData = {
+        id: 'U000001',
+        name: '商品列表-模板二',
+        theme: 'style2_v2',
+        tabs: [
+            {
+                label: '数据配置',
+                components: [
+                    {
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '数据配置',
+                                type: 'goods-manager'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                label: '样式配置',
+                components: [
+                    {
+                        label: '基础配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件下边距',
+                                name: 'box_margin_bottom',
+                                default: '32',
+                            },
+                            {
+                                type: 'siteParam-rg',
+                                componentType: 'background-rg'
+                            }
+                        ]
+                    },
+                {
+                    label: '折扣配置',
+                    type: 'fieldset',
+                    components: [
+                    {
+                        label: '折扣标显示方式',
+                        type: 'radio',
+                        default: 0,
+                        name: 'discount_type',
+                        options: [
+                        { label: '-**%', value: 0 },
+                        { label: '**%OFF', value: 1 },
+                    ]
+                    },
+                    {
+                        label: '折扣背景颜色',
+                        name: 'discount_bg_color',
+                        type: 'colorPicker',
+                        default: '#FA386A',
+                        col: 2
+                    },
+                    {
+                        label: '折扣文本颜色',
+                        name: 'discount_font_color',
+                        type: 'colorPicker',
+                        default: '#FFFFFF',
+                        col: 2
+                    },
+                    {
+                        label: '背景图片',
+                        name: 'discount_bg_image',
+                        type: 'image',
+                        default: '' ,
+                    },
+                ]
+                },
+                    {
+                        label: '销售价',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '文字颜色',
+                                name: 'shop_price_color',
+                                default: '#FA386A',
+                                type: 'colorPicker'
+                            }
+                        ]
+                    },
+                    {
+                        label: '按钮',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '背景图片',
+                                name: 'buynow_bg_image',
+                                default: '',
+                                type: 'image'
+                            },
+                            {
+                                label: '背景颜色',
+                                name: 'buynow_bg_color',
+                                default: '#333',
+                                type: 'colorPicker'
+                            },
+                            {
+                                label: '文字颜色',
+                                name: 'buynow_font_color',
+                                default: '#fff',
+                                type: 'colorPicker'
+                            },
+                            {
+                                label: '图标',
+                                name: 'button_buy_icon',
+                                default: 'https://geshopimg.logsss.com/uploads/sRV7tqvraM8uTbGWJkwZCjUI3FfyYxHc.png'
+                            }
+                        ]
+                    },
+                ]
+            }
+        ]
+    }
+%}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

@@ -1,0 +1,44 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+{% set remUnit = 37.5 %}
+{% set scale = 	(data.default.lazyWidth/data.default.lazyHeight)|default(1) %}
+{# default value #}
+{% set pageData = {
+	boxMarginTop:data.boxMarginTop/remUnit,
+	boxMarginBottom:data.boxMarginBottom/remUnit,
+	gsPadding:data.gsPadding|default(5),
+	gsMarginBottom:(data.gsMarginBottom|default(5))/remUnit,
+	gsInnerPadding:(data.gsInnerPadding|default(8))/remUnit,
+	goodsFtW:data.goodsFtW|default('bold'),
+	goodsFtS:(data.goodsFtS|default('12'))/remUnit,
+	discountWidth:(data.discountWidth|default(50))/remUnit,
+	discountHeight:(data.discountHeight|default(50))/remUnit,
+	discountRadius:data.discountRadius|default('50'),
+	discountBgc:data.discountBgc|default('#fd894c'),
+	discountTop:(data.discountTop|default(2))/remUnit,
+	priceC:data.priceC|default('#fd894c'),
+	priceFt:(data.priceFt|default(16))/remUnit,
+	marketPriceFt:data.marketPriceFt/remUnit,
+	buyWidth:(data.buyWidth|default(80))/remUnit,
+	buyHeight:(data.buyHeight|default(34))/remUnit,
+	scale:(data.default.lazyWidth/data.default.lazyHeight)|default(1),
+	goodScaleHeight:((178/scale)/remUnit)|slice(0,5),
+} %}
+
+<div class="geshop-component-box component-drag clearfix" data-gid="U000056_nomore" data-key="U000056" data-unique="true" data-id="{{ pageInstanceId }}" attr="nav_flag">
+			{{include ('@app/htdocs/resources/template/m/navTitle/nomore/index.twig')}}
+    <div class="geshop-col-12" style="
+        {% if pageData.boxMarginTop %}margin-top: {{ pageData.boxMarginTop }}rem;{% endif %}
+        {% if pageData.boxMarginBottom %}margin-bottom: {{ pageData.boxMarginBottom }}rem;{% endif %}
+    ">
+        <div class="gs-goodsWrap" style="{% if data.baseWith %}width:{{data.baseWith/remUnit}}rem;{% endif %}
+				{% if data.baseBgC%}background-color:{{data.baseBgC}};{% endif %}">
+            <!-- <div class="geshop-panel" style="{% if data.titleBgImg%}background:url({{data.titleBgImg}}) no-repeat 0 0/100% 100%;{% endif %}
+            {% if data.titleFs %}font-size:{{data.titleFs}}px;{% endif %}
+            {% if data.titleFtC %}color:{{data.titleFtC}};{% endif %}
+            {% if pageData.titleH %}height:{{pageData.titleH}}px;line-height:{{pageData.titleH}}px;{% endif %}">{{data.goodsListTitle}}
+            </div> -->
+
+						{{include ('@app/htdocs/resources/template/m/goodsList/zafulDefault/index.twig')}}
+        </div>
+    </div>
+</div>

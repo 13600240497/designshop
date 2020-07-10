@@ -1,0 +1,10 @@
+{
+  "fields": {
+    "height": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "boxMarginBottom": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "imgSrc": { "is_public": "1", "is_m": "1", "is_app": "1" },
+    "titleText": { "is_public": "1", "is_m": "0", "is_app": "0" },
+    "titleNavText": { "is_public": "1", "is_m": "1", "is_app": "1" },
+    "viewHref": { "is_public": "1", "is_m": "0", "is_app": "0" }
+  }
+}

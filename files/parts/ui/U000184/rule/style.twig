@@ -1,0 +1,154 @@
+<!-- embed stylesheet begin -->
+<style type="text/css">
+    {% set classRoot = '.geshop-u000184-rule-body-'~pageInstanceId~'' %}
+
+    {# 三端共有样式 #}
+    {{ classRoot }} {
+        width: 100%;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    {{ classRoot }} .rule-btn {
+        position: absolute;
+        color: {{ data.btn_foot_color | default('#FFFFFF') }};
+        background-color: {{ data.btn_bg_color | default('#333333') }};
+        border-color: {{ data.btn_border_color | default('#333333') }};
+        z-index: 9;
+        text-align: center;
+    }
+
+
+    {# PC 模式 #}
+    @media screen and (min-width: 1025px) {
+        {{ classRoot }} {
+            margin-top: {{ data.box_margin_top | default(0) }}px;
+            margin-bottom: {{ data.box_margin_bottom | default(0) }}px;
+        }
+
+        {{ classRoot }} .rule-bg-img{
+            position: relative;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        {{ classRoot }} .rule-bg-img img{
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+        }
+
+        {{ classRoot }} .rule-btn {
+            width: {{ data.pc_btn_width | default(88) }}px;
+            height: {{ data.pc_btn_height | default(38) }}px;
+            line-height: {{ data.pc_btn_height | default(38) }}px;
+
+            top: {{ data.pc_btn_offset_up | default(60) }}px;
+            right: {{ data.pc_btn_offset_right | default(100) }}px;
+
+            {% if data.pc_btn_bg_img %}
+                background-image: url({{ data.pc_btn_bg_img }});
+                background-size: 100% 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+            {% endif %}
+
+            border-radius: {{ data.pc_btn_border_radius | default('4px 4px 4px 4px') }};
+            font-size: {{ data.pc_btn_title_size | default(14) }}px;
+            border: {{ data.pc_btn_border_size }}px solid {{ data.btn_border_color | default('#333333') }};
+        }
+    }
+
+    {# PAD #}
+    @media screen and (max-width: 1024px) and (min-width: 768px) {
+        {{ classRoot }} {
+            position: relative;
+            margin-top: {{ data.box_margin_top | default(0) }}px;
+            margin-bottom: {{ data.box_margin_bottom | default(0) }}px;
+        }
+
+        {{ classRoot }} .rule-bg-img{
+            position: relative;
+            margin: 0 auto;
+            text-align: center;
+        }
+        {{ classRoot }} .rule-bg-img img{
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        {{ classRoot }} .rule-btn {
+            width: {{ data.pc_btn_width | default(88) }}px;
+            height: {{ data.pc_btn_height | default(38) }}px;
+            line-height: {{ data.pc_btn_height | default(38) }}px;
+
+            top: {{ data.pc_btn_offset_up | default(60) }}px;
+            right: {{ data.pc_btn_offset_right | default(100) }}px;
+
+            {% if data.pc_btn_bg_img %}
+                background-image: url({{ data.pc_btn_bg_img }});
+                background-size: 100% 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+            {% endif %}
+
+            border-radius: {{ data.pc_btn_border_radius | default('4px 4px 4px 4px') }};
+            font-size: {{ data.pc_btn_title_size | default(14) }}px;
+            border: {{ data.pc_btn_border_size }}px solid {{ data.btn_border_color | default('#333333') }};
+        }
+
+    }
+
+
+    {# M #}
+    @media screen and (max-width: 767px) and (min-width: 0px) {
+        {{ classRoot }} {
+            position: relative;
+            margin-top: {{ data.box_margin_top_m | default(0) }}px;
+            margin-bottom: {{ data.box_margin_bottom_m | default(0) }}px;
+        }
+
+        {{ classRoot }} .rule-bg-img{
+            position: relative;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        {{ classRoot }} .rule-bg-img img{
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+
+        {{ classRoot }} .rule-btn {
+            width: {{ data.m_btn_width | default(60) }}px;
+            height: {{ data.m_btn_height | default(36) }}px;
+            line-height: {{ data.m_btn_height | default(36) }}px;
+
+            top: {{ data.m_btn_offset_up | default(40) }}px;
+            right: {{ data.m_btn_offset_right | default(40) }}px;
+
+            {% if data.m_btn_bg_img %}
+                background-image: url({{ data.m_btn_bg_img }});
+                background-size: 100% 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+            {% endif %}
+
+            border-radius: {{ data.m_btn_border_radius | default('4px 4px 4px 4px') }};
+            font-size: {{ data.m_btn_title_size | default(14) }}px;
+            border: {{ data.m_btn_border_size }}px solid {{ data.btn_border_color | default('#333333') }};
+        }
+
+    }
+
+
+</style>
+<!-- embed stylesheet end -->

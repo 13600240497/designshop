@@ -1,0 +1,58 @@
+
+{% set root = '#U000164_'~pageInstanceId %}
+{% set classSpace = '.geshop_u000164_default_zf_body' %}
+
+
+{{ root }} {{classSpace}} {
+    {% if data.isEditEnv == '1' %}
+        padding: 24px 20px 0px;
+    {% else %}
+        padding: 24px 24px 0px;
+    {% endif %}
+}
+
+{# 鼠标滑过商品边框样式 #}
+{{ root }} {{classSpace}} ul li:hover {
+    border-color: {{ data.hover_goods_border_color | default('#333333') }};
+}
+
+{# PC View More样式 #}
+{{ root }} {{classSpace}} .view_more a {
+    background-color: {{ data.view_more_bg_color | default('#FFFFFF') }};
+    color: {{ data.view_more_font_color | default('#333333') }}!important;
+    border-color: {{ data.btn_border_color | default('#333333') }}!important;
+}
+
+{{ root }} {{classSpace}} .view_more a:hover {
+    opacity: 0.9;
+}
+
+{# 兑换按钮样式 #}
+{{ root }} {{classSpace}} .list_item .item_btn_integral{
+    margin-top: 12px;
+    text-align: center;
+}
+
+{{ root }} {{classSpace}} .list_item .item_btn_integral a{
+    display: inline-block;
+    width:252px;
+    height:36px;
+    line-height: 36px;
+    background-color: {{ data.exchange_bg_color | default('#333333') }};
+    border-radius: {{ data.exchange_btn_radius | default('20') }}px;
+    font-size:16px;
+    font-family:OpenSans-Semibold;
+    color:{{ data.exchange_font_color | default('#FFFFFF') }};
+}
+
+{{ root }} {{classSpace}} .list_item .item_btn_integral a:hover{
+    opacity: 0.9;
+}
+
+{# 积分价格样式 #}
+{{ root }} {{classSpace}} .list_item .item_integral .left{
+    color: {{ data.shop_price_color | default('#333333') }};
+}
+{{ root }} {{classSpace}} .list_item .item_integral .right{
+    color: {{ data.integral_font_color | default('#333333') }};
+}

@@ -1,0 +1,618 @@
+<style>
+    .layui-tab-title li{
+        padding: 0 7px;
+    }
+</style>
+{%
+
+set formData = {
+    id: 'U000086',
+    name: '优惠券模版6',
+    theme: 'coupon6',
+    tabs: [
+        {
+            label: '数据配置',
+            components: [
+                {
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '优惠券ID',
+                            name: 'coupons_id',
+                            validClass: 'js-valid-couponIds',
+                            public: false,
+                        },
+                        {
+                            label: '百分比全站类型优惠券链接',
+                            name: 'pecent_coupon_link',
+                            public: false,
+                            default: 'https://www.rosegal.com/coupon-shop/',
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            label: '样式配置',
+            components: [
+                {
+                    label: '基础配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '组件下边距(px)',
+                            name: 'component_margin_bottom',
+                            default: 16,
+                            public: false,
+                        },
+                        {
+                            label: '展示方式',
+                            name: 'component_align',
+                            type: 'radio',
+                            default: 'left',
+                            options: [
+                                { label: '居左', value: 'left' },
+                                { label: '居中', value: 'center' },
+                                { label: '居右', value: 'right' },
+                            ],
+                            public: false,
+                        },
+                        {
+                            label: '宽度(PX)',
+                            name: 'component_width',
+                            default: 595,
+                            col: 2,
+                            public: false,
+                        },
+                        {
+                            label: '高度(PX)',
+                            name: 'component_height',
+                            default: 160,
+                            col: 2,
+                            public: false,
+                        }
+                    ]
+                },
+                {
+                    label: '优惠券信息配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '背景颜色',
+                            name: 'coupon_bgColor',
+                            type: 'colorPicker',
+                            default: '#fafafa',
+                            public: false,
+                        },
+                        {
+                            label: '圆角',
+                            desc: '(格式:上px 右px 下px 左px;）',
+                            name: 'coupon_radius',
+                            default: '8px 8px 8px 8px',
+                            public: false,
+                        },
+                        {
+                            label: '背景图片',
+                            name: 'coupon_bgImage',
+                            type: 'image',
+                            public: false,
+                        },
+                        {
+                            label: '优惠值文字颜色',
+                            name: 'coupon_value_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                        },
+                        {
+                            label: '优惠信息文字颜色',
+                            name: 'coupon_info_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                        },
+                        {
+                            label: '标题文字颜色',
+                            name: 'coupon_title_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                        },
+                        {
+                            label: '其它信息文字颜色',
+                            name: 'coupon_desc_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                        },
+                        {
+                            label: '倒计时文字颜色',
+                            name: 'coupon_countdown_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                        },
+                    ]
+                },
+                {
+                    label: '免邮信息配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '免邮背景颜色',
+                            name: 'free_shipping_bgColor',
+                            type: 'colorPicker',
+                            default: '#D8D8D8',
+                            public: false,
+                        },
+                        {
+                            label: '免邮文字颜色',
+                            name: 'free_shipping_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                        },
+                    ]
+                },
+                {
+                    label: '按钮区域信息配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '宽度(px)',
+                            name: 'right_width',
+                            default: 180,
+                            public: false,
+                        },
+                        {
+                            label: '背景颜色',
+                            name: 'right_bgColor',
+                            type: 'colorPicker',
+                            default: '#D8D8D8',
+                            public: false,
+                        },
+                        {
+                            label: '圆角(px)',
+                            name: 'right_radius',
+                            default: '8px 8px 8px 8px',
+                            public: false,
+                        },
+                        {
+                            label: '库存背景条颜色',
+                            name: 'stock_total_bgColor',
+                            type: 'colorPicker',
+                            default: '#979797',
+                            public: false,
+                        },
+                        {
+                            label: '已领取背景条颜色',
+                            name: 'stock_limit_bgColor',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            public: false,
+                        },
+                        {
+                            label: '库存提示文案颜色',
+                            name: 'stock_tips_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                        },
+                        {
+                            label: '无库存提示文案颜色',
+                            name: 'nostock_tips_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                        },
+                        {
+                            label: '优惠码文字颜色',
+                            name: 'right_code_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                        },
+                        {
+                            label: '已领取链接文字颜色',
+                            name: 'right_use_link_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                        },
+                        {
+                            label: '按钮背景图片',
+                            name: 'right_btn_bgImage',
+                            type: 'image',
+                            public: false,
+                        }
+                    ]
+                },
+                {
+                    type: 'tab',
+                    items: [
+                        {
+                            label: '非进行中',
+                            components: [
+                                {
+                                    label: '背景图片',
+                                    name: 'notdone_btn_bgImage',
+                                    type: 'image',
+                                    public: false,
+                                },
+                                {
+                                    label: '按钮背景颜色',
+                                    name: 'notdone_btn_bgColor',
+                                    type: 'colorPicker',
+                                    default: '#c1c1c1',
+                                    public: false,
+                                },
+                                {
+                                    label: '文字颜色',
+                                    name: 'notdone_btn_color',
+                                    type: 'colorPicker',
+                                    default: '#FFFFFF',
+                                    public: false,
+                                },
+                            ]
+                        },
+                        {
+                            label: '未领取',
+                            components: [
+                                {
+                                    label: '背景图片',
+                                    name: 'notget_btn_bgImage',
+                                    type: 'image',
+                                    public: false,
+                                },
+                                {
+                                    label: '按钮背景颜色',
+                                    name: 'notget_btn_bgColor',
+                                    type: 'colorPicker',
+                                    default: '#333333',
+                                    public: false,
+                                },
+                                {
+                                    label: '文字颜色',
+                                    name: 'notget_btn_color',
+                                    type: 'colorPicker',
+                                    default: '#FFFFFF',
+                                    public: false,
+                                },
+                            ]
+                        },
+                        {
+                            label: '可使用',
+                            components: [
+                                {
+                                    label: '背景图片',
+                                    name: 'able_btn_bgImage',
+                                    type: 'image',
+                                    public: false,
+                                },
+                                {
+                                    label: '按钮背景颜色',
+                                    name: 'able_btn_bgColor',
+                                    type: 'colorPicker',
+                                    default: '#333333',
+                                    public: false,
+                                },
+                                {
+                                    label: '文字颜色',
+                                    name: 'able_btn_color',
+                                    type: 'colorPicker',
+                                    default: '#FFFFFF',
+                                    public: false,
+                                },
+                            ]
+                        },
+                        {
+                            label: '无资源',
+                            components: [
+                                {
+                                    label: '背景图片',
+                                    name: 'nores_btn_bgImage',
+                                    type: 'image',
+                                    public: false,
+                                },
+                                {
+                                    label: '按钮背景颜色',
+                                    name: 'nores_btn_bgColor',
+                                    type: 'colorPicker',
+                                    default: '#c1c1c1',
+                                    public: false,
+                                },
+                                {
+                                    label: '文字颜色',
+                                    name: 'nores_btn_color',
+                                    type: 'colorPicker',
+                                    default: '#FFFFFF',
+                                    public: false,
+                                },
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    moreConfig: [
+        {
+            type: 'collapse',
+            items: [
+                {
+                    label: '基础配置',
+                    components: [
+                        {
+                            label: '组件上边距(px)',
+                            name: 'component_margin_top',
+                            default: '0',
+                            public: false,
+                        }
+                    ]
+                },
+                {
+                    label: '优惠券信息配置',
+                    components: [
+                        {
+                            label: '竖线背景颜色',
+                            name: 'coupon_solid_color',
+                            type: 'colorPicker',
+                            default: '#979797',
+                            public: false,
+                        },
+                        {
+                            label: '标题文字下边距(PX)',
+                            name: 'coupon_title_mb',
+                            default: 8,
+                            public: false,
+                        },
+                        {
+                            label: '标题文字上边距(PX)',
+                            name: 'coupon_title_mt',
+                            default: 8,
+                            public: false,
+                        },
+                        {
+                            label: '优惠值文字大小(PX)',
+                            name: 'coupon_value_fontsize',
+                            default: 72,
+                            public: false,
+                        },
+                        {
+                            label: '优惠值符号文字大小(PX)',
+                            name: 'coupon_value_sign_fontsize',
+                            default: 20,
+                            public: false,
+                        },
+                        {
+                            label: '标题文字大小(PX)',
+                            name: 'coupon_title_fontsize',
+                            default: 16,
+                            public: false,
+                        },
+                        {
+                            label: '其它信息文字大小(PX)',
+                            name: 'coupon_desc_fontsize',
+                            default: 12,
+                            public: false,
+                        },
+                        {
+                            label: '倒计时文字大小(PX)',
+                            name: 'coupon_countdown_fontsize',
+                            default: 12,
+                            public: false,
+                        },
+                        {
+                            label: '已领取背景图片',
+                            desc: '（当前尺寸：415X158PX）',
+                            name: 'coupon_get_bgImage',
+                            type: 'image',
+                            public: false,
+                        }
+                    ]
+                },
+                {
+                    label: '按钮配置',
+                    components: [
+                        {
+                            label: '按钮上边距(PX)',
+                            name: 'btn_mt',
+                            default: 15,
+                            public: false,
+                        },
+                        {
+                            label: '文字大小(PX)',
+                            name: 'btn_fontsize',
+                            default: 14,
+                            public: false,
+                        },
+                        {
+                            label: '圆角',
+                            desc: '(格式:上px 右px 下px 左px;)',
+                            name: 'btn_radius',
+                            default: '15px 15px 15px 15px',
+                            public: false,
+                        },
+                        {
+                            label: '宽度(px)',
+                            name: 'btn_width',
+                            default: 140,
+                            col: 2,
+                            public: false,
+                        },
+                        {
+                            label: '高度(px)',
+                            name: 'btn_height',
+                            default: 30,
+                            col: 2,
+                            public: false,
+                        },
+                    ]
+                },
+                {
+                    label: '弹窗配置',
+                    components: [
+                        {
+                            label: '宽度(px)',
+                            name: 'dialog_width',
+                            default: 600,
+                            col: 2,
+                            public: false,
+                        },
+                        {
+                            label: '高度(px)',
+                            name: 'dialog_height',
+                            default: 350,
+                            col: 2,
+                            public: false,
+                        },
+                        {
+                            label: '优惠券背景图片',
+                            desc: '(当前尺寸：500X180PX)',
+                            name: 'dialog_coupon_bgImage',
+                            type: 'image',
+                            public: false,
+                        },
+                        {
+                            label: '优惠券标题文字大小(PX)',
+                            name: 'dialog_coupon_title',
+                            default: 42,
+                            public: false,
+                        },
+                        {
+                            label: '优惠信息文字大小(px)',
+                            name: 'dialog_promo_fontsize',
+                            default: 48,
+                            public: false,
+                        },
+                        {
+                            label: '优惠标题文字颜色',
+                            name: 'dialog_coupon_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                        },
+                        {
+                            label: '优惠信息文字颜色',
+                            name: 'dialog_promo_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                        },
+                        {
+                            label: '非优惠信息文字颜色',
+                            name: 'dialog_promo_default_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                        },
+                         {
+                            label: '优惠信息文案行高',
+                            name: 'coupon_text_lineheight',
+                            default: '17',
+                            public: false,
+                        },
+                        {
+                            label: '关闭按钮',
+                            desc: '（当前尺寸：24X24PX）',
+                            name: 'dialog_close_image',
+                            type: 'image',
+                            public: false,
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    beforeSubmit: 'onSubmit',
+    skuValidConfig: 'skuValidConfig'
+}
+
+%}
+
+<script>
+    var $box = $('#{{ formData.id }}-{{ formData.theme }}');
+    var $couponid = $box.find('input[name="coupons_id"]');
+    var couponId = '{{ data.coupons_id }}';
+
+    var _inputFirm = function _inputFirm(text){
+        var _index = layer.confirm(text || '优惠券ID错误，请正确填写优惠券ID', {
+            btn: ['取消', '确定'],
+            area: '420px',
+            icon: 3,
+            skin: 'element-ui-dialog-class'
+        },function(){
+            $couponid.focus();
+            layer.close(_index);
+        },function(){
+            $couponid.focus();
+        });
+    };
+    var _jsonp = function _jsonp(param){
+        param = param || {};
+        return $.ajax($.extend({
+            dataType: "jsonp",
+            jsonp: 'callback',
+        }, param));
+    };
+    var getCouponDetail = function getCouponDetail(_value, callback){
+        var _url = GESHOP_INTERFACE.coupondetail.url;
+        return _jsonp({
+            url: _url,
+            data: {
+                content : JSON.stringify({
+                    lang : '{{ lang }}',
+                    couponid : _value,
+                    pipeline: (typeof GESHOP_PIPELINE != 'undefined' ? GESHOP_PIPELINE : '')
+                })
+            },
+            success :function(res){
+                if(res.code === 0){
+                    var couponInfo = res.data.couponInfo || {};
+                    if(!couponInfo.id){
+                        _inputFirm();
+                        _clearInput();
+                    } else {
+                        callback && callback()
+                    }
+                }else{
+                    _inputFirm();
+                    _clearInput();
+                }
+            }
+        });
+    };
+    var _clearInput = function _clearInput(){
+        $couponid.val('');
+    };
+
+    /* if(couponId){
+        getCouponDetail(couponId);
+    } */
+
+    {#  自定义保存函数 #}
+    function onSubmit(progress) {
+        var $val = $couponid.val();
+
+        if ($.trim($val) == '') {
+            $couponid.val('');
+            progress.next();
+        } else if (!isNaN(+$val) && $val > 0) {
+            progress.next();
+        } else {
+            $couponid.val('');
+            _inputFirm('请填写优惠券ID');
+        }
+    };
+
+    {# 自定义校验函数 #}
+    function skuValidConfig() {
+        return {
+            check_type: 'coupon',
+            check_rules: 'COUPON_VALIDATE_ID_EXITS'
+        }
+    }
+</script>
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

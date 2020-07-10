@@ -1,0 +1,200 @@
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>广告组件
+    <a href="javascript:;" class="design-form-close js_closeDesignForm gb-icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+  <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+    <div class="layui-tab">
+      <ul class="layui-tab-title">
+        <li class="layui-this">模板选择</li>
+        <li>样式设置</li>
+      </ul>
+      <div class="layui-tab-content layui-tab-content-parent">
+        <div class="layui-tab-item layui-show">
+						<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+						{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				    </div>
+        <div class="layui-tab-item">
+          <div class="layui-collapse" lay-accordion>
+            <div class="layui-colla-item">
+              <h2 class="layui-colla-title">基础设置</h2>
+              <div class="layui-colla-content layui-show">
+                <div class="layui-form-item">
+                  <label class="layui-form-label">上边距(px)</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="boxMarginTop" autocomplete="off" class="layui-input" value="{{ data.boxMarginTop | default(0) }}">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">下边距(px)</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="boxMarginBottom" autocomplete="off" class="layui-input" value="{{ data.boxMarginBottom | default(0) }}">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">
+                    链接是否打开新窗口</label>
+                  <div class="layui-input-block">
+                    <input type="radio" name="isOpenNew" value="1" {% if data.isOpenNew|default('0') == '1' %} checked{% endif %} title="是">
+                    <input type="radio" name="isOpenNew" value="0" {% if data.isOpenNew|default('0') == '0' %} checked{% endif %} title="否">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="layui-colla-item">
+              <h2 class="layui-colla-title">广告图一</h2>
+              <div class="layui-colla-content">
+                <div class="layui-form-item">
+                  <label class="layui-form-label">图片地址</label>
+                  <div class="layui-input-block">
+                    <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                    <input type="text" name="img1Src" autocomplete="off" class="layui-input" value="{{ data.img1Src }}" data-height="img1Height">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">图片描述</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="img1Alt" autocomplete="off" class="layui-input" value="{{ data.img1Alt }}">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">图片宽度(px)</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="img1Width" autocomplete="off" class="layui-input" value="386" disabled>
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">图片高度(px)</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="img1Height" autocomplete="off" class="layui-input" value="{{ data.img1Height }}">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">链接URL</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="img1Href" autocomplete="off" class="layui-input" value="{{ data.img1Href }}">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="layui-colla-item">
+              <h2 class="layui-colla-title">广告图二</h2>
+              <div class="layui-colla-content">
+                <div class="layui-form-item">
+                  <label class="layui-form-label">图片地址</label>
+                  <div class="layui-input-block">
+                    <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                    <input type="text" name="img2Src" autocomplete="off" class="layui-input" value="{{ data.img2Src }}" data-height="img2Height">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">图片描述</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="img2Alt" autocomplete="off" class="layui-input" value="{{ data.img2Alt }}">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">图片宽度(px)</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="img2Width" autocomplete="off" class="layui-input" value="793" disabled>
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">图片高度(px)</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="img2Height" autocomplete="off" class="layui-input" value="{{ data.img2Height }}">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">链接URL</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="img2Href" autocomplete="off" class="layui-input" value="{{ data.img2Href }}">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="layui-colla-item">
+              <h2 class="layui-colla-title">广告图三</h2>
+              <div class="layui-colla-content">
+                <div class="layui-form-item">
+                  <label class="layui-form-label">图片地址</label>
+                  <div class="layui-input-block">
+                    <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                    <input type="text" name="img3Src" autocomplete="off" class="layui-input" value="{{ data.img3Src }}" data-height="img3Height">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">图片描述</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="img3Alt" autocomplete="off" class="layui-input" value="{{ data.img3Alt }}">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">图片宽度(px)</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="img3Width" autocomplete="off" class="layui-input" value="386" disabled>
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">图片高度(px)</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="img3Height" autocomplete="off" class="layui-input" value="{{ data.img3Height }}">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">链接URL</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="img3Href" autocomplete="off" class="layui-input" value="{{ data.img3Href }}">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="layui-colla-item">
+              <h2 class="layui-colla-title">广告图四</h2>
+              <div class="layui-colla-content">
+                <div class="layui-form-item">
+                  <label class="layui-form-label">图片地址</label>
+                  <div class="layui-input-block">
+                    <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                    <input type="text" name="img4Src" autocomplete="off" class="layui-input" value="{{ data.img4Src }}" data-height="img4Height">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">图片描述</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="img4Alt" autocomplete="off" class="layui-input" value="{{ data.img4Alt }}">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">图片宽度(px)</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="img4Width" autocomplete="off" class="layui-input" value="386" disabled>
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">图片高度(px)</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="img4Height" autocomplete="off" class="layui-input" value="{{ data.img4Height }}">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">链接URL</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="img4Href" autocomplete="off" class="layui-input" value="{{ data.img4Href }}">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>

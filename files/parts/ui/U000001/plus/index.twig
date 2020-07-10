@@ -1,0 +1,51 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+
+{% if data.colNum == '1'%}
+    {% set colClass = liCol[0] %}
+{% elseif data.colNum == '2' %}
+    {% set colClass = liCol[1] %}
+{% elseif data.colNum == '3' %}
+    {% set colClass = liCol[2] %}
+{% elseif data.colNum == '4' %}
+    {% set colClass = liCol[3] %}
+{% elseif data.colNum == '5' %}
+    {% set colClass = liCol[4] %}
+{% else %}
+    {% set colClass = liCol[3] %}
+{% endif %}
+
+{% set goodsData = {
+	goodsBgc:data.goodsBgc is not null?data.goodsBgc:'#ffffff',
+	discountBgc:data.discountBgc is not null?data.discountBgc:'#FD9E62',
+	gsPadding:data.gsPadding|default(20),
+	gsMarginBottom:data.gsMarginBottom|default(20),
+	buyBgC:data.buyBgC is not null?data.buyBgC:'#FD6462',
+	buyHeight:data.buyHeight|default(55),
+	buyFtS:data.buyFtS|default(16),
+	priceC:data.priceC is not null?data.priceC:'#FD6462',
+	priceFt:data.priceFt|default(20),
+	discountOffsetT:data.discountOffsetT|default('3'),
+	discountOffsetR:data.discountOffsetR|default('4'),
+	discountRadius:data.discountRadius|default('50'),
+	colNum:data.colNum|default('4')
+} %}
+
+<div class="geshop-component-box component-drag clearfix" data-gid="U000001_plus" data-key="U000001" data-id="{{ pageInstanceId }}">
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+        {% if data.goodsBdC %}
+        [data-gid="U000001_plus"][data-id="{{ pageInstanceId }}"] .component-self-goodWrap:hover, [data-gid="U000001_plus"][data-id="{{ pageInstanceId }}"] .current {
+            border-color:{{data.goodsBdC}} !important;
+            {# border-width:1px;
+            border-style:solid; #}
+        }
+        {% endif %}
+    </style>
+    <!-- embed stylesheet end -->
+    <div class="geshop-col-12" style="
+		{% if data.boxMarginTop %}margin-top: {{ data.boxMarginTop }}px;{% endif %}
+		{% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}
+    ">
+		{{include ('@app/htdocs/resources/template/pc/goodsList/plus/index.twig')}}
+    </div>
+</div>

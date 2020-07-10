@@ -1,0 +1,97 @@
+{% set pageData = {
+	endsIn:data.endsIn|default( get_component_trans(lang,'un_received') ),
+	startIn:data.startIn|default( get_component_trans(lang,'start_in') ),
+	ends:data.ends|default( get_component_trans(lang,'btn_ended') )
+}%}
+<div class="geshop-component-box component-drag clearfix gs-count-down gs-timer-{{ pageInstanceId }}" data-gid="U000129_timer" data-key="U000129" data-static-domain="{{staticDomain}}" data-id="{{ pageInstanceId }}"  style="
+		position: relative;text-align:center;
+		margin: 0 auto {{ data.componentMarginBottom|default(32) }}px;
+		width: {{ data.componentWidth|default(592) }}px;
+		height: {{ data.componentHeight|default(300) }}px;
+		{% if data.componentBgImg %}
+			background:url({{ data.componentBgImg }}) no-repeat;
+			background-size: {{ data.componentWidth|default(592) }}px {{ data.componentHeight|default(300) }}px;
+		{% else %}
+			background-color: {{data.componentBgColor|default('#ededed')}};
+		{% endif %}
+		{% if data.componentPos != 'center' %}
+			float: {{data.componentPos}};
+		{% endif %}
+		">
+	<style type="text/css">
+		.gs-timer-{{ pageInstanceId }} .gs-timer span{
+			display: inline-block;
+			width: {{ data.timerBgWidth|default(28) }}px;
+			height: {{ data.timerBgHeight|default(28) }}px;
+			font-size: {{ data.timerTextFontSize|default(16) }}px;;
+			line-height: {{ data.timerBgHeight|default(28) }}px;
+			background-color: {{ data.timerBgColor|default('#333') }};
+			color: {{ data.timerTextColor|default('#fff') }};
+			border-radius: {{ data.timerBgRadius|default(0) }}px;
+		}
+		.gs-timer-{{ pageInstanceId }} .gs-timer em{
+			display: inline-block;
+			width: 22px;
+			font-style: initial;
+			height: {{ data.timerBgHeight|default(28) }}px;
+			font-size: {{ data.timerTextFontSize|default(16) }}px;;
+			line-height: {{ data.timerBgHeight|default(28) }}px;
+			color: {{ data.timerBgColor|default('#333') }};
+		}
+		.gs-timer-{{ pageInstanceId }} .gs-timer-shade span{
+			height: {{ data.componentHeight|default(300) }}px;
+			line-height: {{ data.componentHeight|default(300) }}px;
+		}
+		.gs-timer-{{ pageInstanceId }} .coupon-wrap{
+			padding: {{ data.componentHeight|default(300) * 0.1 }}px {{ data.componentWidth|default(592) * 0.0756 }}px;
+		}
+		.gs-timer-{{ pageInstanceId }} .gs-timer-tit{
+			line-height: {{ data.titFontSize|default(40) + 4 }}px;
+		}
+	</style>
+	<div class="coupon-wrap js_getCoupon noTime">
+		<h3 class="gs-timer-tit js_couponId {% if data.couponId %}js_timerEmitTag{% endif %}" style="
+			font-size: {{ data.titFontSize|default(40) }}px;
+			color: {{ data.titColor|default('#333') }};
+			" data-couponid="{{ data.couponId }}">{{ data.textCouponTit|default('CRAZY COUPON') }}</h3>
+		<p class="gs-get-coupon"><span style="
+			font-size: {{ data.btnFontSize|default(16) }}px;
+			color: {{ data.btnColor|default('#fff') }};
+			border-radius: {{ data.btnRadius|default(0) }}px;
+			padding: 0 {{ data.btnPadding|default(25) }}px;
+			height: {{ data.btnHeight|default(40) }}px;
+			line-height: {{ data.btnHeight|default(40) }}px;
+			{% if data.btnBgImg %}
+				background:url({{ data.btnBgImg }}) no-repeat;
+				background-size: cover;
+			{% else %}
+				background-color: {{ data.btnBgColor|default('#333') }};
+			{% endif %}
+			" data-cgetext="{{ data.textComingSoon|default('COMING SOON') }},{{ data.textGetNow|default('GET NOW') }},{{ data.textGetNow|default('GET NOW') }}">
+				{{ data.textGetNow|default('GET NOW') }}
+			</span>
+		</p>
+		<div class="gs-timer-wrap" style="
+			{% if data.timerVis == 'hidden' %}
+				display:none;
+			{% else %}
+				display:block;
+			{% endif %}
+			">
+			<div class="middle-wrap">
+				<p class="gs-timer-endsin" style="
+					font-size: {{ data.timerTitFontSize|default(20) }}px;
+					color: {{ data.timerTitColor|default('#333') }};">
+						{{pageData.endsIn}}
+				</p>
+				<input class="js_dataInfo" type="hidden" name="serverTime" value="{{serverTime}}" data-startTime="" data-endTime="" data-textObj="{{pageData.startIn}},{{pageData.endsIn}},{{pageData.endsIn}}">
+				<p class="js_gsTimer gs-timer" data-left-time="0"><span>00</span><em>:</em><span>00</span><em>:</em><span>00</span><em>:</em><span>00</span></p>
+			</div>
+		</div>
+	</div>
+	{% if data.isEditEnv != 1 %}
+		<div class="gs-timer-shade">
+			<span>{{ pageData.ends }}</span>
+		</div>
+	{% endif %}
+</div>

@@ -1,0 +1,24 @@
+
+<div class="geshop-component-box component-drag" id="U000060_{{pageInstanceId}}" data-gid="U000060_nomore" data-key="U000060" data-id="{{ pageInstanceId }}" attr="nav_flag">
+	<div style="
+		{% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom|default(10) }}px;{% endif %}
+		height:{{ data.height|default(100) }}px;
+		line-height:{{ data.height|default(100) }}px;
+		background-color:{% if data.bgColor %}{{ data.bgColor }}{% endif %};
+		text-align:center;
+		width:100%;
+		overflow: hidden;
+	">
+		<a href="{{ data.viewHref|default('javascript:;') }}" style="
+			display:block;
+			{% if data.viewHref %}cursor: pointer;{% else %} cursor:default; {% endif %}
+			font-family:{{ data.fontFamily }};
+			font-size:{{ data.titleFont|default(24) }}px;
+			color:{{ data.titleColor|default('#333333') }};
+			font-weight:{{ data.titleWeight|default('normal') }};
+			text-align:{{ data.titlePlace|default('center') }};
+			{% if data.bgColor %}background-color:{{data.bgColor}};{% endif %}">
+			{% if data.titleText %}{{ data.titleText }}{% else %}请设置导航标题{% endif %}
+		</a>
+	</div>
+</div>

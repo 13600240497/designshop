@@ -1,0 +1,76 @@
+{%
+set formData = {
+    id: 'U000087',
+    name: '优惠券模版6',
+    theme: 'coupon6',
+    tabs: [
+        {
+            label: '数据配置',
+            components: [
+                {
+                    label: '表单组合',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: 'radio表单',
+                            desc: '（备注文案）',
+                            name: 'radio',
+                            type: 'radio',
+                            default: 1,
+                            options: [
+                                { label: '开', value: '1' },
+                                { label: '关', value: '0' },
+                            ]
+                        },
+                        {
+                            label: 'input表单',
+                            desc: '字段秒数',
+                            name: 'input',
+                            type: 'input',
+                            placeholder: '输入提示',
+                            disabled: true,
+                        },
+                        {
+                            label: '文字颜色',
+                            name: 'title_color',
+                            type: 'colorPicker',
+                            public: false,
+                            default: '#333333',
+                        },
+                        {
+                            label: '图片选择',
+                            name: 'bgImage',
+                            type: 'image',
+                            public: false,
+                        },
+                    ]
+                }
+            ]
+        },
+        {
+            label: '样式配置',
+            components: []
+        }
+    ],
+    moreConfig: [
+        {
+            label: '折叠控件',
+            type: 'collapse',
+            items: [
+                {
+                    label: '基础配置',
+                    components: []
+                },
+                {
+                    label: '优惠券信息配置',
+                    components: []
+                }
+            ]
+        }
+    ],
+    beforeSubmit: 'JS自定义提交函数'
+}
+%}
+ 
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

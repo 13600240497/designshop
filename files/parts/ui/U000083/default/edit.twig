@@ -1,0 +1,9 @@
+<div class="geshop index-banner">
+  {% for item in data.goodsInfo %}
+    {% for inner in item.lists %}
+    <a href="{{ inner.url_title }}" class="gs-img" style="display: block; float: left; width: 295px; height: 400px;">
+      <img src="{{ item.label }}"  style="width: 295px; height: 400px;">
+    </a>
+    {% endfor %}
+  {% endfor %}
+</div>

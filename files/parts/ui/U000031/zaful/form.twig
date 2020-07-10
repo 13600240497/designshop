@@ -1,0 +1,424 @@
+<style>
+.text-no-wrap .layui-form-label{
+	white-space:nowrap;
+}
+</style>
+{{include ('@app/files/parts/temp/goods_manager.twig')}}
+{%
+	set formData = {
+			id: 'U000031',
+			name: '商品列表组件配置',
+			theme: 'zaful',
+			tabs: [{
+					label: '商品数据',
+					components: [{
+						label: '商品数据',
+						type: 'fieldset',
+						components: [{
+							type: 'diy',
+							src: 'template_goods.twig'
+						}]
+					}]
+				},
+				{
+					label: '样式设置',
+					components: [
+            {
+							label: '常用配置',
+							type: 'fieldset',
+							components: [{
+									label: '组件下边距(px)',
+									name: 'boxMarginBottom',
+									type: 'input',
+									col: 1,
+									default: 32,
+								},
+								{
+									label: '组件背景色',
+									name: 'baseBgC',
+									type: 'colorPicker',
+									col: 1,
+									default: '#F2F2F2',
+								},
+								{
+									label: '组件圆角',
+									name: 'component_radius',
+									desc: '(请按格式填写：左上 右上 右下 左下，例如： 8px 8px 8px 8px，请注意要写上px否则无效)',
+									type: 'input',
+									col: 1,
+									default: '0px 0px 0px 0px',
+								},
+							]
+						},
+						{
+							label: '秒杀内容设置',
+							type: 'fieldset',
+							components: [
+								{
+									type: 'diy',
+									src: 'hidden-input.twig'
+								},
+								{
+									label: '时间设置',
+									name: 'killRange',
+									type: 'dataRangePicker'
+								},
+								{
+									label: 'FLASH SALE 文案',
+									name: 'titleNavText',
+									type: 'input',
+									col: 1,
+									default: 'FLASH SALE',
+								},
+								{
+									label: '距秒杀开始文案',
+									name: 'downStarts',
+									type: 'input',
+									col: 1,
+									default: get_component_trans(lang,'down_starts'),
+								},
+							{
+								label: '距秒杀结束文案',
+								name: 'downEnds',
+								type: 'input',
+								col: 1,
+								default: get_component_trans(lang,'down_ends'),
+							},
+							{
+								label: '秒杀结束文案',
+								name: 'downAfText',
+								type: 'input',
+								col: 1,
+								default: get_component_trans(lang,'already_ended'),
+							},
+								{
+									label: '是否显示已结束的秒杀内容',
+									name: 'killLeftVisible',
+									type: 'radio',
+									default: '1',
+									options: [
+									{ label: '是', value: '1' },
+									{ label: '否', value: '0' },
+								]
+								},
+							]
+						},
+					]
+				}
+			],
+			moreConfig: [{
+				label: '高级配置',
+				type: 'collapse',
+				items: [{
+						label: '标题配置',
+						components: [
+							{
+								label: '秒杀标题文字颜色',
+									name: 'downC',
+									type: 'colorPicker',
+									col: 2,
+									default: '#333333',
+							},
+							{
+								label: '秒杀时间标题文字颜色',
+									name: 'downStatusC',
+									type: 'colorPicker',
+									extendClass:'text-no-wrap',
+									col: 2,
+									default: '#333333',
+							},
+							{
+								label: '秒杀时间背景颜色',
+									name: 'downTimeBgC',
+									type: 'colorPicker',
+									col: 2,
+									default: '#333333',
+							},
+							{
+								label: '秒杀时间文字颜色',
+									name: 'downTextC',
+									type: 'colorPicker',
+									col: 2,
+									default: '#FFFFFF',
+							},
+							{
+									label: 'FLASH SALE文字大小（px）',
+									name: 'headerTitleFtS',
+									type: 'input',
+									col: 1,
+									default: '40',
+								},
+								{
+									label: '秒杀图标',
+									desc: '(建议宽30PX，高30PX）',
+									name: 'downClockImg',
+									type: 'image',
+									col: 1,
+								},
+								{
+									label: '是否显示秒杀图标',
+									name: 'downClockActive',
+									type: 'radio',
+									default: '1',
+									options: [
+									{ label: '是', value: '1' },
+									{ label: '否', value: '0' },
+								]
+								},
+						]
+					},
+					{
+						label: '商品信息配置',
+						components: [
+
+							{
+									label: '销售价文字大小(PX)',
+									name: 'priceFt',
+									type: 'input',
+									col: 2,
+									default: '36',
+								},
+							{
+								label: '销售价文字颜色',
+									name: 'priceC',
+									type: 'colorPicker',
+									col: 2,
+									default: '#333333',
+							},
+							{
+									label: 'APP专享文字大小(PX)',
+									name: 'app_text_ft_size',
+									extendClass:'text-no-wrap',
+									type: 'input',
+									col: 2,
+									default: '24',
+								},
+							{
+								label: 'APP专享文字颜色',
+									name: 'app_text_ft_color',
+									type: 'colorPicker',
+									col: 2,
+									default: '#333333',
+							},
+							{
+								label: 'APP专享背景颜色',
+									name: 'app_text_bg_color',
+									type: 'colorPicker',
+									col: 2,
+									default: '#EEEEEE',
+							},
+							{
+								label: 'APP专享背景图片',
+								name: 'app_text_bg_image',
+								type: 'image',
+								col: 1,
+							},
+						]
+					},
+					{
+						label: '购买按钮设置',
+						components: [
+							{
+								label: '文案文字颜色',
+									name: 'buyFtC',
+									type: 'colorPicker',
+									col: 2,
+									default: '#FFFFFF',
+							},
+							{
+								label: '背景颜色',
+									name: 'buyBgC',
+									type: 'colorPicker',
+									col: 2,
+									default: '#333333',
+							},
+							{
+									label: '按钮文案',
+									name: 'buyText',
+									extendClass:'text-no-wrap',
+									type: 'input',
+									col: 1,
+									default: get_component_trans(lang,'btn_buy_now'),
+								},
+							{
+									label: '文字大小(PX)',
+									name: 'buyFtS',
+									extendClass:'text-no-wrap',
+									type: 'input',
+									col: 2,
+									default: '24',
+								},
+							{
+									label: '按扭圆角(PX)',
+									name: 'buyRadius',
+									extendClass:'text-no-wrap',
+									type: 'input',
+									col: 2,
+									default: '38',
+								},
+						]
+					},
+					{
+						label: '折扣标设置',
+						components: [
+								{
+									label: '折扣标显示方式',
+									name: 'discountType',
+									type: 'radio',
+									default: '1',
+									options: [
+									{ label: '**%OFF', value: '1' },
+									{ label: '**%', value: '0' },
+								]
+								},
+							{
+								label: '折扣背景颜色',
+									name: 'discountBgc',
+									type: 'colorPicker',
+									col: 2,
+									default: '#333333',
+							},
+							{
+								label: '折扣文本颜色',
+									name: 'discountFtC',
+									type: 'colorPicker',
+									col: 2,
+									default: '#FFFFFF',
+							},
+							{
+									label: '折扣标左偏移(px)',
+									name: 'discount_offset_left',
+									extendClass:'text-no-wrap',
+									type: 'input',
+									col: 2,
+									default: '0',
+								},
+							{
+									label: '折扣标下偏移(px)',
+									name: 'discount_offset_bottom',
+									extendClass:'text-no-wrap',
+									type: 'input',
+									col: 2,
+									default: '0',
+								},
+							{
+									label: '文字上间距(px)',
+									name: 'discount_text_top',
+									extendClass:'text-no-wrap',
+									type: 'input',
+									col: 2,
+									default: '0',
+								},
+							{
+									label: '文字左间距(px)',
+									name: 'discount_text_left',
+									extendClass:'text-no-wrap',
+									type: 'input',
+									col: 2,
+									default: '0',
+								},
+							{
+									label: '折扣值文字大小（px）',
+									name: 'discountFtS',
+									extendClass:'text-no-wrap',
+									type: 'input',
+									col: 2,
+									default: '24',
+								},
+							{
+									label: 'OFF文字大小（px）',
+									name: 'discountOffFtS',
+									extendClass:'text-no-wrap',
+									type: 'input',
+									col: 2,
+									default: '24',
+								},
+							{
+									label: '宽度（px)',
+									name: 'discountWidth',
+									extendClass:'text-no-wrap',
+									type: 'input',
+									col: 2,
+									default: '80',
+								},
+							{
+									label: '高度（px)',
+									name: 'discountHeight',
+									extendClass:'text-no-wrap',
+									type: 'input',
+									col: 2,
+									default: '80',
+								},
+							{
+									label: '背景图片',
+									name: 'discountBgImg',
+									type: 'image',
+									col: 1,
+									default: '',
+								},
+						]
+					}
+				]
+			}],
+			skuValidConfig: 'skuValidConfig',
+			beforeSubmit: 'onSubmit'
+		} %}
+
+<script>
+var $box = $('#{{ formData.id }}-{{ formData.theme }}');
+var $timeInput = $box.find('input[name="killRange"]');
+$timeInput.attr('readonly', true);
+
+
+var goodsArr = [];
+var goodsSortArr = [];
+var skuValidArr = 0;
+/*是否显示已结束秒杀*/
+var currentTime= new Date().getTime();
+var killRange = $('[name=killRange]').val();
+{# if(!killRange){
+	$('[name=dataStartTime]').val('');
+	$('[name=dataEndTime]').val('');
+} #}
+
+var dataStartTime = $('[name=dataStartTime]').val();
+
+{# if(dataStartTime<new Date().getTime - 60){
+	layui.layer.msg('不能选择当前时间以前的时间');
+	return false
+} #}
+
+
+	var checkTime = function (val, cb) {
+		var time = val.split(' - '),
+				start_time = Date.parse(time[0]),
+				end_time = Date.parse(time[1]),
+				two_week_time = 60 * 60 * 24 * 14;
+		if (start_time >= end_time) {
+				_inputFirm('开始时间不能大于结束时间');
+				return false;
+		}
+		$box.find('input[name="dataStartTime"]').val(start_time);
+		$box.find('input[name="dataEndTime"]').val(end_time);
+		setTimeout(function(){
+			cb && cb();
+		}, 400);
+	};
+
+
+	/* 判断秒杀内容时间设置格式是否正确 */
+	function onSubmit (progress) {
+		var time = $('[name=killRange]').val() || '';
+		time ? checkTime(time, progress.next) : progress.next();
+	}
+
+	function skuValidConfig () {
+		return {
+			check_type: 'goods',
+			check_rules: 'GOODS_VALIDATE_APP_PRICE'
+		};
+	}
+</script>
+
+{#引入渲染函数#}
+{{include('@app/files/parts/formTemplate/formRender.twig', formData)}}

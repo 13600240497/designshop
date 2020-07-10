@@ -1,0 +1,874 @@
+<style>
+  .geshop-title {
+    font-size: 16px;
+    color: #333333;
+    margin: 16px 0 5px 0;
+  }
+  .rest-input {
+    margin-left: 0px;
+    margin-top: 5px;
+  }
+  .add-form-button {
+    text-align: center;
+  }
+  .add-link-item {
+    background: #000;
+  }
+  .add-img-item {
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+  }
+  .add-form-button span {
+    display: block;
+    width: 116px;
+    height: 36px;
+    background: #34A8FF;
+    text-align: center;
+    line-height: 36px;
+    font-size: 14px;
+    color: #FFFFFF;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 20px 0 64px 0;
+  }
+  .img-btn {
+    display: inline-block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    line-height: 12px;
+    padding: 6px 0;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 50%;
+    background: rgba(16,93,149,0.4);
+    margin: 0 2px;
+    }
+  .hover-item {
+    display: block;
+    width: 80px;
+    line-height:36px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: auto;
+    font-size: 14px;
+    color: #FFF;
+    font-family: PingFangSC;
+  }
+  .img-btn:hover {
+    background: #105D95;
+  }
+  .img-btn i {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-repeat: no-repeat;
+    }
+  .icon-close {
+    z-index: 1000;
+    right: 21px;
+  }
+  .time-icon {
+    position: absolute;
+    left: 17px;
+    top: 50%;
+    margin-top: -9px;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-image: url({{staticDomain}}/resources/images/icon/design-select-time-icon.png);
+    background-position: left top;
+    background-repeat: no-repeat;
+  }
+</style>
+<div class="design-form design-form-component design-form-visible">
+  <h3 class="component-form-title">Banner轮播组件设置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close"><i class="el-icon-close"></i></a>
+  </h3>
+
+  {{include ('@app/htdocs/resources/template/pc/templateList/index.twig')}}
+
+  <div class="geshop-form-content component-form-configure-item component-form-setting-item" style="padding-bottom: 121px !important;">
+    <p class="geshop-title" style="margin-top: 0;">常用配置</p>
+    <p class="geshop-alert">请上传格式为:jpeg,jpg,webp的图片,大小小于500k</p>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 上边距</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="marginTop" autocomplete="off" class="layui-input" value="{{ data.marginTop | default(0) }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 下边距</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="marginBottom" autocomplete="off" class="layui-input" value="{{ data.marginBottom | default(0) }}">
+      </div>
+    </div>
+
+    {# 不同站点默认数据不一致 start #}
+    {% if siteCode == 'rw-pc' %}
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 轮播图宽度(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="ImgWidth" placeholder="请输入图片宽度" autocomplete="off" class="layui-input" value="{{ data.ImgWidth | default(1200) }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 轮播图高度(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="ImgHeight" placeholder="请输入图片高度" autocomplete="off" class="layui-input" value="{{ data.ImgHeight | default(535) }}">
+      </div>
+    </div>
+    {% elseif siteCode == 'rg-pc' or siteCode == 'suk-pc' %}
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 轮播图宽度(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="ImgWidth" placeholder="请输入图片宽度" autocomplete="off" class="layui-input" value="{{ data.ImgWidth | default(1200) }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 轮播图高度(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="ImgHeight" placeholder="请输入图片高度" autocomplete="off" class="layui-input" value="{{ data.ImgHeight | default(560) }}">
+      </div>
+    </div>
+    {% elseif siteCode == 'zf-pc' %}
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 轮播图宽度(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="ImgWidth" placeholder="请输入图片宽度" autocomplete="off" class="layui-input" value="{{ data.ImgWidth | default(1240) }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 轮播图高度(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="ImgHeight" placeholder="请输入图片高度" autocomplete="off" class="layui-input" value="{{ data.ImgHeight | default(600) }}">
+      </div>
+    </div>
+    {% endif %}
+    {# 不同站点默认数据不一致 end #}
+    <div class="layui-form-item">
+      <label class="form-item-label">
+          <span class="layui-badge-dot layui-bg-orange"></span>
+          链接是否打开新窗口</label>
+      <div class="layui-input-block">
+          <input type="radio" name="isOpenNew" value="1" {% if data.isOpenNew|default('0') == '1' %} checked{% endif %} title="是">
+          <input type="radio" name="isOpenNew" value="0" {% if data.isOpenNew|default('0') == '0' %} checked{% endif %} title="否">
+      </div>
+    </div>
+    {# config start #}
+    <div id="BanboxModelTimeSlot">
+      <div class="layui-tab" lay-filter="demo" style="position:relative;width:320px;">
+        <ul class="layui-tab-title">
+          {% for key, item in data.imgItem | default([""]) %}
+              {% if key == 0 %}
+                <li class="layui-this init " lay-id="{{key}}">
+                  <span class="tab-item" style=" width: 100%;">基础</span>
+
+                </li>
+              {% endif %}
+              {% if key != 0 %}
+                <li  lay-id="{{key}}">
+                  <span class="tab-item">{{item.name}}</span>
+                  <i class="layui-icon layui-icon-close"></i>
+                </li>
+              {% endif %}
+          {% endfor %}
+        </ul>
+        <div class="li-add" >
+          <a href="javascript:;" class="layui-btn-add" data-type="tabAdd">+</a>
+        </div>
+        <div class="add-hover-item" style="display:none">添加按时段模块</div>
+
+        <div class="layui-tab-content" >
+            {% for key, item in data.imgItem | default([""]) %}
+              {% if key == 0 %}
+                <div class="layui-tab-item layui-show">
+                  <div class="Ban-item-warp">
+                    <div class="layui-form-item ban-item" >
+                      {# item start #}
+    <div class="img-table">
+      <p class="geshop-title">轮播图</p>
+      <input type="hidden" name="imgItem">
+      <div class="layui-form-item img-item layui-hide">
+        <div class="layui-input-block rest-input">
+          <div class="geshop-first-value">
+            <a href="javascript:;" class="img_openResource reset-add-resource" style="width: 78px; font-size: 32px; line-height: 30px;">
+              <span>
+                <img src="/resources/images/carousel-image/add.png">
+                <i style="display: none;" class="hover-item">更 换</i>
+              </span>
+            </a>
+            <input type="text" lay-verify="required" autocomplete="off" class="layui-input Unwanted select-img geshop-right-value" name="imgSrc">
+          </div>
+          <div class="layui-form-item">
+            <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 跳转链接</label>
+            <div class="layui-input-block rest-input">
+              <input type="text" autocomplete="off" class="layui-input Unwanted" name="imgLink">
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 专题名称</label>
+            <div class="layui-input-block rest-input">
+              <input type="text" autocomplete="off" class="layui-input Unwanted" name="ga_name">
+            </div>
+          </div>
+           <div class="geshop-third-value">
+              <span class="img-btn">
+                <i class='icon-up'></i>
+                <b class="tips">上移</b>
+              </span>
+              <span class="img-btn">
+                <i class='icon-down'></i>
+                <b class="tips">下移</b>
+              </span>
+              <span class="img-btn">
+                <i class='icon-delete'></i>
+                <b class="tips">删除</b>
+              </span>
+           </div>
+        </div>
+      </div>
+      <div class="img-body">
+        {% for key, it in item.imgSrc | default([""]) %}
+        <div class="layui-form-item item-flag">
+          <div class='layui-input-block rest-input'>
+              <div class="geshop-first-value">
+                <a href="javascript:;" class="img_openResource reset-add-resource" style="width:78px;font-size:32px;line-height:30px;">
+                  {% if it.imgSource|length>0 %}
+                  <span>
+                    <img src="{{it.imgSource}}" style="width:80px;height:35px;" />
+                    <i style="display:none" class="hover-item">更 换</i>
+                  </span>
+                  {% else %}
+                  <span>
+                    <img src="/resources/images/carousel-image/add.png" />
+                    <i style="display:none" class="hover-item">更 换</i>
+                  </span>
+                  {% endif %}
+                </a>
+                <input class="layui-input Unwanted select-img geshop-right-value" type="text" autocomplete="off" name="{{it.imgName|default(0)}}" value="{{it.imgSource}}"/>
+               </div>
+             <div class="layui-form-item">
+                <label class="form-label-item">
+                  <span class="layui-badge-dot layui-bg-orange"></span> 跳转链接</label>
+                <div class="layui-input-block rest-input">
+                  <input type="text"  autocomplete="off"  class="layui-input Unwanted" name='imgLink' value="{{it.imgLink}}"/>
+                </div>
+             </div>
+             <div class="layui-form-item">
+                <label class="form-label-item">
+                  <span class="layui-badge-dot layui-bg-orange"></span> 专题名称</label>
+                <div class="layui-input-block rest-input">
+                  <input type="text"  autocomplete="off"  class="layui-input Unwanted" name='ga_name' value="{{it.ga_name}}"/>
+                </div>
+             </div>
+            <div class="geshop-third-value">
+              <span class="img-btn">
+                <i class='icon-up'></i>
+                <b class="tips">上移</b>
+              </span>
+              <span class="img-btn">
+                <i class='icon-down'></i>
+                <b class="tips">下移</b>
+              </span>
+              <span class="img-btn">
+                <i class='icon-delete'></i>
+                <b class="tips">删除</b>
+              </span>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="add-form-button"><span class="img_tab_add">新增轮播图</span></div>
+    </div>
+    {# item end #}
+  </div>
+</div>
+</div>
+{% endif %}
+
+{% if key !=0 %}
+
+                <div class="layui-tab-item">
+                  <div class="Ban-item-warp">
+                    <div class="layui-form-item ban-item" >
+                      <div class="layui-form-item">
+                        <p style="margin:8px 0 5px 0;">
+                          样式名称
+                        </p>
+                        <input type="text" name="modelName"  autocomplete="off" class="layui-input Unwanted modelName"
+                        placeholder="" maxlength="100" value="{{item.name}}">
+                      </div>
+
+                      <div class="layui-form-item">
+                        <p style="margin:8px 0 5px 0;">
+                          <span class="layui-badge-dot layui-bg-orange"></span>
+                          时间设置
+                        </p>
+                          <div class="dateTime" style="position:relative;width:320px;box-sizing:border-box;">
+                            <span class="time-icon"></span>
+                            <input type="text" class="layui-input start-time js_start_time" style="display:inline;width:165px;border-right:none;padding: 0 10px 0 43px;" name="" id="add_times{{key}}"  placeholder="开始时间" autocomplete="off" value="{{item.startTime}}">
+                            <span class="time-split">至</span>
+                            <input type="text" class="layui-input end-time js_end_time" style="display:inline;width:130px;border-left:none;margin-left:-1px;padding-left:0;" id="add_timeE{{key}}" placeholder="结束时间" name="" autocomplete="off" value="{{item.endTime}}">
+                          </div>
+                      </div>
+                      {# item start #}
+                      <div class="img-table">
+                        <p class="geshop-title">轮播图</p>
+                        <input type="hidden" name="imgItem">
+                        <div class="layui-form-item img-item layui-hide">
+                          <div class="layui-input-block rest-input">
+                            <div class="geshop-first-value">
+                              <a href="javascript:;" class="img_openResource reset-add-resource" style="width: 78px; font-size: 32px; line-height: 30px;">
+                                <span>
+                                  <img src="/resources/images/carousel-image/add.png">
+                                  <i style="display: none;" class="hover-item">更 换</i>
+                                </span>
+                              </a>
+                              <input type="text" lay-verify="required" autocomplete="off" class="layui-input Unwanted select-img geshop-right-value" name="imgSrc">
+                            </div>
+                            <div class="layui-form-item">
+                              <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 跳转链接</label>
+                              <div class="layui-input-block rest-input">
+                                <input type="text" autocomplete="off" class="layui-input Unwanted" name="imgLink">
+                              </div>
+                            </div>
+                            <div class="layui-form-item">
+                              <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 专题名称</label>
+                              <div class="layui-input-block rest-input">
+                                <input type="text" autocomplete="off" class="layui-input Unwanted" name="ga_name">
+                              </div>
+                            </div>
+                            <div class="geshop-third-value">
+                                <span class="img-btn">
+                                  <i class='icon-up'></i>
+                                  <b class="tips">上移</b>
+                                </span>
+                                <span class="img-btn">
+                                  <i class='icon-down'></i>
+                                  <b class="tips">下移</b>
+                                </span>
+                                <span class="img-btn">
+                                  <i class='icon-delete'></i>
+                                  <b class="tips">删除</b>
+                                </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="img-body">
+                          {% for key, it in item.imgSrc | default([""]) %}
+                          <div class="layui-form-item item-flag">
+                            <div class='layui-input-block rest-input'>
+                                <div class="geshop-first-value">
+                                  <a href="javascript:;" class="img_openResource reset-add-resource" style="width:78px;font-size:32px;line-height:30px;">
+                                    {% if it.imgSource|length>0 %}
+                                    <span>
+                                      <img src="{{it.imgSource}}" style="width:80px;height:35px;" />
+                                      <i style="display:none" class="hover-item">更 换</i>
+                                    </span>
+                                    {% else %}
+                                    <span>
+                                      <img src="/resources/images/carousel-image/add.png" />
+                                      <i style="display:none" class="hover-item">更 换</i>
+                                    </span>
+                                    {% endif %}
+                                  </a>
+                                  <input class="layui-input Unwanted select-img geshop-right-value" type="text" autocomplete="off" name="{{it.imgName|default(0)}}" value="{{it.imgSource}}"/>
+                                </div>
+                              <div class="layui-form-item">
+                                  <label class="form-label-item">
+                                    <span class="layui-badge-dot layui-bg-orange"></span> 跳转链接</label>
+                                  <div class="layui-input-block rest-input">
+                                    <input type="text"  autocomplete="off"  class="layui-input Unwanted" name='imgLink' value="{{it.imgLink}}"/>
+                                  </div>
+                              </div>
+                              <div class="layui-form-item">
+                                  <label class="form-label-item">
+                                    <span class="layui-badge-dot layui-bg-orange"></span> 专题名称</label>
+                                  <div class="layui-input-block rest-input">
+                                    <input type="text"  autocomplete="off"  class="layui-input Unwanted" name='ga_name' value="{{it.ga_name}}"/>
+                                  </div>
+                              </div>
+                              <div class="geshop-third-value">
+                                <span class="img-btn">
+                                  <i class='icon-up'></i>
+                                  <b class="tips">上移</b>
+                                </span>
+                                <span class="img-btn">
+                                  <i class='icon-down'></i>
+                                  <b class="tips">下移</b>
+                                </span>
+                                <span class="img-btn">
+                                  <i class='icon-delete'></i>
+                                  <b class="tips">删除</b>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          {% endfor %}
+                        </div>
+                        <div class="add-form-button"><span class="img_tab_add">新增轮播图</span></div>
+                      </div>
+                      {# item end #}
+                  </div>
+                </div>
+                </div>
+
+              {% endif %}
+
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {# config end #}
+
+
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <span type="button" class="layui-btn layui-btn-normal" id="img_submit">提交</span>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm" data-tag="1" style="display:none">提交</button>
+</div>
+
+<script>
+
+var laydate=null;
+  var itemIndex=$('#BanboxModelTimeSlot .tab-item').length;
+
+  if(itemIndex == 7){
+    $('.layui-btn-add').css('color',"#E6E6E6");
+  }
+
+  layui.use('element', function(){
+    var $ = layui.jquery ,element = layui.element;
+    var active = {
+      tabAdd: function(){
+        element.tabAdd('demo', {
+          title: '<span class="tab-item">模板'+itemIndex+'</span ><i class="layui-icon layui-icon-close"></i>'
+          ,content: "<div class='layui-form-item ban-item'>" +
+          "<div class='layui-form-item'>" +
+          "<p style='margin:8px 0 5px 0;'>" +
+            " 样式名称" +
+            "</p>" +
+            "<input type='text' name='modelName' autocomplete='off' class='layui-input Unwanted modelName' placeholder='' maxlength='100' value='模板" + itemIndex + "'>" +
+          "</div>" +
+
+          "<div class='layui-form-item'>" +
+            "<p style='margin:8px 0 5px 0;'>" +
+              "<span class='layui-badge-dot layui-bg-orange'></span> 时间设置" +
+            "</p>" +
+            '<div class="dateTime" style="position:relative;width:320px;box-sizing:border-box;">' +
+              '<span class="time-icon"></span>' +
+              '<input type="text" class="layui-input start-time js_start_time" style="display:inline;width:165px;border-right:none;padding:0 10px 0 43px;" name="" id="add_times' + itemIndex + '"  placeholder="开始时间" autocomplete="off" value="">' +
+              '<span class="time-split">至</span>' +
+              '<input type="text" class="layui-input end-time js_end_time" style="display:inline;width:130px;border-left:none;margin-left:-1px" id="add_timeE' + itemIndex + '" placeholder="结束时间" name="" autocomplete="off" value="">' +
+            '</div>' +
+          "</div>" +
+
+          '<div class="img-table">'+
+'                        <p class="geshop-title">轮播图</p>'+
+'                        <input type="hidden" name="imgItem">'+
+'                        <div class="layui-form-item img-item layui-hide">'+
+'                          <div class="layui-input-block rest-input">'+
+'                            <div class="geshop-first-value">'+
+'                              <a href="javascript:;" class="img_openResource reset-add-resource" style="width: 78px; font-size: 32px; line-height: 30px;">'+
+'                                <span>'+
+'                                  <img src="/resources/images/carousel-image/add.png">'+
+'                                  <i style="display: none;" class="hover-item">更 换</i>'+
+'                                </span>'+
+'                              </a>'+
+'                              <input type="text" lay-verify="required" autocomplete="off" class="layui-input Unwanted select-img geshop-right-value" name="imgSrc">'+
+'                            </div> '+
+'                            <div class="layui-form-item">'+
+'                              <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 跳转链接</label>'+
+'                              <div class="layui-input-block rest-input">'+
+'                                <input type="text" autocomplete="off" class="layui-input Unwanted" name="imgLink">'+
+'                              </div>'+
+'                            </div>'+
+'                            <div class="layui-form-item">'+
+'                              <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 专题名称</label>'+
+'                              <div class="layui-input-block rest-input">'+
+'                                <input type="text" autocomplete="off" class="layui-input Unwanted" name="ga_name">'+
+'                              </div>'+
+'                            </div>'+
+'                            <div class="geshop-third-value">'+
+'                                <span class="img-btn">'+
+'                                  <i class="icon-up"></i>'+
+'                                  <b class="tips">上移</b>'+
+'                                </span>'+
+'                                <span class="img-btn">'+
+'                                  <i class="icon-down"></i>'+
+'                                  <b class="tips">下移</b>'+
+'                                </span>'+
+'                                <span class="img-btn">'+
+'                                  <i class="icon-delete"></i>'+
+'                                  <b class="tips">删除</b>'+
+'                                </span>'+
+'                            </div>'+
+'                          </div>'+
+'                        </div>'+
+'                        <div class="img-body">'+
+'                          <div class="layui-form-item item-flag">'+
+'                            <div class="layui-input-block rest-input">'+
+'                                <div class="geshop-first-value">'+
+'                                  <a href="javascript:;" class="img_openResource reset-add-resource" style="width:78px;font-size:32px;line-height:30px;">'+
+'                                    <span>'+
+    '                                  <img src="/resources/images/carousel-image/add.png">'+
+    '                                  <i style="display: none;" class="hover-item">更 换</i>'+
+    '                                </span>'+
+'                                  </a>'+
+'                                  <input class="layui-input Unwanted select-img geshop-right-value" type="text" autocomplete="off" name="'+Date.now()+'" value=""/>'+
+'                                </div>   '+
+'                              <div class="layui-form-item">'+
+'                                  <label class="form-label-item">'+
+'                                    <span class="layui-badge-dot layui-bg-orange"></span> 跳转链接</label>'+
+'                                  <div class="layui-input-block rest-input">'+
+'                                    <input type="text"  autocomplete="off"  class="layui-input Unwanted" name="imgLink" value=""/>'+
+'                                  </div>'+
+'                              </div>'+
+'                              <div class="layui-form-item">'+
+'                                  <label class="form-label-item">'+
+'                                    <span class="layui-badge-dot layui-bg-orange"></span> 专题名称</label>'+
+'                                  <div class="layui-input-block rest-input">'+
+'                                    <input type="text"  autocomplete="off"  class="layui-input Unwanted" name="ga_name" value=""/>'+
+'                                  </div>'+
+'                              </div>'+
+'                              <div class="geshop-third-value">  '+
+'                                <span class="img-btn">'+
+'                                  <i class="icon-up"></i>'+
+'                                  <b class="tips">上移</b>'+
+'                                </span>'+
+'                                <span class="img-btn">'+
+'                                  <i class="icon-down"></i>'+
+'                                  <b class="tips">下移</b>'+
+'                                </span>'+
+'                                <span class="img-btn">'+
+'                                  <i class="icon-delete"></i>'+
+'                                  <b class="tips">删除</b>'+
+'                                </span>'+
+'                              </div>'+
+'                            </div>'+
+'                          </div>'+
+'                        </div>'+
+'                        <div class="add-form-button"><span class="img_tab_add">新增轮播图</span></div>'+
+'                      </div>'+
+
+        "</div>"
+        ,id: itemIndex
+        })
+      }
+      ,tabDelete: function(layid){
+        element.tabDelete('demo', layid);
+      }
+    };
+    $('.layui-btn-add').on('click', function(){
+      if($('#BanboxModelTimeSlot .layui-tab-title li').length ==6){
+        $('.layui-btn-add').css('color',"#E6E6E6 ");
+      }
+      if($('#BanboxModelTimeSlot .layui-tab-title li').length >6){
+        $('.layui-btn-add').css('color',"#E6E6E6 ");
+        layui.layer.msg('当前最多添加6个模板！');
+        return;
+      }
+      var othis = $(this), type = othis.data('type');
+      active[type] ? active[type].call(this, othis) : '';
+      var layid =itemIndex;
+
+      element.tabChange('demo', layid);
+      var cheaedIndex=itemIndex;
+      laydate.render({
+        elem: '#add_times' + itemIndex,
+        min: 0,
+        type: 'datetime',
+        done: function (value) {
+          var start_time = Date.parse(new Date(value));
+          var end_time = Date.parse(new Date($('#add_timeE'+cheaedIndex).val()));
+          if (start_time >= end_time) {
+            layer.msg('开始时间不能大于结束时间', { time: 5000 });
+            return false;
+          }
+        }
+      });
+
+      laydate.render({
+        elem: '#add_timeE' + itemIndex,
+        min: 0,
+        type: 'datetime',
+        done: function (value) {
+          var end_time = Date.parse(new Date(value));
+          var start_time = Date.parse(new Date($('#add_times'+cheaedIndex).val()));
+          if (start_time >= end_time) {
+            layer.msg('开始时间不能大于结束时间', { time: 5000 });
+            return false;
+          }
+        }
+      });
+
+      itemIndex++;
+    });
+
+    $('#BanboxModelTimeSlot .layui-tab-title').on('click', function(e){
+      if(e.target.localName == 'i'){
+        layer.confirm('亲。你删除该样式，样式将无法恢复哦？', {
+          btn: ['取消','确认']  ,
+          icon: 3,
+          skin: 'element-ui-dialog-class'
+        }, function(){
+          layer.closeAll();
+        }, function(){
+          var layId= $(e.target).parent().attr('lay-id');
+          active.tabDelete( layId);
+          $('.layui-btn-add').css('color',"#1E9FFF");
+
+        });
+      } ;
+    });
+
+  });
+
+  {# 日期选择初始化 #}
+  var initArr=[];
+  for(let i=0;i<itemIndex;i++){
+    initArr.push(i)
+  }
+  initArr.length=itemIndex;
+  layui.use('laydate', function(){
+    laydate = layui.laydate;
+    initArr.forEach(function(item,index){
+      var cheaedIndex=index;
+      laydate.render({
+        elem: '#add_times' + cheaedIndex,
+        min: 0,
+        type: 'datetime',
+        done: function (value,data) {
+          var start_time = Date.parse(new Date(value));
+          var end_time = Date.parse(new Date($('#add_timeE'+cheaedIndex).val()));
+          if (start_time >= end_time) {
+            layer.msg('开始时间不能大于结束时间', { time: 5000 });
+            return false;
+          }
+        }
+      });
+      laydate.render({
+        elem: '#add_timeE' + cheaedIndex,
+        min: 0,
+        type: 'datetime',
+        done: function (value) {
+          var end_time = Date.parse(new Date(value));
+          var start_time = Date.parse(new Date($('#add_times'+cheaedIndex).val()));
+          if (start_time >= end_time) {
+            layer.msg('开始时间不能大于结束时间', { time: 5000 });
+            return false;
+          }
+        }
+      });
+
+    }) ;
+
+  });
+
+  function swapItems(arr, index1, index2) {
+　　arr[index1] = arr.splice(index2, 1, arr[index1])[0];
+
+　　return arr;
+  }
+  function upData(arr, index) {
+　　if (arr.length > 1 && index !== 0) {
+      newArr = swapItems(arr, index, index - 1);
+
+      return newArr;
+　　}
+  }
+  function downData(arr, index) {
+    if (arr.length > 1 && index !== (this.arr.length - 1)) {
+　　　newArr = swapItems(arr, index, index + 1);
+
+      return newArr;
+　　}
+  }
+
+  {# 新增列表项 #}
+  $('.img-body').each(function (i) {
+    $('body').off('click', '.img_tab_add');
+    var _this = $(this);
+    var index = Date.now();
+    $('body').on('click', '.img_tab_add', function () {
+      var $this = $(this);
+      var view = $this.parent().prev('.img-body');
+      var target = $this.parents('.img-table').children('.img-item').clone();
+      target.removeClass('img-item layui-hide');
+      target.find('input[name=imgSrc]').attr('name', Date.now());
+      view.append(target);
+    });
+  });
+
+  {# 提交验证#}
+  $('#img_submit').on('click',function(){
+    var startTimeArr = [];
+		var endTimeArr = [];
+    var timeE = '',timeS = '';
+    for(let i = 0,len =  $('.ban-item').find('.dateTime').length; i < len ; i++){
+      if($('.ban-item').find('.dateTime').eq(i).find('.js_start_time').val() == "" || $('.ban-item').find('.dateTime').eq(i).find('.js_end_time').val() == ""){
+        layui.layer.msg('请设置”模板*“的时间，不设置请先删除该tab页签');
+        return false;
+      }
+      timeS =  $('.ban-item').find('.dateTime').eq(i).find('.js_start_time').val();
+      timeE =  $('.ban-item').find('.dateTime').eq(i).find('.js_end_time').val();
+
+      var start_time = Date.parse(new Date(timeS));
+      var end_time = Date.parse(new Date(timeE));
+      if (start_time >= end_time) {
+        layer.msg('开始时间不能大于结束时间', { time: 5000 });
+        return false;
+      }
+      startTimeArr.push(timeS);
+      endTimeArr.push(timeE);
+    }
+    var begin = startTimeArr.sort();
+    var over = endTimeArr.sort();
+    for(var k=1;k<begin.length;k++){
+      if (begin[k] <= over[k-1]){
+        layui.layer.msg('此时间段已设置样式，请更换其他时间段');
+        return false;
+      }
+    }
+    var imgSrcArr = [];
+    $('.ban-item').each(function(index, element) {
+      var $name = $(this).find('.modelName').val();
+      var $startTime = $(this).find('.js_start_time').val();
+      var $endTime = $(this).find('.js_end_time').val();
+      var $imgSrc = [];
+
+      $(element).find('.img-body>.layui-form-item').each(function (i, item) {
+        var imgSource = $(item).find('.select-img').val();
+        var imgName = $(item).find('.select-img').attr('name');
+        var imgLink = $(item).find('input[name="imgLink"]').val();
+        $imgSrc.push({
+          imgSource: imgSource,
+          imgLink: imgLink,
+          imgName: imgName
+        });
+      });
+
+      imgSrcArr.push({
+        name: $name,
+        startTime: $startTime,
+        startTimeStamp: Date.parse(new Date($startTime))/1000,
+        endTime: $endTime,
+        endTimeStamp: Date.parse(new Date($endTime))/1000,
+        imgSrc: $imgSrc
+      });
+    });
+    $('.img-table input[name=imgItem]').val(JSON.stringify(imgSrcArr));
+    $(this).next('button').trigger('click');
+  });
+
+  $('body').on('click','.icon-up',function () {
+    var target = $(this).closest('.layui-form-item');
+
+    if (target.prev('.layui-form-item').length > 0) {
+      target.prev('.layui-form-item').before(target.clone());
+      target.remove();
+    }
+  });
+  $('body').on('click','.icon-up',function () {
+    var target = $(this).closest('.layui-form-item');
+
+    if (target.prev('.layui-form-item').length > 0) {
+      target.prev('.layui-form-item').before(target.clone());
+      target.remove();
+    }
+  });
+  $('body').on('click', '.icon-down', function () {
+    var target = $(this).closest('.layui-form-item');
+
+    if (target.next('.layui-form-item').length > 0) {
+      target.next('.layui-form-item').after(target.clone());
+      target.remove();
+    }
+  });
+  $('body').on('click', '.icon-delete', function () {
+    var target = $(this).closest('.layui-form-item');
+    var imgSrc = target.find('.select-img').val();
+    var imgLink = target.find('input[name="imgLink"]').val();
+    if (imgSrc || imgLink) {
+      layui.layer.confirm('确认删除吗？', {
+        btn: ['取消', '确定'],
+        area: '420px',
+        skin: 'element-ui-dialog-class',
+        icon: 3,
+        title: '提示'
+      }, function (index) {
+        layui.layer.close(index)
+      }, function (index) {
+        target.remove();
+      })
+    } else {
+      target.remove();
+    }
+  });
+  $('body').on('change', '.select-img', function () {
+    var target = $(this);
+    var picAddress = $.trim(target.val());
+    var verifyWidth = $('#component_form [name=ImgWidth]').val();
+    var verifyHeight = $('#component_form [name=ImgHeight]').val();
+
+    if (picAddress.length == 0) {
+      return false;
+    }
+
+    var originalImg = new Image();
+    originalImg.src = picAddress;
+
+    originalImg.onload = function () {
+      var originalWidth = originalImg.width;
+      var originalHeight = originalImg.height;
+
+      if (originalWidth != verifyWidth || originalHeight != verifyHeight) {
+        target.val('');
+        layer.msg('请添加正确尺寸的图片');
+      }
+    };
+  });
+
+  $('body').on('mouseenter', '.img_openResource', function() {
+    var $url =  $(this).find('img').attr("src");
+
+    if ($url == "/resources/images/carousel-image/add.png") {
+      return;
+    }
+
+    $(this).addClass('add-link-item');
+    $(this).find('img').addClass('add-img-item');
+    $(this).find($('i')).css("display", "block");
+  });
+  $('body').on('mouseleave', '.img_openResource', function() {
+    $(this).find($('i')).css("display","none");
+    $(this).removeClass('add-link-item');
+    $(this).find('img').removeClass('add-img-item');
+  });
+
+  var bannerTimer = setInterval(function () {
+    var bannerArr = [];
+
+    $('.select-img').each(function (i) {
+      bannerArr.push($(this).val());
+      bannerArr.filter(function(item, index, arr) {
+        return arr.indexOf(item) === index;
+      });
+      var bannerBoolean = bannerArr.some(function(item) {
+        return Boolean(item) == true;
+      });
+      if (bannerBoolean) {
+        $('input[name=ImgWidth],input[name=ImgHeight]').prop('disabled', true).css({backgroundColor:'#f8f8f8'});
+      } else {
+        $('input[name=ImgWidth],input[name=ImgHeight]').prop('disabled', false).css({backgroundColor:'#ffffff'});
+        bannerArr.length = 0;
+      }
+    });
+  }, 1000);
+</script>

@@ -1,0 +1,386 @@
+{% set formData = {
+    id: 'U000208',
+    name: '分类排行榜模板',
+    theme: 'template1_v1',
+    tabs: [
+        {
+            label: '数据配置',
+            components: [
+                {
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '商品数据来源',
+                            type: 'radio',
+                            name: 'goods_type',
+                            default: 1,
+                            options: [
+                                { label: '新品榜', value: 1 },
+                                { label: '热卖榜', value: 2 },
+                                { label: '折扣榜', value: 3 }
+                            ]
+                        },
+                        {
+                            label: '商品分类数据配置',
+                            type: 'fieldset',
+                            components: [
+                                {
+                                    label: '每个tab显示商品个数',
+                                    desc: '（*最多显示100个商品）',
+                                    name: 'tab_num',
+                                    default: 50
+                                },
+                            ]
+                        },
+                        {
+                            type: 'diy',
+                            src: 'tabs.twig'
+                        },
+                    ]
+                }
+            ]
+        },
+        {
+            label: '样式设置',
+            components: [
+                {
+                    label: '常用配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '组件背景颜色',
+                            type: 'colorPicker',
+                            name: 'box_bg_color',
+                            default: '#F8F8F8',
+                        },
+                        {
+                            type: 'platData-dl',
+                            componentsData:[
+                                {
+                                    label: '上边距 (PX)',
+                                    name: 'box_margin_top',
+                                    default: 0,
+                                    col: 2,
+                                },
+                                {
+                                    label: '下边距 (PX)',
+                                    name: 'box_margin_bottom',
+                                    default: 0,
+                                    col: 2,
+                                },
+                            ]
+                        },
+                        {
+                            label: '组件圆角 (PX)',
+                            name: 'box_border_radius',
+                            default: 0,
+                        },
+                    ]
+                },
+                {
+                    label: 'BANNER配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '是否显示',
+                            type: 'radio',
+                            name: 'is_show',
+                            default: 1,
+                            options: [
+                                { label: '是', value: 1 },
+                                { label: '否', value: 0 },
+                            ]
+                        },
+                        {
+                            type: 'platData-dl',
+                            componentsData: [
+                                {
+                                    label: 'Banner图片',
+                                    desc: '(建议宽1200px,高335px)',
+                                    desc_m: '(建议宽750px,高400px)',
+                                    name: 'banner_img',
+                                    type: 'image',
+                                    default: '',
+                                }
+                            ]
+                        },
+                    ]
+                },
+                {
+                    label: '商品评论数',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '是否显示',
+                            type: 'radio',
+                            name: 'grad_show',
+                            default: 0,
+                            options: [
+                                { label: '是', value: 1 },
+                                { label: '否', value: 0 },
+                            ]
+                        }
+                    ]
+                },
+                {
+                    label: '分类导航配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '导航是否吸顶',
+                            type: 'radio',
+                            name: 'is_fixed',
+                            default: 0,
+                            options: [
+                                { label: '是', value: 1 },
+                                { label: '否', value: 0 },
+                            ]
+                        },
+                        {
+                            label: '背景颜色',
+                            name: 'tab_bg_color',
+                            type: 'colorPicker',
+                            default: '#000000',
+                        },
+                        {
+                            label: '选中文字颜色',
+                            name: 'tab_color_on',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            col: 2
+                        },
+                        {
+                            label: '下划线颜色',
+                            name: 'tab_bd_color',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            col: 2
+                        },
+                        {
+                            label: '未选中文字颜色',
+                            name: 'tab_color_off',
+                            type: 'colorPicker',
+                            default: '#999999',
+                            col: 2
+                        },
+                    ]
+                },
+                {
+                    label: '榜单配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '榜一图片',
+                            desc: '(建议宽135px,高50px)',
+                            name: 'rank_img_1',
+                            type: 'image',
+                            default: 'https://geshopimg.logsss.com/uploads/thJ9szge1MDmuHjQG06ZyNviREdCqwOP.png',
+                        },
+                        {
+                            label: '榜二图片',
+                            desc: '(建议宽135px,高50px)',
+                            name: 'rank_img_2',
+                            type: 'image',
+                            default: 'https://geshopimg.logsss.com/uploads/cK5FxiuoRhgaGm9NrXeqAlOvfYdZtVH6.png',
+                        },
+                        {
+                            label: '榜三图片',
+                            desc: '(建议宽135px,高50px)',
+                            name: 'rank_img_3',
+                            type: 'image',
+                            default: 'https://geshopimg.logsss.com/uploads/bvnGEH4XNSoZ6xJD5ja2r7ltWKTUphwA.png',
+                        },
+                    ]
+                },
+                {
+                    type: 'discount-dl'
+                },
+                {
+                    label: '其他配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '销售价文字颜色',
+                            name: 'shop_price_color',
+                            type: 'colorPicker',
+                            default: '#FF4545',
+                            col: 2
+                        },
+                        {
+                            label: '营销信息文字颜色',
+                            name: 'promotion_color',
+                            type: 'colorPicker',
+                            default: '#000000',
+                            col: 2
+                        },
+                    ]
+                },
+
+            ]
+        }
+    ],
+    moreConfig: [
+        {
+            label: '高级配置',
+            type: 'collapse',
+            items: [
+                {
+                    label: '分类导航配置',
+                    components: [
+                        {
+                            label: '导航高度(px)',
+                            type: 'input',
+                            name: 'nav_height',
+                            default: 70,
+                            col: 2,
+                        },
+                        {
+                            label: '分类导航圆角(px)',
+                            type: 'input',
+                            name: 'nav_radius',
+                            default: 0,
+                            col: 2,
+                        },
+                        {
+                            label: '导航文字大小(px)',
+                            type: 'input',
+                            name: 'nav_font_size',
+                            default: 18,
+                            col: 2,
+                        },
+                    ],
+                },
+                {
+                    label: '排行榜榜单标签配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            type: 'platData-dl',
+                            componentsData:[
+                                {
+                                    label: '上边距(px)',
+                                    type: 'input',
+                                    name: 'topn_padding_top',
+                                    default: 0,
+                                    col: 2,
+                                },
+                                {
+                                    label: '左边距(px)',
+                                    type: 'input',
+                                    name: 'topn_padding_left',
+                                    default: 0,
+                                    col: 2,
+                                },
+                            ],
+                        },
+                    ]
+                },
+                {
+                    isshow: 'dl-web',
+                    label: 'PC鼠标悬浮购买按钮配置',
+                    components: [
+                        {
+                            label: '背景颜色',
+                            type: 'colorPicker',
+                            name: 'pc_shop_bcolor',
+                            default: '#FFFFFF',
+                            col: 2,
+                        },
+                        {
+                            label: '边框颜色',
+                            type: 'colorPicker',
+                            name: 'pc_shop_border_color',
+                            default: '#000000',
+                            col: 2,
+                        },
+                        {
+                            label: 'ShopNow文字颜色',
+                            type: 'colorPicker',
+                            name: 'pc_shop_fcolor',
+                            default: '#000000',
+                            col: 2,
+                        },
+                        {
+                            label: 'ShopNow文字大小',
+                            type: 'input',
+                            name: 'pc_shop_font_size',
+                            default: 16,
+                            col: 2,
+                        },
+                    ],
+                },
+                {
+                    label: 'M端按钮配置',
+                    components: [
+                        {
+                            label: '按扭文案',
+                            type: 'input',
+                            name: 'm_shop_text',
+                            default: 'SHOP NOW',
+                        },
+                        {
+                            label: '文字大小(px)',
+                            type: 'input',
+                            name: 'm_shop_font_size',
+                            default: 14,
+                            col: 2,
+                        },
+                        {
+                            label: '文字颜色',
+                            type: 'colorPicker',
+                            name: 'm_shop_fcolor',
+                            default: '#FFFFFF',
+                            col: 2,
+                        },
+                        {
+                            label: '背景颜色',
+                            type: 'colorPicker',
+                            name: 'm_shop_bcolor',
+                            default: '#000000',
+                        },
+                    ],
+                },
+            ],
+        },
+    ],
+    skuValidConfig: 'skuValidConfig',
+    beforeSubmit: 'onSubmit',
+} %}
+
+
+<script>
+
+    var flag = true;
+    $('#U000208-template1_v1').find('input[name="tab_num"]').blur(function () {
+        flag = true;
+        if ($(this).val() > 100) {
+            layer.msg('最多显示100个SKU');
+            $(this).val('');
+            flag = false;
+        }
+    });
+
+    {# 自定义校验函数 #}
+    function skuValidConfig () {
+        return {
+            check_type: 'category',
+            check_rules: 'CATEGORY_VALIDATE_EXITS',
+            ignore_cateIds: '0'
+        };
+    }
+    function onSubmit(process) {
+        var navData = [];
+        $wrap.find('.wrap-config').each(function (index, item) {
+            var obj = {};
+            obj.tab_name = $(this).find('input[name="tab_name"]').val();
+            obj.tab_id = $(this).find('input[name="tab_id"]').val();
+            navData.push(obj);
+        });
+        $('.nav-list-arr').val(JSON.stringify(navData));
+        flag && process.next();
+    }
+</script>
+
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

@@ -1,0 +1,19 @@
+<div class="geshop-component-box component-drag geshop-U000185-default geshop-U000185-{{ pageInstanceId }}" data-key="U000185" data-id="{{ pageInstanceId }}">
+		{{ include('style.twig') }}
+		<div class="title-wrap">
+			{% if data.leftBgImg %}
+				<img src="{{data.leftBgImg}}"/>
+			{% endif %}
+				
+			<div class="center-block">
+				<p class="title">{{data.titleText | default('请设置导航标题')}} </p>
+				{% if data.linkCopywrite | default('Get More')%}
+					<a {% if data.isOpenNew == 1 %}target="_blank"{% endif %} class="more" href="{% if data.link %} {{data.link}} {% else %} javascript:void(0) {% endif %}">{{data.linkCopywrite | default('Get More')}}</a>
+				{% endif %}
+				<div class="short-line"></div>
+			</div>
+			{% if data.rightBgImg %} 
+				<img src="{{data.rightBgImg}}"/>
+			{% endif %}
+		</div>
+</div>

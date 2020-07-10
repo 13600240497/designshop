@@ -1,0 +1,86 @@
+{
+    "fields": {
+        "goodsSKU": { "is_public": "0", "is_m": "1", "is_app": "1" },
+
+        "row_show_tab_number": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "page_show_goods_number": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "show_default_page": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "tab_total_number": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "tab_btn_radius_size": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "tab_btn_font_size": { "is_public": "0", "is_m": "0", "is_app": "0" },
+
+        "is_fixed": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "box_margin_bottom": { "is_public": "0", "is_m": "0", "is_app": "1" },
+        "box_bg_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "tab_bg_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "tab_btn_height": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "tab_btn_bg_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "tab_btn_hover_bg_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "tab_btn_font_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "tab_btn_hover_font_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "tab_btn_border_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "tab_btn_hover_border_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "goods_info_border_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "goods_info_radius_size": { "is_public": "0", "is_m": "0", "is_app": "1" },
+        "shop_price_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+
+        "goods_color_img_or_show": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "market_info_or_show": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "arr_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "arr_font_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "arr_check_font_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+
+        "discount_bg_image": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "discount_bg_color": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "discount_font_color": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "discount_show": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "discount_type": { "is_public": "1", "is_m": "0", "is_app": "1" },
+        "discount_style": { "is_public": "1", "is_m": "0", "is_app": "1" },
+
+        "discount_width": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "discount_height": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "discount_top": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "discount_left": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "discount_font_top": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "discount_font_left": { "is_public": "0", "is_m": "0", "is_app": "0" },
+
+        "discount_border_radius_left_top": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "discount_border_radius_right_top": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "discount_border_radius_left_bottom": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "discount_border_radius_right_bottom": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "stock_urgent": {"is_public": "0", "is_m": "1", "is_app": "1"},
+
+        "goodsDataFrom": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "gsSelectLevel0": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "gsSelectLevel1": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "gsSelectLevel2": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "ipsGoodsSKU": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "ipsAutoInfo": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "ipsAutoRuleSKU": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "gsSelectLevel3": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "gsSelectLevel4": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "gsSelectLevel5": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "ipsMethods": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "ipsInfo": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "navListRg": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "ipsFilterInfo": { "is_public": "0", "is_m": "1", "is_app": "1" }
+    },
+    "languages": {
+        "quick_view": {
+            "cn": "快速查看",
+            "zh-tw": "快速瀏覽",
+            "en": "QUICK VIEW",
+            "ar": "عرض سريع",
+            "de": "Schnellansicht",
+            "es": "Vista rápida",
+            "fr": "Aperçu rapide",
+            "it": "Vista rapida.",
+            "id": "Lihat",
+            "pt": "Visão Rápida",
+            "ru": "Быстрый просмотр",
+            "th": "วิวตอนนี้",
+            "ja": "クイックビュー",
+            "ro": "VIZUALIZARE RAPIDA"
+        }
+    }
+}

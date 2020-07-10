@@ -1,0 +1,43 @@
+.geshop-u000064-product-list {
+  margin-left: 0.427rem;
+  margin-right: 0.427rem;
+  min-height:5.68rem;
+}
+.geshop-u000064-product-list .product-list-outer {
+
+  width: 100%;
+
+  white-space: nowrap;
+}
+.geshop-u000064-product-list .product-item {
+  display:inline-block;
+  width: 3.733rem;
+  margin-right: 0.133rem;
+}
+.geshop-u000064-product-list .product-picture {
+  display: block;
+  height:4.96rem;
+  position: relative;
+  overflow:hidden;
+}
+.geshop-u000064-product-list img {
+ 
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+
+} 
+.geshop-u000064-product-list .product-price {
+  margin-top: 0.32rem;
+  font-family: OpenSans-Semibold,arial,serif;
+  font-size: 0.4rem;
+  line-height: 0.4rem;
+  color: #2d2d2d;
+}
+
+.geshop-u000064-product-list .swiper-scrollbar{
+  height:1px;
+  margin-top:0.32rem;
+}

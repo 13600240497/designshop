@@ -1,0 +1,83 @@
+.geshop-u000204-template2 {
+
+  font-family: Lato-Bold;
+  font-size: 0;
+
+  .u000204-template2-couponsBox {
+    position: relative;
+    display: inline-block;
+    background-size: 100% 100%;
+
+    overflow: hidden;
+
+    .counp-img {
+      max-width: 100%;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .btn-group {
+      width: 162px;
+      position: absolute;
+      text-align: center;
+
+      @media (max-width: 1024px) {
+        width: 135px;
+      }
+
+    }
+
+    .stock-box {
+      width: 100%;
+      font-size: 12px;
+
+
+      .rang-box {
+        margin-top: 2px;
+        border-radius: 4px;
+        height: 6px;
+        width: 100%;
+        overflow: hidden;
+
+        position: relative;
+
+        .remainder-bar {
+
+          height: 100%;
+          border-radius: 4px;
+        }
+      }
+    }
+
+    .btn-claim-box {
+      ul {
+        display: block;
+
+        li {
+          text-transform: uppercase;
+          font-size: 14px;
+          display: block;
+          width: 100%;
+          line-height: 32px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+
+          @media (max-width: 767px) {
+            font-size: 12px;
+          }
+
+
+          &.light {
+            cursor: pointer;
+            &.ed {
+              cursor: inherit;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

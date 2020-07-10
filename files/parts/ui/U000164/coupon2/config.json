@@ -1,0 +1,169 @@
+{
+    "fields": {
+        "active_id": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "active_url": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "coupon_range": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "box_margin_top": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "box_margin_bottom": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "components_align": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "bg_width": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "bg_height": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "bg_img": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "count_bg": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "left_bg": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "left_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "coupon_range_show": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "btn_w": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "btn_mb": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "btn_mr": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "underway_bg_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "underway_text_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "notstart_bg_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "notstart_text_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "ended_bg_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "ended_text_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "model_bg_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "model_text_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "model_btn_bg": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "model_btn_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "model_title_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "tisp_bg_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "tisp_text_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "tisp_btn_bg": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "tisp_btn_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "tisp_title_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "model_icon": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        }
+    }
+}

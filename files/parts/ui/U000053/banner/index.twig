@@ -1,0 +1,44 @@
+{% set count_type = 'banner' %}
+{% set suffix='px'%}
+{# 倒计时Data #}
+{% set pageData = {
+	tabBgCA:data.tabBgCA is not null?data.tabBgCA:'#f7e2b7',
+	left_time:data.left_time|default(0),
+	maskFtS:data.maskFtS|default('18'),
+	downFtS1:(data.maskFtS|default('18'))~suffix,
+	downFtS:(data.maskFtS|default('18')),
+	downTimeFtS:data.maskFtS|default('18'),
+	maskRadius:data.maskRadius|default('36'),
+	count_textStatus:data.count_textStatus|default(0),
+	downBfText:data.downBfText|default('Comming soon'),
+	downIngText:data.downIngText|default('Hot sale'),
+	downAfText:data.downAfText|default('Ends'),
+	countdownCenter:data.countdownCenter|default('1'),
+	maskLeft:data.countdownCenter|default('1') == "1"?'0':(data.maskLeft|default(0)|abs >0 ? data.maskLeft:'auto'),
+	maskRight:data.countdownCenter|default('1') == "1"?'0':(data.maskLeft|default(0)|abs >0 ? 'auto':data.maskRight),
+	maskTop:data.maskTop|default(20)|abs > 0?data.maskTop|default(20):'auto',
+	maskBottom:data.maskTop|default(0)|abs > 0?'auto':data.maskBottom|default(0),
+	maskWidth: '%' in data.maskWidth|default('250')? data.maskWidth: (data.maskWidth|default('250'))~suffix,
+	maskHeight:data.maskHeight|default('40'),
+} %}
+
+<div class="geshop-component-box component-drag clearfix gs-count-down" data-gid="component-countdown" data-key="U000053" data-id="{{ pageInstanceId }}">
+	<!-- embed stylesheet begin -->
+	<style type="text/css">
+		[data-gid="component-countdown"] .gs_component_countDown em {
+				background: {{data.downTimeBgC|default('transparent')}} !important;
+				color:{{data.downFtC|default('#666666')}} !important;
+		}
+	</style>
+  <!-- embed stylesheet end -->
+    <div style="
+		{% if data.boxMarginTop %}margin-top: {{ data.boxMarginTop }}px;{% endif %}
+		{% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}
+        background-image: url({% if data.imgSrc %}{{ data.imgSrc }}{% else %} {{ data.default.banner }}{% endif %});
+        background-position: center;
+        background-repeat: no-repeat;
+        height: {{ data.imgHeight | default(500) }}px;
+    "></div>
+		{# count_down #}
+		{{include ('@app/files/parts/temp/count_down.twig')}}
+</div>

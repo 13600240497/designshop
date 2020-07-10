@@ -1,0 +1,258 @@
+{% set pageData = {
+    discountShowLeftTop:data.discountShowLeftTop is not null?data.discountShowLeftTop:1,
+    discountPosRight:data.discountPosRight is not null?data.discountPosRight:'0',
+    discountPosTop:data.discountPosTop is not null?data.discountPosTop:'0',
+    discountHeight:data.discountHeight is not null?data.discountHeight:'36',
+    discountWidth:data.discountWidth is not null?data.discountWidth:'78',
+    discountBgImg:data.discountBgImg is not null?data.discountBgImg:'',
+    discountBgColor:data.discountBgColor is not null?data.discountBgColor:'#fa386a',
+    discountFontSize:data.discountFontSize is not null?data.discountFontSize:'16',
+    offFontSize:data.offFontSize is not null?data.offFontSize:'14',
+    progressBarBgColor: data.progressBarBgColor is not null?data.progressBarBgColor:'',
+    stockBarBgColor: data.stockBarBgColor is not null?data.stockBarBgColor:'',
+    off:get_component_trans(lang,'off'),
+    downEnds:get_component_trans(lang,'down_ends'),
+	downStarts:get_component_trans(lang,'down_starts'),
+	off:get_component_trans(lang,'off'),
+	AlreadyEnded:get_component_trans(lang,'already_ended'),
+	BTNBUYNOW:get_component_trans(lang,'btn_buy_now'),
+	Sold:get_component_trans(lang,'sold'),
+    left:get_component_trans(lang,'left'),
+    soldOut: get_component_trans(lang,'btn_sold_out'),
+    more: get_component_trans(lang,'More'),
+}%}
+
+<div data-key="U000076" class="geshop-component-box component-drag gs-index-main geshop-leaderboard-async seckill warp-U000076 warp-{{pageInstanceId}}" data-id="{{ pageInstanceId }}" data-static-domain="{{staticDomain}}" data-gid="U000076" style="margin-bottom:{{data.marginBottom/70}}rem;">
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+        .warp-{{pageInstanceId}} .goods-list ul li .discount {
+            width: {{pageData.discountWidth/75}}rem!important;
+            height: {{pageData.discountHeight/75}}rem!important;
+            top: {{pageData.discountPosTop/75}}rem!important;
+        {% if pageData.discountBgImg is not empty %}
+            background-image: url({{pageData.discountBgImg}})!important;
+        {%endif %}
+            background-color: {{pageData.discountBgColor}}!important;
+        }
+        {% if pageData.discountShowLeftTop == '1' %}
+            .warp-{{pageInstanceId}} .goods-list ul li .discount {
+                left: {{pageData.discountPosRight/70}}rem!important;
+            } {% else %}
+            .warp-{{pageInstanceId}} .goods-list ul li .discount {
+                right: {{pageData.discountPosRight/70}}rem!important;
+
+            }
+        {% endif %}
+        .warp-{{pageInstanceId}} .goods-list ul li .geshop-progress{
+            background-color:{{pageData.stockBarBgColor}};
+        }
+        .warp-{{pageInstanceId}} .goods-list ul li .geshop-progress-bar{
+            background-color: {{pageData.progressBarBgColor}};
+
+        }
+
+        .warp-{{pageInstanceId}} .seckill-container  .goods-list ul li .discount .middle{
+            line-height: {{(pageData.discountHeight + 2)/75}}rem !important;
+        }
+
+    </style>
+    <!-- embed stylesheet end -->
+    {# <p name="sTime" starttime="{{data.dataStartTime}}" endtime="{{data.dataEndTime}}">{{data.dataStartTime}}****{{data.dataEndTime}}</p> #}
+
+    <div class="leader-board-container">
+        {# layui template start #}
+
+        <input type="hidden" name="goodsSKU" value="{{data.goodsSKU}}"/>
+        <input type="hidden" name="serverTime" value="{{data.dataStartTime}}" data-start-time="{{data.dataStartTime}}" data-end-time="{{data.dataEndTime}}" data-lefttime="0">
+        <input type="hidden" name="isEndShow" value="{{data.isEndShow}}"/>
+        <input type="hidden" name="isEditEnv" value="{{data.isEditEnv}}"/>
+        <script type="text/html" class="pc-leader-board-template">
+
+            <div class="seckill-container clearfix">
+                {% if data.count_textStatus != '2' or (data.isEndShow == '1' and data.count_textStatus == '2') or data.isEditEnv == 1 %}
+                <div class="seckill-info" style="{% if data.btnBgImg is not empty %}background-image: url({{data.btnBgImg}}); {% endif %}color:{{data.seckillFontColor}};">
+                    <p class="seckill-desc" style="font-size:{{data.seckillDescFontSize/70}}rem;color:{{data.seckillDescFontColor}}">{{data.seckillDesc}}</p>
+                    <div class="more">
+                        {% if data.isShowMore == 1 %}
+                            {% if data.link %}
+                                <a href="{{data.link}}" style="color:{{data.vmFontColor}}" target="_blank">{{pageData.more | default('More')}}</a>
+                            {% else %}
+                                <span  style="color:{{data.vmFontColor}}">{{pageData.more | default('More') }}</span>
+                            {% endif %}
+
+                        {% endif %}
+                    </div>
+                    <div class="si-info">
+                        {% if data.count_textStatus == '0' %}
+                            <p class="copywriter" style="font-size: {{data.seckillFontSize/70}}rem;color:{{data.seckillFontColor}};">{{data.startDesc | default('Start In')}}</p>
+                        {% elseif data.count_textStatus == '1' %}
+                            <p class="copywriter" style="font-size: {{data.seckillFontSize/70}}rem;color:{{data.seckillFontColor}};">{{data.endDesc | default('Ends In')}}</p>
+                        {% elseif data.count_textStatus == '2' %}
+                            <p class="copywriter" style="font-size: {{data.seckillFontSize/70}}rem;color:{{data.seckillFontColor}};">{{data.overDesc | default('Already Ended')}}</p>
+                        {% endif %}
+
+                        <div class="timer">
+                            <span class="time-item s-days" style="background-color:{{data.seckillTimeBgColor }};color: {{data.seckillTimeFontColor}}"></span><i style="color:{{data.seckillTimeBgColor }}";>：</i>
+                            <span class="time-item s-hours" style="background-color:{{data.seckillTimeBgColor}};color: {{data.seckillTimeFontColor}}"></span><i  style="color:{{data.seckillTimeBgColor }}";>：</i>
+                            <span class="time-item s-minutes" style="background-color:{{data.seckillTimeBgColor}};color: {{data.seckillTimeFontColor}}"></span><i  style="color:{{data.seckillTimeBgColor }}";>：</i>
+                            <span class="time-item s-seconds" style="background-color:{{data.seckillTimeBgColor}};color: {{data.seckillTimeFontColor}}"></span>
+                        </div>
+                    </div>
+                </div>
+
+               <div class="goods-list">
+
+                    <ul class="clearfix">
+                        <%# if(d.goodsInfo.length > 0) { %>
+                            <%#  $.each(d.goodsInfo, function(index, item){ %>
+                                <li style="background-color: {{data.goodsBgColor}}">
+                                    <div class="goods-left left">
+                                        <%# if(item.discount > 0){ %>
+                                        {% if data.discountVis == '1' %}
+                                            <div class="discount">
+                                                <div class="middle">
+                                                    <p class="percent" style="font-size: {{data.discountFontSize/70}}rem;">-<% item.discount %>%</p>
+                                                    {# <p class="offtext" style="font-size: {{data.offFontSize/70}}rem;">{{pageData.off}}</p>#}
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        <%# } %>
+                                        <%# if(item.activity_volume_number >= item.activity_number || item.goods_number == 0){ %>
+                                        <div class="goods-img sod">
+                                            <div class="soout">{{pageData.soldOut}}</div>
+                                        <%# } else { %>
+                                            <div class="goods-img ">
+                                        <%# } %>
+                                            <img  class="img" src="<% item.goods_img || 'https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/good.png' %>"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="goods-right left">
+                                        <p class="goods-title" style="color: {{data.goodsTitleColor}};font-size: {{data.goodsFontSize/70}}rem;"><% item.goods_title || 'This is the descript' %></p>
+                                        {# ***<% JSON.stringify(item)  %> #}
+                                        <%# if(item.activity_volume_number >= item.activity_number || item.goods_number == 0){ %>
+                                            <p class="progress-title"">{{pageData.soldOut}}</p>
+                                        <%# }else{ %>
+                                            {% if data.isprocessBarPercent == '1' %}
+                                                <p class="progress-title" style="color: {{data.salesFontColor}}">
+                                                    <%# if(item.activity_number > 0){ %>
+                                                        <% ((item.activity_volume_number/item.activity_number)*100).toFixed(0) %>% {{pageData.Sold}}
+                                                    <%# }else{ %>
+                                                        0% {{pageData.Sold}}
+                                                    <%# } %>
+                                                </p>
+                                            {% else %}
+                                                <%# var per = item.activity_number > 0 ? Math.floor(((item.activity_number - item.activity_volume_number)/item.activity_number).toFixed(2)*100) : 0   %>
+                                                <p class="progress-title" style="color: {{data.salesFontColor}};text-transform: capitalize;">
+                                                    {% if lang == "en" %}
+                                                        Only <% per %>% left
+                                                    {% elseif lang == "de" %}
+                                                        Nur <% per %>% auf Lager
+                                                    {% elseif lang == "es" %}
+                                                        sólo quedan <% per %>%
+                                                    {% elseif lang == "fr" %}
+                                                        <% per %>% Restant(s)
+                                                    {% elseif lang == "it" %}
+                                                        <% per %>% disponibili
+                                                    {% elseif lang == "pt" %}
+                                                        apenas <% per %>% sobrando
+                                                    {% elseif lang == "ru" %}
+                                                        осталось только <% per %>%
+                                                    {% else %}
+                                                        Only <% per %>% left
+                                                    {% endif %}
+                                                </p>
+                                            {% endif %}
+                                        <%# } %>
+                                        <div class="geshop-progress">
+                                            <div class="geshop-progress-bar" style="width:<% ((item.activity_number - item.activity_volume_number)/item.activity_number).toFixed(2)*100 %>%"></div>
+                                        </div>
+                                         <p class="goods-price">
+                                            <span class="my_shop_price goods-now-price site-bold-strict"  data-orgp="<% item.shop_price %>" style="color: {{data.salePriceColor|default('#FA386A')}};font-size: {{data.salePriceFontSize/70}}rem;">$<% item.shop_price || 0.00 %></span>
+                                            <span class="my_shop_price goods-original-price js_market_wrap"  data-orgp="<% item.market_price %>" style="color: {{data.marketPriceColor}};font-size: {{data.marketPriceFontSize/70}}rem;">$<% item.market_price || 0.00 %></span>
+                                        </p>
+                                        <a class="buy-btn" href="<% item.url_title %>" target="_blank" style="background-color:{{data.buyBtnBgColor }};color: {{data.buyBtnFontColor}};
+                                            border-color:{{data.buyBtnBorderColor}};border-radius: {{data.buyBtnBorderRadius/70}}rem;width: {{data.buyBtnWidth/70}}rem;height: {{data.buyBtnHeight/70}}rem;line-height: {{data.buyBtnHeight/70}}rem;font-size: {{data.buyBtnFontSize/70}}rem;">{{pageData.BTNBUYNOW}}</a>
+
+                                    </div>
+                                </li>
+                            <%# }); %>
+                        <%# } %>
+                    </ul>
+
+
+                </div>
+                {% endif %}
+            </div>
+        </script>
+
+        {# layui template end #}
+
+        <div class="seckill-container clearfix">
+            <div class="seckill-info" style="{% if data.btnBgImg is not empty %}background-image: url({{data.btnBgImg}});{% endif %}color:{{data.seckillFontColor}};">
+                 {% if data.seckillDescFontSize != '' %}
+                    <p class="seckill-desc" style="font-size:{{data.seckillDescFontSize/70}}rem;color:{{data.seckillDescFontColor}}">FLASH SALE</p>
+                 {% else %}
+                    <p class="seckill-desc">FLASH SALE</p>
+                 {% endif %}
+
+                <div class="more">
+                    {% if data.isShowMore == 1 %}
+                        <a href="{{data.link}}" style="color:{{data.vmFontColor}}" target="_blank">More</a>
+                    {% endif %}
+                </div>
+                <div class="si-info">
+                    {% if data.seckillFontSize %}
+                         <p class="copywriter" style="font-size: {{data.seckillFontSize/70}}rem;color:{{data.seckillFontColor}};">{{data.startDesc | default('Start In')}}</p>
+                    {% else %}
+                         <p class="copywriter">{{data.startDesc | default('Start In')}}</p>
+                    {% endif %}
+
+                    <div class="timer">
+                        <span class="time-item s-days" style="background-color:{{data.seckillTimeBgColor }};color: {{data.seckillTimeFontColor}}"></span><i style="color:{{data.seckillTimeBgColor }}";>：</i>
+                        <span class="time-item s-hours" style="background-color:{{data.seckillTimeBgColor}};color: {{data.seckillTimeFontColor}}"></span><i  style="color:{{data.seckillTimeBgColor }}";>：</i>
+                        <span class="time-item s-minutes" style="background-color:{{data.seckillTimeBgColor}};color: {{data.seckillTimeFontColor}}"></span><i  style="color:{{data.seckillTimeBgColor }}";>：</i>
+                        <span class="time-item s-seconds" style="background-color:{{data.seckillTimeBgColor}};color: {{data.seckillTimeFontColor}}"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="goods-list">
+
+                <ul class="clearfix">
+                    {% for key, content in [1,2,3] %}
+                        <li style="background-color: {{data.goodsBgColor}}" class="swiper-slide">
+                            <div class="goods-left left">
+                                <div class="discount">
+                                    <div class="middle">
+                                        <p class="percent">-50%</p>
+                                        {# <p class="offtext">OFF</p>#}
+                                    </div>
+                                </div>
+                                <div class="goods-img">
+                                    <img  class="goods-img" src='../../resources/images/rg-mobile/default-goods.png'/>
+                                </div>
+
+                            </div>
+                            <div class="goods-right left">
+                                <p class="goods-title" style="color: {{data.goodsTitleColor}};">This is the descript</p>
+                                <p class="progress-title" style="color: {{data.salesFontColor}}">Only 50% Left</p>
+                                <div class="geshop-progress">
+                                    <div class="geshop-progress-bar" lay-percent="50"></div>
+                                </div>
+                                <p class="goods-price">
+                                    <span class="my_shop_price goods-now-price site-bold-strict">$0.00</span>
+                                    <span class="my_shop_price goods-original-price js_market_wrap" >$0.00</span>
+                                </p>
+                                <a class="buy-btn" href="<% item.url_title %>" target="_blank" >{{pageData.BTNBUYNOW}}</a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+    {# {% endif %}  #}
+</div>

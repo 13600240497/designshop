@@ -1,0 +1,57 @@
+<div 
+	class="geshop-component-box component-drag geshop-U000080-default geshop-U000080-default-{{ pageInstanceId }}" 
+	data-gid="U000080_default_sync" 
+	data-key="U000080" 
+	data-id="{{ pageInstanceId }}" 
+	data-static-domain="{{staticDomain}}" 
+	data-editenv="{{data.isEditEnv}}" 
+	data-skus="{{data.goodsSKU}}" 
+	data-sitedomain="{{siteDomain}}">
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+        {% include 'style.twig' %}
+    </style>
+    <!-- embed stylesheet end -->
+	<div class="geshop-U000080-default-wrapper">
+		<ul></ul>
+	</div>
+	{# 异步模版 #}
+	<script class="geshop-U000080-default-tempalte" type="text">
+		<%# 
+			for(var i = 0; i < d.length; i++) {
+				var item = d[i];
+		%>
+        <li>
+			<a href="<% item.url_title %>" class="logsss_event" data-logsss-event-value="<% item.a_analytics %>">
+				<div class="geshop-U000080-default-list-img">
+					{%
+						include geshop.default.pc.discount_float with { params: {
+							type: data.discount_type,
+							value: '<% item.discount %>'
+						}}
+					%}
+					{%
+						include geshop.default.pc.image_goods with { params: {
+							src: '<% item.goods_img %>',
+							analytics: '<% item.img_analytics %>'
+						}}
+					%}
+				</div>
+				<div class="geshop-U000080-default-list-title">
+					<% item.goods_title %>
+				</div>
+				<div style="margin: 12px 0px;">
+					{% include geshop.default.pc.shop_price with { params: { value: '<% item.shop_price %>' }} %}
+					{% include geshop.default.pc.market_price with { params: { value: '<% item.market_price %>' }} %}
+				</div>
+			</a>
+            <div style="position: relative; z-index:1">
+				{% if data.buynow_show != '0' %}
+					{% include geshop.default.pc.button_buy with { params: { href: '<% item.url_title %>' }} %}
+				{% endif %}
+            </div>
+        </li>
+        <%# } %>
+    </script>
+</div>
+

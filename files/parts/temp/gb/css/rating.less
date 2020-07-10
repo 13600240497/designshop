@@ -1,0 +1,47 @@
+.rating_model {
+	display: inline-block;
+	font-size: 0;
+	line-height: 1;
+	color: #ff8a00;
+	white-space: nowrap
+}
+
+.gs-icon-star {
+	display: inline-block;
+	padding-right: 3px;
+	font-size: 15px;
+	font-family: iconfont;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale
+}
+
+.gs-icon-star:last-of-type {
+	padding-right: 0!important
+}
+
+.rating_full~.gs-icon-star:before,.gs-icon-star-half~.gs-icon-star:before {
+	content: "\e609";
+}
+
+.rating_model-input .gs-icon-star {
+	font-size: 28px;
+	padding-right: 5px
+}
+
+.rating_model-enabled {
+	cursor: pointer
+}
+
+.rating_model-enabled .gs-icon-star:hover~.gs-icon-star:before {
+	content: "\E68D"
+}
+
+.rating_model-enabled:hover .gs-icon-star:before {
+	content: "\E690"
+}
+.gbStarGrade_count{
+	margin: 0 5px;
+	color: #ff8a00;
+	font-size: 14px;
+}

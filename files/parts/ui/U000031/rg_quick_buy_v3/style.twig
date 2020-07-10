@@ -1,0 +1,33 @@
+{% set space = '#U000031_'~pageInstanceId %}
+
+{{ space }} .geshop-rg-discount {
+    width: {{ data.discount_width / 75 }}rem;
+    height: {{ data.discount_height / 75 }}rem;
+    left: {{ data.discount_left / 75 }}rem;
+    top: {{ data.discount_top / 75 }}rem;
+    color: {{ data.discount_font_color | default('#fff') }};
+    border-top-left-radius: {{ data.discount_border_radius_left_top / 75 }}rem;
+    border-top-right-radius: {{ data.discount_border_radius_right_top / 75 }}rem;
+    border-bottom-right-radius: {{ data.discount_border_radius_right_bottom / 75 }}rem;
+    border-bottom-left-radius: {{ data.discount_border_radius_left_bottom / 75 }}rem;
+    {% if data.discount_bg_image is not empty %}
+        background-image: url("{{ data.discount_bg_image }}")`;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: left center;
+        border-radius: 0;
+    {% else %}
+        background-color: {{ data.discount_bg_color | default('#FA386A') }};
+    {% endif %}
+}
+
+{{ space }} .geshop-rg-discount label {
+    top: {{ data.discount_font_top / 75 }}rem;
+    left: {{ data.discount_font_left / 75 }}rem;
+}
+
+{{ space }} .geshop-shop-price {
+    color: {{ data.shop_price_color | default('#FA386A') }};
+}
+{# 组件公共样式#}
+{{ include ('@app/files/parts/formTemplate/components/siteParam-rg.twig', {'root': space}) }}

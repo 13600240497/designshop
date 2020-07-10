@@ -1,0 +1,106 @@
+/**
+ * 导航样式
+*/
+
+.geshop-U000208-model1 {
+    .rank-nav-inner {
+        overflow: hidden;
+    }
+
+    .rank-nav-inner.is-fixed {
+        position: fixed;
+        z-index: 100000; // 要比水平导航和垂直到行的层级都高
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .rank-nav {
+        position: relative;
+        max-width: 1200px;
+        box-sizing: border-box;
+        margin: 0 auto;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .rank-nav-content {
+        position: relative;
+        display: inline-block;
+        font-size: 0;
+    }
+
+    .rank-nav-item {
+        display: inline-block;
+        padding: 0 25px;
+        cursor: pointer;
+    }
+
+    .rank-nav-text {
+        position: relative;
+    }
+
+    .rank-nav-item.active .rank-nav-text:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        bottom: -4px;
+    }
+
+    @media screen and (min-width: 768px) {
+        .rank-nav.has-arrow {
+            padding: 0 50px;
+
+            .rank-nav-pre, .rank-nav-next {
+                display: block;
+            }
+        }
+
+        .rank-nav-pre, .rank-nav-next {
+            display: none;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            bottom: 0;
+            width: 50px;
+            text-align: center;
+            font-size: 0;
+            height: 100%;
+            cursor: pointer;
+
+            &:before {
+                content: '';
+                height: 100%;
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            &:after {
+                content: '';
+                display: inline-block;
+                vertical-align: middle;
+                width: 8px;
+                height: 8px;
+                border: 1px solid #fff;
+                transform: rotate(-45deg);
+            }
+        }
+
+        .rank-nav-pre {
+            left: 0;
+            &:after {
+                border-color: #fff transparent transparent #fff;
+            }
+        }
+
+        .rank-nav-next {
+            right: 0;
+            &:after {
+                border-color: transparent #fff #fff transparent;
+            }
+        }
+    }
+}

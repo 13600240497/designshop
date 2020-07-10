@@ -1,0 +1,717 @@
+<style>
+    .geshop-map-img-container {
+        width: 700px;
+        height: 700px;
+        position: relative;
+        text-align: center;
+        border: 1px solid #ECECEC;
+        color: #333333;
+        margin-bottom: 32px;
+    }
+
+    .geshop-map-img-container:after {
+        content: '';
+        display: inline-block;
+        width: 0px;
+        height: 100%;
+        vertical-align: middle;
+    }
+
+    .geshop-map-img {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+    }
+
+    .geshop-map-img img {
+        position: relative;
+        cursor: crosshair;
+        max-width: 100%;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .drag {
+        position: absolute;
+        border: 1px dotted #ffffff;
+        background: rgba(30, 159, 255, .5);
+        text-align: center;
+        cursor: move;
+    }
+
+    .drag:hover {
+        background: rgba(30, 159, 255, .8);
+    }
+
+    .drag .hide {
+        display: none;
+    }
+
+    .drag:hover .layer-tip {
+        color: #333333;
+    }
+
+    .handle {
+        position: absolute;
+        height: 6px;
+        width: 6px;
+        opacity: .7;
+        background-color: #fff;
+        border: 1px solid #25c3eb;
+    }
+
+    .layer-tip {
+        position: absolute;
+        background-color: transparent;
+        top: 50%;
+        text-align: center;
+        width: 100%;
+        height: 30px;
+        opacity: 1;
+        line-height: 30px;
+        left: 0;
+        margin-top: -15px;
+        z-index: 1;
+        border: none;
+        color: #ffffff;
+    }
+
+    .NW, .NN, .NE {
+        top: -4px;
+    }
+
+    .NE, .EE, .SE {
+        right: -4px;
+    }
+
+    .SW, .SS, .SE {
+        bottom: -4px;
+    }
+
+    .NW, .WW, .SW {
+        left: -4px;
+    }
+
+    .SE, .NW {
+        cursor: nw-resize;
+    }
+
+    .SW, .NE {
+        cursor: ne-resize;
+    }
+
+    .NN, .SS {
+        cursor: n-resize;
+        left: 50%;
+        margin-left: -4px;
+    }
+
+    .EE, .WW {
+        cursor: e-resize;
+        top: 50%;
+        margin-top: -4px;
+    }
+
+    .layer-close {
+        width: 22px;
+        height: 22px;
+        background: url("https://geshopimg.logsss.com/uploads/Df3irGxo7jNAz2q1eOJvbY9MXlRPVLEQ.png") 0 0 no-repeat;
+        background-size: 22px 22px;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        display: none;
+        overflow: hidden;
+        font-size: 0;
+    }
+
+    .layer-close:hover {
+        color: #777777;
+    }
+
+    .btn {
+        width: 86px;
+        height: 36px;
+        background: rgba(52, 168, 255, 1);
+        border-radius: 4px;
+        text-align: center;
+        line-height: 36px;
+        font-size: 14px;
+        font-weight: 400;
+        color: #ffffff;
+        border: none;
+        float: right;
+        cursor: pointer;
+    }
+
+    .tips {
+        margin: 16px 0 8px;
+        line-height: 20px;
+        font-size: 14px;
+
+    }
+
+    .layui-form-label {
+        padding: 0 20px;
+    }
+
+    .layui-layer-page .layui-layer-content .layui-input-block {
+        margin-left: 20px;
+        margin-right: 0;
+        margin-bottom: 16px;
+    }
+
+    .link-hd.hide {
+        display: none;
+    }
+
+    .link-clear {
+
+        display: block;
+        font-size: 14px;
+        font-weight: 400;
+        color: rgb(250, 252, 255);
+        float: right;
+        text-align: center;
+        cursor: pointer;
+        width: 100px;
+        height: 40px;
+        line-height: 40px;
+        padding: 0;
+        margin: 0 0 0 15px;
+        border-radius: 4px;
+        background-color: #1E9FFF;
+    }
+
+    .link-clear:hover {
+        color: #ffffff;
+    }
+
+    .geshop-map-link {
+        width: 336px;
+        height: 700px;
+        overflow-y: auto;
+    }
+
+    .btn-group {
+        text-align: center;
+        margin: 0 0 32px;
+    }
+    .btn-group.hide{
+        display: none;
+    }
+
+    .btn-group .layui-btn {
+        width: 100px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        padding: 0;
+        margin: 0 0 0 15px;
+        border-radius: 4px;
+    }
+
+    .layui-container {
+        padding: 0 20px;
+        width: 100%;
+    }
+
+    #map_links .layui-form-item:last-child .layui-input-block {
+        margin-bottom: 0;
+    }
+
+    .nocolor {
+
+        background: rgba(255, 255, 255, 1);
+        box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.2), 0 2px 30px 0 rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+    }
+
+    .nocolor .layui-layer-title {
+        background: #ffffff;
+        border-bottom: none;
+        color: #333333;
+        font-size: 18px;
+        font-weight: 400;
+        padding-left: 19px;
+    }
+
+    .nocolor.layui-layer-dialog .layui-layer-btn {
+        text-align: center;
+        padding-top: 8px;
+    }
+
+</style>
+
+
+{% if data.areas == 0 %}
+    {% set areas = 0 %}
+{% else %}
+    {% set areas = data.areas | json_encode() %}
+{% endif %}
+<div class="area-box">
+    <input type="hidden" name="areas" data-val='{{ areas }}'
+           value='{{ areas }}'
+           data-src="{{ data.base_img ?? '' }}">
+    {#<img src="https://geshoptest.s3.amazonaws.com/uploads/euU7IEx4mBTFWLyYGn3tj08VJ6Cq5krZ.jpg" alt="">#}
+    <button class="btn">绘制热区</button>
+
+</div>
+<script>
+    {#ES6  混合模式，测试版本是否支持ES6语法。  本版本已经支持#}
+    function HotArea(opts) {
+        this.opts = $.extend(true, {
+            bgImg: '',
+            areas: [],
+            callback: null {#// 数据回传函数#}
+        }, opts);
+
+        {#// 是否有改动标识，用于误操作提示#}
+        this.isModified = false;
+        this.mapArea = null;
+        this.init();
+        this.picClient = {};
+        this.coords = [];
+        this.styleCoords = [];
+        this.index = 0;
+        this.maxNum = 8;
+    }
+
+    HotArea.prototype = {
+        init: function () {
+
+
+            const lod = layui.layer.load(1, {
+                shade: [0.7, '#000']
+            });
+            var self = this;
+            var imgSrc = new Image();
+            imgSrc.src = this.opts.bgImg;
+            imgSrc.onload = function () {
+                layui.layer.close(lod);
+                let imgW = "auto";
+                let imgH = "auto";
+                let hotareaImgW = 698;
+                if (imgSrc.height > imgSrc.width && imgSrc.height > hotareaImgW) {
+                    imgW = imgSrc.width * hotareaImgW / imgSrc.height;
+                    imgH = hotareaImgW;
+                }
+                var html = '' +
+                    '<div class="layui-container">' +
+                    '<div class="layui-row">' +
+                    '<p class="tips">请在图片上框选热图区域，并输入相关链接，热区数量不超过'+ self.maxNum +'个。</p>' +
+                    '<div class="layui-col-md8 geshop-map-img-container">' +
+                    '<div id="map_img" class="geshop-map-img">' +
+                    '<img src="' + imgSrc.src + '" draggable="false" class="bg-img" width="'+imgW+'" height="'+imgH+'">' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="layui-col-md4 geshop-map-link">' +
+                    '<p class="link-hd hide"><span class="link-clear">清除所有热区</span></p>' +
+                    '<form id="map_links" class="layui-form"></form>' +
+                    '</div>' +
+                    '<div class="layui-col-md12">' +
+                    '<div class="btn-group ">' +
+                    '<button id="cancel" type="button" class="layui-btn layui-btn-primary">取消</button>' +
+                    '<button id="save" type="button" class="layui-btn layui-btn-normal">保存</button>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+                layui.layer.open({
+                    title: '热区绘制',
+                    type: 1,
+                    id: 'hotAreaMap',
+                    area: '1100px',
+                    content: html,
+                    success:function () {
+                        $('.bg-img').on('load', function() {
+                            self.picClient.w = this.width;
+                            self.picClient.h = this.height;
+                            if (self.opts.areas.length > 6) {
+                                self.initAres();
+                            }
+                            self.drawEvent();
+                        });
+                    }
+                });
+                self.mapArea = $('#map_img');
+
+
+                $('#save').click(() => {
+                    self.saveForm();
+                });
+                $('.link-clear').click(() => {
+                    self.clearAll();
+                });
+                $('#cancel').click(() => {
+                    layui.layer.closeAll();
+                });
+
+                {#
+
+                if (self.opts.areas != 0 && self.opts.areas != '"0"' && self.opts.areas != '' && self.opts.areas != "null") {
+
+                }#}
+
+            };
+        },
+        initAres() {
+            this.opts.areas = JSON.parse(this.opts.areas).saveData;
+            this.coords = this.opts.areas;
+            const self = this;
+            $('.link-hd, .btn-group').removeClass('hide');
+            this.opts.areas.forEach(function (item) {
+                var $curLayer = self.renderLayer(item.coords);
+                $curLayer.find('.handle, .layer-tip').removeClass('hide');
+                self.insetInput(item.url, item.coords.id);
+                self.dragEvent($curLayer);
+                self.bindEvent($curLayer);
+            });
+        },
+        drawEvent: function () {
+            var self = this;
+            var mapAreaOffset = {},
+                drawing = false,
+                $curLayer = '',
+                posx = 0,
+                posy = 0,
+                props = {};
+            $('#map_img')
+                .mousedown(function (e) {
+                    if ($(e.target).hasClass('drag') || $(e.target).hasClass('layui-icon-close') || $(e.target).hasClass('handle') || (!$(e.target).hasClass('bg-img'))) {
+                        return false;
+                    }
+                    if (self.index >= self.maxNum) {
+                        layui.layer.msg(`最多只能添加${self.maxNum}个热区！`);
+                        drawing = false;
+                        return false
+                    }
+                    if (drawing) {
+                        return;
+                    }
+                    drawing = true;
+                    posx = e.clientX;
+                    posy = e.clientY;
+                    mapAreaOffset = self.mapArea.offset();
+                    props = {
+                        left: posx - mapAreaOffset.left,
+                        top: posy - mapAreaOffset.top,
+                        width: 0,
+                        height: 0
+                    };
+                    $curLayer = self.renderLayer(props);
+                    {#$curLayer = self.renderLayer(props);#}
+                })
+                .mousemove(function (e) {
+                    if (drawing) {
+                        props.left = Math.min(e.clientX, posx) - mapAreaOffset.left;
+                        props.top = Math.min(e.clientY, posy) - mapAreaOffset.top;
+                        if (props.left < 0) {
+                            props.left = 0;
+                            e.clientX = mapAreaOffset.left;
+                        }
+                        if (props.top < 0) {
+                            props.top = 0;
+                            e.clientY = mapAreaOffset.top
+                        }
+                        if (e.clientX > mapAreaOffset.left + self.mapArea.width()) {
+                            e.clientX = mapAreaOffset.left + self.mapArea.width()
+                        }
+
+                        if (e.clientY > mapAreaOffset.top + self.mapArea.height()) {
+                            e.clientY = mapAreaOffset.top + self.mapArea.height()
+                        }
+                        {#
+                         props.width = e.clientX - props.left - mapAreaOffset.left;
+                        props.height = e.clientY - props.top - mapAreaOffset.top;
+                        #}
+                        props.width = Math.abs(e.clientX - posx);
+                        props.height = Math.abs(e.clientY - posy);
+                        self.renderLayer(props, $curLayer)
+                    }
+                });
+
+            $('body').on('mouseup', function (e) {
+                if (drawing) {
+                    if (props.width < 14 || props.height < 14) {
+                        $curLayer.remove();
+                        layui.layer.msg('热区的区域请大于14px*14px');
+                    } else {
+                        self.renderArea($curLayer, props);
+                    }
+                }
+                drawing = false;
+            })
+        },
+        renderArea($curLayer, props) {
+            var self = this;
+            $curLayer.find('.handle, .layer-tip').removeClass('hide');
+            const outAres = {};
+            props.id = $curLayer.attr('id');
+            outAres.coords = props;
+            self.coords.push(outAres);
+            self.insetInput("", props.id);
+            self.dragEvent($curLayer);
+            self.bindEvent($curLayer);
+        },
+        insetInput(val, id) {
+            const self = this;
+            self.index = self.index + 1;
+
+            if ($('.link-hd, .btn-group').hasClass('hide')) {
+                $('.link-hd, .btn-group').removeClass('hide');
+            }
+            const html = `
+                <div class="layui-form-item" data-flag="${id}">
+                    <label class="layui-form-label" style="width:75px;padding-bottom:5px;">热区${self.index}链接</label>
+                    <div class="layui-input-block">
+                      <input type="text"  placeholder="请输入链接" autocomplete="off" class="layui-input area-link" value="${val}">
+                    </div>
+                </div>`;
+            $('#map_links').append(html);
+        },
+        renderLayer(props, $layer) {
+            $layer = $layer || null;
+            if (!$layer) {
+                var idx = +new Date() + Math.floor(Math.random() * 900 + 100),
+                    html = [];
+                if (typeof props.id != "undefined") {
+                    idx = props.id.split("-")[1]
+                }
+
+                html.push(
+                    '<div id="drag-' + idx + '" data-url="" data-target="" class="drag">',
+                    '    <span class="handle NE hide"></span>',
+                    '    <span class="handle NN hide"></span>',
+                    '    <span class="handle NW hide"></span>',
+                    '    <span class="handle WW hide"></span>',
+                    '    <span class="handle EE hide"></span>',
+                    '    <span class="handle SW hide"></span>',
+                    '    <span class="handle SS hide"></span>',
+                    '    <span class="handle SE hide"></span>',
+                    '    <span class="layer-tip handle hide">热区' + (this.index + 1) + '</span>',
+                    '    <span class="layer-close layui-icon layui-icon-close"></span>',
+                    '</div>'
+                );
+
+                $layer = $(html.join(''));
+                this.mapArea.append($layer);
+            }
+
+            {# // 添加文字垂直距中#}
+
+            props.lineHeight = props.height + 'px';
+            var redProps = {
+                top: props.top / this.picClient.h * 100 + '%',
+                left: props.left / this.picClient.w * 100 + '%',
+                width: props.width / this.picClient.w * 100 + '%',
+                height: props.height / this.picClient.h * 100 + '%',
+            };
+            $layer.css(redProps);
+
+            return $layer;
+        },
+        dragEvent($curLayer) {
+            var self = this,
+                $drag = $curLayer,
+                dragAb = false;
+            var areaProp = {};
+            $drag
+                .mouseover(function () {
+                    $(this).find('.layer-close').show();
+                })
+                .mouseout(function () {
+                    $(this).find('.layer-close').hide();
+                })
+                .click(function (e) {
+                    e.stopPropagation();
+                })
+                .mousedown(function (e) {
+                    if (dragAb) {
+                        return;
+                    }
+                    dragAb = true;
+                    areaProp.tagName = $(e.target).attr('class');
+                    areaProp.width = $(this).width();
+                    areaProp.height = $(this).height();
+                    areaProp.startX = e.clientX;
+                    areaProp.originalX = $(this).offset().left - self.mapArea.offset().left;
+                    areaProp.startY = e.clientY;
+                    areaProp.originalY = $(this).offset().top - self.mapArea.offset().top;
+                    areaProp.limit = {
+                        top: 0,
+                        left: 0,
+                        bottom: self.picClient.h - areaProp.height,
+                        right: self.picClient.w - areaProp.width
+                    };
+                });
+            $('body')
+                .on('mousemove', function (e) {
+                    if (dragAb) {
+                        var props = {};
+                        if (areaProp.tagName.indexOf('E') > -1) {
+                            props.width = Math.min(self.picClient.w - areaProp.originalX, Math.max(24, areaProp.width + (e.clientX - areaProp.startX)));
+                        }
+                        if (areaProp.tagName.indexOf('S') > -1) {
+                            props.height = Math.min(self.picClient.h - areaProp.originalY, Math.max(24, areaProp.height + (e.clientY - areaProp.startY)));
+                        }
+                        if (areaProp.tagName.indexOf('W') > -1) {
+                            props.width = Math.min(areaProp.originalX + areaProp.width, Math.max(24, areaProp.width - (e.clientX - areaProp.startX)));
+                            props.left = areaProp.originalX + areaProp.width - props.width;
+                        }
+                        if (areaProp.tagName.indexOf('N') > -1) {
+                            props.height = Math.min(areaProp.originalY + areaProp.height, Math.max(24, areaProp.height - (e.clientY - areaProp.startY)));
+                            props.top = areaProp.originalY + areaProp.height - props.height;
+                        }
+                        if (areaProp.tagName.indexOf('drag') > -1 || areaProp.tagName.indexOf('layer-tip') > -1) {
+                            props.top = areaProp.originalY + (e.clientY - areaProp.startY);
+                            props.left = areaProp.originalX + (e.clientX - areaProp.startX);
+                        }
+
+                        {#  // 限制移动区域  #}
+
+                        if (props.top) {
+                            props.top = Math.min(areaProp.limit.bottom, Math.max(areaProp.limit.top, props.top));
+                        }
+
+                        if (props.left) {
+                            props.left = Math.min(areaProp.limit.right, Math.max(areaProp.limit.left, props.left));
+                        }
+                        self.isModified = true;
+                        const index = self.coords.findIndex((item) => {
+                            return item.coords.id == $drag.attr('id')
+                        });
+
+
+                        if (index >= 0) {
+                            self.coords[index].coords = Object.assign(self.coords[index].coords, props);
+                        }
+                        self.renderLayer(props, $drag);
+                    }
+                })
+                .on('mouseup', function (e) {
+                    dragAb = false;
+                })
+
+
+        },
+        bindEvent($curLayer) {
+            var self = this;
+            {#  // 删除图层 #}
+            $curLayer.find('.layer-close').click(function (e) {
+                const id = $(this).closest('.drag').attr('id');
+                self.index--;
+                const index = self.coords.findIndex((item) => {
+                    return item.coords.id == id
+                });
+                self.coords.splice(index, 1);
+                $(this).closest('.drag').remove();
+                $('#map_links').find('.layui-form-item[data-flag ="' + id + '"]').remove();
+
+                if (self.index <= 0) {
+                    $('.link-hd,.btn-group').addClass('hide');
+                }
+                self.updateNum();
+            });
+        },
+        updateNum() {
+            $('#map_img').find('.drag').each((index, item) => {
+                $(item).find('.layer-tip').html('热区' + (index + 1));
+            });
+            $('#map_links').find('.layui-form-item').each((index, item) => {
+                $(item).find('.layui-form-label').html('热区链接' + (index + 1));
+            });
+        },
+        saveForm() {
+            var self = this;
+            if (this.index == 0) {
+                let name = layui.layer.confirm('当前还没有添加热区，确认关闭嘛？', {
+                    title: '提示',
+                    btn: ['取消', '确认'],
+                    area: ['416px', '208px'],
+                    skin: 'nocolor'
+                }, function () {
+                    layui.layer.close(name);
+                }, function () {
+                    if (self.opts.callback) {
+                        self.opts.callback(0);
+                    }
+                    layui.layer.closeAll();
+                });
+                return;
+            }
+            $('#map_links').find('.area-link').each(function (index, item) {
+                var url = $(item).val();
+                self.coords[index]['url'] = url;
+            });
+            if (this.opts.callback) {
+                const obj = {};
+                self.styleCoords = JSON.parse(JSON.stringify(self.coords));
+                const renderObj = self.styleCoords.map((item) => {
+                    let newObj = {};
+                    return newObj = {
+                        url: item.url,
+                        coords: {
+                            top: item.coords.top / self.picClient.h * 100 + '%',
+                            left: item.coords.left / self.picClient.w * 100 + '%',
+                            width: item.coords.width / self.picClient.w * 100 + '%',
+                            height: item.coords.height / self.picClient.h * 100 + '%'
+                        }
+                    }
+                });
+                obj.renderData = renderObj;
+                obj.saveData = self.coords;
+                this.opts.callback(obj);
+            }
+            layui.layer.closeAll();
+        },
+        clearAll() {
+            var self = this;
+            let name2 = layui.layer.confirm('确定要清除所有热区吗 ? 执行后，所有热区将被删除！', {
+                title: '提示',
+                btn: ['取消', '确认'],
+                area: ['416px', '208px'],
+                skin: 'nocolor'
+            }, function () {
+                layui.layer.close(name2);
+            }, function () {
+                $('#map_img').find('.drag').remove();
+                $('#map_links').find('.layui-form-item').remove();
+                $('.link-hd').addClass('hide');
+                self.index = 0;
+                self.coords = [];
+            });
+        }
+    };
+
+    $('#U000241-template1').on('click', '.btn', function () {
+        var imgSrc = $("input[name='base_img']").val();
+
+        if (imgSrc == '') {
+            layui.layer.msg('请先填写图片！');
+            return false;
+        }
+        var img = $("input[name='areas']").attr('data-src');
+        if (img != imgSrc) {
+            $("input[name='areas']").val(0);
+        }
+        var opts = {
+            bgImg: imgSrc,
+            areas: $("input[name='areas']").val() || 0,
+            callback: function (data) {
+                if (parseInt(data) == 0) {
+                    $("input[name='areas']").val(0);
+                } else {
+                    $("input[name='areas']").val(JSON.stringify(data));
+                }
+
+            }
+        };
+        new HotArea(opts);
+        $("input[name='areas']").attr('data-src', imgSrc);
+    });
+</script>
+
+

@@ -1,0 +1,91 @@
+
+  .geshop-title {
+    font-size: 16px;
+    color: #333333;
+  }
+  .label-form-item {
+    font-size: 14px;
+    color: #333333;
+  }
+  .rest-input {
+    margin-left: 0px;
+    margin-top: 5px;
+  }
+  .add-link-item {
+    background: #000;
+  }
+  .add-img-item {
+    opacity: 0.6; 
+    filter: alpha(opacity=60);
+  }
+  .hover-item {
+    display: block;
+    width: 80px;
+    line-height: 36px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: auto;
+    font-size: 14px;
+    color: #FFF;
+    font-family: PingFangSC;
+  }
+  .add-form-button span {
+    display: block;
+    width: 116px;
+    height: 36px;
+    background: #34A8FF;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 36px;
+    font-size: 14px;
+    color: #FFFFFF;
+    cursor: pointer;
+    margin-top: 54px;
+  }
+  .img-btn {
+    display: inline-block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    line-height: 12px;
+    padding: 6px 0;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 50%;
+    background: rgba(16,93,149,0.4);
+    margin: 0 2px;
+  }
+  .img-btn:hover {
+    background: #105D95;
+  }
+  .img-btn i {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-repeat: no-repeat;
+  }
+  .icon-close {
+    z-index: 1000;
+    right: 21px;
+  }
+  .gs-btn-area  {
+    text-align: center;
+  }
+  
+  .advanced-setting-container .layui-colla-content {
+    padding: 10px 0px;
+  }
+  .gs-inline-layout-left {
+    display: inline-block;
+    width: 150px;
+    padding-right: 20px;
+  }
+  .gs-inline-layout-right {
+    display: inline-block;
+    width: 150px;
+  }
+  /* .geshop-component-box {
+    min-height: 64px;
+  } */
+

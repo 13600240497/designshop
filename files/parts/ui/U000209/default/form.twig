@@ -1,0 +1,650 @@
+<style>{{ include ('./form.css') }}</style>
+
+{{include ('@app/files/parts/temp/goods_manager.twig')}}
+
+{% set formData = {
+    id: 'U000209',
+    name: '商品列表tab',
+    theme: 'default',
+    tabs: [
+            {
+                label: '商品SKU',
+                components: [
+                    {
+                        type: 'diy',
+                        src: 'lib/goods.twig'
+                    }
+                ]
+            },
+            {
+                label: '样式设置',
+                components: [
+                    {
+                        label: '常用配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件上边距 (PX)',
+                                name: 'component_mt',
+                                default: 0,
+                                col: 2,
+                            },
+                            {
+                                label: '组件下边距 (PX)',
+                                name: 'component_mb',
+                                default: 16,
+                                col: 2,
+                            },
+                            {
+                                type: 'siteParam-rg',
+                                componentType: 'background-rg'
+                            }
+                        ]
+                    },
+                    {
+                        label: '一级导航配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '文字大小 (PX)',
+                                name: 'nav1_fontSize',
+                                default: 28,
+                            },
+                            {
+                                label: '选中文字颜色',
+                                name: 'nav1_actColor',
+                                type: 'colorPicker',
+                                default: '#333333',
+                                col: 2,
+                            },
+                            {
+                                label: '下划线颜色',
+                                name: 'nav1_bdColor',
+                                type: 'colorPicker',
+                                public: false,
+                                default: '#333333',
+                                col: 2,
+                            },
+                        ]
+                    },
+                    {
+                        label: '二级导航配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '整体上边距 (PX)',
+                                name: 'nav2_mt',
+                                default: 32,
+                                col: 2,
+                            },
+                            {
+                                label: '文字大小 (PX)',
+                                name: 'nav2_fontSize',
+                                default: 24,
+                                col: 2,
+                            },
+                            {
+                                label: '图片宽度 (PX)',
+                                name: 'nav2_bg_w',
+                                default: 80,
+                                col: 2,
+                            },
+                            {
+                                label: '图片高度 (PX)',
+                                name: 'nav2_bg_h',
+                                default: 80,
+                                col: 2,
+                            },
+                            {
+                                label: '单个导航内边距 (PX)',
+                                name: 'nav2_span_pd',
+                                default: 20,
+                                col: 2,
+                            },
+                            {
+                                label: '单个导航外边距 (PX)',
+                                name: 'nav2_span_mg',
+                                default: 16,
+                                col: 2,
+                            },
+                            {
+                                label: '文字颜色',
+                                name: 'nav2_color',
+                                type: 'colorPicker',
+                                public: false,
+                                default: '#666666',
+                            },
+                        ]
+                    },
+                    {
+                        type: 'discount-rg-v2'
+                    },
+                    {
+                        label: '商品信息配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '快速购买图片',
+                                desc: '(建议宽50px,高50px)',
+                                name: 'shop_fast',
+                                type: 'image',
+                                default: '',
+                            },
+                            {
+                                label: '营销信息文字颜色',
+                                name: 'goodsDesc_color',
+                                type: 'colorPicker',
+                                default: '#333333',
+                            },
+                        ]
+                    },
+                ]
+            }
+    ],
+    moreConfig: [
+        {
+            label: '折扣标签配置',
+            type: 'collapse',
+            items: [
+                {
+                    label: '折扣标签配置',
+                    components: [
+                        {
+                            label: '上边距 (PX)',
+                            name: 'discont_top',
+                            default: 0,
+                            col: 2
+                        },
+                        {
+                            label: '右边距 (PX)',
+                            name: 'discont_right',
+                            default: 0,
+                            col: 2
+                        },
+                        {
+                            label: '文字上边距 (PX)',
+                            name: 'discont_mt',
+                            default: 0,
+                            col: 2
+                        },
+                        {
+                            label: '文字右边距 (PX)',
+                            name: 'discont_mr',
+                            default: 0,
+                            col: 2
+                        },
+                        {
+                            label: '文字大小 (PX)',
+                            name: 'discont_fontSize',
+                            default: 24,
+                        },
+                    ]
+                },
+            ]
+        }
+    ],
+    beforeSubmit: 'onSubmit'
+
+} %}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+{% include '@app/files/parts/temp/tab_ips_form_js.twig' %}
+<script>
+
+    {#  自定义保存函数 #}
+    function onSubmit(progress) {
+      var navList = [];
+      var commitFlag;
+      var actid_required_status = false;
+      $('.nav-container .first-level').each(function(){
+
+          if( $(this).find('input[name=tab_name]').val()){
+
+            var firstLevelObj = {
+              navName: $(this).find('input[name=tab_name]').val(),
+              banner: $(this).find('input.tab_bgImage').val(),
+              secondNum: $(this).find('input[name=second_tab_num]').val(),
+              secondSelect: $(this).find('select[name=second_level]').val(),
+              children: []
+            };
+            $(this).find('.second_tab_container .second_tab_item').each(function(index,item){
+              if($(item).find('input[name=second_tab_name]').val()){
+                if(!actid_required_status ){
+                  var $wrapper = $(item).find('.radio-tab-group');
+
+                  var skuFromValue = $wrapper.find('.tabItemRadio:checked').val();
+                  var $ipsAutoWraper = $wrapper.find('.gs-tab-select-wraper');
+                  var ipsMethods = $ipsAutoWraper.find('.ipsItemRadio:checked').val();
+                  var $val = $(item).find('textarea[name=goodsSKU]').val();
+                  var $label = $(item).parents('.goods-tab-item:eq(0)').find('input.tab-item-label').val();
+                  var navName = $(item).find('input[name=second_tab_name]').val();
+
+
+
+                  if(!$(item).find('input[name=second_tab_sku]').val()){
+                    $(item).find('input[name=sku_img]').val('');
+                  }
+                  var secondLevel = {};
+                  /* 选品系统 */
+                  if(skuFromValue == '2'){
+                    var saveIpsDataObj = saveIpsData($wrapper);
+                    actid_required_status = saveIpsDataObj.checkForm;
+                    /* 选品系统 ipsMethods - 1 自动  ipsMethods - 2 手动 */
+                    if (ipsMethods == 1) {
+
+                      if(navName){
+                        secondLevel = {
+                          "skuFrom":skuFromValue,
+                          "ipsMethods":ipsMethods,
+                          'navName': navName,
+                          "lists":$val,
+                          "ips":saveIpsDataObj.ips || '',
+                          'secondTabSku': $(item).find('input[name=second_tab_sku]').val(),
+                          'secondTabImg': $(item).find('input.second_tab_img').val(),
+                          'tabBgcolor': $(item).find('input[name=tabBgcolor]').val(),
+                          'goodsSKU': $(item).find('textarea[name=goodsSKU]').val(),
+                          'sku_img': $(item).find('input[name=sku_img]').val()
+                        }
+                      }
+                    } else {
+
+                      if(navName){
+                        secondLevel = {
+                          "skuFrom":skuFromValue,
+                          "ipsMethods":"2",
+                          'navName': navName,
+                          "lists":$val,
+                          "ips":saveIpsDataObj.ips,
+                          'secondTabSku': $(item).find('input[name=second_tab_sku]').val(),
+                          'secondTabImg': $(item).find('input.second_tab_img').val(),
+                          'tabBgcolor': $(item).find('input[name=tabBgcolor]').val(),
+                          'goodsSKU': $(item).find('textarea[name=goodsSKU]').val(),
+                          'sku_img': $(item).find('input[name=sku_img]').val()
+                        }
+                      }
+                    }
+
+                  };
+
+                  /* 商品sku */
+                  if(skuFromValue == '1'){
+                    if(navName){
+                      secondLevel = {
+                        "skuFrom":skuFromValue,
+                        'navName': navName,
+                        "lists":$val,
+                        "ips":{},
+                        'secondTabSku': $(item).find('input[name=second_tab_sku]').val(),
+                        'secondTabImg': $(item).find('input.second_tab_img').val(),
+                        'tabBgcolor': $(item).find('input[name=tabBgcolor]').val(),
+                        'sku_img': $(item).find('input[name=sku_img]').val()
+                      }
+                    }
+                  };
+
+
+                }
+                {# var secondLevel = {
+                  navName: $(item).find('input[name=second_tab_name]').val(),
+                  secondTabSku: $(item).find('input[name=second_tab_sku]').val(),
+                  secondTabImg: $(item).find('input.second_tab_img').val(),
+                  tabBgcolor: $(item).find('input[name=tabBgcolor]').val(),
+                  goodsSKU: $(item).find('textarea[name=goodsSKU]').val(),
+                  sku_img: $(item).find('input[name=sku_img]').val()
+                }; #}
+
+                firstLevelObj.children.push(secondLevel);
+              }else{
+                layui.layer.msg('二级导航分类名不能为空');
+                commitFlag = true;
+              }
+
+            });
+            navList.push(firstLevelObj);
+
+        }else{
+          layui.layer.msg('一级导航分类名不能为空');
+          commitFlag = true;
+        }
+
+      });
+
+
+      if(navList.length >　0){
+        var goodsSku = [];
+        for(var i = 0; i < navList.length; i++){
+          for(var j = 0; j < navList[i].children.length; j++ ){
+            var gsObj = {
+              ips: navList[i].children[j].ips,
+              ipsGoodsSKU: '',
+              ipsAutoRuleSKU: '',
+              ipsMethods: navList[i].children[j].ipsMethods,
+              key: i + '-' + j,
+              isAsync: 1,
+              lists: navList[i].children[j].lists || '',
+              skuFrom: navList[i].children[j].skuFrom,
+              inputSku: navList[i].children[j].lists
+            };
+            goodsSku.push(gsObj);
+          }
+        }
+
+        $('input[name=navList]').val(JSON.stringify(navList));
+        $('input[name=goodsSKU]').val(JSON.stringify(goodsSku));
+      }
+
+      if(!commitFlag){
+        progress.next()
+      }
+
+    };
+
+
+
+    ;$(function(){
+      ipsRadioInit();
+      eachIpsSelectItem();
+      var oldNum;
+
+      {# 重新触发选品单选按钮 #}
+      triggerRadio();
+
+
+      $('.first-level').each(function(){
+        $(this).find('.second_tab_container .second_tab_item').eq(0).show();
+        layui.form.render();
+      });
+
+
+      {# 根据用户填写的二级分类数字生成选项 #}
+      $('body').on('change','input[name=second_tab_num]',function(){
+
+        var firstLevel = $(this).parents('.first-level');
+        var senondContainer = firstLevel.find('.second_tab_container');
+        var newNum = $(this).val();
+        oldNum =  senondContainer.find('.second_tab_item').length;
+        {# if(firstLevel.data('changeOldNum') !== oldNum && firstLevel.data('changeOldNum')){
+          oldNum = firstLevel.data('changeOldNum');
+        } #}
+        if(isNaN(newNum)){
+          layui.layer.msg('请输入数字');
+          firstLevel.find('input[name=second_tab_num]').val(oldNum);
+        }else if(newNum == 0){
+          layui.layer.msg('二级分类数量必须大于0');
+          firstLevel.find('input[name=second_tab_num]').val(oldNum);
+        }else{
+
+          if(Number(newNum) >= Number(oldNum)){
+            var i;
+            oldNum == 0 ? i = 1 : i = 0;
+            for(var j = i; j < Number(newNum - oldNum); j++){
+                {# var clone = senondContainer.find('.second_tab_item').eq(0).clone(); #}
+                var clone = $('.clone .second_tab_item.hidden').clone();
+
+                clone.find('input.second_tab_img').val('');
+
+
+                clone.removeClass('hidden');
+                senondContainer.append(clone);
+                initItemIndex();
+                initIpsAutoRadio();
+                eachIpsSelectItem();
+
+                ipsRadioInit();
+                GsSelect.initSelect();
+                deleteDupSelect();
+                renderColorPicker();
+
+                clone.find('.gs-select-box').val(null).trigger('change');
+
+
+            }
+            {# 重置下拉框 #}
+            addOption(senondContainer,firstLevel);
+          }else{
+            layui.layer.confirm('数据删除无法恢复，确定是否删除？', {
+              btn: ['取消', '确定'],
+              area: '420px',
+              skin: 'element-ui-dialog-class',
+              icon: 3,
+              title: '提示'
+            }, function (index) {
+              layui.layer.close(index);
+              firstLevel.find('input[name=second_tab_num]').val(oldNum);
+            }, function (index) {
+
+              for(var i = 0; i < Number(oldNum - newNum); i++){
+                senondContainer.find('.second_tab_item:last').remove();
+                firstLevel.find('select[name=second_level] option:last').remove();
+              }
+              layui.form.render();
+            });
+
+          }
+          firstLevel.data('changeOldNum',Number(firstLevel.find('input[name=second_tab_num]').val()))
+
+        }
+        senondContainer.find('.second_tab_item').hide();
+        senondContainer.find('.second_tab_item').eq(0).show();
+        senondContainer.find('.item-divide .item-title').html('二级分类1');
+
+        triggerRadio();
+      });
+
+
+      {# 初始化radio选项 #}
+      function initIpsAutoRadio() {
+
+          /* 重置radio属性 */
+          {# $(this).find('.second_tab_item').each(function(j,secItem){
+            $(secItem).find('.ipsItemRadio').attr('name', 'ipsMethods_'+ i +'_'+j).attr('lay-filter', 'ipsMethods_'+ i +'_' + j);
+            $(secItem).find('.tabItemRadio').attr('name', 'skuFrom'+ i +'_'+j).attr('lay-filter', 'skuFrom'+ i +'_' + j);
+
+          }); #}
+
+      }
+
+      {# 删除生成的多余的下拉-暂时处理 #}
+      function deleteDupSelect(){
+        $('.gs-tab-select-item .select-item').each(function(){
+            $(this).find('.select2:gt(0)').remove();
+        });
+      }
+
+      {# 获取分类sku图 #}
+      $('body').on('blur','input[name=second_tab_sku]',function(num,num2){
+        var sku = $(this).val();
+        var that = this;
+        var params = { lang: GESHOP_LANG || "en", goodsSn: sku , filterStock : 1};
+              $.ajax({
+                  url: GESHOP_INTERFACE.goods_async_detail.url,
+                  type: 'GET',
+                  dataType: 'jsonp',
+                  data: { content: JSON.stringify(params) },
+                  success: function (res) {
+
+                     if(res.code == 0 && res.data.goodsInfo[0]){
+                       $(that).next().val(res.data.goodsInfo[0].goods_img)
+                     }
+                  },
+                  error: function (err) {
+                  }
+              })
+      });
+
+      {# 添加一级分类 #}
+      $(".add-first-level").click(function(e){
+        e.stopPropagation();
+        oldNum = 0;
+        var index = $('.first-level').length;
+        var clone = $('.first-level').eq(0).clone();
+        clone.find('.label').text('TAB一级分类'+ index+1);
+        clone.find('input[name="tab_name"]').val('');
+        clone.find('input.tab_bgImage').val('');
+        clone.find('input[name="second_tab_num"]').val('');
+        clone.find('input[name="second_tab_name"]').val('');
+        clone.find('input[name="second_tab_sku"]').val('');
+        clone.find('input.second_tab_img').val('');
+        clone.find('input[name="tab_bgcolor"]').val('');
+        clone.find('input[name="data_type"]').attr('name','data_type_'+index);
+
+        clone.find('select[name="second_level"]').empty();
+        clone.find('input[name=second_tab_num]').val('');
+        clone.find('input[name=secondNum]').val('');
+
+        var secondClone = $('.clone .second_tab_item.hidden').clone();
+        clone.find('.second_tab_container .second_tab_item').remove();
+        secondClone.css('display','block');
+        clone.find('.second_tab_container').append(secondClone);
+        secondClone.find('.gs-select-box').val(null).trigger('change');
+
+        $('.nav-container').append(clone);
+        GsSelect.initSelect();
+        initItemIndex();
+        initIpsAutoRadio();
+        ipsRadioInit();
+        layui.form.render();
+        deleteDupSelect();
+        eachIpsSelectItem();
+        clone.find('.gs-select-box').val(null).trigger('change');
+        index++;
+      });
+
+
+       {# 二级分类删除 #}
+      $(document).on('click','.second-delete',function(){
+        var firstLevel = $(this).parents('.first-level');
+        var senondContainer = firstLevel.find('.second_tab_container');
+        var selectIndex = firstLevel.find('.layui-form-select').data('val') == undefined ? 0 : Number(firstLevel.find('.layui-form-select').data('val') - 1);
+
+        if(senondContainer.find('input[name="second_tab_name"]').eq(selectIndex).val() || senondContainer.find('input[name="second_tab_sku"]').eq(selectIndex).val()
+        || senondContainer.find('input.second_tab_img').eq(selectIndex).val() || senondContainer.find('input[name="tab_bgcolor"]').eq(selectIndex).val()
+        || senondContainer.find('textarea[name="goodsSKU"]').eq(selectIndex).val()){
+           layui.layer.confirm('数据删除无法恢复，确定是否删除？', {
+              btn: ['取消', '确定'],
+              area: '420px',
+              skin: 'element-ui-dialog-class',
+              icon: 3,
+              title: '提示'
+            }, function (index) {
+              layui.layer.close(index)
+            }, function (index) {
+              senondContainer.find('.second_tab_item').eq(selectIndex).remove();
+              firstLevel.find('select[name=second_level] option[value='+ Number(selectIndex+1) +']').remove();
+              senondContainer.find('.second_tab_item').eq(0).show();
+              firstLevel.find('input[name=second_tab_num]').val(senondContainer.find('.second_tab_item').length);
+              resetSelect(firstLevel,senondContainer);
+              layui.form.render();
+            })
+        }else if(senondContainer.find('.second_tab_item').length == 1){
+           layui.layer.msg('最后一个不能删除');
+        }
+        else{
+          senondContainer.find('.second_tab_item').eq(selectIndex).remove();
+          firstLevel.find('select[name=second_level] option[value='+ Number(selectIndex+1) +']').remove();
+          senondContainer.find('.second_tab_item').eq(0).show();
+          firstLevel.find('input[name=second_tab_num]').val(senondContainer.find('.second_tab_item').length);
+          resetSelect(firstLevel,senondContainer);
+          layui.form.render();
+        }
+
+        {# 更新二级分类数量 #}
+        oldNum = senondContainer.find('.second_tab_item').length;
+
+
+      });
+    });
+
+    var form = layui.form;
+    form.on('select(second_level)', function(data) {
+      data.othis.attr('data-val',data.value);
+      var senondContainer = $(this).parents('.first-level').find('.second_tab_container');
+      senondContainer.find('.second_tab_item').hide();
+      senondContainer.find('.second_tab_item').eq(Number(data.value-1)).show();
+      $('.item-divide .item-title').html('二级分类'+data.value);
+    });
+
+    {# 重置下拉框 #}
+    function resetSelect(firstLevel, senondContainer){
+
+      var options = firstLevel.find('select[name="second_level"] option');
+      options.each(function(i){
+        $(this).text('二级分类'+Number(i+1));
+        $(this).val(Number(i+1));
+      });
+      firstLevel.find('.item-title').html('二级分类1');
+      layui.form.render();
+    }
+
+    function addOption(senondContainer, firstLevel){
+      firstLevel.find('select[name="second_level"]').empty();
+      senondContainer.find('.second_tab_item').each(function(i){
+        firstLevel.find('select[name="second_level"]').append("<option value='"+ Number(i+1) +"'>二级分类"+ Number(i+1) +"</option>");
+
+      });
+      firstLevel.find('select[name=second_level]').val(1);
+      layui.form.render();
+    };
+
+    $('body').on('click','.icon-up',function () {
+      var target = $(this).closest('.first-level');
+      if (target.prev('.first-level').length > 0) {
+        target.prev('.first-level').before(target.clone());
+        target.remove();
+        initItemIndex();
+      }
+    });
+    $('body').on('click', '.icon-down', function () {
+      var target = $(this).closest('.first-level');
+
+      if (target.next('.first-level').length > 0) {
+        target.next('.first-level').after(target.clone());
+        target.remove();
+        initItemIndex();
+      }
+    });
+    $('body').on('click', '.delete-first-btn', function () {
+
+      var firstLevel = $('.first-level').length;
+      if (firstLevel == 1){
+          layui.layer.msg('最后一项不能删除');
+      }else{
+          var target = $(this).closest('.first-level');
+          layui.layer.confirm('确认删除吗？', {
+              btn: ['取消', '确定'],
+              area: '420px',
+              skin: 'element-ui-dialog-class',
+              icon: 3,
+              title: '提示'
+          }, function (index) {
+              layui.layer.close(index);
+          }, function (index) {
+              target.remove();
+              initItemIndex();
+          });
+      }
+
+
+    });
+
+    function triggerRadio(){
+      $('.first-level').find('input.tabItemRadio,input.ipsItemRadio').each(function(item,index){
+        var $this = $(this);
+        if ($this.attr('checked') === 'checked') {
+          $this.next('.layui-unselect.layui-form-radio').trigger('click');
+        }
+      });
+    }
+
+    {# 重新排序 #}
+    function initItemIndex(){
+        $('.first-level').each(function(index){
+            var $this = $(this);
+            var listNum = index + 1;
+            $this.find('.label').html('TAB一级分类'+listNum);
+        });
+    }
+
+
+</script>

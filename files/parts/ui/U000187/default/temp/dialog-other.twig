@@ -1,0 +1,18 @@
+<div class="geshop-187d-dialog geshop-187d-dialog-other">
+    <div class="geshop-187d-dialog-mask"></div>
+    <div class="geshop-187d-dialog-container">
+        <div class="geshop-187d-dialog-close js-close-dialog" data-tag="geshop-187d-dialog-other"><img src="{{ data.default.u000187_default_close }}" alt=""></div>
+        <div class="geshop-187d-dialog-body">
+            <div class="geshop-187d-dialog-other-image">
+                <img src="{{ data.success_dialog_icon|default(data.default.u000187_default_bonus) }}" alt="">
+            </div>
+            <h2>{{ languages.dialogSuccessTitle[lang] ?? languages.dialogSuccessTitle['en'] }}</h2>
+            <p class="success-content"></p>
+            <p class="winning-tips-text">{{ languages.winningTips[lang] ?? languages.winningTips['en'] }}</p>
+        </div>
+        <div class="geshop-187d-dialog-footer">
+            <button class="js-check-now" data-tag="geshop-187d-dialog-other">{{ languages.checkNow[lang] ?? languages.checkNow['en'] }}</button>
+            <button class="js-close-dialog" data-tag="geshop-187d-dialog-other">{{ languages.closeDialog[lang] ?? languages.closeDialog['en']}}</button>
+        </div>
+    </div>
+</div>

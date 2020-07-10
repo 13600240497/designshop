@@ -1,0 +1,168 @@
+<style>{{ include ('lib/form.css') }}</style>
+
+{{include ('@app/files/parts/temp/goods_manager.twig')}}
+
+<div class='design-form design-form-component design-form-visible' id="U000166-default">
+    <h3 class='component-form-title'>积分兑换组件配置
+        <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+            <i class="el-icon-close"></i>
+        </a>
+    </h3>
+    <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+
+    {# main content #}
+    <div class="section-panel">
+
+        {# 基础设置 #}
+        <section class="basicSetting">
+            <div class="layui-tab" data-theme="20181010">
+                <ul class="layui-tab-title">
+                    <li>模板选择</li>
+                    <li>商品数据</li>
+                    <li>样式设置</li>
+                </ul>
+                <div class="layui-tab-content" data-goodsType="tab_new2">
+                    <div class="layui-tab-item">
+                        {{ include ('lib/formTab_Template.twig') }}
+                    </div>
+                    <div class="layui-tab-item">
+                        {{ include ('lib/formTab_GoodsSku.twig') }}
+                    </div>
+                    <div class="layui-tab-item">
+                        {{ include ('lib/formTab_StyleCustomization.twig') }}
+                    </div>
+                </div>
+            </div>
+            <div class="changeSection">
+                <a href="javascript:;" id="js_moreConfig" style="display:none;">高级设置<i class="layui-icon layui-colla-icon"></i></a>
+            </div>
+        </section>
+
+        {# 高级配置，深度定制 #}
+        <section class="heightLevelSetting">
+            {{ include ('lib/formTab_DepthCustomization.twig') }}
+        </section>
+        
+    </div>
+
+    <div class="layui-form-item geshop-form-operation">
+		<button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+		<button type="button" class="layui-btn layui-btn-normal" id="custom_submit">提交</button>
+		<button type="button" class="layui-btn layui-btn-normal js_submitDesignForm" style="display:none;">提交</button>
+    </div>
+
+</div>
+
+
+
+<script>
+
+$(function(){
+
+    /* 检查sku是否重复 */
+    function checkSku(arr) {
+        var tof = [];
+        for (var i=0; i<arr.length; i++) {
+            for (var j=i+1; j<arr.length; j++) {
+                if (arr[i]==arr[j]) tof.push(arr[i]);
+            }
+        }
+        return tof;
+    }
+
+    /* 检查SKU是否 有效
+        @arr 需要校验的sku数组
+        @callback(有效sku, 无效sku)
+    */
+    function checkSkuValid(arr, callback) {
+        var requestParams = {
+            goodsSn: arr.join(','),
+            lang:  'en',
+			pipeline: (typeof GESHOP_PIPELINE != 'undefined' ? GESHOP_PIPELINE : '')
+        };
+        $.ajax({
+            url: GESHOP_INTERFACE.redeemlist.url,
+            type: 'GET',
+            dataType: 'jsonp',
+            data: {content: JSON.stringify(requestParams)},
+            success: function (res) {
+                /* 接口返回的有效SKU */
+                var use_sku = res.data.goodsInfo.map(function(row){
+                    return row.goods_sn
+                });
+                var filterArr = arr.filter(function(item){
+                    return !use_sku.includes(item);
+                });
+                callback({
+                    validData: use_sku,
+                    unValidData: filterArr,
+                });
+            }
+        });
+    }
+
+
+
+    /* 初始化Tab */
+    var bTab = $('#U000166-default').find('.basicSetting > .layui-tab');
+        bTab.find('.layui-tab-title').children().eq(0).addClass('layui-this');
+        bTab.find('.layui-tab-content').children().eq(0).addClass('layui-show');
+
+    /* 高级配置 */
+    $('#js_moreConfig').click(function() {
+        $('.section-panel .heightLevelSetting').show();
+        $('.section-panel .basicSetting').hide();
+    });
+
+    /* 返回基础设置 */
+    $('#js_advanced_baseConfig').click(function() {
+        $('.section-panel .heightLevelSetting').hide();
+        $('.section-panel .basicSetting').show();
+    });
+
+    /* 提交校验 */
+    $('#custom_submit').click(function() {
+        var skuString = $('[name="goodsSKU"]').val();
+        if (skuString == '') {
+            $('.js_submitDesignForm').click();
+        } else {
+            var sku = skuString.split(' ').join(',').split(',');
+            /* 检查sku重复数据 */
+            if (checkSku(sku).length>0) {
+                layer.msg('sku重复,'+checkSku(sku).join(', '));
+                return false;
+            }
+            /* 检查sku有效性 */
+            checkSkuValid(sku, function(res) {
+                if (res.unValidData.length > 0) {
+                    layer.confirm('以下sku没有积分兑换信息: '+res.unValidData.join(', '), {
+						title: '提示',
+						btn: ['否', '是'],
+						area: '420px',
+						icon: 3,
+						skin: 'element-ui-dialog-class'
+                    }, 
+                    function (index) {
+                        layer.close(index);
+                    }, 
+                    function (index) {
+                        $('[name="goodsSKU"]').val(res.validData.join(','));
+                        layer.close(index);
+                    });
+                } else {
+                    $('.js_submitDesignForm').click();
+                }
+            });
+        }
+    });
+
+    /* 是否展示高级配置按钮 */  
+    bTab.find('.layui-tab-title').children().on('click', function(){
+        var target = $("#U000166-default").find('#js_moreConfig');
+        var index = $(this).index();
+            index == 2 ? target.show() : target.hide();
+    });
+
+});
+
+</script>

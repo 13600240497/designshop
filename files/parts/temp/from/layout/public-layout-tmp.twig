@@ -1,0 +1,227 @@
+{% set repeatData = [
+    { name: '左上', value: '0% 0%', img: '/resources/images/icon/background-position-top-left.png' },
+    { name: '上', value: '50% 0%', img: '/resources/images/icon/background-position-top.png' },
+    { name: '右上', value: '100% 0%', img: '/resources/images/icon/background-position-top-right.png' },
+    { name: '左', value: '0% 50%', img: '/resources/images/icon/background-position-left.png' },
+    { name: '中', value: '50% 50%', img: '/resources/images/icon/background-position-center.png' },
+    { name: '右', value: '100% 50%', img: '/resources/images/icon/background-position-right.png' },
+    { name: '左下', value: '0% 100%', img: '/resources/images/icon/background-position-bottom-left.png' },
+    { name: '下', value: '50% 100%', img: '/resources/images/icon/background-position-bottom.png' },
+    { name: '右下', value: '100% 100%', img: '/resources/images/icon/background-position-bottom-right.png' }
+] %}
+
+{% set repeatMethods = {
+    "no-repeat": 0,
+    "repeat": 1,
+    "repeat-x": 2,
+    "repeat-y": 3
+} %}
+<style>
+    .repeat-list {
+        font-size: 0;
+        line-height: 36px;
+    }
+
+    .repeat-list > span {
+        background-repeat: no-repeat;
+        display: inline-block;
+        vertical-align: middle;
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+    .repeat-list > span.on {
+        border: 1px solid #1E9FFF;
+    }
+</style>
+{# {%
+    set customData = {background_layout_color: "#1434d1",background_repeat: "repeat",background_repeat_position: "50% 50%",custom_css:"",background_color:"#561ad6",background_img:"data:image/jpeg;base64,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"}
+%} #}
+<div class='design-form design-form-component design-form-visible'>
+    <h3 class='component-form-title'>布局
+        <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+            <i class="el-icon-close"></i>
+        </a>
+    </h3>
+    <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+        <div class="layui-tab">
+            <ul class="layui-tab-title">
+                <li class="layui-this">样式设置</li>
+            </ul>
+            <div class="layui-tab-content layui-tab-content-parent">
+                <div class="layui-tab-item layui-show">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">背景图片</label>
+                        <div class="layui-input-block">
+                            <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                            <input type="text" name="background_img" autocomplete="off" class="layui-input"
+                                   value="{{ customData.background_img }}">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">背景颜色</label>
+                        <div class="layui-input-block">
+                            <div class="color-picker-selector" data-hidden-name="background_color">
+                                <div style="background-color: {{ customData.background_color }};"></div>
+                            </div>
+                            <input type="text" class="layui-input" name="background_color" autocomplete="off"
+                                   value="{{ customData.background_color }}">
+                        </div>
+                    </div>
+                    {# 组件宽度配置 #}
+                    {% if componentData and componentData.width_type  %}
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">pc组件宽度</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="width_type" data-public-tag="true" value="1" title="100%" {% if customData.width_type == '1' or customData.width_type is empty %} checked="checked" {% endif %}>
+                            <input type="radio" name="width_type" data-public-tag="true" value="2" title="1200px" {% if customData.width_type == '2' %} checked="checked" {% endif %}>
+                        </div>
+                    </div>
+
+                    {% endif %}
+
+                    {# 自定义布局 - layoutData {"width":"100%","columns":[{"width":"100.00%"}],"count":1} #}
+                    {% if layoutData.width|default('') %}
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">通屏背景颜色</label>
+                            <div class="layui-input-block">
+                                <div class="color-picker-selector" data-hidden-name="background_layout_color">
+                                    <div style="background-color: {{ customData.background_layout_color }};"></div>
+                                </div>
+                                <input type="text" class="layui-input" name="background_layout_color" autocomplete="off"
+                                       value="{{ customData.background_layout_color }}">
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {# 布局组件配置 position_open [0,1] 关闭展示平铺#}
+                    {% if componentData.position_open|default(1) == 1 %}
+                    <div class="background-options-wrapper">
+                        <div class="layui-form-item background_repeat">
+                            <label class="layui-form-label">平铺方式</label>
+                            <div class="layui-input-block" lay-filter="test1">
+                                <input type="radio" name="background_repeat" class="Unwanted" lay-filter="repeat" value="0" title="不平铺"
+                                       {% if customData.background_repeat|default('no-repeat') == 'no-repeat' %}checked{% endif %}>
+                                <input type="radio" name="background_repeat" class="Unwanted" lay-filter="repeat" value="1" title="平铺"
+                                       {% if customData.background_repeat|default('no-repeat') == 'repeat' %}checked{% endif %}>
+                                <input type="radio" name="background_repeat" class="Unwanted" lay-filter="repeat" value="2" title="横向平铺"
+                                       {% if customData.background_repeat|default('no-repeat') == 'repeat-x' %}checked{% endif %}>
+                                <input type="radio" name="background_repeat" class="Unwanted" lay-filter="repeat" value="3" title="纵向平铺"
+                                       {% if customData.background_repeat|default('no-repeat') == 'repeat-y' %}checked{% endif %}>
+                            </div>
+                            <input type="hidden" name="background_repeat" class="repeatBk"
+                                   data-background-repeat="{% if customData.background_repeat %}{{ repeatMethods[customData.background_repeat] }}{% endif %}"
+                                   value="{% if customData.background_repeat %}{{ repeatMethods[customData.background_repeat] }}{% endif %}">
+                        </div>
+
+                        <div class="layui-form-item background_repeat_position">
+                            <label class="layui-form-label">对齐方式</label>
+                            <div class="layui-input-block repeat-list">
+                                {% for index,item in repeatData %}
+                                    <span style="background-image: url('{{ item.img }}')"
+                                          class="{% if customData.background_repeat_position|default('50% 0%') == item.value %}on{% endif %}"
+                                          title="{{ item.name }}"
+                                          data-repeat="{{ item.value }}">
+                            </span>
+                                {% endfor %}
+                            </div>
+                            <input type="hidden" name="background_repeat_position"
+                                   value="{{ customData.background_repeat_position }}">
+                        </div>
+                    </div>
+                    {% endif %}
+                    {# <p>test</p>
+                    <textarea rows="10" cols="50">{{ json_encode_no_unicode(customData) }}</textarea> #}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item geshop-form-operation">
+        <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+        <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+    </div>
+</div>
+<script>
+var form = layui.form;
+var radioVal = $('input[type="radio"][name="background_repeat"]:checked').val();
+var $repeat = $(".repeatBk");
+var $repeatVal = $repeat.attr('data-background-repeat');
+var $positon = $("input[name='background_repeat_position']");
+var $posWrapper = $('.background_repeat_position');
+var $bgImage = '{{ customData.background_img }}';
+var $optionsWrapper = $('.background-options-wrapper');
+
+// 背景属性赋值
+function fillBackgroundVal (radioVal) {
+    $positon.val($('.repeat-list span.on').data('repeat'));
+    getRepeat(radioVal);
+}
+
+//平铺对齐是否显示
+function switchBgShow (type) {
+    if (type === 'show') {
+        $optionsWrapper.show();
+        //初始化值背景属性
+        fillBackgroundVal(radioVal);
+    } else {
+        $optionsWrapper.hide();
+    }
+}
+
+function initBgHide () {
+    switchBgShow('hide');
+    $positon.val('');
+    $repeat.val('');
+}
+
+
+var retarr = ['no-repeat', 'repeat', 'repeat-x', 'repeat-y'];
+
+function getRepeat (index) {
+    $repeat.val(retarr[index]);
+}
+
+// 初始化对齐方式
+// $repeatVal 0 不平铺
+// hideRep($repeatVal);
+
+
+if (!!'{{ customData.background_img }}') {
+    switchBgShow('show');
+
+} else {
+    initBgHide();
+}
+
+form.on('radio(repeat)', function (data) {
+    radioVal = data.value;
+    // hideRep(radioVal);
+    fillBackgroundVal(radioVal);
+});
+
+
+$('body').on('click', '.js_useResource', function () {
+    if (!!$("input[name='background_img']").val()) {
+        $("input[name='background_img']").trigger('input').trigger('propertychange');
+    }
+});
+
+$("input[name='background_img']").on('input propertychange', function () {
+    if (!!$("input[name='background_img']").val()) {
+        switchBgShow('show');
+    } else {
+        initBgHide();
+    }
+});
+
+
+
+// 选择对齐方式并填入选中值
+$('.repeat-list span').click(function () {
+    $(this).addClass('on').siblings().removeClass('on');
+    $positon.val($(this).data('repeat'));
+});
+</script>

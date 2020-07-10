@@ -1,0 +1,99 @@
+{%
+    set formData = {
+        id: 'U0000120',
+        name: '赠品组件',
+        theme: 'style2',
+        tabs: [
+            {
+                label: '数据内容配置',
+                components: [
+                    {
+                        label: '赠品区域配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '赠品活动ID',
+                                desc: '(各个赠品ID之间用英文逗号隔开)',
+                                name: 'promotion_ids'
+                            },
+                            {
+                                label: '每个ID显示的赠品数量',
+                                name: 'show_count',
+                                default: '1'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                label: '样式配置',
+                components: [
+                    {
+                        label: '常用配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件上边距(px)',
+                                name: 'margin_top',
+                                default: '0',
+                                col: 2,
+                            },
+                            {
+                                label: '组件下边距(px)',
+                                name: 'margin_bottom',
+                                default: '40',
+                                col: 2,
+                            },
+                            {
+                                label: '背景颜色',
+                                name: 'background_color',
+                                default: '#f2f2f2',
+                                type: 'colorPicker'
+                            }
+                        ]
+                    },
+                    {
+                        label: '商品区域设置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '满赠条件字体颜色',
+                                name: 'rule_font_color',
+                                type: 'colorPicker',
+                                default: '#FFA800',
+                            },
+                            {
+                                label: '剩余赠品库存条颜色',
+                                name: 'progress_color1',
+                                type: 'colorPicker',
+                                default: '#333333',
+                            },
+                            {
+                                label: '已领取赠品库存条颜色',
+                                name: 'progress_color2',
+                                type: 'colorPicker',
+                                default: '#EDEDED',
+                            },
+                            {
+                                label: '已领取赠品/总赠品文本颜色',
+                                name: 'cliamd_color',
+                                type: 'colorPicker',
+                                default: '#333333',
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        moreConfig: [],
+        beforeSubmit: 'beforeSubmit'
+    }
+%}
+ 
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+{# 引入自定义函数 #}
+<script>
+{% include 'form.js' %}
+</script>

@@ -1,0 +1,65 @@
+{
+    "name": "pc score",
+    "version": "v1.0.0.1",
+    "fields": {
+        "active_id": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        }
+    ,"goodsSKU": { "is_public": "1", "is_m": "1", "is_app": "1" }
+    ,"box_bg_colo": { "is_public": "1", "is_m": "1", "is_app": "1" }
+    ,"goodsDataFrom": { "is_public": "1", "is_m": "1", "is_app": "1" }
+    ,"ipsMethods": { "is_public": "1", "is_m": "1", "is_app": "1" }
+    ,"ipsInfo": { "is_public": "1", "is_m": "1", "is_app": "1" }
+    ,"ipsFilterInfo": { "is_public": "1", "is_m": "1", "is_app": "1" }
+    ,"ipsGoodsSKU": { "is_public": "1", "is_m": "1", "is_app": "1" }
+    ,"ipsAutoInfo": { "is_public": "1", "is_m": "1", "is_app": "1" }
+    ,"ipsAutoRuleSKU": { "is_public": "1", "is_m": "1", "is_app": "1" }
+    },
+    "languages": {
+        "btn_buy_now": {
+            "cn": "Buy Now",
+            "zh-tw": "Buy Now",
+            "en": "Buy Now ",
+            "ar": "Buy Now",
+            "de": "Buy Now",
+            "es": "Buy Now",
+            "fr": "Je Fonce",
+            "it": "Buy Now",
+            "pt": "Buy Now",
+            "ru": "Buy Now",
+            "th": "Buy Now",
+            "ja": "今すぐ購入",
+            "ro": "Cumpara acum"
+        },
+        "off":{
+            "en":"OFF",
+            "ar":"OFF",
+            "de":"OFF",
+            "es":"OFF",
+            "fr":"OFF",
+            "it":"OFF",
+            "pt":"OFF",
+            "ru":"OFF",
+            "th":"OFF",
+            "ja":"オフ",
+            "ro":"REDUCERE"
+        },
+        "upcoming": {
+            "cn": "即将开启",
+            "zh-tw": "即將開始",
+            "en": "Upcoming ",
+            "ar": "القادمة",
+            "de": "In Kürze",
+            "es": "Próximamente",
+            "fr": "À venir",
+            "it": "Prossimamente",
+            "pt": "Não iniciado",
+            "ru": "Скоро",
+            "th": "จะเริ่มเร็วๆนี้",
+            "ja": "間もなく始まる",
+            "ro": "In curand"
+        }
+    }
+}

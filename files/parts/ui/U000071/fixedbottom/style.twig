@@ -1,0 +1,24 @@
+<!-- embed stylesheet begin -->
+<style type="text/css">
+.geshop-U000071-fixedbottom-{{ pageInstanceId }}{
+  {% if data.isEditEnv == 1 %} height: 361px; {% endif %}
+}
+
+.geshop-U000071-fixedbottom-{{ pageInstanceId }} .main-container .drawer-trigger .center-align{
+  background-color: {{data.btn_bgColor | default('#f8f8f8')}};
+  {% if data.btn_bgImage %} background-image: url({{data.btn_bgImage}}); {% endif %}
+} 
+.geshop-U000071-fixedbottom-{{ pageInstanceId }} .main-container .drawer-trigger .center-align .deal-button{
+  color: {{data.btn_fontColor | default('#000000')}};
+}
+.geshop-U000071-fixedbottom-{{ pageInstanceId }} .main-container .drawer-trigger .center-align:hover{
+  background: {{data.btn_hover_bgColor | default('#d5d5d5')}};
+}
+.geshop-U000071-fixedbottom-{{ pageInstanceId }} .main-container .deals-main-container{
+  background-color: {{data.ad_bgColor | default('#f8f8f8')}};
+  {% if data.ad_bgImage %} background-image: url({{data.ad_bgImage}}); {% endif %}
+}
+
+
+</style>
+<!-- embed stylesheet end -->

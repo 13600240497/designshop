@@ -1,0 +1,143 @@
+{% set space = '#U000182_'~pageInstanceId %}
+{% set body = space~' .geshop-U000182-model2-body' %}
+
+{# 三端共有样式 #}
+{{space}} .geshop-U000182-model2-body{
+margin-top: {{data.box_margin_top | default(0)}}px;
+margin-bottom: {{data.box_margin_bottom | default(32)}}px;
+background-color:{{ data.component_bg_color | default('#F8F8F8') }};
+}
+
+{{ space }} .goods-buy-buttom{
+background-color:{{ data.buy_bg_color|default('#000000') }};
+color:{{ data.buy_text_color|default('#FFFFFF') }};
+}
+
+{{ body }} .geshop-components-discount{
+background-color:{{ data.discount_bg_color|default('#151515') }};
+color:{{ data.discount_text_color|default('#333333') }};
+background-position: center center;
+background-size: contain;
+background-repeat: no-repeat;
+}
+
+
+{{ body }} .geshop-components-discount *{
+    color:inherit;
+}
+
+{{ body }} .swiper-slide{
+    width:33.33%;
+    display:inline-block;
+    float:left;
+}
+
+{{ space }} .shop_price_color{
+    color:{{ data.shop_price_color|default('#ff4545') }};
+}
+
+
+{# PC 模式 #}
+@media screen and (min-width: 1025px) {
+
+    {{ body }} {
+        margin-top: {{data.box_margin_top | default(0)}}px;
+        margin-bottom: {{data.box_margin_bottom | default(32)}}px;
+    }
+
+    {{ body }} .geshop-components-discount{
+        width:{{ data.discount_width|default(50) }}px !important;
+        height:{{ data.discount_height|default(50) }}px !important;
+        background-image:url({{ data.discount_bg_image|default('none') }}) !important;
+        {%if data.discount_bg_image %}
+            background-color: transparent;
+        {% endif %}
+    }
+
+    {% if data.swiper_left_image %}
+        {{ body }} .swiper-button-prev{
+            background-image: url({{ data.swiper_left_image }}) !important;
+        }
+    {% endif %}
+
+    {% if data.swiper_right_image %}
+        {{ body }} .swiper-button-next{
+            background-image: url({{ data.swiper_right_image }}) !important;
+        }
+    {% endif %}
+
+
+    {{ body }} .goods-buy-buttom:hover{
+        background-color:{{ data.buy_hover_bg_color|default('#000000') }};
+        color:{{ data.buy_hover_text_color|default('#ffffff') }}
+    }
+}
+
+{# PAD #}
+@media screen and (max-width: 1024px) and (min-width: 768px){
+    {{ body }} {
+        margin-top: {{data.box_pad_margin_top | default(0)}}px;
+        margin-bottom: {{data.box_pad_margin_bottom | default(32)}}px;
+        padding-bottom:10px;
+    }
+
+    {{ body }} .geshop-components-discount{
+        width:{{ data.discount_pad_width|default(50) }}px !important;
+        height:{{ data.discount_pad_height|default(50) }}px !important;
+        {% if data.discount_pad_bg_image %}
+            background-image: url({{ data.discount_pad_bg_image|default('none') }}) !important;
+            background-color: transparent;
+        {% endif %}
+    }
+
+    {% if data.swiper_pad_left_image %}
+        {{ body }} .swiper-button-prev{
+            background-image: url({{ data.swiper_pad_left_image }}) !important;
+        }
+    {% endif %}
+
+    {% if data.swiper_pad_right_image %}
+        {{ body }} .swiper-button-next{
+            background-image: url({{ data.swiper_pad_right_image }}) !important;
+        }
+    {% endif %}
+
+    {{ body }} .swiper-container{
+        padding-bottom: 40px;
+        position: initial !important;
+    }
+
+    {{ body }}.geshop_blank_component .swiper-container{
+        padding-bottom:20px !important;
+    }
+}
+
+
+{# M #}
+@media screen and (max-width: 767px){
+    {{ body }}{
+        margin-top: {{data.box_m_margin_top | default(0)}}px;
+        margin-bottom: {{data.box_m_margin_bottom | default(20)}}px;
+    }
+    {{space}} .geshop-U000182-model2-body .swiper-container{
+        padding-bottom: 34px;
+    }
+    {{ body }} .swiper-pagination{
+        bottom:4px;
+    }
+
+    {{ body }} .geshop-components-discount{
+        width:{{ data.discount_m_width|default(40) }}px !important;
+        height:{{ data.discount_m_height|default(40) }}px !important;
+        {% if data.discount_m_bg_image %}
+            background-image:url({{ data.discount_m_bg_image|default('none') }}) !important;
+            background-color: transparent;
+        {% endif %}
+
+    }
+
+    {{ body }}.geshop_blank_component .swiper-container{
+        padding-bottom:0 !important;
+    }
+
+}

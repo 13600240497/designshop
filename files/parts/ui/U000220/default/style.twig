@@ -1,0 +1,257 @@
+
+{% set space = '#U000220_'~pageInstanceId %}
+
+{%
+    set pageData = {
+        pc_show_logo: data.pc_show_logo is null or data.pc_show_logo == '1' ? 'table-cell' : 'none',
+        pc_show_calendar: data.pc_show_calendar is null or data.pc_show_calendar == '1' ? 'table-cell' : 'none',
+        pc_show_raiders: data.pc_show_raiders is null or data.pc_show_raiders == '1' ? 'table-cell' : 'none',
+        pad_show_logo: data.pad_show_logo is null or data.pad_show_logo == '1' ? 'table-cell' : 'none',
+        pad_show_calendar: data.pad_show_calendar is null or data.pad_show_calendar == '1' ? 'table-cell' : 'none',
+        pad_show_raiders: data.pad_show_raiders is null or data.pad_show_raiders == '1' ? 'table-cell' : 'none',
+        m_show_logo: data.m_show_logo is null or data.m_show_logo == '1' ? 'table-cell' : 'none',
+        m_show_calendar: data.m_show_calendar is null or data.m_show_calendar == '1' ? 'table-cell' : 'none',
+        m_show_raiders: data.m_show_raiders is null or data.m_show_raiders == '1' ? 'table-cell' : 'none',
+    }
+%}
+
+{{ space }} .geshop-u000220-default {
+    margin-top: {{ data.box_margin_top | default(0) }}px;
+    margin-bottom: {{ data.box_margin_bottom | default(16) }}px;
+    background-color: {{ data.box_bg_color | default('#f8f8f8') }};
+}
+
+
+{# 未开始－日期 #}
+{{ space }} .is-ready .item-date span {
+    color: {{ data.ready_date_font_color | default('#ffffff') }};
+    background-color: {{ data.ready_date_bg_color | default('#CCCCCC') }};
+}
+{# 未开始－标题 #}
+{{ space }} .is-ready .item-title {
+    color: {{ data.ready_title_font_color | default('#333333') }};
+}
+{# 未开始－描述 #}
+{{ space }} .is-ready .item-desc {
+    color: {{ data.ready_desc_font_color | default('#333333') }};
+}
+
+
+
+{# 已开始－日期 #}
+{{ space }} .is-start .item-date span {
+    color: {{ data.start_date_font_color | default('#ffffff') }};
+    background-color: {{ data.start_date_bg_color | default('#CCCCCC') }};
+}
+{# 已开始－标题 #}
+{{ space }} .is-start .item-title {
+    color: {{ data.start_title_font_color | default('#333333') }};
+}
+{# 已开始－描述 #}
+{{ space }} .is-start .item-desc {
+    color: {{ data.start_desc_font_color | default('#333333') }};
+}
+
+
+
+{# 结束－日期 #}
+{{ space }} .is-end .item-date span {
+    color: {{ data.end_date_font_color | default('#ffffff') }};
+    background-color: {{ data.end_date_bg_color | default('#CCCCCC') }};
+}
+{# 结束－标题 #}
+{{ space }} .is-end .item-title {
+    color: {{ data.end_title_font_color | default('#333333') }};
+}
+{# 结束－描述 #}
+{{ space }} .is-end .item-desc {
+    color: {{ data.end_desc_font_color | default('#333333') }};
+}
+
+
+
+
+{# PC 模式 #}
+@media screen and (min-width: 1025px) {
+
+    {% if data.pc_bg_image %}
+        {{ space }} .geshop-u000220-default {
+            background-image: url('{{ data.pc_bg_image }}');
+        }
+    {% endif %}
+
+    {{ space }} .item-logo {
+        display: {{ pageData.pc_show_logo }};
+        {% if data.pc_logo_image %}
+            background-image: url('{{ data.pc_logo_image | default(data.default.view)  }}');
+        {% else %}
+            background-image: url('https://geshopimg.logsss.com/uploads/gZMFQG5AXipzDndq9R84Bwv7Hxyh0kom.png');
+        {% endif %}
+    }
+
+    {{ space }} .item-calendar {
+        display: {{ pageData.pc_show_calendar }};
+        {% if data.pc_calendar_image %}
+            background-image: url('{{ data.pc_calendar_image | default(data.default.view)  }}');
+        {% else %}
+            background-image: url('https://geshopimg.logsss.com/uploads/7EL2JvUR6KFhpk5lyqXBNgrfbecH1DGi.png');
+        {% endif %}
+    }
+
+    {% if data.pc_calendar_hover_image %}
+        {{ space }} .item-calendar:hover {
+            background-image: url('{{ data.pc_calendar_hover_image }}');
+        }
+    {% endif %}
+
+    {{ space }} .item-raiders {
+        display: {{ pageData.pc_show_raiders }};
+        {% if data.pc_raiders_image %}
+            background-image: url('{{ data.pc_raiders_image | default(data.default.view)  }}');
+        {% else %}
+            background-image: url('https://geshopimg.logsss.com/uploads/W1DY9uSKg0dPmhfTjFXEIntOys26pVH5.png');
+        {% endif %}
+        {% if data.pc_raiders_link is not null %}
+            cursor: pointer;
+        {% endif %}
+    }
+
+    {{ space }} .geshop-u000220-default-dialog-title:after {
+        font-size: {{ data.pc_calendar_size | default(18) }}px;
+        color: {{ data.pc_calendar_color | default('#333333') }};
+        content: '{{ data.pc_calendar_title | default('Black Friday Sale 2019 is here!') }}';
+    }
+
+    {{ space }} .geshop-u000220-default-dialog-wrapper {
+        {% if data.pc_calendar_hover_pop_image %}
+            background-image: url('{{ data.pc_calendar_hover_pop_image }}');
+        {% else %}
+            background-image: url('{{ data.default.view }}');
+            background-size: auto;
+            background-position: center;
+        {% endif %}
+    }
+
+}
+
+{# PAD #}
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+
+
+    {{ space }} .geshop-u000220-default {
+        background-image: url('{{ data.pad_bg_image }}');
+    }
+
+
+    {% if data.pad_bg_image %}
+        {{ space }} .geshop-u000220-default {
+            background-image: url('{{ data.pad_bg_image }}');
+        }
+    {% endif %}
+
+
+    {{ space }} .item-logo {
+        display: {{ pageData.pad_show_logo }};
+        {% if data.pad_logo_image %}
+            background-image: url('{{ data.pad_logo_image | default(data.default.view)  }}');
+        {% else %}
+            background-image: url('https://geshopimg.logsss.com/uploads/gZMFQG5AXipzDndq9R84Bwv7Hxyh0kom.png');
+        {% endif %}
+    }
+
+    {{ space }} .item-calendar {
+        display: {{ pageData.pad_show_calendar }};
+        {% if data.pad_calendar_image %}
+            background-image: url('{{ data.pad_calendar_image | default(data.default.view)  }}');
+        {% else %}
+            background-image: url('https://geshopimg.logsss.com/uploads/7EL2JvUR6KFhpk5lyqXBNgrfbecH1DGi.png');
+        {% endif %}
+    }
+
+    {{ space }} .item-raiders {
+        display: {{ pageData.pad_show_raiders }};
+        {% if data.pad_raiders_image %}
+            background-image: url('{{ data.pad_raiders_image | default(data.default.view)  }}');
+        {% else %}
+            background-image: url('https://geshopimg.logsss.com/uploads/W1DY9uSKg0dPmhfTjFXEIntOys26pVH5.png');
+        {% endif %}
+    }
+
+    {{ space }} .geshop-u000220-default-dialog-title:after {
+        font-size: {{ data.pad_calendar_size | default(18) }}px;
+        color: {{ data.pad_calendar_color | default('#333333') }};
+        content: '{{ data.pad_calendar_title | default('Black Friday Sale 2019 is here!') }}';
+    }
+
+    {{ space }} .geshop-u000220-default-dialog-wrapper {
+        {% if data.pad_calendar_dialog_image %}
+            background-image: url('{{ data.pad_calendar_dialog_image }}');
+        {% else %}
+            background-image: url('{{ data.default.view  }}');
+            background-size: auto;
+            background-position: center;
+        {% endif %}
+    }
+
+}
+
+
+{# M #}
+@media screen and (max-width: 767px) and (min-width: 0px) {
+
+    {{ space }} .geshop-u000220-default {
+        background-image: url('{{ data.m_bg_image }}');
+    }
+
+    {{ space }} .item-logo {
+        display: {{ pageData.m_show_logo }};
+        {% if data.m_logo_image %}
+            background-image: url('{{ data.m_logo_image | default(data.default.view)  }}');
+        {% else %}
+            background-image: url('https://geshopimg.logsss.com/uploads/lTkC5q9NhRZgUFi0Jr6dBjKwGf2zmnty.png');
+            background-position: center;
+        {% endif %}
+    }
+
+    {{ space }} .item-calendar {
+        display: {{ pageData.m_show_calendar }};
+        {% if data.m_calendar_image %}
+            background-image: url('{{ data.m_calendar_image | default(data.default.view)  }}');
+        {% else %}
+            background-image: url('https://geshopimg.logsss.com/uploads/dm3UergJNuD8EKTbyznq9ZOj4H6Ptv0x.png');
+            background-position: center;
+        {% endif %}
+    }
+
+    {{ space }} .item-raiders {
+        display: {{ pageData.m_show_raiders }};
+        {% if data.m_raiders_image %}
+            background-image: url('{{ data.m_raiders_image | default(data.default.view)  }}');
+        {% else %}
+            background-image: url('https://geshopimg.logsss.com/uploads/LEcJUbYuIn1A4GV8yZhtP26sxjeFMQ3R.png');
+            background-color: #f1f1f1;
+            background-size: 30px;
+            border-radius:20px 0px 0px 20px;
+        {% endif %}
+    }
+
+    {{ space }} .geshop-u000220-default-dialog-title:after {
+        font-size: {{ data.m_calendar_size | default(16) }}px;
+        color: {{ data.m_calendar_color | default('#333333') }};
+        content: '{{ data.m_calendar_title | default('Black Friday Sale 2019 is here!') }}';
+    }
+
+    {{ space }} .geshop-u000220-default-dialog-wrapper {
+        {% if data.m_calendar_dialog_image %}
+            background-image: url('{{ data.m_calendar_dialog_image | default(data.default.view)  }}');
+        {% else %}
+            background-image: url('{{ data.default.view  }}');
+            background-size: auto;
+            background-position: center;
+        {% endif %}
+    }
+
+}
+
+{% include '@app/files/parts/formTemplate/components/margin-dl-style.twig' with{'space':space} %}
+

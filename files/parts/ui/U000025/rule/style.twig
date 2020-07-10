@@ -1,0 +1,56 @@
+<!-- embed stylesheet begin -->
+<style type="text/css">
+    {% set classRoot = '.geshop-U000025-rule-'~pageInstanceId~'' %}
+    {% set classDialog = '.geshop-U000025-rule-'~pageInstanceId~' .geshop-U000025-dialog-rule' %}
+
+    {{ classRoot }} {
+        text-align: center;
+        margin-top: {{ data.margin_top|default(0) }}px;
+        margin-bottom: {{ data.margin_bottom|default(0) }}px;
+    }
+
+    {{ classRoot }} .gs-bg-img {
+        margin: 0 auto;
+        {% if data.img_url %}
+            background-image: url({{ data.img_url }});
+        {% else %}
+            background-image: url({{ data.default.banner_pc_rule }});
+        {% endif %}
+        background-position: center;
+        background-repeat: no-repeat;
+        height: {{ data.img_height|default(480) }}px;
+        width: {{ data.img_width|default(1200) }}px;
+        position: relative;
+        margin-left: -{{ (data.img_width|default(1200)) / 2 }}px;
+        left: 50%;
+    }
+    {{ classRoot }} .dialog-btn {
+        position: absolute;
+        top: {{ data.btn_offset_up|default(20) }}px;
+        right: {{ data.btn_offset_right|default(40) }}px;
+        width: {{ data.btn_width|default(88) }}px;
+        height: {{ data.btn_height|default(38) }}px;
+        line-height: {{ data.btn_height|default(38) }}px;
+        color: {{ data.btn_foot_color }};
+        {% if data.btn_bg_color is not null %}
+            background-color: {{ data.btn_bg_color }};
+        {% endif %}
+        {% if data.btn_bg_img %}
+            background-image: url({{ data.btn_bg_img }});
+            background-repeat: no-repeat;
+            background-position: center;
+        {% endif %}
+        font-size: {{ data.btn_title_size }}px;
+        border-radius: {{ data.btn_border_radius|default('0px') }};
+    }
+    {{ classDialog }} {
+        display: none;
+    }
+    {{ classDialog }} .geshop-U000025-dialog-container {
+          box-sizing: border-box;
+          width: 640px;
+          transform: translate(-50%, -50%);
+    }
+
+</style>
+<!-- embed stylesheet end -->

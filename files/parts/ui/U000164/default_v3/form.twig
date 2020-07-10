@@ -1,0 +1,264 @@
+<style>{{ include ('lib/form.css') }}</style>
+{{ include ('@app/files/parts/temp/goods_manager.twig') }}
+
+{%
+    set formData = {
+        id: 'U000164',
+        name: '积分兑换组件配置',
+        theme: 'default_v3',
+        tabs: [
+            {
+                label: '商品数据',
+                components: [
+                    {
+                        label: '商品数据',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                type: 'diy',
+                                src: 'lib/GoodsForm.twig'
+                            },
+                            
+                        ]
+                    }
+                ]
+            },
+            {
+                label: '样式设置',
+                components: [
+                    {
+                        label: '整体组件',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件下边距(px)',
+                                name: 'base_magin_bottom',
+                                type: 'input',
+                                default: 32,
+                            },
+                            {
+                                label: '组件背景颜色',
+                                name: 'cmptBgColor',
+                                type: 'colorPicker',
+                                default: '#f8f8f8',
+                            },
+                        ]
+                    },
+                    {
+                        label: '积分',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '积分图片',
+                                name: 'bpIcon',
+                                type: 'image',
+                                default: '',
+                            },
+                            {
+                                label: '积分文字颜色',
+                                name: 'goodsSalePriceFontColor',
+                                type: 'colorPicker',
+                                default: '#333333',
+                            }
+                        ]
+                    },
+                    {
+                        label: '库存提示',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '库存提示背景颜色',
+                                name: 'goodsLeftBgColor',
+                                type: 'colorPicker',
+                                default: '#ffffff',
+                            },
+                            {
+                                label: '库存提示文本颜色',
+                                name: 'goodsLeftFontColor',
+                                type: 'colorPicker',
+                                default: '#666666',
+                            }
+                        ]
+                    },
+                    {
+                        label: '销售价',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '商品售价文字颜色',
+                                name: 'goodsPriceColor',
+                                type: 'colorPicker',
+                                default: '#333333',
+                            }
+                        ]
+                    },
+                    {
+                        label: '兑换按钮',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '兑换按钮文案',
+                                name: 'goodsBtnText',
+                                type: 'input',
+                                default: 'Redeem Now',
+                            },
+                            {
+                                label: '兑换按钮背景颜色',
+                                name: 'goodsBtnBgColor',
+                                type: 'colorPicker',
+                                default: '#333333',
+                            },
+                            {
+                                label: '兑换按钮文字颜色',
+                                name: 'goodsBtnFontColor',
+                                type: 'colorPicker',
+                                default: '#ffffff',
+                            },
+                            {
+                                label: '兑换按钮背景图片',
+                                name: 'goodsBtnImg',
+                                type: 'image',
+                                default: '',
+                            },
+                            {
+                                label: '兑换按钮圆角（px）',
+                                name: 'goodsBtnRadius',
+                                type: 'input',
+                                default: 20,
+                            }  
+                        ]
+                    },
+                    {
+                        label: 'view more',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '文案',
+                                name: 'viewmoreText',
+                                type: 'input',
+                                default: 'VIEW MORE',
+                            },
+                            {
+                                label: '按钮边框颜色',
+                                name: 'viewmoreBdColor',
+                                type: 'colorPicker',
+                                default: '#333333',
+                            },
+                            {
+                                label: '按钮文本颜色',
+                                name: 'viewmoreFontColor',
+                                type: 'colorPicker',
+                                default: '#333333',
+                            } 
+                        ]
+                    },
+                    {
+                        label: '商品',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '鼠标滑过商品边框颜色',
+                                name: 'goodsHoverBdColor',
+                                type: 'colorPicker',
+                                public: false,
+                                default: 'transparent',
+                                extendClass: 'layui-input-bottom'
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        moreConfig: [],
+        beforeSubmit: 'beforeSubmit'
+    }
+%}
+
+
+{# 引入渲染函数  #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+
+<script type="text/javascript">
+
+    /* 去重 */
+    function checkSku(arr) {
+        var tof = [];
+        for (var i=0; i<arr.length; i++) {
+            for (var j=i+1; j<arr.length; j++) {
+                if (arr[i]==arr[j]) tof.push(arr[i]);
+            }
+        }
+        return tof;
+    }
+
+    /* 检查SKU是否 有效  
+        @arr 需要校验的sku数组
+        @callback(有效sku, 无效sku) 
+    */
+    function checkSkuValid(arr, callback) {
+        if (arr.length == 0) {
+            callback({
+                validData: [],
+                unValidData: [],
+            });
+            return;
+        }
+        var requestParams = {
+            goodsSn: arr.join(','),
+            lang:  'en',
+            pipeline: (typeof GESHOP_PIPELINE != 'undefined' ? GESHOP_PIPELINE : '')
+        };
+        $.ajax({
+            url: GESHOP_INTERFACE.redeemlist.url,
+            type: 'GET',
+            dataType: 'jsonp',
+            data: {content: JSON.stringify(requestParams)},
+            success: function (res) {
+                /* 接口返回的有效SKU */
+                var use_sku = res.data.goodsInfo.map(function(row){
+                    return row.goods_sn
+                });
+                var filterArr = arr.filter(function(item){
+                    return !use_sku.includes(item);
+                });
+                callback({
+                    validData: use_sku,
+                    unValidData: filterArr,
+                });
+            }
+        });
+    }
+
+    /* 提交校验 */
+    function beforeSubmit(progress) {
+        var skuString = $('[name="goodsSKU"]').val();
+        if (skuString == '') {
+            progress.next();
+        } else {
+            var sku = skuString.split(' ').join(',').split(',');
+            /* 检查sku重复数据 */
+            if (checkSku(sku).length>0) {
+                layer.msg('sku重复,'+checkSku(sku).join(', '));
+                return false;
+            }
+            /* 检查sku有效性 */
+            checkSkuValid(sku, function(res) {
+                if (res.unValidData.length > 0) {
+                    layer.confirm('以下SKU没有积分兑换信息: '+res.unValidData.join(', '), {
+						title: '提示',
+						btn: ['否', '是'],
+						area: '420px',
+						icon: 3,
+						skin: 'element-ui-dialog-class'
+                    }, function (index) { layui.layer.close(index) }, function (index) {
+                        $('[name="goodsSKU"]').val(res.validData.join(','));
+                        layer.close(index);
+                    });
+                } else {
+                    progress.next();
+                }
+            });
+        }
+    }
+</script>

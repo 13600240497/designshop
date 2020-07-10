@@ -1,0 +1,48 @@
+{
+   "fields": {
+       "box_margin_top": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "comp_padding_bottom": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "start_time": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "end_time": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "pc_banner": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "pad_banner": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "m_banner": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "cd_container_bcolor": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "cd_container_opacity": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "cd_value_bcolor": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "cd_value_fcolor": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "cd_title_fcolor": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "before_title": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "started_title": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "ended_title": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "pc_cd_container_padding_top": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "pad_cd_container_padding_top": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "m_cd_container_padding_top": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "pc_cd_container_width": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "pad_cd_container_width": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "m_cd_container_width": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "pc_cd_container_height": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "pad_cd_container_height": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "m_cd_container_height": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "pc_cd_font_size": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "pad_cd_font_size": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "m_cd_font_size": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "m_cd_padding_top": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "pad_cd_padding_top": { "is_public": "0", "is_m": "1", "is_app": "1" },
+       "pc_cd_padding_top": { "is_public": "0", "is_m": "1", "is_app": "1" }
+   },
+   "languages": {
+        "day": {
+            "en":"Day",
+            "fr":"JOURNÉE",
+            "ja":"日",
+            "ro":"Zi"
+        },
+        "days": {
+            "en":"Days",
+            "fr":"JOURNÉES",
+            "ja":"日",
+            "ro":"Zile"
+        }
+    }
+}

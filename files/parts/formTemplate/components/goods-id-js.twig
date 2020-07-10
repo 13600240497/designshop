@@ -1,0 +1,49 @@
+<script>
+if (!GoodsSource) {
+    var GoodsSource = (function (my) {
+        /**
+         * 选择商品数据 回填商品规则数据
+         * @param $wrapper 商品选择按钮容器
+         * @param form_goods_info 选中的sop商品数据
+         */
+        my.goodsSelect = function ($wrapper, form_goods_info) {
+            var selectValue = '已选择：规则 ' + form_goods_info.sop_rule_name;
+            $wrapper.find('[name=goods_btn_value]').val(selectValue);
+            $wrapper.find('[name=goods_source_info]').val(JSON.stringify(form_goods_info));
+            var _$btn = $wrapper.find('.goods-btn-full');
+            _$btn.addClass('layui-hide').next('.goods-btn-box').removeClass('layui-hide');
+        };
+        /**
+         * 商品运营平台切换数据回调
+         * @param res
+         * @param $wrapper
+         */
+        my.goodsSourceCallback = function ($wrapper, res) {
+            const form_goods_info = Object.assign({}, res);
+            delete form_goods_info.goodsInfo;
+            this.goodsSelect($wrapper, form_goods_info);
+        };
+        /**
+         * 调用商品运营平台窗口回调
+         * @param callback 商品运营平台选中回调函数
+         * @param $wrapper 商品选择按钮容器
+         */
+        my.goodsDialogOpen = function ($wrapper, callback) {
+            var item_source_info = $wrapper.find('[name=goods_source_info]').val();
+            var current_goods_source = item_source_info && JSON.parse(item_source_info) || {};
+            goodsSourceManager.open({
+                id: current_goods_source.id,
+                component_id: sessionStorage.currentComponentId || 0,
+                type: 2,
+                able: [2],
+                sop_rule_id: current_goods_source.sop_rule_id || '',
+                sop_rule_name: current_goods_source.sop_rule_name || '',
+                callback: function (res) {
+                    typeof callback === 'function' && callback(res);
+                }
+            });
+        };
+        return my;
+    }({}));
+}
+</script>

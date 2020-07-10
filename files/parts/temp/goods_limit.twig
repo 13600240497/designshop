@@ -1,0 +1,86 @@
+{# 产品库存 #}
+
+{% set goodLimit = {
+	activity_number :item.activity_number|default(0),
+	activity_volume_number:item.activity_volume_number|default(0),
+	activity_left_persent :((goodLimit.activity_number - goodLimit.activity_number)*100)/(goodLimit.activity_number|default(1)),
+}%}
+
+<div class="gs-goods-limit">
+  <span class="process-bar">
+		<em class="process-inner"
+			style="{% if pageData.buyBgC %}background-color:{{pageData.buyBgC}};{% endif %}
+			{% if goodLimit.activity_number %}width:{{goodLimit.activity_left_persent}}%;{% endif %}
+			"></em>
+    <span class="goods-limit-tips">
+      <b style="{% if pageData.buyBgC %}color:{{pageData.buyBgC}};{% endif %}">
+				{{item.activity_number - item.activity_volume_number}}
+			</b>PCs Left
+    </span>
+  </span>
+</div>
+
+
+<style>
+  .gs-goods-limit {
+    width: 200px;
+    margin: 15px auto;
+    height: 28px;
+    position: relative;
+  }
+
+  .gs-goods-limit .process-bar {
+    bottom: 0;
+    width: 100%;
+    background: #ddd;
+  }
+
+  .gs-goods-limit .process-bar,
+  .gs-goods-limit .process-inner {
+    display: block;
+    position: absolute;
+    left: 0;
+    height: 11px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+  }
+
+  .gs-goods-limit .process-inner {
+    top: 0;
+    background: #ff8a00;
+    width: 0;
+  }
+
+  .gs-goods-limit .goods-limit-tips {
+    position: absolute;
+    left: 0;
+    top: -22px;
+    font: normal 12px/25px Arial;
+    text-align: center;
+  }
+
+  .gs-goods-limit .goods-limit-tips b {
+    color: #ff8a00;
+    padding-right: 5px;
+  }
+
+  .gs-goods-limit .goods-limit-tips em {
+    position: absolute;
+    display: block;
+    bottom: -10px;
+    left: 10px;
+    border-width: 5px;
+    border-style: solid;
+  }
+
+  .gs-goods-limit .goods-limit-tips em.tri_bd {
+    border-color: #ddd transparent transparent;
+    bottom: -11px;
+    z-index: 1;
+  }
+
+  .gs-goods-limit .goods-limit-tips em.tri_bg {
+    border-color: #fff transparent transparent;
+    z-index: 2;
+  }
+</style>

@@ -1,0 +1,27 @@
+{% set remUnit = 75 %}
+
+{% set pageData = {
+	boxHeight:(data.boxHeight|default(120))/remUnit,
+	boxMarginBottom:(data.boxMarginBottom|default(10))/remUnit
+}%}
+
+<div class="geshop-component-box component-drag" id="U000066_{{ pageInstanceId }}" data-gid="U000066" data-key="U000066" data-id="{{ pageInstanceId }}" attr="nav_flag">
+	{% if data.imgSrc != "" %}
+	<a href="{{ data.viewHref|default('javascript:;') }}"
+	style="
+		{% if pageData.boxMarginBottom %}margin-bottom: {{ pageData.boxMarginBottom }}rem;{% endif %}
+		height:{{ pageData.boxHeight }}rem;
+		width:100%;
+		overflow: hidden;
+		display:block;
+		{% if data.viewHref %}cursor: pointer;{% else %} cursor:default; {% endif %}
+		{% if data.imgSrc is not empty %}background:url('{{data.imgSrc}}') no-repeat center center / 100% 100%;{% endif %}
+	">
+		<i style="display:none;">
+			{{ data.titleText }}
+		</i>
+	</a>
+	{% else %}
+	<img src="{{ data.default.purepic }}" style="height:{{ pageData.boxHeight }}rem;width:100%;display:block;margin:0 auto;"></img>
+	{% endif %}
+</div>

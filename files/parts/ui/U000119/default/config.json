@@ -1,0 +1,29 @@
+{
+  "fields": {
+    "dateTimeArrs": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "boxMarginBottom": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "bgColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "bgImage": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "bannerImage": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "hasNotStartedTimeDateBgColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "hasNotStartedTimeDateTextColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "hasNotStartedActivityNameColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "hasNotStartedActivityDescColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+   
+    "hasStartedTimeDateBgColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "hasStartedTimeDateTextColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "hasStartedActivityNameColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "hasStartedActivityDescColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+   
+    "hasEndedTimeDateBgColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "hasEndedTimeDateTextColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "hasEndedActivityNameColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "hasEndedActivityDescColor": { "is_public": "0", "is_m": "1", "is_app": "0" },
+   
+    "defaultRaidersImage": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "defaultRaidersLink": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "defaultLinkTarget": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "notCurrentActivityImg": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "currentActivityImg": { "is_public": "0", "is_m": "1", "is_app": "0" }
+  }
+}

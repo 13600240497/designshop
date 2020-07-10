@@ -1,0 +1,109 @@
+<div class="geshop-component-box component-drag wrap_U0000188 wrap_{{ pageInstanceId }} geshop-U0000188-default
+	{% if data.show_list == 'hide' %}
+		hide-list
+	{% endif %}
+	"
+	data-key="U000188"
+	data-theme="default"
+	data-id="{{ pageInstanceId }}"
+	data-actcode="{{ data.act_code|default(0) }}"
+	data-prizeamount="{{ data.prize_amount|default(0) }}"
+	data-static-domain="{{ staticDomain }}">
+	{{ include('style.twig') }}
+	<div class="geshop-188d-container">
+		<div class="geshop-188d-head">
+			{{ data.title_label | default('LUCKY REWARDS') }}
+		</div>
+		<div class="geshop-188d-rule-btn js-show-rule-dialog">{{ languages.ruleBtn[lang] ?? languages.ruleBtn['en']  }}</div>
+		<div class="geshop-188d-turntable">
+			<div class="geshop-188d-turntable-container">
+				<img src="{{ data.turntable_image | default(data.default.u000187_default_turntable) }}">
+				<div class="geshop-188d-pointer">
+					<img src="{{ data.pointer_image | default(data.default.u000187_default_pointer2) }}">
+					<div class="geshop-188d-pointer-text js-start-draw" data-loaded="0" data-isdrawing="0">{{ data.pointer_label | default('SPIN') }}</div>
+				</div>
+			</div>
+		</div>
+		{% if data.show_spins is empty or data.show_spins == 'show' %}
+		<div class="geshop-188d-spins">{{ languages.spins[lang] ?? languages.spins['en'] }}</div>
+		{% endif %}
+
+		{# 积分抽奖文案 #}
+		<div class="geshop-188d-points" style="display: none;">{{ languages.points_left[lang] ?? languages.points_left['en'] }}: <span>XX</span>; {{ languages.points_each_draw[lang] ?? languages.points_each_draw['en'] }}</div>
+
+		{# 是否展示中奖名单 #}
+		{% if data.show_list is empty or data.show_list == 'show' %}
+			<div class="geshop-188d-list">
+				<div class="geshop-188d-list-uname"><ul></ul></div>
+				<div class="geshop-188d-list-warning"><p>The activity did not start!</p></div>
+			</div>
+		{% endif %}
+
+		{% if siteCode|split('-')[1] == 'wap' %}
+		<div class="geshop-188d-share">
+			<div class="geshop-188d-share-icons">
+				{% if data.share_facebook_icon != ' ' %}
+				<img class="js_share_btn" data-type="facebook" src="{{ data.share_facebook_icon | default(data.default.u000187_default_fb) }}"/>
+				{% endif %}
+				{% if data.share_twitter_icon != ' ' %}
+				<img class="js_share_btn" data-type="twitter" src="{{ data.share_twitter_icon | default(data.default.u000187_default_twitter) }}"/>
+				{% endif %}
+				{% if data.share_pinterest_icon != ' ' %}
+				<img class="js_share_btn" data-type="pinterest" src="{{ data.share_pinterest_icon | default(data.default.u000187_default_pinterest) }}"/>
+				{% endif %}
+				{# {% if data.share_google_icon != ' ' %}
+				<img class="js_share_btn" data-type="google" src="{{ data.share_google_icon | default(data.default.u000187_default_google) }}"/>
+				{% endif %} #}
+				{% if data.share_line_icon != ' ' %}
+				<img class="js_share_btn" data-type="line" src="{{ data.share_line_icon | default(data.default.u000187_default_line) }}"/>
+				{% endif %}
+			</div>
+		</div>
+		{% else %}
+		<button class="geshop-188d-app-share-btn js_app_share_btn">{{ data.app_share_btn_text | default('Share for more spins') }}</button>
+		{% endif %}
+	</div>
+	{#  #}
+	{{ include('temp/dialog-rule.twig') }}
+	{{ include('temp/dialog-fail.twig') }}
+	{{ include('temp/dialog-fail-not-start.twig') }}
+	{{ include('temp/dialog-share.twig') }}
+	{{ include('temp/dialog-sku.twig') }}
+	{{ include('temp/dialog-other.twig') }}
+	{{ include('temp/dialog-app-share.twig') }}
+	{{ include('temp/dialog-container.twig') }}
+	<script>
+		var GESHOP_TUNRNTABLE_WAP_LANGUAGES = {{ json_encode_no_unicode(languages) }};
+
+		$(function () {
+			$('.geshop-U0000188-default').each(function (index, elem) {
+				let helper = new Geshop_turntable_helper(elem, {
+					elements: {
+						dialog_share: '.geshop-188d-dialog-share',
+						spins: '.geshop-188d-spins',
+						left_points: '.geshop-188d-points'
+					}
+				});
+				
+				GEShopSiteCommon.appLogin();
+			
+				/* 初始化清空sessionStorage */ 
+				helper.delete_award_sessionstorage();
+			
+				/* 初始化抽奖活动数据 */
+				helper.init_lottery_info({});
+			
+				/* 初始化中奖名单 */ 
+				helper.init_luck_list();
+			
+				/* 初始化分享 */
+				helper.init_share();
+			
+				/* 绑定事件 */ 
+				helper.init_events();
+			});
+		});
+	
+	</script>
+</div>
+

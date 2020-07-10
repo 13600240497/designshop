@@ -1,0 +1,69 @@
+{%
+	set pageData = {
+		bg_color:data.bg_color is not null?data.bg_color:'#fd6462',
+		hover_color:data.hover_color is not null?data.hover_color:'#ffffff',
+		font_color:data.font_color is not null?data.font_color:'#fff',
+		font_size:data.font_size is not null?data.font_size:15,
+		hover_font_color:data.hover_font_color is not null?data.hover_font_color:'#fd6462',
+		nav_h:data.nav_h is not null?data.nav_h:60,
+		nav_gap:data.nav_gap is not null?data.nav_gap:40,
+	}
+%}
+{% set userGroupClass = "geshop_user_"~data.userGroupSelect|default(0)%}
+<div class="geshop-component-box component-drag u000027 {{ userGroupClass }}" style="overflow:hidden;" data-key="U000027" data-id="{{ pageInstanceId }}">
+  <!-- embed stylesheet begin -->
+  <style type="text/css">
+    .u000027 .component-nav-item:hover, .u000027 .current {
+      background-color: {{ pageData.hover_color|default('transparent') }}!important;
+    }
+    .u000027 .component-nav-item:hover strong, .u000027 .current strong {
+      color: {{ pageData.hover_font_color|default('transparent') }}!important;
+    }
+    .back-to-top{
+      position: fixed;
+      bottom: 10%;
+      right: 6%;
+      z-index: 1;
+      width: 42px;
+      height: 42px;
+      border-radius: 42px;
+      cursor: pointer;
+      font: bold 15px/42px Arial;
+      text-transform: uppercase;
+      text-align: center;
+      color: #fff;
+    }
+    .back-to-top{
+      background-color: {{ data.bg_color|default('#fd6462') }};
+    }
+  </style>
+  <!-- embed stylesheet end -->
+  <nav class="component-nav" style="{% if pageData.nav_h %}height: {{ pageData.nav_h }}px;{% endif %}">
+    <ul class="component-nav-ul" data-isedit="{{ data.isEditEnv }}" id="nav-ul"
+		style="
+		{% if pageData.nav_h %}height: {{ pageData.nav_h }}px;{% endif %}
+		{% if pageData.bg_color %}background-color:{{ pageData.bg_color }} {% endif %}">
+      {% if data.navData %}
+        {% for id,item in data.navData %}
+          {% if id in data.nav_menu %}
+            <li class="component-nav-item" data-id="{{ id }}" style="padding: 0 {{ data.nav_gap | default(40) }}px;">
+              <strong class="site-bold-strict" style="
+							{% if pageData.font_color %}color: {{ pageData.font_color }};{% endif %}
+							{% if pageData.font_size %}font-size: {{ pageData.font_size }}px;{% endif %}
+							{% if pageData.nav_h %}height: {{ pageData.nav_h }}px;line-height: {{ pageData.nav_h }}px;{% endif %}
+              ">{{ item }}</strong>
+            </li>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <li class="component-nav-item" style="padding: 0 {{ data.nav_gap | default(40) }}px;">
+          <strong class="site-bold-strict" style="
+						{% if pageData.font_color %}color: {{ pageData.font_color }};{% endif %}
+						{% if pageData.font_size %}font-size: {{ pageData.font_size }}px;{% endif %}
+						{% if pageData.nav_h %}height: {{ pageData.nav_h }}px;line-height: {{ pageData.nav_h }}px;{% endif %}
+          ">请配置数据</strong>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>

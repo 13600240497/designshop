@@ -1,0 +1,308 @@
+{% 
+  set pageData = { 
+    ImgHeight:data.ImgHeight is not null?data.ImgHeight:'400', 
+    ImgWidth:data.ImgWidth is not null?data.ImgWidth:'400',
+    blogItemWidth:data.blogItemWidth is not null?data.blogItemWidth:'400',
+    blogItemHeight:data.blogItemHeight is not null?data.blogItemHeight:'400',
+    marginTop:data.marginTop is not null?data.marginTop:'30',
+    marginBottom:data.marginBottom is not null?data.marginBottom:'30',
+  } 
+%}
+
+<style type="text/css">
+  .geshop-first-value .hover-item {
+    display: block;
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: auto;
+    font-size: 14px;
+    color: #FFF;
+    font-family: PingFangSC;
+    background: rgba(0,0,0,.5);
+  }
+</style>
+
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>博客组件设置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+ 
+ {{include ('@app/htdocs/resources/template/pc/templateList/index.twig')}}
+
+    <div class="component-form-setting-item component-form-configure-item">
+      <h4 class='title'>常用配置</h4>
+      <div class="layui-form-item">
+        <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 图片宽度(px)</label>
+        <div class="layui-input-block rest-input">
+          <input type="text" name="ImgWidth" placeholder="请输入图片宽度" autocomplete="off" class="layui-input" value="{{pageData.ImgWidth}}"
+          />
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 图片高度(px)</label>
+        <div class="layui-input-block rest-input">
+          <input type="text" name="ImgHeight" placeholder="请输入图片高度" autocomplete="off" class="layui-input" value="{{pageData.ImgHeight}}"
+          />
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 上边距</label>
+        <div class="layui-input-block rest-input">
+          <input type="text" name="marginTop" autocomplete="off" class="layui-input" value="{{ pageData.marginTop }}">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 下边距</label>
+        <div class="layui-input-block rest-input">
+          <input type="text" name="marginBottom" autocomplete="off" class="layui-input" value="{{ pageData.marginBottom }}">
+        </div>
+      </div>
+      <div class="layui-form-item" style="display: none;">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 懒加载Class</label>
+        <div class="layui-input-block">
+          <input type="text" name="loadImgClass" autocomplete="off" class="layui-input" value="{{ data.loadImgClass |default('js_gdexp_lazy') }}">
+        </div>
+      </div>
+    </div>
+
+    <div class="component-form-setting-item component-form-configure-item" style="padding-bottom: 170px !important;">
+      <h4 class='title'>基础配置</h4>
+      <p class="message-tips">请上传格式为：jpeg，jpg，webp的图片，大小小于500k</p>
+      <div class="img-table">
+        <input type="hidden" name="imgItem">
+        <div class="layui-form-item img-item layui-hide">
+          <div class='layui-input-block rest-input'>
+            <div class="layui-form-item">
+              <p style="margin:8px 0 5px 0;"><span class="layui-badge-dot layui-bg-orange"></span> 博客专题<span class="index"></span>名称</p>
+              <input type="text" autocomplete="off" class="layui-input Unwanted" placeholder="" name='ga_name' value="" />
+            </div>
+            <div class="geshop-first-value">
+              <a href="javascript:;" class="img_openResource" style="margin-left: -87px">
+                <span>
+                  <img src="/resources/images/carousel-image/add.png" />
+                  <i style="display:none" class="hover-item site-font--strict">更 换</i>
+                </span>
+              </a>
+              <input type="text" lay-verify="required" autocomplete="off" placeholder="图片" name="blogSrc" class="layui-input Unwanted select-img" style="margin-left:2px;">
+            </div> 
+            <div class="layui-form-item">
+              <p style="margin:8px 0 5px 0;"><span class="layui-badge-dot layui-bg-orange"></span> 链接</p>
+              <input type="text" autocomplete="off" class="layui-input Unwanted" placeholder="" name='blogLink' value="" />
+            </div>
+            <div  class="layui-form-item" >
+              <p style="margin:8px 0 5px 0;"><span class="layui-badge-dot layui-bg-orange"></span> 标题</p>
+              <input type="text" autocomplete="off" class="layui-input Unwanted" placeholder="" name='blogTitle' value="" />
+            </div>
+            <div class="layui-form-item" >
+              <p style="margin:8px 0 5px 0;"><span class="layui-badge-dot layui-bg-orange"></span> 描述</p>
+              <input type="text" autocomplete="off" class="layui-input Unwanted" placeholder="" name='blogDesc' value="" />
+            </div>
+            <p class="action-bar" style="text-align:right;">
+              <span class="img-btn">
+                <i class='icon-up'></i>
+                <b class="tips">上移</b>
+              </span>
+              <span class="img-btn">
+                <i class='icon-down'></i>
+                <b class="tips">下移</b>
+              </span>
+              <span class="img-btn">
+                <i class='icon-delete'></i>
+                <b class="tips">删除</b>
+              </span>
+            </P>
+          </div>
+        </div>
+
+        <div class='img-body'>
+          {% for key, item in data.imgItem|default(['']) %}
+          <div class="layui-form-item item-flag">
+            <div class='layui-input-block rest-input'>
+              <div class="layui-form-item">
+                <p style="margin:8px 0 5px 0;"><span class="layui-badge-dot layui-bg-orange"></span> 博客专题{{key+1}}名称</p>
+                <input type="text" autocomplete="off" class="layui-input Unwanted" placeholder="" name='ga_name' value="{{item.ga_name}}" />
+              </div>
+              <div class="geshop-first-value">
+                <a href="javascript:;" class="img_openResource" style="margin-left: -87px">
+                  {% if item.blogSrc|length>0 %}
+                  <span>
+                    <img src="{{item.blogSrc}}" style="width:80px;height:35px;" />
+                    <i style="display:none" class="hover-item site-font--strict">更 换</i>
+                  </span>
+                  {% else %}
+                  <span>
+                    <img src="/resources/images/carousel-image/add.png" />
+                    <i style="display:none" class="hover-item site-font--strict">更 换</i>
+                  </span>
+                  {% endif %}
+                </a>
+                <input class="layui-input Unwanted select-img" type="text" autocomplete="off" placeholder="图片" value="{{item.blogSrc}}" name="{{key}}" style="margin-left:2px;"/>
+              </div> 
+              <div class="layui-form-item">
+                <p style="margin:8px 0 5px 0;"><span class="layui-badge-dot layui-bg-orange"></span> 链接</p>
+                <input type="text" autocomplete="off" class="layui-input Unwanted" placeholder="" name='blogLink' value="{{item.blogLink}}" />
+              </div>
+              <div class="layui-form-item">
+                <p style="margin:8px 0 5px 0;"><span class="layui-badge-dot layui-bg-orange"></span> 标题</p>
+                <input type="text" autocomplete="off" class="layui-input Unwanted" placeholder="" name='blogTitle' value="{{item.blogTitle}}" />
+              </div>
+              <div class="layui-form-item" >
+                <p style="margin:8px 0 5px 0;"><span class="layui-badge-dot layui-bg-orange"></span> 描述</p>
+                <input type="text" autocomplete="off" class="layui-input Unwanted" placeholder="" name='blogDesc' value="{{item.blogDesc}}" />
+              </div>
+              <p class="action-bar" style="text-align:right;">
+                <span class="img-btn">
+                  <i class='icon-up'></i>
+                  <b class="tips">上移</b>
+                </span>
+                <span class="img-btn">
+                  <i class='icon-down'></i>
+                  <b class="tips">下移</b>
+                </span>
+                <span class="img-btn">
+                  <i class='icon-delete'></i>
+                  <b class="tips">删除</b>
+                </span>
+              </p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="add-form-button">
+          <span id='img_tab_add' class="layui-btn layui-btn-normal" style="border-radius: 4px;">新增博客列表项</span>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <span type="button" class="layui-btn layui-btn-normal" id="img_submit">提交</span>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm" data-tag="1" style='display:none'>提交</button>
+<div>
+
+<script>
+  var swapItems = function (arr, index1, index2) {　　
+    arr[index1] = arr.splice(index2, 1, arr[index1])[0];　　
+    return arr;
+  };
+
+  function upData(arr, index) {　　
+    if (arr.length > 1 && index !== 0) {　　　　
+      newArr = swapItems(arr, index, index - 1);
+      return newArr;　　
+    }
+  };
+
+  function downData(arr, index) {
+    if (arr.length > 1 && index !== (this.arr.length - 1)) {　　　　
+      newArr = swapItems(arr, index, index + 1);
+      return newArr;　　
+    }
+  };
+
+  {# 更新排序 #}
+  function udpateIndex () {
+    $('#component_form').find('span.index').each(function(x, element) {
+      $(element).html(parseInt(x+1));
+    });
+  }
+
+  $('body').on('mouseenter', '.img_openResource', function() {
+    var $url =  $(this).find('img').attr("src");
+    if($url == "/resources/images/carousel-image/add.png"){
+      return;
+    }
+    $(this).addClass('add-link-item');
+    $(this).find('img').addClass('add-img-item');
+    $(this).find($('i')).css("display","block");  
+  });
+  $('body').on('mouseleave', '.img_openResource', function() {
+    $(this).find($('i')).css("display","none");   
+    $(this).removeClass('add-link-item');
+    $(this).find('img').removeClass('add-img-item');
+  }); 
+
+  {# 获取当前模板name #}
+  $('#current_template_name').text($('input[name="tpl_id"]').attr('title'));
+
+  var $imgTable = $('.img-table');
+  var flagIndex =  $('.img-body .item-flag').length; 
+
+  {#新增选择图片栏#}
+  $('#img_tab_add').on('click', function () {
+    var itemLength = $('.img-body .img_openResource').length;
+    if (itemLength > 2) {
+      layui.layer.msg('不能超过三项');
+      return false;
+    }
+    flagIndex++;
+    var clone = $('.img-item', $imgTable).clone();
+    clone.removeClass('img-item layui-hide');
+    clone.find('input[name=blogSrc]').attr('name', flagIndex);
+    clone.find('span.index').html(flagIndex);
+    $('.img-body', $imgTable).append(clone);
+  });
+
+  {# 保存按钮 #}
+  $('#img_submit').on('click', function () {
+    var imgSrcArr = [];
+    $('.select-img:gt(0)').each(function (index, element) {
+      var self = $(this);
+      var parent_container = self.parent().parent();
+      var $blogSrc = self.val();
+      var $blogLink = parent_container.find('[name="blogLink"]').val();
+      var $blogTitle = parent_container.find('[name="blogTitle"]').val();
+      var $blogDesc = parent_container.find('[name="blogDesc"]').val();
+      var ga_name = parent_container.find('[name="ga_name"]').val();
+      if (ga_name || $blogSrc || $blogLink || $blogTitle || $blogDesc) {
+        imgSrcArr.push({
+          blogSrc: $blogSrc,
+          blogLink: $blogLink,
+          blogTitle: $blogTitle,
+          blogDesc: $blogDesc,
+          ga_name: ga_name
+        });
+      }
+    });
+    $('.img-table input[name=imgItem]').val(JSON.stringify(imgSrcArr));
+    $(this).next('button').trigger('click');
+  });
+
+  $('body').on('click', '.icon-up', function () {
+    var target = $(this).closest('.layui-form-item');
+
+    if (target.prev('.layui-form-item').length > 0) {
+      target.prev('.layui-form-item').before(target.clone());
+      target.remove();
+    }
+  });
+  $('body').on('click', '.icon-up', function () {
+    var target = $(this).closest('.layui-form-item');
+
+    if (target.prev('.layui-form-item').length > 0) {
+      target.prev('.layui-form-item').before(target.clone());
+      target.remove();
+    }
+  });
+
+  $('body').on('click', '.icon-down', function () {
+    var target = $(this).closest('.layui-form-item');
+    if (target.next('.layui-form-item').length > 0) {
+      target.next('.layui-form-item').after(target.clone());
+      target.remove();
+    }
+  });
+
+  {# 删除 #}
+  $('body').on('click', '.icon-delete', function () {
+    var target = $(this).closest('.layui-form-item');
+    target.remove();
+    udpateIndex();
+  });
+</script>

@@ -1,0 +1,129 @@
+{% set pageData = {
+    activeFontColor:data.activeFontColor is not null?data.activeFontColor:'#333333',
+    saleFontColor: data.saleFontColor is not null ? data.saleFontColor : '#FA386A'
+}%}
+<div data-key="U000064" data-id="{{ pageInstanceId }}" data-static-domain="{{staticDomain}}" data-gid="U000064" class="geshop-component-box component-drag gs-index-main m-swiper-goods wrap-U000064-rgModel wrap-{{pageInstanceId}}" style="margin-bottom: {{ data.marginBottom | default(0) }}px; background-color:{{data.background_color}};">
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+        .wrap-{{pageInstanceId}} .nav-container li.current {
+            color: {{pageData.activeFontColor|default('none')}}!important;
+        }
+        .wrap-{{pageInstanceId}} .my_shop_price,.wrap-U000064-rgModel.m-swiper-goods .my_shop_price_demo{
+            color: {{ pageData.saleFontColor }};
+        }
+    </style>
+    <!-- embed stylesheet end -->
+    <div class="m-swiper-container">
+        {% if data.goodsInfo != 0 %}
+            {% for key, content in data.goodsInfo | default(0..3) %}
+                <div class="swiper-container">
+
+                    <ul class="clearfix swiper-wrapper">
+                        {% for item in content.lists %}
+                            <li class="swiper-slide">
+                                <div class="mask"></div>
+                                <div class="goods-img">
+                                    <a href="{{item.url_title}}" class="hover-img logsss_event" data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+                                        {% if data.isEditEnv == '1' and data.goodsInfo %}
+                                            <img class="swiper-lazy" src="{{item.goods_img|default(data.default.good)}}">
+                                        {% elseif  data.isEditEnv == '0' and data.goodsInfo %}
+                                            <img class="swiper-lazy" src="{{ data.default.lazyImg|default(data.default.good) }}" data-src="{{item.goods_img|default(data.default.good)}}" data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+                                        {% else %}
+                                            <img class="swiper-lazy" src="{{data.default.good}}">
+                                        {% endif %}
+                                    </a>
+                                </div>
+                                {% if item.goods_title | length > 1 %}
+                                    <p id='pro-name'>
+                                        <a href="{{item.url_title}}" title="{{item.goods_title}}" class="logsss_event" data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">{{item.goods_title|default("请添加描述")}}</a>
+                                    </p>
+                                    <p id='pro-price'>
+                                        <strong id="new-price" class="my_shop_price" style="color: {{pageData.saleFontColor}}" data-orgp="{{item.shop_price}}">${{item.shop_price}}</strong>
+                                        {% if item.market_price - item.shop_price > 0 %}
+                                        <del id="old-price" class="my_shop_price my_old_price js_market_wrap" data-orgp="{{item.market_price}}">${{item.market_price}}</del>
+                                        {% endif %}
+                                    </p>
+                                {% else %}
+                                    <p id='pro-name' class="hover-title">
+                                        <a href="{{item.url_title}}" title="{{item.goods_title}}">{{item.goods_title|default("请添加描述")}}</a>
+                                    </p>
+                                    <p id='pro-price' class="hover-price">
+                                        <strong id="new-price" class="my_shop_price" data-orgp="{{item.shop_price}}">{{item.shop_price}}</strong>
+                                        {% if item.market_price - item.shop_price > 0 %}
+                                        <del id="old-price" class="my_shop_price my_old_price js_market_wrap" data-orgp="{{item.market_price}}">{{item.market_price}}</del>
+                                    {% endif %}
+                                    </p>
+                                {% endif %}
+
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+
+            <div class="nav-container">
+                <ul class= "clearfix">
+                    {% for item in data.navList %}
+                        {% if item.categoryName is not empty %}
+                            <li style="font-size: {{data.titleFontSize/70}}rem;color: {{data.navFontColor}}">{{item.categoryName}}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+
+        {% else %}
+            {% for key, content in [1,2,3] %}
+                <div class="swiper-container">
+
+                    <ul class="clearfix swiper-wrapper">
+                        {% for item in [1,2,3] %}
+                            <li class="swiper-slide">
+                                <div class="mask"></div>
+                                <div class="goods-img">
+                                    <a href="{{item.url_title}}" class="hover-img logsss_event" data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+                                        {% if data.isEditEnv == '1' and data.goodsInfo %}
+                                            <img class="swiper-lazy" src="{{item.goods_img|default(data.default.good)}}">
+                                        {% elseif  data.isEditEnv == '0' and data.goodsInfo %}
+                                            <img class="swiper-lazy" src="{{ data.default.good }}" data-src="{{item.goods_img|default(data.default.good)}}" data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+                                        {% else %}
+                                            <img class="swiper-lazy" src="{{data.default.good}}">
+                                        {% endif %}
+                                    </a>
+                                </div>
+                                {% if item.goods_title | length > 1 %}
+                                    <p id='pro-name'>
+                                        <a href="{{item.url_title}}" title="{{item.goods_title}}" class="logsss_event" data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'{{ item.goods_sn }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">{{item.goods_title|default("请添加描述")}}</a>
+                                    </p>
+                                    <p id='pro-price'>
+                                        <strong id="new-price" class="my_shop_price" style="color: {{pageData.saleFontColor}}" data-orgp="{{item.shop_price}}">${{item.shop_price}}</strong>&nbsp;
+                                        <del id="old-price" class="my_shop_price my_old_price" data-orgp="{{item.market_price}}">${{item.market_price}}</del>
+                                    </p>
+                                {% else %}
+                                    <p id='pro-name' class="hover-title">
+                                        <a href="{{item.url_title}}" title="{{item.goods_title}}">{{item.goods_title|default("This is the descript")}}</a>
+                                    </p>
+                                    <p id="pro-price" class="hover-price">
+                                        <span class="my_shop_price my_shop_price_demo site-bold-strict">$0.00</span>
+                                        <del  class="my_shop_price my_old_price">$0.00</del>
+                                    </p>
+                                {% endif %}
+
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+            <div class="nav-container">
+                <ul class="swiper-wrapper" clearfix">
+                {% for index,item in [1,2,3] %}
+                    <li class="swiper-slide" style="font-size: {{data.titleFontSize}}px;color: {{data.navFontColor}}">{{item.categoryName | default('THIS iS TAB')}}
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+
+</div>
+{# <link rel="stylesheet" href="/resources/javascripts/library/swiper/swiper.min.css" type="text/css"/> #}

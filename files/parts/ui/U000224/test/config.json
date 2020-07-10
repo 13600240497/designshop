@@ -1,0 +1,19 @@
+{
+    "name": "pc score",
+    "version": "v1.0.0.1",
+    "fields": {},
+    "languages": {
+        "reviews": {
+            "en": "Reviews",
+            "fr": "Avis",
+            "ja": "レビュー",
+            "ro": "Recenzii"
+        },
+        "sale":{
+            "en": "SALE",
+            "fr": "VENTE",
+            "ja": "セール",
+            "ro": "REDUCERI"
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{% set client = siteCode|split('-') %}
+{% if(data.areas) %}
+    {% set areas =  data.areas | json_encode() %}
+{% else %}
+    {% set areas = "" %}
+{% endif %}
+<div class="geshop-component-box component-drag geshop-u000241-template1 geshop-u000241-template1-{{ pageInstanceId }}"
+     data-key="U000241" data-id="{{ pageInstanceId }}" data-renderCoods ='{{ areas }}' data-target="{{ data.box_is_open_new }}">
+    {{ include('style.twig') }}
+
+    <div class="geshop-u000241-container">
+        <img src="{{ data.base_img ?: 'https://geshopimg.logsss.com/uploads/E6A0VTsvRW9ik54e27BJMdFyG1SNHmrh.png' }}" alt="">
+    </div>
+</div>
+
+

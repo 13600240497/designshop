@@ -1,0 +1,109 @@
+{{include ('@app/files/parts/temp/goods_manager.twig')}}
+{# Form 表单数据配置 #}
+{%
+	set formData = {
+	id: 'U000092',
+	name: '商品列表组件',
+	theme: 'model3',
+	tabs: [
+		{
+			label: '商品数据',
+			components: [
+			{
+				label: '商品数据',
+				type: 'fieldset',
+				components: [
+				{
+					type: 'diy',
+					src: 'template_goods.twig'
+				}
+			]
+			}
+		]
+		},
+		{
+			label: '样式设置',
+			components: [
+			{
+				label: '常用配置',
+				type: 'fieldset',
+				components: [
+				{
+					label: '组件上边距(px)',
+					name: 'base_magin_top',
+					type: 'input',
+					col: 1,
+					default: 0,
+				},
+				{
+					label: '组件下边距(px)',
+					name: 'base_magin_bottom',
+					type: 'input',
+					col: 1,
+					default: 16,
+				}
+			]
+			},
+			{
+				label: '折扣标配置',
+				type: 'fieldset',
+				components: [
+				{
+					label: '是否显示折扣标',
+					name: 'discount_active',
+					type: 'radio',
+					default: '1',
+					options: [
+					{ label: '是', value: '1' },
+					{ label: '否', value: '0' },
+				]
+				},
+				{
+					label: '背景颜色',
+					name: 'discount_bgc',
+					type: 'colorPicker',
+					public: false,
+					default: '#F30240',
+				},
+				{
+					label: '背景图片',
+					name: 'discount_bgImage',
+					type: 'image',
+					public: false,
+					default: '',
+				},
+				{
+					label: '文字颜色',
+					name: 'discount_ftc',
+					type: 'colorPicker',
+					public: false,
+					default: '#FFFFFF',
+				},
+			]
+			},
+		]
+		}
+	],
+	moreConfig: [
+	]
+}
+%}
+
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+
+<script type="text/javascript">
+	var designFormClose = $('.design-form-close');
+	if (designFormClose) {
+		designFormClose.removeClass('icon-close').addClass('gb-icon-close')
+	}
+	
+	$('#gs_submit').on('click',function(){
+		var submitValid = GS_OBS.submitValid();
+		if(!submitValid) return false;
+		$(this).next('button').trigger('click');
+	})
+</script>
+

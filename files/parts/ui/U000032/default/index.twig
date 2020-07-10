@@ -1,0 +1,76 @@
+{% set remUnit = 37.5 %}
+
+{% set pageData = {
+	height:(data.height|default(100))/remUnit,
+	viewPaddingTB:(data.viewPaddingTB|default(0))/remUnit,
+	viewPaddingLR:(data.viewPaddingLR|default(0))/remUnit,
+	titleWidth:(data.titleWidth|default(250))/remUnit,
+	titleHeight:(data.titleHeight|default(60))/remUnit,
+	titleFont:(data.titleFont|default(16))/remUnit,
+	viewFont:(data.viewFont|default(12))/remUnit,
+	viewMarginT:(data.viewMarginT|default(0))/remUnit,
+}%}
+{% set userGroupClass = "geshop_user_"~data.userGroupSelect|default(0)%}
+
+{# 站点区分 #}
+{% set siteData = {
+	font_weight: 'rg' in siteCode ? 'normal' : 'bold'
+} %}
+
+<div class="geshop-component-box component-drag {{ userGroupClass }}"  id="U000032_{{ pageInstanceId }}" style="{% if data.boxMarginTop %}margin-top: {{ data.boxMarginTop / 75 | number_format(3, '.') }}rem;{% endif %}" data-gid="U000032" data-key="U000032" data-id="{{ pageInstanceId }}" attr="nav_flag">
+	<div class="gs-title-wrap" style="
+		{% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom / 75 | number_format(3, '.') }}rem;{% endif %}
+		{# {% if data.boxPaddingTop %}padding-top: {{ data.boxPaddingTop / 75 | number_format(3, '.') }}rem;{% endif %}
+		{% if data.boxPaddingBottom %}padding-bottom: {{ data.boxPaddingBottom / 75 | number_format(3, '.') }}rem;{% endif %} #}
+		padding-top: {{ (data.boxPaddingTop|default(40)) /75 | number_format(3, '.') }}rem;
+		padding-bottom: {{ (data.boxPaddingBottom|default(40)) /75 | number_format(3, '.') }}rem;
+		{# min-height:{{pageData.height}}rem; #}
+		{% if data.imgSrc is not empty %}background-image: url({{ data.imgSrc }});{% endif %}
+		background-position: center;
+		background-repeat: no-repeat;
+		background-color:{% if data.bgColor %}{{ data.bgColor }}{% else %} transparent{% endif %};
+		background-size: 100% 100%;
+		text-align:center;
+		width:100%;
+		overflow: hidden;
+	">
+		<div class="gs-title-box">
+			<h2 class="site-font-bold" style="
+				display:block;
+				font-size:{{pageData.titleFont}}rem;
+				color:{% if data.titleColor %}{{ data.titleColor }}{% else %} #000{% endif %};
+				font-weight:{% if data.titleWeight %}{{ data.titleWeight }}{% else %} {{ siteData.font_weight }}{% endif %};
+				width:{{pageData.titleWidth}}rem;
+				line-height:1.5;
+				margin-left:auto;
+				margin-right:auto;
+				{% if data.titleBgI %}background:url('{{data.titleBgI}}') no-repeat center center/100%;{% endif %}
+				{# margin-top:
+				{% if data.titleFont %}
+					{% if data.height %}{{ data.height / 2 - data.titleFont / 2 }}{% else %}{{ 40 - data.titleFont / 2 }}{% endif %}px
+				{% else %}
+					{% if data.height %}{{ data.height / 2 - 8 }}{% else %}32{% endif %}px
+				{% endif %}; #}
+			">
+				{% if data.titleText %}{{ data.titleText }}{% else %}请设置导航标题{% endif %}
+			</h2>
+			{% if data.isShow is not defined or data.isShow == 1 %}
+			<a href="{% if data.viewHref %}{{ data.viewHref }}{% else %}javascript:;{% endif %} " style="
+				{% if data.viewHref %}cursor: pointer;{% else%} cursor:default; {% endif %}
+				font-size:{{pageData.viewFont}}rem;
+				color:{% if data.viewColor %}{{ data.viewColor }}{% else %} #000{% endif %};
+				font-weight:{% if data.viewWeight %}{{ data.viewWeight }}{% else %} normal{% endif %};
+				display:inline-block;
+				{% if data.viewRadius %}border-radius:{{data.viewRadius}}px;{% endif %}
+				{% if data.viewBgColor %}background-color:{{data.viewBgColor}};{% endif %}
+				{% if pageData.viewMarginT %}margin-top:{{pageData.viewMarginT}}rem;{% endif %}
+				padding:{{pageData.viewPaddingTB}}rem {{pageData.viewPaddingLR}}rem {{pageData.viewPaddingTB}}rem {{pageData.viewPaddingLR}}rem;
+				{% if data.viewBorderC %}border-color:{{data.viewBorderC}};{% endif %}
+				border-width:{{data.viewBorderW|default('0')}}px;
+				{% if data.viewBorderS %}border-style:{{data.viewBorderS}};{% endif %}
+			">{% if data.viewText %}{{ data.viewText }}{% else %}View More{% endif %}
+			</a>
+			{% endif %}
+		</div>
+	</div>
+</div>

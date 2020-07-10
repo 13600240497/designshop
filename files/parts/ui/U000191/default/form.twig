@@ -1,0 +1,290 @@
+<style>{{ include ('form.css') }}</style>
+{#站点兼容#}
+{% set siteData = {
+    price_color: 'rg' in siteCode ? '#FA386A' : null,
+    dropdown_bgColor: 'rg' in siteCode ? '#F5F5F5' : '#E6E6E6',
+    dropdown_borderColor: 'rg' in siteCode ? '#F5F5F5' : '#E6E6E6',
+    dropdown_hover_fontColor: 'rg' in siteCode ? '#FA386A' : '#E6E6E6',
+    siteParam : 'rg' in siteCode ? 'siteParam-rg' : 'hidden'
+} %}
+
+{%
+
+set formData = {
+    id: 'U000191',
+    name: '搭配购组件配置',
+    theme: 'default',
+    tabs: [
+        {
+            label: '商品SKU',
+            components: [
+                {
+                    type: 'diy',
+                    src: 'lib/goods-manage.twig'
+                }
+            ]
+        },
+
+        {
+            label: '样式配置',
+            components: [
+                {
+                    label: '常用配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '组件上边距(px)',
+                            name: 'component_margin_top',
+                            default: 0,
+                            public: false,
+                        },
+                        {
+                            label: '组件下边距(px)',
+                            name: 'component_margin_bottom',
+                            default: 32,
+                            public: false,
+                        },
+                        {
+                            type: siteData.siteParam,
+                            componentType: 'background-rg'
+                        },
+                        {
+                            label: '组件位置',
+                            name: 'component_align',
+                            type: 'radio',
+                            default: 'center',
+                            options: [
+                                { label: '居左', value: 'left' },
+                                { label: '居中', value: 'center' },
+                                { label: '居右', value: 'right' },
+                            ],
+                            public: false,
+                        }
+                    ]
+                },
+                {
+                    label: '商品信息配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '一行显示商品数量',
+                            desc: '(最多可显示4个)',
+                            name: 'row_num',
+                            default: 2,
+                            public: false,
+                        },
+                        {
+                            label: '购买区域背景颜色',
+                            name: 'buyarea_bgColor',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                        },
+                        {
+                            label: '总销售价文字颜色',
+                            name: 'total_price_Color',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            public: false,
+                        },
+                        {
+                            label: '商品原总价文字颜色',
+                            name: 'total_originalprice_color',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            public: false,
+                        },
+                        {
+                            label: '购物车按钮背景颜色',
+                            name: 'cart_btn_bgColor',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            public: false,
+                        },
+                        {
+                            label: '属性选择/下拉背景颜色',
+                            name: 'dropdown_bgColor',
+                            type: 'colorPicker',
+                            default: siteData.dropdown_bgColor,
+                            public: false,
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    moreConfig: [
+        {
+            type: 'collapse',
+            items: [
+                {
+                    label: '商品信息配置',
+                    components: [
+                        {
+                            label: '属性选择文字 / 下拉箭头 / 下拉文字',
+                            name: 'dropdown_fontColor',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                        },
+                        {
+                            label: '属性下拉边框颜色',
+                            name: 'dropdown_borderColor',
+                            type: 'colorPicker',
+                            default: siteData.dropdown_borderColor,
+                            public: false,
+                        },
+                        {
+                            label: '下拉Hover文字的颜色',
+                            name: 'dropdown_hover_fontColor',
+                            type: 'colorPicker',
+                            default:  '#333333',
+                            public: false,
+                        },
+                        {
+                            label: '下拉Hover背景的颜色',
+                            name: 'dropdown_hover_bgColor',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            public: false,
+                        },
+                        {
+                            label: '单品售价文字颜色',
+                            name: 'shopprice_color',
+                            type: 'colorPicker',
+                            default: siteData.price_color|default('#000000'),
+                            public: false,
+                        }
+                    ]
+                },
+                {
+                    label: '购买按钮配置',
+                    components: [
+                        {
+                            label: '购买按钮文案',
+                            name: 'buyBtn_text',
+                            default: 'GET THE SET',
+                            public: false,
+                        },
+                         {
+                            label: '文字颜色',
+                            name: 'buyBtn_fontColor',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                        },
+                        {
+                            label: '按钮圆角(PX)',
+                            name: 'btn_borderRadius',
+                            default: 30,
+                            public: false,
+                        },
+                        {
+                            label: '购物车图标',
+                            desc: '(建议上传宽24px,高24px)',
+                            name: 'cart_image',
+                            type: 'image',
+                            public: false,
+                        },
+                        {
+                            label: '背景图片',
+                            name: 'cart_bgImage',
+                            type: 'image',
+                            public: false,
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    onSubmit: 'onSubmit'
+}
+
+%}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+<script>
+
+     $('textarea[name="goodsSKU"]').blur(function(){
+    });
+
+    {#  自定义保存函数 #}
+    function onSubmit(progress) {
+        var skus = $('textarea[name="goodsSKU"]').val();
+        if(!skus){
+            layui.layer.msg('sku数据不可为空');
+            return;
+        }
+        if(skus.split(',').length == 1){
+            layui.layer.msg('最少填写2个sku');
+            return;
+        }
+
+        var rowNum = $('input[name="row_num"]').val();
+        if(rowNum == 1){
+            layui.layer.msg('一行最少显示2个商品');
+            $('input[name="row_num"]').val('');
+            return;
+        }else if(rowNum > 4){
+            $('input[name="row_num"]').val(4);
+        }
+        var skusList = skus.split(',');
+        var newArr = [];
+        if(skusList.length > 10){
+            layui.layer.msg('sku数量不能超过10个，'+skusList.slice(10)+'过滤掉了');
+            $('textarea[name="goodsSKU"]').val(skusList.slice(0,10).join(','));
+            return;
+        }
+
+        {# var dupArr = duplicates(skusList);
+        if(dupArr.length > 0){
+            layui.layer.msg(dupArr.join(',')+'为同款sku');
+            for(var i=0;i<=skusList.length;i++) {
+                for(var j = 0;j<dupArr.length;j++){
+
+                    if(skusList[i] == dupArr[j]){
+                        skusList.splice(i,1);
+                    }
+                }
+            }
+            $('textarea[name="goodsSKU"]').val(skusList.join(','));
+            $('textarea[name="goodsSKU"]').focus();
+
+        } #}
+
+
+        var imgSrcArr = [];
+        var goodsImgs = $('input.Unwanted');
+        if(skusList.length != goodsImgs.length && goodsImgs.length != 0){
+            $('.img-wrap').html('');
+        }else{
+            for(var i=0;i<skusList.length;i++) {
+                var obj = {};
+                if(goodsImgs.length > 0 && goodsImgs[i].value){
+                    obj['img'] = goodsImgs[i].value;
+                    obj['sku'] = skusList[i];
+                }else{
+                    obj['img'] = '';
+                }
+                imgSrcArr.push(obj);
+            }
+        }
+
+        $('input[name=imgs]').val(JSON.stringify(imgSrcArr));
+
+        progress.next();
+    };
+
+    function duplicates(arr) {
+        var newArr=[];
+        for(var i=0;i<=arr.length;i++) {
+            for(var j=i+1;j<arr.length;j++) {
+                    if(arr[i].substr(0,7)==arr[j].substr(0,7)&&newArr.indexOf(arr[i])==-1)  {
+                        newArr.push(arr[i]);
+                    }
+            }
+        }
+        return newArr;
+    }
+</script>

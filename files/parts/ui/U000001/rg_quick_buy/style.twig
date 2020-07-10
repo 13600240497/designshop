@@ -1,0 +1,68 @@
+
+<!-- embed stylesheet begin -->
+<style type="text/css" >
+    {% set class_root = '.geshop-u000001-quick-'~pageInstanceId %}
+    {% set class_box = '.geshop-u000001-quick-'~pageInstanceId~' .geshop-containr' %}
+    {% set unit = 'px' %}
+
+    {{ class_box }} {
+        margin-top: {{ data.box_margin_top ?? 0 }}px;
+        margin-bottom: {{ data.box_margin_bottom ?? 16}}px;
+        background-color:{{ data.box_bg_color ?? '#FFFFFF' }};
+        {% if data.box_bg_image is not empty %}
+            background-image:url({{ data.box_bg_image }});
+        {% endif %}
+    }
+
+    {{ class_root }} .nav-hd-fixd-wrap{
+        height: {{ data.nav1_height ?? 70 }}px;
+    }
+
+    {{ class_root }} .nav-list .nav-item {
+        width: {{ 1/(data.tab_num ?? 3) * 100}}%;
+        height: {{ data.nav1_height ?? 70 }}px;
+        line-height: {{ data.nav1_height ?? 70 }}px;
+        color: {{ data.nav1_color ?? '#333333' }};
+        background-color: {{ data.nav1_bgcolor ?? '#ffffff' }};
+    }
+    {{ class_root }} .nav-list .nav-item:hover >span, {{ class_root }} .nav-list .nav-item.on >span{
+        color: {{ data.hover_color ?? '#EA5455' }};
+    }
+    {{ class_root }} .sub-nav .sub-item:hover >span{
+        color: {{ data.hover_color ?? '#EA5455' }};
+        text-decoration: underline;
+    }
+    {{ class_root }} .sub-nav .sub-item.on{
+         color: {{ data.hover_color ?? '#EA5455' }};
+     }
+
+    {{ class_root }} .sub-nav .sub-item{
+         color: {{ data.nav2_color ?? '#666666' }};
+     }
+    {{ class_root }} .geshop-components-default-label-shop-price{
+         color: {{ data.shop_price_color ?? '#FA386A' }};
+     }
+
+    {{ class_root }} .discount-off{
+        {% if data.discount_bg_image is not empty %}
+            background-image: url("{{ data.discount_bg_image }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+        {% endif %}
+         background-color: {{ data.discount_bg_color ?? '#FA386A'}};
+         color: {{ data.discount_font_color ?? '#FFFFFF' }};
+     }
+
+    {{ class_box }} .tk-list-pic >li:hover, {{ class_box }} .tk-list-pic >li.on{
+        border: 1px solid {{ data.hover_color ?? '#EA5455' }}!important;
+     }
+
+
+    {%
+        include geshop.default.pc.shop_price with { style: {
+            'color': data.shop_price_color
+        }}
+    %}
+
+</style>
+<!-- embed stylesheet end -->

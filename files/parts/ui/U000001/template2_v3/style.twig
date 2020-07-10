@@ -1,0 +1,19 @@
+{% set space = '#U000001_'~pageInstanceId %}
+{% set body =  space~' .geshop_U000001_template2_v3_wrapper' %}
+
+{{ body }} {
+    margin-bottom: {{ data.box_margin_bottom | default(32) }}px;
+}
+
+{{ body }} .geshop-components-default-button-buy-animate {
+    height: 54px;
+    line-height: 54px;
+    width: 288px;
+    overflow: hidden;
+}
+
+{{ body }} .geshop-components-default-button-buy-animate a{
+    line-height: 54px;
+    color: {{ data.buynow_font_color | default('#fff')}};
+    background-color: {{ data.buynow_bg_color | default('#333')}};
+}

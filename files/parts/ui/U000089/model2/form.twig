@@ -1,0 +1,186 @@
+<style>{{ include ('form.css') }}</style>
+
+{%
+
+set formData = {
+    id: 'U000089',
+    name: '页面间导航组件配置',
+    theme: 'default',
+    tabs: [
+        {
+            label: '导航设置',
+            components: [
+                {
+                    type: 'diy',
+                    src: 'lib/data.twig'
+                }
+            ]
+        },
+
+        {
+            label: '样式配置',
+            components: [
+                {
+                    label: '常用配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '单个导航宽度(px)',
+                            name: 'nav_width',
+                            default: 250,
+                            public: false,
+                        },
+                        {
+                            label: '导航高度(px)',
+                            name: 'nav_height',
+                            default: 100,
+                            public: false,
+                        },
+                        {
+                            label: '文字大小(px)',
+                            name: 'nav_fontSize',
+                            default: 30,
+                            public: false,
+                        },
+
+                        {
+                            label: '文字颜色',
+                            name: 'nav_fontColor',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            public: false,
+                        },
+                        {
+                            label: '背景颜色',
+                            name: 'nav_bgColor',
+                            type: 'colorPicker',
+                            default: '#D8D8D8',
+                            public: false,
+                        },
+                        {
+                            label: '边框颜色',
+                            name: 'nav_borderColor',
+                            type: 'colorPicker',
+                            default: '#D8D8D8',
+                            public: false,
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    onSubmit: 'onSubmit'
+}
+
+%}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+<script>
+
+
+    {#  自定义保存函数 #}
+    {#  自定义保存函数 #}
+    function onSubmit(progress) {
+        var flag = true;
+        $('#U000089-default .nav-list-setting .nav-item').each(function(){
+            if(!$(this).find('input[name=nav_text]').val()){
+                layui.layer.msg('请填写导航文本');
+                flag = false;
+            }
+        });
+
+        var navArr = [];
+        $('#U000089-default .nav-list-setting .nav-item').each(function(){
+            var navText = $(this).find('input[name=nav_text]').val();
+            var navImg = $(this).find('input.nav-img').val();
+            var navLink = $(this).find('input[name=nav_link]').val();
+            navArr.push({
+                nav_text: navText,
+                nav_img: navImg,
+                nav_link: navLink
+            });
+
+        });
+
+        if (navArr.length > 0) {
+            $('#U000089-default .nav-list-setting input[name=navList]').val(JSON.stringify(navArr));
+        } else {
+            $('#U000089-default .nav-list-setting input[name=navList]').val("");
+        }
+
+
+        flag && progress.next()
+    };
+
+    $(function() {
+
+        var flagIndex =  $('.nav-list-setting .nav-item').length;
+        $('#U000089-default').off('click','.add-class').on('click','.add-class' ,function(){
+            var clone = $('#U000089-default .nav-item').eq(0).clone();
+            flagIndex++;
+            clone.find('input[name=nav_text]').val('');
+            clone.find('input.nav-img').val('');
+            clone.find('input.nav-img').attr('name','nav_bg'+ flagIndex);
+            clone.find('input[name=nav_link]').val('');
+            $('.nav-list-setting').append(clone);
+            initItemIndex();
+            return false;
+        });
+
+        $('#U000089-default').on('click','.icon-up',function () {
+            var target = $(this).closest('.nav-item');
+            if (target.prev('.nav-item').length > 0) {
+            target.prev('.nav-item').before(target.clone());
+            target.remove();
+            initItemIndex();
+            }
+        });
+
+        $('#U000089-default').on('click', '.icon-down', function () {
+            var target = $(this).closest('.nav-item');
+
+            if (target.next('.nav-item').length > 0) {
+            target.next('.nav-item').after(target.clone());
+            target.remove();
+            initItemIndex();
+            }
+        });
+
+        $('#U000089-default').on('click', '.icon-delete', function () {
+            var imgLen = $('#U000089-default .nav-list-setting .nav-item').length;
+            if (imgLen == 1){
+                layui.layer.msg('最后一项不能删除');
+            }else{
+                var target = $(this).closest('.nav-item');
+                layui.layer.confirm('确认删除吗？', {
+                    btn: ['取消', '确定'],
+                    area: '420px',
+                    skin: 'element-ui-dialog-class',
+                    icon: 3,
+                    title: '提示'
+                }, function (index) {
+                    layui.layer.close(index);
+                }, function (index) {
+                    target.remove();
+                    initItemIndex();
+                });
+            }
+        });
+
+
+
+
+        {# 重新排序 #}
+        function initItemIndex(){
+            $('#U000089-default .nav-item').each(function(index){
+                var $this = $(this);
+                var listNum = index + 1;
+                $this.find('.nav-title').html('导航'+listNum);
+            });
+        }
+
+
+    });
+
+</script>

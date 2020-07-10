@@ -1,0 +1,16 @@
+#U000141_{{ pageInstanceId }} .geshop-m-timer-title {
+    color: {{ data.timer_font_color | default('#333333') }};
+}
+#U000141_{{ pageInstanceId }} .geshop-m-timer span {
+    color: {{ data.timer_span_font_color | default('#ffffff') }};
+    background-color: {{ data.timer_span_bg_color | default('#333333') }};
+}
+
+{# rg zf 背景颜色区分#}
+{% set siteData = {
+    box_bg_color: 'rg' in siteCode ? '#F8F8F8' : '#f2f2f2',
+} %}
+
+#U000141_{{ pageInstanceId }} .geshop-u000141-default-v2-body{
+    background-color: {{ data.box_bg_color|default(siteData.box_bg_color) }} !important;
+}

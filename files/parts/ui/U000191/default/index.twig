@@ -1,0 +1,26 @@
+
+<div class="geshop-component-box component-drag geshop-U000191-default geshop-U000191-default-{{ siteCode | split('-')[0] }} geshop-U000191-default-{{ pageInstanceId }} clearfix" data-key="U000191" data-id="{{ pageInstanceId }}" data-static-domain="{{staticDomain}}">
+	{% if 'rg' in siteCode %}
+		{{ include('styleRG.twig') }}
+	{% else %}
+		{{ include('style.twig') }}
+	{% endif %}
+
+	<div class="combo-container">
+		<input type="hidden" name="btn-text" value="{{data.buyBtn_text | default('GET THE SET')}}">
+		<input type="hidden" name="goods-sku" value="{{data.goodsSKU}}">
+		<input type="hidden" name="is-editenv" value="{{data.isEditEnv}}">
+		<input type="hidden" name="lang-soldout" value="{{ get_component_trans(lang,'btn_sold_out') }}">
+		<input type="hidden" name="sku-img" value={{data.imgs|json_encode()}}>
+		<div class="combo-wrap"></div>
+	</div>
+	<div class="layer-pop">
+			<div class="add-success">
+				<i class="ico-close"></i>
+				<p>{{get_component_trans(lang,'already_joinbag')}}</p>
+				<div class="checknow-link site-bold-strict">{{get_component_trans(lang,'check_now')}}</div>
+			</div>
+		</div>
+</div>
+
+

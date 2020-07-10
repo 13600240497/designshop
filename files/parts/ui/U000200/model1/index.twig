@@ -1,0 +1,17 @@
+<div class="geshop-component-box component-drag" data-gid="U000200_default" data-key="U000200" data-id="{{ pageInstanceId }}" style="
+    {% if data.base_magin_top %}margin-top: {{ data.base_magin_top / 75 | number_format(3, '.') }}rem;{% endif %}
+	{% if data.base_magin_bottom %}margin-bottom: {{ data.base_magin_bottom / 75 | number_format(3, '.') }}rem;{% endif %}
+">
+    <div>
+        {% if data.imgURL %}
+            <a href="{{data.imgURL}}" style="display:block;width:100%;height:100%" target="_special">
+        {% endif %}
+            <img class="gb-banner-img" alt="{{data.imgText}}" title="{{data.imgTitle}}" src="{% if data.imgSrc %}{{ data.imgSrc }}{% else %} {{ data.default.banner }}{% endif %}" style="display: block;margin:0 auto;
+                width: {% if data.imgWidth %}{{ data.imgWidth / 75 | number_format(3, '.') }}{% else %}10{% endif %}rem;
+                {% if data.imgHeight %}height: {{ data.imgHeight / 75 | number_format(3, '.') }}rem;{% endif %}
+            ">
+        {% if data.imgURL %}
+            </a>
+        {% endif %}
+    </div>
+</div>

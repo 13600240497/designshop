@@ -1,0 +1,93 @@
+{%
+    set pageData = {
+    soldout:languages.SOLDOUT[lang],
+    shopnow:languages.SHOPNOW[lang]
+}
+%}
+<div class="geshop-component-box component-drag geshop-U000207-default geshop-U000207-default-{{ pageInstanceId }}"
+     data-key="U000207" 
+     data-id="{{ pageInstanceId }}">
+    {{ include('style.twig') }}
+    <div class="geshop-saleBox"
+         data-goodsSku="{{  data.goodsSKU }}"
+         data-leftTime="{{ data.left_time }}"
+         data-starTxt ="{{ data.time_startText }}"
+         data-ingTxt ="{{ data.time_ingText }}"
+         data-endTxt ="{{ data.time_endText }}"
+         data-pricetype="{{ data.price_type ?? 0 }}"
+         data-state="{{ data.states }}"
+         data-shopNOw = "{{ pageData.shopnow }}"
+         data-stateText="{{ data.state_text }}"
+         data-start="{{ data.start }}"
+         data-end="{{ data.end }}">
+        <span class="gs-time-inner" style="">
+            <div>
+                <i class="icon-clock-black" style=""></i>
+                <div class="gs-down-title">
+                    <span>{{ data.title_text ?? 'FLASH SALE' }}</span>
+                </div>
+                <div class="gs-down-inner">
+                    <div class="gs-down-text">
+                        Starts in
+                    </div>
+                    <span class="gs_component_countDown">
+                        <span>
+                            <em>00</em>:<em>00</em>:<em>00</em>:<em>00</em>
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </span>
+        <div class="gs-goods-wrap">
+            <div class="goods-cont">
+                <ul class="goods-list">
+                    {% for i in data.goods_sku | default(0..3) %}
+                        <li>
+                            <div class="list-img">
+                                <a href="">
+                                    <img src="https://geshopcss.logsss.com/imagecache/geshop/resources/images/dl/loading.gif"
+                                         data-original="https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/good.png"
+                                         class="js_gdexp_lazy js-lazy"/>
+                                    <div class="shop-now-container">
+                                        <div class="inner-wrapper">
+                                            <i class="icon-bag"></i>
+                                            <p class="shop-now-text"> {{ get_component_trans(lang,'shop_now') }} </p>
+                                        </div>
+                                    </div>
+
+                                    {% if data.price_type == 0 %}
+                                        <div class="goods-priceOff-tips">
+                                            <span>20%</span>
+                                            <span>OFF</span>
+                                        </div>
+                                    {% else %}
+                                        <div class="goods-priceOff-tips mt10">
+                                            <span>-20%</span>
+                                        </div>
+                                    {% endif %}
+                                </a>
+                            </div>
+                            <p class="goods-title">
+                                <a href="https://www.dresslily.com/plus-size-striped-fringed-cami-biniki-set-product7894262.html" target="_blank">Plus SizeSizeSize Mesh Panel Snowflake amPlu</a>
+                            </p>
+                            <p class="goods-price">
+                            <span class="shop-price">
+                                <span class="my_shop_price" data-orgp="0">$22.99</span>
+                            </span>
+                                <del class="market-price">
+                                    <span class="my_shop_price dl-has-rrp-tag" data-orgp="" data-bz="44.99">$44.99</span>
+                                </del>
+                            </p>
+                            <div class="gs-goods-limit">
+                                <span class="goods-limit-tips_left"><b>50%</b>{{ get_component_trans(lang,'claimed') }}</span>
+                                <span class="process-bar">
+                                <em class="process-inner" style="width:50%;"></em>
+                            </span>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

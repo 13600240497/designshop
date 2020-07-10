@@ -1,0 +1,35 @@
+<div class="layui-row layui-col-space20">
+    <div class="layui-col-md6">
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'按钮右边距（px）',name:'ruleButtonMarginRight',value:pageData.ruleButtonMarginRight ,full:true,}}
+        ) }}
+    </div>
+    <div class="layui-col-md6">
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'按钮上边距（px）',name:'ruleButtonMarginTop',value:pageData.ruleButtonMarginTop ,full:true,}}
+        ) }}
+    </div>
+
+    <div class="layui-col-md6"  >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'按钮宽度（px）',name:'ruleButtonWidth',value:pageData.ruleButtonWidth ,full:true,}}
+        ) }}
+    </div>
+    <div class="layui-col-md6" >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'按钮高度（px）',name:'ruleButtonHeight',value:pageData.ruleButtonHeight ,full:true,}}
+        ) }}
+    </div>
+</div>
+
+{{ include ('@app/files/parts/common/components/input.twig',
+    { options: { label:'按钮圆角大小(格式：上 右 下 左)',name:'ruleButtonBorderRadius',value:pageData.ruleButtonBorderRadius ,full:true,}}
+) }}
+
+{{ include ('@app/files/parts/common/components/input.twig',
+    { options: { label:'按钮背景图片',name:'ruleButtonBackgroundImg',value:pageData.ruleButtonBackgroundImg ,full:true,}}
+) }}
+
+{{ include ('@app/files/parts/common/components/input.twig',
+    { options: { label:'下拉框背景颜色',name:'rulePopBackgroundColor',value:pageData.rulePopBackgroundColor ,full:true,}}
+) }}

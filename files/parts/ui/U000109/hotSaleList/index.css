@@ -1,0 +1,110 @@
+[data-gid="U000109_hotSaleList"] .icon-img-left {
+  width: 12px !important;
+  height: 12px !important;
+  position: absolute;
+  display: block;
+  left: 15px;
+  top: 12px;
+}
+
+[data-gid="U000109_hotSaleList"] .icon-img-right {
+  width: 12px !important;
+  height: 12px !important;
+  display: block;
+  position: absolute;
+  top: 12px;
+  right: 29px;
+}
+
+
+
+[data-gid="U000109_hotSaleList"] .goods-nav-name {
+  /* display: inline-block; */
+  text-align: center;
+  /* margin: auto; */
+  height: 90px;
+  /* overflow: hidden;
+  width: auto; */
+}
+[data-gid="U000109_hotSaleList"] .side-icon{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+[data-gid="U000109_hotSaleList"] .geshop-tab-btn {
+  width: 58px;
+  z-index: 1;
+  cursor: pointer;
+  background-size: 50px 44px;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  position: relative;
+}
+
+[data-gid="U000109_hotSaleList"] .geshop-tab-btn img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+[data-gid="U000109_hotSaleList"] .geshop-tab-btn.pre-btn {
+  border-radius: 45px 0px 0px 45px !important;
+}
+
+[data-gid="U000109_hotSaleList"] .geshop-tab-btn.next-btn {
+  border-radius: 0px 45px 45px 0px !important;
+}
+
+[data-gid="U000109_hotSaleList"] .gs-tab-box {
+  /* position: absolute;
+  left: 50%;
+  transform: translateX(-50%); */
+  display: inline-block;
+  width: 1200px;
+}
+
+[data-gid="U000109_hotSaleList"] .gs-tab-box .swiper-container {
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  display: inline-block;
+}
+
+[data-gid="U000109_hotSaleList"] .sale-discount {
+  width: 182px;
+  height: 30px;
+  margin: 10px auto;
+}
+[data-gid="U000109_hotSaleList"] .sale-discount a {
+  background-color: #ffecec;
+  color: #ff5058;
+  border-radius: 20px;
+  display: inline-block;
+  vertical-align: top;
+  width: 182px;
+  height: 30px;
+  line-height: 30px;
+  margin-top: 10px;
+  overflow: hidden;
+  text-align: center !important;
+  margin: 0 auto;
+}
+
+[data-gid="U000109_hotSaleList"] .gs-banner {
+  width: 100% !important;
+  height: auto;
+}
+
+[data-gid="U000109_hotSaleList"] .buy-now a {
+  width: 198px !important;
+}
+
+[data-gid="U000109_hotSaleList"] .component-self-goodWrap .ranking-icon {
+  font-weight: bold !important;
+}

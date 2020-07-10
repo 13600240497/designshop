@@ -1,0 +1,52 @@
+{
+    "fields": {
+        "act_time": { "is_public": "0", "is_m": "0", "is_app": "1" },
+        "act_start_time": { "is_public": "0", "is_m": "0", "is_app": "1" },
+        "act_end_time": { "is_public": "0", "is_m": "0", "is_app": "1" }
+    },
+    "languages": {
+        "todayAmount": { 
+            "en" : "Today my payment amount ：xxx.xx",
+            "fr" : "Aujourd'hui mon montant de paiement : xxx.xx",
+            "ja" : "今日、私の支払い金額：xxx.xx",
+            "ro" : "Totalul de plata de astazi: xxx.xx"
+        },
+        "totalAmount": { 
+            "en" : "My total payment amount ：xxx.xx",
+            "fr" : "Mon montant total du paiement : xxx.xx",
+            "ja" : "合計支払額：xxx.xx",
+            "ro" : "Totalul meu de plata: xxx.xx"
+        },
+        "myRanking": { 
+            "en" : "My ranking：xxx",
+            "fr" : "Mon classement : xxx",
+            "ja" : "私のランキング：xxx",
+            "ro" : "Rankul meu: xxx"
+        },
+        "myRankingNum": { 
+            "en" : "TOP xxx",
+            "fr" : "TOP xxx",
+            "ja" : "トップxxx",
+            "ro" : "TOP xxx"
+        },
+        "rankingTitle": { 
+            "en" : "MY RANKING",
+            "fr" : "MON CLASSEMENT",
+            "ja" : "私のランキング",
+            "ro" : "RANKUL MEU"
+        },
+        "rankingListPayment": { 
+            "en" : "payment amount",
+            "fr" : "montant du paiement",
+            "ja" : "支払金額",
+            "ro" : "suma de plata"
+        },
+        "ruleText": { 
+            "en" : "DETAILS",
+            "fr" : "DÉTAILS",
+            "ja" : "詳細",
+            "ro" : "DETALII"
+        }
+    }
+}
+  

@@ -1,0 +1,8 @@
+{
+  "fields": {
+    "box_margin_top": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "box_margin_bot": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "base_img": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "areas": { "is_public": "0", "is_m": "1", "is_app": "1" }
+  }
+}

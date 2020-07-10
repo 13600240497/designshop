@@ -1,0 +1,132 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+{% set remUnit = 37.5 %}
+{% set scale = 	(data.default.lazyWidth/data.default.lazyHeight)|default(1) %}
+{# default value #}
+{% set pageData = {
+	boxMarginTop:data.boxMarginTop/remUnit,
+	boxMarginBottom:data.boxMarginBottom/remUnit,
+	gsPadding:data.gsPadding|default(5),
+	gsMarginBottom:(data.gsMarginBottom|default(5))/remUnit,
+	gsInnerPadding:(data.gsInnerPadding|default(5))/remUnit,
+	goodsFtW:data.goodsFtW|default('bold'),
+	goodsFtS:(data.goodsFtS|default('12'))/remUnit,
+	discountWidth:(data.discountWidth|default(40))/remUnit,
+	discountHeight:(data.discountHeight|default(40))/remUnit,
+	discountRadius:data.discountRadius|default('50'),
+	discountTop:(data.discountTopNew|default(-4))/remUnit,
+	priceFt:data.priceFt/remUnit,
+	marketPriceFt:data.marketPriceFt/remUnit,
+	buyWidth:(data.buyWidth|default(80))/remUnit,
+	buyHeight:(data.buyHeight|default(34))/remUnit,
+	scale:(data.default.lazyWidth/data.default.lazyHeight)|default(1),
+	goodScaleHeight:((178/scale)/remUnit)|slice(0,5),
+} %}
+
+<div class="geshop-component-box component-drag clearfix" data-gid="U000031" data-key="U000031" data-id="{{ pageInstanceId }}">
+    <div>
+    <div class="geshop-col-12" style="
+        {% if pageData.boxMarginTop %}margin-top: {{ pageData.boxMarginTop }}rem;{% endif %}
+        {% if pageData.boxMarginBottom %}margin-bottom: {{ pageData.boxMarginBottom }}rem;{% endif %}
+    ">
+        <div class="gs-goodsWrap" style="{% if data.baseWith %}width:{{data.baseWith/remUnit}}rem;{% endif %}
+				{% if data.baseBgC%}background-color:{{data.baseBgC}};{% endif %}">
+            <!-- <div class="geshop-panel" style="{% if data.titleBgImg%}background:url({{data.titleBgImg}}) no-repeat 0 0/100% 100%;{% endif %}
+            {% if data.titleFs %}font-size:{{data.titleFs}}px;{% endif %}
+            {% if data.titleFtC %}color:{{data.titleFtC}};{% endif %}
+            {% if pageData.titleH %}height:{{pageData.titleH}}px;line-height:{{pageData.titleH}}px;{% endif %}">{{data.goodsListTitle}}
+            </div> -->
+            <ul class="clearfix" style="padding-top:{{pageData.gsMarginBottom}}rem">
+            {% for key,item in data.goodsInfo|default(0..3) %}
+                <li class="geshop-col-6" data-index="{{loop.index0}}" style="margin-bottom:{{pageData.gsMarginBottom}}rem;
+                padding-left:{{loop.index0%2==0?pageData.gsPadding:pageData.gsPadding/2}}px;padding-right:{{loop.index0%2==0?pageData.gsPadding/2:pageData.gsPadding}}px">
+										<div class="component-self-goodWrap" style="{% if data.goodsBgc %}background-color:{{data.goodsBgc}}{% endif %};
+										padding:{{pageData.gsInnerPadding}}rem;
+										{% if data.gsRadius%}border-radius:{{data.gsRadius}}px;{% endif %}">
+                        <div class="gs-img">
+                            <a href="{{item.url_title|default('javascript:;')}}" style="height:{{pageData.goodScaleHeight}}rem;">
+                              {% if data.isEditEnv == '1' and data.goodsInfo %}
+                                <img  src="{{item.goods_img|default(data.default.good)}}" style="max-width: 100%">
+                              {% elseif  data.isEditEnv == '0' and data.goodsInfo %}
+                                <img class="lazyload" src="{{data.default.lazyImg|default(data.default.good)}}" data-original="{{item.goods_img|default(data.default.good)}}" style="max-width: 100%">
+                              {% else %}
+                                <img  src="{{data.default.good}}"  style="max-width: 100%">
+                              {% endif %}
+
+															{# 上架状态 #}
+															{% if data.goodsLimitActive == '1' and item.activity_number == activity_volume_number%}
+																<span class="goodStatus">
+																	<span class="goodStatus_inner">sold out</span>
+																</span>
+															{% endif %}
+
+															{# {% if data.goodsTimeActive == '1' %}
+															<span class="promotion-time">
+																<i class="icon-clock"></i>
+																<span class="gs_countDown" data-left-time="941439"><strong>00 day(S)</strong>00:00:00</span>
+															</span>
+															{% endif %} #}
+                            </a>
+                            {% if data.discountActive|default(1) == '1' %}
+														<div class="discont-wrap discont-curtoff google-sprite text-center" style="{% if data.discountBgImg %}background:url({{data.discountBgImg}}) no-repeat 0 0/100% 100%;{% endif %}{% if data.discountFtC %}color:{{data.discountFtC}};{% endif %}{% if data.discountBgc %} background-color:{{data.discountBgc}}; {% endif %}
+														width:{{pageData.discountWidth}}rem;
+														height:{{pageData.discountHeight}}rem;
+														{% if data.discountOffsetT %}top:{{data.discountOffsetT/remUnit}}rem;{% endif %}
+														{% if data.discountOffsetR %}right:{{data.discountOffsetR/remUnit}}rem;{% endif %}
+														border-radius:{{pageData.discountRadius}}px;">
+															<div class="gs-curtoff-wrap">
+																<div class="curtoff-box" style="top:{{pageData.discountTop}}rem">
+																	<strong>{{item.discount}}%</strong>
+																	{% if data.discountSuffix|default('1') == '1' %}<br>OFF{% endif %}
+																</div>
+															</div>
+
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="gs-desc">
+														{% if data.goodsLimitActive|default(0) == '1' %}
+															{{include ('@app/files/parts/temp/goods_limit.twig')}}
+														{% endif %}
+
+                            {% if data.goodsActive|default(1) == '1' %}
+                                <a href="{{item.url_title|default('javascript:;')}}">
+                                    <span class="item-name" style="{% if data.goodsFtC %}color:{{data.goodsFtC}};{% endif %}{% if pageData.goodsFtS %}font-size:{{pageData.goodsFtS}}rem;{% endif %}">{{item.goods_title|default('这里输入商品名称这里输入商品名称')}}</span>
+                                </a>
+                            {% endif %}
+
+                            <p class="item-price">
+                                {% if data.priceActive|default(1) == '1' and item.shop_price %}
+                                <span class="shop-price"><span class="my_shop_price" data-orgp="{{item.shop_price}}" style="{% if data.priceC %}color:{{data.priceC}};{% endif %}
+																{% if pageData.priceFt %}font-size:{{pageData.priceFt}}rem;{% endif %}
+																{% if pageData.goodsFtW %}font-weight:{{pageData.goodsFtW}};{% endif %}">${{item.shop_price}}</span></span>
+                                {% endif %}
+
+                                {% if data.marketActive|default(1) == '1' and item.market_price %}
+                                <del class="market-price" style="{% if data.marketPriceC %}color:{{data.marketPriceC}} {% endif %}">
+																	<span class="my_shop_price" data-orgp="{{item.market_price}}"
+																style="{% if pageData.marketPriceFt %}font-size:{{pageData.marketPriceFt}}rem;{% endif %}">${{item.market_price}}</span>
+																</del>
+                                {% endif %}
+                            </p>
+                        </div>
+                        {% if data.buyActive|default(0) == '1' %}
+                        <div class="gs-btn-area text-center">
+                            <a href="{{item.url_title|default('javascript:;')}}"  class="gs-btn btn-primary {% if data.goodsLimitActive == '1' and item.activity_number == activity_volume_number %}buyLink{% endif %}"
+														style="{% if data.buyBgC %}background-color:{{data.buyBgC}};{% endif %}{% if data.buyFtC %}color:{{data.buyFtC}};{% endif %}
+							{% if data.buyFtS %}font-size:{{data.buyFtS/remUnit}}rem;{% endif %}
+                            {% if data.buyBgImg %}background:url({{data.buyBgImg}}) no-repeat 0 0/100% 100%;border:none;{% endif %}
+														{% if data.buyRadius %}border-radius:{{data.buyRadius}}px;{% endif %}
+														width:{{pageData.buyWidth}}rem;
+														{% if pageData.buyHeight %}height:{{pageData.buyHeight}}rem;line-height:{{pageData.buyHeight}}rem{% endif %}">
+                                {{data.buyText|default('BUY NOW')}}
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        </div>
+    </div>
+    </div>
+</div>

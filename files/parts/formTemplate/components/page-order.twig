@@ -1,0 +1,49 @@
+<div class="layui-form" lay-filter="page-order-form">
+    <div class="layui-form-item" id="page__select--order">
+        <label class="layui-form-label">页面默认排序</label>
+        <div class="layui-input-block">
+            <select name="sort_id" lay-filter="page-order">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<script>
+$(function () {
+    var page_order_id = '{{ data.sort_id|default('') }}';
+    var url = GESHOP_INTERFACE.gesApi_design_esSearchSortByList.url;
+    var params = {
+        'site_code': window.GESHOP_SITECODE || '', /*站点编码，ZF/RG*/
+        'lang': window.GESHOP_LANG || 'en',  /*当前页面选中的语种，默认英语*/
+        'pipeline': window.GESHOP_PIPELINE || '' /*当前页面渠道*/
+    };
+    $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'jsonp',
+        data: params,
+        complete: function (xhr) {
+            Design.disableLoading();
+            var res = xhr.responseJSON;
+            if (res.code != 0) {
+                layui.layer.msg(res.message || '请求错误');
+            }
+        }
+    }).done(function(res){
+        var data = res.data;
+        if (data && data.length > 0) {
+            var html = '';
+            for (var i = 0; i < data.length; i++) {
+                if (page_order_id === data[i]['item_id']) {
+                    html += '<option value=' + data[i]['item_id'] + ' selected="selected">' + data[i]['item_title'] + '</option>';
+                } else {
+                    html += '<option value=' + data[i]['item_id'] + ' >' + data[i]['item_title'] + '</option>';
+                }
+            }
+            $('#page__select--order').find('select[name=sort_id]').html(html);
+            layui.form.render('select', 'page-order-form');
+        }
+    });
+});
+</script>

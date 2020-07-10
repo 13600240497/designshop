@@ -1,0 +1,39 @@
+{
+    "fields": {
+        "goodsSKU": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "skuLimit": { "is_public": "1", "is_m": "1", "is_app": "1" },
+
+        "box_margin_bottom": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "box_bg_color": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "hover_borderColor": { "is_public": "0", "is_m": "0", "is_app": "0" },
+
+        "pre_text_color": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "notstart_prePriceBgC": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "notstart_pre_bgImg": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "pre_text": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "notstart_shopprice_text": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "notstart_text_color": { "is_public": "1", "is_m": "1", "is_app": "1" },
+
+        "underway_text_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "underway_prePriceBgC": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "underway_pre_bgImg": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "start_text": { "is_public": "0", "is_m": "1", "is_app": "1" },
+
+        "buynow_bg_color": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "buynow_font_color": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "buynow_radius": { "is_public": "0", "is_m": "0", "is_app": "1" },
+        "buynow_show": { "is_public": "1", "is_m": "1", "is_app": "1" },
+
+        "discount_bg_image": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "discount_bg_color": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "discount_font_color": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "discount_show": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "discount_type": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "discount_width": { "is_public": "0", "is_m": "0", "is_app": "1" },
+        "discount_height": { "is_public": "0", "is_m": "0", "is_app": "1" },
+        "discount_top": { "is_public": "0", "is_m": "0", "is_app": "1" },
+        "discount_right": { "is_public": "0", "is_m": "0", "is_app": "1" },
+        "discount_font_top": { "is_public": "0", "is_m": "0", "is_app": "1" },
+        "discount_font_right": { "is_public": "0", "is_m": "0", "is_app": "1" }
+    }
+}

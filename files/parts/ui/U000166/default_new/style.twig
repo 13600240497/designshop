@@ -1,0 +1,31 @@
+
+{% set root = '#U000166_'~pageInstanceId %}
+{% set classSpace = '.geshop_u000166_default_new_body' %}
+
+
+{# 商品圆角样式 #}
+{{ root }} {{classSpace}} ul li{
+    border-radius: {{ (data.goods_border_radius | default('12'))/75 }}rem;
+}
+
+{# 兑换按钮样式 #}
+{{ root }} {{classSpace}} .list_item .item_btn_integral a{
+    background-color: {{ data.exchange_bg_color | default('#333333') }};
+    border-radius: {{ (data.exchange_btn_radius | default('30'))/75 }}rem;
+    color:{{ data.exchange_font_color | default('#FFFFFF') }};
+}
+
+{# 积分价格样式 #}
+{{ root }} {{classSpace}} .list_item .item_integral .left{
+    color: {{ data.shop_price_color | default('#333333') }};
+}
+{{ root }} {{classSpace}} .list_item .item_integral .right{
+    color: {{ data.integral_font_color | default('#333333') }};
+}
+
+{# view more样式 #}
+
+{{ root }} {{classSpace}} .item_more_less .view_more{
+    background-color: {{ data.view_more_bg_color | default('#FFFFFF') }};
+    color: {{ data.view_more_font_color | default('#333333') }};
+}

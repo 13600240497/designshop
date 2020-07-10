@@ -1,0 +1,39 @@
+{{ include ('@app/files/parts/common/components/input.twig',
+    { options: { label:'积分状态图片',name:'SignIntegralStateImg',value:pageData.SignIntegralStateImg ,full:true,imgPrefix:true}}
+) }}
+
+{{ include ('@app/files/parts/common/components/input.twig',
+    { options: { label:'积分数文字颜色',name:'SignIntegralNumColor',value:pageData.SignIntegralNumColor ,full:true,colorPrefix:true}}
+) }}
+
+{{ include ('@app/files/parts/common/components/input.twig',
+    { options: { label:'积分累计天数文字颜色',name:'SignIntegralDayColor',value:pageData.SignIntegralDayColor ,full:true,colorPrefix:true}}
+) }}
+
+{{ include ('@app/files/parts/common/components/input.twig',
+    { options: { label:'按钮背景图片',name:'SignBackgroundImg',value:pageData.SignBackgroundImg ,full:true,imgPrefix:true}}
+) }}
+
+
+<div class="layui-row layui-col-space20">
+    <div class="layui-col-md6">
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'按钮文字颜色',name:'SignButtonTxtColor',value:pageData.SignButtonTxtColor ,full:true,colorPrefix:true}}
+        ) }}
+    </div>
+    <div class="layui-col-md6">
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'按钮背景颜色',name:'SignButtonBackgroundColor',value:pageData.SignButtonBackgroundColor ,full:true,colorPrefix:true}}
+        ) }}
+    </div>
+</div>
+
+{{ include ('@app/files/parts/common/components/input.twig',
+    { options: { label:'按钮文字',name:'SignButtonTxt',value:pageData.SignButtonTxt ,full:true }}
+) }}
+
+
+
+
+
+

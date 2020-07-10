@@ -1,0 +1,19 @@
+{# 
+    销售价
+    @params value               价格
+    @style
+ #}
+ 
+{# 输出HTML #}
+{% if params is not null %}
+    <div class="geshop-components-default-label-market-price label-market-price-{{ pageInstanceId }}">
+        <del><span class="my_shop_price my-shop-price js_market_wrap" data-orgp="{{ params.value | default('0.00') }}">${{ params.value | default('0.00') }}</span></del>
+    </div>
+{% endif %} 
+
+
+{# 定制样式 #}
+{% if style is not null %}
+
+
+{% endif %}

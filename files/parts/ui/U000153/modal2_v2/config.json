@@ -1,0 +1,400 @@
+{
+    "name": "pc goodsList",
+    "version": "v1.0.0.1",
+    "description": "pc kill goodsList tab 多时段",
+    "author": "xingtao",
+    "doc": "http://wiki.hqygou.com:8090/pages/viewpage.action?pageId=39029806",
+    "commjs": {
+        "jquery": true
+    },
+    "commcss": {
+        "main": true
+    },
+    "min-width": "auto",
+    "min-height": "inherit",
+    "fields": {
+        "goodsSKU": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "goodsSKUTab": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "goodsSKUSort": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "box_margin_bottom": {
+            "is_public": "1",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "box_bg_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "box_multi_column": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "tab_endShowActive": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "tab_selectTextC": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "tab_selectBgc": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "tab_unselectTextC": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "tab_unselectBgc": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "timer_label": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "timer_font_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "timer_span_bg_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "timer_span_font_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "goods_item_radius": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "shop_price_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "progress_total_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "progress_left_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "goodsLimitsTextColor": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "goodsLimitsTextType": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "buynow_bg_image": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "buynow_bg_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "buynow_font_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "buynow_radius": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "buynow_show": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discount_font_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discount_bg_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discount_bg_image": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discount_type": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discount_show": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discount_width": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "discount_height": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "discount_top": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "discount_right": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "discount_font_top": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "discount_font_right": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        }
+    },
+    "languages": {
+        "off": {
+            "en": "OFF",
+            "de": "OFF",
+            "es": "DTO.",
+            "fr": "",
+            "it": "OFF",
+            "pt": "OFF",
+            "ru": "скидку",
+            "ar": "الخصم",
+            "ja": "オフ",
+            "ro": "REDUCERE"
+        },
+        "downStarts": {
+            "en": "Starts In",
+            "de": "Starts In",
+            "es": "Comienza en",
+            "fr": "Commencer dans",
+            "it": "Comincia alle",
+            "pt": "Começa em",
+            "ru": "Начинается в",
+            "ar": "تبدأ في",
+            "ja": "...で始まる",
+            "ro": "Incepe in"
+        },
+        "downEnds": {
+            "en": "Ends In",
+            "de": "Ends In",
+            "es": "Termina en",
+            "fr": "Plus que",
+            "it": "Termina alle",
+            "pt": "Termina em",
+            "ru": "Заканчивается в",
+            "ar": "تنتهي خلال",
+            "ja": "...で終わる",
+            "ro": "Se sfarseste in"
+        },
+        "yesterday": {
+            "en": "Yesterday",
+            "de": "Yesterday",
+            "es": "Ayer a las",
+            "fr": "Hier",
+            "it": "Ieri",
+            "pt": "Ontem às",
+            "ru": "Вчера в",
+            "ar": "الأمس",
+            "ja": "昨日",
+            "ro": "Ieri"
+        },
+        "today": {
+            "en": "Today",
+            "de": "Today",
+            "es": "Hoy a las",
+            "fr": "Aujourd'hui",
+            "it": "Oggi",
+            "pt": "Hoje às",
+            "ru": "Сегодня в",
+            "ar": "اليوم",
+            "ja": "今日",
+            "ro": "Astazi"
+        },
+        "tomorrow": {
+            "en": "Tomorrow",
+            "de": "Tomorrow",
+            "es": "Mañana a las",
+            "fr": "Demain",
+            "it": "Domani",
+            "pt": "Amanhã às",
+            "ru": "Завтра в",
+            "ar": "غدا",
+            "ja": "明日",
+            "ro": "Maine"
+        },
+        "ComingSoon": {
+            "en": "Coming Soon",
+            "de": "Coming Soon",
+            "es": "POR VENIR",
+            "fr": "Arrivera Bientôt",
+            "it": "Arriva Subito",
+            "pt": "Em Breve",
+            "ru": "Скоро",
+            "ar": "ستأتي قريبا",
+            "ja": "公開予定",
+            "ro": "In curand"
+        },
+        "Ongoing": {
+            "en": "Ongoing",
+            "de": "Ongoing",
+            "es": "En Curso",
+            "fr": "En Cours",
+            "it": "In Corso",
+            "pt": "Em Progresso",
+            "ru": "Постоянный",
+            "ar": "جاري التنفيذ",
+            "th": "Ongoing",
+            "vi": "Ongoing",
+            "ja": "継続中",
+            "ro": "In curs de desfasurare"
+        },
+        "Ended": {
+            "en": "Ended",
+            "de": "Ended",
+            "es": "Finito",
+            "fr": "Terminé",
+            "it": "Finito",
+            "pt": "Terminou",
+            "ru": "Постоянный",
+            "ar": "انتهى",
+            "th": "จบแล้ว",
+            "vi": "Ended",
+            "ja": "終わった",
+            "ro": "Sfarsit"
+        },
+        "AlreadyEnded": {
+            "en": "Already Ended",
+            "de": "Already Ended",
+            "es": "Ya Terminado",
+            "fr": "Déjà Fini",
+            "it": "Già Finito",
+            "pt": "Já Terminei",
+            "ru": "Закончилось",
+            "ar": "قد إنتهت",
+            "ja": "終了しました",
+            "ro": "Incheiat deja"
+        },
+        "BTNCOMINGSOON": {
+            "en": "COMING SOON",
+            "de": "COMING SOON",
+            "es": "POR VENIR",
+            "fr": "ARRIVERA BIENTÔT",
+            "it": "ARRIVA SUBITO",
+            "pt": "EM BREVE",
+            "ru": "Скоро",
+            "ar": "ستأتي قريبا",
+            "ja": "公開予定",
+            "ro": "IN CURAND"
+        },
+        "BTNBUYNOW": {
+            "en": "BUY NOW",
+            "de": "BUY NOW",
+            "es": "COMPRA AHORA",
+            "fr": "SHOPPEZ",
+            "it": "ACQUISTA ORA",
+            "pt": "COMPRE AGORA",
+            "ru": "Купить сейчас",
+            "ar": "شراء الآن",
+            "ja": "今買う",
+            "ro": "CUMPARA ACUM"
+        },
+        "BTNENDED": {
+            "en": "ENDED",
+            "de": "ENDED",
+            "es": "TERMINADOo",
+            "fr": "TERMINÉ",
+            "it": "Finito",
+            "pt": "TERMINADO",
+            "ru": "Заканчивающийся",
+            "ar": "إنتهت",
+            "ja": "終了しました",
+            "ro": "SFARSIT"
+        },
+        "BTNSOLDOUT": {
+            "en": "SOLD OUT",
+            "de": "SOLD OUT",
+            "es": "AGOTADO",
+            "fr": "ÉPUISÉ",
+            "it": "ESAURITO",
+            "pt": "ESGOTADO",
+            "ru": "Продано",
+            "ar": "بيعت كلها",
+            "ja": "売り切れ",
+            "ro": "VANDUT"
+        },
+        "Sold": {
+            "en": "claimed",
+            "de": "claimed",
+            "es": "piezas vendidas",
+            "fr": "Vendus",
+            "it": "venduti",
+            "pt": "Vendeu",
+            "ru": "заявлено",
+            "ar": "مباعة",
+            "ja": "受け取った",
+            "ro": "revendicat"
+        },
+        "left": {
+            "en": "only XX left",
+            "de": "only XX left",
+            "es": "only XX left",
+            "fr": "XX Restant(s)",
+            "it": "XX disponibili",
+            "pt": "apenas XX sobrando",
+            "ru": "осталось только XX",
+            "ar": "فقط XX باقية",
+            "ja": "残りXX個",
+            "ro": "doar XX ramase"
+        }
+    }
+}

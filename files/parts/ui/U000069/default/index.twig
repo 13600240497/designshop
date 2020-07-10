@@ -1,0 +1,9 @@
+<div class="geshop-component-box component-drag U000069" data-key="U000069" data-id="{{ pageInstanceId }}" {% if data.isEditEnv %}style="min-height:64px;"{% endif %}>
+   {% if data.tpl_css or data.tpl_html or data.tpl_js  %}
+    {{data.tpl_css}}
+    {{data.tpl_html}}
+    {{data.tpl_js}}
+   {% else %}
+    <p class="result-tips">暂时没有任何相关布局代码，您可以自行编辑</p>
+   {% endif %}
+</div>

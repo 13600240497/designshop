@@ -1,0 +1,95 @@
+{# 已经选择的模版 ID，兼容已经下架的模版选择和保存，v1.9.0，Cullen #}
+<input id="selected_template_id" type="hidden" value="{{ data.templates.selected }}">
+
+{# 循环遍历可用的模版ID数组 #}
+{% set template_ids = [] %}
+{% for template in data.templates.list %}
+    {% set template_ids = template_ids | merge([template.id]) %}
+{% endfor %}
+
+{# HTML #}
+<div class="layui-form-item">
+    <h4 class="column-title">模板选择<span>（切换模板后 标识的配置数据将被重置）</span></h4>
+    <ul class="template-list">
+
+        {# 如果当前使用的模版已经下架的话，输出1个不能选择的 LI #}
+        {% if data.templates.selected not in template_ids %}
+        <li class="active disabled">
+            <div class="template-list-wrap" title="正在使用">
+                <input
+                    type="radio"
+                    name="tpl_id"
+                    value="{{ data.templates.selected_tpl.id }}"
+                    lay-filter="templateId"
+                    title="{{ data.templates.selected_tpl.name }}"
+                    data-is-ssr="{{ data.templates.selected_tpl.is_vue_ssr | default(0) }}"
+                    data-status="disabled"
+                    checked>
+                <i class="layui-icon layui-icon-ok"></i>
+                <a  class="temp-name">{{ data.templates.selected_tpl.name }}</a>
+                {% if data.templates.selected_tpl.pic|length > 0 %}
+                    <img src="{{ data.templates.selected_tpl.pic | default('') }}" alt="">
+                {% endif %}
+            </div>
+            {# 过期的标签 #}
+            <span class="template-disabed-tag">
+                <img src="https://geshopimg.logsss.com/uploads/rVZ9iQ1uPxTmcHEKSn86aI4bCkG0lvJF.png">
+            </span>
+        </li>
+        {% endif %}
+        {# 输出正常的模版列表 #}
+        {% for item in data.templates.list %}
+        <li class="{% if item.id == data.templates.selected %} active {% endif %}enable" data-name-en="{{ item.name_en }}">
+            {# 如果当前模版已经禁用的话，增加1个div遮罩，绑定提示confirm弹窗 #}
+            <div class="{% if data.templates.selected not in template_ids %}js_change_template_confim{% endif %}">
+                <div class="template-list-wrap" title="{{ item.name }}">
+                    <input
+                        type="radio"
+                        name="tpl_id"
+                        value="{{ item.id }}"
+                        lay-filter="templateId"
+                        title="{{ item.name }}"
+                        data-is-ssr="{{ item.is_vue_ssr }}" 
+                        data-template-name="{{ item.name_en }}" 
+                        {% if item.id == data.templates.selected %} checked {% endif %}>
+                    <i class="layui-icon layui-icon-ok"></i>
+                    <a  class="temp-name">{{ item.name }}</a>
+                    {% if item.pic|length > 0 %}<img src="{{item.pic}}" alt="">{% endif %}
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<script>
+/** 过期的组件模版切换，人性化提示函数 */
+$(function() {
+    $(document).off('click', '.js_change_template_confim');
+    $(document).on('click', '.js_change_template_confim', function (event) {
+        var that = this;
+        event.stopPropagation();
+        var currentTemplate = {};
+        currentTemplate.name = $('input[name="tpl_id"]:checked').attr('title') || '';
+        currentTemplate.id = sessionStorage.getItem('currentTemplateId');
+        /* 模版状态，[enable/disabled] */
+        currentTemplate.status = $('input[name="tpl_id"]:checked').attr('data-status') || 'enable';
+        /* 如果当前使用的下架模版，切换模版的时候需要提示 confirm 是否确认切换 */
+        if (currentTemplate.status === 'disabled') {
+            layui.layer.confirm('您当前使用的模版“' + currentTemplate.name + '”已下架，切换新模版后将无法再使用当前模版，是否继续切换到新模版？', {
+                btn: ['取消', '确认'],
+                area: '420px',
+                icon: 3,
+                skin: 'element-ui-dialog-class'
+            }, function (index) {
+                layui.layer.close(index);
+                return false;
+            }, function (index) {
+                layui.layer.close(index);
+                /* 确认之后再次点击子元素，触发模版切换 */
+                $(that).removeClass('js_change_template_confim').find('.layui-form-radio').click();
+            });
+        };
+        return false;
+    });
+});
+</script>

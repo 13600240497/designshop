@@ -1,0 +1,41 @@
+<div class="geshop-component-box component-drag geshop-U000193-default geshop-U000193-default-{{ pageInstanceId }}"
+     data-key="U000193" data-id="{{ pageInstanceId }}">
+    {{ include('style.twig') }}
+    <input type="hidden" name="editEnv" value="{{ data.isEditEnv }}"/>
+    <input type="hidden" name="cHeight" value="-{{ data.component_height /2 | default(240) }}"/>
+    <input type="hidden" name="" value="{{ get_component_trans(lang,'email_require') }}"/>
+    <input type="hidden" name="show_success" value="{{ data.success_display | default(1) }}" />
+
+    <div class="mask"></div>
+    <div class="email-wrap" {% if data.isEditEnv == 1 %}style="margin-top:15px"{% endif %}>
+        <i class="geshop-popup-close"></i>
+        <div class="input-wrap">
+            <input type="text" name="email" placeholder="{{ get_component_trans(lang,'email_tip') }}"/>
+            <div class="submit-btn">{{ data.btn_text | default('JOIN') }}</div>
+            <div class="msg clearfix">
+                <i class="ico-arrow"></i>
+                <i class="ico-notice"></i>
+                <span class="msg-text"></span>
+            </div>
+        </div>
+        
+        <img 
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" 
+            data-logsss-browser-value="{ 'pm':'mpop','p':'gs-{{ pageId }}-{{ pageInstanceId }}', 'bv':{} }">
+    </div>
+
+    <div class="success-wrap">
+        <i class="geshop-popup-close"></i>
+        <p class="title">{{ data.success_text | default('Thanks! You"re in!') }} </p>
+        <p class="content">{{ data.success_contentText | default('Exclusive offer has been sent to your inbox.') }}</p>
+        {% if siteCode == 'rg-pc' %}
+            <a class="link"
+               href="https://login.rosegal.com/m-users-a-sign.htm">{{ data.success_btnText | default('CLAIM COUPON NOW') }}</a>
+        {% else %}
+            <a class="link"
+               href="//www.suaoki.com">{{ data.success_btnText | default('CLAIM COUPON NOW') }}</a>
+        {% endif %}
+    </div>
+
+</div>
+

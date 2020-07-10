@@ -1,0 +1,30 @@
+{# 产品库存 #}
+
+{% set goodLimit = {
+	activity_number :item.activity_number|default(0),
+	activity_volume_number:item.activity_volume_number|default(0),
+	activity_number_left:item.activity_number|number_format - item.activity_volume_number|number_format
+}%}
+
+<div class="gs-goods-limit">
+
+			<%#
+				var kill_number = parseInt(item.activity_number);
+				var left_persent = (item.activity_number_left/item.activity_number)*100?(item.activity_number_left/item.activity_number)*100:0;
+				var langLeft = "{{get_component_trans(lang,'left')}}";
+				var itemKillLeft = item.activity_number_left;
+				var langKillLeftValue = langLeft.replace('XX','<b>'+item.activity_number_left+'</b>');
+				var volume_persent = item.kill_volume_number/item.activity_number; %>
+
+				<span class="process-bar">
+					<em class="process-inner"
+						style="{% if pageData.buyBgC %}background-color:{{pageData.buyBgC}};{% endif %}
+						width:<% left_persent %>%;
+						"></em>
+				</span>
+
+				<span class="goods-limit-tips_left">
+					<% langKillLeftValue %>
+				</span>
+
+</div>

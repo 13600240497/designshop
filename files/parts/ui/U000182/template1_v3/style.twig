@@ -1,0 +1,44 @@
+{%
+    set space = '#U000182_' ~ pageInstanceId ~ ' .geshop-U000182-template1-v3-body'
+%}
+
+{{space}} {
+    background-color: {{data.box_bg_color |default('#f8f8f8')}};
+    margin-top: {{data.box_margin_bottom | default(0)}}px;
+    margin-bottom: {{data.box_margin_bottom | default(0)}}px;
+    overflow: hidden;
+}
+
+{# 购买弹层 #}
+{{space}} .shop-now-container {
+    color: {{data.shopNowFontColor | default('#000000')}};
+    font-size: {{data.shopNowFontSize | default(16) }}px;
+    background-color: {{data.btnBgColor | default('#ffffff')}};
+    border-color: {{data.btnBorderColor | default('#000')}};
+}
+{{space}} .shop-now-container .shop-now-text {
+    color: {{data.shopNowFontColor | default('#000000') }};
+    font-size: {{data.shopNowFontSize | default(16) }}px;
+}
+{{space}} .shop-now-container .bag-img {
+    background-image: url({{data.shopIconImg | default('https://geshoptest.s3.amazonaws.com/uploads/OmoKtEqZh8027cfkU56VTJaYi1WSIXRQ.png')}});
+}
+
+{# 营销文字 #}
+{{space}} .geshop-goods-promotions-more em {
+    color: {{ data.saleInfoFontColor | default('#000') }};
+}
+
+{# 销售价 #}
+{{space}} .geshop-shop-price {
+    font-size: {{ data.shop_price_size | default(22) }}px;
+}
+
+{# M #}
+@media screen and (max-width: 767px){
+    {{space}} .geshop-shop-price {
+        font-size: {{ data.shop_price_size_m | default(18) }}px;
+    }
+}
+
+{% include '@app/files/parts/formTemplate/components/margin-dl-style.twig' with{'space':space} %}

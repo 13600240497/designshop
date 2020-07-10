@@ -1,0 +1,137 @@
+{# 
+config 配置项参考
+
+"discount_bg_image": { "is_public": "1", "is_m": "1", "is_app": "1" },
+"discount_bg_color": { "is_public": "1", "is_m": "1", "is_app": "1" },
+"discount_font_color": { "is_public": "1", "is_m": "1", "is_app": "1" },
+"discount_show": { "is_public": "1", "is_m": "1", "is_app": "1" },
+"discount_type": { "is_public": "1", "is_m": "1", "is_app": "1" },
+
+"discount_width": { "is_public": "1", "is_m": "0", "is_app": "1" },
+"discount_height": { "is_public": "1", "is_m": "0", "is_app": "1" },
+"discount_top": { "is_public": "1", "is_m": "0", "is_app": "1" },
+"discount_right": { "is_public": "1", "is_m": "0", "is_app": "1" },
+"discount_font_top": { "is_public": "1", "is_m": "0", "is_app": "1" },
+"discount_font_right": { "is_public": "1", "is_m": "0", "is_app": "1" },
+
+#}
+
+{# PC端 和 M端 的宽高，文字边距配置项默认值不一样的  显示方式-OFF #}
+{% set discount_default = {
+    width: platform == 'pc' ? '50' : '80',
+    height: platform == 'pc' ? '50' : '80',
+    top: platform == 'pc' ? '0' : '12',
+    right: platform == 'pc' ? '0' : '12',
+    font_top: platform == 'pc' ? '11' : '18',
+    font_right: platform == 'pc' ? '9' : '15',
+} %}
+{#  discount_type 0 显示方式-***%#}
+{% set discount_default_0 = {
+    width: platform == 'pc' ? '50' : '80',
+    height: platform == 'pc' ? '50' : '80',
+    top: platform == 'pc' ? '0' : '12',
+    right: platform == 'pc' ? '0' : '12',
+    font_top: platform == 'pc' ? '18' : '27',
+    font_right: platform == 'pc' ? '6' : '12',
+} %}
+
+
+{# 公共的配置项，无需区分端的 #}
+{% set components = [
+    { label: '宽度(px)', name: 'discount_width', default: discount_default.width, col: 2 },
+    { label: '高度(px)', name: 'discount_height', default: discount_default.width, col: 2 },
+    { label: '整体上偏移(px)', name: 'discount_top', default: discount_default.top, col: 2 },
+    { label: '整体右偏移(px)', name: 'discount_right', default: discount_default.right, col: 2 },
+    { label: '文字上偏移(px)', name: 'discount_font_top', default: discount_default.font_top, col: 2 },
+    { label: '文字右偏移(px)', name: 'discount_font_right', default: discount_default.font_right, col: 2 },
+    {
+        label: '是否显示',
+        name: 'discount_show',
+        default: '1',
+        type: 'radio',
+        options: [
+        { label: '是', value: '1' },
+        { label: '否', value: '0' }
+    ]
+    },
+    {
+        label: '显示方式',
+        name: 'discount_type',
+        default: '1',
+        type: 'radio',
+        options: [
+        { label: '***%OFF', value: '1' },
+        { label: '-***%', value: '0' }
+    ]
+    },
+    { label: '背景图片', name: 'discount_bg_image', default: '', type: 'image' },
+    { label: '背景颜色', name: 'discount_bg_color', default: '#333333', type: 'colorPicker' },
+    { label: '文字颜色', name: 'discount_font_color', default: '#ffffff', type: 'colorPicker' },
+] %}
+
+{# 合并当前端的配置项 #}
+<fieldset class="layui-elem-field">
+    <legend>折扣标配置</legend>
+    <div class="layui-field-box">
+        {{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}
+    </div>
+</fieldset>
+
+<script>
+$(function () {
+    var $component = $('#component_form');
+    var $input = $('input[name=discount_type]', $component);
+    var $inputs = $input.parents('.layui-input-block').find('.layui-unselect');
+    var discount_default = {{ discount_default|json_encode() }};
+    var discount_default_0 = {{ discount_default_0|json_encode() }};
+
+    var typeVal = getVal();
+    var data = {};
+
+    /* 折扣标显示切换*/
+    $inputs.on('click', function () {
+        var _val = parseInt($(this).prev().val());
+        if (_val === 1) {
+            data = Object.assign({}, discount_default);
+        } else if (_val === 0) {
+            data = Object.assign({}, discount_default_0);
+        }
+        renderForm(data);
+    });
+
+    /**
+     * 选中discount类型 1 OFF 0 ...
+     * @returns {number}
+     */
+    function getVal () {
+        var typeVal = 0;
+        $input.each(function (index, item) {
+            if ($(item).prop('checked')) {
+                typeVal = $(item).val();
+            }
+            ;
+        });
+        return typeVal;
+    };
+
+    /**
+     * 重新渲染折扣标属性
+     * @param data
+     */
+    function renderForm (data) {
+        var $width = $('input[name=discount_width]',$component);
+        var $height = $('input[name=discount_height]',$component);
+        var $top = $('input[name=discount_top]',$component);
+        var $right = $('input[name=discount_right]',$component);
+        var $fontTop = $('input[name=discount_font_top]',$component);
+        var $fontRight = $('input[name=discount_font_right]',$component);
+
+        /*$width.val(data.width);
+        $height.val(data.height);
+        $top.val(data.top);
+        $right.val(data.right);*/
+        $fontTop.val(data.font_top);
+        $fontRight.val(data.font_right);
+    }
+});
+</script>

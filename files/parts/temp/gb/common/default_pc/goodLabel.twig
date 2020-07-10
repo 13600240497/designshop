@@ -1,0 +1,84 @@
+{# 服务标 #}
+
+{% set labelArrr = [
+		{
+			"text":" overflow",
+			"text_color":"#FF0000",
+			"bg_color":"#00FF00",
+			"pic_url":"",
+			"link_url":"http://www.baidu.com",
+		},
+		{
+			"text":"  overflow overflowoverflow overflowoverflow overflowoverflow overflow",
+			"text_color":"#FF0000",
+			"bg_color":"#00FF00",
+			"pic_url":"",
+			"link_url":"http://www.baidu.com",
+		},
+		{
+			"text":"222",
+			"text_color":"#FFFF00",
+			"bg_color":"#0000FF",
+			"pic_url":"https://uidesign.gbtcdn.com/GB/images/promotion/2018/1111/Formal/pc/en_1920x500.jpg",
+			"link_url":"http://www.baidu.com",
+		}
+		]
+%}
+{# 
+
+		{
+			"text":" overflow overflow overflow overflow",
+			"text_color":"#FF0000",
+			"bg_color":"#00FF00",
+			"pic_url":"",
+			"link_url":"http://www.baidu.com",
+		},
+		{
+			"text":"222",
+			"text_color":"#FFFF00",
+			"bg_color":"#0000FF",
+			"pic_url":"https://gloimg.zafcdn.com/zaful/pdm-product-pic/Clothing/2017/05/06/goods-img/1496715782753786870.jpg",
+			"link_url":"http://www.baidu.com",
+		}
+
+ #}
+
+{# 服务标 #}
+ {% 
+ 	set pageData = {
+		server_label_active: data.server_label_active|default(0),
+	}
+ %}
+
+{% if pageData.server_label_active == "1" and item.service_tag %}
+
+<div class="gs-goods-label" 
+style="{% if labelBottom is not null %} bottom:{{labelBottom}}px; {% endif %} 
+	   {% if labelLeft is not null %} left:{{labelLeft}}px; {% endif %}
+	   text-align:left;
+	   ">
+	{% for key,labelItem in item.service_tag %}
+		{% if labelItem.text != '' or labelItem.pic_url != '' %}
+		<p  onclick="window.location='{{labelItem.link_url}}';" 
+		style="
+			display:inline-block;
+			color:{{labelItem.text_color}};
+			{% if labelItem.pic_url == "" %}
+				background:{{labelItem.bg_color}};
+			{% else %}
+				background:transparent;
+			{% endif %}
+			">
+			{% if labelItem.pic_url == "" %}
+			{{labelItem.text}}
+			{% else %}
+				<img style="margin-left:-10px;max-height:100%;border-radius: 0 20px 20px 0;" src="{{labelItem.pic_url}}" />
+			{% endif %}
+
+			</p><br/>
+			{% endif %}
+	{% endfor %}
+	
+</div>
+
+{% endif %}

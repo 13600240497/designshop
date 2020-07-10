@@ -1,0 +1,25 @@
+{% set userGroupClass = "geshop_user_"~data.userGroupSelect|default(0) %}
+
+<div class="geshop-component-box component-drag {{ userGroupClass }}"
+     data-key="U000082"
+     data-id="{{ pageInstanceId }}"
+     style="text-align: center;margin-top: {{ data.marginTop | default(0) }}px; margin-bottom: {{ data.marginBottom | default(0) }}px;">
+    <div class="U000082-hot-wrap-box">
+        <div class="wrap-cont">
+            <map id="hotmap_{{ pageInstanceId }}" name="hotmap_{{ pageInstanceId }}">
+                {% for area in data.areas %}
+                    <area shape="rect" coords="{{ area.formattedCoords }}" href="{{ area.href }}"
+                          {% if data.openInNewWindow == 1 %}target="_blank"{% endif %} class="logsss_event"
+                          style="outline: none;"
+                          data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.imgSrc }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }"
+                    >
+                {% endfor %}
+            </map>
+            <img usemap="#hotmap_{{ pageInstanceId }}"
+                 src="{{ data.imgSrc | default(data.default.banner) }}"{% if data.imgSrc|length == 0 %} style="max-width: 100%;"{% endif %}
+                 class="js_gdexp_lazy js-geshopImg-lazyload js_gbexp_lazy"
+                 data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.imgSrc }}','cporder':'{{ layoutIndex }}','rank':'1'} }"
+            >
+        </div>
+    </div>
+</div>

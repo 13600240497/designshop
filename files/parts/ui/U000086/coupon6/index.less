@@ -1,0 +1,345 @@
+.geshop-U000086-coupon6 {
+
+    .geshop-coupon-style4 {
+        width: 595px;
+        height: 160px;
+        overflow: hidden;
+        display: table;
+        position: relative;
+
+        // 直减分类
+        &.is-reduction {
+            .gc4-coupon-sign.percent {
+                display: none;
+            }
+            .gc4-coupon-sign.currency {
+                display: inline-block;
+            }
+        }
+
+        // 百分比
+        &.is-percent {
+            .gc4-coupon-sign.percent {
+                display: inline-block;
+            }
+            .gc4-coupon-sign.currency {
+                display: none;
+            }
+        }
+
+        // 全站分类样式
+        &.is-all-category {
+            .gc4-title {
+                &[data-category-name] {
+                    display: none;
+                }
+                &[data-all-category] {
+                    display: show;
+                }
+            }
+        }
+
+        // 个别分类
+        &.is-category {
+            .gc4-title {
+                &[data-category-name] {
+                    display: show;
+                }
+                &[data-all-category] {
+                    display: none;
+                }
+            }
+        }
+
+        &.is-sku {
+            .gc4-l {
+                padding: 20px 0px;
+                .gc4-l-container {
+                    height: 120px;
+                    .gc4-title {
+                        font-size: 30px;
+                        height: 30px;
+                    }
+                }
+            }
+            .gc4-product-image {
+                display: inline-block;
+                width: 120px;
+                img {
+                    margin: 0 auto;
+                    display: block;
+                    height: 120px;
+                    width: auto;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        // 已领取
+        &.is-get {
+            .gc4-circle-process {
+                display: none;
+            }
+            .gc4-coupon-code {
+                display: block;
+            }
+            .gc4-get-message {
+                display: block;
+            }
+            .gc4-get-btn[data-type="canUse"] {
+                display: block;
+            }
+        }
+
+        // 免邮
+        &.is-free-shipping {
+            .gc4-free-tag {
+                display: block;
+            }
+        }
+
+        // 准备倒计时
+        &.is-countReady {
+            .countdown-ready-label {
+                display: inline;
+            }
+            .countdown-end-label {
+                display: none;
+            }
+            .gc4-get-btn[data-type="ready"] {
+                display: block;
+            }
+        }
+
+        // 已经倒计时
+        &.is-countStart {
+            .countdown-ready-label {
+                display: none;
+            }
+            .countdown-end-label {
+                display: inline;
+            }
+            .gc4-get-btn[data-type="canGet"] {
+                display: block;
+            }
+            &.is-get {
+                .gc4-get-btn[data-type="canGet"] {
+                    display: none;
+                }
+            }
+        }
+
+        // 倒计时结束了
+        &.is-countEnd {
+            .countdown-ready-label {
+                display: none;
+            }
+            .countdown-end-label {
+                display: line;
+            }
+            .gc4-get-btn[data-type="ended"] {
+                display: block;
+            }
+        }
+
+    }
+    // 左边
+    .gc4-l {
+        position: relative;
+        padding: 28px 0px;
+        display: table-cell;
+        vertical-align: middle;
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+
+    }
+    .gc4-l-container {
+        font-size: 0;
+        //height: 102px;
+        /*display: flex;
+        flex: 1;
+        flex-wrap: nowrap;*/
+    }
+    // 左左边
+    .gc4-l-l {
+        width: 156px;
+        height: auto;
+        text-align: center;
+        display: inline-block;
+        vertical-align: middle;
+        //line-height: 102px;
+        flex-shrink: 0px;
+        > * {
+            display: inline-block;
+        }
+    }
+    .gc4-coupon-value {
+        font-size: 72px;
+        height: 72px;
+        line-height: 72px;
+        // vertical-align: middle;
+        vertical-align: baseline;
+        padding: 0 2px;
+    }
+    .gc4-coupon-sign {
+        font-size: 20px;
+        height: 20px;
+        line-height: 20px;
+        vertical-align: top;
+        // padding-top: 25px;
+        padding-top: 7%;
+    }
+
+    // 右边
+    .gc4-l-r {
+        display: inline-block;
+        width: 240px;
+        height: auto;
+        text-align: left;
+        vertical-align: middle;
+    }
+    .gc4-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        a {
+            text-decoration: underline;
+        }
+    }
+    .gc4-desc {
+        font-size: 12px;
+        color: #363B3E;
+        p {
+            margin: 0px;
+            line-height:17px;
+        }
+    }
+
+    //
+    .gc4-r {
+        display: table-cell;
+        width: 180px;
+        border-radius: 8px;
+        background: #D8D8D8;
+        text-align: center;
+        vertical-align: middle;
+        position: relative;
+        overflow: hidden;
+        // 虚线
+        &:before {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            bottom: 0px;
+            width: 0px;
+            height: 100%;
+            border-left: dashed 1px #979797;
+            content: " ";
+            z-index: 1;
+            display: table-cell;
+        }
+    }
+
+    // 按钮
+    .gc4-get-btn {
+        width: 120px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 15px;
+        font-size: 14px;
+        margin: 0 auto;
+        background: #CCCCCC;
+        display: none;
+        &[data-type="canGet"], &[data-type="canUse"] {
+            cursor: pointer;
+        }
+    }
+    .gc4-coupon-code {
+        height: 24px;
+        color: #363B3E;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        display: none;
+    }
+    .gc4-get-message {
+        font-size: 14px;
+        height: 19px;
+        line-height: 19px;
+        margin-bottom: 21px;
+        display: none;
+        a {
+            text-decoration: underline;
+        }
+    }
+
+    // 免邮标签
+    .gc4-free-tag {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        min-width: 97px;
+        height: 25px;
+        line-height: 25px;
+        font-size: 12px;
+        color: #363B3E;
+        background: #D8D8D8;
+        text-align: center;
+        display: none;
+        box-sizing: border-box;
+        padding: 0 8px;
+    }
+
+    // 弹窗二
+    .geshop-coupon-style4-dialog-2 {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        z-index: 100;
+        .gc4d2-wrapper {
+            position: absolute;
+            width: 600px;
+            height: 350px;
+            text-align: center;
+            background: #fff;
+            border-radius: 20px;
+            left: 50%;
+            top: 50%;
+            margin-left: -300px;
+            margin-top: -175px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, .3);
+            box-sizing: border-box;
+            .gc4d2-body {
+                padding: 0px 76px;
+                padding-top: 82px;
+                .gc4d2-text {
+                    font-size: 24px;
+                    line-height: 33px;
+                    margin-bottom: 64px;
+                }
+                button {
+                    display: block;
+                    margin: 0 auto;
+                    width: 160px;
+                    height: 40px;
+                    line-height: 4px;
+                    font-size: 20px;
+                    color: #fff;
+                    text-align: center;
+                    border-radius: 24px;
+                    border: none;
+                    background: #333;
+                }
+            }
+        }
+    }
+
+
+    @import 'less-module/coupon.less';
+    @import 'less-module/dialog1.less';
+
+}

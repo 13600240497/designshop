@@ -1,0 +1,398 @@
+<!-- 商品类组件样式设置tpl_m -->
+
+<link rel="stylesheet" href="/resources/tpl/commontpl/tpl_component_stylesheet.css">
+<script id="tpl_geshop_component_stylesheet" type="text/template">
+	{{#
+	var baseObj = {
+	base_bg_width: 750,
+	base_bg_color: '#FFFFFF',
+	base_box_bgImage: '',
+	component_bg_value:'',
+	component_bg_repeat:'',
+	component_bg_position:'',
+	base_box_radius: 0,
+	base_box_border_active:0,
+	base_box_border_width:0,
+	base_box_border_color:'',
+	};
+
+	var discount = {
+	discount_bgc:'#FF8A00',
+	discount_ftc:'#FFFFFF',
+	discount_height:'70',
+	discount_width:'70',
+	discount_bgImage:'',
+	discount_fts:'24',
+	discount_off_fts:'22',
+	discount_right:'12',
+	discount_top:'12',
+	};
+
+	var buyBtn = {
+	buy_bgc:'#FF8A00',
+	buy_ftc:'#FFFFFF',
+	buy_bg_image:'',
+	};
+
+	var buyCart = {
+	buy_cart_bgc:'#CC0000',
+	buy_cart_color:'#666666',
+	};
+
+	var shadow = {
+	base_bg_shadow:'0',
+	base_bg_shadow_color:'',
+	base_bg_shadow_color_rgb:'',
+	goods_shadow_active:'0',
+	goods_shadow_color:'',
+	goods_shadow_color_rgb:'',
+	};
+
+	var viewMore = {
+	view_more_bgc:'transparent',
+	view_more_border_color:'#333333',
+	view_more_border_radius:'2',
+	view_more_ftc:'#333333',
+	view_more_fts:'24',
+	};
+
+	var viewAll = {
+	view_all_color:'#333333',
+	view_all_fts:'24',
+	};
+
+	var price = {
+	price_color:'#f30240',
+	price_fts:'32',
+	price_ft_weight:'1',
+	};
+
+	var pageForm = Object.assign(baseObj,discount,buyBtn,buyCart,shadow,viewMore,viewAll,price);
+
+	var pageData = Object.assign(pageForm,d);
+	}}
+	<form class="layui-form gb-stylesheet-form">
+		<div class="geshop-stylesheet-form gs-background-wrap">
+			<div class="layui-tab layui-tab-vertical">
+				<ul class="layui-tab-title">
+					<li class="layui-this">基础配置</li>
+					<li>折扣标配置</li>
+					<li>购买按钮配置</li>
+					<li>购物车配置</li>
+					<li>投影配置</li>
+					<li>View more配置</li>
+					<li>View all配置</li>
+					<li>价格配置</li>
+				</ul>
+				<div class="layui-tab-content">
+					<!-- 基础设置 -->
+					<div class="layui-tab-item layui-show">
+<!--						<div class="layui-form-item">
+							<label class="layui-form-label">组件背景宽度(px)</label>
+							<div class="layui-input-block"><input class="layui-input" type="text" name="base_bg_width" data-public-tag="true" value="{{ pageData.base_bg_width }}">
+							</div>
+						</div>-->
+						<div class="layui-form-item">
+							<label class="layui-form-label">组件背景颜色</label>
+							<div class="layui-input-block">
+								<div class="color-picker-selector" data-hidden-name="base_bg_color">
+									<div style="background-color: {{ pageData.base_bg_color }};"></div>
+								</div>
+								<input type="text" class="layui-input" name="base_bg_color" autocomplete="off" data-public-tag="true" value="{{ pageData.base_bg_color }}">
+							</div>
+						</div>
+
+						<div class="layui-form-item class-bg-group">
+							<label class="layui-form-label">组件背景图片</label>
+							<div class="layui-input-block">
+								<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+								<input class="layui-input component_bg" type="text" name="base_box_bgImage" data-public-tag="true" value="{{pageData.base_box_bgImage}}">
+								<input type="hidden" name="component_bg_value" data-public-tag="true" value="{{ pageData.component_bg_value }}">
+								<input type="hidden" name="component_bg_repeat" data-public-tag="true" value="{{ pageData.component_bg_repeat }}">
+								<input type="hidden" name="component_bg_position" data-public-tag="true" value="{{ pageData.component_bg_position }}">
+								<span class="el-button el-button--primary el-button--small el-button--blue class-background" style="float:right">设置</span>
+							</div>
+						</div>
+
+						<div class="layui-form-item">
+							<label class="layui-form-label">组件背景圆角(px)</label>
+							<div class="layui-input-block"><input class="layui-input" type="text" name="base_box_radius" data-public-tag="true" value="{{ pageData.base_box_radius}}">
+							</div>
+						</div>
+<!--						<div class="layui-form-item">
+							<label class="layui-form-label">组件描边是否开启</label>
+							<div class="layui-input-block">
+								<input type="radio" name="base_box_border_active" data-public-tag="true" value="1" title="是" {{# if(pageData.base_box_border_active== '1'){ }}
+								checked="checked"
+								{{# } }}>
+								<input type="radio" name="base_box_border_active" data-public-tag="true" value="0" title="否" {{# if(pageData.base_box_border_active== '0'){ }}
+								checked="checked"
+								{{# } }}>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">组件描边宽度(px)</label>
+							<div class="layui-input-block"><input class="layui-input" type="text" name="base_box_border_width" data-public-tag="true" value="{{ pageData.base_box_border_width }}">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">组件描边颜色</label>
+							<div class="layui-input-block">
+								<div class="color-picker-selector" data-hidden-name="base_box_border_color">
+									<div style="background-color: {{ pageData.base_box_border_color }};"></div>
+								</div>
+								<input type="text" class="layui-input" name="base_box_border_color" autocomplete="off" data-public-tag="true" value="{{ pageData.base_box_border_color }}">
+							</div>
+						</div>-->
+
+					</div>
+					<!--折扣标设置-->
+					<div class="layui-tab-item">
+						<div class="layui-form-item">
+							<label class="layui-form-label">背景颜色</label>
+							<div class="layui-input-block">
+								<div class="color-picker-selector" data-hidden-name="discount_bgc">
+									<div style="background-color: {{ pageData.discount_bgc }};"></div>
+								</div>
+								<input type="text" class="layui-input" name="discount_bgc" autocomplete="off" data-public-tag="true" value="{{ pageData.discount_bgc }}">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">文字颜色</label>
+							<div class="layui-input-block">
+								<div class="color-picker-selector" data-hidden-name="discount_ftc">
+									<div style="background-color: {{ pageData.discount_ftc }};"></div>
+								</div>
+								<input type="text" class="layui-input" name="discount_ftc" autocomplete="off" data-public-tag="true" value="{{ pageData.discount_ftc }}">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">折扣标宽度(px)</label>
+							<div class="layui-input-block"><input class="layui-input" type="text" name="discount_width" data-public-tag="true" value="{{ pageData.discount_width }}">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">折扣标高度(px)</label>
+							<div class="layui-input-block"><input class="layui-input" type="text" name="discount_height" data-public-tag="true" value="{{ pageData.discount_height }}">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">折扣标背景图</label>
+							<div class="layui-input-block">
+								<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+								<input class="layui-input" type="text" name="discount_bgImage" data-public-tag="true" value="{{pageData.discount_bgImage}}">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">折扣力度文字大小(px)</label>
+							<div class="layui-input-block"><input class="layui-input" type="text" name="discount_fts" data-public-tag="true" value="{{ pageData.discount_fts }}">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">OFF文字大小(px)</label>
+							<div class="layui-input-block"><input class="layui-input" type="text" name="discount_off_fts" data-public-tag="true" value="{{ pageData.discount_off_fts }}">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">折扣标左偏移(px)</label>
+							<div class="layui-input-block"><input class="layui-input" type="text" name="discount_right" data-public-tag="true" value="{{ pageData.discount_right }}">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">折扣标下偏移(px)</label>
+							<div class="layui-input-block"><input class="layui-input" type="text" name="discount_top" data-public-tag="true" value="{{ pageData.discount_top }}">
+							</div>
+						</div>
+					</div>
+					<!--购买按钮设置-->
+					<div class="layui-tab-item">
+						<div class="layui-form-item">
+							<label class="layui-form-label">背景颜色</label>
+							<div class="layui-input-block">
+								<div class="color-picker-selector" data-hidden-name="buy_bgc">
+									<div style="background-color: {{ pageData.buy_bgc }};"></div>
+								</div>
+								<input type="text" class="layui-input" name="buy_bgc" autocomplete="off" data-public-tag="true" value="{{ pageData.buy_bgc }}">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">文字颜色</label>
+							<div class="layui-input-block">
+								<div class="color-picker-selector" data-hidden-name="buy_ftc">
+									<div style="background-color: {{ pageData.buy_ftc }};"></div>
+								</div>
+								<input type="text" class="layui-input" name="buy_ftc" autocomplete="off" data-public-tag="true" value="{{ pageData.buy_ftc }}">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">背景图片</label>
+							<div class="layui-input-block">
+								<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+								<input class="layui-input" type="text" name="buy_bg_image" data-public-tag="true" value="{{pageData.buy_bg_image}}">
+							</div>
+						</div>
+					</div>
+					<!--购物车设置-->
+					<div class="layui-tab-item">
+						<!--						<div class="layui-form-item">
+                          <label class="layui-form-label">背景颜色</label>
+                          <div class="layui-input-block">
+                            <div class="color-picker-selector" data-hidden-name="buy_cart_bgc">
+                              <div style="background-color: {{ pageData.buy_cart_bgc }};"></div>
+                            </div>
+                            <input type="text" class="layui-input" name="buy_cart_bgc" autocomplete="off" data-public-tag="true" value="{{ pageData.buy_cart_bgc }}">
+                          </div>
+                        </div>-->
+						<div class="layui-form-item">
+							<label class="layui-form-label">购物车颜色</label>
+							<div class="layui-input-block">
+								<div class="color-picker-selector" data-hidden-name="buy_cart_color">
+									<div style="background-color: {{ pageData.buy_cart_color }};"></div>
+								</div>
+								<input type="text" class="layui-input" name="buy_cart_color" autocomplete="off" data-public-tag="true" value="{{ pageData.buy_cart_color }}">
+							</div>
+						</div>
+					</div>
+					<!--投影设置-->
+					<div class="layui-tab-item">
+						<div class="layui-form-item">
+							<label class="layui-form-label">组件背景投影是否开启</label>
+							<div class="layui-input-block">
+								<input type="radio" name="base_bg_shadow" data-public-tag="true" value="1" title="是" {{# if(pageData.base_bg_shadow== '1'){ }}
+								checked="checked"
+								{{# } }}>
+								<input type="radio" name="base_bg_shadow" data-public-tag="true" value="0" title="否" {{# if(pageData.base_bg_shadow== '0'){ }}
+								checked="checked"
+								{{# } }}>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">组件背景投影颜色</label>
+							<div class="layui-input-block">
+								<div class="color-picker-selector" data-hidden-name="base_bg_shadow_color">
+									<div style="background-color: {{ pageData.base_bg_shadow_color }};"></div>
+								</div>
+								<input type="text" class="layui-input" name="base_bg_shadow_color" autocomplete="off" data-public-tag="true" value="{{ pageData.base_bg_shadow_color }}">
+							</div>
+						</div>
+
+						<input type="hidden" class="color-picker-rgb" name="base_bg_shadow_color_rgb" data-public-tag="true" value="{{ pageData.base_bg_shadow_color_rgb }}">
+						<div class="layui-form-item">
+							<label class="layui-form-label">商品投影是否开启</label>
+							<div class="layui-input-block">
+								<input type="radio" name="goods_shadow_active" data-public-tag="true" value="1" title="是" {{# if(pageData.goods_shadow_active== '1'){ }}
+								checked="checked"
+								{{# } }}>
+								<input type="radio" name="goods_shadow_active" data-public-tag="true" value="0" title="否" {{# if(pageData.goods_shadow_active== '0'){ }}
+								checked="checked"
+								{{# } }}>
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">投影颜色</label>
+							<div class="layui-input-block">
+								<div class="color-picker-selector" data-hidden-name="goods_shadow_color">
+									<div style="background-color: {{ pageData.goods_shadow_color }};"></div>
+								</div>
+								<input type="text" class="layui-input" name="goods_shadow_color" autocomplete="off" data-public-tag="true" value="{{ pageData.goods_shadow_color }}">
+							</div>
+						</div>
+						<input type="hidden" class="color-picker-rgb" name="goods_shadow_color_rgb" data-public-tag="true" value="{{ pageData.goods_shadow_color_rgb }}">
+					</div>
+					<!--View more 设置-->
+					<div class="layui-tab-item">
+						<div class="layui-form-item">
+							<label class="layui-form-label">背景颜色</label>
+							<div class="layui-input-block">
+								<div class="color-picker-selector" data-hidden-name="view_more_bgc">
+									<div style="background-color: {{ pageData.view_more_bgc }};"></div>
+								</div>
+								<input type="text" class="layui-input" name="view_more_bgc" autocomplete="off" data-public-tag="true" value="{{ pageData.view_more_bgc }}">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">边框颜色</label>
+							<div class="layui-input-block">
+								<div class="color-picker-selector" data-hidden-name="view_more_border_color">
+									<div style="background-color: {{ pageData.view_more_border_color }};"></div>
+								</div>
+								<input type="text" class="layui-input" name="view_more_border_color" autocomplete="off" data-public-tag="true" value="{{ pageData.view_more_border_color }}">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">边框圆角(px)</label>
+							<div class="layui-input-block"><input class="layui-input" type="text" name="view_more_border_radius" data-public-tag="true" value="{{ pageData.view_more_border_radius }}">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">文字颜色</label>
+							<div class="layui-input-block">
+								<div class="color-picker-selector" data-hidden-name="view_more_ftc">
+									<div style="background-color: {{ pageData.view_more_ftc }};"></div>
+								</div>
+								<input type="text" class="layui-input" name="view_more_ftc" autocomplete="off" data-public-tag="true" value="{{ pageData.view_more_ftc }}">
+							</div>
+						</div>
+						<!--						<div class="layui-form-item">
+                          <label class="layui-form-label">背景图片</label>
+                          <div class="layui-input-block">
+                            <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                            <input class="layui-input" type="text" name="view_more_bgImage" value="{{pageData.view_more_bgImage}}">
+                          </div>
+                        </div>-->
+						<div class="layui-form-item">
+							<label class="layui-form-label">文字大小(px)</label>
+							<div class="layui-input-block"><input class="layui-input" type="text" name="view_more_fts" data-public-tag="true" value="{{ pageData.view_more_fts }}">
+							</div>
+						</div>
+					</div>
+					<!--View all 设置-->
+					<div class="layui-tab-item">
+						<div class="layui-form-item">
+							<label class="layui-form-label">文字颜色</label>
+							<div class="layui-input-block">
+								<div class="color-picker-selector" data-hidden-name="view_all_color">
+									<div style="background-color: {{ pageData.view_all_color }};"></div>
+								</div>
+								<input type="text" class="layui-input" name="view_all_color" autocomplete="off" data-public-tag="true" value="{{ pageData.view_all_color }}">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">文字大小(px)</label>
+							<div class="layui-input-block"><input class="layui-input" type="text" name="view_all_fts" data-public-tag="true" value="{{ pageData.view_all_fts }}">
+							</div>
+						</div>
+					</div>
+					<!--价格设置-->
+					<div class="layui-tab-item">
+						<div class="layui-form-item">
+							<label class="layui-form-label">购买价格字体颜色</label>
+							<div class="layui-input-block">
+								<div class="color-picker-selector" data-hidden-name="price_color">
+									<div style="background-color: {{ pageData.price_color }};"></div>
+								</div>
+								<input type="text" class="layui-input" name="price_color" autocomplete="off" data-public-tag="true" value="{{ pageData.price_color }}">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">字体大小(px)</label>
+							<div class="layui-input-block"><input class="layui-input" type="text" name="price_fts" data-public-tag="true" value="{{ pageData.price_fts }}">
+							</div>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">字体是否加粗</label>
+							<div class="layui-input-block">
+								<input type="radio" name="price_ft_weight" data-public-tag="true" value="1" title="是" {{# if(pageData.price_ft_weight== '1'){ }}
+								checked="checked"
+								{{# } }}>
+								<input type="radio" name="price_ft_weight" data-public-tag="true" value="0" title="否" {{# if(pageData.price_ft_weight== '0'){ }}
+								checked="checked"
+								{{# } }}>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</script>

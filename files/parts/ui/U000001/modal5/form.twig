@@ -1,0 +1,149 @@
+{%
+
+    set formData = {
+        id: 'U000001',
+        name: '商品列表-模板五',
+        theme: 'modal5',
+        tabs: [
+            {
+                label: '数据配置',
+                components: [
+                    {
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '商品数据',
+                                type: 'goods-manager',
+                                beforeSubmit: 'beforeSubmit'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                label: '样式配置',
+                components: [
+                    {
+                        label: '整体组件',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件下边距',
+                                name: 'box_margin_bottom',
+                                default: '32',
+                            },
+                            {
+                                type: 'siteParam-rg',
+                                componentType: 'background-rg'
+                            },
+                            {
+                                type: 'stock-rg'
+                            }
+                        ]
+                    },
+                {
+                    label: '折扣配置',
+                    type: 'fieldset',
+                    components: [
+                    {
+                        label: '折扣标显示方式',
+                        type: 'radio',
+                        default: 0,
+                        name: 'discount_type',
+                        options: [
+                        { label: '-**%', value: 0 },
+                        { label: '**%OFF', value: 1 },
+                    ]
+                    },
+                    {
+                        label: '折扣背景颜色',
+                        name: 'discount_bg_color',
+                        type: 'colorPicker',
+                        default: '#FA386A',
+                        col: 2
+                    },
+                    {
+                        label: '折扣文本颜色',
+                        name: 'discount_font_color',
+                        type: 'colorPicker',
+                        default: '#FFFFFF',
+                        col: 2
+                    },
+                    {
+                        label: '背景图片',
+                        name: 'discount_bg_image',
+                        type: 'image',
+                        default: '' ,
+                    },
+                ]
+                },
+                    {
+                        label: '销售价',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '文字颜色',
+                                name: 'shop_price_color',
+                                default: '#FA386A',
+                                type: 'colorPicker'
+                            },
+                            {
+                                label: '销售价文案',
+                                name: 'shop_price_text',
+                                default: 'Now Only',
+                            }
+                        ]
+                    },
+                    {
+                        label: '快速购买',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '文案',
+                                name: 'quick_text',
+                                default: 'QUICK SHOP',
+                            },
+                            {
+                                label: '文字颜色',
+                                name: 'quick_font_color',
+                                default: '#333',
+                                type: 'colorPicker'
+                            },
+                            {
+                                label: '背景颜色',
+                                name: 'quick_bg_color',
+                                default: '#FFFFFF',
+                                type: 'colorPicker'
+                            },
+                        ]
+                    },
+                ]
+            }
+        ],
+        moreConfig: [
+            {
+                type: 'collapse',
+                items: [
+                    {
+                        label: '基础配置',
+                        components: [
+                            {
+                                label: '组件上边距(px)',
+                                name: 'box_margin_top',
+                                default: '0',
+                                public: false,
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+
+    %}
+
+    {# 引入渲染函数 #}
+    {{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+    {# 引入自定义脚本 #}
+    {# <script>{{ include ('form.js') }}</script>   #}

@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>IconFont</title>
+    <link rel="stylesheet" href="demo.css">
+    <link rel="stylesheet" href="iconfont.css">
+</head>
+<body>
+    <div class="main markdown">
+        <h1>IconFont 图标</h1>
+        <ul class="icon_lists clear">
+            
+                <li>
+                <i class="icon gs-iconfont gs-icon-upxiangshang"></i>
+                    <div class="name">up-向上</div>
+                    <div class="fontclass">.gs-icon-upxiangshang</div>
+                </li>
+            
+                <li>
+                <i class="icon gs-iconfont gs-icon-right"></i>
+                    <div class="name">right</div>
+                    <div class="fontclass">.gs-icon-right</div>
+                </li>
+            
+                <li>
+                <i class="icon gs-iconfont gs-icon-down1"></i>
+                    <div class="name">down</div>
+                    <div class="fontclass">.gs-icon-down1</div>
+                </li>
+            
+                <li>
+                <i class="icon gs-iconfont gs-icon-up"></i>
+                    <div class="name">up</div>
+                    <div class="fontclass">.gs-icon-up</div>
+                </li>
+            
+                <li>
+                <i class="icon gs-iconfont gs-icon-left-circle"></i>
+                    <div class="name">left-circle</div>
+                    <div class="fontclass">.gs-icon-left-circle</div>
+                </li>
+            
+                <li>
+                <i class="icon gs-iconfont gs-icon-right-circle"></i>
+                    <div class="name">right-circle</div>
+                    <div class="fontclass">.gs-icon-right-circle</div>
+                </li>
+            
+                <li>
+                <i class="icon gs-iconfont gs-icon-up-circle"></i>
+                    <div class="name">up-circle</div>
+                    <div class="fontclass">.gs-icon-up-circle</div>
+                </li>
+            
+                <li>
+                <i class="icon gs-iconfont gs-icon-reddit"></i>
+                    <div class="name">reddit</div>
+                    <div class="fontclass">.gs-icon-reddit</div>
+                </li>
+            
+                <li>
+                <i class="icon gs-iconfont gs-icon-F"></i>
+                    <div class="name">F</div>
+                    <div class="fontclass">.gs-icon-F</div>
+                </li>
+            
+                <li>
+                <i class="icon gs-iconfont gs-icon-Twitter"></i>
+                    <div class="name">Twitter</div>
+                    <div class="fontclass">.gs-icon-Twitter</div>
+                </li>
+            
+                <li>
+                <i class="icon gs-iconfont gs-icon-telegram"></i>
+                    <div class="name">telegram</div>
+                    <div class="fontclass">.gs-icon-telegram</div>
+                </li>
+            
+                <li>
+                <i class="icon gs-iconfont gs-icon-VK"></i>
+                    <div class="name">VK</div>
+                    <div class="fontclass">.gs-icon-VK</div>
+                </li>
+            
+                <li>
+                <i class="icon gs-iconfont gs-icon-google"></i>
+                    <div class="name">google</div>
+                    <div class="fontclass">.gs-icon-google</div>
+                </li>
+            
+                <li>
+                <i class="icon gs-iconfont gs-icon-star"></i>
+                    <div class="name">star-full</div>
+                    <div class="fontclass">.gs-icon-star</div>
+                </li>
+            
+                <li>
+                <i class="icon gs-iconfont gs-icon-star1"></i>
+                    <div class="name">star</div>
+                    <div class="fontclass">.gs-icon-star1</div>
+                </li>
+            
+                <li>
+                <i class="icon gs-iconfont gs-icon-star-half"></i>
+                    <div class="name">star-half</div>
+                    <div class="fontclass">.gs-icon-star-half</div>
+                </li>
+            
+        </ul>
+
+        <h2 id="font-class-">font-class引用</h2>
+        <hr>
+
+        <p>font-class是unicode使用方式的一种变种，主要是解决unicode书写不直观，语意不明确的问题。</p>
+        <p>与unicode使用方式相比，具有如下特点：</p>
+        <ul>
+        <li>兼容性良好，支持ie8+，及所有现代浏览器。</li>
+        <li>相比于unicode语意明确，书写更直观。可以很容易分辨这个icon是什么。</li>
+        <li>因为使用class来定义图标，所以当要替换图标时，只需要修改class里面的unicode引用。</li>
+        <li>不过因为本质上还是使用的字体，所以多色图标还是不支持的。</li>
+        </ul>
+        <p>使用步骤如下：</p>
+        <h3 id="-fontclass-">第一步：引入项目下面生成的fontclass代码：</h3>
+
+
+        <pre><code class="lang-js hljs javascript"><span class="hljs-comment">&lt;link rel="stylesheet" type="text/css" href="./iconfont.css"&gt;</span></code></pre>
+        <h3 id="-">第二步：挑选相应图标并获取类名，应用于页面：</h3>
+        <pre><code class="lang-css hljs">&lt;<span class="hljs-selector-tag">i</span> <span class="hljs-selector-tag">class</span>="<span class="hljs-selector-tag">gs-iconfont</span> <span class="hljs-selector-tag">gs-icon-xxx</span>"&gt;&lt;/<span class="hljs-selector-tag">i</span>&gt;</code></pre>
+        <blockquote>
+        <p>"gs-iconfont"是你项目下的font-family。可以通过编辑项目查看，默认是"iconfont"。</p>
+        </blockquote>
+    </div>
+</body>
+</html>

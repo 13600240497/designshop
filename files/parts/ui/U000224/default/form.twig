@@ -1,0 +1,306 @@
+{{include ('@app/files/parts/temp/goods_manager.twig')}}
+{%
+    set formData = {
+        id: 'U0000224',
+        name: '轮播商品列表配置项',
+        theme: 'default',
+        tabs: [
+            {
+                label: '商品数据',
+                components: [
+                    {
+                        label: '数据配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                type: 'diy',
+                                src: 'form-data.twig'
+                            },
+                            {
+                                type: 'platData-dl-target',
+                                name: 'is_open_new',
+                            },
+                            {
+                                label: '第三方智能推荐',
+                                desc: '(Jetlore Layout)',
+                                placeholder: '请输入 Jetlore 后台配置的 Layout',
+                                name: 'jetlore_layout',
+                                default: ''
+                            },
+                        ]
+                    },
+                    {
+                        label: '埋点配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '推荐位:',
+                                name: 'glb_ubcta_mrlc',
+                                default: '',
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                label: '样式配置',
+                components: [
+                    {
+                        label: '常用配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                
+                                type: 'tab',
+                                items: [
+                                    {
+                                        label: 'PC',
+                                        components: [
+                                            {
+                                                label: '组件上边距(px)',
+                                                name: 'pc_box_margin_top',
+                                                default: '0',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '组件下边距(px)',
+                                                name: 'pc_box_margin_bottom',
+                                                default: '32',
+                                                public: false,
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        label: 'PAD',
+                                        components: [
+                                            
+                                             {
+                                                label: '组件上边距(px)',
+                                                name: 'pad_box_margin_top',
+                                                default: '0',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '组件下边距(px)',
+                                                name: 'pad_box_margin_bottom',
+                                                default: '32',
+                                                public: false,
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        label: 'M',
+                                        components: [
+                                            {
+                                                label: '组件上边距(px)',
+                                                name: 'm_box_margin_top',
+                                                default: '0',
+                                                public: false,
+                                            },
+                                            {
+                                                label: '组件下边距(px)',
+                                                name: 'm_box_margin_bottom',
+                                                default: '20',
+                                                public: false,
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                label: '折扣标配置',
+                                type: 'fieldset',
+                                components: [
+                                    {
+                                        label: '是否显示',
+                                        name: 'discount_show',
+                                        type: 'radio',
+                                        default: '0',
+                                        options: [
+                                            { label: '是', value: '1' },
+                                            { label: '否', value: '0' }
+                                        ],
+                                        public: false
+                                    },
+                                    {
+                                        label: '显示方式',
+                                        name: 'discount_type',
+                                        type: 'radio',
+                                        default: '1',
+                                        options: [
+                                            { label: '**% OFF', value: '1' },
+                                            { label: '-**%', value: '2' },
+                                            { label: 'D-**%', value: '3' }
+                                        ],
+                                        public: false
+                                    },
+                                    {
+                                        label: '背景颜色',
+                                        name: 'discount_bg_color',
+                                        default: '#151515',
+                                        type: 'colorPicker',
+                                        public: false,
+                                    },
+                                    {
+                                        label: '文字颜色',
+                                        name: 'discount_font_color',
+                                        default: '#FFFFFF',
+                                        type: 'colorPicker',
+                                        public: false,
+                                    }
+                                ]
+                            },
+                            {
+                                label: '左上角角标配置',
+                                type: 'fieldset',
+                                components: [
+                                     {
+                                        label: '是否显示',
+                                        name: 'cornermark_is_show',
+                                        type: 'radio',
+                                        default: 'none',
+                                        options: [
+                                            { label: '是', value: 'block' },
+                                            { label: '否', value: 'none' }
+                                        ],
+                                        public: false
+                                    },
+                                    { 
+                                        type: 'tab',
+                                        items: [
+                                            {
+                                                label: 'PC',
+                                                components: [
+                                                    {
+                                                        label: '背景图片',
+                                                        name: 'cornermark_bgImg_pc',
+                                                        default: '',
+                                                        type: 'image',
+                                                        public: false,
+                                                    },
+                                                    {
+                                                        label: '右偏移(px)',
+                                                        name: 'cornermark_left_pc',
+                                                        default: '0',
+                                                        public: false,
+                                                    },
+                                                    {
+                                                        label: '下偏移(px)',
+                                                        name: 'cornermark_top_pc',
+                                                        default: '0',
+                                                        public: false,
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                label: 'PAD',
+                                                components: [
+                                                    {
+                                                        label: '背景图片',
+                                                        name: 'cornermark_bgImg_pad',
+                                                        default: '',
+                                                        type: 'image',
+                                                        public: false,
+                                                    },
+                                                    {
+                                                        label: '右偏移(px)',
+                                                        name: 'cornermark_left_pad',
+                                                        default: '0',
+                                                        public: false,
+                                                    },
+                                                    {
+                                                        label: '下偏移(px)',
+                                                        name: 'cornermark_top_pad',
+                                                        default: '0',
+                                                        public: false,
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                label: 'M',
+                                                components: [
+                                                    {
+                                                        label: '背景图片',
+                                                        name: 'cornermark_bgImg_m',
+                                                        default: '',
+                                                        type: 'image',
+                                                        public: false,
+                                                    },
+                                                    {
+                                                        label: '右偏移(px)',
+                                                        name: 'cornermark_left_m',
+                                                        default: '0',
+                                                        public: false,
+                                                    },
+                                                    {
+                                                        label: '下偏移(px)',
+                                                        name: 'cornermark_top_m',
+                                                        default: '0',
+                                                        public: false,
+                                                    }
+                                                    
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                label: '营销标签配置',
+                                type: 'fieldset',
+                                components: [
+                                    {
+                                        label: '背景颜色',
+                                        name: 'promote_bg_color',
+                                        default: '#FFE4E5',
+                                        type: 'colorPicker',
+                                        public: false,
+                                    },
+                                    {
+                                        label: '字体颜色',
+                                        name: 'promote_text_color',
+                                        default: '#FF4545',
+                                        type: 'colorPicker',
+                                        public: false,
+                                    }
+
+                                ]
+                            },
+                             {
+                                label: '商品信息配置',
+                                type: 'fieldset',
+                                components: [
+                                    {
+                                        label: '本店售价颜色',
+                                        name: 'shopprice_color',
+                                        default: '#000000',
+                                        type: 'colorPicker',
+                                        public: false,
+                                    },
+                                    {
+                                        label: '评分星星颜色',
+                                        name: 'start_color',
+                                        default: '#FF4545',
+                                        type: 'colorPicker',
+                                        public: false,
+                                    },
+                                    {
+                                        label: '评论数文字颜色',
+                                        name: 'reviews_color',
+                                        default: '#999999',
+                                        type: 'colorPicker',
+                                        public: false,
+                                    }
+
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+%}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

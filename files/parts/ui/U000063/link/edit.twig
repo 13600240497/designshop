@@ -1,0 +1,111 @@
+<div class="left">
+  {% if data.communityLinkList %}
+    {% for item in data.communityLinkList|slice(0,2) %}
+      <div class="buyer-show-item first js_show_item_{{ loop.index }}" data-index="{{ loop.index }}">
+        <img src="{{ item.imageSrc }}" alt="">
+        <div class="view-it">
+          <div class="inner">
+            <img src="{{staticDomain}}/resources/images/icon/rw-icon-camer.png" alt="rosewholesale">
+            <a href="{{ item.url }}" rel="nofollow" class="btn">{{ pageData.viewText }}</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="buyer-show-item first js_show_item_1" data-index="1">
+      <img src="{{staticDomain}}/resources/images/default/community-default-bg-1.jpg" alt="">
+      <div class="view-it">
+        <div class="inner">
+          <img src="{{staticDomain}}/resources/images/icon/rw-icon-camer.png" class="icon-camer" alt="rosewholesale">
+          <a href="javascript:void(0)" rel="nofollow" class="btn">VIEW IT</a>
+        </div>
+      </div>
+    </div>
+    <div class="buyer-show-item first js_show_item_2" data-index="2">
+      <img src="{{staticDomain}}/resources/images/default/community-default-bg-2.jpg" alt="">
+      <div class="view-it">
+        <div class="inner">
+          <img src="{{staticDomain}}/resources/images/icon/rw-icon-camer.png" class="icon-camer" alt="rosewholesale">
+          <a href="javascript:void(0)" rel="nofollow" class="btn">VIEW IT</a>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</div>
+<div class="center">
+  {% if data.communityLinkList %}
+    {% for item in data.communityLinkList|slice(2,1) %}
+      <div class="buyer-show-item js_show_item_{{ loop.index + 2 }}" data-index="{{ loop.index + 2 }}">
+        <img width="470" height="470" src="{{ item.imageSrc }}" alt="">
+        <div class="view-it">
+          <div class="inner">
+            <img src="{{staticDomain}}/resources/images/icon/rw-icon-camer.png" class="icon-camer" alt="rosewholesale">
+            <a href="{{ item.url }}" rel="nofollow" class="btn">{{ pageData.viewText }}</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="buyer-show-item js_show_item_3" data-index="3">
+      <img width="470" height="470" src="{{staticDomain}}/resources/images/default/community-default-bg-3.jpg" alt="">
+      <div class="view-it">
+        <div class="inner">
+          <img src="{{staticDomain}}/resources/images/icon/rw-icon-camer.png" class="icon-camer" alt="rosewholesale">
+          <a href="javascript:void(0)" rel="nofollow" class="btn">VIEW IT</a>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</div>
+<div class="right">
+  {% if data.communityLinkList %}
+    {% for item in data.communityLinkList|slice(3,4) %}
+      <div class="buyer-show-item js_show_item_{{ loop.index + 3 }}" data-index="{{ loop.index + 3 }}">
+        <img src="{{ item.imageSrc }}" alt="">
+        <div class="view-it">
+          <div class="inner">
+            <img src="{{staticDomain}}/resources/images/icon/rw-icon-camer.png" class="icon-camer" alt="rosewholesale">
+            <a href="{{ item.url }}" rel="nofollow" class="btn">{{ pageData.viewText }}</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+  <div class="buyer-show-item  js_show_item_4" data-index="4">
+    <img src="{{staticDomain}}/resources/images/default/community-default-bg-4.jpg" alt="">
+    <div class="view-it">
+      <div class="inner">
+        <img src="{{staticDomain}}/resources/images/icon/rw-icon-camer.png" class="icon-camer" alt="rosewholesale">
+        <a href="javascript:void(0)" rel="nofollow" class="btn">VIEW IT</a>
+      </div>
+    </div>
+  </div>
+  <div class="buyer-show-item  js_show_item_5" data-index="5">
+    <img src="{{staticDomain}}/resources/images/default/community-default-bg-5.jpg" alt="">
+    <div class="view-it">
+      <div class="inner">
+        <img src="{{staticDomain}}/resources/images/icon/rw-icon-camer.png" class="icon-camer" alt="rosewholesale">
+        <a href="javascript:void(0)" rel="nofollow" class="btn">VIEW IT</a>
+      </div>
+    </div>
+  </div>
+  <div class="buyer-show-item  js_show_item_6" data-index="6">
+    <img src="{{staticDomain}}/resources/images/default/community-default-bg-6.jpg" alt="">
+    <div class="view-it">
+      <div class="inner">
+        <img src="{{staticDomain}}/resources/images/icon/rw-icon-camer.png" class="icon-camer" alt="rosewholesale">
+        <a href="javascript:void(0)" rel="nofollow" class="btn">VIEW IT</a>
+      </div>
+    </div>
+  </div>
+  <div class="buyer-show-item  js_show_item_7" data-index="7">
+    <img src="{{staticDomain}}/resources/images/default/community-default-bg-7.jpg" alt="">
+    <div class="view-it">
+      <div class="inner">
+        <img src="{{staticDomain}}/resources/images/icon/rw-icon-camer.png" class="icon-camer" alt="rosewholesale">
+        <a href="javascript:void(0)" rel="nofollow" class="btn">VIEW IT</a>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>

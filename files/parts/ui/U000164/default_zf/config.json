@@ -1,0 +1,118 @@
+{
+    "fields": {
+        "goodsSKU": { "is_public": "1", "is_m": "1", "is_app": "1" },
+
+        "view_more_url": { "is_public": "0", "is_m": "0", "is_app": "0" },
+
+        "margin_bottom": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "box_bj_color": { "is_public": "0", "is_m": "1", "is_app": "0" },
+
+        "hover_goods_border_color": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "shop_price_color": { "is_public": "0", "is_m": "1", "is_app": "0" },
+        "integral_font_color": { "is_public": "0", "is_m": "1", "is_app": "0" },
+        "integral_icon_img": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "stock_tip_bg_color": { "is_public": "0", "is_m": "1", "is_app": "0" },
+        "stock_tip_font_color": { "is_public": "0", "is_m": "1", "is_app": "0" },
+
+        "exchange_bg_color": { "is_public": "0", "is_m": "1", "is_app": "0" },
+        "exchange_font_color": { "is_public": "0", "is_m": "1", "is_app": "0" },
+        "exchange_btn_radius": { "is_public": "0", "is_m": "1", "is_app": "0" },
+
+        "view_more_title": { "is_public": "0", "is_m": "0", "is_app": "0" },
+        "view_more_bg_color": { "is_public": "0", "is_m": "1", "is_app": "0" },
+        "view_more_font_color": { "is_public": "0", "is_m": "1", "is_app": "0" },
+        "btn_border_color": { "is_public": "0", "is_m": "1", "is_app": "0" }
+    },
+    "languages": {
+        "sold_out": {
+            "cn": "售罄",
+            "ar": "بيعت كلها",
+            "de": "Ausverkauft",
+            "en": "SOLD OUT",
+            "es": "AGOTADO",
+            "fr": "ÉPUISÉ",
+            "id": "Habis terjual",
+            "it": "ESAURITO",
+            "ja": "完売",
+            "pt": "ESGOTADO",
+            "ru": "Продано",
+            "th": "ขายหมดแล้ว",
+            "tr": "SATILDI",
+            "vi": "ĐÃ BÁN",
+            "zh-tw": "售罄",
+            "ro": "VANDUT"
+        },
+        "left": {
+            "cn": "仅剩XX",
+            "ar": "تنبقى XX فقط",
+            "de": "nur noch XX übrig",
+            "en": "only XX left",
+            "es": "SOLO QUEDAN XX ",
+            "fr": "seulement XX restant(s)",
+            "id": "hanya XX tersisa",
+            "it": "XX disponibili",
+            "ja": "残りXX個",
+            "pt": "apenas XX restante",
+            "ru": "осталось только XX",
+            "th": "เหลือแค่ XX ",
+            "tr": "Sadece XX kaldı",
+            "vi": "chỉ XX còn lại",
+            "zh-tw": "僅剩XX",
+            "ro": "doar XX ramase"
+        },
+        "coming_soon": {
+            "cn": "即将开始",
+            "ar": "سيأتي قريبا",
+            "de": "DEMNÄCHST",
+            "en": "COMING SOON",
+            "es": "POR VENIR",
+            "fr": "Arrivera Bientôt",
+            "id": "akan datang",
+            "it": "Arriva Subito",
+            "ja": "近日公開",
+            "pt": "EM BREVE",
+            "ru": "Скоро",
+            "th": "จะมาเร็วๆนี้",
+            "tr": "ÇOK YAKINDA",
+            "vi": "SẮP RA MẮT",
+            "zh-tw": "即將開始",
+            "ro": "IN CURAND"
+        },
+        "ended": {
+            "cn": "已结束",
+            "ar": "قد انتهى",
+            "de": "ENDED",
+            "en": "ENDED",
+            "es": "Finalizado",
+            "fr": "Terminé",
+            "id": "berakhir",
+            "it": "Finito",
+            "ja": "終了しました",
+            "pt": "TERMINADO",
+            "ru": "Заканчивающийся",
+            "th": "จบแล้ว",
+            "tr": "BİTTİ",
+            "vi": "KẾT THÚC",
+            "zh-tw": "已結束",
+            "ro": "SFARSIT"
+        },
+        "redeem_now": {
+            "cn": "进行中",
+            "ar": "استرداد الآن",
+            "de": "Jetzt einlösen",
+            "en": "REDEEM NOW",
+            "es": "Canjear ahora",
+            "fr": "Échangez maintenant",
+            "id": "Tukar Sekarang",
+            "it": "Riscatta ora",
+            "ja": "今すぐ交換",
+            "pt": "Resgatar Agora",
+            "ru": "Выкупить сейчас",
+            "th": "แลกตอนนี้",
+            "tr": "Şimdi Öde",
+            "vi": "Đang tiến hành",
+            "zh-tw": "立即兌換",
+            "ro": "REVENDICA ACUM"
+        }
+    }
+}

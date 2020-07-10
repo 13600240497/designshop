@@ -1,0 +1,59 @@
+
+<style>
+
+    .tab-add-btn {
+        float: right;
+        margin-top: 16px;
+    }
+    .el-button--small {
+        font-size: 14px;
+        color: #1e9fff;
+        padding: 13px 20px;
+        background: #f4faff;
+        text-align: center;
+        border-radius: 4px;
+        border: 1px solid #bde3ff;
+    }
+    .layui-form-item .layui-form-item-title {
+        font-size: 16px;
+        font-weight: bold;
+        color: #333; 
+    }
+    .el-button--primary:hover {
+        color: #1e9fff;
+        background: #f4faff;
+    }
+    .gs-lable-block {
+        margin: 0 0;
+    }
+    .form-item-block {
+        margin-top: 12px;
+    }
+    .layui-tab-brief .layui-this {
+        color: #333 !important;
+    }
+    .layui-tab-brief .layui-tab-title {
+        margin-bottom: 12px !important;
+    }
+    
+</style>
+
+<div class="component-form-setting">
+    <div class="layui-form-item">
+        <h3 class="layui-form-item-title">商品数据</h3>
+        <label class="layui-form-label form-item-block">商品SKU</label>
+        <div class="layui-input-block rest-input">
+            <textarea class="layui-textarea js-valid-skus"  name="goodsSKU" data-public-tag="true" placeholder="请输入商品SKU，每个SKU用英文逗号隔开">{{ data.goodsSKU }}</textarea>
+        </div>
+        <div class="layui-form-item tab-add-btn class-manage" data-from="tabs">
+            <span class="el-button el-button--primary el-button--small">商品管理</span>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

@@ -1,0 +1,106 @@
+{%
+
+    set formData = {
+        id: 'U000218',
+        name: '自定义价格配置项',
+        theme: 'template1_v3',
+        tabs: [
+            {
+                label: '商品数据',
+                components: [
+                    {
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '商品数据',
+                                type: 'goods-manager',
+                                beforeSubmit: 'beforeSubmit'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                label: '样式配置',
+                components: [
+                    {
+                        label: '常用配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件上边距(px)',
+                                name: 'margin_top',
+                                default: '0',
+                                col: 2
+                            },
+                            {
+                                label: '组件下边距(px)',
+                                name: 'margin_bottom',
+                                default: '32',
+                                col: 2
+                            }
+                        ]
+                    },
+                    {
+                        label: '价格标签配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '第一行文案',
+                                name: 'price_first_content',
+                                default: 'New User Price:'
+                            },
+                            {
+                                label: '文字大小(px)',
+                                name: 'price_font_size',
+                                default: '20'
+                            },
+                            {
+                                label: '文案文字和价格文字颜色',
+                                name: 'shop_price_color',
+                                type: 'colorPicker',
+                                default: '#333333'
+                            },
+                            {
+                                label: '第二行文案',
+                                name: 'price_second_content',
+                                default: 'Market Price:'
+                            },
+                            {
+                                label: '文案文字和价格文字颜色',
+                                name: 'price_second_font_color',
+                                type: 'colorPicker',
+                                default: '#333333'
+                            },
+                            {
+                                label: '市场价是否划掉',
+                                name: 'is_show_del',
+                                type: 'radio',
+                                default: 2,
+                                options: [
+                                    { label: '是', value: 1 },
+                                    { label: '否', value: 2 }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        type: 'fieldset',
+                        components: [
+                            {
+                                type: 'discount-zf'
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        moreConfig: [],
+        isAutoRefresh: 1
+    }
+
+%}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+

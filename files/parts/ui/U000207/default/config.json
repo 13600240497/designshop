@@ -1,0 +1,20 @@
+{
+    "languages": {
+        "SHOPNOW": {
+            "en": "shop now",
+            "fr": "je fonce",
+            "ja": "今すぐ購入",
+            "ro":"cumpara acum"
+        }
+    },
+    "fields": {
+        "dataRange": {"is_public": "1", "is_m": "0", "is_app": "1"},
+        "goodsSku": {"is_public": "1", "is_m": "0", "is_app": "1"},
+        "box_margin_top": {"is_public": "1", "is_m": "1", "is_app": "1"},
+        "box_margin_bottom": {"is_public": "1", "is_m": "1", "is_app": "1"},
+        "box_margin_top_m": {"is_public": "1", "is_m": "1", "is_app": "1"},
+        "box_margin_bottom_m": {"is_public": "1", "is_m": "1", "is_app": "1"},
+        "box_borderRadius": {"is_public": "1", "is_m": "1", "is_app": "1"},
+        "box_borderRadius_m": {"is_public": "1", "is_m": "1", "is_app": "1"}
+    }
+}

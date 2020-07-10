@@ -1,0 +1,8 @@
+<div class="layui-form-item {{ componentData.extendClass }}">
+    <label class="layui-form-label {% if componentData.public %} public-data {% endif %}">{{ componentData.label }}</label>
+    <div class="layui-input-block">
+        <input class="layui-input down-timestamp" type="text" name="{{ componentData.name }}" value="{{ componentData.value }}" data-public-tag="{{ componentData.public }}">
+        <input type="hidden" name="start_time" value="{{ componentData.start_time ? componentData.start_time:'' }}">
+        <input type="hidden" name="end_time" value="{{ componentData.end_time ? componentData.end_time:'' }}">
+    </div>
+</div>

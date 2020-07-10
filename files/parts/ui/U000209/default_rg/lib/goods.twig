@@ -1,0 +1,317 @@
+
+<style>
+    .layui-elem-field > h3 {
+        display: inline-block;
+        float: left;
+    }
+
+    .goods-wrapIx fieldset.layui-elem-field.tab-fid {
+        text-align: right;
+        margin: 16px 0;
+    }
+
+    .second-list .list-group-item {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0 16px 13px;
+        margin: 13px auto;
+        height: auto;
+        background: rgba(254, 254, 254, 1);
+        border-radius: 4px;
+        border: 1px solid rgba(230, 230, 230, 1);
+    }
+    .second-list .list-group-item .select-item{
+        margin-left: 0px!important;
+    }
+    .second-list .list-group-item .gs-tab-title .layui-form-radio{
+        margin-right: 0px!important;
+
+    }
+    .goods-wrapIx .layui-form-item {
+        margin: 16px auto;
+    }
+    .goods-wrapIx .layui-form-item .layui-form-radio{
+        margin-right: 0px!important;
+        padding-right: 0px!important;
+    }
+
+    .wrap-config.hide {
+        display: none;
+    }
+
+    .second-list .layui-form-item>.layui-form-label span {
+        color: #000!important;
+    }
+</style>
+
+<section class="goods-wrapIx">
+
+    <input type="hidden" class="Unwanted" name="sku_selector_parent" value=".radio-tab-group">
+
+    <input type="hidden"
+           name="tab_num"
+           autocomplete="off"
+           data-public-tag="true"
+           class="layui-input tab-num-info"
+           value="{{ data.tab_num ?? 3 }}" min="0">
+    <input type="hidden" name="goodsSKU">
+
+    <input type="hidden"
+           class="nav-list-arr"
+           name="navListRg"
+           value='{{ json_encode_no_unicode(data.navListRg | default({})) }}' data-public-tag="true">
+
+    {% if data.navListRg %}
+        {% set list =  data.navListRg %}
+    {% else %}
+        {% set list = [{ "navName": ""},{ "navName": "" },{ "navName": "" }] %}
+    {% endif %}
+
+    {% set ipsAutoLimitClose = true %}
+
+    <div class="nav-form-wrap">
+        {% for i,item in list %}
+            <div class="wrap-config">
+                <div class="second-list">
+                    <div class="list-group-item">
+
+                        <!--名称-->
+                        <div class="layui-form-item">
+                            <label class="layui-form-label tab-hd">tab<span>{{ i + 1 }}</span>名称</label>
+                            <div class="layui-input-block">
+                                <input type="text"
+                                       name="navName"
+                                       autocomplete="off"
+                                       class="layui-input Unwanted"
+                                       value="{{ item.navName }}" />
+                            </div>
+                        </div>
+
+                        <!--商品数据-->
+                        <div class="layui-form-item">
+                            <div class="goods-form-table">
+                                <div class="goods-tab-lists">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">商品数据</label>
+                                    </div>
+                                    <div class="radio-tab-group">
+                                        {% include 'lib/tab_ips_form.twig' with{'tabItem':item,ipsMethodsArr: ['1','2'],'key':i, skuManage:true} %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--操作按钮-->
+                <fieldset class="layui-elem-field tab-fid">
+                    <span class="img-btn f-delete">
+                          <i class='icon-delete'></i>
+                          <b class="tips">删除</b>
+                    </span>
+                    <span class="img-btn f-up class-close">
+                          <i class='icon-up'></i>
+                          <b class="tips">上移</b>
+                    </span>
+
+                    <span class="img-btn f-down class-close">
+                          <i class='icon-down'></i>
+                          <b class="tips">下移</b>
+                    </span>
+                    <span class="img-btn f-add class-close">
+                          <i class='icon-add'></i>
+                        <b class="tips">新增</b>
+                    </span>
+                </fieldset>
+
+            </div>
+        {% endfor %}
+    </div>
+
+</section>
+
+<!--拷贝-->
+<div class="wrap-config hide">
+    <div class="second-list">
+        <div class="list-group-item">
+            <!--名称-->
+            <div class="layui-form-item">
+                <label class="layui-form-label tab-hd">tab<span>1</span>名称</label>
+                <div class="layui-input-block">
+                    <input type="text"
+                           name="navName"
+                           autocomplete="off"
+                           class="layui-input Unwanted"
+                           value="{{ item.navName }}" />
+                </div>
+            </div>
+
+            <!--商品数据-->
+            <div class="layui-form-item">
+                <div class="goods-form-table">
+                    <div class="goods-tab-lists">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">商品数据</label>
+                        </div>
+                        <div class="radio-tab-group">
+                            {% include 'lib/tab_ips_form.twig' with{'tabItem':{},skuManage:true,ipsMethodsArr: ['1','2'],ipsAutoLimitClose:true} %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--操作按钮-->
+    <fieldset class="layui-elem-field tab-fid">
+        <span class="img-btn f-delete">
+              <i class='icon-delete'></i>
+              <b class="tips">删除</b>
+        </span>
+        <span class="img-btn f-up class-close">
+              <i class='icon-up'></i>
+              <b class="tips">上移</b>
+        </span>
+
+        <span class="img-btn f-down class-close">
+              <i class='icon-down'></i>
+              <b class="tips">下移</b>
+        </span>
+        <span class="img-btn f-add class-close">
+              <i class='icon-add'></i>
+            <b class="tips">新增</b>
+        </span>
+    </fieldset>
+
+</div>
+
+{% include 'lib/tab_ips_form_js.twig' with{ipsAutoLimitClose:true} %}
+
+<script>
+
+    /* 初始化删除等标签的显示和隐藏 */
+    var $wrap = $('.nav-form-wrap');
+    var $hdWrap = $('.goods-wrapIx');
+
+    /* 初始化商品管理 */
+    GESHOP_IPS.ipsRadioInit('reset-key');
+
+    /*一级图标的显示隐藏*/
+    function showIcon() {
+        upNum();
+
+        /*一级图标操作容器个数*/
+        var len = $wrap.find('.tab-fid').length;
+        if (len > 1) {
+            $wrap.find('.tab-fid').each(function (index) {
+                if (index == 0) {
+                    $(this).find('.img-btn').hide();
+                    $(this).find('.f-down').show();
+                    $(this).find('.f-add').show();
+                    $(this).find('.f-delete').show();
+                } else {
+                    $(this).find('.img-btn').show();
+                    if (index == len - 1) {
+                        $(this).find('.f-down').hide();
+                    }
+                }
+            })
+        } else {
+            $wrap.find('.tab-fid').find('.img-btn').hide();
+            $wrap.find('.tab-fid').find('.f-add').show();
+        }
+    }
+
+
+    /*更新一级导航的数字 tab{x}*/
+    function upNum() {
+        $wrap.find('.tab-hd span').each(function (index) {
+            $(this).text(index + 1)
+        })
+    }
+
+    /*更新Tab数量*/
+    function updateNavNum(value) {
+        $hdWrap.find('input[name="tab_num"]').val(value)
+    }
+
+    /* 新增一级分类 */
+    function addOne() {
+        var clone = $('.wrap-config.hide').clone(true);
+        $wrap.append(clone);
+        $wrap.find('.wrap-config.hide').removeClass('hide');
+        showIcon();
+        updateNavNum($wrap.find('.wrap-config').length);
+    }
+
+    /*一级图标的显示隐藏*/
+    showIcon();
+
+    /* 新增一级分类 */
+    $(".tab-fid").on('click', '.f-add', function (e) {
+        e.stopPropagation();
+        addOne();
+        /* 重置ips radio */
+        GESHOP_IPS.ipsRadioInit('reset-key');
+    });
+
+    /* 下移分类 */
+    $(".nav-form-wrap").on('click', '.f-down,.s-down', function (e) {
+        e.stopPropagation();
+        var $tr = "";
+        if ($(this).hasClass('f-down')) {
+            $tr = $(this).parents('.wrap-config:eq(0)');
+        } else {
+            $tr = $(this).parents('.list-group-item:eq(0)');
+        }
+        var $trNext = $tr.next();
+        if (0 != $trNext.length) {
+            $trNext.after($tr);
+            showIcon();
+        }
+    });
+
+    /* 上移分类 */
+    $(".nav-form-wrap").on('click', '.f-up,.s-up', function (e) {
+        e.stopPropagation();
+        var $tr = "";
+        if ($(this).hasClass('f-up')) {
+            $tr = $(this).parents('.wrap-config:eq(0)');
+        } else {
+            $tr = $(this).parents('.list-group-item:eq(0)');
+        }
+        var $trPrev = $tr.prev();
+        if (0 != $trPrev.length) {
+            $trPrev.before($tr);
+            showIcon();
+        }
+    });
+
+    /* 删除分类 */
+    $(".nav-form-wrap").on('click', '.f-delete,.s-delete', function (e) {
+        var $tr = "";
+        if ($(this).hasClass('f-delete')) {
+            $tr = $(this).parents('.wrap-config:eq(0)');
+        } else {
+            $tr = $(this).parents('.list-group-item:eq(0)');
+        }
+        layer.confirm('是否删除该分类?', {
+            title: '提示',
+            btn: ['否', '是'],
+            area: '420px',
+            icon: 3,
+            skin: 'element-ui-dialog-class'
+        }, function (index) {
+            layer.close(index);
+        }, function (index) {
+            $tr.remove();
+            layer.close(index);
+            showIcon();
+            updateNavNum($wrap.find('.wrap-config').length);
+        });
+
+    });
+
+</script>

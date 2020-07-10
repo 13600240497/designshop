@@ -1,0 +1,234 @@
+{
+  "fields": {
+    "goodsSKU": {
+      "is_public": 1,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "skuLimit": {
+      "is_public": 1,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "boxMarginBottom": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "componentBgC": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "fs_titleBgC": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "fs_titleBgImg": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "titleNavText": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "fs_titleFtC": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "hasNotStarted_prePriceBgC": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "hasNotStarted_prePriceBrC": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "hasNotStarted_prePriceTitle": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "hasNotStarted_prePriceTC": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "hasNotStarted_shopPriceBgC": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "hasNotStarted_shopPriceBrC": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "hasNotStarted_shopPriceTitle": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "hasNotStarted_shopPriceTC": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "hasStarted_shopPriceBgC": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "hasStarted_shopPriceBrC": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "hasStarted_shopPriceTitle": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "hasStarted_shopPriceTC": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "hasStarted_marketPriceBgC": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "hasStarted_marketPriceBrC": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "hasStarted_marketPriceTitle": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "hasStarted_marketPriceTC": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "fs_titleFtSize": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "fs_titleHeight": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "goodsBRadius": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "goodsMarginLR": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "goodsTitleC": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "goodsPriceTopRadius": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "goodsPriceBottomRadius": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "goodsPriceTitleFts": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "goodsPriceFts": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "discountActive": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "discountType": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "discountWidth": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "discountHeight": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "discountBgImg": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "discountOffsetT": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "discountOffsetL": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "discountBgColor": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "discountTextC": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "discountTop": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "discountLeft": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "discountFtS": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    },
+    "discountSymbolFts": {
+      "is_public": 0,
+      "is_m": 0,
+      "is_app": 1
+    }
+  }
+}

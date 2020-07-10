@@ -1,0 +1,391 @@
+<script>
+
+var ips_options = {
+    initStatus:false,
+}
+
+/**
+ * ips 初始化
+ */
+;function ipsInit(){
+    eachIpsSelectItem();
+    ips_options.initStatus = true
+}
+
+/**
+ * 获取选品数据
+ * @param $wrapper ips外层容器
+ */
+function saveIpsData($wrapper){
+	var $ipsAutoWraper = $wrapper.find('.gs-tab-select-wraper').find('.gs-tab-select-autoIps');
+	var ipsMethods = $wrapper.find('.gs-tab-select-wraper').find('.ipsItemRadio:checked').val();
+	var checkForm = false;/*ips表单是否可以提交*/
+
+	/* 选品系统 ipsMethods - 1 自动  ipsMethods - 2 手动  3 筛选自动 4 筛选手动*/
+	if (ipsMethods == 1) {
+		var ipsInfo = { "level1": { id: 0, name: "" }, "level2": { id: 0, name: "" }, "level3": [] };
+		ipsInfo.level1.id = $ipsAutoWraper.find('.gs-select-level-ips-auto').find('option:checked').val();
+		ipsInfo.level1.name = $ipsAutoWraper.find('.gs-select-level-ips-auto').find('option:checked').text();
+		ipsInfo.level2.id = $ipsAutoWraper.find('.gs-select-level2-ips-auto').find('option:checked').val();
+		ipsInfo.level2.name = $ipsAutoWraper.find('.gs-select-level2-ips-auto').find('option:checked').text();
+
+		$ipsAutoWraper.find('.gs-select-item-wraper .gs-select-item').each(function(index, item) {
+			var ipsLevel3 = { id: 0, name: "", sku_num: "" };
+			ipsLevel3.id = $(item).find('.gs-select-box').find('option:checked').val();
+			ipsLevel3.name = $(item).find('.gs-select-box').find('option:checked').text();
+			ipsLevel3.sku_num = $(item).find('.sku-select-input').val().trim() || '';
+			/* 三级活动信息必选 */
+			if (ipsLevel3.id == '0') {
+				checkForm = true;
+			}
+			ipsInfo.level3.push(ipsLevel3);
+		});
+
+		return {ips:ipsInfo,checkForm:checkForm}
+
+	} else if(ipsMethods == 2) {
+		$(".gs-select-box",$wrapper).each(function(index){
+			$('input[name=gsSelectLevel'+ index +']',$wrapper).val($(this).val());
+		});
+        var $ipsWraper = $wrapper.find('.gs-tab-select-wraper').find('.gs-tab-select-ips');
+		var gsSelectLevel0 = $wrapper.find('input[name=gsSelectLevel0]').val(),
+		gsSelectLevel1 = $wrapper.find('input[name=gsSelectLevel1]').val(),
+		gsSelectLevel2 = $wrapper.find('input[name=gsSelectLevel2]').val(),
+		ipsGoodsSKU = $wrapper.find('input[name=ipsGoodsSKU]').val();
+
+
+		var ipsInfo = { "level0": { id:'', name: "" }, "level1": { id: '', name: "" }, "level2": { id: '', name: "" },ipsSku:'' };
+		ipsInfo.level0.id = $ipsWraper.find('.gs-select-box-first').find('option:checked').val();
+		ipsInfo.level0.name = $ipsWraper.find('.gs-select-box-first').find('option:checked').text();
+		ipsInfo.level1.id = $ipsWraper.find('.gs-select-box-second').find('option:checked').val();
+		ipsInfo.level1.name = $ipsWraper.find('.gs-select-box-second').find('option:checked').text();
+		ipsInfo.level2.id = $ipsWraper.find('.gs-select-box-third').find('option:checked').val();
+		ipsInfo.level2.name = $ipsWraper.find('.gs-select-box-third').find('option:checked').text();
+		ipsInfo.ipsSku = ipsGoodsSKU;
+
+		if(ipsInfo.level2.id== '0'){
+			checkForm = true;
+		}
+
+		return {ips:{"gsSelectLevel0":gsSelectLevel0,"gsSelectLevel1":gsSelectLevel1,"gsSelectLevel2":gsSelectLevel2,ipsGoodsSKU:ipsGoodsSKU,ipsInfo:ipsInfo},checkForm:checkForm}
+	}else if(ipsMethods == 3){
+
+	}else if(ipsMethods ==4){
+		var skus = $wrapper.find('.gs-tab-select-wraper').find('[name=ips_manual_sku]').val();
+		var ipsFilterInfo = {
+			ips_manual_sku: skus
+		};
+/*		return {ips:{'gsSelectLevel2':10,ipsFilterInfo:ipsFilterInfo}};*/
+		return {ips:{ipsGoodsSKU:skus,ipsFilterInfo:ipsFilterInfo}};
+	}
+
+
+};
+
+/**
+ * radio list render 选品radio重置
+ * @param type
+ */
+function ipsRadioInit(type){
+	$('.goods-form-table .goods-tab-lists .radio-tab-group,#component_form .radio-tab-group').add($('.goods-form-table tbody .radio-tab-group')).each(function(index,element){
+		var $radio = $(element).find('.tabItemRadio');
+		var $ipsRadio = $(element).find('.ipsItemRadio');
+		var $radioName = 'skuFrom'+index;
+		var $ipsMethods = 'ipsMethods'+index;
+        var ipsDefault = {% if ipsDefault is not empty %}{{ ipsDefault }} {% else %}'2'{% endif %};
+
+		$radio.attr({'name':$radioName,'lay-filter':$radioName});
+        $('input[name=' + $radioName + '][checked]').prop('checked', true);
+        $('input[name=' + $ipsMethods + '][checked]').prop('checked', true);
+
+		if($('input[name='+$radioName+']:checked').length === 0){
+			$('input[name='+$radioName+'][value=1]').prop('checked',true);
+		}
+
+		$ipsRadio.attr({'name':$ipsMethods,'lay-filter':$ipsMethods});
+		if($('input[name='+$ipsMethods+']:checked').length === 0){
+			$('input[name='+$ipsMethods+'][value='+ipsDefault+']').prop('checked',true);
+		}
+
+		var $tr = $(element).closest('tr');
+		var skuFrom = $('input[name='+$radioName+']:checked').val();
+		if(skuFrom == '2'){
+			$tr.find('.class-manage').attr('data-from','ips');
+		}else{
+			$tr.find('.class-manage').removeAttr('data-from');
+		}
+
+		layui.form.render();
+		layui.form.on('radio('+$radioName+')', function (data) {
+			var value = Number(data.value);
+			$(element).find("[data-target=skuFrom-" + value + "]").addClass('goods-visible').siblings().removeClass('goods-visible');
+			if(value == '2'){
+				$tr.find('.class-manage').attr('data-from','ips');
+			}else{
+				$tr.find('.class-manage').removeAttr('data-from');
+			}
+            $('input[name='+$radioName+'][value='+value+']').attr('checked','checked').siblings().removeAttr('checked');
+		});
+
+		layui.form.on('radio('+$ipsMethods+')', function (data) {
+			var value = Number(data.value);
+			var $wraper = $(element).find('.gs-tab-select-wraper');
+			var currentIndex;
+			switch (value) {
+				case 2:
+					currentIndex = 0;
+					break;
+				case 1:
+					currentIndex = 1;
+					break;
+				default:
+					currentIndex = value - 1 || 0;
+					break;
+			}
+			var $target = $wraper.find('.gs-tab-select-item:eq(' + currentIndex + ')');
+			$target.addClass('goods-visible');
+			$target.siblings('.gs-tab-select-item').removeClass('goods-visible');
+			$('input[name='+$ipsMethods+'][value='+value+']').attr('checked','checked').siblings().removeAttr('checked');
+		});
+
+	});
+
+/*	选品radio 重新赋值 */
+    switch (type){
+        case 'reset-key':
+            GESHOP_IPS.ipsKeyReset();
+            break;
+        default:
+            break;
+    }
+/* 选品select 重置 */
+    GsSelect.initSelect();
+/*    GsSelect.initSelect($('.radio-tab-true .gs-tab-select-wraper:last'));
+    GsSelect.initSelectFirst($('.radio-tab-true .gs-tab-select-wraper:last'));*/
+
+}
+
+
+/**
+ * ips radio 重置渲染
+ */
+function ipsKeyReset(){
+    $('.goods-form-table .goods-tab-lists .radio-tab-group,#component_form .radio-tab-group').add($('.goods-form-table tbody .radio-tab-group')).each(function(index,element) {
+        var $radio = $(element).find('.tabItemRadio');
+        var $ipsRadio = $(element).find('.ipsItemRadio');
+        var $radioName = 'skuFrom' + index;
+        var $ipsMethods = 'ipsMethods' + index;
+
+        $radio.attr({ 'name': $radioName, 'lay-filter': $radioName });
+        $('input[name=' + $radioName + '][checked]').prop('checked', true);
+        $('input[name=' + $ipsMethods + '][checked]').prop('checked', true);
+
+        var $tr = $(element).closest('tr');
+        var skuFrom = $('input[name=' + $radioName + ']:checked').val();
+        if (skuFrom == '2') {
+            $tr.find('.class-manage').attr('data-from', 'ips');
+        } else {
+            $tr.find('.class-manage').removeAttr('data-from');
+        }
+
+        layui.form.render();
+    })
+}
+
+
+/**
+    * 自动选品三级分类的操作：新增，修改，删除，上下移动
+    */
+function eachIpsSelectItem () {
+    /* 新增 */
+    $(".gs-select-item-wraper").on('click','.gs-select-item .class-add-ips',function(e){
+        var $wrap = $(this).closest('.gs-select-item-wraper');
+        var curLeve2id = $wrap.find('.gs-select-box-third').data('parent-activity-id') | 0;
+        var ipsAutoLimitClose = {% if ipsAutoLimitClose is not empty %}{{ ipsAutoLimitClose}} {% else %}''{% endif %};
+        var ips_auto_limit_class = ipsAutoLimitClose ? 'select-item layui-hide' : 'select-item' ;
+        var html = `<div class="gs-select-item">
+                        <label class="gs-block act-title-label">活动<span class="title-index">1</span></label>
+                                    <div class="gs-select-level3-wraper">
+                                        <div class="select-item">
+                                            <label class="gs-block">三级活动信息</label>
+
+
+                                            <select class="gs-select-box gs-select-box-third gs-select-level3-ips-auto" data-level="5" data-parent-activity-id="${curLeve2id}" data-activity-id = "0 " lay-ignore placeholder="请输入活动名称">
+                                                <option value="0">请选择活动</option>
+                                            </select>
+                                        </div>
+                                        <div class="${ips_auto_limit_class}">
+                                            <label class="gs-block">SKU显示数量</label>
+                                            <input class="layui-input sku-select-input" type="number" name="" value="">
+                                        </div>
+                                    </div>
+                                    <div class="geshop-third-value mr-10">
+                                        <span class="img-btn class-up-ips">
+                                            <i class='icon-up'></i>
+                                            <b class="tips">上移</b>
+                                        </span>
+                                        <span class="img-btn class-down-ips">
+                                            <i class='icon-down'></i>
+                                            <b class="tips">下移</b>
+                                        </span>
+                                        <span class="img-btn class-close-ips">
+                                            <i class='icon-delete' data=""></i>
+                                            <b class="tips" >删除</b>
+                                        </span>
+                                        <span class="img-btn class-add-ips">
+                                            <i class='icon-add'></i>
+                                            <b class="tips">新增</b>
+                                        </span>
+                                    </div>
+                                </div>`;
+            $wrap.append(html);
+            GsSelect.initSelect();
+            ipsInitItemIndex($wrap);
+
+    });
+
+    /* 删除 */
+    $(".gs-select-item-wraper").on('click','.gs-select-item .class-close-ips',function (e) {
+        var $wrap = $(this).closest('.gs-select-item-wraper');
+        var gs_select_item_length = $wrap.find('.gs-select-item').length;
+
+        var target = $(this).parents('.gs-select-item');
+
+        if (gs_select_item_length == 1) {
+            layer.msg('至少保留一项三级活动信息');
+            return false;
+        }
+
+        layer.confirm(
+            '是否删除活动信息?',
+            { btn: ['取消', '确定'], icon:3, title:'提示', skin: 'element-ui-dialog-class'},
+            function (index) {
+                layer.close(index)
+            },
+            function (index) {
+                target.remove();
+                layer.close(index);
+                ipsInitItemIndex($wrap);
+            }
+        );
+    });
+
+    /*下移 */
+    $(".gs-select-item-wraper").on('click','.gs-select-item .class-down-ips',function(e){
+        var $this = $(this),
+        $tr = $(this).parents('.gs-select-item:eq(0)'),
+        $trNext = $tr.next();
+        $wrap = $(this).closest('.gs-select-item-wraper');
+                if (0 != $trNext.length) {
+                        $trNext.after($tr);
+                }
+        ipsInitItemIndex($wrap);
+    });
+
+    /*上移 */
+    $(".gs-select-item-wraper").on('click','.gs-select-item .class-up-ips',function(e){
+        var $this = $(this),
+        $tr = $(this).parents('.gs-select-item:eq(0)'),
+        $trPrev = $tr.prev();
+        $wrap = $(this).closest('.gs-select-item-wraper');
+        if(0 != $trPrev.length){
+            $trPrev.before($tr);
+        }
+        ipsInitItemIndex($wrap);
+    });
+
+    /* 排序 */
+    function ipsInitItemIndex($wrap){
+        $wrap.find('.gs-select-item').each(function(index){
+            var $this = $(this);
+            $this.find('.title-index').text(index+1);
+        })
+    }
+}
+
+
+/* ips筛选器SKU确认*/
+function validIpsSKU(arr){
+	var valid = true;
+	for (var i=0;i<arr.length;i++){
+		if(arr[i].ipsMethods === '4' && arr[i].ips && !arr[i].ips.ipsFilterInfo.ips_manual_sku){
+			valid = false;
+			layui.layer.msg('请添加SKU！');
+			break;
+		}
+	}
+	return valid;
+}
+
+/**
+ * 获取tab组ips数据
+ * @param $wrapper ips外层容器
+ * skuFromValue [2,1] > ['选品系统'，'商品sku']
+ * ipsMethods [1,2,3,4] ['自动'，'手动'，'筛选自动'，'筛选手动']
+ */
+function getIPSItemJson($wrapper){
+    var skuFromValue = $wrapper.find('.tabItemRadio:checked').val() || '1';
+    var $ipsAutoWraper = $wrapper.find('.gs-tab-select-wraper');
+    var ipsMethods = $ipsAutoWraper.find('.ipsItemRadio:checked').val();
+    if(!$wrapper || !!!ipsMethods){return {}};
+
+    var saveIpsDataObj = saveIpsData($wrapper);
+    return {
+        "skuFrom":skuFromValue,
+        "ipsMethods":ipsMethods,
+        "ips":saveIpsDataObj.ips
+    }
+}
+
+/**
+ * ips选品 checkForm 是否选中三级活动
+ * @param next 提交队列函数
+ * @returns {boolean}
+ */
+function ips_tab_goods_sumit(next){
+    var actid_required_status = false;
+    $('.radio-tab-group').each(function(index,element){
+        var $wrapper = $(element).closest('.radio-tab-group');
+        var skuFromValue = $wrapper.find('.tabItemRadio:checked').val();
+        var $ipsAutoWraper = $wrapper.find('.gs-tab-select-wraper');
+        var ipsMethods = $ipsAutoWraper.find('.ipsItemRadio:checked').val();
+
+        var $val = $(this).val();
+        var $label = $(this).parents('.goods-tab-item:eq(0)').find('input.tab-item-label').val();
+
+        var saveIpsDataObj = saveIpsData($wrapper);
+        /* skuFromValue 2 选品，1 商品SKU */
+        if(skuFromValue == '2'){
+            actid_required_status = saveIpsDataObj.checkForm;
+        }
+
+    });
+    if (actid_required_status) {
+        layer.msg('请选择三级活动信息');
+        return false;
+    }
+    /* 增加对ips 手动筛选验证 */
+
+    next();
+}
+
+window.GESHOP_IPS = {
+    ipsRadioInit : ipsRadioInit,
+    ipsKeyReset : ipsKeyReset,
+    getIPSItemJson : getIPSItemJson,
+    saveIpsData : saveIpsData,
+    validIpsSKU : validIpsSKU,
+    eachIpsSelectItem :eachIpsSelectItem,
+}
+
+;$(function(){
+    ipsInit();
+    /* 新版本 form 表单提交容错代码 */
+    if (typeof window.before_submit_queue === "object") {
+        before_submit_queue.push(ips_tab_goods_sumit);
+        before_submit_queue.push(function(next) {
+            next();
+        });
+    }
+})
+</script>

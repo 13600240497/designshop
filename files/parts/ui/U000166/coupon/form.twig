@@ -1,0 +1,270 @@
+{%
+    set formData = {
+        id: 'U0000166',
+        name: '积分兑换优惠券',
+        theme: 'coupon',
+        tabs: [
+            {
+                label: '数据配置',
+                components: [
+                    {
+                        label: '数据内容配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '积分兑换虚拟商品序号',
+                                name: 'active_id'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                label: '样式配置',
+                components: [
+                    {
+                        label: '常用配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件上边距(px)',
+                                name: 'box_margin_top',
+                                default: '0',
+                                col: 2,
+                            },
+                            {
+                                label: '组件下边距(px)',
+                                name: 'box_margin_bottom',
+                                default: '40',
+                                col: 2,
+                            },
+                            {
+                                label: '组件对齐方式',
+                                name: 'components_align',
+                                type: 'radio',
+                                default: 'left',
+                                options: [
+                                    { label: '左', value: 'left' },
+                                    { label: '中', value: 'center' },
+                                    { label: '右', value: 'right' }
+                                ],
+                                public: false,
+                                filter: 0
+                            }
+                        ]
+                    },
+                    {
+                        label: '兑换优惠券信息配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '背景图片宽度(px）',
+                                name: 'bg_width',
+                                default: '389',
+                            },
+                            {
+                                label: '背景图片高度(px）',
+                                name: 'bg_height',
+                                default: '292',
+                            },
+                            {
+                                label: '背景图片',
+                                name: 'bg_img',
+                                type: 'image',
+                                public: false,
+                                data_height: 'bg_height',
+                                data_width: 'bg_width'
+                            },
+                            {
+                                label: '背景颜色',
+                                name: 'coupon_bg_color',
+                                default: '#ededed',
+                                type: 'colorPicker',
+                                public: false,
+                            },
+                        ]
+                    },
+                    {
+                        label: '兑换按钮配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '下偏移(px)',
+                                name: 'btn_mb',
+                                default: '40'
+                            },
+                            {
+                                label: '右偏移(px)',
+                                name: 'btn_mr',
+                                default: ''
+                            }
+                        ]
+                    },
+                    {
+                        type: 'tab',
+                        items: [
+                            {
+                                label: '进行中',
+                                components: [
+                                    {
+                                        label: '背景颜色',
+                                        name: 'underway_bg_color',
+                                        default: '#333333',
+                                        type: 'colorPicker',
+                                        public: false,
+                                    },
+                                    {
+                                        label: '文案颜色',
+                                        name: 'underway_text_color',
+                                        default: '#FFFFFF',
+                                        type: 'colorPicker',
+                                        public: false,
+                                    }
+                                ]
+                            },
+                            {
+                                label: '未开始',
+                                components: [
+                                    {
+                                        label: '背景颜色',
+                                        name: 'notstart_bg_color',
+                                        default: '#666666',
+                                        type: 'colorPicker',
+                                        public: false,
+                                    },
+                                    {
+                                        label: '文案颜色',
+                                        name: 'notstart_text_color',
+                                        default: '#FFFFFF',
+                                        type: 'colorPicker',
+                                        public: false,
+                                    }
+                                ]
+                            },
+                            {
+                                label: '已结束',
+                                components: [
+                                    {
+                                        label: '背景颜色',
+                                        name: 'ended_bg_color',
+                                        default: '#666666',
+                                        type: 'colorPicker',
+                                        public: false,
+                                    },
+                                    {
+                                        label: '文案颜色',
+                                        name: 'ended_text_color',
+                                        default: '#FFFFFF',
+                                        type: 'colorPicker',
+                                        public: false,
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        type: 'tab',
+                        items: [
+                            {
+                                label: '兑换提示弹窗配置',
+                                components: [
+                                    {
+                                        label: '边框粗细(px)',
+                                        name: 'model_border_width',
+                                        default: 3,
+                                        public: false,
+                                    },
+                                    {
+                                        label: '边框颜色',
+                                        name: 'model_border_color',
+                                        type: 'colorPicker',
+                                        default: '#333333',
+                                        public: false
+                                    },
+                                    {
+                                        label: '背景颜色',
+                                        name: 'model_bg_color',
+                                        type: 'colorPicker',
+                                        default: '#FFFFFF',
+                                        public: false
+                                    },
+                                    {
+                                        label: '文案颜色',
+                                        name: 'model_text_color',
+                                        type: 'colorPicker',
+                                        default: '#333333',
+                                        public: false
+                                    }
+
+                                ]
+                            },
+                            {
+                                label: '积分不足弹窗配置',
+                                components: [
+                                    {
+                                        label: '边框粗细(px)',
+                                        name: 'noscore_model_border_width',
+                                        default: 3,
+                                        public: false,
+                                    },
+                                    {
+                                        label: '边框颜色',
+                                        name: 'noscore_model_border_color',
+                                        type: 'colorPicker',
+                                        default: '#333333',
+                                        public: false
+                                    },
+                                    {
+                                        label: '背景颜色',
+                                        name: 'noscore_model_bg_color',
+                                        type: 'colorPicker',
+                                        default: '#FFFFFF',
+                                        public: false
+                                    },
+                                    {
+                                        label: '文案颜色',
+                                        name: 'noscore_model_text_color',
+                                        type: 'colorPicker',
+                                        default: '#333333',
+                                        public: false
+                                    },
+                                    {
+                                        label: 'OOPS字体颜色',
+                                        name: 'oops_color',
+                                        type: 'colorPicker',
+                                        default: '#333333',
+                                        public: false,
+                                    },
+                                    {
+                                        label: 'ICON图片',
+                                        name: 'model_icon',
+                                        desc: '建议上传宽为70px*60px',
+                                        type: 'image',
+                                        public: false,
+                                    },
+                                    {
+                                        label: '积分赚取跳转文案颜色',
+                                        name: 'getScore_link_color',
+                                        type: 'colorPicker',
+                                        default: '#333333',
+                                        public: false
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        moreConfig: [],
+        beforeSubmit: 'beforeSubmit'
+    }
+%}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+{# 引入自定义函数 #}
+<script>
+{% include 'form.js' %}
+</script>

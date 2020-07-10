@@ -1,0 +1,40 @@
+
+<section>
+    <input type="hidden" name="navNewData">
+    <div class="layui-form-item" pane="">
+        <label class="layui-form-label">可选导航菜单</label>
+        <div class="layui-input-block">
+          {% if data.navNewData %}
+          {% for item in data.navNewData %}
+            <div class="nav-item">
+              <input type="checkbox" name="nav_menu" value="{{ item.id }}" lay-skin="primary" title="{{ item.name }}" {% if item.id in data.nav_menu %} checked {% endif %}><br>
+              <div class="layui-input-block ml0">
+                <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                <input class="layui-input nav-img Unwanted" name="{{ item.id }}" type="text" value="{{item.img}}">
+              </div>
+            </div>
+          {% endfor %}
+         
+          {% endif %}
+        </div>
+        <input type="checkbox" lay-filter="check_all" data-name="nav_menu" lay-skin="primary" title="全选">
+    </div>
+    {# <input type="hidden" name="navs">
+    <div class="layui-form-item" pane="">
+      <label class="layui-form-label">可选导航菜单</label>
+      <div class="layui-input-block">
+        {% if data.navData %}
+        {% for id,item in data.navData %}
+        <div class="nav-item">
+          <input type="checkbox" name="nav_menu" value="{{ id }}" lay-skin="primary" title="{{ item }}" {% if id in data.nav_menu %} checked {% endif %}><br>
+          <div class="layui-input-block ml0">
+            <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+            <input class="layui-input navImg" type="text" name="navImg{{id}}" value="{{item.imgUrl}}">
+          </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+      <input type="checkbox" lay-filter="check_all" data-name="nav_menu" lay-skin="primary" title="全选">
+    </div> #}
+</section>

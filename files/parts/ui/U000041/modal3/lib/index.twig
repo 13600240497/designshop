@@ -1,0 +1,35 @@
+{% set static = {
+	discountFtS:data.discountFtS|default(12)
+	}
+%}
+
+<ul class="clearfix goods-list" data-gid="zaful-default">
+		{% for key,item in data.goodsInfo[loop.index0].lists|default(0..3) %}
+			<li>
+				<div class="geshop-U000041-modal3-list-img">
+					<a href="{{ item.url_title }}">
+						{% if item.discount !=0 %}
+							{% include geshop.default.pc.discount_float with { params: { value: item.discount , type: data.discountType}} %}
+						{% endif %}
+						{% include geshop.default.pc.image_goods with { params: { src: item.goods_img }} %}
+						{% include geshop.default.pc.button_quick_view with { params: { href: item.url_quick, text: data.quickview }} %}
+						{% if item.goods_number is not empty %}
+							{% include geshop.default.pc.sold_out with { params: { show: item.goods_number - 0 <= 0 ? true : false }} %}
+						{% endif %}
+					</a>
+				</div>
+
+				<div class="desc-box">
+					<div class="trans-box">
+						<div class="geshop-U000041-modal3-list-title">
+							<a href="{{ item.url_title }}">{{ item.goods_title | default('ZAFUL Fleece Vest And Corduroy Jack') }}</a>
+						</div>
+						<div class="gs-shop-price">
+							{% include geshop.default.pc.shop_price with { params: { value: item.shop_price }} %}
+							{% include geshop.default.pc.market_price with { params: { value: item.market_price }} %}
+						</div>
+					</div>
+				</div>
+			</li>
+		{% endfor %}
+</ul>

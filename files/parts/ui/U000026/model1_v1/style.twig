@@ -1,0 +1,8 @@
+ {% set classRoot = '.geshop-U000026-model1_v1-body-'~pageInstanceId~'' %}
+    {% set remUnit = 75 %}
+    {# 三端共有样式 #}
+    {{ classRoot }} {
+        margin-top:{{ (data.boxMarginTop|default(0)/remUnit) }}rem;
+        margin-bottom:{{ (data.boxMarginBottom|default(32))/remUnit }}rem;
+    }
+

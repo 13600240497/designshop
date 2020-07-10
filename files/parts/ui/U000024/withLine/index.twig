@@ -1,0 +1,19 @@
+{% set pageData = {
+	titleColor:data.titleColor is not null?data.titleColor:'#1c1c1c',
+
+	boxMarginBottom:(data.boxMarginBottom|default(10)),
+	titleFont:(data.titleFont|default(24))
+}%}
+
+<div class="geshop-component-box component-drag clearfix" id="U000024_{{pageInstanceId}}"  data-gid="U000024_withLine" data-key="U000024" data-id="{{ pageInstanceId }}" attr="nav_flag"
+style="{% if data.boxMarginBottom %}margin-bottom:{{data.boxMarginBottom|default(10)}}px;{% endif %}min-height:64px;">
+	<div class="geshop-component-title" style="text-align:center;">
+		<div class="gs-titlt-contant">
+			<span style="
+			color:{% if data.titleColor %}{{ data.titleColor|default('#1c1c1c') }}{% endif %};
+			{% if data.buyFtW %}font-weight:{{data.buyFtW|default(bold)}};{% endif %}
+			{% if pageData.titleFont %}font-size:{{pageData.titleFont}}px;{% endif %}">{% if data.titleText %}{{ data.titleText }}{% else %}请设置导航标题{% endif %}</span> 
+		</div>
+	</div>
+</div>
+

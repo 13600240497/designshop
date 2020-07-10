@@ -1,0 +1,113 @@
+$pc_box_margin_top: ${data.pc_box_margin_top || 0}px;
+$pc_box_margin_bottom: ${data.pc_box_margin_top || 32}px;
+$reviews_color: ${data.reviews_color || '#999999'};
+$promote_bg_color: ${data.promote_bg_color || '#FFE4E5'};
+$promote_text_color: ${data.promote_text_color || '#FF4545'};
+$start_color: ${data.start_color || '#FF4545' };
+$discount_bg_color: ${data.discount_bg_color || '#151515' };
+$discount_font_color: ${data.discount_font_color || '#ff4545' };
+$cornermark_bgImg_pc: url('${data.cornermark_bgImg_pc}');
+$cornermark_left_pc: ${data.cornermark_left_pc || 0 }px;
+$cornermark_top_pc: ${data.cornermark_top_pc || 0 }px;
+$shopprice_color: ${data.shopprice_color || '#000000' } !important;
+
+
+
+.geshop-u000224-default-body {
+    padding: 0 100px;
+    margin-top: $pc_box_margin_top;
+    margin-bottom: $pc_box_margin_bottom;
+
+    .geshop-zaful-discount span label {
+        line-height: normal;
+    }
+
+    .item-info .sale-mark{
+        background-color: $promote_bg_color;
+        color: $promote_text_color;
+    }
+
+    .reviews{
+        color: $reviews_color;
+        font-size: 13px;
+    }
+
+    .rate .score .iconfont {
+        color: $start_color;
+     }
+
+     .item-discount .dl-discount {
+        background: $discount_bg_color;
+        color: $discount_font_color;
+    }
+
+    .cornermark {
+        background-image: $cornermark_bgImg_pc;
+        top: $cornermark_top_pc;
+        left: $cornermark_left_pc;
+    }
+
+    .geshop-shop-price .my_shop_price{
+        color: $shopprice_color;
+    }
+
+} 
+
+
+
+
+$pad_box_margin_top: ${data.pad_box_margin_top || 0 }px;
+$pad_box_margin_bottom: ${data.pad_box_margin_bottom || 32 }px;
+$cornermark_bgImg_pad: url('${ data.cornermark_bgImg_pad }');
+$cornermark_top_pad: ${data.cornermark_top_pad || 0 }px;
+$cornermark_left_pad: ${data.cornermark_left_pad || 0 }px;
+
+
+
+@media screen and (max-width: 1024px) and (min-width: 768px){
+    .geshop-u000224-default-body{
+        padding: 0 30px;
+        margin-top: $pad_box_margin_top;
+        margin-bottom: $pad_box_margin_bottom;
+    }
+    .swiper-container{
+        padding-bottom: 44px;
+    }
+    .cornermark{
+        width: 66px;
+        height:24px;
+        line-height:24px;
+        background-image: $cornermark_bgImg_pad;
+        top: $cornermark_top_pad;
+        left: $cornermark_left_pad;
+    }
+}
+
+
+$m_box_margin_top: ${data.m_box_margin_top || 0 }px;
+$m_box_margin_bottom: ${data.m_box_margin_bottom || 20 }px;
+$background-image: url('${ data.cornermark_bgImg_m }');
+$cornermark_top_m: ${ data.cornermark_top_m || 0 }px;
+$cornermark_left_m: ${data.cornermark_left_m || 0 }px;
+
+
+@media screen and (max-width: 767px){
+    .geshop-u000224-default-body{
+        padding: 0 20px;
+        margin-top: $m_box_margin_top;
+        margin-bottom: $m_box_margin_bottom;
+    }
+
+    .swiper-container{
+        padding-bottom: 44px;
+    }
+
+    .cornermark{
+        width: 60px;
+        height:22px;
+        line-height:22px;
+        background-image: $background-image;
+        top: $cornermark_top_m;
+        left: $cornermark_left_m;
+    }
+}

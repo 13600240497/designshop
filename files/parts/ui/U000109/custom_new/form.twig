@@ -1,0 +1,146 @@
+{%
+
+    set formData = {
+        id: 'U000109',
+        name: '自定义榜单配置项',
+        theme: 'custom_new',
+        tabs: [
+            {
+                label: '商品数据',
+                components: [
+                    {
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '商品数据',
+                                type: 'goods-manager',
+                                beforeSubmit: 'beforeSubmit'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                label: '样式配置',
+                components: [
+                    {
+                        label: '常用配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件上边距(px)',
+                                name: 'margin_top',
+                                default: '0',
+                                col: 2
+                            },
+                            {
+                                label: '组件下边距(px)',
+                                name: 'margin_bottom',
+                                default: '32',
+                                col: 2
+                            },
+                            {
+                                type: 'siteParam-rg',
+                                componentType: 'background-rg'
+                            },
+                            {
+                                label: '商品配置',
+                                type: 'fieldset',
+                                components:[
+                                {
+                                    type: 'stock-rg'
+                                }
+                            ]
+                            }
+                        ]
+                    },
+                    {
+                        label: '榜单配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '右偏移(px)',
+                                name: 'list_img_left',
+                                default: '0',
+                                col: 2
+                            },
+                            {
+                                label: '上偏移(px)',
+                                name: 'list_img_top',
+                                default: '0',
+                                col: 2
+                            },
+                            {
+                                label: '图片宽度(px)',
+                                name: 'list_img_width',
+                                default: '40',
+                                col: 2
+                            },
+                            {
+                                label: '图片高度(px)',
+                                name: 'list_img_height',
+                                default: '48',
+                                col: 2
+                            },
+                            {
+                                label: '第一名图标',
+                                name: 'list_first_icon',
+                                type: 'image'
+                            },
+                            {
+                                label: '第二名图标',
+                                name: 'list_second_icon',
+                                type: 'image'
+                            },
+                            {
+                                label: '第三名图标',
+                                name: 'list_three_icon',
+                                type: 'image'
+                            },
+                            {
+                                label: '其他名次图标',
+                                name: 'list_other_icon',
+                                type: 'image'
+                            },
+                            {
+                                label: '其他名次文字颜色',
+                                name: 'list_other_font_color',
+                                type: 'colorPicker',
+                                default: '#FFFFFF'
+                            }
+                        ]
+                    },
+                    {
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '销售价配置',
+                                type: 'shop-price-rg'
+                            }
+                        ]
+                    },
+                    {
+                        label: '价格标签配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '文案',
+                                name: 'price_content',
+                                default: 'Now Only'
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        moreConfig: [],
+        isAutoRefresh: 1
+    }
+
+%}
+
+
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+

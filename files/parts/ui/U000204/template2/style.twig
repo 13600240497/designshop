@@ -1,0 +1,112 @@
+{% set box = '#U000204_'~pageInstanceId %}
+{{ box }} {
+    margin-bottom:{{ data.box_margin_bottom ?? 0 }}px;
+    margin-top:{{ data.box_margin_top ?? 0 }}px;
+}
+
+{{ box }} .u000204-template2-couponsBox {
+    width: {{ data.bg_w ?? 389 }}px;
+    height: {{ data.bg_h ?? 176}}px;
+
+}
+
+{{ box }} .geshop-u000204-template2 {
+    text-align: {{ data.coup_align ?? 'center' }};
+}
+
+{{ box }} .btn-group {
+    left: {{ data.stock_right ?? 209 }}px;
+    bottom: {{ data.stock_bottom ?? 52 }}px;
+}
+
+{{ box }} .stock-box {
+    margin-bottom: {{ data.stock_mb ?? 16 }}px;
+    color: {{ data.stock_color ?? '#000000' }};
+}
+
+{{ box }} .rang-box {
+    background-color: {{ data.stock_bgcolor ?? '#FFFFFF' }};
+}
+
+{{ box }} .remainder-bar {
+    background-color: {{ data.d_stock_bgcolor ?? '#222222' }};
+}
+
+{{ box }} .btn-claim-box li {
+    background-color: {{ data.btn_off_bgcolor ?? '#999999' }};
+    color: {{ data.btn_off_color ?? '#FFFFFF' }};
+    border-radius: {{ data.btn_radius ?? '2' }}px;
+}
+
+{{ box }} .btn-claim-box li.light {
+    background-color: {{ data.btn_bgcolor ?? '#000000' }};
+    color: {{ data.btn_color ?? '#FFFFFF' }};
+}
+
+@media (max-width: 1200px) and (min-width: 768px) {
+    {{ box }} {
+        margin-bottom:{{ data.box_margin_bottom_pad ?? 0 }}px;
+        margin-top:{{ data.box_margin_top_pad ?? 0 }}px;
+    }
+
+    {{ box }} .geshop-u000204-template2 {
+        text-align: center ;
+    }
+    {{ box }} .u000204-template2-couponsBox {
+        width: {{ data.bg_w_pad ?? 100 }}%;
+        padding-bottom: {{ data.bg_h_pad ?? 23 }}%;
+        height:auto;
+        text-align: initial;
+    }
+
+
+
+    {{ box }} .btn-group {
+        left: {{ data.stock_right_pad ?? 52 }}%;
+        bottom: {{ data.stock_bottom_pad ?? 34 }}%;
+    }
+
+    {{ box }} .stock-box {
+        margin-bottom: {{ data.stock_mb_pad ?? 10 }}px;
+    }
+
+
+
+    {{ box }} .btn-claim-box li {
+        border-radius: {{ data.btn_radius_pad ?? '2' }}px;
+    }
+}
+
+@media (max-width: 767px) {
+    {{ box }} {
+        margin-bottom:{{ data.box_margin_bottom_m ?? 0 }}px;
+        margin-top:{{ data.box_margin_top_m ?? 0 }}px;
+    }
+
+    {{ box }} .geshop-u000204-template2 {
+        text-align: center ;
+    }
+    {{ box }} .u000204-template2-couponsBox {
+        width: {{ data.bg_w_m ?? 100 }}%;
+        padding-bottom: {{ data.bg_h_m ?? 45.2 }}%;
+        height:auto;
+        text-align: initial;
+    }
+
+
+
+    {{ box }} .btn-group {
+        left: {{ data.stock_right_m ?? 56 }}%;
+        bottom: {{ data.stock_bottom_m ?? 34 }}%;
+    }
+
+    {{ box }} .stock-box {
+        margin-bottom: {{ data.stock_mb_m ?? 10 }}px;
+    }
+
+
+
+    {{ box }} .btn-claim-box li {
+        border-radius: {{ data.btn_radius_m ?? '2' }}px;
+    }
+}

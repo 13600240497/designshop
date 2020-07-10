@@ -1,0 +1,200 @@
+{% set siteData = {
+    discount: 'rg' in siteCode ? 'hidden' : 'discount-zf',
+    shopPrice: 'rg' in siteCode ? 'shop-price-rg' : 'shop-price',
+} %}
+
+{%
+
+    set formData = {
+        id: 'U000110',
+        name: '自定义榜单配置项',
+        theme: 'custom_new',
+        tabs: [
+            {
+                label: '商品数据',
+                components: [
+                    {
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '商品数据',
+                                type: 'goods-manager',
+                                beforeSubmit: 'beforeSubmit'
+                            },
+                            {
+                                label: '默认显示商品个数',
+                                name: 'show_goods_number'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                label: '样式配置',
+                components: [
+                    {
+                        label: '常用配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件上边距(px)',
+                                name: 'margin_top',
+                                default: '0',
+                                col: 2
+                            },
+                            {
+                                label: '组件下边距(px)',
+                                name: 'margin_bottom',
+                                default: '40',
+                                col: 2
+                            },
+                            {
+                                label: '组件背景圆角大小(px)',
+                                name: 'bg_radius_size',
+                                default: '12',
+                                col: 2
+                            },
+                            {
+                                label: '单个商品圆角大小(px)',
+                                name: 'goods_radius_size',
+                                default: '12',
+                                col: 2
+                            },
+                            {
+                                label: '组件背景颜色',
+                                name: 'box_bg_color',
+                                type: 'colorPicker',
+                                default: '#f8f8f8'
+                            },
+                            {
+                                type: 'stock-rg'
+                            }
+                        ]
+                    },
+                    {
+                        label: '排行榜标签',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '右偏移(px)',
+                                name: 'list_img_left',
+                                default: '0',
+                                col: 2
+                            },
+                            {
+                                label: '上偏移(px)',
+                                name: 'list_img_top',
+                                default: '0',
+                                col: 2
+                            },
+                            {
+                                label: '图片宽度(px)',
+                                name: 'list_img_width',
+                                default: '52',
+                                col: 2
+                            },
+                            {
+                                label: '图片高度(px)',
+                                name: 'list_img_height',
+                                default: '58',
+                                col: 2
+                            },
+                            {
+                                label: '第一名图标',
+                                name: 'list_first_icon',
+                                type: 'image'
+                            },
+                            {
+                                label: '第二名图标',
+                                name: 'list_second_icon',
+                                type: 'image'
+                            },
+                            {
+                                label: '第三名图标',
+                                name: 'list_three_icon',
+                                type: 'image'
+                            },
+                            {
+                                label: '其他名次图标',
+                                name: 'list_other_icon',
+                                type: 'image'
+                            },
+                            {
+                                label: '其他名次文字颜色',
+                                name: 'list_other_font_color',
+                                type: 'colorPicker',
+                                default: '#FFFFFF'
+                            }
+                        ]
+                    },
+                    {
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '折扣标配置',
+                                type: siteData.discount
+                            },
+                            {
+                                label: '销售价配置',
+                                type: siteData.shopPrice
+                            }
+                        ]
+                    },
+                    {
+                        label: '价格标签配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '文案',
+                                name: 'price_content',
+                                default: 'Now Only'
+                            }
+                        ]
+                    },
+                    {
+                        label: 'View More/Less配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '按钮背景颜色',
+                                type: 'colorPicker',
+                                name: 'view_more_bg_color',
+                                default: '#333333',
+                                col: 2
+                            },
+                            {
+                                label: '按钮字体颜色',
+                                type: 'colorPicker',
+                                name: 'view_more_font_color',
+                                default: '#ffffff',
+                                col: 2
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        moreConfig: [],
+        isAutoRefresh: 1
+    }
+
+%}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+<script>
+    function onSubmit(progress) {
+        var $input = $('input[name=show_goods_number]'),
+            _val = $.trim($input.val());
+        if (_val != '') {
+            if (!/^([1-9][0-9]*)$/.test(_val) || _val <= 1) {
+                layer.msg('请输入为大于1的整数');
+                $input.val('');
+                return false;
+            };
+        }
+        progress.next();
+    }
+
+</script>

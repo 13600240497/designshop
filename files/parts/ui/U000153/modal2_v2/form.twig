@@ -1,0 +1,171 @@
+{% set buyTextDefault = get_component_trans(lang,'btn_buy_now')|default('BUY NOW') %}
+
+{%
+    set formData = {
+        id: 'U0000153',
+        name: '多时段TAB秒杀组件',
+        theme: 'default_v2',
+        tabs: [
+            {
+                label: '商品数据',
+                components: [
+                    {
+                        label: '数据配置',
+                        type: 'diy',
+                        src: 'form-data.twig'
+                    }
+                ]
+            },
+            {
+                label: '样式配置',
+                components: [
+                    {
+                        label: '常用配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件下边距(px)',
+                                name: 'box_margin_bottom',
+                                default: '32',
+                                col: 2,
+                            },
+                            {
+                                label: '背景颜色',
+                                name: 'box_bg_color',
+                                default: '#F8F8F8',
+                                type: 'colorPicker',
+                                col: 2,
+                            },
+                            {
+                                label: '展示样式',
+                                name: 'box_multi_column',
+                                default: '1',
+                                type: 'radio',
+                                options: [
+                                    {
+                                        label: '1行2列',
+                                        value: '1',
+                                    },
+                                    {
+                                        label: '1行1列',
+                                        value: '2',
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+					{
+						label: 'Tab导航',
+                        type: 'fieldset',
+						components: [
+							{
+                                label: '是否显示已结束时段的秒杀内容',
+                                name: 'tab_endShowActive',
+                                type: 'radio',
+                                default: '1',
+                                options: [
+                                    {
+                                        label: '是',
+                                        value: '1',
+                                    },
+                                    {
+                                        label: '否',
+                                        value: '0',
+                                    }
+                                ],
+                            },
+                            {
+                                label: '选中状态背景颜色',
+                                name: 'tab_selectBgc',
+                                type: 'colorPicker',
+                                default: '#333333',
+                            },
+                            {
+                                label: '未选中状态背景颜色',
+                                name: 'tab_unselectBgc',
+                                type: 'colorPicker',
+                                default: '#333333',
+                            },
+                            {
+                                label: '选中状态文字颜色',
+                                name: 'tab_selectTextC',
+                                type: 'colorPicker',
+                                default: '#FFFFFF',
+                            },
+                            {
+                                label: '未选中状态文字颜色',
+                                name: 'tab_unselectTextC',
+                                type: 'colorPicker',
+                                default: '#999999',
+                            }
+						]
+					},
+                    {
+                        label: '倒计时',
+                        type: 'timer'
+                    },
+                    {
+                        label: '商品信息',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '圆角大小',
+                                name: 'goods_item_radius',
+                                default: '12'
+                            }
+                        ]
+                    },
+                    {
+                        label: '销售价',
+                        type: 'shop-price',
+                    },
+                    {
+                        label: '库存条',
+                        type: 'progress',
+                    },
+                    {
+                        label: '库存提示文字颜色',
+                        name: 'goodsLimitsTextColor',
+                        type: 'colorPicker',
+                        default: '#333333',
+                    },
+                    {
+                        label: '库存提示文案类型',
+                        name: 'goodsLimitsTextType',
+                        type: 'radio',
+                        default: '1',
+                        options: [
+                            {
+                                label: '**% Claimed',
+                                value: '1'
+                            },
+                            {
+                                label: 'Only ** Left',
+                                value: '0'
+                            }
+                        ]
+                    },
+                    {
+                        label: '折扣标',
+                        type: 'discount-zf',
+                    },
+                    {
+                        label: '购买按钮',
+                        type: 'button-buynow-m',
+                    }
+                ]
+            }
+        ],
+        moreConfig: [],
+        beforeSubmit: 'beforeSubmit',
+        skuValidConfig: 'skuValidConfig'
+    }
+%}
+
+{# 引入自定义函数 #}
+<script>
+{% include 'form.js' %}
+</script>
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

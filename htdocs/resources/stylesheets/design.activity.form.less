@@ -1,0 +1,114 @@
+/*
+新版本form表单配置样式
+*/
+.design-activity-form {
+    .section-panel {
+        width: 100%;
+        padding: 0 40px;
+        padding-bottom: 63px;
+        box-sizing: border-box;
+    }
+    .section-basic {
+        > .layui-tab {
+            margin-top: 0px;
+            > .layui-tab-title {
+                display: flex;
+                height: 57px;
+                line-height: 57px;
+                > li {
+                    width: 100%;
+                    height: 57px;
+                    line-height: 57px;
+                    color: #9E9E9E;
+                    &.layui-this {
+                        color: #333333;
+                        &:after {
+                            display: none;
+                        }  
+                        &:before {
+                            position: absolute;
+                            left: 0px;
+                            right: 0px;
+                            bottom: 0px;
+                            height: 4px;
+                            background: #1E9FFF;
+                            content: " ";
+                        }
+                    }
+                }
+            }
+            > .layui-tab-content {
+                padding: 0px;
+                padding-top: 24px;
+            }
+        }
+        .layui-row.layui-col-space20 { 
+            margin-top: 0px;
+            margin-bottom: 0px;
+            // tab
+            .layui-tab {
+                margin-top: 0px;
+                margin-bottom: 0px;
+                > .layui-tab-content {
+                    padding-left: 0px;
+                    padding-right: 0px;
+                }
+            }
+        }
+        .layui-row.layui-col-space20 > * {
+            padding-top: 0px;
+            padding-bottom: 0px;
+            margin-bottom: 16px;
+            &:last-child {
+                margin-bottom: 0px;
+            }
+        }
+
+    }
+    .changeSection {
+        a {
+            position: relative;
+            display: block;
+            width:320px;
+            height:40px;
+            color: #1E9FFF;
+            text-align: center;
+            line-height: 40px;
+            background:rgba(244,250,255,1);
+            border-radius: 4px;
+            border: 1px solid rgba(189,227,255,1);
+            i {
+                position: relative;
+                left: 5px;
+            }
+        }
+    }
+    .column-back-title {
+        font-size: 16px;
+        height: 50px; 
+        line-height: 40px; 
+    }
+
+    .js-color-tracker {
+        .js-color-tracker-icon {
+            position: absolute;
+            top: 5px; 
+            left: 5px;
+            width: 30px;  
+            height: 30px;
+            background: url(/resources/colorpicker/images/select.png) center;
+        }
+        input {
+            padding-left: 42px;
+        }   
+    }
+  
+    // 定制化 layui-form 的表单排列方式
+    @import './form-less-module/form-item.less';
+    // 模版选择组件样式
+    @import './form-less-module/theme.less';
+    // 配置项分组
+    @import './form-less-module/fieldset.less';
+    // 商品数据控件样式fixed
+    @import './form-less-module/goods-manager-fixed.less';
+} 

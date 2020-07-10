@@ -1,0 +1,1 @@
+"use strict";$(function(){var e="undefined"==typeof GESHOP_STATIC?"":GESHOP_STATIC;$LAB.script(e+"/resources/javascripts/library/swiper/swiper.3.4.spec.min.js").wait(function(){$("[data-gid=U000198_default] .swiper-container").each(function(e,i){new Swiper3(this,{freeMode:!0,freeModeMomentumRatio:.5,slidesPerView:"auto"})})})});

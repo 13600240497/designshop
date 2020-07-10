@@ -1,0 +1,92 @@
+{% set space = '#U000224_'~pageInstanceId %}
+
+{{space}} .geshop-u000224-default-body{
+   padding: 0 100px;
+   margin-top: {{data.pc_box_margin_top | default(0)}}px;
+   margin-bottom: {{data.pc_box_margin_bottom | default(32)}}px;
+} 
+
+ {{space}} .geshop-u000224-default-body .geshop-zaful-discount span label {
+   line-height: normal;
+ }
+
+ {{space}} .geshop-u000224-default-body .item-info .sale-mark{
+   background-color: {{data.promote_bg_color |default('#FFE4E5')}};
+   color: {{data.promote_text_color | default('#FF4545')}};
+ }
+
+ {{space}} .geshop-u000224-default-body .reviews{
+   color: {{data.reviews_color | default('999999')}};
+   font-size: 13px;
+ }
+
+{{space}} .rate .score .iconfont{
+   color: {{data.start_color | default('#FF4545')}};
+}
+
+{{space}} .item-discount .dl-discount{
+  background: {{data.discount_bg_color | default('#151515')}};
+  color: {{data.discount_font_color | default('#ff4545')}};
+}
+
+{{space}} .cornermark {
+  {% if data.cornermark_bgImg_pc %}
+    background-image: url({{ data.cornermark_bgImg_pc }});
+  {% endif %}
+  top: {{data.cornermark_top_pc | default(0)}}px;
+  left: {{data.cornermark_left_pc | default(0)}}px;
+}
+
+{{space}} .geshop-shop-price .my_shop_price{
+  color: {{data.shopprice_color | default('#000000')}}!important;
+}
+
+
+@media screen and (max-width: 1024px) and (min-width: 768px){
+  {{space}} .geshop-u000224-default-body{
+    padding: 0 30px;
+    margin-top: {{data.pad_box_margin_top | default(0)}}px;
+    margin-bottom: {{data.pad_box_margin_bottom | default(32)}}px;
+  }
+  {{space}} .swiper-container{
+    padding-bottom: 44px;
+  }
+
+  {{space}} .cornermark{
+    width: 66px;
+    height:24px;
+    line-height:24px;
+    {% if data.cornermark_bgImg_pad %}
+      background-image: url({{ data.cornermark_bgImg_pad }});
+    {% endif %}
+    top: {{data.cornermark_top_pad | default(0)}}px;
+    left: {{data.cornermark_left_pad | default(0)}}px;
+  }
+   
+}
+
+
+@media screen and (max-width: 767px){
+  {{space}} .geshop-u000224-default-body{
+    padding: 0 20px;
+    margin-top: {{data.m_box_margin_top | default(0)}}px;
+    margin-bottom: {{data.m_box_margin_bottom | default(20)}}px;
+  }
+
+  {{space}} .swiper-container{
+    padding-bottom: 44px;
+  }
+
+  {{space}} .cornermark{
+    width: 60px;
+    height:22px;
+    line-height:22px;
+    {% if data.cornermark_bgImg_m %}
+      background-image: url({{ data.cornermark_bgImg_m }});
+    {% endif %}
+    top: {{data.cornermark_top_m | default(0)}}px;
+    left: {{data.cornermark_left_m | default(0)}}px;
+  }
+  
+  
+}

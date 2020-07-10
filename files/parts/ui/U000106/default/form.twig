@@ -1,0 +1,350 @@
+{% set SKU = [
+    {
+        "label":"aaa",
+        "SKU":"237717710,237717709,188075907,174562903"
+    },
+    {
+        "label":"bbb",
+        "SKU":"YE0897101,YE0856301,YE0856302,YE0866301"
+    }
+]%}
+
+{% set SKU_encode = data.goodsSKU?json_encode_no_unicode(data.goodsSKU):''%}
+
+	{% set siteCodeOp = {
+        baseWidthDefault: siteCode == 'zf-pc'?1240:1200,
+        boxBgC:siteCode == 'zf-pc'?'#ffffff':''
+    }%}
+
+
+{{include ('@app/files/parts/temp/goods_manager.twig')}}
+
+{# Form 表单数据配置 #}
+{%
+    set formData = {
+        id: 'U000106',
+        name: '促销码配置',
+        theme: 'default',
+        tabs: [
+            {
+                label: '商品数据',
+                components: [
+                    {
+                        label: '商品数据',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                type: 'diy',
+                                src: 'template_count.twig'
+                            },
+                            {
+                                type: 'diy',
+                                src: 'template_goods.twig'
+                            },
+                            {
+                                type: 'diy',
+                                src: 'template_coupon.twig'
+                            },
+                            {
+                                label: 'View all跳转链接',
+                                name: 'view_all_link',
+                                type: 'input'
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                label: '样式设置',
+                components: [
+                    {
+                        label: '常用配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件上边距(px)',
+                                name: 'base_magin_top',
+                                type: 'input',
+                                col: 2,
+                                default: 20,
+                            },
+                            {
+                                label: '组件下边距(px)',
+                                name: 'base_magin_bottom',
+                                type: 'input',
+                                col: 2,
+                                default: 32,
+                            }
+                        ]
+                    },
+                    {
+                        label: '显示配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '是否显示折扣标',
+                                name: 'discount_active',
+                                type: 'radio',
+                                default: '1',
+                                options: [
+                                    { label: '是', value: '1' },
+                                    { label: '否', value: '0' },
+                                ]
+                            },
+                            {
+                                label: '是否显示本店售价',
+                                name: 'sale_price_isShow',
+                                type: 'radio',
+                                default: '1',
+                                options: [
+                                    { label: '是', value: '1' },
+                                    { label: '否', value: '0' },
+                                ]
+                            },
+                            {
+                                label: '是否显示Coupon倒计时',
+                                name: 'down_active',
+                                type: 'radio',
+                                default: '1',
+                                options: [
+                                    { label: '是', value: '1' },
+                                    { label: '否', value: '0' },
+                                ]
+                            },
+                            {
+                                label: '是否显示Coupon剩余数量',
+                                name: 'coupon_limt_num',
+                                type: 'radio',
+                                default: '1',
+                                options: [
+                                    { label: '是', value: '1' },
+                                    { label: '否', value: '0' },
+                                ]
+                            },
+                            {
+                                label: '是否显示服务标',
+                                name: 'server_label_active',
+                                type: 'radio',
+                                default: '0',
+                                options: [
+                                    { label: '是', value: '1' },
+                                    { label: '否', value: '0' },
+                                ]
+                            },
+                        ]
+                    },
+                    {
+                        label: 'Coupon配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: 'Copy To Use字体颜色',
+                                name: 'copy_coupon_ftc',
+                                type: 'colorPicker',
+                                public: false,
+                                default: '#333333',
+                            },
+                            {
+                                label: 'Coupon劵码数量值颜色',
+                                name: 'coupon_number_ftc',
+                                type: 'colorPicker',
+                                public: false,
+                                default: '#c70400',
+                            },
+                            {
+                                label: 'Coupon left字体颜色',
+                                name: 'coupon_left_ftc',
+                                type: 'colorPicker',
+                                public: false,
+                                default: '#333333',
+                            },
+                            {
+                                label: 'After Coupon字体颜色',
+                                name: 'coupon_after_ftc',
+                                type: 'colorPicker',
+                                public: false,
+                                default: '#f3023e',
+                            },
+                            {
+                                label: '背景颜色',
+                                name: 'coupon_block_bgc',
+                                type: 'colorPicker',
+                                public: false,
+                                default: '#ff8a00',
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        moreConfig: [
+            {
+                type: 'collapse',
+                items: [
+                    {
+                        label: '倒计时配置',
+                        components: [
+                            {
+                                label: '背景颜色',
+                                name: 'time_limit_bgc',
+                                type: 'colorPicker',
+                                public: false,
+                                default: '#333333',
+                            },
+                            {
+                                label: '字体颜色',
+                                name: 'time_limit_ftc',
+                                type: 'colorPicker',
+                                public: false,
+                                default: '#ffffff',
+                            }
+                        ]
+                    },
+                    {
+                        label: '商品图片配置',
+                        components: [
+                            {
+                                label: '商品图片比例',
+                                name: 'goods_img_one',
+                                type: 'radio',
+                                default: '0',
+                                options: [
+                                    { label: '1:1', value: '0' },
+                                    { label: '3:4', value: '1' },
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+%}
+
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+
+<script type="text/javascript">
+    $('#gs_submit').on('click',function(){
+        var goodsArr = [];
+        $('.goods-form-table textarea[name=goodsSKU]').each(function(index,element){
+            var $wrapper = $(element).closest('.radio-tab-group');
+            var skuFromValue = $wrapper.find('.tabItemRadio:checked').val();
+
+            var $val = $(this).val();
+            var $label = $(this).parents('.goods-tab-item:eq(0)').find('input.tab-item-label').val();
+
+            if(skuFromValue == '2'){
+
+                $(".gs-select-box",$wrapper).each(function(index){
+                    $('input[name=gsSelectLevel'+ index +']',$wrapper).val($(this).val());
+                });
+                var gsSelectLevel0 = $wrapper.find('input[name=gsSelectLevel0]').val(),
+                    gsSelectLevel1 = $wrapper.find('input[name=gsSelectLevel1]').val(),
+                    gsSelectLevel2 = $wrapper.find('input[name=gsSelectLevel2]').val();
+
+                if($label && gsSelectLevel2){
+                    goodsArr.push({
+                        "skuFrom":skuFromValue,
+                        "label":$label,
+                        "lists":$val,
+                        "ips":{"gsSelectLevel0":gsSelectLevel0,"gsSelectLevel1":gsSelectLevel1,"gsSelectLevel2":gsSelectLevel2,}
+                    })
+                }
+            };
+
+            if(skuFromValue == '1'){
+                if($label && $val ){
+                    goodsArr.push({
+                        "skuFrom":skuFromValue,
+                        "label":$label,
+                        "lists":$val,
+                        "ips":{}
+                    })
+                }
+            };
+        });
+
+        if(goodsArr.length>0){
+            $('.goods-form-table input[name=goodsSKU]').val(JSON.stringify(goodsArr));
+        }else{
+            $('.goods-form-table input[name=goodsSKU]').val("");
+        }
+        $(this).next('button').trigger('click');
+    });
+
+    $('[name=goodsSKU].Unwanted').on('blur',function(){
+        var $this = $(this);
+    	var res = /(\s{5,1000})/g;
+    	var reg = /\n/g;
+		var skuList = $(this).val().replace(res, ',').replace(reg, ',');
+		var skuArr = skuList.split(',');
+		if (!skuList) {
+			return false
+		}
+		if (skuArr[skuArr.length - 1] === '') {
+			skuArr.pop();
+		}
+        /*去重*/
+        var newArr = [];
+        for(var i=0;i<skuArr.length;i++){
+            if(newArr.indexOf(skuArr[i]) == -1){
+                newArr.push(skuArr[i]);
+            }
+        }
+        skuArr = newArr;
+        skuList = newArr.toString();
+        $(this).val(skuList);
+
+        var skuList = $(this).val();
+        GsManager.goods_exists(skuList).done(function(res){
+            if(res.code !== 0){
+                layer.confirm(''+res.message+',是否清空', {
+                    title: '提示',
+                    btn: ['否', '是'],
+                    area: '420px',
+                    icon: 3,
+                    skin: 'element-ui-dialog-class'
+                }, function (index) {layui.layer.close(index)}, function (index) {
+                    var delSkuArr = res.message.split(' ')[1].split(','),
+                        skuListArr = skuList.split(','),
+                        newSku = '';
+                    delSkuArr.forEach(function(delItem){
+                        skuListArr.forEach(function(skuItem, skuIndex){
+                            if (delItem == skuItem) {
+                                skuListArr.splice(skuIndex, 1)
+                            }
+                        })
+                    });
+                    newSku = skuListArr.toString();
+                    $this.val(newSku);
+                    layer.close(index);
+                })
+            }
+        });
+    });
+
+    $(function(){
+        var designFormClose = $('.design-form-close');
+        if (designFormClose) {
+            designFormClose.removeClass('icon-close').addClass('gb-icon-close')
+        }
+
+        $('.js_submitDesignForm').on('click', function() {
+            var goodsComposite = [];
+            var goodsSKU = $('.js-goodsSKU-input').val();
+            var goodsCouponCode = $('.js-coupon-input').val();
+
+            if (goodsSKU || goodsCouponCode) {
+                goodsComposite.push({
+                    sku: goodsSKU,
+                    coupons: goodsCouponCode
+                });
+                $('.js-goodsComposite').val(JSON.stringify(goodsComposite));
+            }
+        });
+    })
+</script>
+

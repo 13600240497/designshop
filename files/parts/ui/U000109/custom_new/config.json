@@ -1,0 +1,194 @@
+{
+    "fields": {
+        "goodsSKU": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "margin_top": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "margin_bottom": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "box_bg_color":{ "is_public": "0", "is_m": "1", "is_app": "1" },
+        "list_img_right": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "list_img_top": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "list_img_height": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "list_img_width": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "list_first_icon": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "list_second_icon": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "list_three_icon": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "list_other_icon": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "list_other_font_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "discount_bg_image": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discount_bg_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discount_font_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discount_show": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discount_type": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discount_width": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "discount_height": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "discount_top": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "discount_right": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "discount_font_top": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "discount_font_right": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "shop_price_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "price_content": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "stock_urgent": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "goodsDataFrom": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "gsSelectLevel0": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "gsSelectLevel1": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "gsSelectLevel2": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "ipsGoodsSKU": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "ipsAutoInfo": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "ipsAutoRuleSKU": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "gsSelectLevel3": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "gsSelectLevel4": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "gsSelectLevel5": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "ipsMethods": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "ipsInfo": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "ipsFilterInfo": {"is_public": "0", "is_m": "1", "is_app": "1"}
+    },
+    "languages": {
+        "sold_out": {
+            "cn": "售罄",
+            "zh-tw": "售罄",
+            "en": "SOLD OUT",
+            "ar": "بيعت كلها",
+            "de": "Ausverkauft",
+            "es": "AGOTADO",
+            "fr": "ÉPUISÉ",
+            "it": "ESAURITO",
+            "id": "Habis terjual",
+            "pt": "ESGOTADO",
+            "ru": "Продано",
+            "th": "ขายหมดแล้ว",
+            "ja": "売り切れ",
+            "ro": "VANDUT"
+        },
+        "price_content": {
+            "cn": "价格标签",
+            "zh-tw": "僅現在",
+            "en": "Now Only",
+            "ar": "الآن فقط",
+            "de": "Jetzt nur",
+            "es": "Solo ahora",
+            "fr": "Maintenant Seulement",
+            "it": "Solo ora.",
+            "id": "Sekarang Hanya",
+            "pt": "Agora apenas",
+            "ru": "Только сейчас",
+            "th": "ยกเลิก",
+            "ja": "値札",
+            "ro": "Doar acum"
+        },
+        "quick_view": {
+            "cn": "快速查看",
+            "zh-tw": "快速瀏覽",
+            "en": "QUICK VIEW",
+            "ar": "عرض سريع",
+            "de": "Schnellansicht",
+            "es": "Vista rápida",
+            "fr": "Aperçu rapide",
+            "it": "Vista rapida.",
+            "id": "Lihat",
+            "pt": "Visão Rápida",
+            "ru": "Быстрый просмотр",
+            "th": "วิวตอนนี้",
+            "ja": "クイックビュー",
+            "ro": "VIZUALIZARE RAPIDA"
+        }
+    }
+}

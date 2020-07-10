@@ -1,0 +1,50 @@
+{#
+    Component Name: 积分兑换
+    Component Key: U000164
+    Theme: 默认模板(新)
+    Device: PC
+    Author: Cullen Ng
+    Create at: 2019.03.13
+    Vision: v.1.8.3
+    PS: 如需修改样式，请修改 .less 文件（index.less, form.less）
+        如需修改JS，请修改 index.dev.js
+#}
+
+<div 
+    class="geshop-component-box component-drag geshop-U000164-default-v2 geshop-U000164-default-v2-{{ pageInstanceId }}"
+    data-key="U000164" 
+    data-id="{{ pageInstanceId }}" 
+    data-isEditEnv="{{ data.isEditEnv }}"
+    style="display:none;"> 
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+        {% include 'style.twig' %}
+    </style>
+    <!-- embed stylesheet end -->
+    <div class="geshop-BP-block">
+        {# 商品列表，JS异步渲染 #}
+        <div class="geshop-BP-good-list">
+            <ul></ul>
+        </div>
+        {# JS template 渲染模版 #}
+        <script class="geshop-BP-good-template" type="text/template">
+            {{ include ('goods-item.twig') }}
+        </script>
+        {# 查看更多 #}
+        {% if data.viewmoreShow is empty or data.viewmoreShow == 1 %}
+        <div class="geshop-BP-viewmore">
+            <a href="{{ data.viewmoreHref }}" target="_blank">{{ data.viewmoreText | default('VIEW MORE') }}</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    var U000164_{{ pageInstanceId }} = {
+        goodsSKU: '{{ data.goodsSKU }}',
+        dataRange: '{{ data.dataRange }}',
+        isEditEnv: '{{ data.isEditEnv }}',
+        langCode: '{{ lang }}',
+        languages: '{{ languages | json_encode | raw }}'
+    };
+</script>

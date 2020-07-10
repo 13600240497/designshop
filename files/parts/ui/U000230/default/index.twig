@@ -1,0 +1,34 @@
+{% set client = siteCode|split('-') %}
+{% if(data.areas_pc) %}
+    {% set areas_pc =  data.areas_pc | json_encode() %}
+{% else %}
+    {% set areas = "" %}
+{% endif %}
+{% if(data.areas_m) %}
+    {% set areas_m =  data.areas_m | json_encode() %}
+{% else %}
+    {% set area_m = "" %}
+{% endif %}
+{% if(data.areas_pad) %}
+    {% set areas_pad =  data.areas_pad | json_encode() %}
+{% else %}
+    {% set areas_pad = "" %}
+{% endif %}
+<div class="geshop-component-box component-drag geshop-u000230-modal1 geshop-u000230-modal1-{{ pageInstanceId }}"
+     data-key="U000230" data-id="{{ pageInstanceId }}" data-renderCoods ='{{ areas_pc }}' data-renderCoodsM ='{{ areas_m }}' data-renderCoodsIpad ='{{ areas_pad }}'
+     data-isopennew={{ data.is_open_new }} data-isopennewm={{ data.is_open_new_m }}>
+    {{ include('style.twig') }}
+
+    <div class="geshop-u000230-container">
+        {#<img src="{{ data.base_img ?? 'https://geshopimg.logsss.com/uploads/E6A0VTsvRW9ik54e27BJMdFyG1SNHmrh.png' }}" alt="">#}
+        <picture>
+            <source srcset="{{ data.base_img_pc ?: 'https://geshopimg.logsss.com/uploads/E6A0VTsvRW9ik54e27BJMdFyG1SNHmrh.png' }} " media="(min-width: 1024px)">
+            <source srcset="{{ data.base_img_pad ?: 'https://geshopimg.logsss.com/uploads/E6A0VTsvRW9ik54e27BJMdFyG1SNHmrh.png' }}" media="(min-width: 768px) and (max-width: 1024px)">
+            <source srcset="{{ data.base_img_m ?: 'https://geshopimg.logsss.com/uploads/E6A0VTsvRW9ik54e27BJMdFyG1SNHmrh.png' }}" media="(max-width: 767px)">
+            <img src="{{ data.base_img_pc  ?: 'https://geshopimg.logsss.com/uploads/E6A0VTsvRW9ik54e27BJMdFyG1SNHmrh.png'}}" alt="{{data.base_img_alt}}">
+        </picture>
+    </div>
+</div>
+
+
+

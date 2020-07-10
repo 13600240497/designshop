@@ -1,0 +1,17 @@
+{% set root = '#U000001_'~pageInstanceId %}
+{% set classSpace = '.geshop-component-body' %}
+{% set body = root~' '~classSpace%}
+
+{{ body }}{
+    margin-bottom: {{ data.box_margin_bottom ?? 32}}px;
+    background-color:{{ data.box_bg_color ?? '#F8F8F8' }};
+}
+
+{{ body }} .goods_list_wrap .list_item{
+    border-color: {{ data.hover_bdColor ?? '#FFFFFF' }};
+    border-radius: {{ data.goods_border_radius ?? 4 }}px;
+}
+
+{{ body }} .redman_list .active{
+    border-color: {{ data.small_color_ative ?? '#FA386A' }};
+}

@@ -1,0 +1,103 @@
+{
+    "fields": {
+        "goodsSKU": { "is_public": "0", "is_m": "1", "is_app": "1" },
+
+        "default_show_goods_number": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "tab_total_number": { "is_public": "0", "is_m": "1", "is_app": "1" },
+
+        "is_fixed": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "box_margin_bottom": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "box_bg_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "stock_urgent": {"is_public": "0", "is_m": "1", "is_app": "1"},
+
+        "tab_bg_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "tab_btn_hover_bg_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "tab_btn_font_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "tab_btn_hover_font_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "tab_btn_border_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "tab_btn_font_fize": { "is_public": "0", "is_m": "1", "is_app": "1" },
+
+        "goods_info_border_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "goods_info_radius_size": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "shop_price_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "market_info_font_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "goods_title_show": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "market_info_or_show": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "view_more_bg_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "view_more_font_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "view_more_border_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "view_more_radius_size": { "is_public": "0", "is_m": "1", "is_app": "1" },
+
+        "discount_bg_image": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "discount_bg_color": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "discount_font_color": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "discount_show": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "discount_type": { "is_public": "1", "is_m": "1", "is_app": "1" },
+        "discount_style": { "is_public": "1", "is_m": "1", "is_app": "1" },
+
+        "discount_width": { "is_public": "1", "is_m": "0", "is_app": "1" },
+        "discount_height": { "is_public": "1", "is_m": "0", "is_app": "1" },
+        "discount_top": { "is_public": "1", "is_m": "0", "is_app": "1" },
+        "discount_left": { "is_public": "1", "is_m": "0", "is_app": "1" },
+        "discount_font_top": { "is_public": "1", "is_m": "0", "is_app": "1" },
+        "discount_font_left": { "is_public": "1", "is_m": "0", "is_app": "1" },
+
+        "discount_border_radius_left_top": { "is_public": "1", "is_m": "0", "is_app": "1" },
+        "discount_border_radius_right_top": { "is_public": "1", "is_m": "0", "is_app": "1" },
+        "discount_border_radius_left_bottom": { "is_public": "1", "is_m": "0", "is_app": "1" },
+        "discount_border_radius_right_bottom": { "is_public": "1", "is_m": "0", "is_app": "1" },
+
+        "goodsDataFrom": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "gsSelectLevel0": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "gsSelectLevel1": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "gsSelectLevel2": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "ipsGoodsSKU": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "ipsAutoInfo": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "ipsAutoRuleSKU": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "gsSelectLevel3": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "gsSelectLevel4": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "gsSelectLevel5": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "ipsMethods": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "ipsInfo": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "ipsFilterInfo": { "is_public": "0", "is_m": "1", "is_app": "1" },
+        "navListRg": { "is_public": "0", "is_m": "1", "is_app": "1" }
+    },
+    "languages": {
+        "view_more": {
+            "cn": "查看更多",
+            "ar": "عرض المزيد",
+            "de": "Mehr sehen",
+            "en": "VIEW MORE",
+            "es": "Ver más",
+            "fr": "Afficher plus",
+            "id": "Lihat lebih banyak",
+            "it": "Vedi di più",
+            "ja": "もっと見る",
+            "pt": "Veja mais",
+            "ru": "Посмотреть больше",
+            "th": "ดูเพิ่มเติม",
+            "tr": "daha fazla göster",
+            "vi": "XEM THÊM",
+            "zh-tw": "查看更多",
+            "ro": "VEZI MAI MULT"
+        },
+        "view_less": {
+            "cn": "查看部分",
+            "ar": "عرض أقل",
+            "de": "Weniger anzeigen",
+            "en": "VIEW LESS",
+            "es": "Ver menos",
+            "fr": "Voir moins",
+            "id": "Lihat lebih sedikit",
+            "it": "Visualizza meno",
+            "ja": "もっと見る",
+            "pt": "Ver menos",
+            "ru": "Смотреть меньше",
+            "th": "ดูน้อยลง",
+            "tr": "daha az göster",
+            "vi": "XEM BÀI",
+            "zh-tw": "查看部分",
+            "ro": "VEZI MAI PUTIN"
+        }
+    }
+}

@@ -1,0 +1,389 @@
+{%
+	set pageData = {
+    ImgWidth:data.ImgWidth is not null?data.ImgWidth:276,
+    ImgHeight:data.ImgHeight is not null?data.ImgHeight:480, 
+	}
+%}
+
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>轮播排行榜组件设置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+
+  {{include ('@app/htdocs/resources/template/pc/templateList/index.twig')}}
+
+  {# 商品数据来源 start #}
+  <div class="component-form-setting-item component-form-configure-item">
+    <div class="goods-data-source-wraper">
+      <h4 class="title">商品数据来源</h4>
+      <div class="layui-form-item">
+        <input type="radio" name="goodsDataSource" value="1" title="调用{% if siteCode|split('-')[0] == 'zf' %}ZAFUL{% elseif siteCode|split('-')[0] == 'rw' %}RW{% elseif siteCode|split('-')[0] == 'rg' %}RG{% endif %}网站新品榜"{% if data.goodsDataSource|default('1') == '1' %} checked{% endif %}>
+      </div>
+      <div class="layui-form-item">
+        <input type="radio" name="goodsDataSource" value="2" title="调用{% if siteCode|split('-')[0] == 'zf' %}ZAFUL{% elseif siteCode|split('-')[0] == 'rw' %}RW{% elseif siteCode|split('-')[0] == 'rg' %}RG{% endif %}网站热卖榜"{% if data.goodsDataSource|default('1') == '2' %} checked{% endif %}>
+      </div>
+      <div class="layui-form-item">
+        <input type="radio" name="goodsDataSource" value="3" title="调用{% if siteCode|split('-')[0] == 'zf' %}ZAFUL{% elseif siteCode|split('-')[0] == 'rw' %}RW{% elseif siteCode|split('-')[0] == 'rg' %}RG{% endif %}网站折扣榜"{% if data.goodsDataSource|default('1') == '3' %} checked{% endif %}>
+      </div>
+      <div class="layui-form-item">
+        <label class="gs-lable-block">商品分类ID</label>
+        <div class="layui-input-block gs-category-id" style="margin-left: 0px;margin-top: 5px;">
+          <input type="text" name="cateId" class="layui-input" value="{{data.cateId}}">
+        </div>
+      </div>
+    </div>
+  </div>
+  {# 商品数据来源 end #}
+  {# 基础配置 start #}
+  <div class="component-form-setting-item component-form-configure-item">
+    <h4 class="title">常用配置</h4>
+    <div class="layui-form-item">
+      <label class="form-item-label">下边距(px)</label>
+      <div class="layui-input-block">
+        <input type="text" name="boxMarginBottom" autocomplete="off" class="layui-input" value="{{ data.boxMarginBottom | default(40) }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label">背景颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="bgColor"><div style="background-color: {{ data.bgColor | default('#ffd5ce') }};"></div></div>
+        <input type="text" class="layui-input" name="bgColor" autocomplete="off" value="{{ data.bgColor | default('#ffd5ce') }}">
+      </div>
+    </div>
+  </div>
+  {# 基础配置 end #}
+  {# 图片配置 start #}
+  <div class="component-form-setting-item component-form-configure-item">
+    <h4 class="title">图片配置<span style="font-size:12px;"> {%if siteCode == 'rw-pc'%}请上传宽为276px，高为379px的图片）{% else %}（请上传宽为276px，高为480px的图片）{% endif %}</span></h4>
+    <input type="hidden" name="ImgWidth" placeholder="请输入图片宽度" autocomplete="off" class="layui-input" value="{{pageData.ImgWidth}}" />
+    <input type="hidden" name="ImgHeight" placeholder="请输入图片宽度" autocomplete="off" class="layui-input" value="{{pageData.ImgHeight}}" />
+    <div class="layui-form-item">
+      <label class="form-item-label">左侧图片</label>
+      <div class="layui-input-block">
+        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+        <input type="text" name="leftSideImage" autocomplete="off" class="layui-input" value="{{ data.leftSideImage }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label">跳转链接</label>
+      <div class="layui-input-block">
+        <input type="text" name="jumpLink" autocomplete="off" class="layui-input" value="{{ data.jumpLink }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label">活动专题名称</label>
+      <div class="layui-input-block">
+        <input type="text" name="ga_name" autocomplete="off" class="layui-input" value="{{ data.ga_name }}">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="form-item-label">
+        链接是否打开新窗口</label>
+      <div class="layui-input-block">
+        <input type="radio" name="isOpenNew" value="1" {% if data.isOpenNew|default('0') == '1' %} checked{% endif %} title="是">
+        <input type="radio" name="isOpenNew" value="0" {% if data.isOpenNew|default('0') == '0' %} checked{% endif %} title="否">
+      </div>
+    </div>
+  </div>
+  {# 图片配置 end #}  
+  {# 排行榜图标配置 start #}
+  <div class="component-form-setting-item component-form-configure-item">
+    <h4 class="title">排行榜图标配置</h4>
+    <div class="layui-form-item">
+      <label class="form-item-label">图标宽度（px）</label>
+      <div class="layui-input-block">
+        <input type="text" name="iconWidth" autocomplete="off" class="layui-input" value="{{ data.iconWidth | default(40) }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label">图标高度（px）</label>
+      <div class="layui-input-block">
+        <input type="text" name="iconHeight" autocomplete="off" class="layui-input" value="{{ data.iconHeight | default(48) }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label">第一名图标</label>
+      <div class="layui-input-block">
+        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+        <input type="text" name="iconFirstImg" autocomplete="off" class="layui-input" value="{{ data.iconFirstImg }}">
+      </div>
+    </div>
+    {# <div class="layui-form-item">
+      <label class="form-item-label">榜一文案颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="iconFirstTextColor"><div style="background-color: {{ data.iconFirstTextColor }};"></div></div>
+        <input type="text" class="layui-input" name="iconFirstTextColor" autocomplete="off" value="{{ data.iconFirstTextColor }}">
+      </div>
+    </div> #}
+    <div class="layui-form-item">
+      <label class="form-item-label">第二名图标</label>
+      <div class="layui-input-block">
+        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+        <input type="text" name="iconSecondImg" autocomplete="off" class="layui-input" value="{{ data.iconSecondImg }}">
+      </div>
+    </div>
+    {# <div class="layui-form-item">
+      <label class="form-item-label">榜二文案颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="iconSecondTextColor"><div style="background-color: {{ data.iconSecondTextColor }};"></div></div>
+        <input type="text" class="layui-input" name="iconSecondTextColor" autocomplete="off" value="{{ data.iconSecondTextColor }}">
+      </div>
+    </div> #}
+    <div class="layui-form-item">
+      <label class="form-item-label">第三名图标</label>
+      <div class="layui-input-block">
+        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+        <input type="text" name="iconThirdImg" autocomplete="off" class="layui-input" value="{{ data.iconThirdImg }}">
+      </div>
+    </div>
+    {# <div class="layui-form-item">
+      <label class="form-item-label">榜三文案颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="iconThirdTextColor"><div style="background-color: {{ data.iconThirdTextColor }};"></div></div>
+        <input type="text" class="layui-input" name="iconThirdTextColor" autocomplete="off" value="{{ data.iconThirdTextColor }}">
+      </div>
+    </div> #}
+    <div class="layui-form-item">
+      <label class="form-item-label">其他名次图标</label>
+      <div class="layui-input-block">
+        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+        <input type="text" name="iconOtherImg" autocomplete="off" class="layui-input" value="{{ data.iconOtherImg }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label">其他名次文案颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="iconOtherTextColor"><div style="background-color: {{ data.iconOtherTextColor }};"></div></div>
+        <input type="text" class="layui-input" name="iconOtherTextColor" autocomplete="off" value="{{ data.iconOtherTextColor }}">
+      </div>
+    </div>
+  </div>
+  {# 排行榜图标配置 end #}
+  {# 销售价设置 start #}
+  <div class="component-form-setting-item component-form-configure-item">
+    <h4 class="title">销售价设置</h4>
+    <div class="layui-field-box" style="margin-top:10px">
+      <div class="layui-form-item">
+        <label class="form-item-label">销售价默认颜色</label>
+        <div class="layui-input-block">
+          <div class="color-picker-selector" data-hidden-name="priceDefaultTextColor"><div style="background-color: {{ data.priceDefaultTextColor | default('#333333') }};"></div></div>
+          <input type="text" class="layui-input" name="priceDefaultTextColor" autocomplete="off" value="{{ data.priceDefaultTextColor | default('#333333') }}">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="form-item-label">销售价鼠标滑过颜色</label>
+        <div class="layui-input-block">
+          <div class="color-picker-selector" data-hidden-name="priceHoverTextColor"><div style="background-color: {{ data.priceHoverTextColor }};"></div></div>
+          <input type="text" class="layui-input" name="priceHoverTextColor" autocomplete="off" value="{{ data.priceHoverTextColor }}">
+        </div>
+      </div>
+    </div>
+  </div>
+  {# 销售价设置 end #}
+  {# 按钮设置 start #}
+  <div class="component-form-setting-item component-form-configure-item" style="padding-bottom:100px !important;">
+    <h4 class="title">按钮设置</h4>
+    <div class="layui-form-item">
+      <label class="form-item-label">排名信息按钮背景颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="btnBgColor"><div style="background-color: {{ data.btnBgColor | default('#ffecec') }};"></div></div>
+        <input type="text" class="layui-input" name="btnBgColor" autocomplete="off" value="{{ data.btnBgColor | default('#ffecec') }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label">排名信息按钮文字颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="leaderBoardTextColor"><div style="background-color: {{ data.leaderBoardTextColor | default('#ff5058') }};"></div></div>
+        <input type="text" class="layui-input" name="leaderBoardTextColor" autocomplete="off" value="{{ data.leaderBoardTextColor | default('#ff5058') }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label">购买按钮文案</label>
+      <div class="layui-input-block">
+        <input type="text" name="buyText" autocomplete="off" class="layui-input" value="{{ data.buyText | default('SNAP UP &gt;') }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label">购买按钮文字颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="buyTextColor"><div style="background-color: {{ data.buyTextColor | default('#ffffff') }};"></div></div>
+        <input type="text" class="layui-input" name="buyTextColor" autocomplete="off" value="{{ data.buyTextColor | default('#ffffff') }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-item-label">购买按钮背景颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="buyBtnTextBgColor"><div style="background-color: {{ data.buyBtnTextBgColor | default('#fd953c') }};"></div></div>
+        <input type="text" class="layui-input" name="buyBtnTextBgColor" autocomplete="off" value="{{ data.buyBtnTextBgColor | default('#fd953c') }}">
+      </div>
+    </div>
+    <div class="clearfix">
+      <a href="javascript:;" id="js_moreConfig" style="color:#1E9FFF">高级设置</a>
+    </div>
+  </div>
+  {# 按钮设置 end #}
+
+  {# 高级配置 start #}
+  <div class="component-form-setting-item component-form-advanced-item" style="padding-bottom: 100px !important;">
+    <h4 class="title"><i class="layui-icon back" id="js_advanced_baseConfig">&#xe603;</i>高级设置</h4>
+    <div class="layui-collapse advanced-setting-container">
+      <div class="layui-colla-item">
+        <h2 class="layui-colla-title">排行版图标设置</h2>
+        <div class="layui-colla-content layui-show">
+          <div class="layui-form-item">
+            <label class="form-item-label">排行版名次位置</label>
+            <div class="layui-input-block">
+              <input type="radio" name="leaderBoardIconPosition" value="1" title="左上角"{% if data.leaderBoardIconPosition|default('1') == '1' %} checked{% endif %}>
+              <input type="radio" name="leaderBoardIconPosition" value="2" title="右上角"{% if data.leaderBoardIconPosition|default('1') == '2' %} checked{% endif %}>
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="form-item-label">排行版其他名次文字大小(px)</label>
+            <div class="layui-input-block">
+              <input type="text" name="leaderBoardOtherFontSize" autocomplete="off" class="layui-input" value="{{ data.leaderBoardOtherFontSize | default(18) }}">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="layui-colla-item">
+        <h2 class="layui-colla-title">商品设置</h2>
+        <div class="layui-colla-content">
+          <div class="layui-form-item">
+            <label class="form-item-label">鼠标滑过商品阴影颜色</label>
+            <div class="layui-input-block">
+              <div class="color-picker-selector" data-hidden-name="goodsItemHoverShadowColor"><div style="background-color: {{ data.goodsItemHoverShadowColor | default('#f78e7d') }};"></div></div>
+              <input type="text" class="layui-input" name="goodsItemHoverShadowColor" autocomplete="off" value="{{ data.goodsItemHoverShadowColor | default('#f78e7d') }}">
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="form-item-label">销售价字体大小(px)</label>
+            <div class="layui-input-block">
+              <input type="text" name="priceTextFontSize" autocomplete="off" class="layui-input" value="{{ data.priceTextFontSize | default(20) }}">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="layui-colla-item">
+        <h2 class="layui-colla-title">按钮设置</h2>
+        <div class="layui-colla-content">
+          <div class="layui-form-item">
+            <label class="form-item-label">排名信息按钮边框颜色</label>
+            <div class="layui-input-block">
+              <div class="color-picker-selector" data-hidden-name="btnDefaultBorderColor"><div style="background-color: {{ data.btnDefaultBorderColor }};"></div></div>
+              <input type="text" class="layui-input" name="btnDefaultBorderColor" autocomplete="off" value="{{ data.btnDefaultBorderColor }}">
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="form-item-label">购买文案字体大小(px)</label>
+            <div class="layui-input-block">
+              <input type="text" name="buyTextFontSize" autocomplete="off" class="layui-input" value="{{ data.buyTextFontSize | default(20) }}">
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="form-item-label">购买按钮默认边框颜色</label>
+            <div class="layui-input-block">
+              <div class="color-picker-selector" data-hidden-name="buyBtnDefaultBorderColor"><div style="background-color: {{ data.buyBtnDefaultBorderColor }};"></div></div>
+              <input type="text" class="layui-input" name="buyBtnDefaultBorderColor" autocomplete="off" value="{{ data.buyBtnDefaultBorderColor }}">
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="form-item-label">购买按钮鼠标滑过边框颜色</label>
+            <div class="layui-input-block">
+              <div class="color-picker-selector" data-hidden-name="btnHoverBorderColor"><div style="background-color: {{ data.btnHoverBorderColor }};"></div></div>
+              <input type="text" class="layui-input" name="btnHoverBorderColor" autocomplete="off" value="{{ data.btnHoverBorderColor }}">
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="form-item-label">排行版左右切换按钮箭头颜色</label>
+            <div class="layui-input-block">
+              <div class="color-picker-selector" data-hidden-name="btnSwitchColor"><div style="background-color: {{ data.btnSwitchColor | default('#ffffff') }};"></div></div>
+              <input type="text" class="layui-input" name="btnSwitchColor" autocomplete="off" value="{{ data.btnSwitchColor | default('#ffffff') }}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {# 高级配置 end #}
+</div>
+
+
+
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>
+<script>
+  $(function() {
+    $('.layui-form-radio').on("click", function() {
+      var cate_id = $('[name=cateId]').val();
+      if ( cate_id ) {
+        var type = parseInt($(this).prev('[name=goodsDataSource]').val());
+        var cate_id = parseInt(cate_id);
+        var $this = $('[name=cateId]');
+
+        asycnGoods(type, cate_id, $this)
+      
+      }
+    });
+
+
+    $('[name=cateId]').on('change', function() {
+      var $this = $(this);
+      var $value = parseInt($this.val());
+      if (isNaN($value)) {
+        layer.msg('请输入合法ID');
+        $this.val('');
+        return false;
+      }
+      var type = parseInt($('.layui-form-radioed').prev('[name=goodsDataSource]').val());
+      var cate_id = parseInt($value);
+     
+      asycnGoods(type, cate_id, $this)
+
+    });
+
+
+    /* 通过异步请求判断这个分类存不存在 */ 
+    function asycnGoods(type, cate_id, ele) {
+      var rankdetailObj = GESHOP_INTERFACE ? GESHOP_INTERFACE.getrankdetail : {};
+      var lang = typeof GESHOP_LANG != 'undefined' ? GESHOP_LANG : 'en';
+      var params = {
+        type: type,
+        lang: lang,
+        pageno: 1,
+        pagesize: 12,
+        cateid: cate_id,
+        pipeline: (typeof GESHOP_PIPELINE != 'undefined' ? GESHOP_PIPELINE : '')
+      };
+      var url = rankdetailObj.url,
+          content = { content: JSON.stringify(params) };
+       if (type) {
+        $.ajax({
+          url: url,
+          type: 'get',
+          dataType: 'jsonp',
+          data: content,
+          success: function (res) {
+            if( res.data.goodsInfo.length == 0 ) {
+              layer.confirm('该分类不存在，是否删除？', {
+                title: '提示',
+                btn: ['否', '是'],
+                area: '420px',
+                icon: 3,
+                skin: 'element-ui-dialog-class'
+              }, function(index){
+                layer.close(index);
+              }, function(index) {
+                 ele.val("");
+              });
+            }
+          }
+        });
+      }
+    }
+  })
+</script>

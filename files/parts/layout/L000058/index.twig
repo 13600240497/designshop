@@ -1,0 +1,24 @@
+
+{{ include('style.twig') }}
+<div class="geshop-layout-box layout-drag geshop-container geshop-layout-L000058-box" data-key="L000058" data-editenv="{{ data.isEditEnv }}" id="{{pageInstanceId}}" style="
+	{% if customData.background_img %}background-image: url({{ customData.background_img }});{% endif %}
+	{% if customData.background_repeat_position %}background-position: {{ customData.background_repeat_position }};{% endif %}
+	{% if customData.background_repeat %}background-repeat: {{ customData.background_repeat }};{% endif %}
+	{% if customData.background_layout_color %}background-color: {{ customData.background_layout_color }};{% endif %}
+">
+
+    {# for pc+pad #}
+    <div class="geshop-layout-waper geshop-layout-waper-pc" data-for="pc">
+        <div class="geshop-row geshop-layout-pc" data-type="pc" style="
+            margin: 0 auto;
+            width: {{ layoutData.width }};
+            {% if customData.background_color %}background-color: {{ customData.background_color }};{% endif %}
+        ">
+            {% for item in layoutData.columns %}
+                <div class="geshop-col-12 geshop-col-x-{{ pageInstanceId }} geshop-col-x-{{ pageInstanceId }}-{{ loop.index }} {% if loop.last %} geshop-col-x-last {% endif %}" data-position="{{ loop.index }}">
+                    <div class="component-drop">{{ data[loop.index] }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

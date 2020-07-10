@@ -1,0 +1,199 @@
+[data-gid="U000099"] {
+  .goodsFloor {
+    //width: 1016px;
+    position: relative;
+    margin: 0 auto;
+    padding-top: 12px;
+		width: 976px;
+		padding-left: 12px;
+		padding-right: 12px;
+    .goodsFloor_content {
+      //width: 1008px;
+      overflow: hidden;
+      position: relative;
+      //left: 8px;
+      .subjectGoodList-appVip {
+        font-size: 0;
+        .subjectGoodItem {
+          height: 346px;
+          color: #fff;
+          text-align: center;
+          vertical-align: top;
+          margin-bottom: 8px;
+          //margin-right: 12px;
+          background-color: #fff;
+          -webkit-transition: .5s;
+          transition: .5s;
+          display: inline-block;
+          //width: 241px;
+					width:235px;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+          position: relative;
+          /* 商品折扣 */
+          .gs-goods-discount {
+            position: absolute;
+            z-index: 1;
+            text-align: center;
+            line-height: 1.1;
+            .curtoff-box {
+              margin-top: 9px;
+              strong {
+                font-weight: 400;
+              }
+            }
+            span {
+              display: block;
+              font-size: 12px;
+            }
+          }
+          /* 商品信息 */
+          .goodInfoContainer {
+            padding: 12px;
+            position: relative;
+            .goodInfoLink {
+              display: block;
+              font-size: 0;
+              position: relative;
+              min-height: 220px;
+              .goodDescript {
+                color: #333;
+                margin-bottom: 10px;
+                font-size: 14px;
+                width: 100%;
+                line-height: 18px;
+                display: -webkit-box;
+                overflow: hidden;
+                height: 36px;
+                -webkit-transition: all .3s ease-in-out;
+                transition: all .3s ease-in-out;
+                text-decoration: none;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+              }
+              .gs-goods-status {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+                width: 80px;
+                height: 80px;
+                display: inline-block;
+                padding: 20px 10px;
+                font-size: 20px;
+                line-height: 20px;
+                color: #fff;
+                text-align: center;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+                visibility: visible;
+                background: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                font-style: normal;
+                display: none;
+                white-space:normal;
+                word-break:break-all;
+              }
+            }
+            .goodsPrice_box {
+              overflow: hidden;
+              border: 1px solid #eee;
+              text-align: left;
+              padding-left: 10px;
+              .goodsPrice {
+                float: left;
+                .goodCurrentPrice {
+                  display: block;
+                  font-size: 14px;
+                  margin: 10px 0;
+                  line-height: 1;
+                  strong {
+                    display: inline-block;
+                    vertical-align: middle;
+                    font-weight: 400;
+                  }
+                  overflow: hidden;
+                  text-overflow: clip;
+                  max-width: 121px;
+                }
+                .goodOrinalPrice {
+                  display: block;
+                  text-decoration: none;
+                  font-size: 14px;
+                  color: #bbb;
+                  line-height: 1;
+                  margin: 5px 0;
+                  height: 14px;
+                }
+              }
+              .goodsQer {
+                float: right;
+                display: block;
+                width: 80px;
+                height: 80px;
+                .goodsQer_img {
+                  width: 100%;
+                  height: 100%;
+                }
+              }
+            }
+          }
+          .goodImg {
+            width: 220px;
+            height: 220px;
+            margin-bottom: 8px;
+          }
+        }
+        .subjectGoodItem.couponItem {
+          /*background-image: -webkit-linear-gradient(330deg,#f7cf3f,#ff8a00);*/
+          background-image: linear-gradient(120deg, #f7cf3f, #ff8a00);
+        }
+      }
+    }
+  }
+  [class^=icon-] {
+    font-family: iconfont !important;
+    font-style: normal;
+    position: relative;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .tearImage {
+    width: 220px;
+    height: 220px;
+    margin-bottom: 5px;
+  } // a {
+  //     color: #666;
+  //     text-decoration: none;
+  //     outline: none;
+  //     padding: 0;
+  //     margin: 0;
+  // }
+  .good_dealEnded,
+  .good_soldOut {
+    .buyLink {
+      background-color: #999 !important;
+      color: #fff !important;
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+  .good_soldOut {
+    .gs-goods-status {
+      display: block;
+    }
+    &.not_goods_limit {
+      .js-addCart {
+        background-color: #CCCCCC !important;
+        color: #fff !important;
+        pointer-events: none;
+        cursor: default;
+      }
+    }
+  }
+  @import '../../../temp/gb/css/index_default.less';
+}
+

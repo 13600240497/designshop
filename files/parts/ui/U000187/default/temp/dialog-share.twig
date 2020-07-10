@@ -1,0 +1,29 @@
+<div class="geshop-187d-dialog geshop-187d-dialog-share">
+    <div class="geshop-187d-dialog-mask"></div>
+    <div class="geshop-187d-dialog-container">
+        <div class="geshop-187d-dialog-close js-close-dialog" data-tag="geshop-187d-dialog-share"><img src="{{ data.default.u000187_default_close }}" alt=""></div>
+        <div class="geshop-187d-dialog-body">
+            <p>{{ languages.lastChange[lang] ?? languages.lastChange['en']}}</p>
+            <div class="geshop-187d-dialog-share-icons">
+                {% if data.share_facebook_icon != ' ' %}
+                <img class="js_share_btn" data-type="facebook" src="{{ data.share_facebook_icon | default(data.default.u000187_default_fb) }}"/>
+                {% endif %}
+				{% if data.share_twitter_icon != ' ' %}
+                <img class="js_share_btn" data-type="twitter" src="{{ data.share_twitter_icon | default(data.default.u000187_default_twitter) }}"/>
+                {% endif %}
+				{% if data.share_pinterest_icon != ' ' %}
+                <img class="js_share_btn" data-type="pinterest" src="{{ data.share_pinterest_icon | default(data.default.u000187_default_pinterest) }}"/>
+                {% endif %}
+				{# {% if data.share_google_icon != ' ' %}
+                <img class="js_share_btn" data-type="google" src="{{ data.share_google_icon | default(data.default.u000187_default_google) }}"/>
+                {% endif %} #}
+				{% if data.share_line_icon != ' ' %}
+                <img class="js_share_btn" data-type="line" src="{{ data.share_line_icon | default(data.default.u000187_default_line) }}"/>
+                {% endif %}
+            </div>
+        </div>
+        <div class="geshop-187d-dialog-footer">
+            <button class="js-close-dialog" data-tag="geshop-187d-dialog-share">OK</button>
+        </div>
+    </div>
+</div>

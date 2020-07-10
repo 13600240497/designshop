@@ -1,0 +1,341 @@
+{% 
+  set pageData = { 
+    viewText:data.viewText is not null?data.viewText:'VIEW IT', 
+    marginBottom:data.marginBottom is not null?data.marginBottom:'30',
+    ImgWidth:data.ImgWidth is not null?data.ImgWidth:'470',
+    ImgHeight:data.ImgHeight is not null?data.ImgHeight:'470'
+  } 
+%}
+
+<style>
+  .add-link-item{
+    background-color:#000;
+  }
+  .add-img-item{
+    opacity:0.6; 
+    filter: alpha(opacity=60);
+  }
+  .hover-item{
+    display: block;
+    width: 80px;
+    line-height:36px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: auto;
+    font-size: 14px;
+    color: #FFF;
+    font-family: PingFangSC;
+  }
+  .component-form-setting-item .layui-form-item {
+    margin-bottom: 24px;
+  }
+</style>
+
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>社区组件设置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+
+  {{include ('@app/htdocs/resources/template/pc/templateList/index.twig')}}
+  
+  <div class="component-form-setting-item component-form-configure-item">
+    <h4 class='title'>常用配置</h4>
+    <div class="layui-form-item" style="margin-bottom:8px">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 下间距(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="marginBottom" placeholder="" autocomplete="off" class="layui-input" value="{{pageData.marginBottom}}" />
+      </div>
+    </div>
+    <div class="layui-form-item" style="margin-bottom:8px">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 视区详情查看文案</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="viewText" placeholder="" autocomplete="off" class="layui-input" value="{{pageData.viewText}}" />
+      </div>
+    </div>
+    <div class="layui-form-item" style="display:none">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 图片宽度(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="ImgWidth" placeholder="请输入图片宽度" autocomplete="off" class="layui-input" value="{{pageData.ImgWidth}}"
+        />
+      </div>
+    </div>
+    <div class="layui-form-item" style="display:none">
+      <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 图片高度(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="ImgHeight" placeholder="请输入图片高度" autocomplete="off" class="layui-input" value="{{pageData.ImgHeight}}"
+        />
+      </div>
+    </div>
+    {# data communityLinkList not empty #}
+    {% if data.communityLinkList and data.communityLinkList|length > 0 %}
+      {% for item in data.communityLinkList %}
+        <div class="layui-form-item form-setting-item">
+          {% if loop.index == 1 %}
+            <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 社区图片设置</label>
+            <p style="font-size:12px;color:#A5A5A5;margin-bottom:8px;">请上传格式为:jpeg,jpg,webp的图片,大小小于500k， 宽470px，高470px。</p>
+          {% endif %}
+          {% if loop.index == 1 %}
+            <label class="form-item-label">社区图片一设置</label>
+          {% elseif loop.index == 2 %}
+            <label class="form-item-label">社区图片二设置</label>
+          {% elseif loop.index == 3 %}
+            <label class="form-item-label">社区图片三设置</label>
+          {% elseif loop.index == 4 %}
+            <label class="form-item-label">社区图片四设置</label>
+          {% elseif loop.index == 5 %}
+            <label class="form-item-label">社区图片五设置</label>
+          {% elseif loop.index == 6 %}
+            <label class="form-item-label">社区图片六设置</label>
+          {% elseif loop.index == 7 %}
+            <label class="form-item-label">社区图片七设置</label>
+          {% endif %}
+          <div class="layui-input-block rest-input">
+            <div class="geshop-first-value">
+              <a href="javascript:;" class="img_openResource" style="margin-left: -87px">
+                <span>
+                  {% if item.imageSrc %}
+                    <img src="{{item.imageSrc}}" width="80" height="35" />
+                  {% else %}
+                    <img src="/resources/images/carousel-image/add.png" />
+                  {% endif %}
+                  <i style="display:none" class="hover-item">更 换</i>
+                </span>
+              </a>
+              <input type="text" lay-verify="required" autocomplete="off" placeholder="请输入图片地址" name="{{ loop.index }}" value="{{ item.imageSrc }}" class="layui-input Unwanted imageSrc" style="margin-left:2px;">
+            </div> 
+            <div class="layui-form-item">
+              {% if loop.index == 1 %}
+                <p style="margin:8px 0 5px 0;"><span class="layui-badge-dot layui-bg-orange"></span> 社区图片一链接</p>
+              {% elseif loop.index == 2 %}
+                <p style="margin:8px 0 5px 0;"><span class="layui-badge-dot layui-bg-orange"></span> 社区图片二链接</p>
+              {% elseif loop.index == 3 %}
+                <p style="margin:8px 0 5px 0;"><span class="layui-badge-dot layui-bg-orange"></span> 社区图片三链接</p>
+              {% elseif loop.index == 4 %}
+                <p style="margin:8px 0 5px 0;"><span class="layui-badge-dot layui-bg-orange"></span> 社区图片四链接</p>
+              {% elseif loop.index == 5 %}
+                <p style="margin:8px 0 5px 0;"><span class="layui-badge-dot layui-bg-orange"></span> 社区图片五链接</p>
+              {% elseif loop.index == 6 %}
+                <p style="margin:8px 0 5px 0;"><span class="layui-badge-dot layui-bg-orange"></span> 社区图片六链接</p>
+              {% elseif loop.index == 7 %}
+                <p style="margin:8px 0 5px 0;"><span class="layui-badge-dot layui-bg-orange"></span> 社区图片七链接</p>
+              {% endif %}
+
+              <input type="text" autocomplete="off" class="layui-input Unwanted url" placeholder="请输入一个有效的URL" value="{{ item.url }}" />
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {# data communityLinkList empty #}
+    {% else %}
+      <div class="layui-form-item form-setting-item">
+        <label class="form-item-label"><span class="layui-badge-dot layui-bg-orange"></span> 社区图片设置</label>
+        <p style="font-size:12px;color:#A5A5A5;margin-bottom:8px;">请上传格式为:jpeg,jpg,webp的图片,大小小于500k， 宽470px，高470px。</p>
+        <label class="form-item-label">社区图片一设置</label>
+        <div class="layui-input-block rest-input">
+          <div class="geshop-first-value">
+            <a href="javascript:;" class="img_openResource" style="margin-left: -87px">
+              <span>
+                <img src="/resources/images/carousel-image/add.png" />
+                <i style="display:none" class="hover-item">更 换</i>
+              </span>
+            </a>
+            <input type="text" lay-verify="required" autocomplete="off" placeholder="请输入图片地址" name="1" class="layui-input Unwanted imageSrc" style="margin-left:2px;">
+          </div> 
+          <div class="layui-form-item">
+            <p style="margin:8px 0 5px 0;"><span class="layui-badge-dot layui-bg-orange"></span> 跳转链接</p>
+            <input type="text" autocomplete="off" class="layui-input Unwanted url" placeholder="请输入一个有效的URL" value="" />
+          </div>
+        </div>
+      </div>
+      <div class="layui-form-item form-setting-item">
+        <label class="form-item-label">社区图片二设置</label>
+        <div class="layui-input-block rest-input">
+          <div class="geshop-first-value">
+            <a href="javascript:;" class="img_openResource" style="margin-left: -87px">
+              <span>
+                <img src="/resources/images/carousel-image/add.png" />
+                <i style="display:none" class="hover-item">更 换</i>
+              </span>
+            </a>
+            <input type="text" lay-verify="required" autocomplete="off" placeholder="请输入图片地址" name="2" class="layui-input Unwanted imageSrc" style="margin-left:2px;">
+          </div> 
+          <div class="layui-form-item">
+            <p style="margin:8px 0 5px 0;"><span class="layui-badge-dot layui-bg-orange"></span> 跳转链接</p>
+            <input type="text" autocomplete="off" class="layui-input Unwanted url" placeholder="请输入一个有效的URL" value="" />
+          </div>
+        </div>
+      </div>
+      <div class="layui-form-item form-setting-item" style="display:none;">
+        <label class="form-item-label">社区图片三设置</label>
+        <div class="layui-input-block rest-input">
+          <div class="geshop-first-value">
+            <a href="javascript:;" class="img_openResource" style="margin-left: -87px">
+              <span>
+                <img src="/resources/images/carousel-image/add.png" />
+                <i style="display:none" class="hover-item">更 换</i>
+              </span>
+            </a>
+            <input type="text" lay-verify="required" autocomplete="off" placeholder="请输入图片地址" name="3" class="layui-input Unwanted imageSrc" style="margin-left:2px;">
+          </div> 
+          <div class="layui-form-item">
+            <p style="margin:8px 0 5px 0;"><span class="layui-badge-dot layui-bg-orange"></span> 跳转链接</p>
+            <input type="text" autocomplete="off" class="layui-input Unwanted url" placeholder="请输入一个有效的URL" value="" />
+          </div>
+        </div>
+      </div>
+      <div class="layui-form-item form-setting-item" style="display:none;">
+        <label class="form-item-label">社区图片四设置</label>
+        <div class="layui-input-block rest-input">
+          <div class="geshop-first-value">
+            <a href="javascript:;" class="img_openResource" style="margin-left: -87px">
+              <span>
+                <img src="/resources/images/carousel-image/add.png" />
+                <i style="display:none" class="hover-item">更 换</i>
+              </span>
+            </a>
+            <input type="text" lay-verify="required" autocomplete="off" placeholder="请输入图片地址" name="4" class="layui-input Unwanted imageSrc" style="margin-left:2px;">
+          </div> 
+          <div class="layui-form-item">
+            <p style="margin:8px 0 5px 0;"><span class="layui-badge-dot layui-bg-orange"></span> 跳转链接</p>
+            <input type="text" autocomplete="off" class="layui-input Unwanted url" placeholder="请输入一个有效的URL" value="" />
+          </div>
+        </div>
+      </div>
+      <div class="layui-form-item form-setting-item" style="display:none;">
+        <label class="form-item-label">社区图片五设置</label>
+        <div class="layui-input-block rest-input">
+          <div class="geshop-first-value">
+            <a href="javascript:;" class="img_openResource" style="margin-left: -87px">
+              <span>
+                <img src="/resources/images/carousel-image/add.png" />
+                <i style="display:none" class="hover-item">更 换</i>
+              </span>
+            </a>
+            <input type="text" lay-verify="required" autocomplete="off" placeholder="请输入图片地址" name="5" class="layui-input Unwanted imageSrc" style="margin-left:2px;">
+          </div> 
+          <div class="layui-form-item">
+            <p style="margin:8px 0 5px 0;"><span class="layui-badge-dot layui-bg-orange"></span> 跳转链接</p>
+            <input type="text" autocomplete="off" class="layui-input Unwanted url" placeholder="请输入一个有效的URL" value="" />
+          </div>
+        </div>
+      </div>
+      <div class="layui-form-item form-setting-item" style="display:none;">
+        <label class="form-item-label">社区图片六设置</label>
+        <div class="layui-input-block rest-input">
+          <div class="geshop-first-value">
+            <a href="javascript:;" class="img_openResource" style="margin-left: -87px">
+              <span>
+                <img src="/resources/images/carousel-image/add.png" />
+                <i style="display:none" class="hover-item">更 换</i>
+              </span>
+            </a>
+            <input type="text" lay-verify="required" autocomplete="off" placeholder="请输入图片地址" name="6" class="layui-input Unwanted imageSrc" style="margin-left:2px;">
+          </div> 
+          <div class="layui-form-item">
+            <p style="margin:8px 0 5px 0;"><span class="layui-badge-dot layui-bg-orange"></span> 跳转链接</p>
+            <input type="text" autocomplete="off" class="layui-input Unwanted url" placeholder="请输入一个有效的URL" value="" />
+          </div>
+        </div>
+      </div>
+      <div class="layui-form-item form-setting-item" style="display:none;">
+        <label class="form-item-label">社区图片七设置</label>
+        <div class="layui-input-block rest-input">
+          <div class="geshop-first-value">
+            <a href="javascript:;" class="img_openResource" style="margin-left: -87px">
+              <span>
+                <img src="/resources/images/carousel-image/add.png" />
+                <i style="display:none" class="hover-item">更 换</i>
+              </span>
+            </a>
+            <input type="text" lay-verify="required" autocomplete="off" placeholder="请输入图片地址" name="7" class="layui-input Unwanted imageSrc" style="margin-left:2px;">
+          </div> 
+          <div class="layui-form-item">
+            <p style="margin:8px 0 5px 0;"><span class="layui-badge-dot layui-bg-orange"></span> 跳转链接</p>
+            <input type="text" autocomplete="off" class="layui-input Unwanted url" placeholder="请输入一个有效的URL" value="" />
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    {# 数据为空时More按钮不可用 #}
+    {% if data.communityLinkList|length == 0 %}
+    <div class="add-form-button">
+      <span id='add_community_item_btn' class="layui-btn layui-btn-normal" style="border-radius:4px;width:116px;height:36px;line-height:36px;margin:8px 0;">+More</span>
+    </div>
+    {% else %}
+    <div class="add-form-button">
+      <span id='add_community_item_btn' class="layui-btn layui-btn-disabled" style="border-radius:4px;width:116px;height:36px;line-height:36px;margin:8px 0;">+More</span>
+    </div>
+    {% endif %}
+    <div class="layui-form-item">
+      <label class="form-item-label">
+        <span class="layui-badge-dot layui-bg-orange"></span>
+        链接是否打开新窗口</label>
+      <div class="layui-input-block">
+        <input type="radio" name="isOpenNew" value="1" {% if data.isOpenNew|default('0') == '1' %} checked{% endif %} title="是">
+        <input type="radio" name="isOpenNew" value="0" {% if data.isOpenNew|default('0') == '0' %} checked{% endif %} title="否">
+      </div>
+    </div>
+    <div style="height:100px"></div>
+</div>
+<input type="hidden" id="communityLinkList" name="communityLinkList" value="" />
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <span type="button" class="layui-btn layui-btn-normal" id="js_submitTrigger">提交</span>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm" data-tag="1" style="display:none">提交</button>
+<div>
+
+<script>
+  $(function() {
+    $('#add_community_item_btn').click(function() {
+      var length = $('.form-setting-item:visible').length;
+      if (length == 6) {
+        $(this).removeClass('layui-btn-normal').addClass('layui-btn-disabled');
+      } else if (length == 7) {
+        return false;
+      }
+      length++;
+      $('.form-setting-item:eq('+(length-1)+')').show();
+    });
+    $('#js_submitTrigger').click(function() {
+      var list = [];
+      $('.form-setting-item').each(function() {
+        var _this = $(this);
+        var obj = {};
+        var imageSrc = _this.find('.imageSrc').val().trim();
+        var url = _this.find('.url').val().trim();
+        obj.imageSrc = imageSrc;
+        obj.url = url;
+        if(obj.imageSrc != '' && obj.url != '') {
+          list.push(obj);
+        }
+        debugger;
+      });
+      $('#communityLinkList').val(JSON.stringify(list));
+
+      if(list.length != 7) {
+        layer.msg('请填写完整再提交');
+        return false;
+      } else {
+        $(this).next().trigger('click');
+      }
+    });
+    $('body').on('mouseenter', '.img_openResource', function() {
+      var $url =  $(this).find('img').attr("src");
+      if($url == "/resources/images/carousel-image/add.png"){
+        return;
+      }
+      $(this).addClass('add-link-item');
+      $(this).find('img').addClass('add-img-item');
+      $(this).find($('i')).css("display","block");  
+    });
+    $('body').on('mouseleave', '.img_openResource', function() {
+      $(this).find($('i')).css("display","none");   
+      $(this).removeClass('add-link-item');
+      $(this).find('img').removeClass('add-img-item');
+    });   
+  });
+</script>

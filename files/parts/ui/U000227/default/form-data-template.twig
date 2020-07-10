@@ -1,0 +1,89 @@
+<div class="tab-template lamp-form-table">
+    <div class="layui-tab-template lamp-elem-item lamp-tab-template layui-hide">
+        <fieldset class="layui-elem-field">
+            <div style="color:#333; margin-bottom: 8px;">跑马灯<span class="loop-index"></span></div>
+            <div class="layui-field-box tab-field-item">
+                <div class="layui-form-item form-item-bottom">
+                    <label class="gs-lable-block" style="color:#333;">文案</label>
+                    <div class="layui-input-block layui-input-block2">
+                        <input type="text" class="layui-input base_lampText Unwanted view-more-label" name="base_lampText" autocomplete="off" value="">
+                    </div>
+                </div>
+
+                <div class="layui-form-item form-item-bottom">
+                    <label class="gs-lable-block" style="color:#333;">跳转链接</label>
+                    <div class="layui-input-block layui-input-block2">
+                        <input type="text" class="layui-input base_lampLink Unwanted view-more-label" name="base_lampLink" autocomplete="off" value="">
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="geshop-third-value tab-add-btn">
+            <span class="img-btn class-up">
+                <i class='gb-icon-up'></i>
+                <b class="tips">上移</b>
+            </span>
+            <span class="img-btn class-down">
+                <i class='gb-icon-down'></i>
+                <b class="tips">下移</b>
+            </span>
+            <span class="img-btn class-close">
+                <i class='gb-icon-delete'></i>
+                <b class="tips">删除</b>
+            </span>
+            <span class="img-btn class-add">
+                <i class='gb-icon-add'></i>
+                <b class="tips">新增</b>
+            </span>
+        </div>
+    </div>
+
+
+    <div class="layui-elem-box lamp-elem-box">
+        <input type="hidden" name="dateTemplateArr" />
+
+        {# TWIG模板数据渲染 #}
+        {% for dateItem in data.dateTemplateArr|default(0..1) %}
+            <div class="form-tab-item-list lamp-elem-item {% if loop.index == 1 %} layui-loop {% endif %}">
+                <fieldset class="layui-elem-field">
+                    <div style="color:#333; margin-bottom: 8px;">跑马灯<span class="loop-index">{{ loop.index }}</span></div>
+                    <div class="layui-field-box tab-field-item">
+                        <div class="layui-form-item form-item-bottom">
+                            <label class="gs-lable-block" style="color:#333;">文案</label>
+                            <div class="layui-input-block layui-input-block2">
+                                <input type="text" class="layui-input Unwanted base_lampText view-more-label" name="base_lampText" autocomplete="off" value="{{ dateItem.base_lampText|default('$55+10% OFF FOR NEW MEMBERS') }}">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item form-item-bottom">
+                            <label class="gs-lable-block" style="color:#333;">跳转链接</label>
+                            <div class="layui-input-block layui-input-block2">
+                                <input type="text" class="layui-input Unwanted base_lampLink view-more-label" name="base_lampLink" autocomplete="off" value="{{ dateItem.base_lampLink }}">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="geshop-third-value tab-add-btn">
+                    <span class="img-btn class-up">
+                        <i class='gb-icon-up'></i>
+                        <b class="tips">上移</b>
+                    </span>
+                    <span class="img-btn class-down">
+                        <i class='gb-icon-down'></i>
+                        <b class="tips">下移</b>
+                    </span>
+                    <span class="img-btn class-close">
+                        <i class='gb-icon-delete'></i>
+                        <b class="tips">删除</b>
+                    </span>
+                    <span class="img-btn class-add">
+                        <i class='gb-icon-add'></i>
+                        <b class="tips">新增</b>
+                    </span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

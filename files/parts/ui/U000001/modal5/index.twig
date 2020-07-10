@@ -1,0 +1,40 @@
+<div
+    class="geshop-component-box component-drag geshop-U000001-modal5 geshop-U000001-modal5-{{ pageInstanceId }}" data-gid="U000001-modal5" data-key="U000001" data-id="{{ pageInstanceId }}">
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+        {% include 'style.twig' %}</style>
+    <!-- embed stylesheet end -->
+    <div class="geshop-U000001-modal5-wrapper geshop-component-body">
+        <ul>
+            {% for key, item in data.goodsInfo|default(0..3) %}
+                <li>
+                    <div class="geshop-U000001-modal5-list-img">
+                        <a href="{{ item.url_title  }}">
+                            {% if (data.discount_type ?? 0) == 1 %}
+                                <span class="discount-off site-font-bold">{{ item.discount ?? 50 }}% OFF</span>
+                            {% else %}
+                                <span class="discount-off site-font-bold">-{{ item.discount ?? 50 }}%</span>
+                            {% endif %}
+                            {% include geshop.default.pc.image_goods with { params: { src: item.goods_img }} %}
+                            {% if item.goods_number - 0 > 0 %}
+                                {% include geshop.default.pc.button_quick_view with { params: { href: item.url_quick, text: data.quick_text }} %}
+                            {% endif %}
+                            {% if item.goods_number is not empty %}
+                                {% include geshop.default.pc.sold_out with { params: { show: item.goods_number - 0 <= 0 ? true : false }} %}
+                            {% endif %}
+                        </a>
+                        {# 库存告急 #}
+                        {% include geshop.default.pc.stock_tip with { item: item} %}
+                    </div>
+                    <div class="geshop-U000001-modal5-list-title rg-ellipsis-1">
+                        <a href="{{ item.url_title }}">{{ item.goods_title | default('ZAFUL Fleece Vest And Corduroy JackJackJackJack') }}</a>
+                    </div>
+                    <div style="margin: 4px 0px 0;height: 49px;overflow:hidden;" >
+                        <div class="shop_price site-bold-strict"><span class="price-text">{{ data.shop_price_text ?? 'Now Only' }}</span>{% include geshop.default.pc.shop_price with { params: { value: item.shop_price }} %}</div>
+                        <span class="market_price">{% include geshop.default.pc.market_price with { params: { value: item.market_price }} %}</span>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

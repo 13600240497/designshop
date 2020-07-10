@@ -1,0 +1,13 @@
+<div class="U000030-form-dataset">
+{% if data.navData %}
+    <div class="all-item" style="margin-bottom: 6px;">
+        <input type="checkbox" data-name="nav_menu" class="check_all" lay-skin="primary" title="全选">
+    </div>
+
+    {% for id, item in data.navData %}
+    <div class="layui-form-item" style="margin-bottom: 6px;">
+        <input type="checkbox" name="nav_menu" value="{{ id }}" lay-skin="primary" title="{{ item }}" {% if id in data.nav_menu %} checked {% endif %}>
+    </div>
+    {% endfor %}
+{% endif %}
+</div>

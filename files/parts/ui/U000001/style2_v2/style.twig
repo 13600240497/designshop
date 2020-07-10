@@ -1,0 +1,37 @@
+.geshop-U000001-style2-v2-{{ pageInstanceId }} {
+    margin-bottom: {{ data.box_margin_bottom | default(32) }}px;
+}
+
+.geshop-U000001-style2-v2-{{ pageInstanceId }} .discount-off {
+    background-color:{{ data.discount_bg_color | default('#FA386A')}};
+    color:{{ data.discount_font_color ?? '#FFFFFF'}};
+    {% if data.discount_bg_image is not empty %}
+        background-image: url({{ data.discount_bg_image }})
+    {% endif %}
+}
+
+{%
+    include geshop.default.pc.button_buy_animate with { style: {
+        'background-image': data.buynow_bg_image,
+        'background-color': data.buynow_bg_color,
+        'color': data.buynow_font_color
+    }}
+%}
+
+{%
+    include geshop.default.pc.discount_float with { style: {
+        'background-color': data.discount_bg_color,
+        'background-image': data.discount_bg_image,
+        'color': data.discount_font_color,
+    }}
+%}
+
+{%
+    include geshop.default.pc.shop_price with { style: {
+        'color': data.shop_price_color
+    }}
+%}
+
+.geshop-U000001-style2-v2-{{ pageInstanceId }} .geshop-U000001-style2-v2-wrapper{
+    background-color: {{ data.box_bg_color|default('#F8F8F8') }};
+}

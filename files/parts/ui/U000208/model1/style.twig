@@ -1,0 +1,218 @@
+<!-- embed stylesheet begin -->
+{% set instanceClass = ".geshop-U000208-model1-#{pageInstanceId}" %}
+<style type="text/css">
+    {#  上下间距样式导入  #}
+    {% include '@app/files/parts/formTemplate/components/margin-dl-style.twig' with{'space':instanceClass} %}
+
+    {{ instanceClass }} .rank-good-promotion-text{
+        color:{{ formData.promotion_fcolor }};
+    }
+
+    {# ---banner begin--- #}
+
+    @media screen and (max-width: 767px) {
+        {% if formData.m_banner %}
+        {{ instanceClass }} .rank-banner {
+            padding-top: {{ formData.m_banner_ratio }}%;
+            background-image: url({{ formData.m_banner }});
+        }
+        {% endif %}
+        {{ instanceClass }} .rank-cutoff{
+            width:40px;
+            height:40px;
+        }
+        {{ instanceClass }} .top-goods .rank-cutoff{
+            {#right: {{ data.m_cutoff_padding_right ?? 0 }}px;#}
+        }
+
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+        {% if formData.pad_banner %}
+        {{ instanceClass }} .rank-banner {
+            padding-top: {{ formData.pad_banner_ratio }}%;
+            background-image: url({{ formData.pad_banner }});
+        }
+        {% endif %}
+    }
+
+    @media screen and (min-width: 1025px) {
+        {% if formData.pc_banner %}
+        {{ instanceClass }} .rank-banner {
+            padding-top: {{ formData.pc_banner_ratio }}%;
+            background-image: url({{ formData.pc_banner }});
+        }
+        {% endif %}
+    }
+
+    {# ---banner end-- #}
+
+
+    {# ---导航 begin--- #}
+
+    {{ instanceClass }} .rank-nav-container {
+        {# 定死容器高度，吸附的时候页面不会抖动 #}
+        height: {{ formData.nav_height }}px;
+    }
+
+    {{ instanceClass }} .rank-nav-inner {
+        background-color: {{ formData.nav_bcolor }};
+        border-radius: {{ formData.nav_radius }}px;
+    }
+
+    {{ instanceClass }} .rank-nav-pre,
+    {{ instanceClass }} .rank-nav-next {
+        background-color: {{ formData.nav_bcolor }};
+    }
+
+    {{ instanceClass }} .rank-nav-text {
+        height: {{ formData.nav_height }}px;
+        line-height: {{ formData.nav_height }}px;
+        font-size: {{ formData.nav_font_size }}px;
+        color: {{ formData.nav_fcolor }};
+    }
+
+    {{ instanceClass }} .rank-nav-item.active .rank-nav-text {
+        color: {{ formData.nav_active_fcolor }};
+    }
+
+    {{ instanceClass }} .rank-nav-item.active .rank-nav-text:after {
+        background-color: {{ formData.nav_line_color }};
+    }
+
+    @media screen and (max-width: 767px) {
+        {{ instanceClass }} .has-m-banner .rank-nav-container {
+             /*导航有一半覆盖在banner上*/
+            margin-top: {{ formData.nav_height / -2 }}px;
+        }
+    }
+
+    @media screen and (min-width: 767px) and (max-width: 1024px) {
+        {{ instanceClass }} .has-pad-banner .rank-nav-container {
+             /*导航有一半覆盖在banner上*/
+            margin-top: {{ formData.nav_height / -2 }}px;
+        }
+    }
+
+    @media screen and (min-width: 1025px) {
+        {{ instanceClass }} .has-pc-banner .rank-nav-container {
+             /*导航有一半覆盖在banner上*/
+            margin-top: {{ formData.nav_height / -2 }}px;
+        }
+    }
+
+    {# ---导航 end--- #}
+
+    {# ---商品 begin--- #}
+
+    {{ instanceClass }} .rank-cutoff {
+        background-color: {{ formData.cutoff_bcolor }};
+        color: {{ formData.cutoff_fcolor }};
+    }
+
+    {{ instanceClass }} .rank-cutoff-content {
+        margin-top: {{ formData.cutoff_fpadding_top}}px;
+        margin-right: {{ formData.cutoff_fpadding_right }}px;
+    }
+
+    {{ instanceClass }} .rank-content {
+        background-color: {{ formData.comp_bcolor }};
+        border-radius: {{ formData.comp_radius }};
+    }
+
+    {{ instanceClass }} .goods-section {
+        padding-top: 20px;
+        padding-bottom: {{ formData.nav_padding_bottom > 8 ? formData.nav_padding_bottom  - 8 : formData.nav_padding_bottom }}px;
+    }
+
+    {{ instanceClass }} .rank-good-price {
+        color: {{ formData.price_fcolor }};
+    }
+
+    {{ instanceClass }} .rank-good-promotion em {
+        color: {{ formData.promotion_fcolor }};
+    }
+
+    @media screen and (max-width: 767px) {
+        {{ instanceClass }} .rank-content{
+            border-radius: {{ formData.comp_radius_m }};
+        }
+
+        {{ instanceClass }} .rank-cutoff {
+            top: {{ formData.m_cutoff_padding_top }}px;
+            right: {{ formData.m_cutoff_padding_right }}px;
+        }
+
+        {{ instanceClass }} .rank-cutoff-content {
+            font-size: {{ formData.m_cutoff_font_size }}px;
+            margin-top: {{ data.m_cutoff_fpadding_top ?? 8 }}px;
+            margin-right: {{ data.m_cutoff_fpadding_right ?? 8 }}px;
+        }
+        {{ instanceClass }} .top-good-logo {
+            margin-top: {{ formData.m_topn_padding_top }}px;
+            margin-left: {{ formData.m_topn_padding_left - 10 }}px;
+        }
+
+        {{ instanceClass }} .top-good-shop-btn {
+            font-size: {{ formData.m_shop_font_size }}px;
+            background-color: {{ formData.m_shop_bcolor }};
+            color: {{ formData.m_shop_fcolor }};
+        }
+        {{ instanceClass }} .goods-section{
+            padding-top:10px;
+            padding-bottom:5px;
+        }
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+        {{ instanceClass }} .rank-cutoff {
+            top: {{ formData.pad_cutoff_padding_top }}px;
+            right: {{ formData.pad_cutoff_padding_right }}px;
+        }
+
+        {{ instanceClass }} .rank-cutoff-content {
+            font-size: {{ formData.pad_cutoff_font_size }}px;
+            margin-top: {{ data.pad_cutoff_fpadding_top ?? 11 }}px;
+            margin-right: {{ data.pad_cutoff_fpadding_right ?? 11 }}px;
+        }
+
+        {{ instanceClass }} .top-good-logo {
+            top: {{ formData.pad_topn_padding_top }}px;
+            left: {{ formData.pad_topn_padding_left }}px;
+        }
+    }
+
+    @media screen and (min-width: 1025px) {
+        {{ instanceClass }} .rank-cutoff {
+            top: {{ formData.pc_cutoff_padding_top }}px;
+            right: {{ formData.pc_cutoff_padding_right }}px;
+        }
+
+        {{ instanceClass }} .rank-cutoff-content {
+            font-size: {{ formData.pc_cutoff_font_size }}px;
+        }
+
+        {{ instanceClass }} .top-good-logo {
+            top: {{ formData.pc_topn_padding_top }}px;
+            left: {{ formData.pc_topn_padding_left }}px;
+        }
+
+        {{ instanceClass }} .rank-shop {
+            background-color: {{ formData.pc_shop_bcolor }};
+            border: 2px solid {{ formData.pc_shop_border_color }};
+        }
+
+        {{ instanceClass }} .rank-shop-text {
+            color: {{ formData.pc_shop_fcolor }};
+            font-size: {{ formData.pc_shop_font_size }}px;
+        }
+    }
+    {{ instanceClass }} .grade_box {
+       {% if data.grad_show == 1 %}
+           display: block;
+       {% endif %}
+    }
+
+    {# ---商品 begin--- #}
+</style>
+<!-- embed stylesheet end -->

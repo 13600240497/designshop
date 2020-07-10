@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bootstrap 模板</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入 Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+    <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-2 column">
+        </div>
+        <div class="col-md-6 column">
+            <h3 class="text-center">
+                请执行SQL
+            </h3>
+            <form role="form" action="/test/dm/index" method="post">
+                <div class="form-group">
+                    <label for="exampleInputPassword1">请输入SQL</label>
+                    <textarea name="sql" rows="10" cols="30" class="form-control" id="exampleInputPassword1" ></textarea>
+                </div>
+                <div class="checkbox">
+                    <label><input name="is_explain" type="checkbox" checked="checked"/>是否EXPLAIN</label>
+                </div>
+                 <button type="submit" class="btn btn-default">执行</button>
+            </form>
+        </div>
+        <div class="col-md-4 column">
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,191 @@
+{# ips数据对象正向映射 #}
+{% set ipsGoods = {} %}
+{% if data.goodsSKU %}
+    {% for key,item in data.goodsSKU %}
+        {% set ipsGoods = ipsGoods|merge({(item.key):item}) %}
+    {% endfor %}
+
+{% endif %}
+
+{% if data.navList and (data.navList[0].list[0].goods or ipsGoods['0-0'].ipsGoodsSKU) %}
+    {% set list = data.navList %}
+{% else %}
+    {% set list = [{ "navName": "nav1", "list": [{ "listName": "lsitNav1", "goods": "" }] },{ "navName": "nav2", "list": [{ "listName": "lsitNav1", "goods": "" }] },{ "navName": "nav3", "list": [{ "listName": "lsitNav1", "goods": "" }] }] %}
+{% endif %}
+
+{% set num = list | length %}
+{% set width = 1/num * 100 ~'%' %}
+
+<div class="geshop-component-box component-drag geshop-U000041-modal5 geshop-U000041-modal5-{{ pageInstanceId }} {% if data.is_fixed == 1 %} js_nav_fixed {% endif %}"
+     data-key="U000041" data-id="{{ pageInstanceId }}">
+    {{ include('style.twig') }}
+    <div class="geshop-containr" data-fixed="{{ data.is_fixed ?? 1 }}">
+        <div class="nav-hd-wrap">
+            <ul class="nav-list">
+                {% for idx,item in list %}
+                <li class="nav-item {% if idx == 0 %} on {% endif %}" data-initSn="{{ ipsGoods[idx~'-0'].ipsGoodsSKU|default(item.list[0].goods) }}"
+                style="width: {{ width }}">
+                    <span>{{ item.navName }}</span>
+                    <ul class="sub-nav">
+                        {% for i,sitem in item.list %}
+                            {% if i == 0 and idx == 0 %}
+                                <li class="sub-item on" data-goodsSn="{{ ipsGoods[(sitem.key)].ipsGoodsSKU|default(sitem.goods) }}"><span>{{ sitem.listName }} </span></li>
+                            {% else %}
+                                <li class="sub-item" data-goodsSn="{{ ipsGoods[(sitem.key)].ipsGoodsSKU|default(sitem.goods) }}"><span>{{ sitem.listName }} </span></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="pagenation_nav"><span class="nav_1">{{ list[0].navName }}</span> » <span class="nav_2">{{ list[0].list[0].listName }}</span></div>
+        {# fixd 时占位，去除崩塌感 ==== S #}
+        <div class="nav-hd-fixd-wrap"></div>
+        {# fixd 时占位，去除崩塌感 ==== END #}
+        <div class="wrap-main">
+            <ul class="u000041-modal5-goods-list">
+                {% for key, item in (0..7) %}
+                    <li class="mo5-good-list">
+                        <div class="geshop-u000041-modal5-list-img">
+                            <a href="#">
+                                {% include geshop.default.pc.image_goods with { params: { src: item.goods_img }} %}
+                            </a>
+                            {% if (data.discount_type ?? 0)  == 1 %}
+                                <span class="discount-off site-font-bold">50% OFF</span>
+                            {% else %}
+                                <span class="discount-off site-font-bold">-50%</span>
+                            {% endif %}
+                            <span class="mol5_quick_shop site-bold-strict"
+                                  onclick="GEShopSiteCommon.dialog.iframe('', 1080, 597, true);">{{ get_component_trans(lang, 'quick_shop') |upper }}</span>
+
+                            {#{% include geshop.default.pc.sold_out with { params: { show: item.goods_number ? ( item.goods_number <= 0 ) : false }} %}#}
+                            {% if (data.marketing_is_show ?? 1) == 1 %}
+                                <div class="promotion-box">
+                                    <div class="promotion-list">
+                                        <p>Buy 1 Get <span style="color: #FA386A;font-family: Rubik-Medium,Arial;">15%</span> OFF</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="item_content">
+                            <div class="geshop-u000041-modal5-list-title">
+                                <a href="#">Plus Size Color Block Flare Tankini Set - 2x</a>
+                            </div>
+                            <div class="gs-shop-price">
+                                {% include geshop.default.pc.shop_price with { params: { }} %}
+                                {% include geshop.default.pc.market_price with { params: { }} %}
+                            </div>
+                            {% if (data.pic_is_show ?? 1) == 1 %}
+                                <div class="common-list">
+                                    <ul class="tk-list-pic">
+                                        {% for key, item in (0..4) %}
+                                            {% if key < 4 %}
+                                                <li>
+                                                    <img src="https://geshopimg.logsss.com/uploads/nxQshzC1wXTYy8BmHD6GE39vLWjciKaR.png"
+                                                         alt="rg"></li>
+                                            {% else %}
+                                                <a href="#"></a>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <script type="text/html" class="u000041-modal5-goods-temp">
+    <%# if (d.goodsInfo.length > 0) { %>
+    <%# $.each(d.goodsInfo, function(index, item) { %>
+    <%# if (item != null ) { %>
+    <%# if (item[0] != null) { %>
+    <li class="mo5-good-list">
+        <div class="geshop-u000041-modal5-list-img">
+            <a href="<% item[0].url_title %>">
+                {% include geshop.default.pc.image_goods with { params: { src: "<% item[0].goods_img %>" }} %}
+            </a>
+            <%# if( item[0].discount - 0 > 0){ %>
+            {% if (data.discount_type ?? 0) == 1 %}
+                <span class="discount-off site-font-bold"><% item[0].discount %>% OFF</span>
+            {% else %}
+                <span class="discount-off site-font-bold"><% 0 - item[0].discount %>%</span>
+            {% endif %}
+            <%# } %>
+            <%# if( item[0].goods_number > 0){ %>
+            <span class="mol5_quick_shop site-bold-strict" data-qkurl="<% item[0].url_quick %>">{{ get_component_trans(lang, 'quick_shop') |upper }}</span>
+            {% include geshop.default.pc.sold_out with { params: { show: false, site: 'rg' }} %}
+            <%# }else{ %>
+            {% if item[0].goods_number is not empty %}
+                {% include geshop.default.pc.sold_out with { params: { show: true }} %}
+            {% endif %}
+            <%# } %>
+            {% if (data.marketing_is_show ?? 1) == 1 %}
+                <%# if( item[0].promotions.length > 0){ %>
+                <div class="promotion-box">
+                    <div class="promotion-list">
+                        <p><% item[0].promotions[item[0].promotions.length - 1] %></span> </p>
+                    </div>
+                </div>
+                <%# } %>
+            {% endif %}
+
+            {# 库存告急 #}
+            {% include geshop.default.pc.stock_tip_laytpl with { itemType: 'group' }%}
+        </div>
+        <div class="item_content">
+            <div class="geshop-u000041-modal5-list-title">
+                <a href="<% item[0].url_title %>"><% item[0].goods_title %></a>
+            </div>
+            <div class="gs-shop-price">
+                {% include geshop.default.pc.shop_price with { params: { value: "<% item[0].shop_price %>" }} %}
+                <%# if( item[0].shop_price - item[0].market_price < 0 ){ %>
+                {% include geshop.default.pc.market_price with { params: { value: "<% item[0].market_price %>" }} %}
+                <%# } %>
+
+                {# 收藏本期不做 #}
+                {#<span class="collect-icon" data-id="<% item[0].goods_id %>"></span>#}
+            </div>
+            {% if (data.pic_is_show ?? 1) == 1 %}
+                <div class="common-list">
+                    <%# if( item.length > 1 ){ %>
+                    <ul class="tk-list-pic">
+                        <%# $.each(item, function(sameIndex, sameItem){ %>
+                        <%# if( sameIndex == 5){ %>
+                        <a href="<% item[0].url_title %>"></a>
+                        <%# } else if(sameIndex == 0) { %>
+                        <li class="same-items on"
+                            data-img="<% sameItem.goods_img %>"
+                            data-url="<% sameItem.url_title %>"
+                            data-qkurl="<% sameItem.url_quick %>"
+                            data-title="<% sameItem.goods_title %>"
+                            data-gsnumber="<% sameItem.goods_number %>">
+                            <img class="js_gdexp_lazy" data-original="<% sameItem.goods_img_sm %>" src="https://geshopcss.logsss.com/imagecache/geshop-test/resources/sites/rg-pc/images/goods_default.gif" alt="rg">
+                        </li>
+                        <%# } else { %>
+                        <li class="same-items"
+                            data-img="<% sameItem.goods_img %>"
+                            data-url="<% sameItem.url_title %>"
+                            data-qkurl="<% sameItem.url_quick %>"
+                            data-title="<% sameItem.goods_title %>"
+                            data-gsnumber="<% sameItem.goods_number %>">
+                            <img class="js_gdexp_lazy" data-original="<% sameItem.goods_img_sm %>" src="https://geshopcss.logsss.com/imagecache/geshop-test/resources/sites/rg-pc/images/goods_default.gif" alt="rg">
+                        </li>
+                        <%# }  %>
+                        <%# }); %>
+                    </ul>
+                    <%# } %>
+                </div>
+            {% endif %}
+        </div>
+    </li>
+    <%# } %>
+    <%# } %>
+    <%# }); %>
+    <%# } %>
+    </script>
+
+</div>
+

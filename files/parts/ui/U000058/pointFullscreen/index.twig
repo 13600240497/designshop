@@ -1,0 +1,54 @@
+
+
+{% if siteCode == 'rw-pc' %}
+<div data-key="U000058" data-id="{{ pageInstanceId }}" data-gid="U000058_model_fullscreen" data-static-domain="{{staticDomain}}" class="geshop-component-box component-drag gs-index-main wrap-U000058-model_fullscreen" style="
+	height: {{data.ImgHeight | default(535)}}px;
+	margin-top: {{ data.marginTop | default(0) }}px;
+	margin-bottom: {{ data.marginBottom | default(0) }}px;
+	overflow: hidden;
+">
+{% elseif siteCode == 'rg-pc' %}
+<div data-key="U000058" data-id="{{ pageInstanceId }}" data-gid="U000058_model_fullscreen" data-static-domain="{{staticDomain}}" class="geshop-component-box component-drag gs-index-main wrap-U000058-model_fullscreen" style="
+	height: {{data.ImgHeight | default(560)}}px;
+	margin-top: {{ data.marginTop | default(0) }}px;
+	margin-bottom: {{ data.marginBottom | default(0) }}px;
+	overflow: hidden;
+">
+{% elseif siteCode == 'zf-pc' %}
+<div data-key="U000058" data-id="{{ pageInstanceId }}" data-gid="U000058_model_fullscreen" data-static-domain="{{staticDomain}}" class="geshop-component-box component-drag gs-index-main wrap-U000058-model_fullscreen" style="
+	height: {{data.ImgHeight | default(600)}}px;
+	margin-top: {{ data.marginTop | default(0) }}px;
+	margin-bottom: {{ data.marginBottom | default(0) }}px;
+	overflow: hidden;
+">
+{% endif %}
+	{% if data.imgItem %}
+	<div class="geshop swiper-container geshop-index-banner geshop-swiper-container-{{ pageInstanceId }}" data-id="{{ pageInstanceId }}">
+		<div class="swiper-wrapper">
+			{% for item in data.imgItem %}
+			<div class="geshop swiper-slide swiper-slide swiper-slide-item">
+				<a href="{{item.url}}" class="logsss_event js-geshop-ga-click js-geshop-ga-view" geshop-component-name="{{ item.ga_name }}" style="text-align: center;"
+					{% if data.isOpenNew == 1 %}target="_blank"{% endif %}
+					data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ item.img }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+					<img class="swiper-lazy" data-src="{{item.img}}" src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-original="{{item.img}}" style="width:{{data.ImgWidth}}px; height:{{data.ImgHeight}}px;"
+						data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ item.img }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+				</a>
+				<div class="swiper-lazy-preloader"></div>
+			</div>
+			{% endfor %}
+		</div>
+		<div class="geshop swiper-button-prev" style='display: none;'></div>
+		<div class="geshop swiper-button-next" style='display: none;'></div>
+		<div class="swiper-pagination"></div>
+	</div>
+	{% else %}
+		{% if siteCode == 'rw-pc' %}
+    <div class="geshop swiper-container geshop-index-banner" style="height:{{data.ImgHeight | default(535)}}px;background-repeat:no-repeat;background-size:350px 270px;background-color:#EDEDED;background-position: center center;background-image:url('{{ data.default.bannerView }}')"></div>
+    {% elseif siteCode == 'rg-pc' %}
+    <div class="geshop swiper-container geshop-index-banner" style="height:{{data.ImgHeight | default(560)}}px;background-repeat:no-repeat;background-size:350px 270px;background-color:#EDEDED;background-position: center center;background-image:url('{{ data.default.bannerView }}')"></div>
+    {% elseif siteCode == 'zf-pc' %}
+    <div class="geshop swiper-container geshop-index-banner" style="height:{{data.ImgHeight | default(600)}}px;background-repeat:no-repeat;background-size:350px 270px;background-color:#EDEDED;background-position: center center;background-image:url('{{ data.default.bannerView }}')"></div>
+    {% endif %}
+	{% endif %}
+</div>
+

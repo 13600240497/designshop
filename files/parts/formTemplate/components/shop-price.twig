@@ -1,0 +1,16 @@
+{%
+    set components = [
+        {
+            label: '文字颜色',
+            name: 'shop_price_color',
+            default: '#333333',
+            type: 'colorPicker'
+        }
+    ]
+%}
+<fieldset class="layui-elem-field">
+    <legend>销售价</legend>
+    <div class="layui-field-box">
+        {{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}
+    </div>
+</fieldset>

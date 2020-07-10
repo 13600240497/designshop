@@ -1,0 +1,199 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+{% set suffix='px'%}
+
+{% if data.colNum == '1'%}
+    {% set colClass = liCol[0] %}
+{% elseif data.colNum == '2' %}
+    {% set colClass = liCol[1] %}
+{% elseif data.colNum == '3' %}
+    {% set colClass = liCol[2] %}
+{% elseif data.colNum == '4' %}
+    {% set colClass = liCol[3] %}
+{% elseif data.colNum == '5' %}
+    {% set colClass = liCol[4] %}
+{% else %}
+    {% set colClass = liCol[3] %}
+{% endif %}
+
+{# tab_bothBdType 1,2,3 直角,圆角,半圆 #}
+{# goodsSKUEnv: bolean 开启模拟数据 #}
+{% set goodsData = {
+	goodsBgc:data.goodsBgc is not null?data.goodsBgc:'#ffffff',
+	goodsBdC:data.goodsBdC is not null?data.goodsBdC:'#E33194',
+	goodsFtC:data.goodsFtC is not null?data.goodsFtC:'#333',
+	buyHeight:data.buyHeight|default(34),
+	buyRadius:data.buyRadius|default(20),
+	buyFtS:data.buyFtS|default(16),
+	buyBgC:data.buynow_bg_color is not null?data.buynow_bg_color:'#333333',
+	buyFtC:data.buynow_font_color is not null?data.buynow_font_color:'#FFFFFF',
+	buyBorderC:data.buyBorderC is not null?data.buyBorderC:'transparent',
+	buyBorderW:data.buyBorderW|default('0'),
+	buyText:get_component_trans(lang,'buy_now')|default('BUY NOW'),
+	shop_price_color:data.shop_price_color is not null?data.shop_price_color:'#333333',
+	priceFt:data.priceFt|default('22'),
+	discountOffsetT:data.discountOffsetT|default('0'),
+	discountOffsetR:data.discountOffsetR|default('0'),
+	discountOffsetL:data.discountOffsetL|default('0'),
+	discountRadius:data.discountRadius|default('50'),
+	discount_bg_color:data.discount_bg_color is not null?data.discount_bg_color:'#333333',
+	discount_font_color:data.discount_font_color is not null?data.discount_font_color:'#ffffff',
+	goodsLimitsTextColor:data.goodsLimitsTextColor is not null?data.goodsLimitsTextColor:'#333333',
+	progress_total_color:data.progress_total_color is not null?data.progress_total_color:'#D8D8D8',
+	progress_left_color:data.progress_left_color is not null?data.progress_left_color:'#333333',
+	goodsLimitsRemainBgColor:data.goodsLimitsRemainBgColor is not null?data.goodsLimitsRemainBgColor:'#333333',
+	discountTop:data.discountTop|default(0),
+	discount_type:data.discount_type|default(1),
+	discountArea:data.discountArea|default(1),
+	colNum:data.colNum|default('4'),
+	baseWidth:data.baseWidth|default(1200),
+	discountFtS:data.discountFtS|default(16),
+	discountSymbolFts:data.discountSymbolFts|default(12),
+	soldTextC:data.soldTextC|default('#333333'),
+	goodsLimitsTextType:data.goodsLimitsTextType|default(1),
+	goodsLimitsTotalBgColor:data.progress_total_color is not null?data.progress_total_color:'#D8D8D8',
+} %}
+
+{% set pageData = {
+
+	tab_headerBgC:data.tab_headerBgC|default('#666666'),
+	tab_headerFtC:data.tab_headerFtC|default('#ffffff'),
+	tab_bothBdType:data.tab_bothBdType|default('1'),
+	tab_endBgc:data.tab_endBgc|default('#F6F6F6'),
+	tab_endTextC:data.tab_endTextC|default('#999999'),
+	tab_endBdC:data.tab_endBdC|default(''),
+	tab_ingBgc:data.tab_ingBgc|default('#999999'),
+	tab_ingTextC:data.tab_ingTextC|default('#FFFFFF'),
+	tab_ingBdC:data.tab_ingBdC|default('#999999'),
+	tab_soonBgc:data.tab_soonBgc|default('#F6F6F6'),
+	tab_soonTextC:data.tab_soonTextC|default('#FFFFFF'),
+	tab_soonBdC:data.tab_soonBdC|default('#D8D8D8'),
+	boxMarginBottom:data.boxMarginBottom|default(40),
+	arrowBgC:data.arrowBgC|default('#333333'),
+	arrowLBgImg:data.arrowLBgImg|default(''),
+	arrowRBgImg:data.arrowRBgImg|default(''),
+
+	tab_selectBgc: data.tab_selectBgc|default('#333333'),
+	tab_selectTextC:data.tab_selectTextC,
+	tab_selectBdC:data.tab_selectBdC,
+	tab_unselectBgc: data.tab_unselectBgc|default('#999999'),
+	tab_unselectTextC:data.tab_unselectTextC,
+	tab_unselectBdC:data.tab_unselectBdC,
+
+	goodsBdC:data.goodsBdC,
+	goodsMarginTop:data.goodsMarginTop|default(0),
+	goodsMarginBottom:data.goodsMarginBottom|default(16),
+	goodsBShadowdC:data.goodsBShadowdC|default('#CCCCCC'),
+
+	downFtS:data.downFtS|default(14),
+	downTextC:data.downTextC|default('#FFFFFF'),
+	downBfText:get_component_trans(lang,'coming_soon')|default('coming_soon'),
+	downIngText:get_component_trans(lang,'on_going')|default('on_going'),
+	downAfText:get_component_trans(lang,'already_ended')|default('already_ended'),
+	yesterday:get_component_trans(lang,'yesterday'),
+	today:get_component_trans(lang,'today'),
+	tomorrow:get_component_trans(lang,'tomorrow'),
+
+	titleNavText:data.titleNavText|default('Flash Sale'),
+	fs_titleBgC:data.fs_titleBgC|default('#ffffff'),
+	fs_titleHeight:data.fs_titleHeight|default(100),
+	fs_titleBgImg:data.fs_titleBgImg,
+	fs_titleFtC:data.fs_titleFtC|default('#333333'),
+	fs_titleMarginBottom:data.fs_titleMarginBottom|default(0),
+	fs_titleFtSize:data.fs_titleFtSize|default(40),
+
+	box_bg_color:data.box_bg_color|default('#F8F8F8'),
+	goodsSKUEnv:true
+}
+%}
+
+{% set liLength = ( data.goodsSKUSort|default(0..3))|length %}
+{% set liVis = liLength>4?4:liLength %}
+{# {% set liWidth = (goodsData.baseWidth - 350)/liVis %} #}
+{% set liWidth = (goodsData.baseWidth)/liVis %}
+{# {% set liLength = ( data.goodsSKUSort|default(0..3))|length %} #}
+{% set sizeSacle = 16/24 %}
+{% set sizeWidth = pageData.downFtS/sizeSacle %}
+{% set component_hide = ( data.isEditEnv != 1 and data.goodsSKUSort|length <= 0 ? 'component-hide' : '')  %}
+{# {%
+	set timeData = ""
+%}
+
+{% for key,item in data.goodsSKUSort %}
+	{% if ('now'|date('U')) > (item.dataEndTime)/1000 %}
+		{% set timeData = item %}
+	{% endif %}
+{% endfor %} #}
+
+<div class="geshop-component-box component-drag component-sync warp-U000078_model4_new warp-U000078_model4_new_{{ pageInstanceId }} clearfix {{ component_hide }}" data-gid="U000078_tabspike_new" data-key="U000078" data-id="{{ pageInstanceId }}"
+	data-editenv="{{data.isEditEnv}}" data-static-domain="{{staticDomain}}" data-vis="{{liLength}}" data-lang="{{lang}}">
+	{# <h1>{{ timeData|length }}</h1> #}
+	<!-- embed stylesheet begin -->
+	<style type="text/css">
+		{% include 'style.twig' %}
+
+	</style>
+	<!-- embed stylesheet end -->
+
+	<div class="geshop-col-12">
+		<div class="gs-goods-tab" style="width:{{goodsData.baseWidth}}px;margin-bottom:{{pageData.boxMarginBottom}}px;background-color:{{pageData.box_bg_color}}" data-isEditEnv="{{data.isEditEnv}}" data-killLeftVisible="{{data.tab_endShowActive}}" data-tplStatus="0" data-interfaceDomain="{{interfaceDomain}}" data-sitedomain="{{siteDomain}}">
+			{% if liLength >4 %}
+			<div class="gs-option">
+				<a class="prev" style="top:0px;"></a>
+				<a class="next" style="top:0px;"></a>
+			</div>
+			{% endif %}
+			<div class="gs-main" style="width:{{data.baseWidth|default(1200)}}px;">
+				<div class="gs-goods-hd hide">
+					<ul>
+						{% for key,item in data.goodsSKUSort|default(0..3) %}
+							<li>{{loop.index}}</li>
+						{% endfor %}
+					</ul>
+				</div>
+				{# <h1>{{ data.goodsSKUSort|length }} - {{ data.tab_endShowActive }}</h1> #}
+				<div class="gs-goods-bd" style="background-color:{{pageData.tab_headerBgC}};{% if liLength >4 %}width:1152px;margin:0 auto;{% endif %}">
+					<input type="hidden" name="tabColorInput" data-background-color="{{pageData.tab_unselectBgc}}" data-color="{{pageData.tab_unselectTextC}}" data-border-color="{{pageData.tab_selectBdC}}" />
+					<input type="hidden" name="buyText" value="{{ goodsData.buyText }}">
+					<ul class="bd-main">
+						{% for key,item in data.goodsSKUSort|default(0..3)|sort('dataStartTime') %}
+
+							{% if data.isEditEnv == '0' and data.goodsSKUSort %}
+							<li class="gs-tab-title-item" style="width:{{liWidth}}px;" data-index="{{loop.index0}}" data-start-time="{{item.dataStartTime}}" data-end-time="{{item.dataEndTime}}">
+								<div class="gs_tab_item_wrap">
+									{#								<span class="gs-date_day">{{get_component_trans(lang,'yesterday')}}</span>#}
+									<span class="gs-goods-date_hours">10:00</span>
+									<span class="gs-date_day"></span>
+									<span class="gs-date-status" style="font-size:14px;">{{get_component_trans(lang,'already_ended')|default('already_ended')}}</span>
+									{# tab time start #}
+									{{include ('@app/files/parts/temp/count_down_arr_tabspike.twig')}}
+									{# tab time end #}
+								</div>
+							</li>
+							{% else %}
+							<li class="gs-tab-title-item" style="width:{{liWidth}}px;" data-index="{{loop.index0}}">
+								<div class="gs_tab_item_wrap">
+									{#								<span class="gs-date_day" style="font-size:16px;">{{get_component_trans(lang,'tomorrow')}}</span>#}
+									<span class="gs-goods-date_hours">10:00</span>
+									<span class="gs-date_day">05/12</span>
+									<span class="gs-date-status">{{get_component_trans(lang,'coming_soon')|default('coming_soon')}}</span>
+
+									{{include ('@app/files/parts/temp/count_down_arr_tabspike.twig')}}
+								</div>
+							</li>
+							{% endif %}
+
+						{% endfor %}
+					</ul>
+				</div>
+				<div class="gs-tab-content">
+					{% for key,item in data.goodsSKUSort|default(0..3) %}
+						{# gs_tab_show #}
+						<div class="gs-tab-item gs-goodsWrap" data-index="{{loop.index0}}" data-skus="{{item.lists}}">
+							{{include ('@app/htdocs/resources/template/pc/goodsList_sync/killDefaultTabSpike/index_new.twig')}}
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

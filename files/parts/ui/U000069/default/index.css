@@ -1,0 +1,28 @@
+.result-tips{
+  height:64px;
+  line-height:64px;
+  font-size:12px;
+  color: #fff;
+  text-align: center;
+  font-family: '微软雅黑';
+
+  background: rgba(0,0,0,.6);
+}
+
+.layui-input-block.geshop-html-area,
+.layui-input-block.geshop-css-area,
+.layui-input-block.geshop-js-area {
+  width: 320px;
+  height:400px;
+  border:1px solid #f0f0f0;
+}
+
+#editor_html,
+#editor_css,
+#editor_js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 400px;
+  width: 320px;
+}

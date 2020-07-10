@@ -1,0 +1,52 @@
+
+{% set root = '#U000164_'~pageInstanceId %}
+{% set classSpace = '.geshop_u000164_rg_template1_v1_body' %}
+{% set body = root~' '~classSpace%}
+
+{{ body }} {
+    margin-bottom: {{ data.box_margin_bottom|default(32) }}px;
+    background-color: {{ data.box_bg_color|default('#F8F8F8') }};
+}
+
+{# 鼠标滑过商品边框样式 #}
+{#{{ body }} ul li:hover {#}
+{#    border-color: {{ data.hover_goods_border_color | default('#333333') }};#}
+{#}#}
+
+{{ body }} .list_item{
+    border-radius: {{ data.goods_border_radius|default(2) }}px;
+    border: 1px solid {{ data.hover_bdColor|default('#FFFFFF') }};
+}
+
+
+{# 积分价格样式 #}
+{{ body }} .list_item .item_integral .left{
+    color: {{ data.shop_price_color | default('#FA386A') }};
+}
+{{ body }} .list_item .item_integral .right{
+    color: {{ data.integral_font_color | default('#FA386A') }};
+}
+
+{# 兑换 #}
+{{ body }} .exchange_view{
+    background-color: {{ data.exchange_bg_color|default('FFFFFF') }};
+    color: {{ data.exchange_font_color|default('#333333') }};
+    border-color: {{ data.exchange_border_color|default('#DDDDDD') }};
+}
+
+
+{# 库存 #}
+{{ body }} .item_stock{
+    color: {{ data.stock_tip_font_color|default('#333333') }};
+}
+
+{# PC View More样式 #}
+{{ body }} .view_more .view_more_btn {
+    background-color: {{ data.view_more_bg_color | default('#FFFFFF') }};
+    color: {{ data.view_more_font_color | default('#333333') }}!important;
+    border-color: {{ data.btn_border_color | default('#333333') }}!important;
+}
+
+{{ body }} .view_more .view_more_btn:hover {
+opacity: 0.9;
+}

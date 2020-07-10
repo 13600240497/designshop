@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="tests/bootstrap.php"
+         colors="true"
+         debug="true"
+         verbose="true"
+         stopOnFailure = "false"
+>
+    <testsuites>
+        <testsuite name="review">
+            <directory suffix="Test.php">tests</directory>
+            <exclude>vendor</exclude>
+            <exclude>htdocs/coverage</exclude>
+        </testsuite>
+    </testsuites>
+    <logging>
+        <log type="coverage-html" target="htdocs/coverage/" charset="UTF-8" />
+    </logging>
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">modules</directory>
+            <exclude>
+                <directory>vendor</directory>
+                <directory>views</directory>
+                <directory>runtime</directory>
+                <directory>htdocs</directory>
+                <directory>config</directory>
+                <directory>messages</directory>
+                <directory>modules/debug</directory>
+                <directory>tests</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>

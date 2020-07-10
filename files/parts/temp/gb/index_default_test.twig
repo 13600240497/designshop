@@ -1,0 +1,93 @@
+{# 默认商品列表模板 #}
+
+{# css属性单位 #}
+{% set suffix='px'%}
+
+{#
+    set pageData = {
+        imgSrc:'',// 图片地址
+				baseWidth:1100,//容器宽度
+				col:4,//容器分栏
+				marginRight:12//容器右间距
+				page_point_type:'landPage,activityPage' //页面类型
+    }
+#}
+
+{# {% set liWidth = (pageData.baseWidth-3*pageData.marginRight)/pageData.col %} #}
+
+{# 限时限量商品 #}
+{# {% if pageData.limit_active == '1' %}
+	{% set left_number =  (item.stock_num|number_format - item.activity_stock|number_format)>0?(item.stock_num|number_format - item.activity_stock|number_format):0 %}
+	{% set goodsStatus =  left_number==0 and data.goodsInfo? 'good_soldOut' :'goodsBuyPro'%}
+{% endif %} #}
+{# 普通商品才可直接获取sold out 倒计时商品需要动态判断sold out#}
+
+	{% set left_number =  (item.stock_num- item.activity_stock)>0?(item.stock_num - item.activity_stock):0 %}
+	{% set goodsStatus =  left_number == 0 and data.goodsInfo and pageData.limit_active!='1'? 'good_soldOut' :'goodsBuyPro'%}
+	{% set isLimitGoods = pageData.down_active == '1' ? 'is_goods_limit' : 'not_goods_limit'%}
+	{% set isPriceEqual =  item.market_price <= item.shop_price or item.market_price<=0 or item.discount<=0 ? 'visible-hide':''%}
+
+	{# 专题页/落地页 埋点 pagePoint
+		wrapLink li 外层class
+		goodLink 商品链接class
+		prodLink (落地页)曝光单个推荐
+	 #}
+
+	{% if pageData.page_point_type|default('activityPage') ==  'activityPage' %}
+		{% set pagePoint = {
+			wrapLink: 'track-goodsItem',
+			goodLink: 'track-goodsLink',
+			prodLink:''
+		}%}
+
+	{% elseif pageData.page_point_type ==  'landPage' %}
+			{% set pagePoint = {
+			wrapLink: 'subjectGoodItem',
+			goodLink: 'js-link',
+			prodLink:'showProd'
+		}%}
+	{% else %}
+		{% set pagePoint = {
+			wrapLink: 'track-goodsItem',
+			goodLink: 'track-goodsLink',
+			prodLink:''
+		}%}
+
+	{% endif %}
+
+
+
+
+
+    {# felix #}
+			<li class="gs-list-item gs-subjectGoodItem {{pagePoint.wrapLink}} {{goodsStatus}} {{isLimitGoods}}" data-track-key="{{item.goods_sn}}"
+			style="width:{{liWidth}}px;
+			">
+				<div class="item-content">
+				{# 倒计时配置 #}
+				{{include ('@app/files/parts/temp/gb/common/default_pc/goodDown.twig')}}
+
+					<div class="gs-goods-wrap pr">
+						{# 商品图片配置 #}
+							{{include ('@app/files/parts/temp/gb/common/default_pc/goodImg.twig')}}
+						{# 折扣标配置 #}
+							{{include ('@app/files/parts/temp/gb/common/default_pc/goodDiscount.twig')}}
+						{# 服务标 #}
+							{{include ('@app/files/parts/temp/gb/common/default_pc/goodLabel.twig')}}
+					</div>
+
+					<div class="gs-goods-desc">
+						{# 商品标题配置 #}
+							{{include ('@app/files/parts/temp/gb/common/default_pc/goodTitle.twig')}}
+
+						{# 商品价格配置 #}
+							{{include ('@app/files/parts/temp/gb/common/default_pc/goodPrice.twig')}}
+					</div>
+						{# 库存配置start #}
+							{{include ('@app/files/parts/temp/gb/common/default_pc/goodLimit.twig')}}
+						{# 库存配置end #}
+					{# 商品购买配置 #}
+
+				</div>
+							{{include ('@app/files/parts/temp/gb/common/default_pc/goodBuy.twig')}}
+			</li>

@@ -1,0 +1,70 @@
+{
+  "name": "pc goodsList",
+  "version": "v1.0.0.1",
+  "description": "pc kill goodsList tab 多时段",
+  "author": "xingtao",
+  "doc":"http://wiki.hqygou.com:8090/pages/viewpage.action?pageId=39029806",
+  "commjs": {
+    "jquery": true
+  },
+  "commcss": {
+    "main": true
+  },
+  "min-width": "auto",
+  "min-height": "inherit",
+	"fields": {
+    "goodsSKU": { "is_public": "1", "is_m": "1", "is_app": "1" },
+    "discountWidth": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "discountHeight": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "discountBgImg": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "discountFtC": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "goodsFtC": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "marketPriceC": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "priceC": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "titleNavText": { "is_public": "0", "is_m": "1", "is_app": "0" },
+    "buyText": { "is_public": "1", "is_m": "1", "is_app": "1" },
+    "buyFtC": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "buyBgC": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "buyBorderC": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "boxMarginTop": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "boxMarginBottom": { "is_public": "0", "is_m": "0", "is_app": "1" },
+		"baseWith": { "is_public": "0", "is_m": "0", "is_app": "1" },
+		"colNum": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "baseBgC": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "goodsBgc": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "gsPadding": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "gsMarginBottom": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "gsInnerPadding": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "gsRadius": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "goodsTimeActive": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "discountOffsetT": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "discountOffsetR": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "discountBgc": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "discountTop": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "discountRadius": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "discountSuffix": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "discountActive": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "goodsFtS": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "goodsActive": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "marketPriceFt": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "marketActive": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "priceFt": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "priceActive": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "buyFtS": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "buyWidth": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "buyHeight": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "buyRadius": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "buyBorderW": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "buyBorderS": { "is_public": "1", "is_m": "1", "is_app": "1" },
+    "buyBgImg": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "buyActive": { "is_public": "0", "is_m": "0", "is_app": "1" },
+		"goodsLimitActive": { "is_public": "0", "is_m": "0", "is_app": "1" },
+
+		"discountLeft": { "is_public": "0", "is_m": "0", "is_app": "1" }
+		,"discountType": { "is_public": "1", "is_m": "0", "is_app": "1" }
+		,"goodsDataFrom": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"gsSelectLevel0": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"gsSelectLevel1": { "is_public": "1", "is_m": "1", "is_app": "1" }
+		,"gsSelectLevel2": { "is_public": "1", "is_m": "1", "is_app": "1" }
+	}
+}

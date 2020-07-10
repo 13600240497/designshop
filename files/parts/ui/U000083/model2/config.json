@@ -1,0 +1,18 @@
+{
+  "fields": {
+		"width":{ "is_public": "0", "is_m": "0", "is_app": "0" },
+		
+		"marginBottom": { "is_public": "0", "is_m": "0", "is_app": "0" },
+		"itemMarginBottom":{ "is_public": "0", "is_m": "0", "is_app": "0" },
+		"itemMarginLeft": { "is_public": "0", "is_m": "0", "is_app": "0" },
+		
+		"itemMarginRight": { "is_public": "0", "is_m": "0", "is_app": "0" },
+	
+		"priceC": { "is_public": "0", "is_m": "0", "is_app": "0" },
+		"priceFt": { "is_public": "0", "is_m": "0", "is_app": "0" },
+		"goodsFtC": { "is_public": "0", "is_m": "0", "is_app": "0" },
+		"goodsFtS": { "is_public": "0", "is_m": "0", "is_app": "0" },
+		"textAlgin": { "is_public": "0", "is_m": "0", "is_app": "0" },
+		"goodsSKU": { "is_public": "1", "is_m": "0", "is_app": "0" }
+  }
+}

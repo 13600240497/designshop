@@ -1,0 +1,48 @@
+<style>{{ include ('form.css') }}</style>
+{% set formData = {
+    id: 'U0000228',
+    name: 'Banner轮播组件配置',
+    theme: 'default',
+    tabs: [
+        {
+            label: '样式配置',
+            components: [
+            {
+                label: '常用配置 <span class="layui-form-desc">(此组件只适用于通栏)</span>',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '页面轮播导航图icon',
+                    name: 'box_banner_ico',
+                    type: 'radio',
+                    default: '0',
+                    options: [
+                    { label: '圆点', value: '0' },
+                    { label: '线条', value: '1' },
+                ]
+                },
+                {
+                    type: 'platData-dl-target',
+                    name: 'is_open_new',
+                },
+                {
+                    type: 'diy',
+                    src: 'data.twig'
+                }
+            ]
+            }
+        ]
+        },
+
+    ],
+    moreConfig: [],
+    beforeSubmit: 'beforeSubmit'
+} %}
+ 
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+{# 引入自定义函数 #}
+<script>
+{% include 'form.js' %}
+</script>

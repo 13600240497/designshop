@@ -1,0 +1,244 @@
+<style>
+    .layui-col-xs6 .layui-form-label{
+        white-space: nowrap;
+    }
+</style>
+{{ include ('@app/files/parts/temp/goods_manager.twig') }}
+
+{% set formData = {
+    id: 'U000209',
+    name: 'tab商品列表组件',
+    theme: 'template4_v3',
+    tabs: [
+        {
+            label: '商品数据',
+            components: [
+            {
+                label: '页面显示信息配置',
+                type: 'fieldset',
+                components:[
+                {
+                    label: '默认显示商品个数',
+                    desc: '(建议输入4的倍数)',
+                    name: 'page_show_goods_number',
+                    default: 20
+                },
+                {
+                    label: '每个tab显示商品总数',
+                    name: 'page_total_number'
+                }
+            ]
+            },
+            {
+                label: '商品分类数据配置',
+                type: 'fieldset',
+                components:[
+                {
+                    type: 'diy',
+                    src: 'lib/goods.twig'
+                }
+            ]
+            }
+        ]
+        },
+        {
+            label: '样式配置',
+            components: [
+            {
+                label: '常用配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '组件下边距',
+                    desc: '(px)',
+                    name: 'box_margin_bottom',
+                    default: 32,
+                    col: 2
+                },
+                {
+                    label: '组件背景颜色',
+                    name: 'box_bg_color',
+                    type: 'colorPicker',
+                    default: '#F8F8F8',
+                    col: 2
+                },
+                {
+                    label: '背景是否整体式',
+                    name: 'box_is_whole',
+                    default: '1',
+                    type: 'radio',
+                    options: [
+                    {
+                        label: '是',
+                        value: '1',
+                    },
+                    {
+                        label: '否',
+                        value: '0',
+                    }
+                ]
+                }
+            ]
+            },
+            {
+                label: '商品样式',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '背景圆角大小(px)',
+                    name: 'goods_bg_radius_size',
+                    default: 24,
+                    col: 2
+                },
+                {
+                    label: '单个商品圆角大小（px）',
+                    name: 'goods_radius_size',
+                    default: 24,
+                    col: 2
+                }
+            ]
+            },
+            {
+                label: 'tab标签配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: 'tab展开每行显示tab个数',
+                    type: 'radio',
+                    default: 2,
+                    name: 'tab_slide_preview',
+                    options: [
+                    { label: '两个', value: 2 },
+                    { label: '三个', value: 3 },
+                    { label: '四个', value: 4 },
+                ]
+                },
+                {
+                    label: '默认tab背景颜色',
+                    name: 'tab_bg_color',
+                    type: 'colorPicker',
+                    default: '#FFFFFF',
+                    col: 2
+                },
+                {
+                    label: '选中tab背景颜色',
+                    name: 'tab_label_select_bg_color',
+                    type: 'colorPicker',
+                    default: '#333333',
+                    col: 2
+                },
+                {
+                    label: '默认tab字体颜色',
+                    name: 'tab_label_text_color',
+                    type: 'colorPicker',
+                    default: '#333333',
+                    col: 2
+                },
+                {
+                    label: '选中字体颜色',
+                    name: 'tab_label_select_text_color',
+                    type: 'colorPicker',
+                    default: '#FFFFFF',
+                    col: 2
+                },
+                {
+                    label: '默认tab边框颜色(展开)',
+                    name: 'tab_label_border_color',
+                    type: 'colorPicker',
+                    default: '#333333',
+                    col: 2
+                },
+                {
+                    label: '选中tab边框颜色(展开)',
+                    name: 'tab_label_select_border_color',
+                    type: 'colorPicker',
+                    default: '#333333',
+                    col: 2
+                },
+                {
+                    label: '展开收起箭头颜色',
+                    name: 'tab_arrow_color',
+                    type: 'colorPicker',
+                    default: '#333333',
+                    col: 2
+                },
+                {
+                    label: '展开区域背景颜色',
+                    name: 'expand_bg_color',
+                    type: 'colorPicker',
+                    default: '#FFFFFF',
+                    col: 2
+                }
+            ]
+            },
+            {
+                label: '销售价',
+                type: 'shop-price'
+            },
+            {
+                label: '折扣标配置',
+                type: 'discount-zf-2'
+            },
+            {
+                label: 'View More配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '背景颜色',
+                    name: 'view_more_bg_color',
+                    type: 'colorPicker',
+                    default: '#333333',
+                    col: 2
+                },
+                {
+                    label: '边框颜色',
+                    name: 'view_more_border_color',
+                    type: 'colorPicker',
+                    default: '#333333',
+                    col: 2
+                },
+                {
+                    label: '文字颜色',
+                    name: 'view_more_font_color',
+                    type: 'colorPicker',
+                    default: '#FFFFFF',
+                    col: 1
+                }
+            ]
+            },
+        ]
+        }
+    ],
+    beforeSubmit: 'onSubmit',
+    isAutoRefresh: 2
+} %}
+
+
+<script>
+
+{#  自定义保存函数 #}
+function onSubmit (progress) {
+    var $component = $('#component_form');
+    var page_show_goods_number = $component.find('input[name=page_show_goods_number]').val();
+    var page_total_number = $component.find('input[name=page_total_number]').val();
+
+    if ( page_show_goods_number && (!/^([1-9][0-9]*)$/.test(page_show_goods_number) || page_show_goods_number < 1)) {
+        layer.msg('请输入大于等于1的整数数值');
+        $input.val('');
+        return false;
+    }
+
+    if (page_total_number && (!/^([1-9][0-9]*)$/.test(page_total_number) || page_total_number < 1)) {
+        layer.msg('请输入大于等于1的整数数值');
+        $input.val('');
+        return false;
+    }
+
+    progress.next();
+}
+
+
+</script>
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

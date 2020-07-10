@@ -1,0 +1,183 @@
+{% set buyBorderSArr = [
+	{name:'无',value:'none'},
+	{name:'实线',value:'solid'},
+	{name:'虚线',value:'dashed'},
+	{name:'点状',value:'dotted'},
+	{name:'双线',value:'double'},
+	{name:'继承上级',value:'inherit'},
+]%}
+
+{%
+	set pageData = {
+		buyBgC:data.buyBgC is not null?data.buyBgC:'#FD9E62',
+		buyBorderC:data.buyBorderC is not null?data.buyBorderC:'#FD9E62',
+	}
+%}
+
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>按钮属性设置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+  <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+		<div class="layui-tab"  id="gs_button_tab">
+			<ul class="layui-tab-title">
+				<li class="layui-this">模板选择</li>
+				<li>样式设置</li>
+			</ul>
+			<div class="layui-tab-content layui-tab-content-parent">
+				<div class="layui-tab-item layui-show">
+						<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+						{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				</div>
+				<div class="layui-tab-item">
+					<div class="layui-carousel" id="form_carousel">
+						<div carousel-item>
+							<div>
+								<fieldset class="layui-elem-field">
+									<legend>常用配置</legend>
+									<div class="layui-field-box">
+										<div class="layui-form-item">
+											<label class="layui-form-label public-data">文案</label>
+											<div class="layui-input-block"><input class="layui-input" type="text" name="buyText" value="{{data.buyText|default('Button')}}" data-public-tag="true">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label public-data">链接</label>
+											<div class="layui-input-block"><input class="layui-input" type="text" name="buyLink" value="{{data.buyLink}}" data-public-tag="true">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">字体颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="buyFtC">
+													<div style="background-color: {{ data.buyFtC }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="buyFtC" autocomplete="off" value="{{ data.buyFtC }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">背景颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="buyBgC">
+													<div style="background-color: {{ pageData.buyBgC }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="buyBgC" autocomplete="off" value="{{ pageData.buyBgC }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">边框颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="buyBorderC">
+													<div style="background-color: {{ pageData.buyBorderC }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="buyBorderC" autocomplete="off" value="{{ pageData.buyBorderC }}">
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<div class="text-right">
+									<button type="button" id="js_moreConfig" class="layui-btn layui-btn-normal layui-btn-sm">更多配置</button>
+								</div>
+							</div>
+							<div>
+								<div class="layui-tab layui-tab-vertical">
+									<ul class="layui-tab-title">
+										<li class="layui-this">按钮设置</li>
+									</ul>
+									<div class="layui-tab-content" style="width:220px">
+										<div class="layui-tab-item layui-show">
+											<div class="layui-form-item">
+												<label class="layui-form-label">字体大小(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="buyFtS" value="{{data.buyFtS|default(16)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">字体粗细</label>
+												<div class="layui-input-block">
+													<input type="radio" name="buyFtW" value="bold" title="加粗"{% if data.buyFtW == 'bold' %} checked{% endif %}>
+													<input type="radio" name="buyFtW" value="normal" title="正常"{% if data.buyFtW != 'bold' %} checked{% endif %}>
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">宽度(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="buyWidth" value="{{data.buyWidth|default(240)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">高度(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="buyHeight" value="{{data.buyHeight|default(40)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">上间距(px)</label>
+												<div class="layui-input-block">
+													<input class="layui-input" type="text" name="buyMarginT" value="{{data.buyMarginT|default(10)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">下间距(px)</label>
+												<div class="layui-input-block">
+													<input class="layui-input" type="text" name="buyMarginB" value="{{data.buyMarginB|default(10)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">左间距(px)</label>
+												<div class="layui-input-block">
+													<input class="layui-input" type="text" name="buyMarginL" value="{{data.buyMarginL|default(10)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">右间距(px)</label>
+												<div class="layui-input-block">
+													<input class="layui-input" type="text" name="buyMarginR" value="{{data.buyMarginR|default(10)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">圆角大小(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="buyRadius" value="{{data.buyRadius|default(2)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">边框大小(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="buyBorderW" value="{{data.buyBorderW|default(0)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">边框类型</label>
+												<div class="layui-input-block">
+													<select name="buyBorderS" lay-verify="required" value="{{data.buyBorderS|default('solid')}}">
+													{% for item in buyBorderSArr%}
+														<option value="{{item.value}}" {% if item.value == data.buyBorderS|default('solid')%}selected{% endif %}>{{item.name}}</option>
+													{% endfor %}
+													</select>
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">背景图片</label>
+												<div class="layui-input-block">
+													<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+													<input class="layui-input" type="text" name="buyBgImg" value="{{data.buyBgImg}}">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="text-right">
+									<button type="button" id="js_baseConfig" class="layui-btn layui-btn-normal layui-btn-sm">基础配置</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+	<button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+	<button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>

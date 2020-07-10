@@ -1,0 +1,55 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+
+{% if data.colNum == '1'%}
+    {% set colClass = liCol[0] %}
+{% elseif data.colNum == '2' %}
+    {% set colClass = liCol[1] %}
+{% elseif data.colNum == '3' %}
+    {% set colClass = liCol[2] %}
+{% elseif data.colNum == '4' %}
+    {% set colClass = liCol[3] %}
+{% elseif data.colNum == '5' %}
+    {% set colClass = liCol[4] %}
+{% else %}
+    {% set colClass = liCol[3] %}
+{% endif %}
+
+{% set goodsData = {
+	goodsBgc:data.goodsBgc is not null?data.goodsBgc:'#ffffff',
+	goodsBdC:data.goodsBdC is not null?data.goodsBdC:'#c5221d',
+	priceC:data.priceC is not null?data.priceC:'#C5221E',
+	buyBgC:data.buyBgC is not null?data.buyBgC:'#C5221E',
+	buyBorderC:data.buyBorderC is not null?data.buyBorderC:'#FD9E62',
+	buyHeight:data.buyHeight|default(40),
+	buyWidth:data.buyWidth|default(140),
+	buyRadius:data.buyRadius|default(20),
+	buyBorderW:data.buyBorderW|default('0'),
+	priceFt:data.priceFt|default('20'),
+	discountOffsetT:data.discountOffsetT|default('3'),
+	discountOffsetR:data.discountOffsetR|default('4'),
+	discountRadius:data.discountRadius|default('0'),
+	discountBgc:data.discountBgc,
+	colNum:data.colNum|default('4')
+} %}
+
+<div class="geshop-component-box component-drag clearfix" data-gid="U000001_google" data-key="U000001" data-id="{{ pageInstanceId }}">
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+        [data-gid="U000001_google"][data-id="{{ pageInstanceId }}"] .component-self-goodWrap:hover, [data-gid="U000001_google"][data-id="{{ pageInstanceId }}"] .current {
+            border-color:{{goodsData.goodsBdC|default('transparent')}} !important;
+        }
+        [data-gid="U000001_google"][data-id="{{ pageInstanceId }}"] .component-self-goodWrap{
+            padding-bottom:20px;
+        }
+        [data-gid="U000001_google"][data-id="{{ pageInstanceId }}"] .gs-desc a {
+            text-align: center;
+        }
+    </style>
+    <!-- embed stylesheet end -->
+    <div class="geshop-col-12" style="
+		{% if data.boxMarginTop %}margin-top: {{ data.boxMarginTop }}px;{% endif %}
+		{% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}
+    ">
+			{{include ('@app/htdocs/resources/template/pc/goodsList/google/index.twig')}}
+    </div>
+</div>

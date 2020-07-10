@@ -1,0 +1,182 @@
+[data-gid="U000078_default"] {
+  overflow: hidden;
+  /* compoment layout class list */
+  .clearfix:after {
+    content: "";
+    height: 0;
+    line-height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+  }
+  .g-w990 {
+    width: 990px;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .geshop-component-box {
+    overflow: hidden;
+  }
+  .geshop-panel {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+  }
+  .hide {
+    display: none;
+  }
+  /* 秒杀tab */
+  .gs-goods-tab {
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    .gs-goods-bd {
+      overflow: hidden;
+    }
+    .gs-goods-title {
+      display: inline-block;
+      vertical-align: middle;
+      width: 300px;
+      text-align: center;
+    }
+    .gs-option {
+      position: relative;
+      .prev span,
+      .next span {
+        background: url(../../../resources/images/icon/goods-tab-arrow.png) no-repeat;
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+      .prev span {
+        background-position: -31px -5px;
+      }
+      .next span {
+        background-position: -5px -5px;
+      }
+    }
+    .gs-main {
+      overflow: hidden;
+    }
+    li {
+      list-style: none;
+      float: left;
+    }
+    .prev,
+    .next {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-radius: 100%;
+      z-index: 2;
+      background: #999999;
+      cursor: pointer;
+    }
+    .prev {
+      position: absolute;
+      left: 285px;
+      top: 20px;
+    }
+    .next {
+      top: 20px;
+      right: 32px;
+    }
+  }
+  .bd-main,
+  .tempWrap {
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto;
+    overflow: hidden;
+    li {
+      font-size: 12px;
+      height: 72px;
+      color: #ffffff;
+      background-color: #999999;
+      border-width: 1px 0;
+      border-style: solid; // border-right: 1px solid #333;
+      padding: 8px 0;
+      float: left;
+      text-align: center;
+      cursor: pointer;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    .gs-date_day {
+      margin-right: 5px;
+    }
+    .gs-goods-date_hours {
+      display: block;
+    }
+    .gs-date-status {
+      display: block;
+    }
+  }
+  .gs-tab-item {
+    width: 100%;
+    display: none;
+  }
+  .gs-tab-show {
+    display: block !important;
+  }
+  /* 	倒计时 */
+  .gs-time-inner {
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #333333;
+    margin-left: -20px;
+    padding: 20px 0 0;
+    display: block;
+    text-align: center;
+    .icon-clock-black {
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 5px; // margin-top: 5px;
+      background-image: url(../../../resources/images/view/icon-block-black.png);
+      background-repeat: no-repeat;
+      width: 32px;
+      height: 32px;
+      background-position: 0 0;
+    }
+    .gs-down-text {
+      display: inline-block; // margin-right: 15px;
+    }
+  }
+  .gs_component_countDown {
+    em {
+      font-style: normal;
+      padding: 4px; // width: 24px;
+      // height: 24px;
+      // line-height: 24px;
+      border-radius: 100%;
+      border-width: 2px;
+      border-color: #333333;
+      border-style: solid;
+      margin: 0 10px;
+      font-size: 16px;
+      font-weight: bold;
+      display: inline-block;
+    }
+  }
+  /* gs_inner */
+  .gs-visible-not {
+    visibility: hidden;
+  }
+  /* countdown lang item */
+/*  &[data-lang='ru'] {
+    .gs-time-inner {
+      direction: rtl;
+      unicode-bidi: bidi-override;
+    }
+  }*/
+  @import '../../../../../htdocs/resources/template/pc/goodsList/default/index.less';
+}

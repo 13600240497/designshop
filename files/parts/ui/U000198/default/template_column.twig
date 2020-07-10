@@ -1,0 +1,478 @@
+{# 列表模板 #}
+<style>
+    [data-gid="U000197_default"][data-id="{{ pageInstanceId }}"] .layui-form-item .layui-form-radio {
+       
+    }
+</style>
+
+<div class="layui-table goods-form-table ad-form-table" id="component_form1" style="margin-top: 0;">
+    <div class="layui-form-item ad-form-radio" style="margin-bottom: 16px;">
+        <label class="gs-label-block" style="color: #333; margin-left: 0;">广告图列数</label>
+        <input type="hidden" class="imgInput" value="0">
+        <div class="layui-input-block" style="margin: 0 0 10px 0; color: #333;">
+            <input type="radio" name="from_radio_type" lay-filter="from_radio_type" value="0" title="一列(710px)" {% if data.from_radio_type == '0' or data.from_radio_type is empty %} checked="checked" {% endif %}>
+            <input type="radio" name="from_radio_type" lay-filter="from_radio_type" value="1" title="二列(350px)" {% if data.from_radio_type == '1' %} checked="checked" {% endif %}>
+            <input type="radio" name="from_radio_type" lay-filter="from_radio_type" value="2" title="三列(300px)" {% if data.from_radio_type == '2' %} checked="checked" {% endif %}>
+            <input type="radio" name="from_radio_type" lay-filter="from_radio_type" value="3" title="四列(300px)" {% if data.from_radio_type == '3' %} checked="checked" {% endif %}>
+        </div>
+    </div>
+
+    <div class="radio-tab-group" class="goods-data-wrapper obs-box" data-from="ad">
+        {# 1列 #}
+        <div class="goods-box-item goods-hide {% if data.from_radio_type|default('0') == '0' %}goods-visible{% endif %}" data-target="from_radio_type-0">
+            
+            <div class="layui-form-item" style="margin-bottom: 16px;">
+                <label class="layui-form-label" style="color: #333;">图片高度(px) <span class="gs-tips" style="font-size: 14px;"> 注：图片默认高度为200px</span></label>
+                <div class="layui-input-block" style="margin: 0 0 10px 0;">
+                    <input type="text" name="imgHeight1" autocomplete="off" class="layui-input layui-input1" onkeyup="value = value.replace(/[^\\d{1,}\\d{1,}|\\d{1,}]/g,'')" data-vf="" data-vw="" data-vh="" value="{% if data.resourceImg1Width and data.resourceImg1Height %} {{ (710 * (data.resourceImg1Height|default(200)) / (data.resourceImg1Width|default(710)))|round(0, 'floor') }} {% else %} {{ data.imgHeight1|default(200) }} {% endif %}" data-cc="{{ (710 * (data.resourceImg1Height|default(200)) / (data.resourceImg1Width|default(710)))|round(0, 'floor') }}">
+                </div>
+            </div>
+
+            <div class="goods-tab-lists-one">
+                <div class="goods-tab-item">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="color: #333;">广告图<span class="gs-tab-index" style="color: #333;">一</span>设置</label>
+                    </div>
+
+                    <fieldset class="layui-elem-field" style="border: 1px solid #e6e6e6; border-radius: 4px;">
+                        <div class="layui-field-box" style="padding: 0 0 10px 0;">
+                            <div class="layui-form-item">
+                                <label class="gs-lable-block" style="margin: 12px 0 4px 15px">图片链接</label>
+                                <div class="layui-input-block U000198-img" style="width: 91%; margin: 0 0 10px 15px;">
+                                    <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                                    <input class="layui-input layui-input1 resourceImg" type="text" name="resourceImg1" value="{{ data.resourceImg1 }}" style="padding-right: 10px;" data-width="resourceImg1Width" data-height="resourceImg1Height">
+                                    <input type="hidden" name="resourceImg1Width" class="imgInputWidth1" data-wid="710" data-width="{{ data.resourceImg1Width }}">
+                                    <input type="hidden" name="resourceImg1Height" class="imgInputHeight1" data-wid="710" data-height="{{ data.resourceImg1Height }}">
+                                </div>
+                            </div>
+                            
+                            <div class="layui-form-item">
+                                <label class="gs-lable-block" style="margin: 10px 0 4px 15px">跳转链接</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px">
+                                    <input type="text" class="layui-input layui-input1" name="imgLink1" data-public-tag="true" autocomplete="off" value="{{ data.imgLink1 }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="margin-bottom: 16px;">
+                                <label class="layui-form-label" style="margin: 0 0 4px 15px">图片标题</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px">
+                                    <input type="text" name="imgTitle1" autocomplete="off" class="layui-input layui-input1" value="{{ data.imgTitle1|default('') }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="margin-bottom: 16px;">
+                                <label class="layui-form-label" style="margin: 0 0 4px 15px">图片描述</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px;">
+                                    <input type="text" name="imgDescribe1" autocomplete="off" class="layui-input layui-input1" value="{{ data.imgDescribe1|default('') }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        
+        </div>
+
+        {# 2列 #}
+        <div class="goods-box-item goods-hide {% if data.from_radio_type|default('0') == '1' %}goods-visible{% endif %}" data-target="from_radio_type-1">
+            
+            <div class="layui-form-item" style="margin-bottom: 16px;">
+                <label class="layui-form-label" style="color: #333;">图片高度(px) <span class="gs-tips" style="font-size: 14px;"> 注：图片默认高度为200px</span></label>
+                <div class="layui-input-block" style="margin: 0 0 10px 0;">
+                    <input type="text" name="imgHeight2" autocomplete="off" class="layui-input layui-input2" onkeyup="value = value.replace(/[^\\d{1,}\\d{1,}|\\d{1,}]/g,'')" value="{% if data.resourceImg21Width and data.resourceImg21Height %} {{ (350 * (data.resourceImg21Height|default(200)) / (data.resourceImg21Width|default(350)))|round(0, 'floor') }} {% else %} {{ data.imgHeight2|default(200) }} {% endif %}" data-cc="{{ (350 * (data.resourceImg21Height|default(200)) / (data.resourceImg21Width|default(350)))|round(0, 'floor') }}">
+                </div>
+            </div>
+
+
+            <div class="goods-tab-list">
+                <div class="goods-tab-item">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="color: #333;">广告图<span class="gs-tab-index" style="color: #333;">一</span>设置</label>
+                    </div>
+
+                    <fieldset class="layui-elem-field" style="border: 1px solid #e6e6e6; border-radius: 4px;">
+                        <div class="layui-field-box" style="padding: 0 0 10px 0;">
+
+                            <div class="layui-form-item">
+                                <label class="gs-lable-block" style="margin: 12px 0 4px 15px">图片链接</label>
+                                <div class="layui-input-block U000198-img" style="width: 91%; margin: 0 0 10px 15px;">
+                                    <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                                    <input class="layui-input layui-input2 resourceImg" type="text" name="resourceImg21" value="{{ data.resourceImg21 }}" data-width="resourceImg21Width" data-height="resourceImg21Height" style="padding-right: 10px;">
+                                    <input type="hidden" name="resourceImg21Width" class="imgInputWidth21" data-wid="495" data-width="{{ data.resourceImg21Width }}">
+                                    <input type="hidden" name="resourceImg21Height" class="imgInputHeight21" data-wid="495" data-height="{{ data.resourceImg21Height }}">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="gs-lable-block" style="margin: 10px 0 4px 15px">跳转链接</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px">
+                                    <input type="text" class="layui-input layui-input2" name="imgLink21" data-public-tag="true" autocomplete="off" value="{{ data.imgLink21 }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="margin-bottom: 16px;">
+                                <label class="layui-form-label" style="margin: 0 0 4px 15px">图片标题</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px">
+                                    <input type="text" name="imgTitle21" autocomplete="off" class="layui-input layui-input2" value="{{ data.imgTitle21|default('') }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="margin-bottom: 16px;">
+                                <label class="layui-form-label" style="margin: 0 0 4px 15px">图片描述</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px;">
+                                    <input type="text" name="imgDescribe21" autocomplete="off" class="layui-input layui-input2" value="{{ data.imgDescribe21|default('') }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="goods-tab-item">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="color: #333;">广告图<span class="gs-tab-index" style="color: #333;">二</span>设置</label>
+                    </div>
+
+                    <fieldset class="layui-elem-field" style="border: 1px solid #e6e6e6; border-radius: 4px;">
+                        <div class="layui-field-box" style="padding: 0 0 10px 0;">
+                            <div class="layui-form-item">
+                                <label class="gs-lable-block" style="margin: 12px 0 4px 15px">图片链接</label>
+                                <div class="layui-input-block U000198-img" style="width: 91%; margin: 0 0 10px 15px;">
+                                    <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                                    <input class="layui-input layui-input2 resourceImg" type="text" name="resourceImg22" value="{{ data.resourceImg22 }}" data-width="resourceImg22Width" data-height="resourceImg22Height" style="padding-right: 10px;">
+                                    <input type="hidden" name="resourceImg22Width" class="imgInputWidth22" data-wid="495" data-width="{{ data.resourceImg22Width }}">
+                                    <input type="hidden" name="resourceImg22Height" class="imgInputHeight22" data-wid="495" data-height="{{ data.resourceImg22Height }}">
+                                </div>
+                            </div>
+                            
+                            <div class="layui-form-item">
+                                <label class="gs-lable-block" style="margin: 10px 0 4px 15px">跳转链接</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px">
+                                    <input type="text" class="layui-input layui-input2" name="imgLink22" data-public-tag="true" autocomplete="off" value="{{ data.imgLink22 }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="margin-bottom: 16px;">
+                                <label class="layui-form-label" style="margin: 0 0 4px 15px">图片标题</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px">
+                                    <input type="text" name="imgTitle22" autocomplete="off" class="layui-input layui-input2" value="{{ data.imgTitle22|default('') }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="margin-bottom: 16px;">
+                                <label class="layui-form-label" style="margin: 0 0 4px 15px">图片描述</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px;">
+                                    <input type="text" name="imgDescribe22" autocomplete="off" class="layui-input layui-input2" value="{{ data.imgDescribe22|default('') }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+
+        </div>
+
+        {# 3列 #}
+        <div class="goods-hide {% if data.from_radio_type|default('0') == '2' %}goods-visible{% endif %}" data-target="from_radio_type-2">
+            <div class="layui-form-item" style="margin-bottom: 16px;">
+                <label class="layui-form-label" style="color: #333;">图片高度(px) <span class="gs-tips" style="font-size: 14px;"> 注：图片默认高度为200px</span></label>
+                <div class="layui-input-block" style="margin: 0 0 10px 0;">
+                    <input type="text" name="imgHeight3" autocomplete="off" class="layui-input layui-input3" onkeyup="value = value.replace(/[^\\d{1,}\\d{1,}|\\d{1,}]/g,'')" value="{% if data.resourceImg31Width and data.resourceImg31Height %} {{ (300 * (data.resourceImg31Height|default(200)) / (data.resourceImg31Width|default(300)))|round(0, 'floor') }} {% else %} {{ data.imgHeight3|default(200) }} {% endif %}">
+                </div>
+            </div>
+
+            <div class="goods-tab-list">
+
+                <div class="goods-tab-item">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="color: #333;">广告图<span class="gs-tab-index" style="color: #333;">一</span>设置</label>
+                    </div>
+
+                    <fieldset class="layui-elem-field" style="border: 1px solid #e6e6e6; border-radius: 4px;">
+                        <div class="layui-field-box" style="padding: 0 0 10px 0;">
+                            <div class="layui-form-item">
+                                <label class="gs-lable-block" style="margin: 12px 0 4px 15px">图片链接</label>
+                                <div class="layui-input-block U000198-img" style="width: 91%; margin: 0 0 10px 15px;">
+                                    <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                                    <input class="layui-input layui-input3 resourceImg" type="text" name="resourceImg31" value="{{ data.resourceImg31 }}" data-width="resourceImg31Width" data-height="resourceImg31Height" style="padding-right: 10px;">
+                                    <input type="hidden" name="resourceImg31Width" class="imgInputWidth31" data-wid="328" data-width="{{ data.resourceImg31Width }}">
+                                    <input type="hidden" name="resourceImg31Height" class="imgInputHeight31" data-wid="328" data-height="{{ data.resourceImg31Height }}">
+                                </div>
+                            </div>
+                            
+                            <div class="layui-form-item">
+                                <label class="gs-lable-block" style="margin: 10px 0 4px 15px">跳转链接</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px">
+                                    <input type="text" class="layui-input layui-input3" name="imgLink31" data-public-tag="true" autocomplete="off" value="{{ data.imgLink31 }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="margin-bottom: 16px;">
+                                <label class="layui-form-label" style="margin: 0 0 4px 15px">图片标题</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px">
+                                    <input type="text" name="imgTitle31" autocomplete="off" class="layui-input layui-input3" value="{{ data.imgTitle31|default('') }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="margin-bottom: 16px;">
+                                <label class="layui-form-label" style="margin: 0 0 4px 15px">图片描述</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px;">
+                                    <input type="text" name="imgDescribe31" autocomplete="off" class="layui-input layui-input3" value="{{ data.imgDescribe31|default('') }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="goods-tab-item">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="color: #333;">广告图<span class="gs-tab-index" style="color: #333;">二</span>设置</label>
+                    </div>
+
+                    <fieldset class="layui-elem-field" style="border: 1px solid #e6e6e6; border-radius: 4px;">
+                        <div class="layui-field-box" style="padding: 0 0 10px 0;">
+                            <div class="layui-form-item">
+                                <label class="gs-lable-block" style="margin: 12px 0 4px 15px">图片链接</label>
+                                <div class="layui-input-block layui-input3 U000198-img" style="width: 91%; margin: 0 0 10px 15px;">
+                                    <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                                    <input class="layui-input layui-input3 resourceImg" type="text" name="resourceImg32" value="{{ data.resourceImg32 }}" style="padding-right: 10px;">
+                                </div>
+                            </div>
+                            
+                            <div class="layui-form-item">
+                                <label class="gs-lable-block" style="margin: 10px 0 4px 15px">跳转链接</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px">
+                                    <input type="text" class="layui-input layui-input3" name="imgLink32" data-public-tag="true" autocomplete="off" value="{{ data.imgLink32 }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="margin-bottom: 16px;">
+                                <label class="layui-form-label" style="margin: 0 0 4px 15px">图片标题</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px">
+                                    <input type="text" name="imgTitle32" autocomplete="off" class="layui-input layui-input3" value="{{ data.imgTitle32|default('') }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="margin-bottom: 16px;">
+                                <label class="layui-form-label" style="margin: 0 0 4px 15px">图片描述</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px;">
+                                    <input type="text" name="imgDescribe32" autocomplete="off" class="layui-input layui-input3" value="{{ data.imgDescribe32|default('') }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="goods-tab-item">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="color: #333;">广告图<span class="gs-tab-index" style="color: #333;">三</span>设置</label>
+                    </div>
+
+                    <fieldset class="layui-elem-field" style="border: 1px solid #e6e6e6; border-radius: 4px;">
+                        <div class="layui-field-box" style="padding: 0 0 10px 0;">
+                            <div class="layui-form-item">
+                                <label class="gs-lable-block" style="margin: 0 0 4px 15px">图片链接</label>
+                                <div class="layui-input-block U000198-img" style="width: 91%; margin: 0 0 10px 15px;">
+                                    <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                                    <input class="layui-input layui-input3  resourceImg" type="text" name="resourceImg33" value="{{ data.resourceImg33 }}" style="padding-right: 10px;">
+                                </div>
+                            </div>
+                            
+                            <div class="layui-form-item">
+                                <label class="gs-lable-block" style="margin: 10px 0 4px 15px">跳转链接</label>
+                                <div class="layui-input-block" style="margin: 12px 0 10px 15px">
+                                    <input type="text" class="layui-input layui-input3" name="imgLink33" data-public-tag="true" autocomplete="off" value="{{ data.imgLink33 }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="margin-bottom: 16px;">
+                                <label class="layui-form-label" style="margin: 0 0 4px 15px">图片标题</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px">
+                                    <input type="text" name="imgTitle33" autocomplete="off" class="layui-input layui-input3" value="{{ data.imgTitle33|default('') }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="margin-bottom: 16px;">
+                                <label class="layui-form-label" style="margin: 0 0 4px 15px">图片描述</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px;">
+                                    <input type="text" name="imgDescribe33" autocomplete="off" class="layui-input layui-input3" value="{{ data.imgDescribe33|default('') }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+            </div>
+        </div>
+
+
+        {# 4列 #}
+        <div class="goods-hide {% if data.from_radio_type|default('0') == '3' %}goods-visible{% endif %}" data-target="from_radio_type-3">
+            <div class="layui-form-item" style="margin-bottom: 16px;">
+                <label class="layui-form-label" style="color: #333;">图片高度(px) <span class="gs-tips" style="font-size: 14px;"> 注：图片默认高度为200px</span></label>
+                <div class="layui-input-block" style="margin: 0 0 10px 0;">
+                    <input type="text" name="imgHeight4" autocomplete="off" class="layui-input layui-input4" onkeyup="value = value.replace(/[^\\d{1,}\\d{1,}|\\d{1,}]/g,'')" value="{% if data.resourceImg41Width and data.resourceImg41Height %} {{ (300 * (data.resourceImg41Height|default(200)) / (data.resourceImg41Width|default(300)))|round(0, 'floor') }} {% else %} {{ data.imgHeight4|default(200) }} {% endif %}">
+                </div>
+            </div>
+
+            <div class="goods-tab-list">
+                <div class="goods-tab-item">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="color: #333;">广告图<span class="gs-tab-index" style="color: #333;">一</span>设置</label>
+                    </div>
+
+                    <fieldset class="layui-elem-field" style="border: 1px solid #e6e6e6; border-radius: 4px;">
+                        <div class="layui-field-box" style="padding: 0 0 10px 0;">
+                            <div class="layui-form-item">
+                                <label class="gs-lable-block" style="margin: 12px 0 4px 15px">图片链接</label>
+                                <div class="layui-input-block U000198-img" style="width: 91%; margin: 0 0 10px 15px;">
+                                    <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                                    <input class="layui-input layui-input4 resourceImg" type="text" name="resourceImg41" value="{{ data.resourceImg41 }}" data-width="resourceImg41Width" data-height="resourceImg41Height" style="padding-right: 10px;">
+                                    <input type="hidden" name="resourceImg41Width" class="imgInputWidth41" data-wid="246" data-width="{{ data.resourceImg41Width }}">
+                                    <input type="hidden" name="resourceImg41Height" class="imgInputHeight41" data-wid="246" data-height="{{ data.resourceImg41Height }}">
+                                </div>
+                            </div>
+                            
+                            <div class="layui-form-item">
+                                <label class="gs-lable-block" style="margin: 10px 0 4px 15px">跳转链接</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px">
+                                    <input type="text" class="layui-input layui-input4" name="imgLink41" data-public-tag="true" autocomplete="off" value="{{ data.imgLink41 }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="margin-bottom: 16px;">
+                                <label class="layui-form-label" style="margin: 0 0 4px 15px">图片标题</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px">
+                                    <input type="text" name="imgTitle41" autocomplete="off" class="layui-input layui-input4" value="{{ data.imgTitle41|default('') }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="margin-bottom: 16px;">
+                                <label class="layui-form-label" style="margin: 0 0 4px 15px">图片描述</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px;">
+                                    <input type="text" name="imgDescribe41" autocomplete="off" class="layui-input layui-input4" value="{{ data.imgDescribe41|default('') }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="goods-tab-item">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="color: #333;">广告图<span class="gs-tab-index" style="color: #333;">二</span>设置</label>
+                    </div>
+
+                    <fieldset class="layui-elem-field" style="border: 1px solid #e6e6e6; border-radius: 4px;">
+                        <div class="layui-field-box" style="padding: 0 0 10px 0;">
+                            <div class="layui-form-item">
+                                <label class="gs-lable-block" style="margin: 12px 0 4px 15px">图片链接</label>
+                                <div class="layui-input-block U000198-img" style="width: 91%; margin: 0 0 10px 15px;">
+                                    <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                                    <input class="layui-input layui-input4 resourceImg" type="text" name="resourceImg42" value="{{ data.resourceImg42 }}" style="padding-right: 10px;">
+                                </div>
+                            </div>
+                            
+                            <div class="layui-form-item">
+                                <label class="gs-lable-block" style="margin: 10px 0 4px 15px">跳转链接</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px">
+                                    <input type="text" class="layui-input layui-input4" name="imgLink42" data-public-tag="true" autocomplete="off" value="{{ data.imgLink42 }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="margin-bottom: 16px;">
+                                <label class="layui-form-label" style="margin: 0 0 4px 15px">图片标题</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px">
+                                    <input type="text" name="imgTitle42" autocomplete="off" class="layui-input layui-input4" value="{{ data.imgTitle42|default('') }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="margin-bottom: 16px;">
+                                <label class="layui-form-label" style="margin: 0 0 4px 15px">图片描述</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px;">
+                                    <input type="text" name="imgDescribe42" autocomplete="off" class="layui-input layui-input4" value="{{ data.imgDescribe42|default('') }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="goods-tab-item">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="color: #333;">广告图<span class="gs-tab-index" style="color: #333;">三</span>设置</label>
+                    </div>
+
+                    <fieldset class="layui-elem-field" style="border: 1px solid #e6e6e6; border-radius: 4px;">
+                        <div class="layui-field-box" style="padding: 0 0 10px 0;">
+                            <div class="layui-form-item">
+                                <label class="gs-lable-block" style="margin: 12px 0 4px 15px">图片链接</label>
+                                <div class="layui-input-block U000198-img" style="width: 91%; margin: 0 0 10px 15px;">
+                                    <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                                    <input class="layui-input layui-input4 resourceImg" type="text" name="resourceImg43" value="{{ data.resourceImg43 }}" style="padding-right: 10px;">
+                                </div>
+                            </div>
+                            
+                            <div class="layui-form-item">
+                                <label class="gs-lable-block" style="margin: 10px 0 4px 15px">跳转链接</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px">
+                                    <input type="text" class="layui-input layui-input4" name="imgLink43" data-public-tag="true" autocomplete="off" value="{{ data.imgLink43 }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="margin-bottom: 16px;">
+                                <label class="layui-form-label" style="margin: 0 0 4px 15px">图片标题</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px">
+                                    <input type="text" name="imgTitle43" autocomplete="off" class="layui-input layui-input4" value="{{ data.imgTitle43|default('') }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="margin-bottom: 16px;">
+                                <label class="layui-form-label" style="margin: 0 0 4px 15px">图片描述</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px;">
+                                    <input type="text" name="imgDescribe43" autocomplete="off" class="layui-input layui-input4" value="{{ data.imgDescribe43|default('') }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="goods-tab-item">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="color: #333;">广告图<span class="gs-tab-index" style="color: #333;">四</span>设置</label>
+                    </div>
+
+                    <fieldset class="layui-elem-field" style="border: 1px solid #e6e6e6; border-radius: 4px;">
+                        <div class="layui-field-box" style="padding: 12px 0 10px 0;">
+                            <div class="layui-form-item">
+                                <label class="gs-lable-block" style="margin: 0 0 4px 15px">图片链接</label>
+                                <div class="layui-input-block U000198-img" style="width: 91%; margin: 0 0 10px 15px;">
+                                    <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                                    <input class="layui-input layui-input4 resourceImg" type="text" name="resourceImg44" value="{{ data.resourceImg44 }}" style="padding-right: 10px;">
+                                </div>
+                            </div>
+                            
+                            <div class="layui-form-item">
+                                <label class="gs-lable-block" style="margin: 10px 0 4px 15px">跳转链接</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px">
+                                    <input type="text" class="layui-input layui-input4" name="imgLink44" data-public-tag="true" autocomplete="off" value="{{ data.imgLink44 }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="margin-bottom: 16px;">
+                                <label class="layui-form-label" style="margin: 0 0 4px 15px">图片标题</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px">
+                                    <input type="text" name="imgTitle44" autocomplete="off" class="layui-input layui-input4" value="{{ data.imgTitle44|default('') }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item" style="margin-bottom: 16px;">
+                                <label class="layui-form-label" style="margin: 0 0 4px 15px">图片描述</label>
+                                <div class="layui-input-block" style="margin: 0 0 10px 15px;">
+                                    <input type="text" name="imgDescribe44" autocomplete="off" class="layui-input layui-input4" value="{{ data.imgDescribe44|default('') }}" style="width: 91%; padding-right: 10px;">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>

@@ -1,0 +1,38 @@
+<div class="layui-row layui-col-space20">
+    <div class="layui-col-md12"  >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'弹窗按钮文案',name:'popConfirmButtonTxt',value:pageData.popConfirmButtonTxt ,full:true,}}
+        ) }}
+    </div>
+
+    <div class="layui-col-md6"  >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'按钮文字颜色',name:'popConfirmButtonTxtColor',value:pageData.popConfirmButtonTxtColor ,full:true, colorPrefix:true}}
+        ) }}
+    </div>
+    <div class="layui-col-md6" >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'按钮背景颜色',name:'popConfirmButtonBackgroundColor',value:pageData.popConfirmButtonBackgroundColor ,full:true, colorPrefix:true}}
+        ) }}
+    </div>
+
+    <div class="layui-col-md12"  >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'文字颜色',name:'popConfirmTxtColor',value:pageData.popConfirmTxtColor ,full:true, colorPrefix:true}}
+        ) }}
+
+    </div>
+
+    <div class="layui-col-md12"  >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'签到成功积分数文字颜色',name:'popConfirmNumColor',value:pageData.popConfirmNumColor ,full:true, colorPrefix:true}}
+        ) }}
+    </div>
+
+    <div class="layui-col-md12"  >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'签到成功弹窗背景图片(600*500)',name:'popConfirmBackgroundImg',value:pageData.popConfirmBackgroundImg ,full:true, imgPrefix:true}}
+        ) }}
+    </div>
+
+</div>

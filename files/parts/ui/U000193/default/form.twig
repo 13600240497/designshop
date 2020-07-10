@@ -1,0 +1,206 @@
+<style>{{ include ('form.css') }}</style>
+
+{%
+
+set formData = {
+    id: 'U000193',
+    name: '首页弹框组件',
+    theme: 'default',
+    tabs: [
+        {
+            label: '样式配置',
+            components: [
+                {
+                    label: '常用配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '组件宽度(px)',
+                            name: 'component_width',
+                            default: 780,
+                            col: 2
+                        },
+                        {
+                            label: '组件高度(px)',
+                            name: 'component_height',
+                            default: 480,
+                            col: 2
+                        },
+                        {
+                            label: '组件背景图片',
+                            name: 'component_bgImage',
+                            type: 'image',
+                        }
+                    ]
+                },
+                {
+                    label: '邮箱区域配置',
+                    type: 'fieldset',
+                    components: [
+                        
+                        {
+                            label: '邮箱区域宽度(px)',
+                            name: 'emailarea_width',
+                            default: 400,
+                            col: 2
+                        },
+                        {
+                            label: '邮箱区域高度(px)',
+                            name: 'emailarea_height',
+                            default: 40,
+                            col: 2
+                        },
+                        {
+                            label: '按钮宽度',
+                            name: 'btn_width',
+                            default: 140,
+                        },
+                         {
+                            label: '按钮文案',
+                            name: 'btn_text',
+                            default: 'JOIN',
+                        },
+                        {
+                            label: '按钮背景颜色',
+                            name: 'btn_bgColor',
+                            type: 'colorPicker',
+                            default: '#333333',
+                            col: 2
+                        },
+                        {
+                            label: '按钮文字颜色',
+                            name: 'btn_fontColor',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            col: 2
+                        }
+                    ]
+                },
+                {
+                    label: '加入成功弹框配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '是否显示',
+                            name: 'success_display',
+                            default: '1',
+                            type: 'radio',
+                            options: [
+                                {
+                                    label: '是',
+                                    value: '1'
+                                },
+                                {
+                                    label: '否',
+                                    value: '0'
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    moreConfig: [
+        {
+            type: 'collapse',
+            items: [
+                {
+                    label: '邮箱区域配置',
+                    components: [
+                        {
+                            label: '上边距(PX)',
+                            name: 'emailarea_pt',
+                            default: 345,
+                            col:2,
+                        },
+                        {
+                            label: '左边距(PX)',
+                            name: 'emailarea_pl',
+                            default: 120,
+                            col:2
+                        },
+                        {
+                            label: '按钮文字大小(PX)',
+                            name: 'btn_fontSize',
+                            default: 20,
+                        },
+                        
+                    ]
+                },
+                {
+                    label: '加入成功弹框配置',
+                    components: [
+                        {
+                            label: '背景图片',
+                            name: 'success_bgImage',
+                            type: 'image',
+                        },
+                        {
+                            label: '标题文案',
+                            name: 'success_text',
+                            default: 'Thanks! You’re in!',
+                        },
+                        {
+                            label: '标题文字大小',
+                            name: 'success_titleFontsize',
+                            default: '56',
+                        },
+                        {
+                            label: '标题上边距(PX)',
+                            name: 'success_titlePt',
+                            default: 124,
+                        },
+                        {
+                            label: '内容文案',
+                            name: 'success_contentText',
+                            default: 'Exclusive offer has been sent to your inbox.',
+                        },
+                        {
+                            label: '内容文字大小',
+                            name: 'success_contentFontsize',
+                            default: '24',
+                        },
+                        {
+                            label: '内容上边距',
+                            name: 'success_contentPt',
+                            default: '15',
+                        },
+                        {
+                            label: '标题和内容文字颜色',
+                            name: 'success_fontColor',
+                            type: 'colorPicker',
+                            default: '#333333',
+                        },
+                        {
+                            label: '按钮上边距',
+                            name: 'success_btnPt',
+                            default: '64',
+                        },
+                        {
+                            label: '按钮文案',
+                            name: 'success_btnText',
+                            default: 'CLAIM COUPON NOW',
+                        },
+                        {
+                            label: '按钮文字颜色',
+                            name: 'success_btnFontColor',
+                            default: '#FFFFFF',
+                            type: 'colorPicker',
+                        },
+                        {
+                            label: '按钮文字大小',
+                            name: 'success_btnFontSize',
+                            default: '20',
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
+%}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

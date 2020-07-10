@@ -1,0 +1,46 @@
+{% set suffix = 'rem' %}
+{% set remUnit = 37.5 %}
+
+{% set space = '#U000163_' ~ pageInstanceId ~ '_container' %}
+
+{{ space }} {
+    margin-bottom: {{ (data.box_margin_bottom | default(16))/remUnit }}{{ suffix }};
+}
+
+{{ space }} .geshop-component-wrapper {
+    background-color: {{ data.box_bg_color | default('#F8F8F8') }};
+}
+
+{{ space }} .geshop-component-wrapper li {
+    border: 1px solid {{ data.hover_border_color  ?? '#ffffff' }};
+    border-radius: {{ (data.goods_border_radius ?? 2)/remUnit }}{{ suffix }};
+}
+
+{# 预促销没开始的状态 #}
+{{ space }} .geshop-component-wrapper li.is-ready .item-promotion {
+    color: {{ data.pre_text_color | default('#ffffff') }};
+    {% if data.notstart_pre_bgImg is not empty %}
+        background-image: url('{{ data.notstart_pre_bgImg }}');
+        background-repeat: no-repeat;
+        background-size: 100%;
+    {% else %}
+        background-color: {{ data.notstart_prePriceBgC | default('#222222') }};
+    {% endif %}
+}
+{{ space }} .geshop-component-wrapper li.is-ready .item-price {
+    color: {{ data.notstart_text_color | default('#222222') }};
+}
+
+{# 正在预促销 #}
+{{ space }} .geshop-component-wrapper li.is-now .item-promotion {
+    color: {{ data.underway_text_color | default('#ffffff') }};
+    {% if data.underway_pre_bgImg is not empty %}
+        background-image: url('{{ data.underway_pre_bgImg }}');
+        background-repeat: no-repeat;
+        background-size: 100%;
+    {% else %}
+        background-color: {{ data.underway_prePriceBgC | default('#222222') }};
+    {% endif %}
+}
+
+

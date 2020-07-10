@@ -1,0 +1,416 @@
+<div class="design-form design-form-component design-form-visible">
+  <h3 class="component-form-title">Banner轮播组件设置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close"><i class="el-icon-close"></i></a>
+  </h3>
+
+  {{include ('@app/htdocs/resources/template/pc/templateList/index.twig')}}
+
+  <div class="geshop-form-content component-form-configure-item component-form-setting-item" style="padding-bottom: 121px !important;">
+    <p class="geshop-title" style="margin-top: 0;">常用配置</p>
+    <p class="geshop-alert">请上传格式为:jpeg,jpg,webp的图片,大小小于500k</p>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 上边距</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="marginTop" autocomplete="off" class="layui-input" value="{{ data.marginTop | default(0) }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 下边距</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="marginBottom" autocomplete="off" class="layui-input" value="{{ data.marginBottom | default(0) }}">
+      </div>
+    </div>
+    {# 不同站点默认数据不一致 start #}
+    {% if siteCode == 'rw-pc' %}
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 轮播图宽度(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="ImgWidth" placeholder="请输入图片宽度" autocomplete="off" class="layui-input" value="{{ data.ImgWidth | default(1200) }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 轮播图高度(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="ImgHeight" placeholder="请输入图片高度" autocomplete="off" class="layui-input" value="{{ data.ImgHeight | default(535) }}">
+      </div>
+    </div>
+    {% elseif siteCode == 'rg-pc' or siteCode == 'suk-pc' %}
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 轮播图宽度(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="ImgWidth" placeholder="请输入图片宽度" autocomplete="off" class="layui-input" value="{{ data.ImgWidth | default(1200) }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 轮播图高度(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="ImgHeight" placeholder="请输入图片高度" autocomplete="off" class="layui-input" value="{{ data.ImgHeight | default(560) }}">
+      </div>
+    </div>
+    {% elseif siteCode == 'zf-pc' %}
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 轮播图宽度(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="ImgWidth" placeholder="请输入图片宽度" autocomplete="off" class="layui-input" value="{{ data.ImgWidth | default(1240) }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 轮播图高度(px)</label>
+      <div class="layui-input-block rest-input">
+        <input type="text" name="ImgHeight" placeholder="请输入图片高度" autocomplete="off" class="layui-input" value="{{ data.ImgHeight | default(600) }}">
+      </div>
+    </div>
+
+    {% endif %}
+    {# 不同站点默认数据不一致 end #}
+
+    <div class="layui-form-item">
+      <label class="form-item-label">
+          <span class="layui-badge-dot layui-bg-orange"></span>
+          链接是否打开新窗口</label>
+      <div class="layui-input-block">
+          <input type="radio" name="isOpenNew" value="1" {% if data.isOpenNew|default('0') == '1' %} checked{% endif %} title="是">
+          <input type="radio" name="isOpenNew" value="0" {% if data.isOpenNew|default('0') == '0' %} checked{% endif %} title="否">
+      </div>
+    </div>
+    <div class="img-table">
+      <p class="geshop-title">轮播图</p>
+      <input type="hidden" name="imgItem">
+      <div class="layui-form-item img-item layui-hide">
+        <div class="layui-input-block rest-input">
+          <div class="geshop-first-value">
+            <a href="javascript:;" class="img_openResource reset-add-resource" style="width: 78px; font-size: 32px; line-height: 30px;">
+              <span>
+                <img src="/resources/images/carousel-image/add.png">
+                <i style="display: none;" class="hover-item">更 换</i>
+              </span>
+            </a>
+            <input type="text" lay-verify="required" autocomplete="off" class="layui-input Unwanted select-img geshop-right-value" name="imgSrc">
+          </div>
+          <div class="layui-form-item">
+            <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 跳转链接</label>
+            <div class="layui-input-block rest-input">
+              <input type="text" autocomplete="off" class="layui-input Unwanted" name="imgLink">
+            </div>
+          </div>
+
+          <div class="layui-form-item">
+            <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 专题名称</label>
+            <div class="layui-input-block rest-input">
+              <input type="text" autocomplete="off" class="layui-input Unwanted" name="ga_name">
+            </div>
+          </div>
+
+
+           <div class="geshop-third-value">
+              <span class="img-btn">
+                <i class='icon-up'></i>
+                <b class="tips">上移</b>
+              </span>
+              <span class="img-btn">
+                <i class='icon-down'></i>
+                <b class="tips">下移</b>
+              </span>
+              <span class="img-btn">
+                <i class='icon-delete'></i>
+                <b class="tips">删除</b>
+              </span>
+           </div>
+        </div>
+      </div>
+      <div class="img-body">
+        {% for key, item in data.imgItem | default([""]) %}
+        <div class="layui-form-item item-flag">
+          <div class='layui-input-block rest-input'>
+              <div class="geshop-first-value">
+                <a href="javascript:;" class="img_openResource reset-add-resource" style="width:78px;font-size:32px;line-height:30px;" >
+                  {% if item.img|length>0 %}
+                  <span>
+                    <img src="{{item.img}}" style="width:80px;height:35px;" />
+                    <i style="display:none" class="hover-item">更 换</i>
+                  </span>
+                  {% else %}
+                  <span>
+                    <img src="/resources/images/carousel-image/add.png" />
+                    <i style="display:none" class="hover-item">更 换</i>
+                  </span>
+                  {% endif %}
+                </a>
+                <input class="layui-input Unwanted select-img geshop-right-value" type="text" autocomplete="off" name="{{key}}" value="{{item.img}}"/>
+               </div>
+             <div class="layui-form-item">
+                <label class="form-label-item">
+                  <span class="layui-badge-dot layui-bg-orange"></span> 跳转链接</label>
+                <div class="layui-input-block rest-input">
+                  <input type="text"  autocomplete="off"  class="layui-input Unwanted" name='imgLink' value="{{item.url}}"/>
+                </div>
+             </div>
+
+             <div class="layui-form-item">
+                <label class="form-label-item">
+                  <span class="layui-badge-dot layui-bg-orange"></span> 专题名称</label>
+                <div class="layui-input-block rest-input">
+                  <input type="text"  autocomplete="off"  class="layui-input Unwanted" name='ga_name' value="{{item.ga_name}}"/>
+                </div>
+             </div>
+
+            <div class="geshop-third-value">
+              <span class="img-btn">
+                <i class='icon-up'></i>
+                <b class="tips">上移</b>
+              </span>
+              <span class="img-btn">
+                <i class='icon-down'></i>
+                <b class="tips">下移</b>
+              </span>
+              <span class="img-btn">
+                <i class='icon-delete'></i>
+                <b class="tips">删除</b>
+              </span>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="add-form-button"><span id="img_tab_add">新增轮播图</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <span type="button" class="layui-btn layui-btn-normal" id="img_submit">提交</span>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm" data-tag="1" style="display:none">提交</button>
+</div>
+
+<style>
+  .geshop-title {
+    font-size: 16px;
+    color: #333333;
+    margin: 16px 0 5px 0;
+  }
+  .rest-input {
+    margin-left: 0px;
+    margin-top: 5px;
+  }
+  .add-form-button {
+    text-align: center;
+  }
+  .add-link-item {
+    background: #000;
+  }
+  .add-img-item {
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+  }
+  .add-form-button span {
+    display: block;
+    width: 116px;
+    height: 36px;
+    background: #34A8FF;
+    text-align: center;
+    line-height: 36px;
+    font-size: 14px;
+    color: #FFFFFF;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 20px 0 64px 0;
+  }
+  .img-btn {
+    display: inline-block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    line-height: 12px;
+    padding: 6px 0;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 50%;
+    background: rgba(16,93,149,0.4);
+    margin: 0 2px;
+    }
+  .hover-item {
+    display: block;
+    width: 80px;
+    line-height:36px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: auto;
+    font-size: 14px;
+    color: #FFF;
+    font-family: PingFangSC;
+  }
+  .img-btn:hover {
+    background: #105D95;
+  }
+  .img-btn i {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-repeat: no-repeat;
+    }
+  .icon-close {
+    z-index: 1000;
+    right: 21px;
+  }
+</style>
+<script>
+  function swapItems(arr, index1, index2) {
+　　arr[index1] = arr.splice(index2, 1, arr[index1])[0];
+
+　　return arr;
+  }
+  function upData(arr, index) {
+　　if (arr.length > 1 && index !== 0) {
+      newArr = swapItems(arr, index, index - 1);
+
+      return newArr;
+　　}
+  }
+  function downData(arr, index) {
+    if (arr.length > 1 && index !== (this.arr.length - 1)) {
+　　　newArr = swapItems(arr, index, index + 1);
+
+      return newArr;
+　　}
+  }
+
+  var $imgTable = $('.img-table');
+  var flagIndex =  $('.img-body .item-flag').length;
+  {#新增选择图片栏#}
+  $('#img_tab_add').on('click', function () {
+    flagIndex++;
+
+    var clone = $('.img-item',$imgTable).clone();
+
+    clone.removeClass('img-item layui-hide');
+    clone.find('input[name=imgSrc]').attr('name', flagIndex);
+    $('.img-body',$imgTable).append(clone);
+  });
+  $('#img_submit').on('click', function() {
+    var imgSrcArr = [];
+
+    $('.select-img').each(function(index, element) {
+      var $val = $(this).val();
+      var $url = $(this).parent().next('div').find('input').val();
+      var $ga_name = $(this).parent().next('div').next('div').find('input').val();
+
+      if ($val || $url) {
+        imgSrcArr.push({
+          img: $val,
+          url: $url,
+          ga_name: $ga_name
+        });
+      }
+    });
+
+    $('.img-table input[name=imgItem]').val(JSON.stringify(imgSrcArr));
+    $(this).next('button').trigger('click');
+  });
+  $('#current_template_name').text($('input[name="tpl_id"]').attr('title'));
+  $('body').on('click','.icon-up',function () {
+    var target = $(this).closest('.layui-form-item');
+
+    if (target.prev('.layui-form-item').length > 0) {
+      target.prev('.layui-form-item').before(target.clone());
+      target.remove();
+    }
+  });
+  $('body').on('click','.icon-up',function () {
+    var target = $(this).closest('.layui-form-item');
+
+    if (target.prev('.layui-form-item').length > 0) {
+      target.prev('.layui-form-item').before(target.clone());
+      target.remove();
+    }
+  });
+  $('body').on('click', '.icon-down', function () {
+    var target = $(this).closest('.layui-form-item');
+
+    if (target.next('.layui-form-item').length > 0) {
+      target.next('.layui-form-item').after(target.clone());
+      target.remove();
+    }
+  });
+  $('body').on('click', '.icon-delete', function () {
+    var target = $(this).closest('.layui-form-item');
+    var imgSrc = target.find('.select-img').val();
+    var imgLink = target.find('input[name="imgLink"]').val();
+    if (imgSrc || imgLink) {
+      layui.layer.confirm('确认删除吗？', {
+        btn: ['取消', '确定'],
+        area: '420px',
+        skin: 'element-ui-dialog-class',
+        icon: 3,
+        title: '提示'
+      }, function (index) {
+        layui.layer.close(index)
+      }, function (index) {
+        target.remove();
+      })
+    } else {
+      target.remove();
+    }
+  });
+  $('body').on('change', '.select-img', function () {
+    var target = $(this);
+    var picAddress = $.trim(target.val());
+    var verifyWidth = $('#component_form [name=ImgWidth]').val();
+    var verifyHeight = $('#component_form [name=ImgHeight]').val();
+
+    if (picAddress.length == 0) {
+      return false;
+    }
+
+    var originalImg = new Image();
+    originalImg.src = picAddress;
+
+    originalImg.onload = function () {
+      var originalWidth = originalImg.width;
+      var originalHeight = originalImg.height;
+
+      if (originalWidth != verifyWidth || originalHeight != verifyHeight) {
+        target.val('');
+        layer.msg('请添加正确尺寸的图片');
+      }
+    };
+  });
+
+  $('body').on('mouseenter', '.img_openResource', function() {
+    var $url =  $(this).find('img').attr("src");
+
+    if ($url == "/resources/images/carousel-image/add.png") {
+      return;
+    }
+
+    $(this).addClass('add-link-item');
+    $(this).find('img').addClass('add-img-item');
+    $(this).find($('i')).css("display", "block");
+  });
+  $('body').on('mouseleave', '.img_openResource', function() {
+    $(this).find($('i')).css("display","none");
+    $(this).removeClass('add-link-item');
+    $(this).find('img').removeClass('add-img-item');
+  });
+
+  var bannerTimer = setInterval(function () {
+    var bannerArr = [];
+
+    $('.select-img').each(function (i) {
+      bannerArr.push($(this).val());
+      bannerArr.filter(function(item, index, arr) {
+        return arr.indexOf(item) === index;
+      });
+      var bannerBoolean = bannerArr.some(function(item) {
+        return Boolean(item) == true;
+      });
+      if (bannerBoolean) {
+        $('input[name=ImgWidth],input[name=ImgHeight]').prop('disabled', true).css({backgroundColor:'#f8f8f8'});
+      } else {
+        $('input[name=ImgWidth],input[name=ImgHeight]').prop('disabled', false).css({backgroundColor:'#ffffff'});
+        bannerArr.length = 0;
+      }
+    });
+  }, 1000);
+</script>

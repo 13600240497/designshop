@@ -1,0 +1,27 @@
+{% if  data.imgItem is empty or data.imgItem == "[]" %}{#图片数据为空显示默认图片#}
+  <div class="swiper-slide" >
+    <a href="###" style="display:block; height:{% if data.ImgHeight %}{{ (data.ImgHeight / 75) | number_format(3, '.') }}{% else %}{{(400/75)| number_format(3, '.')}}{% endif %}rem; width:100%; background-image:url({{data.default.bannerView}});background-size:4.667rem 3.6rem;background-position:center center;background-repeat:no-repeat;background-color:#EDEDED;">
+    </a>
+  </div>
+{% else %}
+  {% for item in data.imgItem %}
+
+    <div class="swiper-slide">
+      {% if loop.index ==1 %}{#第一张图片直接输出不做懒加载#}
+      <a href="{{item.url}}" class="logsss_event"
+          data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ item.img }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+          <img src="{{item.img}}" class="js-swiper-img"  style="border: 0; width: {% if data.isEditEnv %}100%{% else %}{{ (data.ImgWidth / 75) | number_format(3, '.') }}rem{% endif %}; height: {{ (data.ImgHeight / 75) | number_format(3, '.') }}rem;"
+            data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ item.img }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+        </a>
+    {% else %}
+      <a href="{{item.url}}" class="logsss_event"
+          data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ item.img }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+          <img class="swiper-lazy" src="data:image/gif;base64,R0lGODlhAQABAIAAAPHx8QAAACwAAAAAAQABAAACAkQBADs=" data-src="{{item.img}}" data-original="{{item.img}}" style="border: 0; width: {% if data.isEditEnv %}100%{% else %}{{ (data.ImgWidth / 75) | number_format(3, '.') }}rem{% endif %}; height: {{ (data.ImgHeight / 75) | number_format(3, '.') }}rem;"
+            data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ item.img }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+        </a>
+        <div class="swiper-lazy-preloader"></div>
+    {% endif %}
+    
+    </div>
+  {% endfor %}
+{% endif %}

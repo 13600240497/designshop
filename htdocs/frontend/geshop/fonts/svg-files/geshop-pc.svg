@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>svg_24x24_pc</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="切圖" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="SVG" transform="translate(-158.000000, -84.000000)">
+            <g id="svg_24x24_pc" transform="translate(158.000000, 84.000000)">
+                <rect id="ic_bg_24x24" fill="#000000" fill-rule="nonzero" opacity="0" x="0" y="0" width="24" height="24"></rect>
+                <path d="M23,23 L1,23 C1,22 1,6.72166862 1,6 L11,6 L11,3 L5,3 C5.0168457,3 5,2.48860054 5,2 C5,1.51139946 5.00576782,1 5,1 L19,1 C19,1.5 19,1.51139946 19,2 C19,2.48860054 19,2.48860054 19,3 L13,3 L13,6 L23,6 C23,6.72166862 23,22 23,23 Z M21,21 L21,8 L3,8 L3,21 L21,21 Z" id="Shape" fill="#333333" transform="translate(12.000000, 12.000000) scale(1, -1) translate(-12.000000, -12.000000) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

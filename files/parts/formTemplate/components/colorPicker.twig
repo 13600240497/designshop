@@ -1,0 +1,15 @@
+<div class="layui-form-item {{ componentData.extendClass }}">
+    <label class="layui-form-label {% if componentData.public %} public-data {% endif %}">{{ componentData.label }}</label>
+    <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="{{ componentData.name }}">
+            <div style="background-color: {{ componentData.value }};"></div>
+        </div>
+        <input 
+            type="text" 
+            class="layui-input" 
+            autocomplete="off" 
+            name="{{ componentData.name }}" 
+            value="{{ componentData.value }}" 
+            data-public-tag="{{ componentData.public }}">
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="geshop-component-box component-drag geshop-U000030-style2 geshop-U000030-style2-{{ pageInstanceId }}" data-static-domain="{{staticDomain}}" data-key="U000030" data-gid="U000030_suspendNav" style="overflow:hidden;height:100% !important;" data-id="{{ pageInstanceId }}">
+    <style type="text/css">
+        {{ include('style.twig') }}
+    </style>
+
+    <nav class="component-m-nav" id="js_topNav">
+         <ul class="component-m-nav-ul swiper-wrapper" id="nav-m-ul" data-isedit="{{ data.isEditEnv }}">
+             {% if data.navData %}
+                {% for id,item in data.navData %}
+                    {% if id in data.nav_menu %}
+                      <li class="component-m-nav-item swiper-slide" data-id="{{ id }}">
+                          <a href="javascript:;">{{ item }}</a>
+                      </li>
+                    {% endif %}
+                {% endfor %}
+             {% else %}
+               <li class="component-m-nav-item swiper-slide" data-id="{{ id }}">
+                     <a href="javascript:;">请配置数据</a>
+               </li>
+             {% endif %}
+         </ul>
+    </nav>
+</div>

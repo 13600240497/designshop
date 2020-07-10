@@ -1,0 +1,17 @@
+{% set shareArr = ['Pinterest', 'Twitter', 'Tumblr']
+%}
+<input name="share_data" type="hidden" />
+<section>
+    <div class="component-form-setting-ite component-form-configure-item">
+        <div class="layui-form-item">
+            <label class="layui-form-label " style="color: #666666">如ELF分享可增加抽奖次数，则渠道需勾选。</label>
+            <div class="layui-row share-data">
+                {% for item in shareArr %}
+                    <div class="layui-col-md6">
+                        <input type="checkbox" {% if item in data.share_data  %} checked {% endif %}  class="Unwanted share_data" value="{{item}}" lay-skin="primary" title="{{item}}" data-public-tag="true">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

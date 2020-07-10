@@ -1,0 +1,44 @@
+.wrap-U000057_rgModel .free_tips {
+	background-color: #ededed;
+	position: relative;
+	height: .96rem;
+	line-height: .96rem;
+	overflow: hidden;
+	font-size: .373rem;
+
+	text-align: center;
+	border: none;
+}
+.wrap-U000057_rgModel .free_tips .free_tipsList {
+	color: #fff;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+.wrap-U000057_rgModel .free_tips .free_tipsList > a {
+	overflow: hidden;
+	display: table;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 0.48rem;
+}
+
+.wrap-U000057_rgModel .geshop-tip-item {
+	overflow: hidden;
+	display: table;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 0.48rem;
+}
+
+.wrap-U000057_rgModel .free_tips i {
+	font-style: normal;
+	display: table-cell;
+	width: 100%;
+	vertical-align: middle;
+	word-wrap: wrap;
+	word-break: break-all;
+}

@@ -1,0 +1,37 @@
+<div class="geshop-component-box component-drag geshop-U000001-style4-v2 geshop-U000001-style4-v2-{{ pageInstanceId }}" data-gid="U000001_test" data-key="U000001" data-id="{{ pageInstanceId }}">
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+        {% include 'style.twig' %}
+    </style>
+    <!-- embed stylesheet end -->
+    <div class="geshop-U000001-style4-v2-wrapper clearfix">
+        <ul>
+            {% for index, item in data.goodsInfo|default(0..3) %}
+            <li>
+                {% set a_analytics = "{'pm':'mp','p':'p-"~pageId~"','ubcta':{'cpID':'"~pageInstanceId~"','cpnum':'"~compKey~"','cplocation':'"~uiIndex~"','sku':'"~item.goods_sn~"','cporder':'"~layoutIndex~"','rank':'"~index~"'},'skuinfo':{'sku':'"~item.goods_sn~"','pam':'0','pc':'"~item.cateid~"','k':'"~item.warehousecode~"'} }" %}
+                {% set img_analytics = "{ 'pm':'mp','p':'p-"~pageId~"','bv':{'cpID':'"~pageInstanceId~"','cpnum':'"~compKey~"','cplocation':'"~uiIndex~"','sku':'"~item.goods_sn~"','cporder':'"~layoutIndex~"','rank':'"~index~"'} }" %}
+                <a href="{{ item.url_title }}" class="logsss_event" data-logsss-event-value="{{ a_analytics }}">
+                    <div class="geshop-U000001-style4-v2-list-img">
+                        {% include geshop.default.pc.discount_float with { params: { value: item.discount, type: data.discount_type }} %}
+                        {% include geshop.default.pc.image_goods with { params: { src: item.goods_img }} %}
+                        {% if item.goods_number is not empty %}
+                            {% include geshop.default.pc.sold_out with { params: { show: item.goods_number - 0 <= 0 ? true : false }} %}
+                        {% endif %}
+                    </div>
+                    <div class="geshop-U000001-style4-v2-list-title">
+                        {{ item.goods_title | default('ZAFUL Fleece Vest And Corduroy Jack') }}
+                    </div>
+                    <div class="geshop-U000001-style4-v2-list-price">
+                        {% include geshop.default.pc.shop_price with { params: { value: item.shop_price }} %}
+                        {% include geshop.default.pc.market_price with { params: { value: item.market_price }} %}
+                    </div>
+                </a>
+                <div style="position: relative; z-index:1">
+                    {% include geshop.default.pc.button_buy with { params: { href: item.url_title }} %}
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+

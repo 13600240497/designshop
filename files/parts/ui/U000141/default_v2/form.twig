@@ -1,0 +1,122 @@
+{% set siteData = {
+    shop_price : 'rg' in siteCode ? 'shop-price-rg' : 'shop-price',
+    discount: 'rg' in siteCode ? 'discount-rg' : 'discount',
+    box_bg_color: 'rg' in siteCode ? '#F8F8F8' : '#f2f2f2',
+} %}
+{%
+    set formData = {
+    id: 'U0000141',
+    name: '秒杀商品列表',
+    theme: 'default_v2',
+    tabs: [
+        {
+            label: '商品数据',
+            components: [
+            {
+                label: '时间配置',
+                name: 'dataRange',
+                type: 'dataRangePicker'
+            },
+            {
+                label: '商品SKU',
+                type: 'goods-sku'
+            }
+        ]
+        },
+        {
+            label: '样式配置',
+            components: [
+            {
+                label: '常用配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '组件下边距(px)',
+                    name: 'box_margin_bottom',
+                    default: '40',
+                },
+                {
+                    label: '组件背景颜色',
+                    name: 'box_bg_color',
+                    default: siteData.box_bg_color,
+                    type: 'colorPicker'
+                },
+            ]
+            },
+            {
+                label: '倒计时配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '文字颜色',
+                    name: 'timer_font_color',
+                    default: '#333333',
+                    type: 'colorPicker'
+                },
+                {
+                    label: '倒计时背景颜色',
+                    name: 'timer_span_bg_color',
+                    default: '#333333',
+                    type: 'colorPicker'
+                },
+                {
+                    label: '倒计时文字颜色',
+                    name: 'timer_span_font_color',
+                    default: '#ffffff',
+                    type: 'colorPicker'
+                },
+            ]
+            },
+            {
+                label: '商品信息',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '圆角大小',
+                    name: 'goods_item_radius',
+                    default: '12'
+                },
+            ]
+            },
+            {
+                label: '销售价',
+                type: siteData.shop_price,
+            },
+            {
+                label: '库存条',
+                type: 'progress',
+            },
+            {
+                label: '库存文字颜色',
+                name: 'goodsLimitTextC',
+                type: 'colorPicker',
+                default: '#333333',
+            },
+            {
+                label: '折扣',
+                type: siteData.discount,
+            },
+            {
+                label: '购买按钮',
+                type: 'button-buynow-rg',
+            }
+        ]
+        }
+    ],
+    skuValidConfig: 'skuValidConfig'
+}
+%}
+
+
+<script>
+    /** 自定义校验规则 */
+    function skuValidConfig () {
+        return {
+            check_type: 'goods',
+            check_rules: 'GOODS_VALIDATE_SECKILL'
+        }
+    }
+</script>
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

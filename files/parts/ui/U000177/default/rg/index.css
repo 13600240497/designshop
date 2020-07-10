@@ -1,0 +1,19 @@
+
+.wrap-U000177-default .leader-board-container {
+	height: 524px;
+}
+
+.wrap-U000177-default .leader-board-container .leader-board-content-item{
+  height: 480px;
+}
+
+.wrap-U000177-default .leader-board-container  .slide-item-image{
+	 max-width: 256px;
+	 max-height: 340px;
+	 width: auto!important;
+	 height: auto!important;
+}
+.wrap-U000177-default .leader-board-container .swiper-slide-item-imgwrap{
+	height: 340px; display: table-cell; vertical-align: middle;
+}
+

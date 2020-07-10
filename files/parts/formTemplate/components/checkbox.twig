@@ -1,0 +1,16 @@
+<div class="layui-form-item">
+    <label class="layui-form-label public-data">{{ componentData.label }}</label>
+    <div class="layui-input-block">
+        {% for item in componentData.options %}
+        <input 
+            type="checkbox" 
+            name="{{ componentData.name }}" 
+            value="{{ item.value }}" 
+            title="{{ item.label }}" 
+            lay-skin="primary" 
+            {% if item.value in data[componentData.name] %} checked {% endif %} 
+            data-public-tag="true"><br>
+        {% endfor %}
+        <input type="checkbox" lay-filter="check_all" data-name="{{ componentData.name }}" lay-skin="primary" title="全选">
+    </div>
+</div>

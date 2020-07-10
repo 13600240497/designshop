@@ -1,0 +1,13 @@
+{#/**
+  *@author: 胡明
+  *@date: 2018/12/19 17:05:00
+  *@desc: dresslily商品市场价组件
+*/#}
+
+{% if options %}
+  {% if options.isVis == 1 %} 
+    <span data-orgp="{{options.value}}" class="geshop-goods-marketprice  my-shop-price">{{options.value}}</span>
+  {% endif %}
+{% else %}
+  {{ include ('@app/files/parts/common/components/argsErrors.twig') }}
+{% endif %}

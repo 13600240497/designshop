@@ -1,0 +1,14 @@
+{#/**
+*@author: 任贸华
+*@date: 2018/11/24 16:31:41
+*@desc: legend说明
+* @param {string} label input标题
+* @param {string} subLabel input小标题
+*/#}
+{% if options %}
+    <legend style="margin-bottom: 20px;font-size:18px;">{{ options.label }}<span class='gs-tips'
+                                                                     style="margin-left: 5px;">{{ options.subLabel|default('') }}</span>
+    </legend>
+{% else %}
+    {{include ('@app/files/parts/common/components/argsErrors.twig')}}
+{% endif %}

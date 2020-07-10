@@ -1,0 +1,31 @@
+{
+  "fields": {
+    "top_bgimg": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "top_bgimg_width": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "top_bgimg_height": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "back_bgcolor": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "back_bgcolor_hover": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "back_font_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "back_font_color_hover": { "is_public": "1", "is_m": "0", "is_app": "1" },
+    "back_text": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "item_bgimg": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "item_bgimg_width": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "item_bgimg_height": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "item_bgcolor": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "item_bgcolor_hover": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "font_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "hover_font_color": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "position": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "back_margin_top": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "back_size": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "back_font_size": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "item_padding_vertical": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "item_padding_horizontal": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "item_width": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "font_size": { "is_public": "0", "is_m": "0", "is_app": "1" },
+    "font_weight": { "is_public": "0", "is_m": "1", "is_app": "1" },
+    "item_line_height": { "is_public": "0", "is_m": "0", "is_app": "1" },
+		"userGroupSelect": { "is_public": "1", "is_m": "1", "is_app": "1" },
+      "component_show_always": { "is_public": "1", "is_m": "1", "is_app": "1" }
+  }
+}

@@ -1,0 +1,212 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1']%}
+{% set suffix ='rem'%}
+{% set remUnit = 75 %}
+
+{% if data.colNum == '1'%}
+    {% set colClass = liCol[0] %}
+{% elseif data.colNum == '2' %}
+    {% set colClass = liCol[1] %}
+{% elseif data.colNum == '3' %}
+    {% set colClass = liCol[2] %}
+{% elseif data.colNum == '4' %}
+    {% set colClass = liCol[3] %}
+{% elseif data.colNum == '5' %}
+    {% set colClass = liCol[4] %}
+{% else %}
+    {% set colClass = liCol[3] %}
+{% endif %}
+
+
+
+
+
+{%
+    set pageData = {
+		price_ft_weight:data.price_ft_weight|default(1),
+		base_bg_shadow:data.base_bg_shadow|default(0),
+		lang:data.lang|default('en'),
+        imgSrc:'https://gloimg.gbtcdn.com/soa/gb/pdm-product-pic/Electronic/2018/01/19/goods_thumb_220-v2/20180119095740_68364.jpg',
+
+			base_magin_bottom:data.base_magin_bottom|default(16)/remUnit~suffix,
+			base_magin_top:data.base_magin_top|default(0)/remUnit~suffix,
+			base_bgc:data.base_bgc is not null ? data.base_bgc:'#F8F8F8',
+			base_bgImage:data.base_bgImage,
+			discount_bgc:data.discount_bgc is not null ? data.discount_bgc:'#FF8A00',
+			discount_ftc:data.discount_ftc is not null ? data.discount_ftc:'#FFFFFF',
+			buy_ftc:data.buy_ftc is not null ? data.buy_ftc:'#FFFFFF',
+			buy_bgc:data.buy_bgc is not null ? data.buy_bgc:'#CC0000',
+			price_fts:(data.price_fts|default(32)/remUnit)|number_format(3, '.')~suffix,
+			price_color:data.price_color is not null ? data.price_color:'#f30240',
+			discount_height:(data.discount_height|default(70)/remUnit)|number_format(3, '.')~suffix,
+			discount_width:(data.discount_width|default(70)/remUnit)|number_format(3, '.')~suffix,
+			discount_top:(data.discount_top|default(10)/remUnit)|number_format(3, '.')~suffix,
+			discount_right:(data.discount_right|default(10)/remUnit)|number_format(3, '.')~suffix,
+			discount_fts:(data.discount_fts|default(24)/remUnit)|number_format(3, '.')~suffix,
+			discount_bgImage:data.discount_bgImage,
+			discount_off_fts:(data.discount_off_fts|default(22)/remUnit)|number_format(3, '.')~suffix,
+			discount_off_text:data.discount_off_text|default('off'),
+
+			buy_text:data.buy_text,
+			sold_out_text:data.sold_out_text,
+			stocking_text:data.stocking_text,
+			comming_soon_text:data.comming_soon_text,
+			end_text:data.end_text,
+			buy_fts:(data.buy_fts|default(24)/remUnit)~suffix,
+
+			view_more_ftc:data.view_more_ftc is not null ? data.view_more_ftc : "#333333",
+			view_more_bgc:data.view_more_bgc is not null ? data.view_more_bgc : "#FFFFFF",
+			view_more_text:data.view_more_text,
+			view_less_text:data.view_less_text,
+			view_more_border_color:data.view_more_border_color is not null ? data.view_more_border_color : "#333333",
+			view_more_fts:(data.view_more_fts|default(24)/remUnit)|number_format(3, '.'),
+			view_more_radius:(data.view_more_radius|default(4)/remUnit)|number_format(3, '.')~suffix,
+			view_more_height:(data.view_more_height|default(54)/remUnit)|number_format(3, '.')~suffix,
+			view_more_width:(data.view_more_width|default(196)/remUnit)|number_format(3, '.')~suffix,
+			view_all_ftc:data.view_all_ftc is not null ? data.view_all_ftc : "#333333",
+			view_all_text:data.view_all_text,
+			view_all_link:data.view_all_link|default(""),
+			view_all_fts:(data.view_all_fts|default(24)/remUnit)|number_format(3, '.'),
+			view_all_weight:data.view_all_weight|default(0),
+			view_all_active:data.view_all_active|default(1),
+			discount_active:data.discount_active|default(1),
+			server_label_active:data.server_label_active|default(1),
+			market_active:data.market_active|default(1),
+			goods_title_active:data.goods_title_active|default(1),
+
+			baseWidth:1000,
+			col:2,
+			marginRight:12,
+
+    }
+%}
+
+{% set liWidth = (pageData.baseWidth-3*pageData.marginRight)/pageData.col %}
+
+
+<div class="geshop-component-box component-drag geshop-component-goods component-sync clearfix geshop-gb-component ui-{{ pageInstanceId }}" data-gid="U000176_default" data-key="U000176" data-id="{{ pageInstanceId }}"
+	data-editenv="{{data.isEditEnv}}" data-static-domain="{{staticDomain}}" data-vis="{{liLength}}" data-lang="{{lang}}"
+	style="{% if data.base_magin_top %}margin-top: {{ data.base_magin_top }}px;{% endif %}
+				 {% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}">
+    <!-- embed stylesheet begin -->
+    <style type="text/css">
+
+
+
+[data-gid="U000176_default"][data-id="{{ pageInstanceId }}"]{
+	margin-bottom:{{pageData.base_magin_bottom}};
+	margin-top:{{pageData.base_magin_top}};
+}
+
+[data-gid="U000176_default"][data-id="{{ pageInstanceId }}"] .gb_goodsWrap{
+	position: relative;
+}
+
+[data-gid="U000176_default"][data-id="{{ pageInstanceId }}"] .gb_goodsWrap .gb-list-default {
+	margin-right: -0.5667rem !important;
+}
+
+{# 折扣标 #}
+[data-gid="U000176_default"][data-id="{{ pageInstanceId }}"] .gs-goods-discount--m{
+	background-color:{{pageData.discount_bgc}};
+	color:{{pageData.discount_ftc}};
+	width:{{pageData.discount_width}};
+	height:{{pageData.discount_height}};
+	top:{{pageData.discount_top}};
+	right:{{pageData.discount_right}};
+	{% if pageData.discount_bgImage %}
+		background:url({{pageData.discount_bgImage}}) no-repeat center center/100% 100%;
+		border-radius:0;
+	{% endif %}
+}
+[data-gid="U000176_default"][data-id="{{ pageInstanceId }}"] .gs-goods-discount--m .curtoff-box{
+	font-size:{{pageData.discount_fts}};
+}
+[data-gid="U000176_default"][data-id="{{ pageInstanceId }}"] .gs-goods-discount--m .curtoff-text{
+	font-size:{{pageData.discount_off_fts}};
+}
+{# 售价 #}
+[data-gid="U000176_default"][data-id="{{ pageInstanceId }}"] .gs-goods-price--m .gs-shop-price{
+		font-size:{{pageData.price_fts}};
+		color:{{pageData.price_color}};
+}
+
+{# 购买按钮设置 #}
+[data-gid="U000176_default"][data-id="{{ pageInstanceId }}"] .gs-goods-buy--m .buyLink{
+	color:{{pageData.buy_ftc}};
+	background-color:{{pageData.buy_bgc}};
+	font-size:{{pageData.buy_fts}};
+}
+
+
+{# view 按钮样式 #}
+[data-gid="U000176_default"][data-id="{{ pageInstanceId }}"] .isHide{
+	display:none;
+	height:0;
+	opacity:0;
+}
+[data-gid="U000176_default"][data-id="{{ pageInstanceId }}"] .view-more{
+		min-height:{{2 * pageData.view_all_fts}}rem;
+}
+[data-gid="U000176_default"][data-id="{{ pageInstanceId }}"] .view-more-btn{
+	  margin-top:{{pageData.view_all_fts - pageData.view_more_fts}}rem;
+	  color:{{pageData.view_more_ftc}};
+	  background-color:{{pageData.view_more_bgc}};
+      line-height: {{ pageData.view_all_fts - pageData.view_more_fts > 0 ? 1.5 * pageData.view_all_fts : 1.5 * pageData.view_more_fts }}rem;
+	  font-size:{{pageData.view_more_fts}}rem;
+	  border-radius: {{pageData.view_more_radius}};
+	  border: 1px solid {{pageData.view_more_border_color}};
+}
+[data-gid="U000176_default"][data-id="{{ pageInstanceId }}"] .view-all-btn{
+	color:{{pageData.view_all_ftc}};
+	line-height: {{ pageData.view_all_fts - pageData.view_more_fts > 0 ? 1.5 * pageData.view_all_fts : 1.5 * pageData.view_more_fts }}rem;
+	font-size:{{pageData.view_all_fts}}rem;
+	{% if pageData.view_all_weight %}
+	font-weight: bold;
+	{% endif %}
+}
+[data-gid="U000176_default"][data-id="{{ pageInstanceId }}"] .view-more .view-more-btn i {
+	margin-left: 0.266rem;
+}
+[data-gid="U000176_default"][data-id="{{ pageInstanceId }}"] .comming-or-ended-status {
+  cursor: default;
+  background-color: #999999 !important;
+}
+[data-gid="U000176_default"][data-id="{{ pageInstanceId }}"] .gs-goods-discount .curtoff-text {
+	text-transform: uppercase;
+}
+
+[data-gid="U000176_default"][data-id="{{ pageInstanceId }}"] .gs-goods-item-common {
+  position: relative;
+  width: 4.2rem;
+  height: 5.6rem;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+[data-gid="U000176_default"][data-id="{{ pageInstanceId }}"] .gs-goods-item-common img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+</style>
+    <!-- embed stylesheet end -->
+    <div class="geshop-col-12">
+			<div class="gb_goodsWrap gb_wrapper_common" data-skus="{{data.goodsSKUList}}" data-isEditEnv="{{data.isEditEnv}}"
+				style="
+			 {% if data.baseFtFa %}font-family:{{data.baseFtFa}};{% endif %}">
+    {# felix #}
+    <ul  class="clearfix gb-list-default gb-lists-default" data-shownum ="{{data.defaultGoodsCount}}">
+    {# {% for key,item in data.goodsInfo|reverse|default(0..3)%} #}
+    {% for key,item in data.goodsInfo|default(0..3)%}
+		{% set isHide = (key >= data.defaultGoodsCount and data.defaultGoodsCount > 0) ? 'isHide' : "" %}
+		{{include ('@app/files/parts/temp/gb/index_goods_m_tmp.twig')}}
+    {% endfor %}
+    </ul>
+	{# view 按钮 #}
+	{{include ('@app/files/parts/temp/gb/common/default_m/goodMoreBtn.twig')}}
+
+			</div>
+
+    </div>
+</div>
+

@@ -1,0 +1,36 @@
+// zaful polifiy
+[data-key="U000164"][data-theme="default"] {
+    div.BP-goods-block {
+        .BP-goods-img {
+            overflow: hidden;
+            text-align: center;
+            // img {
+            //     margin-top: 41px;
+            //     width: 251px;
+            //     height: 251px;
+            // }
+            .vc-fix {
+                display: inline-block;
+                width: 0;
+                height: 100%;
+                line-height: 100%;
+                vertical-align: middle;
+                visibility: hidden;
+            }
+        }
+        .BP-goods-img.goods-empty-status {
+            background-color: #eee;
+            a {
+                display: block;
+                transform: translateY(15%);
+            }
+        }
+        a {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+}
+[data-key="U000164"] div.BP-goods-block .BP-goods-img img {
+    height: auto !important;
+}

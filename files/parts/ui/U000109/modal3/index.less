@@ -1,0 +1,755 @@
+.geshop-U000109-modal3 {
+  .goods-nav-name li span {
+    display: block;
+    line-height: 56px;
+    width: 100%;
+    height: 100%;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 16px;
+    overflow: hidden;
+  }
+
+  .swiper-button-disabled{
+    .side-icon {
+      &:after {
+        content: '';
+        position: absolute;
+        top: 14px;
+        border: 1px solid #ededed;
+        border-width: 0 0 2px 2px;
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+  .side-icon {
+    position: absolute;
+    background: #ffffff;
+    opacity: .7;
+    width: 40px;
+    height: 40px;
+    left: 8px;
+    top: 8px;
+    border-radius: 100%;
+    display: none;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 14px;
+      border: 1px solid #000;
+      border-width: 0 0 2px 2px;
+      width: 10px;
+      height: 10px;
+
+    }
+  }
+
+  .icon-img-right {
+    left: auto;
+    right: 8px;
+    &:after {
+      content: '';
+      right: 16px;
+      -webkit-transform: rotate(-135deg);
+      transform: rotate(-135deg);
+    }
+  }
+
+  .icon-img-left {
+    &:after {
+      left: 16px;
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+
+  }
+
+  .geshop-tab-btn.pre-btn {
+    left: -50px;
+    border-radius: 45px 0px 0px 45px;
+  }
+
+  .geshop-tab-btn.next-btn {
+    right: -50px;
+    border-radius: 0px 45px 45px 0px;
+  }
+
+
+  .geshop-content {
+    margin-top: -28px;
+  }
+
+  .gs-tab-box .swiper-container {
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    height: 56px;
+    display: block;
+    max-width: 1064px;
+  }
+
+  .gs-tab-box {
+    height: 100%;
+    overflow: visible;
+    display: inline-block;
+    position: relative;
+
+  }
+
+  .goods-list {
+    display: block;
+    width: 1180px;
+    margin: 0 auto 18px;
+    font-size: 0;
+    overflow: hidden;
+
+    > li {
+      display: inline-block;
+      vertical-align: top;
+      position: relative;
+      width: 220px;
+      box-sizing: border-box;
+      margin: 16px 8px 0;
+      background: #fff;
+      border: 1px solid #ffffff;
+
+
+      .geshop-U000109-modal3-list-img {
+        position: relative;
+        display: block;
+        width: 196px;
+        height: 261px;
+        background: #fff;
+        overflow: hidden;
+        margin: 12px auto;
+      }
+
+      &:hover {
+        .btn-box {
+          .btn-tran {
+            transform: translateY(-36px);
+          }
+
+          > span.stand-show {
+            opacity: 0;
+          }
+        }
+
+        .desc-box {
+          .trans-box {
+            transform: translateY(-20px);
+          }
+        }
+      }
+
+      .desc-box {
+        box-sizing: border-box;
+        padding: 0 12px;
+        height: 54px;
+        overflow: hidden;
+        text-align: left;
+
+        .trans-box {
+          transition: all .3s ease;
+        }
+      }
+
+      .btn-box {
+        width: 196px;
+        height: 36px;
+        margin: 12px auto 24px;
+        position: relative;
+        overflow: hidden;
+
+        .btn-tran {
+          display: block;
+          transition: all .3s ease;
+          width: 100%;
+          height: 100%;
+          background: #fff;
+          &:hover {
+            .hover-show{
+              opacity: .9;
+            }
+          }
+        }
+
+        span {
+          display: block;
+          width: 100%;
+          height: 100%;
+          border-radius: 50px;
+          font-weight: 400;
+          text-align: center;
+          cursor: pointer;
+          position: relative;
+          line-height: 36px;
+          &.stand-show{
+            font-size: 12px;
+          }
+        }
+
+      }
+
+      .geshop-U000109-modal3-list-title {
+        height: 20px;
+        line-height: 20px;
+        font-size: 14px;
+        color: #333;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .gs-shop-price {
+        margin-top: 4px;
+        height: 30px;
+        font-size: 22px;
+        line-height: 30px;
+
+        .geshop-components-default-label-shop-price {
+          margin-right: 6px;
+        }
+
+        .geshop-components-default-label-market-price, .geshop-components-default-label-shop-price {
+          vertical-align: bottom;
+        }
+      }
+
+
+      .ranking-icon {
+        position: absolute;
+        top: 12px;
+        left: 11px;
+        /* left: 5px; */
+        line-height: 46px;
+        text-align: center;
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 18px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url(https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/rankingFirst.png);
+      }
+
+
+    }
+  }
+
+}
+
+
+.geshop-U000109-modal3 .goods-nav-name {
+  /* display: inline-block; */
+  text-align: center;
+  /* margin: auto; */
+  height: 100%;
+  /* overflow: hidden;
+  width: auto; */
+}
+
+.geshop-U000109-modal3 .geshop-tab-btn {
+  position: absolute;
+  top: 0;
+  width: 50px;
+  height: 100%;
+  z-index: 1;
+  cursor: pointer;
+  background-size: 50px 44px;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  line-height: 56px;
+}
+
+.geshop-U000109-modal3 .geshop-tab-btn img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+.geshop-U000109-modal3 .gs-banner {
+  width: 100%;
+  height: auto;
+}
+
+.geshop-U000109-modal3 .component-self-goodWrap .ranking-icon {
+  font-weight: bold;
+}
+
+.geshop-U000109-modal3 {
+  overflow: hidden;
+  width: 1200px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.geshop-U000109-modal3 .clearfix:after {
+  content: "";
+  line-height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+
+.geshop-U000109-modal3 .text-center {
+  text-align: center;
+}
+
+.geshop-U000109-modal3 .gs-default-clothes {
+  height: 124px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.geshop-U000109-modal3 .geshop-component-box {
+  overflow: hidden;
+}
+
+.geshop-U000109-modal3 .geshop-panel {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+}
+
+.geshop-U000109-modal3 .gs-tab {
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.geshop-U000109-modal3 .gs-tab-wrap {
+  position: relative;
+  height: 56px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.geshop-U000109-modal3 .gs-tab-label {
+  position: relative;
+  line-height: initial;
+  font-size: 0;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  width: 100%;
+}
+
+.geshop-U000109-modal3 .gs-tab-label li {
+  position: relative;
+  width: auto;
+  height: 100%;
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+}
+
+.geshop-U000109-modal3 .gs-tab-label .current:after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: '';
+  width: 100%;
+  height: 41px;
+  border-radius: 2px 2px 0 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.geshop-U000109-modal3 .gs-tab-content {
+  border-radius: 0 0 15px 15px;
+}
+
+.geshop-U000109-modal3 .gs-tab-item {
+  display: none;
+}
+
+.geshop-U000109-modal3 .gs-tab-show {
+  display: block;
+}
+
+
+.geshop-U000109-modal3 .goods-nav-name li {
+  display: inline-block;
+  width: auto;
+  height: 100%;
+  color: #2d2d2d;
+  overflow: hidden;
+}
+
+.geshop-U000109-modal3 .goods-nav-name li a {
+  display: block;
+  height: 100%;
+  padding: 0px 32px;
+}
+
+.geshop-U000109-modal3 .geshop-tab-btn.gs-btn-show {
+  display: block;
+}
+
+
+.geshop-U000109-modal3 .gs-tab-item > ul,
+.geshop-U000109-modal3 .gs-tab-item > ul {
+  margin-left: -10px;
+}
+
+.geshop-U000109-modal3 {
+  overflow: hidden;
+  /* compoment layout class list */
+  /* goods hover */
+  /* goods  attribute*/
+  /* btn */
+  /* 下架 */
+}
+
+.geshop-U000109-modal3 .clearfix:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+
+.geshop-U000109-modal3 .g-w990 {
+  width: 990px;
+}
+
+.geshop-U000109-modal3 .text-center {
+  text-align: center;
+}
+
+.geshop-U000109-modal3 .geshop-component-box {
+  overflow: hidden;
+}
+
+.geshop-U000109-modal3 .geshop-panel {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+}
+
+.geshop-U000109-modal3 .gs-goodsWrap {
+  margin: 0 auto;
+}
+
+.geshop-U000109-modal3 .gs-goodsWrap ul {
+  font-size: 0;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.geshop-U000109-modal3 .gs-goodsWrap:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+
+
+.geshop-U000109-modal3 .layui-form-label {
+  white-space: nowrap;
+}
+
+.geshop-U000109-modal3 .gs-goods-info {
+  width: 100%;
+  /* position: relative; */
+  overflow: hidden;
+}
+
+.geshop-U000109-modal3 .goods-item:hover .gs-desc {
+  display: none;
+}
+
+.geshop-U000109-modal3 .goods-item:hover .gs-desc-hover {
+  display: block;
+}
+
+.geshop-U000109-modal3 .component-self-goodBox {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
+}
+
+.geshop-U000109-modal3 .component-self-goodWrap {
+  border: 1px solid transparent;
+  padding: 10px 10px 14px 10px;
+}
+
+.geshop-U000109-modal3 .discont-curtoff {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 40px;
+  height: 38px;
+  color: #ffffff;
+  background-size: contain;
+  line-height: 14px;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 50%;
+  padding: 0;
+}
+
+.geshop-U000109-modal3 .discont-curtoff strong {
+  font-size: 12px;
+  font-weight: normal;
+  display: inline-block;
+}
+
+.geshop-U000109-modal3 .item-name {
+  height: 19px;
+  line-height: 19px;
+  font-size: 14px;
+  padding-top: 8px;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  transition: all .5s;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+}
+
+.geshop-U000109-modal3 .item-price {
+  padding: 10px 0;
+  margin: 0;
+  white-space: nowrap;
+  min-height: 33px;
+  line-height: 33px;
+}
+
+.geshop-U000109-modal3 .item-price-hover {
+  padding: 22px 0px 18px 0px;
+  margin: 0;
+  white-space: nowrap;
+  min-height: 33px;
+  line-height: 33px;
+}
+
+.geshop-U000109-modal3 .shop-price {
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.geshop-U000109-modal3 .gs-btn-area {
+  margin-bottom: 10px;
+}
+
+/* .geshop-U000109-modal3 .gs-btn-area a:hover {
+  opacity: .9;
+} */
+.geshop-U000109-modal3 .gs-desc a {
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+  display: block;
+}
+
+.geshop-U000109-modal3 .market-price {
+  font-size: 14px;
+  color: #999999;
+}
+
+.geshop-U000109-modal3 .sale-discount a {
+  width: 100px;
+  height: 26px;
+  line-height: 26px;
+  display: block;
+  border-radius: 13px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.geshop-U000109-modal3 .buy-now a {
+  display: block;
+  margin: 0 auto;
+  border-radius: 18px;
+}
+
+.geshop-U000109-modal3 .gs-img {
+  display: table;
+  position: relative;
+  font-size: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.geshop-U000109-modal3 .gs-img a {
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+  height: 269px;
+}
+
+.geshop-U000109-modal3 .gs-img img {
+  max-height: 100%;
+  width: 200px;
+  /* display: table-cell; */
+  margin: auto;
+  vertical-align: middle;
+}
+
+.geshop-U000109-modal3 .gs-btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  /* 		line-height: 1.42857143; */
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 0;
+  text-decoration: none;
+}
+
+.geshop-U000109-modal3 .btn-primary {
+  color: #fff;
+  padding: 8px 20px;
+}
+
+.geshop-U000109-modal3 .btn-middle {
+  border-radius: 20px;
+  padding: 6px 20px;
+}
+
+.geshop-U000109-modal3 .promotion-time-inner {
+  height: 32px;
+  line-height: 32px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #333333;
+  margin-left: -20px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.geshop-U000109-modal3 .promotion-time-inner .icon-clock-black {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 5px;
+  background-image: url(../../../resources/images/view/icon-block-black.png);
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 32px;
+  background-position: 0 0;
+}
+
+.geshop-U000109-modal3 .gs-curtoff-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.geshop-U000109-modal3 .discont-curtoff strong {
+  font-size: 12px;
+}
+
+.geshop-U000109-modal3 .discont-curtoff .curtoff-box {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 50%;
+  font-size: 12px;
+}
+
+.geshop-U000109-modal3 .buyLink {
+  background-color: #999;
+  color: #fff;
+  pointer-events: none;
+  cursor: default;
+}
+
+.geshop-U000109-modal3 .goodStatus {
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  background-color: #333;
+  background-color: rgba(51, 51, 51, 0.8);
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 20px 10px;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  margin-left: -40px;
+  top: 28%;
+  visibility: visible;
+}
+
+.gs-default-view {
+  width: 111px;
+  height: 84px;
+  position: absolute;
+  top: 48px;
+  left: 50%;
+  margin-left: -55.5px;
+  display: block;
+}
+
+.geshop-U000109-modal3 .gs-banner .gs-banner-bg {
+  width: 100%;
+  height: 100%;
+}
+
+.geshop-U000109-modal3 .gs-banner-bg .gs-bgc-pic {
+  width: 100%;
+  height: 100%;
+}
+
+.geshop-U000109-modal3 .goods-item .gs-tag {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.geshop-U000109-modal3 .component-self-goodWrap .ranking-icon {
+  display: inline-block;
+  position: absolute;
+  width: 40px;
+  height: 48px;
+  top: 7px;
+  /* left: 5px; */
+  line-height: 38px;
+  text-align: center;
+  font-size: 18px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+

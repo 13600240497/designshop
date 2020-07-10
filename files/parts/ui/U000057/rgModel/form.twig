@@ -1,0 +1,345 @@
+{% set 
+  viewBorderSArr = [ {name:'无',value:'none'}, {name:'实线',value:'solid'}, {name:'虚线',value:'dashed'}, {name:'点状',value:'dotted'},
+  {name:'双线',value:'double'}, {name:'继承上级',value:'inherit'}, ]
+%} 
+
+{% set pageData = {
+  lineHeight:data.lineHeight is not null?data.lineHeight:'40', 
+  viewPaddingLR:data.viewPaddingLR is not null?data.viewPaddingLR:'0', 
+  viewPaddingTB:data.viewPaddingTB is not null?data.viewPaddingTB:'0', 
+  textBgColor:data.textBgColor is not null?data.textBgColor:'#ededed', 
+  textColor:data.textColor is not null?data.textColor:'#333333', 
+  viewPaddingTB:data.viewPaddingTB is not null?data.viewPaddingTB:'0',
+  fontSize:data.fontSize is not null?data.fontSize:'36',
+  boxMarginBottom:data.boxMarginBottom is not null?data.boxMarginBottom:'32'
+}
+%}
+
+<style type="text/css">
+  .marquee-component-configure-item {
+    border: 1px solid #e6e6e6;
+    padding: 12px;
+  }
+  .geshop-tip {
+    margin-bottom: 5px;
+    width: 280px;
+  }
+  .geshop-tip span {
+    color: #999999;
+    font-size: 14px;
+  }
+</style>
+
+<h3 class='component-form-title'>跑马灯组件设置
+  <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+    <i class="el-icon-close"></i>
+  </a>
+</h3>
+
+{{include ('@app/htdocs/resources/template/pc/templateList/index.twig')}}
+
+<div class="component-form-setting-item component-form-configure-item">
+  <h4 class="title">常用配置</h4>
+  <div class="layui-field-box" style="padding-top:0">
+    <div class="layui-tab layui-tab-brief" style="margin-top:0" lay-filter="docDemoTabBrief">
+      <ul class="layui-tab-title">
+        <li class="layui-this">跑马灯信息配置</li>
+        <li>样式设置</li>
+      </ul>
+      <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+          <div class="img-table">
+            <input type="hidden" name="marquee">
+            <div class="layui-form-item img-item layui-hide marquee-component-configure-item">
+              <div class='layui-input-block layui-inline rest-input'>
+                <div class="layui-row">
+                  <div class="layui-col-xs12" style="float:right">
+                    <div class="layui-form-item">
+                      <label class="form-item-label" style="text-align:left"> 文案</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="textContent" required autocomplete="off" class="layui-input Unwanted" style="width:100%" value="">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="form-item-label public-data"> 文字颜色</label>
+                      <div class="layui-input-block">
+                        <div class="color-picker-selector" data-hidden-name="textColor">
+                          <div style="background-color: {{ pageData.textColor }};"></div>
+                        </div>
+                        <input type="text" class="layui-input Unwanted" style="width:274px;" name="textColor" autocomplete="off" value="{{ pageData.textColor }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="form-item-label"> 背景颜色</label>
+                      <div class="layui-input-block">
+                        <div class="color-picker-selector" data-hidden-name="textBgColor">
+                          <div style="background-color: {{ pageData.textBgColor }};"></div>
+                        </div>
+                        <input type="text" class="layui-input Unwanted" style="width:274px;" name="textBgColor" autocomplete="off" value="{{ pageData.textBgColor }}">
+                      </div>
+                    </div>
+                    <p class="geshop-tip">图片<span>(请上传和组件宽高一样尺寸的图)</span></p>
+                    <div class="geshop-first-value">
+                      <a href="javascript:;" class="img_openResource" style="width: 78px; font-size: 32px; line-height: 30px;" data-skip-valid="true">
+                        <span>
+                          {% if data.bgimgSrc is empty %}
+                          <img src="/resources/images/carousel-image/add.png">
+                          {% else %}
+                            <img src="{{ data.bgimgSrc}}" width="100%" height="100%" style="display:block;">
+                          {% endif %}
+                        </span>
+                      </a>
+                      <input type="text" lay-verify="required" autocomplete="off" class="layui-input select-img Unwanted" name="bgimgSrc" style="margin-left: 2px; width: 100%;" value="{{ data.bgimgSrc }}" data-skip-valid="true">
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="form-item-label" style="text-align:left"> 页面链接</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="textHref" required autocomplete="off" class="layui-input Unwanted marquee-text-input" style="width:100%" value="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p class="action-bar" style="width:270px">
+                  <span class="img-btn">
+                    <i class='icon-up'></i>
+                    <b class="tips">上移</b>
+                  </span>
+                  <span class="img-btn">
+                    <i class='icon-down'></i>
+                    <b class="tips">下移</b>
+                  </span>
+                  <span class="img-btn">
+                    <i class='icon-delete'></i>
+                    <b class="tips">删除</b>
+                  </span>
+                </P>
+              </div>
+            </div>
+
+            <div class='img-body'>
+              {% for key, item in data.marquee|default(['']) %}
+              <div class="layui-form-item item-flag marquee-component-configure-item">
+                  <div class='layui-input-block rest-input'>
+                    <div class="layui-row">
+                    <div class="layui-col-xs12" style="float:right">
+                      <div class="layui-form-item">
+                        <label class="form-item-label" style="text-align:left"> 文案</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="textContent" required autocomplete="off" class="layui-input Unwanted" style="width:100%" value="{{ item.textContent | default('Free Standard Shippiing Over US$45') }}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="form-item-label public-data"> 文案颜色</label>
+                        <div class="layui-input-block">
+                          <div class="color-picker-selector" data-hidden-name="textColor">
+                            <div style="background-color: {{ item.textColor | default('#333333') }};"></div>
+                          </div>
+                          <input type="text" class="layui-input Unwanted" style="width:274px;" name="textColor" autocomplete="off" value="{{ item.textColor | default('#333333') }}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="form-item-label"> 背景颜色</label>
+                        <div class="layui-input-block">
+                          <div class="color-picker-selector" data-hidden-name="textBgColor">
+                            <div style="background-color: {{ item.textBgColor | default('#ededed') }};"></div>
+                          </div>
+                          <input type="text" class="layui-input Unwanted" style="width:274px;" name="textBgColor" autocomplete="off" value="{{ item.textBgColor | default('#ededed') }}">
+                        </div>
+                      </div>
+                      <p class="geshop-tip">图片<span>(请上传和组件宽高一样尺寸的图)</span></p>
+                      <div class="geshop-first-value">
+                        <a href="javascript:;" class="img_openResource" style="width: 78px; font-size: 32px; line-height: 30px;" data-skip-valid="true">
+                          <span>
+                            {% if item.bgimgSrc is empty %}
+                            <img src="/resources/images/carousel-image/add.png">
+                            {% else %}
+                              <img src="{{ item.bgimgSrc}}" width="100%" height="100%" style="display: block;">
+                            {% endif %}
+                          </span>
+                        </a>
+                        <input type="text" lay-verify="required" autocomplete="off" class="layui-input select-img Unwanted" name="bgimgSrc{{ loop.index }}" style="margin-left: 2px; width: 100%;" value="{{ item.bgimgSrc }}" data-skip-valid="true">
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="form-item-label" style="text-align:left"> 页面链接</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="textHref" required autocomplete="off" class="layui-input Unwanted marquee-text-input" style="width:100%" value="{{ item.textHref }}">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="action-bar" style="width:270px;{% if data.marquee | length <= 1 %} display: none;{% endif %}">
+                    <span class="img-btn">
+                      <i class='icon-up'></i>
+                      <b class="tips">上移</b>
+                    </span>
+                    <span class="img-btn">
+                      <i class='icon-down'></i>
+                      <b class="tips">下移</b>
+                    </span>
+                    <span class="img-btn">
+                      <i class='icon-delete'></i>
+                      <b class="tips">删除</b>
+                    </span>
+                  </p>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="layui-form-item tab-add-btn">
+              <span class="el-button el-button--primary el-button--small" id="img_tab_add">新增</span>
+            </div>
+          </div>
+        </div>
+        <div class="layui-tab-item">
+          <div class="layui-form-item">
+            <label class="form-item-label">
+               组件下边距(px)</label>
+            <div class="layui-input-block">
+              <input type="text" name="boxMarginBottom" autocomplete="off" class="layui-input" value="{{ pageData.boxMarginBottom | default(32) }}">
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="form-label-item">宽度(px)</label>
+            <div class="layui-input-block rest-input">
+              <input type="text" name="boxWidth" autocomplete="off" class="layui-input" value="{{ data.boxWidth | default(750) }}">
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="form-label-item">高度(px)</label>
+            <div class="layui-input-block rest-input">
+              <input type="text" name="boxHeight" autocomplete="off" class="layui-input" value="{{ data.boxHeight | default(110) }}">
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="form-item-label"> 字体大小(px)</label>
+            <div class="layui-input-block">
+              <input type="text" name="fontSize" autocomplete="off" class="layui-input" value="{{ pageData.fontSize }}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <span type="button" class="layui-btn layui-btn-normal" id="img_submit">提交</span>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm" style="display:none">提交</button>
+</div>
+
+<script>
+
+  var swapItems = function (arr, index1, index2) {　　
+    arr[index1] = arr.splice(index2, 1, arr[index1])[0];　　
+    return arr;
+  };
+
+  function upData(arr, index) {　　
+    if (arr.length > 1 && index !== 0) {　　　　
+      newArr = swapItems(arr, index, index - 1);
+      return newArr;　　
+    }
+  };
+
+  function downData(arr, index) {
+    if (arr.length > 1 && index !== (this.arr.length - 1)) {　　　　
+      newArr = swapItems(arr, index, index + 1);
+      return newArr;　　
+    }
+  };
+
+  var $imgTable = $('.img-table');
+  var flagIndex = 0; 
+  {#新增选择图片栏#}
+  $('#img_tab_add').on('click', function () {
+    flagIndex++;
+    var clone = $('.img-item', $imgTable).clone();
+    clone.removeClass('img-item layui-hide');
+    clone.find('input[name="bgimgSrc"]').val('');
+    clone.find('.img_openResource img').attr('src', '/resources/images/carousel-image/add.png').removeAttr('style');
+    clone.find('input[name=imgSrc]').attr('name', 'imgSrc' + String(flagIndex));
+    $('.img-body', $imgTable).append(clone);
+    DesignCommon.color.renderColorPicker();
+    $('.img-body .marquee-component-configure-item .action-bar').show();
+  });
+
+  {# 获取当前模板name #}
+  $('#current_template_name').text($('input[name="tpl_id"]').attr('title'));
+
+  $('#img_submit').on('click', function () {
+    var marqueeArr = [];
+    $('.img-body .marquee-component-configure-item').each(function (index, element) {
+      var self = $(this);
+      var $textContent = self.find('[name="textContent"]').val();
+      var $textColor = self.find('[name="textColor"]').val();
+      var $textBgColor = self.find('[name="textBgColor"]').val();
+      var $bgimgSrc = self.find('[name*="bgimgSrc"]').val();
+      var $textHref = self.find('[name="textHref"]').val();
+      
+      if ($textContent || $textColor || $textBgColor || $bgimgSrc || $textHref) {
+        marqueeArr.push({
+          textContent: $textContent,
+          textColor: $textColor,
+          textBgColor: $textBgColor,
+          bgimgSrc: $bgimgSrc,
+          textHref: $textHref,
+        })
+      }
+    });
+    $('.img-table input[name=marquee]').val(JSON.stringify(marqueeArr));
+    $(this).next('button').trigger('click');
+  });
+
+  $('body').on('click', '.icon-up', function () {
+    var target = $(this).closest('.layui-form-item');
+
+    if (target.prev('.layui-form-item').length > 0) {
+      target.prev('.layui-form-item').before(target.clone());
+      target.remove();
+    }
+  });
+  $('body').on('click', '.icon-up', function () {
+    var target = $(this).closest('.layui-form-item');
+
+    if (target.prev('.layui-form-item').length > 0) {
+      target.prev('.layui-form-item').before(target.clone());
+      target.remove();
+    }
+  });
+  $('body').on('click', '.icon-down', function () {
+    var target = $(this).closest('.layui-form-item');
+    if (target.next('.layui-form-item').length > 0) {
+      target.next('.layui-form-item').after(target.clone());
+      target.remove();
+    }
+  });
+  $('body').on('click', '.icon-delete', function () {
+    var checkSurplus = function () {
+      if ($('.img-body .marquee-component-configure-item').length == 1) {
+        $('.img-body .marquee-component-configure-item .action-bar').hide();
+      }
+    };
+
+    var target = $(this).closest('.layui-form-item');
+    var $textContent = $.trim(target.find('[name="textContent"]').val()).length;
+    var $textColor = $.trim(target.find('[name="textColor"]').val()).length;
+    var $textBgColor = $.trim(target.find('[name="textBgColor"]').val()).length;
+    var $bgimgSrc = $.trim(target.find('[name*="bgimgSrc"]').val()).length;
+    var $textHref = $.trim(target.find('[name="textHref"]').val()).length;
+
+    if ($textContent == 0 && $textColor == 0 && $textBgColor == 0 && $bgimgSrc == 0 && $textHref == 0) {
+      target.remove();
+      checkSurplus();
+    } else {
+      layui.layer.confirm('删除该样式，所有内容将无法找回，请谨慎操作', {
+        icon: 3,
+        title: '提示'
+      }, function (index) {
+        target.remove();
+        checkSurplus();
+        layui.layer.close(index);
+      });
+    }
+  });
+</script>

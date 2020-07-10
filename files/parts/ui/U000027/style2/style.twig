@@ -1,0 +1,35 @@
+{% set classSpace = '.geshop-U000027-style2-'~pageInstanceId %}
+
+{{ classSpace }} {
+    {% if data.isEditEnv != '1' %}
+        display: none;
+    {% endif %}
+}
+
+{{ classSpace }} .geshop-U000027-style2-wrapper ul {
+    height: {{ data.height | default(50) }}px;
+    background-color: {{ data.bgColor | default('#D8D8D8') }};
+    font-size: 0px;
+}
+
+{{ classSpace }} .geshop-U000027-style2-wrapper li {
+    margin: 0 {{ (data.margin | default(6)) / 2 }}px;
+    height: {{ data.height | default(50) }}px;
+    line-height: {{ data.height | default(50) }}px;
+}
+
+{{ classSpace }} .geshop-U000027-style2-wrapper li a {
+    width: {{ data.item_width | default(160) }}px;
+    height: {{ data.height | default(50) }}px;
+    line-height: {{ data.height | default(50) }}px;
+    color: {{ data.font_color | default('#000') }};
+    font-size: {{ data.font_size | default(14) }}px;
+    background-color: {{ data.bgColor | default('#D8D8D8') }};
+    overflow: hidden;
+}
+
+{{ classSpace }} li.active a,
+{{ classSpace }} li a:hover {
+    color: {{ data.font_color_active }};
+    background-color: {{ data.bgColor_active }};
+}

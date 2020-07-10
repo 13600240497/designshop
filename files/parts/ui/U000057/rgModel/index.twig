@@ -1,0 +1,48 @@
+<div class="geshop-component-box component-drag wrap-U000057_rgModel warp-{{ pageInstanceId }}" data-gid="U000057" data-key="U000057" data-id="{{ pageInstanceId }}" data-theme="rgModel" attr="nav_flag"
+	{% if data.isEditEnv == 1 %} style="min-height: 64px;"{% endif %}
+>
+	<!-- embed stylesheet begin -->
+	<style type="text/css">
+		.warp-{{ pageInstanceId }} .free_tips {
+			{% if data.bgColor %}background-color: {{ data.bgColor }};{% endif %}
+			{% if data.bgimgSrc is not empty %}background-image:url({{data.bgimgSrc}});
+			background-repeat:repeat;
+			background-size:cover;{% endif %}
+			{% if data.boxWidth %}width: {{ data.boxWidth / 75 | number_format(3, '.') }}rem;{% endif %}
+			height: {{ (data.boxHeight|default(110)) / 75 | number_format(3, '.') }}rem!important;
+			margin: 0 auto {% if data.boxMarginBottom is not empty %}{{ data.boxMarginBottom / 75 | number_format(3, '.') }}{% else %} 0{% endif %}rem auto;
+		}
+		.warp-{{ pageInstanceId }} .geshop-tip-item {
+			height: {{ (data.boxHeight|default(110)) / 75 | number_format(3, '.') }}rem!important;
+		}
+		{#  #}
+	</style>
+	<!-- embed stylesheet end -->
+	<div class="free_tips clearfix js_geshopFreeTips" data-height="{{ data.boxHeight / 75 | number_format(3, '.') }}">
+		<div class="free_tipsList">
+			{% if data.marquee | length > 0 %}
+			{% for item in data.marquee %}
+				{% if item.textHref %}
+				<a href="{{ item.textHref }}" class="geshop-tip-item" style="
+				{% else %}
+				<p class="geshop-tip-item" style="
+				{% endif %}
+					{% if item.textColor %}color: {{ item.textColor }};{% endif %}
+					{% if data.fontSize %}font-size: {{ data.fontSize / 75 | number_format(3, '.') }}rem;{% endif %}
+					{% if item.textBgColor %}background-color: {{ item.textBgColor }};{% endif %}
+					{% if item.bgimgSrc is not empty %}background-image: url({{ item.bgimgSrc }}); background-repeat: not-repeat; background-position: center; background-size: 100%; {% endif %}
+				"><i class="fsb">{{ item.textContent }}</i>
+				{% if item.textHref %}
+				</a>
+				{% else %}
+				</p>
+				{% endif %}
+			{% endfor %}
+			{% else %}
+				<p class="geshop-tip-item" style="color: #333333;">
+					<i class="fsb">Free Standard Shippiing Over US$45</i>
+				</p>
+			{% endif %}
+		</div>
+	</div>
+</div>

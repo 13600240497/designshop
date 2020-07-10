@@ -1,0 +1,946 @@
+.geshop-el-main .el-row {
+  margin-bottom: 0;
+}
+/* 活动管理列表栏开始 */
+.geshop-Activity-tit{
+  margin-bottom: 8px !important;
+}
+.geshop-Activity-title {
+  width: 88px;
+  font-size: 22px;
+  color: #3C4144;
+  line-height: 30px;
+}
+.geshop-Activity-btn {
+  background-color: #FFFFFF;
+  min-height: 72px;
+  position: relative;
+  margin-bottom: 0;
+}
+/* 新增活动按钮 */
+.geshop-Activity-btn-add {
+  display: inline-block;
+  width: 116px;
+  height:40px;
+  background-color: #1E9FFF;
+  border:none;
+  outline: none;
+  color: #FFFFFF;
+  font-size: 14px;
+  position: absolute;
+  left: 24px;
+  top: 16px;
+  padding:0px 0px;
+}
+.geshop-Activity-btn-add:hover {
+  color: #FFFFFF;
+  background-color: #66b1ff;
+}
+.geshop-Activity-btn-add:focus {
+  color: #FFFFFF;
+  background-color: #2E96E5;
+}
+.geshop-Activity-btn-add .icon-geshop-pack-up {
+  font-size: 24px;
+  position: absolute;
+  left: 16px;
+  top: 8px;
+}
+.geshop-Activity-btn-add .geshop-icon-add-text {
+  position: absolute;
+  right:16px;
+  top: 13px;
+}
+
+/* 刷新页头尾 */
+.geshop-Activity-btn-refresh {
+  display: inline-block;
+  width: 163px;
+  height:40px;
+  border-radius:4px;
+  border:1px solid rgba(219,219,219,1);
+  position: absolute;
+  left: 156px;
+  top: 16px;
+}
+.geshop-Activity-btn-refresh .icon-geshop-reset {
+  position: absolute;
+  font-size: 18px;
+  top: 11px;
+  left: 16px;
+}
+.geshop-Activity-btn-refresh .geshop-icon-refresh-text {
+  position: absolute;
+  right: 16px;
+  top: 10px;
+  line-height: 20px;
+}
+.geshop-Activity-btn-refresh:hover {
+  border-color: #34A8FF !important;
+  background-color: #FFFFFF !important;
+  color: #34A8FF !important;
+}
+.geshop-Activity-btn-refresh:focus {
+  color: #2E96E5; 
+  background-color:#FFFFFF;
+  border-color: #2E96E5;
+}
+.geshop-Activity-btn-refresh.is-disabled:hover {
+    color: #C0C4CC !important;
+    background-color: #FFF !important;
+    border-color: #EBEEF5 !important;
+}
+/* 搜索活动名称 */
+.geshop-Activity-btn-search {
+  display: block;
+  width:200px;
+  height:40px;  
+  height:40px;
+  border-radius:4px;
+  position: absolute;
+  right: 24px;
+  top: 16px;
+}
+
+/* 活动管理列表区域 */
+  .geshop-activity-lists {
+    margin-bottom: 0px;
+  }
+  .geshop-activity-lists .el-table__row{
+    height: 80px !important;
+  }
+  .geshop-Activity-btn-search .el-input__suffix {
+    right: 0px;
+    left: 8px;
+    width: 32px;
+  }
+  .geshop-Activity-btn-search .el-input__inner {
+    padding-right: 0px;
+    padding-left: 40px;
+  }
+  .geshop-Activity-btn-search .geshop-icon-search-gray {
+    margin-top: 10px;
+  }
+  .geshop-activity-more .el-button.icon-geshop-add {
+    font-size: 30px;
+  }
+  .geshop-activity-lists .el-table__expand-icon .el-icon-arrow-right{
+    display: none;
+  }
+  .geshop-activity-lists .geshop-activity-more .el-button-group{
+    width: 40px;
+    height: 40px;
+    background-color: red;
+  }
+  .geshop-activity-lists .el-table__row:hover {
+    cursor: pointer;
+  }
+  .geshop-activity-lists .el-table__row .ge-activity-list-operating {
+    padding: 0px 0px;
+  }
+  .geshop-activity-lists .el-table__row .ge-activity-list-operating .cell {
+    height: 80px;
+  }
+  .geshop-activity-lists .el-table__row .ge-activity-list-operating .el-button {
+    padding:0px 0px;
+    border:none;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .geshop-activity-lists .el-table__row .ge-activity-list-operating .el-button-group .el-button--default {
+    display: none;
+  }
+  .geshop-activity-lists .el-table__row .ge-activity-list-operating .el-button-group .el-dropdown__caret-button {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .geshop-activity-lists .el-table__row .ge-activity-list-operating .el-button-group .el-dropdown__caret-button:hover {
+    background-color: #F4F4F4;
+  }
+  .geshop-activity-lists .el-dropdown__caret-button .el-icon-arrow-down {
+    background:url('../images/activity/more_black.png') no-repeat;
+    width: 24px;
+    height: 24px;
+    border:none;
+  }
+  .geshop-activity-lists .el-dropdown__caret-button .el-icon-arrow-down:hover {
+    background:url('../images/activity/more_blue.png') no-repeat;
+    width: 24px;
+    height: 24px;
+    border:none;
+  }
+  .geshop-activity-lists .el-dropdown__caret-button .el-icon-arrow-down:before {
+    display: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+  }
+
+  /* 分页条 */
+  .geshop-article-page .el-pagination {
+    background-color: #FFFFFF;
+    padding-top: 40px;
+  }
+  .geshop-article-page .el-pagination li {
+    line-height: 20px;
+    min-width:20px;
+    margin-left: 24px;
+    font-weight: normal;
+  }
+  .geshop-article-page .el-pagination li.active {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #1E9FFF;
+    color: #FFFFFF;
+  }
+  .geshop-article-page .el-icon-arrow-right {
+    margin-top: -5px;
+  }
+
+  /* 子页面活动区域 */
+  .geshop-activity-lists .el-table__expanded-cell:hover {
+    background-color: #ECEEF6 !important; 
+  }
+  .geshop-activity-lists .el-table__expanded-cell[class*=cell] {
+    padding: 0px 120px;
+    background-color: #ECEEF6;
+  }
+  .geshop-activity-lists .geshop-activity-child-pages {
+    width: 264px;
+    height: 260px;
+    float: left;
+    margin-left: 40px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .geshop-activity-lists .geshop-activity-child-pages .el-card__body {
+    padding:0px;
+    height: 260px;
+  }
+  .geshop-activity-lists .geshop-activity-child-pages {
+    box-shadow:0px 0px 0px 0px !important;
+  }
+  .geshop-activity-lists .geshop-activity-child-pages:hover{
+    box-shadow:0px 2px 30px 0px  rgba(0,0,0,0.1)!important;
+  }
+  .geshop-activity-lists .geshop-activity-child-pages .el-card__body .child-pages-image {
+    height:112px;
+    width: 264px;
+    display:block;
+  }
+  .geshop-activity-child-pages .el-card__body .child-page-flag-green {
+    width: 40px;
+    height: 18px;
+    text-align: center;
+    line-height: 18px;
+    font-size:12px;
+    color: #FFFFFF;
+    background-color: #3ACA60;
+    z-index: 100;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .geshop-activity-child-pages .el-card__body .child-page-flag-red {
+    width: 40px;
+    height: 18px;
+    text-align: center;
+    line-height: 18px;
+    font-size:12px;
+    color: #FFFFFF;
+    background-color: #D0021B;
+    z-index: 100;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .geshop-activity-child-pages .el-card__body .child-page-flag-warn {
+    padding: 0 8px;
+    height: 18px;
+    text-align: center;
+    line-height: 18px;
+    font-size:12px;
+    color: #FFFFFF;
+    background-color: #e6a23c;
+    z-index: 100;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .el-tooltip__popper.is-light {
+    border:none;
+    background: rgba(0,0,0,0.5) !important;
+    line-height: 20px;
+    font-size: 14px;
+    padding: 0px 6px 0px 6px;
+    color: #FFFFFF;
+    margin-top: 4px;
+  }
+  .el-tooltip__popper.is-light .popper__arrow {
+    display: none !important; 
+  }
+
+  .geshop-activity-lists .geshop-activity-child-pages .el-card__body .child-pages-hover {
+    width: 240px;
+    height: 112px;
+    background-color: red;
+    position: absolute;
+  }
+  .geshop-activity-lists .geshop-activity-child-pages .el-card__body .child-pages-hover .el-button {
+    width: 40px;
+    height: 40px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+  }
+  .geshop-activity-lists .geshop-activity-child-pages .el-card__body .child-pages-title {
+    margin-top: 8px;
+    margin-left: 16px;
+    font-size:14px;
+    color:#464855;
+    line-height:20px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+  }
+  .geshop-activity-lists .geshop-activity-child-pages .el-card__body .child-pages-time {
+    margin-left: 16px;
+    font-size:12px;
+    color:#9E9E9E;
+    line-height:20px;
+  }
+  .geshop-activity-lists .geshop-activity-child-pages .el-card__body .child-pages-id-name {
+    margin-left: 16px;
+    margin-top: 16px;
+    font-size:14px;
+    color:#9E9E9E;
+    line-height:20px;
+  }
+  .geshop-activity-lists .geshop-activity-child-pages .el-card__body .child-pages-id-name span {
+    float: right;
+    margin-right: 14px;
+    display: inline-block;
+  }
+  .geshop-activity-lists .geshop-activity-child-pages .el-card__body .child-pages-name {
+    margin-left: 14px;
+    margin-top: 16px;
+    font-size:14px;
+    color:#9E9E9E;
+    line-height:20px;
+  }
+  .geshop-activity-lists .geshop-activity-child-pages .el-card__body .child-pages-link {
+    left: 16px;
+    top: 230px;
+    font-size: 14px;
+    color: #9E9E9E;
+    position: absolute;
+  }
+  .geshop-activity-lists .geshop-activity-child-pages .el-card__body .child-pages-link:hover {
+    color: #1E9FFF;
+    cursor: pointer;
+  }
+  .geshop-activity-child-pages .el-dropdown .el-button--default {
+    display: none;
+    border: none;
+  }
+  .geshop-activity-lists .geshop-activity-child-pages .el-dropdown__caret-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    display: block;
+    padding-left: 2px;
+  }
+  .geshop-activity-lists .geshop-activity-child-pages .el-dropdown__caret-button:hover {
+    background-color: #F4F4F4;
+  }
+  .geshop-activity-lists .geshop-activity-child-pages .child-pages-add {
+    margin-top: 12px;
+    margin-left: 85px;
+    height:20px;
+    font-size:14px;
+    color:#464855;
+  }
+  .geshop-activity-lists .geshop-activity-child-pages .el-card__body .child-pages-hover {
+    width: 100%;
+    height:112px;
+    background-color:rgba(0,0,0,0.5);
+    margin-top: -112px;
+    display: hidden;
+  }
+  .geshop-activity-lists .geshop-activity-child-pages .child-pages-hover .icon-geshop-decorate::before,
+  .geshop-activity-lists .geshop-activity-child-pages .child-pages-hover .icon-geshop-online::before,
+  .geshop-activity-lists .geshop-activity-child-pages .child-pages-hover .icon-geshop-offline::before,
+  .geshop-activity-lists .geshop-activity-child-pages .child-pages-hover .icon-geshop-search::before,
+  .geshop-activity-lists .geshop-activity-child-pages .child-pages-hover .icon-geshop-mobile::before {
+    font-size: 20px;
+  }
+  .geshop-activity-lists .geshop-activity-child-pages .child-pages-hover .icon-geshop-decorate {
+    position: absolute;
+    top: 36px;
+    left: 16px;
+  }
+  .geshop-activity-lists .geshop-activity-child-pages .child-pages-hover .icon-geshop-online,
+  .geshop-activity-lists .geshop-activity-child-pages .child-pages-hover .icon-geshop-offline {
+    position: absolute;
+    top: 36px;
+    left: 72px;
+  }
+  .geshop-activity-lists .geshop-activity-child-pages .child-pages-hover .icon-geshop-mobile {
+    position: absolute;
+    top: 36px;
+    left: 184px;
+  }
+  .geshop-activity-lists .geshop-activity-child-pages .child-pages-hover .icon-geshop-search,
+  .geshop-activity-lists .geshop-activity-child-pages .child-pages-hover .advertisement-icon-geshop-mobile {
+    position: absolute;
+    top: 36px;
+    left: 128px;
+  }
+  .geshop-activity-lists .geshop-activity-child-pages .el-card__body .child-pages-hover .el-button {
+    margin-left: 16px;
+    margin-top: 36px;
+    margin: 0px;
+    padding: 0px 0px;
+  }
+  .geshop-activity-child-pages .icon-geshop-add-big {
+    background-color: #FFFFFF;
+    border: none;
+  }
+  .icon-geshop-add-small.is-lock {
+    font-size: 24px;
+    color: #9E9E9E;
+    background-color: #FFFFFF;
+  }
+  .icon-geshop-add-small:hover,
+  .icon-geshop-offline:hover,
+  .icon-geshop-online:hover
+   {
+    background-color: #F4F4F4;
+  }
+
+/* 新增子页面 */
+  .geshop-new-child-page .el-dialog {
+    width: 880px !important;
+  }
+  .geshop-new-child-page .el-dialog__close {
+    font-size: 24px;
+    color: #FFFFFF;
+  }
+  .geshop-new-child-page .el-dialog__close:hover {
+    color: #FFFFFF;
+  }
+  .geshop-new-child-page .el-form-item__content {
+    position: static;
+  }
+  .geshop-new-child-page .el-dialog__header {
+    line-height:64px;
+    background:#1A233B;
+    padding: 0px 0px;
+  }
+  .geshop-new-child-page .el-dialog__header .el-dialog__title {
+    font-size:18px;
+    color: #FFFFFF;
+    margin-left: 40px;
+    margin-top: 20px !important;
+  }
+  .geshop-new-child-page .el-dialog__body {
+    padding: 8px 40px 20px 40px;
+  }
+  .geshop-new-child-page .el-tabs--card>.el-tabs__header .el-tabs__nav {
+    border:none;
+  }
+  .geshop-new-child-page .el-tabs--card>.el-tabs__header .el-tabs__item {
+    width: 160px;
+    height: 52px;
+    line-height:  52px;
+    text-align: center;
+    border-left: 0px;
+    color:#333333 ;
+  }
+  .geshop-new-child-page .el-tabs--card>.el-tabs__header .el-tabs__item:hover {
+    color: #333333;
+  }
+  .geshop-new-child-page .el-tabs--card>.el-tabs__header .el-tabs__item.is-active {
+    border-bottom: 4px solid #1E9FFF !important;
+    color: #333333;
+  }
+  .geshop-new-child-page .el-form-item {
+    margin-bottom: 0px;
+    position: relative;
+  }
+  .geshop-new-child-page .geshop-new-child-page-title {
+    margin-top: -16px;
+  }
+  .geshop-new-child-page .child-page-name {
+    width: 392px;
+    float: left;
+  }  
+  .geshop-new-child-page .child-page-name  .el-form-item__content .el-input__inner{
+    padding-right: 70px;
+  }
+  .geshop-new-child-page .child-page-name .el-form-item__error {
+    position: absolute;
+    top: 225px;
+    left: 83px;
+  }
+  .geshop-new-child-page .child-page-name .el-form-item__label {
+    line-height: 30px;
+    margin-top: 11px;
+  }
+  .geshop-new-child-page .child-page-shelves-time {
+    width: 392px;
+    height: 81px;
+    float: left;
+    margin-left: 16px;
+  }
+  .geshop-new-child-page .child-page-shelves-time .el-form-item__error {
+    position: absolute;
+    top: 138px;
+    left: 520px;
+  }
+  .geshop-new-child-page .child-page-shelves-time .el-form-item__label {
+    text-align: left;
+    line-height: 30px;
+    margin-top: 11px;
+    width: 100%;
+  }
+  .geshop-new-child-page .child-page-shelves-time .el-date-editor.el-input {
+    width: 392px;
+    float: left;
+  }
+  .geshop-new-child-page .child-page-link {
+    margin-top: 10px;
+  }
+  .geshop-new-child-page .child-page-link .child-page-note {
+    line-height: 30px;
+    display:block;
+    color:#b7b7b7;
+  }
+  .geshop-new-child-page .child-page-link,
+  .geshop-new-child-page .child-page-link .el-form-item__label,
+  .geshop-new-child-page .child-page-link .el-input__inner {
+    text-align: left;
+  }
+  .geshop-new-child-page .child-page-link .el-form-item__label {
+    width: 100%;
+    line-height: 30px;
+  }
+  .geshop-new-child-page .child-page-link .el-form-item__content .el-input__inner {
+    width: 800px !important;
+  }
+  .geshop-new-child-page .child-page-link.goods_sn-input .el-form-item__content .el-input__inner {
+    width: 200px !important;
+  }
+
+  .geshop-new-child-page .child-page-link.goods_sn-input .el-form-item__error {
+    padding-top: 0;
+  }
+
+  .geshop-new-child-page .gs-col-all.child-page-url .el-form-item__label,
+  .geshop-new-child-page .gs-col-all.child-page-place .el-form-item__label {
+    line-height: 30px;
+    text-align: left;
+    width: 100%;
+  }
+  .geshop-new-child-page .gs-col-all .el-form-item__label {
+    line-height: 30px;
+    margin-top: 11px;
+  }
+  .geshop-new-child-page .gs-col-all .el-form-item__error {
+    position: absolute;
+    top: 80px;
+    /* top: 0; */
+    left: 0;
+  }
+  .geshop-new-child-page .gs-col-all.child-page-url .el-form-item__error {
+    position: absolute;
+    top: 80px;
+    left: 0;
+  }
+  .geshop-new-child-page .gs-col-all.child-page-place .el-form-item__error {
+    position: absolute;
+    top: 15px;
+    left: 100px;
+  }
+  .geshop-new-child-page .gs-col-all .el-form-item__content label.current-site-url{
+    position: absolute;
+    top: 6px;
+    left: 80px;
+  }
+  .geshop-new-child-page .child-page-model .el-form-item__label {
+    line-height: 30px;
+    margin-top: 11px;
+    width: 100%;
+    text-align: left;
+  }
+  .geshop-new-child-page .child-page-model .el-button--primary {
+    height: 40px;
+    width: 40%;
+    border-radius: 4px 0px 0px 4px;
+    border: none;
+  }
+  .geshop-new-child-page .child-page-model .el-tag {
+    position: relative;
+    left: -3px;
+    top: 1px;
+    height: 40px;
+    width: 475px;
+    padding: 4px 10px;
+    border-radius: 0px 4px 4px 0px;
+    background-color:  #FFFFFF;
+  }
+  .geshop-new-child-page .child-page-keywords .el-form-item__label {
+    line-height: 30px;
+    margin-top: 11px;
+  }
+  .geshop-new-child-page .child-page-statistical-code .el-form-item__label,
+  .geshop-new-child-page .child-page-introduction .el-form-item__label {
+    line-height: 30px;
+    margin-top: 11px;
+  }
+  
+  .geshop-new-child-page .child-page-statistical-code,
+  .geshop-new-child-page .child-page-statistical-code .el-form-item__label,
+  .geshop-new-child-page .child-page-statistical-code .el-textarea {
+    width: 392px;
+    text-align: left;
+    float: left;
+  }
+
+  .geshop-new-child-page .ad-child-page-statistical-code {
+    width: 100%;
+  }
+
+  .geshop-new-child-page .ad-child-page-statistical-code .count-tip-box {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+  }
+  
+  .geshop-new-child-page .child-page-introduction,
+  .geshop-new-child-page .child-page-introduction .el-form-item__label,
+  .geshop-new-child-page .child-page-introduction .el-textarea {
+    width: 392px;
+    text-align: left;
+    float: left;
+    margin-left: 8px;
+  }
+  .geshop-new-child-page .child-page-btns .el-button {
+    width: 100px;
+    height: 40px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-right: 2px;
+  }
+  .geshop-new-child-page .child-page-btns .el-button:first-child {
+    margin-left: 292px;
+  }
+
+/* 子页面新增结束 */
+
+/* 页面模板弹窗开始 */
+.geshop-page-template .el-dialog {
+  width: 880px !important;
+  margin:0 auto;
+}
+.geshop-page-template .el-form-item__content {
+  position: static;
+}
+.geshop-page-template .el-dialog__header {
+  line-height:64px;
+  background:#1A233B;
+  padding: 0px 0px;
+}
+.geshop-page-template .el-dialog__header .el-dialog__title {
+  font-size:18px;
+  color: #FFFFFF;
+  margin-left: 40px;
+  margin-top: 20px !important;
+}
+.geshop-page-template .el-dialog__body {
+  padding: 17px 40px 37px 40px;
+}
+.geshop-page-template .el-dialog__body .geshop-page-template-title {
+  line-height: 22px;
+}
+.geshop-page-template .el-dialog__body .geshop-page-template-title .icon-geshop-backward {
+  font-size: 24px;
+  vertical-align: middle;
+  margin-top: -3.5px;
+  display: inline-block;
+}
+.geshop-page-template .el-dialog__body .geshop-page-template-word {
+  font-size: 16px;
+  color: #333333;
+}
+.geshop-page-template .el-dialog__body .el-tabs--border-card {
+  margin-top: 24px;
+  border: none;
+  box-shadow: none;
+}
+.geshop-page-template .el-dialog__body .el-tabs__header {
+  height: 50px;
+  border-bottom: 1px solid #E4E4E4;
+  background-color: #ffffff !important;
+}
+.geshop-page-template .el-tabs__header .el-tabs__item {
+  border: none;
+  width: 160px;
+  text-align:center;
+}
+.geshop-page-template .el-tabs--border-card>.el-tabs__header .el-tabs__item {
+  color: #333333;
+}
+.geshop-page-template .el-tabs__header .el-tabs__item.is-active {
+  width: 160px;
+  height: 52px;
+  color: #333333;
+  border-bottom: 4px solid #1E9FFF;
+  text-align: center;
+}
+.geshop-page-template .el-tabs__content {
+  padding: 0px 0px;
+}
+.geshop-page-template .el-tabs__content .model-box {
+  width: 20%;
+  text-align: left;
+}
+.geshop-page-template .el-tabs__content .model-box .model-item {
+  width: 128px;
+  height: 150px;
+  border: 1px solid #E6E6E6;
+  position: relative;
+}
+.geshop-page-template .el-tabs__content .model-box .el-radio__input {
+  position: absolute;
+  right: 4px;
+  top: 18px;
+}
+.geshop-page-template .el-radio__input .el-radio__inner {
+  width: 18px;
+  height: 18px;
+}
+.geshop-page-template .el-radio__input.is-checked .el-radio__inner {
+  background-color: #FFFFFF;
+}
+.geshop-page-template .el-radio__input.is-checked .el-radio__inner::after {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #1E9FFF;
+}
+.geshop-page-template .el-tabs__content .model-box .model-item>span {
+  line-height: 17px;
+  font-size: 12px;
+  color: #333333;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 15px;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.geshop-page-template .el-tabs__content .model-box .model-item>img {
+  width: 108px;
+  height: 108px;
+  margin-top: 30px;
+}
+.geshop-page-template .el-dialog__footer {
+  text-align: center;
+  padding: 37px 0px 40px 0px !important;
+}
+.geshop-page-template .el-dialog__footer .el-button {
+  width: 100px;
+  height: 40px;
+}
+.geshop-page-template .model-item {
+  position: relative;
+}
+.geshop-page-template .model-item:hover {
+  border: 1px solid #1E9FFF !important;
+}
+.geshop-page-template .model-item .icon-geshop-search {
+  display: none;
+  text-align: center;
+  line-height: 40px;
+}
+.geshop-page-template .model-item:hover .icon-geshop-search {
+	display: block;
+}
+.geshop-page-template .icon-geshop-search {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background: #FFFFFF;
+  position: absolute;
+  top: 64px;
+  left: 44px;
+  font-size: 24px;
+  z-index: 100;
+}
+.geshop-page-template .icon-geshop-search:hover {
+  background: #1E9FFF;
+  color:#FFFFFF;
+}
+.geshop-page-template .el-dialog__header .el-dialog__close,
+.geshop-page-template .el-dialog__header .el-dialog__close:hover {
+  font-size: 24px;
+  color: #FFFFFF;
+}
+.geshop-page-template .el-radio__input.is-checked+.el-radio__label {
+  color: #333333;
+}
+.geshop-page-template .el-tabs__content .el-radio__input {
+
+}
+/* 页面模板弹窗结束 */
+
+/* 查看模板大图开始 */
+.geshop-template-model .el-dialog {
+  margin-top: 0px !important;
+  height: 100%;
+}
+.geshop-template-model .el-dialog .el-dialog__header {
+	height: 64px;
+	padding: 20px 0px 19px 40px;
+	/* width: 100%; */
+	height: 25px;
+	font-size: 18px;
+	background-color: #1A233B;
+}
+.geshop-template-model .el-dialog .el-dialog__header .el-dialog__title {
+  color: #FFFFFF;
+}
+.geshop-template-model .el-dialog .el-dialog__body {
+  height: 100%;
+  /* width: 100%; */
+}
+.geshop-el-main .geshop-template-model .el-row {
+  /* height: 100% !important; */
+  height: 90% !important;
+}
+.geshop-template-model .el-dialog__header .el-dialog__close,
+.geshop-template-model .el-dialog__header .el-dialog__close:hover {
+  font-size: 24px;
+  color: #FFFFFF;
+}
+/* 查看模板大图结束 */
+
+/* 新增活动弹框开始 */
+.geshop-new-activities .el-dialog {
+  width: 720px !important;
+  margin:0 auto;
+}
+.geshop-new-activities .el-dialog__header {
+  line-height: 64px;
+  background-color: #1A233B;
+  padding: 0px 0px;
+}
+.geshop-new-activities .el-dialog__header .el-dialog__title {
+  color: #FFFFFF;
+  margin-left: 40px;
+}
+.geshop-new-activities .el-dialog__header .el-dialog__close {
+  font-size: 24px;
+  color: #FFFFFF;
+}
+.geshop-new-activities .el-dialog__body {
+  padding: 16px 40px 40px 40px;
+}
+.geshop-new-activities .el-form-item {
+  margin-bottom: 0px !important;
+}
+.geshop-new-activities .el-form-item__label {
+  line-height: 30px;
+}
+.geshop-new-activities-lang .el-form-item__label,
+.geshop-new-activities-place .el-form-item__label {
+  width: 100%;
+  line-height:20px;
+  text-align: left;
+  font-size:14px;
+  color: #333333;
+}
+.geshop-new-activities-lang .el-form-item__content,
+.geshop-new-activities-place .el-form-item__content {
+  width: 100%;
+  line-height: 30px;
+}
+.geshop-new-activities-range-time .el-form-item__label {
+  width: 100%;
+  text-align: left;
+}
+.geshop-new-activities-btn .el-form-item__content {
+  margin-top: 40px;
+  text-align: center;
+}
+.geshop-new-activities-btn .el-form-item__content .el-button {
+  width: 100px;
+  height: 40px;
+}
+.geshop-new-activities-btn .el-form-item__content .el-button+.el-button {
+ margin-left: 12px;
+}
+.geshop-new-activities-name .el-form-item__label,
+.geshop-new-activities-introduction .el-form-item__label{
+  margin-top: 11px;
+}
+.geshop-new-activities-name .el-form-item__error {
+  position: absolute;
+  top: 16px;
+  left: 44px;
+} 
+/* 新增活动弹框结束 */
+.el-message-box__headerbtn .el-message-box__close {
+  width:14px;
+  height:14px;
+  color:#9E9E9E;
+  font-size: 20px;
+}
+.el-message-box__status.el-icon-warning {
+  color: #FFAA00;
+} 
+.el-message-box__btns {
+  text-align: center;
+}
+.el-message-box__btns button:nth-child(2) {
+  margin-left: 16px;
+}
+
+.place-activity-title .el-form-item__error {
+  top: 30px !important;
+}
+
+.has-activity-list-class {
+  top: 30%;
+}
+
+.tab-header .el-tabs__header {
+  margin: 0px 0 0 0;
+}
+
+.geshop-port-switch .el-tabs__header.is-top {
+  background-color: #FFFFFF;
+}
+
+.geshop-port-switch .el-tabs--card>.el-tabs__header .el-tabs__nav {
+  border:none;
+  padding-left: 24px;
+}
+
+.geshop-port-switch .el-tabs--card>.el-tabs__header .el-tabs__item {
+  width: 130px;
+  text-align: center;
+  color: #606266;
+  border:none;
+}
+
+.geshop-port-switch .el-tabs--card>.el-tabs__header .el-tabs__item.is-active {
+  border-bottom: 4px solid #409EFF;
+}

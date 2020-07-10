@@ -1,0 +1,45 @@
+{%
+	set pageData = {
+		titleWidth:data.titleWidth is not null?data.titleWidth:400,
+	}
+%}
+{% set userGroupClass = "geshop_user_"~data.userGroupSelect|default(0)%}
+
+<div class="geshop-component-box component-drag {{ userGroupClass }}" id="U000060_{{pageInstanceId}}" data-gid="U000060_nomore" data-key="U000060" data-id="{{ pageInstanceId }}" attr="nav_flag">
+	<div style="
+		{% if data.boxMarginTop %}margin-top: {{ data.boxMarginTop }}px;{% endif %}
+		{% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom }}px;{% endif %}
+		{% if data.boxPaddingTop %}padding-top: {{ data.boxPaddingTop }}px;{% endif %}
+		{% if data.boxPaddingBottom %}padding-bottom: {{ data.boxPaddingBottom }}px;{% endif %}
+		{# height:{{data.height|default(80)}}px; #}
+		{# line-height:{{data.height|default(80)}}px; #}
+		padding-top: {{ data.boxPaddingTop | default(30) }}px;
+		padding-bottom: {{ data.boxPaddingBottom | default(30) }}px;
+		line-height: 1.5;
+		{% if data.imgSrc  is not empty %}
+		background-image: url({{ data.imgSrc }});
+		background-position: center;
+		background-repeat: no-repeat;
+		{% endif %}
+		{% if data.bgColor is not empty %}
+		background-color:{{ data.bgColor }};
+		{% endif %}
+		text-align:center;
+		width:100%;
+		overflow: hidden;
+	">
+		<a href="{{ data.viewHref|default('javascript:;') }}" style="
+			display:block;
+			{% if data.viewHref %}cursor: pointer;{% else%} cursor:default; {% endif %}
+			font-size:{% if data.titleFont %}{{ data.titleFont }}{% else %} 16{% endif %}px;
+			color:{% if data.titleColor %}{{ data.titleColor }}{% else %} #333333{% endif %};
+			font-weight:{% if data.titleWeight %}{{ data.titleWeight }}{% else %} bold{% endif %};
+			{% if pageData.titleWidth %}width:{{pageData.titleWidth}}px;{% endif %}
+			margin-left:auto;
+			margin-right:auto;
+			{% if data.titleBgI %}background:url('{{data.titleBgI}}') no-repeat center center/100%;{% endif %}
+		">
+			{% if data.titleText %}{{ data.titleText }}{% else %}请设置导航标题{% endif %}
+		</a>
+	</div>
+</div>

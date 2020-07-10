@@ -1,0 +1,43 @@
+{% set remUnit = 37.5 %}
+
+{% set pageData = {
+	height:(data.height|default(60))/remUnit,
+	titleWidth:(data.titleWidth|default(400))/remUnit,
+	titleFont:(data.titleFont|default(16))/remUnit,
+}%}
+
+<div class="geshop-component-box component-drag" id="U000032_{{ pageInstanceId }}" style="{% if data.boxMarginTop %}margin-top: {{ data.boxMarginTop / 75 | number_format(3, '.') }}rem;{% endif %}" data-key="U000032" data-id="{{ pageInstanceId }}" attr="nav_flag">
+	<div style="
+		{% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom / 75 | number_format(3, '.') }}rem;{% endif %}
+		{# {% if data.boxPaddingTop %}padding-top: {{ data.boxPaddingTop / 75 | number_format(3, '.') }}rem;{% endif %}
+		{% if data.boxPaddingBottom %}padding-bottom: {{ data.boxPaddingBottom / 75 | number_format(3, '.') }}rem;{% endif %} #}
+		padding-top: {{ (data.boxPaddingTop|default(40)) /75 | number_format(3, '.') }}rem;
+		padding-bottom: {{ (data.boxPaddingBottom|default(40)) /75 | number_format(3, '.') }}rem;
+		{# min-height:{{pageData.height}}rem; #}
+		{% if data.imgSrc is not empty %}background-image: url({{ data.imgSrc }});background-position: center;background-repeat: no-repeat;{% endif %}
+		background-color:{% if data.bgColor %}{{ data.bgColor }}{% else %} transparent{% endif %};
+		background-size: 100% 100%;
+		text-align:center;
+		width:100%;
+		overflow: hidden;			
+		position:relative;
+	">
+		<h2>
+			<a href="{{ data.viewHref | default('javascript:;') }}" style="
+				display:block;cursor: pointer;
+				font-size:{{pageData.titleFont}}rem;
+				color:{% if data.titleColor %}{{ data.titleColor }}!important{% else %} #000{% endif %};
+				font-weight:{% if data.titleWeight %}{{ data.titleWeight }}{% else %} bold{% endif %};
+				width:{{pageData.titleWidth}}rem;
+				line-height:1.5;
+				margin-left:auto;
+				margin-right:auto;
+				{% if data.titleBgI %}background:url('{{data.titleBgI}}') no-repeat center center/100%{% endif %};
+				-webkit-tap-highlight-color: rgba(0,0,0,0);
+			">
+				{% if data.titleText %}{{ data.titleText }}{% else %}请设置导航标题{% endif %}
+			</a>
+		</h2>
+
+	</div>
+</div>

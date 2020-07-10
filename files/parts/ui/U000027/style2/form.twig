@@ -1,0 +1,90 @@
+{%
+set formData = {
+    id: 'U000027',
+    name: '水平导航组件',
+    theme: 'style2',
+    tabs: [
+        {
+            label: '导航设置',
+            components: [
+                {
+                    label: '导航内容配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            type: 'diy',
+                            src: 'form-dataset.twig'
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            label: '样式配置',
+            components: [
+                {
+                    label: '常用配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '背景颜色',
+                            name: 'bgColor',
+                            type: 'colorPicker',
+                            default: '#D8D8D8',
+                        },
+                        {
+                            label: '选中状态背景颜色',
+                            name: 'bgColor_active',
+                            type: 'colorPicker',
+                            default: '#333333',
+                        },
+                        {
+                            label: '文字颜色',
+                            name: 'font_color',
+                            type: 'colorPicker',
+                            default: '#333333',
+                        },
+                        {
+                            label: '选中状态文字颜色',
+                            name: 'font_color_active',
+                            type: 'colorPicker',
+                            default: '#ffffff',
+                        },
+                        {
+                            label: '文字大小(px)',
+                            name: 'font_size',
+                            default: '14',
+                        },
+                        {
+                            label: '导航菜单高度(px)',
+                            name: 'height',
+                            type: 'input',
+                            default: '50',
+                        },
+                        {
+                            label: '单个导航菜单宽度(px)',
+                            name: 'item_width',
+                            default: '160',
+                        },
+                        {
+                            label: '导航菜单间距(px)',
+                            name: 'margin',
+                            type: 'input',
+                            default: '6',
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    moreConfig: [],
+    beforeSubmit: 'beforeSubmit'
+}
+%}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+<script>
+{% include './form.js' %}
+</script>

@@ -1,0 +1,189 @@
+{%
+    set pageData = {
+		titleWidth: data.titleWidth is not null ? data.titleWidth: 375,
+	}
+%}
+
+<style type="text/css">
+    .changeSection {
+        margin-bottom: 20px;
+    }
+    .changeSection a {
+        display: none !important; 
+    }
+</style>
+
+{# Form 表单数据配置 #}
+{%
+    set formData = {
+        id: 'U000024',
+        name: '标题栏组件设置',
+        theme: 'model4',
+        tabs: [
+            {
+                label: '标题内容',
+                components: [
+                    {
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '标题名称',
+                                name: 'titleText',
+                                type: 'input',
+                                public: false,
+                                placeholder: '请输入标题名称',
+                            },
+                            {
+                                label: '导航名称',
+                                desc: '(若不设置时，导航内容为标题名称)',
+                                name: 'titleNavText',
+                                type: 'input',
+                                public: false,
+                                placeholder: '请输入导航名称',
+                            },
+                            {
+                                label: '跳转链接',
+                                name: 'view_link_href',
+                                type: 'input',
+                                placeholder: '请输入完整的url',
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                label: '样式设置',
+                components: [
+                    {
+                        label: '常用配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件上边距(px)',
+                                name: 'model_magin_top',
+                                type: 'input',
+                                col: 2,
+                                default: 0,
+                            },
+                            {
+                                label: '组件下边距(px)',
+                                name: 'model_magin_bottom',
+                                type: 'input',
+                                col: 2,
+                                default: 16,
+                            },
+                            {
+                                label: '标题栏宽度(px)',
+                                name: 'title_text_width',
+                                type: 'input',
+                                col: 2,
+                                default: 750,
+                            },
+                            {
+                                label: '标题栏高度(px)',
+                                name: 'title_text_height',
+                                type: 'input',
+                                col: 2,
+                                default: 80,
+                            },
+                            {
+                                label: '文字大小(px)',
+                                name: 'title_text_fz',
+                                type: 'input',
+                                col: 2,
+                                default: 34,
+                                extendClass: ''
+                            },
+                            {
+                                label: '文字颜色',
+                                name: 'title_text_color',
+                                type: 'colorPicker',
+                                public: false,
+                                default: '#333333',
+                                col: 2,
+                            },
+                            {
+                                label: '文案是否加粗',
+                                name: 'title_is_bold',
+                                type: 'radio',
+                                default: '0',
+                                options: [
+                                    { label: '是', value: '1' },
+                                    { label: '否', value: '0' },
+                                ]
+                            },
+                            {
+                                label: '背景颜色',
+                                name: 'title_text_bgColor',
+                                type: 'colorPicker',
+                                public: false,
+                                default: '#f8f8f8',
+                            },
+                            {
+                                label: '背景图片',
+                                name: 'title_text_bgImage',
+                                type: 'image',
+                                public: false,
+                            },
+                            {
+                                label: '边框粗细(px)',
+                                name: 'title_border_width',
+                                type: 'input',
+                                default: 0,
+                            },
+                            {
+                                label: '标题圆角大小(px)',
+                                name: 'title_radius_sz',
+                                type: 'input',
+                                default: 0,
+                            },
+                            {
+                                label: '边框颜色',
+                                name: 'title_border_color',
+                                type: 'colorPicker',
+                                public: false,
+                                default: '',
+                            },
+                            {
+                                label: '图标类型',
+                                name: 'title_arr_style',
+                                type: 'radio',
+                                default: '1',
+                                options: [
+                                    { label: '实心', value: '1' },
+                                    { label: '空心', value: '0' },
+                                ]
+                            },
+                            {
+                                label: '图标大小(px)',
+                                name: 'title_ico_sz',
+                                type: 'input',
+                                default: 24,
+                                extendClass: ''
+                            },
+                            {
+                                label: '图标颜色',
+                                name: 'title_ico_color',
+                                type: 'colorPicker',
+                                public: false,
+                                default: '#333333',
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        moreConfig: []
+    }
+%}
+ 
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+<script type="text/javascript">
+    var designFormClose = $('.design-form-close');
+    if (designFormClose) {
+        designFormClose.removeClass('icon-close').addClass('gb-icon-close')
+    }
+</script>
+

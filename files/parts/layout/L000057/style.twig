@@ -1,0 +1,91 @@
+<!-- embed stylesheet begin -->
+    <style type="text/css">
+        {# PC #}
+        @media screen and (min-width: 1025px) {
+            {% for item in layoutData.columns %}
+                .geshop-col-x-{{ pageInstanceId }}-{{ loop.index }} {
+                    width: {{ item.width }};
+                }
+            {% endfor %}  
+        }
+
+        {# PAD #}
+        @media screen and (max-width: 1024px) and (min-width: 768px) {
+            {% for item in layoutData.columns %} 
+                .geshop-col-x-{{ pageInstanceId }}-{{ loop.index }} {
+                    width: {{ item.width }};
+                }
+            {% endfor %}
+        }
+
+        {# WAP #}
+        @media screen and (max-width: 767px) and (min-width: 0px) {
+            {% if layoutData.count == 1 %}
+                .geshop-col-x-{{ pageInstanceId }} {
+                    width: {{ layoutData.wapColumns[0].width }}
+                } 
+            {% elseif layoutData.count == 2 %}
+                {% if layoutData.wapCount == 1 %}
+                    .geshop-col-x-{{ pageInstanceId }} {
+                        width: {{ layoutData.wapColumns[0].width }}
+                    }
+                {% elseif layoutData.wapCount == 2 %}
+                    .geshop-col-x-{{ pageInstanceId }}:nth-child(1) {
+                        width: {{ layoutData.wapColumns[0].width }}
+                    }
+                    .geshop-col-x-{{ pageInstanceId }}:nth-child(2) {
+                        width: {{ layoutData.wapColumns[1].width }}
+                    }
+                {% endif %}
+            {% elseif layoutData.count == 3 %}
+                {% if layoutData.wapCount == 1 %}
+                    .geshop-col-x-{{ pageInstanceId }} {
+                        width: {{ layoutData.wapColumns[0].width }}
+                    }
+                {% elseif layoutData.wapCount == 3 %}
+                    .geshop-col-x-{{ pageInstanceId }}:nth-child(1) {
+                        width: {{ layoutData.wapColumns[0].width }}
+                    }
+                    .geshop-col-x-{{ pageInstanceId }}:nth-child(2) {
+                        width: {{ layoutData.wapColumns[1].width }}
+                    }
+                    .geshop-col-x-{{ pageInstanceId }}:nth-child(3) {
+                        width: {{ layoutData.wapColumns[2].width }}
+                    }
+                {% endif %}
+            {% elseif layoutData.count == 4 %}
+                {% if layoutData.wapCount == 1 %}
+                    .geshop-col-x-{{ pageInstanceId }} {
+                        width: {{ layoutData.wapColumns[0].width }}
+                    }
+                {% elseif layoutData.wapCount == 2 %}
+                    .geshop-col-x-{{ pageInstanceId }}:nth-child(1) {
+                        width: {{ layoutData.wapColumns[0].width }}
+                    }
+                    .geshop-col-x-{{ pageInstanceId }}:nth-child(2) {
+                        width: {{ layoutData.wapColumns[1].width }}
+                    }
+                    .geshop-col-x-{{ pageInstanceId }}:nth-child(3) {
+                        width: {{ layoutData.wapColumns[0].width }}
+                    }
+                    .geshop-col-x-{{ pageInstanceId }}:nth-child(4) {
+                        width: {{ layoutData.wapColumns[1].width }}
+                    }
+                {% elseif layoutData.wapCount == 4 %}
+                    .geshop-col-x-{{ pageInstanceId }}:nth-child(1) {
+                        width: {{ layoutData.wapColumns[0].width }}
+                    }
+                    .geshop-col-x-{{ pageInstanceId }}:nth-child(2) {
+                        width: {{ layoutData.wapColumns[1].width }}
+                    }
+                    .geshop-col-x-{{ pageInstanceId }}:nth-child(3) {
+                        width: {{ layoutData.wapColumns[2].width }}
+                    }
+                    .geshop-col-x-{{ pageInstanceId }}:nth-child(4) {
+                        width: {{ layoutData.wapColumns[3].width }}
+                    }
+                {% endif %}
+            {% endif %}
+        }
+    </style>
+<!-- embed stylesheet end -->

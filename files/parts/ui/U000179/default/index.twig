@@ -1,0 +1,227 @@
+{#/**
+*@author: 任贸华
+*@date: 2018/12/1 16:31:41
+*@desc: 签到送积分组件index
+*/#}
+{% set pageData = {
+	boxMarginBottom: data.boxMarginBottom|default(32),
+	boxBackgroundImg: data.boxBackgroundImg|default(''),
+	boxBackgroundColor: data.boxBackgroundColor|default('#F8F8F8'),
+	boxTitleTxt: data.boxTitleTxt|default('Battle of R Points'),
+	boxTitleColor: data.boxTitleColor|default('#333333'),
+	ruleTxt:data.ruleTxt|default('Rules'),
+	ruleColor: data.ruleColor|default('#333333'),
+	ruleBackgroundColor: data.ruleBackgroundColor|default('#D8D8D8'),
+	popRuleTitle:data.ruleTxt|default('Rules'),
+	popRuleTxt: data.popRuleTxt|default('
+1.Earn free points every day by checking in. Get 5 points on the first day, if continuous check-in, you can get more points. ;
+2.From the 7th day to check-in continuous, you can get 35 points every day. ;
+3.If you break continuous check-in, the chain will reset to the first day.'),
+	MyPointsBackgroundImg: data.MyPointsBackgroundImg|default(''),
+	MyPointsTxtColor: data.MyPointsTxtColor|default('#333333'),
+	UnSignIntegralStateImg: data.UnSignIntegralStateImg|default(staticDomain ~ '/resources/images/view/unsign.png'),
+	UnSignIntegralNumColor: data.UnSignIntegralNumColor|default('#333333'),
+	UnSignIntegralDayColor: data.UnSignIntegralDayColor|default('#333333'),
+	UnSignBackgroundImg: data.UnSignBackgroundImg|default(''),
+	UnSignButtonTxtColor: data.UnSignButtonTxtColor|default('#FFFFFF'),
+	UnSignButtonBackgroundColor:data.UnSignButtonBackgroundColor|default('#999999'),
+	UnSignButtonTxt: data.UnSignButtonTxt|default('Check In'),
+	SignIntegralStateImg: data.SignIntegralStateImg|default(staticDomain ~ '/resources/images/view/signin.png'),
+	SignIntegralNumColor: data.SignIntegralNumColor|default('#FFFFFF'),
+	SignIntegralDayColor: data.SignIntegralDayColor|default('#333333'),
+	SignBackgroundImg: data.SignBackgroundImg|default(''),
+	SignButtonTxtColor: data.SignButtonTxtColor|default('#FFFFFF'),
+	SignButtonBackgroundColor:data.SignButtonBackgroundColor|default('#D8D8D8'),
+	SignButtonTxt: data.SignButtonTxt|default('Checked In'),
+	boxMarginTop: data.boxMarginTop|default(32),
+	ruleButtonBorderRadius:data.ruleButtonBorderRadius|default('20px 0px 0px 20px'),
+	MyPointsIntegralTxtSize:data.MyPointsIntegralTxtSize|default(50),
+	MyPointsButtonTxtSize:data.MyPointsButtonTxtSize|default(14),
+	MyPointsButtonBorderRadius:data.MyPointsButtonBorderRadius|default(4),
+	IntegralBlockItemWidth:data.IntegralBlockItemWidth|default(90),
+	IntegralBlockItemMarginRight:data.IntegralBlockItemMarginRight|default(36),
+	IntegralBlockItemtxtSize:data.IntegralBlockItemtxtSize|default(30),
+	IntegralBlockItemTxtPaddingTop:data.IntegralBlockItemTxtPaddingTop|default(32),
+	popConfirmButtonTxt:data.popConfirmButtonTxt|default('OK'),
+	popConfirmTxtColor:data.popConfirmTxtColor|default('#333333'),
+	popConfirmButtonTxtColor:data.popConfirmButtonTxtColor|default('#FFFFFF'),
+	popConfirmButtonBackgroundColor:data.popConfirmButtonBackgroundColor|default('#333333'),
+	popConfirmButtonBackgroundImg:data.popConfirmButtonBackgroundImg|default(''),
+	popConfirmBackgroundImg:data.popConfirmBackgroundImg|default(staticDomain ~ '/resources/images/view/bac.png'),
+	signSucceedPop:  get_component_trans(lang,'sign_succeed_pop') ,
+	signSucceedTitle:  get_component_trans(lang,'sign_succeed_title') ,
+	signFail:  get_component_trans(lang,'sign_fail') ,
+	signIn: get_component_trans(lang,'sign_in') ,
+	d1:  get_component_trans(lang,'d1') ,
+    d2:  get_component_trans(lang,'d2') ,
+    d3:  get_component_trans(lang,'d3') ,
+    d4:  get_component_trans(lang,'d4') ,
+    d5:  get_component_trans(lang,'d5') ,
+    d6:  get_component_trans(lang,'d6') ,
+    d7:  get_component_trans(lang,'d7') ,
+	point: [25, 30, 35, 45, 55, 75, 150],
+	
+	SignImgBoxHeight: data.SignImgBoxHeight|default(108),
+} %}
+<div class="geshop-component-box component-drag ui-U000179_default ui-{{ pageInstanceId }}" data-key="U000179" data-gid="U000179_default"
+		 data-id="{{ pageInstanceId }}" data-unique="true">
+	<style>
+		.geshop-component-box.ui-{{ pageInstanceId }} .point-box {
+			background-color: #FFFFFF;
+			box-shadow: none !important;
+			{% if pageData.MyPointsBackgroundImg %}
+				background: url({{ pageData.MyPointsBackgroundImg }}) no-repeat center center;
+			{% endif %}
+			display: inline-block;
+			margin-left: 56px;
+			margin-top: 46px;
+			border-radius: 9px;
+			text-align: center;
+			overflow: hidden;
+			width: 180px;
+			box-shadow:-5px 2px 10px #ccc;
+		}
+		
+		.geshop-component-box.ui-{{ pageInstanceId }} .point-name {
+
+		}
+		
+		/*登录状态*/
+		.geshop-component-box.ui-{{ pageInstanceId }} .check-status {
+			background-color: #D8D8D8;
+			color: #333333;
+			{% if pageData.UnSignBackgroundImg is not empty %}
+				background-image: url('{{ pageData.UnSignBackgroundImg }}');
+			{% endif %}
+		}
+		
+		.geshop-component-box.ui-{{ pageInstanceId }} .check-status.check-logined {
+			background-color: {{ pageData.UnSignButtonBackgroundColor }};
+			color: {{ pageData.UnSignButtonTxtColor }}
+		}
+		
+		.geshop-component-box.ui-{{ pageInstanceId }} .check-status.check-checked {
+			{% if pageData.SignBackgroundImg is not empty %}
+				background-image: url('{{ pageData.SignBackgroundImg }}');
+			{% endif %}
+			background-color: {{ pageData.SignButtonBackgroundColor }} !important;
+			color: {{ pageData.SignButtonTxtColor }} !important;
+			pointer-events: none;
+		}
+		
+		.geshop-component-box.ui-{{ pageInstanceId }} .item-day {
+			margin-top: 10px;
+			font-weight: normal;
+			line-height: initial !important;
+		}
+		
+		/*签到未签到*/
+		.geshop-component-box.ui-{{ pageInstanceId }} .item-nocheck .item-point {
+			color: {{ pageData.UnSignIntegralNumColor }} !important;
+		}
+		
+		.geshop-component-box.ui-{{ pageInstanceId }} .item-nocheck .item-day {
+			color: {{ pageData.UnSignIntegralDayColor }} !important;
+		}
+		
+		.geshop-component-box.ui-{{ pageInstanceId }} .item-checked .item-point {
+			color: {{ pageData.SignIntegralNumColor }} !important;
+		}
+		
+		.geshop-component-box.ui-{{ pageInstanceId }} .item-checked .item-day {
+			color: {{ pageData.SignIntegralDayColor }} !important;
+		}
+		
+		/*弹窗*/
+		.blockUi-U000179 .closeBtn span {
+			color: {{ pageData.popConfirmButtonTxtColor }} !important;
+			background-color: {{ pageData.popConfirmButtonBackgroundColor }} !important;
+		}
+		/*积分天图片高度*/
+		.geshop-component-box.ui-{{ pageInstanceId }} .item-img-box{
+			height:{{ pageData.SignImgBoxHeight }}px !important;
+		}
+	
+	</style>
+	<div class="U000179Module"
+			 style=" width: 1200px; margin: {{ pageData.boxMarginTop|default(0) }}px auto {{ pageData.boxMarginBottom }}px; position: relative;  font-family: 'Microsoft Yahei'; color: #333333  ">
+		<div class="point-wrapper" style="background: {{ pageData.boxBackgroundColor }} {% if pageData.boxBackgroundImg %} url('{{ pageData.boxBackgroundImg }}') {% endif %}; padding-bottom: 32px;padding-top: 32px; background-position: center;background-repeat: no-repeat">
+			<div class="point-head-title site-bold-strict" style="font-size:30px;font-weight:600;color:{{ pageData.boxTitleColor }};line-height:40px; text-align: center ">
+				<span class="point-title-text">{{ pageData.boxTitleTxt }} </span>
+				<p class="rules" style="cursor:pointer; font-size:14px;width: 90px; float: right; line-height: 40px; font-weight: normal; background:{{ pageData.ruleBackgroundColor }};border-radius:{{ pageData.ruleButtonBorderRadius }}; color: {{ pageData.ruleColor }};">
+					{{ pageData.ruleTxt }}</p>
+			</div>
+			<div class="point-box">
+				<p class="point-name site-bold-strict" style=" font-size:16px;font-weight:600; line-height: 52px;color:{{ pageData.MyPointsTxtColor }};">
+					{{  get_component_trans(lang,'my_points')|default('My Points') }}<span>(50R=$1)</span>
+				</p>
+				<div style=" padding-bottom: 20px;">
+					<p class="total site-bold-strict" style="font-size:{{ pageData.MyPointsIntegralTxtSize }}px;font-weight:600;color:rgba(51,51,51,1);line-height: 100%; margin: 20px auto;">
+						?</p>
+					<p style="line-height: 40px;">
+											<span class="check-status sign"
+														style="cursor:pointer ;background-repeat: no-repeat;background-position:center;border-radius:{{ pageData.MyPointsButtonBorderRadius }}px; display: block; width: 120px;font-size: {{ pageData.MyPointsButtonTxtSize }}px; margin: 0 auto">{{ pageData.signIn }}</span>
+					</p>
+				</div>
+			</div>
+			
+			<div style="float:right;width: 900px; margin-top: 46px;">
+				<ul class="clearfix ulcont">
+					{% for i in 1..7 %}
+						{% set day = pageData['d%s'|format(i)] %}
+						{% set num =5*i %}
+						<li style="width: {{ pageData.IntegralBlockItemWidth }}px;  float: left; margin-right: {{ pageData.IntegralBlockItemMarginRight }}px; text-align: center;  font-weight: 600">
+							<p class="item-img-box" style=" {% if pageData.UnSignIntegralStateImg %} background: url('{{ pageData.UnSignIntegralStateImg }}')  no-repeat center; {% endif %} height: 108px; font-size: {{ pageData.IntegralBlockItemtxtSize }}px; ">
+								<span class="item-point site-bold-strict" style="margin-top:{{ pageData.IntegralBlockItemTxtPaddingTop }}px; display:inline-block;color: {{ pageData.UnSignIntegralNumColor }}">+{{ pageData.point[i-1] }}</span>
+							</p>
+							<p class="item-day" style="line-height: 50px;font-size: 14px; color: {{ pageData.UnSignIntegralDayColor }};">{{ day }}</p>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+<script>
+	var setStyle = {
+		popRuleTxt: "{{ pageData.popRuleTxt }}",
+		popRuleTitle: "{{ pageData.popRuleTitle }}",
+		popRuleTitleColor: "{{ pageData.popRuleTitleColor }}",
+		popRuleTitleSize: "{{ pageData.popRuleTitleSize }}",
+		RuleDescribeColor: "{{ pageData.RuleDescribeColor }}",
+		RuleDescribeSize: "{{ pageData.RuleDescribeSize }}",
+		RuleText: "{{ pageData.ruleTxt }}",
+		popConfirmButtonTxt: "{{ pageData.popConfirmButtonTxt }}",
+		popConfirmTxtColor: "{{ pageData.popConfirmTxtColor }}",
+		popConfirmButtonBackgroundColor: "{{ pageData.popConfirmButtonBackgroundColor }}",
+		popConfirmButtonBackgroundImg: "{{ pageData.popConfirmButtonBackgroundImg }}",
+		popConfirmBackgroundImg: "{{ pageData.popConfirmBackgroundImg }}",
+		
+		IntegralBlockItemWidth: "{{ pageData.IntegralBlockItemWidth }}",
+		IntegralBlockItemMarginRight: "{{ pageData.IntegralBlockItemMarginRight }}",
+		IntegralBlockItemtxtSize: "{{ pageData.IntegralBlockItemtxtSize }}",
+		IntegralBlockItemTxtPaddingTop: "{{ pageData.IntegralBlockItemTxtPaddingTop }}",
+		UnSignIntegralStateImg: "{{ pageData.UnSignIntegralStateImg }}",
+		UnSignIntegralNumColor: "{{ pageData.UnSignIntegralNumColor }}",
+		UnSignIntegralDayColor: "{{ pageData.UnSignIntegralDayColor }}",
+		SignIntegralStateImg: "{{ pageData.SignIntegralStateImg }}",
+		SignIntegralNumColor: "{{ pageData.SignIntegralNumColor }}",
+		SignIntegralDayColor: "{{ pageData.SignIntegralDayColor }}",
+		UnSignButtonTxt: "{{ pageData.UnSignButtonTxt }}",
+		
+		signSucceedPop: "{{ pageData.signSucceedPop }}",
+		signSucceedTitle: "{{ pageData.signSucceedTitle }}",
+		signFail: "{{ pageData.signFail }}",
+		SignButtonTxt: "{{ pageData.SignButtonTxt }}",
+		signIn: "{{ pageData.signIn }}",
+		d1: "{{ pageData.d1 }}",
+		d2: "{{ pageData.d2 }}",
+		d3: "{{ pageData.d3 }}",
+		d4: "{{ pageData.d4 }}",
+		d5: "{{ pageData.d5 }}",
+		d6: "{{ pageData.d6 }}",
+		d7: "{{ pageData.d7 }}",
+	};
+</script>

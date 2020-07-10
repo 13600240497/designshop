@@ -1,0 +1,108 @@
+.geshop-container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.geshop-row {
+  position: relative;
+  width: 100%;
+}
+
+.geshop-row [class^="geshop-col"] {
+  float: left;
+}
+
+.geshop-col-1,
+.geshop-col-2,
+.geshop-col-3,
+.geshop-col-4,
+.geshop-col-5,
+.geshop-col-6,
+.geshop-col-7,
+.geshop-col-8,
+.geshop-col-9,
+.geshop-col-10,
+.geshop-col-11,
+.geshop-col-12 {
+  width: 100%;
+}
+
+.geshop-col-1 {
+  width: 8.33%;
+}
+
+.geshop-col-2 {
+  width: 16.66%;
+}
+
+.geshop-col-3 {
+  width: 25%;
+}
+
+.geshop-col-4 {
+  width: 33.33%;
+}
+
+.geshop-col-5 {
+  width: 41.66%;
+}
+
+.geshop-col-6 {
+  width: 50%;
+}
+
+.geshop-col-7 {
+  width: 58.33%;
+}
+
+.geshop-col-8 {
+  width: 66.66%;
+}
+
+.geshop-col-9 {
+  width: 75%;
+}
+
+.geshop-col-10 {
+  width: 83.33%;
+}
+
+.geshop-col-11 {
+  width: 91.66%;
+}
+
+.geshop-col-12 {
+  width: 100%;
+}
+
+.geshop-row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 1200px) {
+  .geshop-row-1200 {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .geshop-row-1200 {
+    width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .geshop-row-1200 {
+    .geshop-col-6, .geshop-col-4 {
+      width: 100%;
+    }
+  }
+}
+
+
+@import '../../less/loadingTemplate.less';
+@import '../../less/loadingTemplate/goodsList-dl.less';

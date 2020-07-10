@@ -1,0 +1,657 @@
+{# 个性化样式 #}
+{{ include ('form/style.twig') }}
+
+{# 商品数据 #}
+{%
+    set goodsData = {
+        label: '商品数据',
+        components: [
+            {
+                type: 'diy',
+                src: 'form/GoodsManage.twig',
+            },
+        ],
+    }
+%}
+
+{# 基础配置 #}
+{%
+    set styleTabData = {
+        label: '样式配置',
+        components: [
+            {
+                label: '常用配置',
+                type: 'fieldset',
+                components: [
+                    {
+                        label: '组件背景颜色',
+                        type: 'colorPicker',
+                        name: 'comp_bcolor',
+                        default: '#F8F8F8',
+                    },
+                    {
+                        type: 'platData-dl',
+                        componentsData:[
+                            {
+                                label: '组件上边距(px)',
+                                name: 'box_margin_top',
+                                default: 0,
+                                col: 2
+                            },
+                            {
+                                label: '组件下边距(px)',
+                                name: 'box_margin_bottom',
+                                default: 0,
+                                col: 2
+                            },
+                            {
+                                label: '组件圆角(px)',
+                                type: 'input',
+                                name: 'comp_radius',
+                                default: '0px 0px 0px 0px',
+                            },
+                        ]
+                    },
+                ]
+            },
+            {
+                label: 'Banner配置',
+                type: 'fieldset',
+                isshow: 'dl-web',
+                components: [
+                    {
+                        type: 'tab',
+                        items: [
+                            {
+                                label: 'PC',
+                                components: [
+                                    {
+                                        label: '图片',
+                                        desc: '(宽度必须是1200px，高度建议300px)',
+                                        type: 'image',
+                                        name: 'pc_banner',
+                                        default: '',
+                                    },
+                                    {
+                                        type: 'diy',
+                                        name: 'pc_banner_width',
+                                        src: 'form/Hidden.twig',
+                                        default: '1200',
+                                    },
+                                    {
+                                        type: 'diy',
+                                        name: 'pc_banner_height',
+                                        src: 'form/Hidden.twig',
+                                        default: '300',
+                                    },
+                                ],
+                            },
+                            {
+                                label: 'PAD',
+                                components: [
+                                    {
+                                        label: '图片',
+                                        desc: '(宽度必须是1024px，高度建议240px)',
+                                        type: 'image',
+                                        name: 'pad_banner',
+                                        default: '',
+                                    },
+                                    {
+                                        type: 'diy',
+                                        name: 'pad_banner_width',
+                                        src: 'form/Hidden.twig',
+                                        default: '1024',
+                                    },
+                                    {
+                                        type: 'diy',
+                                        name: 'pad_banner_height',
+                                        src: 'form/Hidden.twig',
+                                        default: '240',
+                                    },
+                                ],
+                            },
+                            {
+                                label: 'M',
+                                components: [
+                                    {
+                                        label: '图片',
+                                        desc: '(宽度必须是750px，高度建议300px)',
+                                        type: 'image',
+                                        name: 'm_banner',
+                                        default: '',
+                                    },
+                                    {
+                                        type: 'diy',
+                                        name: 'm_banner_width',
+                                        src: 'form/Hidden.twig',
+                                        default: '750',
+                                    },
+                                    {
+                                        type: 'diy',
+                                        name: 'm_banner_height',
+                                        src: 'form/Hidden.twig',
+                                        default: '300',
+                                    },
+                                ],
+                            },
+                        ],
+                    },
+                ],
+            },
+            {
+                isshow: 'dl-app',
+                label: 'Banner图片',
+                desc: '(宽度必须是750px，高度建议400px)',
+                type: 'image',
+                name: 'm_banner',
+                default: '',
+            },
+            {
+                isshow: 'dl-app',
+                type: 'diy',
+                name: 'm_banner_width',
+                src: 'form/Hidden.twig',
+                default: '750',
+            },
+            {
+                isshow: 'dl-app',
+                type: 'diy',
+                name: 'm_banner_height',
+                src: 'form/Hidden.twig',
+                default: '400',
+            },
+            {
+                label: '商品评论数',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '是否显示',
+                    type: 'radio',
+                    name: 'grad_show',
+                    default: 0,
+                    options: [
+                    { label: '是', value: 1 },
+                    { label: '否', value: 0 },
+                ]
+                }
+            ]
+            },
+            {
+                label: '分类导航配置',
+                type: 'fieldset',
+                components: [
+                    {
+                        label: '导航是否吸顶',
+                        type: 'radio',
+                        name: 'nav_fixed',
+                        options: [
+                            { label: '是', value: 'y' },
+                            { label: '否', value: 'n' },
+                        ],
+                        default: 'n',
+                    },
+                    {
+                        label: '背景颜色',
+                        type: 'colorPicker',
+                        name: 'nav_bcolor',
+                        default: '#000000',
+                    },
+                    {
+                        label: '选中文字颜色',
+                        type: 'colorPicker',
+                        name: 'nav_active_fcolor',
+                        default: '#FFFFFF',
+                        col: 2,
+                    },
+                    {
+                        label: '下划线颜色',
+                        type: 'colorPicker',
+                        name: 'nav_line_color',
+                        default: '#FFFFFF',
+                        col: 2,
+                    },
+                    {
+                        label: '未选中文字颜色',
+                        type: 'colorPicker',
+                        name: 'nav_fcolor',
+                        default: '#999999',
+                    },
+                ],
+            },
+            {
+                label: '榜单配置',
+                type: 'fieldset',
+                components: [
+                    {
+                        label: '榜一图片',
+                        desc: '(建议宽135px，高50px)',
+                        type: 'image',
+                        name: 'top1_image',
+                        default: '',
+                    },
+                    {
+                        label: '榜二图片',
+                        desc: '(建议宽135px，高50px)',
+                        type: 'image',
+                        name: 'top2_image',
+                        default: '',
+                    },
+                    {
+                        label: '榜三图片',
+                        desc: '(建议宽135px，高50px)',
+                        type: 'image',
+                        name: 'top3_image',
+                        default: '',
+                    },
+                    {
+                        label: '折扣标',
+                        desc: '(建议宽50px，高50px)',
+                        type: 'image',
+                        name: 'cutoff_image',
+                        default: '',
+                    },
+                    {
+                        label: '折扣标文字颜色',
+                        type: 'colorPicker',
+                        name: 'cutoff_fcolor',
+                        default: '#FFFFFF',
+                    },
+                    {
+                        label: '折扣标背景颜色',
+                        type: 'colorPicker',
+                        name: 'cutoff_bcolor',
+                        default: '#000000',
+                    },
+                    {
+                        label: '折扣标显示类型',
+                        type: 'radio',
+                        name: 'cutoff_type',
+                        options: [
+                            { label: '***%OFF', value: '1' },
+                            { label: '-***%', value: '2' },
+                        ],
+                        default: '1',
+                    },
+                    {
+                        label: '销售价文字颜色',
+                        type: 'colorPicker',
+                        name: 'price_fcolor',
+                        default: '#FF4545',
+                        col: 2
+                    },
+                    {
+                        label: '营销信息文字颜色',
+                        type: 'colorPicker',
+                        name: 'promotion_fcolor',
+                        default: '#000000',
+                        col: 2
+                    },
+                ],
+            },
+        ],
+    }
+%}
+
+{# 高级配置 #}
+{%
+    set moreConfig = [
+        {
+            label: '高级配置',
+            type: 'collapse',
+            items: [
+                {
+                    label: '分类导航配置',
+                    components: [
+                        {
+                            label: '分类导航下边距(px)',
+                            type: 'input',
+                            name: 'nav_padding_bottom',
+                            default: '30',
+                            col: 2,
+                        },
+                        {
+                            label: '导航高度(px)',
+                            type: 'input',
+                            name: 'nav_height',
+                            default: '50',
+                            col: 2,
+                        },
+                        {
+                            label: '分类导航圆角(px)',
+                            type: 'input',
+                            name: 'nav_radius',
+                            default: '0',
+                            col: 2,
+                        },
+                        {
+                            label: '导航文字大小(px)',
+                            type: 'input',
+                            name: 'nav_font_size',
+                            default: '18',
+                            col: 2,
+                        },
+                    ],
+                },
+                {
+                    label: '排行榜榜单标签配置',
+                    components: [
+                        {
+                            isshow: 'dl-web',
+                            type: 'tab',
+                            items: [
+                                {
+                                    label: 'PC',
+                                    components: [
+                                        {
+                                            label: '上边距(px)',
+                                            type: 'input',
+                                            name: 'pc_topn_padding_top',
+                                            default: '0',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '左边距(px)',
+                                            type: 'input',
+                                            name: 'pc_topn_padding_left',
+                                            default: '0',
+                                            col: 2,
+                                        },
+                                    ],
+                                },
+                                {
+                                    label: 'PAD',
+                                    components: [
+                                        {
+                                            label: '上边距(px)',
+                                            type: 'input',
+                                            name: 'pad_topn_padding_top',
+                                            default: '0',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '左边距(px)',
+                                            type: 'input',
+                                            name: 'pad_topn_padding_left',
+                                            default: '0',
+                                            col: 2,
+                                        },
+                                    ],
+                                },
+                                {
+                                    label: 'M',
+                                    components: [
+                                        {
+                                            label: '上边距(px)',
+                                            type: 'input',
+                                            name: 'm_topn_padding_top',
+                                            default: '10',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '左边距(px)',
+                                            type: 'input',
+                                            name: 'm_topn_padding_left',
+                                            default: '10',
+                                            col: 2,
+                                        },
+                                    ],
+                                },
+                            ],
+                        },
+                        {
+                            isshow: 'dl-app',
+                            label: '上边距(px)',
+                            type: 'input',
+                            name: 'm_topn_padding_top',
+                            default: '10',
+                            col: 2,
+                        },
+                        {
+                            isshow: 'dl-app',
+                            label: '左边距(px)',
+                            type: 'input',
+                            name: 'm_topn_padding_left',
+                            default: '10',
+                            col: 2,
+                        },
+                    ],
+                },
+                {
+                    label: '折扣标签配置',
+                    components: [
+                        {
+                            isshow: 'dl-web',
+                            type: 'tab',
+                            items: [
+                                {
+                                    label: 'PC',
+                                    components: [
+                                        {
+                                            label: '文字上边距(px)',
+                                            type: 'input',
+                                            name: 'cutoff_fpadding_top',
+                                            default: '11',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '文字右边距(px)',
+                                            type: 'input',
+                                            name: 'cutoff_fpadding_right',
+                                            default: '11',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '上边距(px)',
+                                            type: 'input',
+                                            name: 'pc_cutoff_padding_top',
+                                            default: '0',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '右边距(px)',
+                                            type: 'input',
+                                            name: 'pc_cutoff_padding_right',
+                                            default: '0',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '文字大小(px)',
+                                            type: 'input',
+                                            name: 'pc_cutoff_font_size',
+                                            default: '15',
+                                        },
+                                    ],
+                                },
+                                {
+                                    label: 'PAD',
+                                    components: [
+                                        {
+                                            label: '文字上边距(px)',
+                                            type: 'input',
+                                            name: 'pad_cutoff_fpadding_top',
+                                            default: '11',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '文字右边距(px)',
+                                            type: 'input',
+                                            name: 'pad_cutoff_fpadding_right',
+                                            default: '11',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '上边距(px)',
+                                            type: 'input',
+                                            name: 'pad_cutoff_padding_top',
+                                            default: '0',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '右边距(px)',
+                                            type: 'input',
+                                            name: 'pad_cutoff_padding_right',
+                                            default: '0',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '文字大小(px)',
+                                            type: 'input',
+                                            name: 'pad_cutoff_font_size',
+                                            default: '15',
+                                        },
+                                    ],
+                                },
+                                {
+                                    label: 'M',
+                                    components: [
+                                        {
+                                            label: '文字上边距(px)',
+                                            type: 'input',
+                                            name: 'm_cutoff_fpadding_top',
+                                            default: '8',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '文字右边距(px)',
+                                            type: 'input',
+                                            name: 'm_cutoff_fpadding_right',
+                                            default: '8',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '上边距(px)',
+                                            type: 'input',
+                                            name: 'm_cutoff_padding_top',
+                                            default: '0',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '右边距(px)',
+                                            type: 'input',
+                                            name: 'm_cutoff_padding_right',
+                                            default: '0',
+                                            col: 2,
+                                        },
+                                        {
+                                            label: '文字大小(px)',
+                                            type: 'input',
+                                            name: 'm_cutoff_font_size',
+                                            default: '12',
+                                        },
+                                    ],
+                                },
+                            ]
+                        },
+                        {
+                            isshow: 'dl-app',
+                            label: '上边距(px)',
+                            type: 'input',
+                            name: 'm_cutoff_padding_top',
+                            default: '0',
+                            col: 2,
+                        },
+                        {
+                            isshow: 'dl-app',
+                            label: '右边距(px)',
+                            type: 'input',
+                            name: 'm_cutoff_padding_right',
+                            default: '0',
+                            col: 2,
+                        },
+                        {
+                            isshow: 'dl-app',
+                            label: '文字大小(px)',
+                            type: 'input',
+                            name: 'm_cutoff_font_size',
+                            default: '14',
+                        },
+                    ]
+                },
+                {
+                    isshow: 'dl-web',
+                    label: 'PC鼠标悬浮购买按钮配置',
+                    components: [
+                        {
+                            label: '背景颜色',
+                            type: 'colorPicker',
+                            name: 'pc_shop_bcolor',
+                            default: '#FFFFFF',
+                            col: 2,
+                        },
+                        {
+                            label: '边框颜色',
+                            type: 'colorPicker',
+                            name: 'pc_shop_border_color',
+                            default: '#000000',
+                            col: 2,
+                        },
+                        {
+                            label: 'ShopNow文字颜色',
+                            type: 'colorPicker',
+                            name: 'pc_shop_fcolor',
+                            default: '#000000',
+                            col: 2,
+                        },
+                        {
+                            label: 'ShopNow文字大小',
+                            type: 'input',
+                            name: 'pc_shop_font_size',
+                            default: '16',
+                            col: 2,
+                        },
+                    ],
+                },
+                {
+                    label: 'M端按钮配置',
+                    components: [
+                        {
+                            label: '按扭文案',
+                            type: 'input',
+                            name: 'm_shop_text',
+                            default: 'SHOP NOW',
+                        },
+                        {
+                            label: '文字大小(px)',
+                            type: 'input',
+                            name: 'm_shop_font_size',
+                            default: '14',
+                            col: 2,
+                        },
+                        {
+                            label: '文字颜色',
+                            type: 'colorPicker',
+                            name: 'm_shop_fcolor',
+                            default: '#FFFFFF',
+                            col: 2,
+                        },
+                        {
+                            label: '背景颜色',
+                            type: 'colorPicker',
+                            name: 'm_shop_bcolor',
+                            default: '#000000',
+                        },
+                    ],
+                },
+            ],
+        },
+    ]
+%}
+
+
+{# 表单配置 #}
+{%
+    set formData = {
+        id: 'U000208',
+        name: 'D网排行榜组件',
+        theme: 'model1',
+        tabs: [ goodsData, styleTabData ],
+        moreConfig: moreConfig,
+        onSubmit: 'U000208_submit',
+    }
+%}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+{# 个性化脚本 #}
+{{ include ('form/script.twig') }}

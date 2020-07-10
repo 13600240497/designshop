@@ -1,0 +1,62 @@
+/* 活动下线提示 */
+
+.layui-gs-alert {
+  border-radius: 5px !important;
+}
+
+.gs-activity-alert {
+  // position: absolute;
+  // top: 0;
+  // bottom: 0;
+  // left: 0;
+  // right: 0;
+  padding: 50px 0;
+  margin: auto; // height: 150px;
+  max-width: 360px;
+  text-align: center;
+  font-size: 14px;
+  .gs-activity-content {
+    padding: 0 30px;
+    margin-bottom: 20px;
+    line-height: 30px;
+    text-align: left;
+    word-break: break-all;
+  }
+  .btn {
+    border-radius: 5px;
+    border: 1px solid #797979;
+    padding: 8px 20px;
+    display: inline-block;
+    text-decoration: none;
+    &:focus,
+    &:visited {
+      -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+      box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    }
+    &:hover {
+      background-color: #e6e6e6;
+      border-color: #adadad;
+    }
+  }
+  .btn-trans {
+    background: transparent;
+    color: #333;
+  }
+  .gs-block {
+    display: block;
+  }
+  .gs-activity-secondDown {
+    color: red;
+    padding: 0 2px;
+    font-style: normal;
+  }
+  .link-color {
+    color: #3333ff;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .gs-activity-alert {
+    max-width: 280px;
+  }
+}

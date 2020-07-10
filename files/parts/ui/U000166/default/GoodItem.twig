@@ -1,0 +1,24 @@
+<div class="BP-goods-block">
+    <div class="BP-goods-img">
+        <a href="{url_title}">
+            <img src="{goods_img}" alt="">
+        </a>
+    </div>
+    <div class="BP-goods-title"><a href="{url_title}" class="rg-ellipsis-1">{goods_title}</a></div>
+    <div class="BP-goods-price">
+        <label class="my_shop_price" data-orgp="{integral_price}">${integral_price}</label>
+        <label>+</label>
+        <span class="BP-goods-icon">
+            <img src="{{ data.bpIcon | default(data.default.BP_points_icon) }}" alt="">
+        </span>
+        <label>{integral}</label>
+    </div>
+    <div class="BP-goods-other {% if lang != 'en' %} BP-goods-other-set {% endif %}">
+    
+        <label class="market-price"><del class="my_shop_price" data-orgp="{market_price}">${market_price}</del></label>
+        {% if lang != 'en' %} <br> {% endif %}<span class="BP-goods-left {% if lang != 'en' %} BP-goods-float {% endif %}">{{ get_component_trans(lang,'redeem_left') }}</span>
+    </div>
+    <div class="BP-goods-buynow">
+        <a href="{url_title}">{{ data.goodsBtnText | default('Redeem Now') }}</a>
+    </div>
+</div>

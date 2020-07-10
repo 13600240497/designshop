@@ -1,0 +1,264 @@
+{%
+
+    set formData = {
+        id: 'U0000113',
+        name: '轮播排行榜组件设置',
+        theme: 'default_zaful',
+        tabs: [
+            {
+                label: '数据配置',
+                components: [
+                    {
+                        type: 'fieldset',
+                        components: [
+                            {
+                                type: 'diy',
+                                src: 'form-dataset.twig'
+                            },
+                            {
+                                label: '商品分类ID',
+                                placeholder: '请输入榜单ID，多个ID之间用英文逗号隔开',
+                                name: 'cateId',
+                                public: true,
+                            },
+                            {
+                                label: '自动切换时间',
+                                desc: '(时间的单位为小时，建议输入整数)',
+                                name: 'loop_hour',
+                                placeholder: '请输入自动切换时间的数值'
+                            },
+                            {
+                                name: 'last_save_time',
+                                type: 'hidden',
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                label: '样式配置',
+                components: [
+                    {
+                        label: '基础配置',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '组件下边距',
+                                name: 'box_margin_bottom',
+                                default: '40',
+                                type: 'input'
+                            },
+                            {
+                                label: '背景颜色',
+                                name: 'box_bg_color',
+                                default: '#F2F2F2',
+                                type: 'colorPicker'
+                            },
+                            {
+                                label: '背景是否整体式',
+                                name: 'box_is_whole',
+                                default: '1',
+                                type: 'radio',
+                                options: [
+                                    {
+                                        label: '是',
+                                        value: '1',
+                                    },
+                                    {
+                                        label: '否',
+                                        value: '0',
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        label: '商品样式',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '商品数量',
+                                name: 'goodsQuantity',
+                                default: '3',
+                                type: 'radio',
+                                public: true,
+                                options: [
+                                    {
+                                        label: '一行',
+                                        value: '3',
+                                    },
+                                    {
+                                        label: '两行',
+                                        value: '6',
+                                    },
+                                    {
+                                        label: '三行',
+                                        value: '9',
+                                    }
+                                ]
+                            },
+                            {
+                                label: '圆角大小(PX)',
+                                name: 'item_radius',
+                                default: '12',
+                            }
+                        ]
+                    },
+                    {
+                        label: '排行榜图标',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '第一名图标',
+                                name: 'iconFirstImg',
+                                default: '',
+                                type: 'image',
+                                public: true,
+                            },
+                            {
+                                label: '第二名图标',
+                                name: 'iconSecondImg',
+                                default: '',
+                                type: 'image',
+                                public: true,
+                            },
+                            {
+                                label: '第三名图标',
+                                name: 'iconThirdImg',
+                                default: '',
+                                type: 'image',
+                                public: true,
+                            },
+                        ]
+                    },
+                    {
+                        label: '销售价',
+                        type: 'shop-price',
+                    },
+                    {
+                        label: '已售信息',
+                        type: 'fieldset',
+                        components: [
+                            {
+                                label: '背景颜色',
+                                name: 'btnBgColor',
+                                default: '#FFEECC',
+                                type: 'colorPicker',
+                                col: 2,
+                                public: true,
+                            },
+                            {
+                                label: '文字颜色',
+                                name: 'leaderBoardTextColor',
+                                default: '#FFA800',
+                                type: 'colorPicker',
+                                col: 2,
+                                public: true,
+                            }
+                        ]
+                    },
+                ]
+            }
+        ],
+        moreConfig: [],
+        beforeSubmit: 'beforeSubmit',
+    }
+    
+%}
+
+{# 保存提交表单的时间戳 #}
+<script>
+
+function valid_sku (ids, type, callback) {
+    var params = {
+        "pipeline": GESHOP_PIPELINE,
+        "lang": GESHOP_LANG,
+        "cateid": ids,
+        "type": type
+    };
+    $.ajax({
+        url: GESHOP_INTERFACE.getrankvalid.url,
+        type: 'get',
+        dataType: 'jsonp',
+        data: { content: JSON.stringify(params) },
+        success: function(res) {
+            if (res.code == 0) {
+                callback && callback(res);
+            } else {
+                layer.msg(res.message);
+            }
+        },
+        error: function() {
+            callback && callback({ data: "12312" });
+        }
+    });
+}
+
+function show_layer(message, fn1) {
+    layer.confirm(message, {
+        title: '提示',
+        btn: ['否', '是'],
+        area: '420px',
+        icon: 3,
+        skin: 'element-ui-dialog-class'
+    }, function (index) {
+        layer.close(index);
+    }, function (index) {
+        fn1();
+        layer.close(index);
+    });
+}
+
+
+function beforeSubmit (progress) {
+    Design.enableLayuiLoading();
+
+    /* 校验 自动切换时间 */
+    var loop_hour = $.trim($('[name="loop_hour"]').val());
+    if (loop_hour != '') {
+        if (isNaN(loop_hour) == true || loop_hour <= 0) {
+            Design.disableLayuiLoading();
+            layer.msg('请输入大于0的数值'); 
+            $('[name="loop_hour"]').val('');
+            return false;
+        }
+        $('[name="loop_hour"]').val(loop_hour);
+    }
+
+
+    /* 保存提交的时间 */
+    var now = new Date().getTime();
+    $('[name="last_save_time"]').val(now);
+
+    /* 校验商品分类ID是否正确 */
+    var current_ids = $.trim($('[name="cateId"]').val());
+    var current_type = $('[name="goodsDataSource"]:checked').val();
+    if (current_ids != '') {
+        valid_sku(current_ids, current_type, function(res) {
+            Design.disableLayuiLoading();
+            var valid_ids = res.data.split(',');
+            var input_ids = current_ids.split(',');
+            var invalid_ids = input_ids.filter(function(id) {
+                return valid_ids.indexOf(id) <= -1;
+            });
+            if (invalid_ids.length >= 1) {
+                var message = "商品分类 " + invalid_ids.join(',') + " 不存在，是否清空？";
+                show_layer(message, function() {
+                    $('[name="cateId"]').val(valid_ids.join(','));
+                });
+            } else {
+                progress.next();
+            }
+        });
+    } else {
+        Design.disableLayuiLoading();
+        progress.next();
+    }
+}
+</script>
+    
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+{# 引入自定义脚本 #}
+{# <script>{{ include ('form.js') }}</script>   #}

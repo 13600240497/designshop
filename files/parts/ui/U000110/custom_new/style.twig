@@ -1,0 +1,24 @@
+{% set space = '#U000110_'~pageInstanceId %}
+
+{{ space }} .geshop-discount-rg .geshop-components-discount {
+right: {{ data.discount_right|default(0) }}px;
+left: initial !important;
+}
+
+{% if 'rg' in siteCode %}
+    {{ space }} .item-rank.icon-1 {
+    background: url("{{ data.icon_rank_1 ?: 'https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/rankingFirst.png' }}") center top / 100% no-repeat !important;
+    }
+
+    {{ space }} .item-rank.icon-2 {
+    background: url("{{ data.icon_rank_2 ?: 'https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/rankingSecond.png' }}") center top / 100% no-repeat !important;
+    }
+
+    {{ space }} .item-rank.icon-3{
+    background: url("{{ data.icon_rank_3 ?: 'https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/rankingThird.png' }}") center top / 100% no-repeat !important;
+    }
+
+    {{ space }} .item-rank.icon-other {
+    background: url("{{ data.icon_rank_other ?: 'https://geshopcss.logsss.com/imagecache/geshop-test/resources/images/default/rankingOther.png' }}") center top / 100% no-repeat !important;
+    }
+{% endif %}

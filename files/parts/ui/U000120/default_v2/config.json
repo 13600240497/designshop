@@ -1,0 +1,258 @@
+{
+    "name": "pc goodsList",
+    "version": "v1.0.0.1",
+    "fields": {
+        "box_margin_bottom": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "box_bg_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "productsNum": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "goodsID": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "goodsIDnum": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "tabSelectedBgColor": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "tabUnselectedBgColor": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "tabSelectedTextColor": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "tabUnselectedTextColor": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "tabStockBarTotalColor": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "tabStockBarLavelColor": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "tabPriceTextColor": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "tabSellTextColor": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "tabSelloutBgColor": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "tabSelloutTextColor": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "tabFontSize": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "0"
+        },
+        "tabSelectBgurl": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "tabunSelectBgurl": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "itemBgColor": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "titleBgColor": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "marketPriceFontColor": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "marketPriceFontsize": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "sellOutFontsize": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "0"
+        },
+        "add_bug_text": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "add_bug_font_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "add_bug_bg_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        }
+    },
+    "languages": {
+        "rule": {
+            "cn": "订单满XX元赠",
+            "zh-tw": "訂單滿XX元贈",
+            "en": "For Orders Over XX",
+            "ar": "لطلبات أكثر من XX",
+            "de": "Für Bestellungen über XX",
+            "es": "Para Pedidos de XX",
+            "fr": "Pour les Commandes dès  XX",
+            "it": "Per gli ordini superiori a XX",
+            "pt": "Para pedidos acima XX",
+            "ru": "БЕСПЛАТНЫЕ ПОДАРКИ ПРИ ЗАКАЗЕ ОТ ХХ",
+            "th": "สำหรับใบสั่งซื้อมากกว่า XX",
+            "ja": "XX元以上のご注文で無料ギフト",
+            "ro": "Pentru comenzi de peste XX"
+        },
+        "ready": {
+            "cn": "未开始",
+            "zh-tw": "未開始",
+            "en": "Upcoming ",
+            "ar": "القادمة",
+            "de": "In Kürze",
+            "es": "Próximamente",
+            "fr": "À venir",
+            "it": "Prossimamente",
+            "pt": "Não iniciado",
+            "ru": "Скоро ",
+            "th": "จะเริ่มเร็วๆนี้",
+            "ja": "準備する",
+            "ro": "In curand"
+        },
+        "empty": {
+            "cn": "已赠完",
+            "zh-tw": "已贈完",
+            "en": "All Claimed",
+            "ar": "جميع يريدونها",
+            "de": "Fertig",
+            "es": "Todos recibidos",
+            "fr": "Tous réclamés",
+            "it": "Tutto Perso",
+            "pt": "Todos agarrados",
+            "ru": "Все закончили",
+            "th": "หมด",
+            "ja": "空",
+            "ro": "Totul este revendicat"
+        },
+        "ended": {
+            "cn": "已结束",
+            "zh-tw": "已結束",
+            "en": "Ended",
+            "ar": "انتهى",
+            "de": "Endet",
+            "es": "Terminado",
+            "fr": "Terminé",
+            "it": "Finito",
+            "pt": "Terminou",
+            "ru": "Закончилось",
+            "th": "จบแล้ว",
+            "ja": "終了しました",
+            "ro": "Sfarsit"
+        },
+        "claimed": {
+            "cn": "已领取",
+            "zh-tw": "已領取",
+            "en": "Claimed",
+            "ar": "لقد حصل عليها",
+            "de": "Bereits aktivierte",
+            "es": "Recibido",
+            "fr": "Réclamé(s)",
+            "it": "Richiesto",
+            "pt": "Agarrado",
+            "ru": "Получено",
+            "th": "เก็บแล้ว",
+            "ja": "受け取った",
+            "ro": "Revendicat"
+        },
+        "add_bag": {
+            "cn": "加入购物车",
+            "zh-tw": "加入購物車",
+            "en": "ADD TO BAG",
+            "ar": "إضافة إلى العربة",
+            "de": "In den Einkaufswagen",
+            "es": "AÑADIR A LA CESTA",
+            "fr": "AJOUTER AU PANIER",
+            "it": "AGGIUNGI AL CARRELLO",
+            "pt": "ADICIONAR AO BOLSA",
+            "ru": "ДОБАВИТЬ В КОРЗИНУ",
+            "th": "เพิ่มในรถเข็น",
+            "ja": "カートに入れる",
+            "ro": "ADAUGA IN COS"
+        },
+        "soldout": {
+            "cn": "售罄",
+            "zh-tw": "售罄",
+            "en": "SOLD OUT",
+            "ar": "بيعت كلها",
+            "de": "Ausverkauft",
+            "es": "AGOTADO",
+            "fr": "ÉPUISÉ",
+            "it": "ESAURITO",
+            "pt": "ESGOTADO",
+            "ru": "Продано",
+            "th": "ขายหมดแล้ว",
+            "ja": "売り切れ",
+            "ro": "VANDUT"
+        },
+        "sold": {
+            "cn": "已领取",
+            "zh-tw": "已領取",
+            "en": "Claimed",
+            "ar": "إضافة إلى العربة",
+            "de": "Bereits aktivierte",
+            "es": "Reclamado",
+            "fr": "Réclamé",
+            "it": "Richiesto",
+            "pt": "Obtido!",
+            "ru": "ДОБАВИТЬ В КОРЗИНУ",
+            "th": "เก็บแล้ว",
+            "ja": "受け取った",
+            "ro": "Revendicat"
+        }
+    }
+}

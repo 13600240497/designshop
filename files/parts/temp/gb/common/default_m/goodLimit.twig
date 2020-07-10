@@ -1,0 +1,32 @@
+					{# 库存配置start #}
+					{% if pageData.limit_active == '1' and pageData.limit_stock_active == '1' %}
+						{% if data.goodsInfo and item.stock_num != 0 %}
+								{% set leftPersent = (item.stock_num and left_number) ? ((left_number)*100/item.stock_num)|number_format(0,'.',','):0 %}
+								{% set activityPersent = (item.activity_stock)*100/item.stock_num %}
+						{% else %}
+								{% set leftPersent = 0 %}
+								{% set activityPersent = 100 %}
+						{% endif %}
+
+						<div class="gs-goods-progress">
+							<span class="text">
+								{% if pageData.limit_type == '1' %}
+									{# <span class="num">
+										{{left_number|default(0)}}
+									</span>
+									PCs Left #}
+									{{gb_component_trans(lang , 'number_of_pcs_left' , ['<span class="num">'~ left_number|default(0) ~'</span>'])}}
+								{% else %}
+									<span class="num">
+										{{leftPersent}}%
+									</span>
+									{{gb_component_trans(lang , 'left')}}
+								{% endif %}
+							</span>
+							<span class="bar">
+								<i style="width:{{activityPersent}}%;">
+								</i>
+							</span>
+						</div>
+					{% endif %}
+					{# 库存配置end #}

@@ -1,0 +1,152 @@
+@height: 43/37.5rem;
+.geshop-U000110-rg_template1_v1 {
+  position: relative;
+  text-align: center;
+  font-size: 0;
+
+
+  .gs-banner {
+    img {
+      display: block;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  }
+
+  .top-swiper-wrap {
+    display: inline-block;
+    position: relative;
+    height: @height;
+
+  }
+  .sp-box {
+    height: @height;
+  }
+  .nav-top {
+    height: @height;
+    &.fixed {
+      position: fixed;
+      z-index: 100001;
+      left: 0;
+      right: 0;
+      margin: auto;
+      top: 0;
+      width: 100%;
+    }
+  }
+
+  .top-swiper-container{
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    height: @height;
+    display: block;
+    max-width: 750/75rem;
+  }
+
+  .nav-item {
+    display: inline-block;
+    width: auto;
+    height: 100%;
+    overflow: hidden;
+    padding: 0 12/ 37.5rem;
+    cursor: pointer;
+
+
+    span {
+      font-size: 14/37.5rem;
+      display: block;
+      line-height: @height;
+      position: relative;
+    }
+    &.on {
+      span {
+        &:after{
+          display: none;
+          content: '';
+          position: absolute;
+          width:100%;
+          height:2/37.5rem;
+          background:currentColor;
+          left: 0;
+          bottom: 8/37.5rem;
+        }
+      }
+    }
+  }
+
+  .goods-list {
+    ul {
+      display: block;
+      font-size: 0;
+      width: 359/37.5rem;
+      margin: 0 auto;
+      padding: 8/37.5rem 0;
+      text-align: left;
+      li {
+        text-align: left;
+        display: inline-block;
+        vertical-align: top;
+        font-size: 12/37.5rem;
+        width: 170.5/37.5rem;
+        min-height: 313/37.5rem;
+        box-sizing: border-box;
+        margin: 4/37.5rem;
+        position: relative;
+        overflow: hidden;
+        background-color: #ffffff;
+        .item_img {
+          width: 100%;
+          height: 225/37.5rem;
+          position: relative;
+        }
+        .item_goods_info {
+          overflow: hidden;
+          box-sizing: border-box;
+          padding: 12/37.5rem;
+        }
+
+        .item-title {
+          margin-bottom: 4/37.5rem;
+        }
+
+        .promot-info {
+          font-size:13/37.5rem;
+          line-height:24/37.5rem;
+          height: 24/37.5rem;
+          text-align: center;
+          background:rgba(255,255,255,0.8);
+          position: absolute;
+          width: 100%;
+          bottom: 0;
+        }
+        .btn-buy {
+          background: url("https://geshoptest.s3.amazonaws.com/uploads/XR6nmvfcejDVSgNbwHpLaqCyI08T1h9l.png") 0 0 no-repeat;
+          background-size: 24/37.5rem auto;
+          width: 24/37.5rem;
+          height: 24/37.5rem;
+          position: absolute;
+          bottom: 12/37.5rem;
+          right: 12/37.5rem;
+        }
+        .icon_rank {
+          position: absolute;
+          top: 0;
+          left: 0/37.5rem;
+          text-align: center;
+          font-size: 0;
+          width:26/37.5rem;
+          height:29/37.5rem;
+          line-height: 25/37.5rem;
+          //font-family: Rubik-Medium,Arial;
+          background-size: 100% 100%!important;
+
+          &.icon-other {
+            font-size: 12/37.5rem;
+          }
+        }
+      }
+    }
+  }
+}

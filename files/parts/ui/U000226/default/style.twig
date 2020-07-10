@@ -1,0 +1,30 @@
+{% set space = '#U000226_'~pageInstanceId %}
+
+{{space}} .geshop-u000226-default-body{
+   margin-top: {{data.pc_marginTop | default(0)}}px;
+   margin-bottom: {{data.pc_marginBottom | default(32)}}px;
+} 
+
+
+@media screen and (max-width: 1024px) and (min-width: 768px){
+  {{space}} .geshop-u000226-default-body{
+    margin-top: {{data.pad_marginTop | default(0)}}px;
+    margin-bottom: {{data.pad_marginBottom | default(32)}}px;
+  }
+   {{space}} .geshop-u000226-default-body .swiper-container{
+     padding-bottom: 56px;
+   }    
+}
+
+
+@media screen and (max-width: 767px){
+  {{space}} .geshop-u000226-default-body{
+    margin-top: {{data.m_marginTop | default(0)}}px;
+    margin-bottom: {{data.m_marginBottom | default(20)}}px;
+  }
+  {{space}} .geshop-u000226-default-body .swiper-container{
+     padding-bottom: 44px;
+   } 
+  
+  
+}

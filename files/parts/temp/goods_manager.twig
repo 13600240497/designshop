@@ -1,0 +1,11 @@
+<link rel="stylesheet" href="/resources/template/goods/select2.min.css">
+<script src="/resources/template/goods/select2.min.js"></script>
+{% if 'gb-' in siteCode %}
+	<link rel="stylesheet" href="/resources/template/goods/goodsUnit.css??v={{ serverTime }}">
+	<script src="/resources/template/goods/index.js?v={{ serverTime }}"></script>
+{% else %}
+	{# 服装商品管理 #}
+	<link rel="stylesheet" href="/resources/template/goods/default/goodsUnit.css??v={{ serverTime }}">
+	<script src="/resources/template/goods/default/index.js?v={{ serverTime }}"></script>
+{% endif %}
+

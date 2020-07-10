@@ -1,0 +1,174 @@
+.clearfix:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+[data-gid="U000161"].geshop-active-top-goods{
+  width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+[data-gid="U000161"].geshop-active-top-goods .geshop-title{
+  font-size:16px;
+  margin-top: 20px;
+}
+.component-form-setting-item .ml0 {
+  margin-left: 0;
+}
+[data-gid="U000161"] .left-banner{
+  width: 280px;
+  margin-right: 18px;
+  float: left;
+  overflow: hidden;
+}
+[data-gid="U000161"] .right-goods{
+  float: left;
+  width: 860px;
+  box-sizing: border-box;
+}
+[data-gid="U000161"] .right-goods .proList{
+  width: 860px;
+  height: 540px;
+  overflow: hidden;
+
+}
+[data-gid="U000161"] .right-goods .proList li{
+  position: relative;
+  float: left;
+  width: 200px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+[data-gid="U000161"] .right-goods .proList li .unavilable{  
+  position: absolute;
+  left: 50%;
+  top: 37.5px;
+  z-index: 1;
+  margin: auto;
+  width: 120px;
+  height: 120px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 50%;
+  text-align: center;
+  line-height: 120px;
+  color: #fff;
+  font-size: 16px;
+  font-family: Verdana;
+  margin-left: -60px;
+ 
+}
+[data-gid="U000161"] .right-goods .proList li.enabled:hover .quickShop {
+  bottom: 30px;
+  opacity: 1;
+}
+[data-gid="U000161"] .right-goods .proList li.disabled{
+  pointer-events: none;
+}
+[data-gid="U000161"] .right-goods .proList li .mark{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+[data-gid="U000161"] .right-goods .proList li .pro_img{
+  height: 200px;
+}
+[data-gid="U000161"] .right-goods .proList li .mark img{
+  width: 100%;
+  display: block;
+}
+[data-gid="U000161"] .right-goods .proList li:nth-child(4n){
+  margin-right: 0;
+}
+[data-gid="U000161"] .right-goods .proList li .goods-img {
+  width: 200px;
+}
+[data-gid="U000161"] .right-goods .proList .pro_name {
+  padding-top: 10px;
+  height: 18px;
+  line-height: 18px;
+  overflow: hidden;
+  font-size: 14px;
+  font-family: Verdana,Geneva,sans-serif;
+}
+[data-gid="U000161"] .right-goods .proList .pro_name a{
+  display: block;
+  height: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 200px;
+}
+[data-gid="U000161"] .right-goods .proList .pro_price {
+  position: relative;
+  padding-top: 5px;
+  color: #000;
+  height: 26px;
+  font-size: 16px;
+}
+[data-gid="U000161"] .right-goods .proList .pro_price strong {
+  font-weight: 700;
+  margin-right: 10px;
+}
+[data-gid="U000161"] .right-goods .proList .pro_price .original_price {
+  font-size: 14px;
+  font-weight: 400;
+  color: #999;
+  text-decoration: line-through;
+}
+[data-gid="U000161"] .right-goods .proList a.addToFav {
+  float: right;
+  font-size: 12px;
+  color: #ff008a;
+  display: none;
+}
+[data-gid="U000161"] .right-goods .proList a.addToFav i {
+  display: inline-block;
+  vertical-align: middle;
+  background-position: -400px 0;
+  width: 20px;
+  height: 18px;
+  cursor: pointer;
+}
+[data-gid="U000161"] .right-goods .proList li .quickShop {
+  background: #fff;
+  display: block;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  margin-left: -60px;
+  height: 20px;
+  width: 118px;
+  line-height: 20px;
+  padding: 5px 0;
+  border: 1px solid #ddd;
+  text-align: center;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  bottom: 10px;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  transition: all .5s;
+}
+[data-gid="U000161"] .right-goods .proList li .quickShop i {
+  display: inline-block;
+  vertical-align: middle;
+  width: 11px;
+  height: 18px;
+  background-position: -240px -120px;
+}
+.pr {
+  position: relative;
+}
+.pb100{
+  padding-bottom: 100px;
+}
+.color-gray{
+  color: #999;
+}

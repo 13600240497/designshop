@@ -1,0 +1,173 @@
+{% set formData = {
+    id: 'U000152',
+    name: '加价购组件',
+    theme: 'modal1',
+    tabs: [
+        {
+            label: '商品设置',
+            components: [
+            {
+                type: 'diy',
+                src: 'goods.twig'
+            }
+        ]
+        },
+        {
+            label: '样式配置',
+            components: [
+            {
+                label: '基础配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '组件下边距',
+                    name: 'box_margin_bottom',
+                    default: '32',
+                },
+                {
+                    label: '背景颜色',
+                    name: 'box_bg_color',
+                    default: '#F8F8F8',
+                    type: 'colorPicker'
+                }
+            ]
+            },
+            {
+                label: 'Tab导航',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '选中背景颜色',
+                    name: 'tabSelectedBgColor',
+                    default: '#999999',
+                    type: 'colorPicker'
+                },
+                {
+                    label: '未选中背景颜色',
+                    name: 'tabUnselectedBgColor',
+                    default: '#D8D8D8',
+                    type: 'colorPicker'
+                },
+                {
+                    label: '选中文字颜色',
+                    name: 'tabSelectedTextColor',
+                    default: '#FFFFFF',
+                    type: 'colorPicker'
+                },
+                {
+                    label: '未选中文字颜色',
+                    name: 'tabUnselectedTextColor',
+                    default: '#FFFFFF',
+                    type: 'colorPicker'
+                },
+                {
+                    label: '高度(px)',
+                    name: 'tabHeadHeight',
+                    default: '60',
+                },
+                {
+                    label: '文字大小(px)',
+                    name: 'tabFontSize',
+                    default: '24',
+                },
+                {
+                    label: '选中背景图片',
+                    name: 'tabSelectBgurl',
+                    default: '',
+                    type: 'image'
+                },
+                {
+                    label: '未选中背景图片',
+                    name: 'tabunSelectBgurl',
+                    default: '',
+                    type: 'image'
+                }
+            ]
+            },
+            {
+                label: '商品信息',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '加价购名文案',
+                    name: 'purchasePriceText',
+                    default: 'Now Only',
+                },
+                {
+                    label: '加价购文字颜色',
+                    name: 'shop_price_color',
+                    default: '#333333',
+                    type: 'colorPicker'
+                },
+                {
+                    label: '商品hover边框',
+                    name: 'goodsBoder',
+                    default: '',
+                    type: 'colorPicker'
+                },
+            ]
+            },
+            {
+                label: '购买按钮',
+                type: 'button-buynow'
+            },
+        ]
+        }
+    ],
+    moreConfig: [],
+    onSubmit: 'onSubmit'
+} %}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+{# 引入自定义脚本 #}
+{# <script>{{ include ('form.js') }}</script>   #}
+<script>
+    var $tabsConfig = $('#tabsConfig');
+    var $productsNum = $tabsConfig.find('input[name="productsNum"]');
+    function onSubmit(pros) {
+        {# tab显示的商品数量 #}
+        var num = parseInt($productsNum.val());
+        var errText;
+        if(!num){
+            errText = '请输入商品数量';
+        }else{
+            if(num > 100){
+                errText = '输入商品数量不能超过100';
+            }
+        }
+
+        if(errText){
+            layer.msg(errText, { time: 5000 });
+            return;
+        }
+        var goodsIDArr = [];
+        var _ids,_name;
+        $tabsConfig.find('.goods-tab-item').each(function(index,el){
+            if(errText)return;
+            _ids = $(el).find('.goodsIDitem').val().trim();
+            _name = $(el).find('.title-name').val().trim();
+            if(_ids && _name){
+                goodsIDArr.push({
+                    ids : _ids,
+                    name : _name,
+                })
+            }else{
+                if(_ids || _name){
+                    _name && (errText = '请填写分类名称');
+                    _ids && (errText = '请填写分类ID');
+                }
+            }
+        });
+        if(!goodsIDArr.length){
+            errText = '请填写分类';
+        }
+        if(errText){
+            layer.msg(errText, { time: 5000 });
+            return;
+        }
+        $('#goodsIDInput').val(JSON.stringify(goodsIDArr));
+        pros.next()
+    }
+</script>

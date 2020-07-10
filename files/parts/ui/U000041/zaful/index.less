@@ -1,0 +1,218 @@
+.wrap-U000041_zaful {
+  overflow: hidden;
+  /* compoment layout class list */
+  .clearfix:after {
+    content: "";
+    height: 0;
+    line-height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+  }
+  .g-w990 {
+    width: 990px;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .gs-default-clothes {
+    width: 140px !important;
+    height: 124px !important;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    display: block;
+  }
+  .geshop-component-box {
+    overflow: hidden;
+  }
+  .geshop-panel {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+  } //goods tab theme
+  @tabFtc: #f7e2b7;
+  @tabBgc: #c72b31;
+  .gs-tab {
+    margin: auto; // margin-top: 15px;
+    // margin-bottom: 15px;
+    position: relative;
+    overflow: hidden;
+  }
+  .gs-tab-wrap {
+    height: 80px;
+  }
+  .gs-tab-label {
+    position: relative;
+    line-height: initial;
+    white-space: nowrap;
+    font-size: 0;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    width: 100%;
+    li {
+      position: relative;
+      width: auto;
+      height: 100%;
+      text-align: center;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 0;
+      transition: all 0.2s;
+      -webkit-transition: all 0.2s;
+      &:last-child {
+        padding-right: 0;
+      }
+      span {
+        // background:$tabBgc;
+        // color: $tabFtc;
+        // border-radius: 15px 15px 0 0;
+        display: block;
+        font-size: 16px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 21px;
+        font-weight: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    .current {
+      &:after {
+        position: absolute;
+        left: 0;
+        top: 0;
+        content: '';
+        width: 100%;
+        height: 41px; // border-width: 1px;
+        // border-style: solid;
+        // border-bottom-color: #fff;
+        border-radius: 2px 2px 0 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        pointer-events: none;
+      }
+      span {
+        // background: $tabFtc;
+        // color: lighten($tabBgc,10%);
+      }
+    }
+  }
+  .gs-tab-content {
+    // padding: 10px;
+    border-radius: 0 0 15px 15px;
+  }
+  .gs-tab-item {
+    width: 100%;
+    display: none;
+  }
+  .gs-tab-show {
+    display: block !important;
+  }
+  .goods-nav-name {
+    display: table;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 0; // line-height: 66px;
+    height: 66px;
+    width: auto;
+    margin: auto;
+    li>span {
+      display: inline-block;
+      padding: 0 45px;
+      cursor: pointer;
+      line-height: 66px;
+      height: 66px;
+      color: #2d2d2d;
+    }
+    .current {
+      &:after {
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-top: 20px solid #ffa800;
+        content: '';
+        position: absolute;
+        left: 50%;
+        margin-left: -20px;
+        top: 58px;
+        display: block;
+      }
+    }
+  }
+  /* swiper */
+  .gs-tab-box {
+    background: #fff;
+    overflow: visible;
+    .swiper-container {
+      margin: auto;
+      overflow: visible;
+    }
+  }
+  .geshop-tab-btn {
+    position: absolute;
+    width: 50px;
+    height: 66px;
+    z-index: 1;
+    cursor: pointer;
+    background-size: 50px 44px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #D8D8D8;
+    top: 0;
+    bottom: 0;
+    margin: 0 auto;
+    display: none;
+    &.pre-btn {
+      left: 0;
+    }
+    &.next-btn {
+      right: 0;
+    }
+    &.gs-btn-show {
+      display: block;
+    }
+  }
+  /* icon */
+  .icon-img-right {
+    display: block;
+    border: 1px solid #000;
+    border-width: 0 0 2px 2px;
+    width: 24px;
+    height: 24px;
+    line-height: 0;
+    font-size: 0;
+    margin: 20px 5px;
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+  }
+  .icon-img-left {
+    display: block;
+    border: 1px solid #000;
+    border-width: 0 0 2px 2px;
+    width: 24px;
+    height: 24px;
+    line-height: 0;
+    font-size: 0;
+    margin: 20px 18px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  /* site */
+  &[data-code="rw-pc"],
+  &[data-code="rg-pc"] {
+    .component-self-goodBox {
+      padding-left: 10px;
+    }
+    .component-self-goodWrap {
+      background-color: #ffffff;
+    }
+    .gs-tab-item>ul {
+      margin-left: -10px;
+    }
+  }
+  @import '../../../../../htdocs/resources/template/pc/goodsList/zafulTabDefault/index.less';
+}

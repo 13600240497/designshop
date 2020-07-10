@@ -1,0 +1,58 @@
+{
+    "name": "pc score",
+    "version": "v1.0.0.1",
+    "fields": {
+        "img_link_url": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+
+        "img_is_open_new": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "for_m_margin_right": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "for_m_margin_left": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pc_pad_margin_left": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pc_pad_margin_right": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "for_m_img": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "for_m_width": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pc_pad_width": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "pc_pad_img": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        }
+    }
+
+}

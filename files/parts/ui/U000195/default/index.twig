@@ -1,0 +1,27 @@
+<div class="geshop-component-box component-drag wraper_U000195 wraper_{{ pageInstanceId }} geshop-U000195-default" 
+	data-key="U000195" 
+	data-theme="default"
+	data-id="{{ pageInstanceId }}" 
+	data-start-time="{{ data.act_start_time }}" 
+	data-end-time="{{ data.act_end_time }}" 
+	data-amount-list-lineheight="{{ data.amount_list_lineheight }}" 
+	data-amount="{{ data.amount_list_limit }}" 
+	data-isEditEnv="{{ data.isEditEnv }}" 
+	data-static-domain="{{ staticDomain }}">
+	{{ include('style.twig') }}
+	<a href="javascript:;" class="rule-btn js_view-rule-btn" data-tag="ge-195d-dialog-rule">{{ languages.ruleText[lang]|default(languages.ruleText.en) }}</a>
+	<div class="amount-list-outer-wraper">
+		<ul class="amount-list-container">
+			<li class="amount-list-item"><span class="serial-number site-bold-strict">TOP.1</span><span class="email">sun ****.com </span><span class="payment-text">Payment amount: </span><span class="payment-amount">$2999.99</span></li>
+			<li class="amount-list-item"><span class="serial-number site-bold-strict">TOP.2</span><span class="email">sun ****.com </span><span class="payment-text">Payment amount: </span><span class="payment-amount">$2999.99</span></li>
+			<li class="amount-list-item"><span class="serial-number site-bold-strict">TOP.3</span><span class="email">sun ****.com </span><span class="payment-text">Payment amount: </span><span class="payment-amount">$2999.99</span></li>
+			<li class="amount-list-item"><span class="serial-number site-bold-strict">TOP.4</span><span class="email">sun ****.com </span><span class="payment-text">Payment amount: </span><span class="payment-amount">$2999.99</span></li>
+			<li class="amount-list-item"><span class="serial-number site-bold-strict">TOP.5</span><span class="email">sun ****.com </span><span class="payment-text">Payment amount: </span><span class="payment-amount">$2999.99</span></li>
+		</ul>
+	</div>
+	<button class="amount-list-ranking-btn js_check-my-ranking btn__site-default" data-tag="ge-195d-dialog-my-ranking">{{ data.person_info_btn_text|default('CHECK MY RANKING') }}</button>
+	{{ include('temp/dialog-rule.twig') }}
+	{{ include('temp/dialog-my-ranking.twig') }}
+	<script>var GESHOP_HIGH_AMOUNT_LIST_LANGUAGES = {{ json_encode_no_unicode(languages) }};</script>
+</div>
+

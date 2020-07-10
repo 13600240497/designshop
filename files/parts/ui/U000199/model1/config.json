@@ -1,0 +1,9 @@
+{
+  "fields": {
+    "imgSrc": { "is_public": "1", "is_m": "1", "is_app": "1" },
+    "imgUrl": { "is_public": "1", "is_m": "1", "is_app": "1" },
+    "imgTitle": { "is_public": "1", "is_m": "1", "is_app": "1" },
+    "imgText": { "is_public": "1", "is_m": "1", "is_app": "1" },
+    "imgURL": { "is_public": "1", "is_m": "1", "is_app": "1", "is_pipeline_url": "1","is_native_url": "0" }
+  }
+}

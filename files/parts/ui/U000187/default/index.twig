@@ -1,0 +1,74 @@
+<div class="geshop-component-box component-drag wrap_U0000187 wrap_{{ pageInstanceId }} geshop-U0000187-default {% if data.show_list == 'hide' %}hide-list{% endif %}" data-key="U000187"
+	data-theme="default"
+	data-id="{{ pageInstanceId }}"
+	data-actcode="{{ data.act_code|default(0) }}"
+	data-prizeamount="{{ data.prize_amount|default(0) }}"
+	data-static-domain="{{ staticDomain }}">
+	{{ include('style.twig') }}
+	<div class="geshop-187d-container">
+		<div class="geshop-187d-head">
+			{{ data.title_label | default('LUCKY REWARDS') }}
+		</div>
+		<div class="geshop-187d-rule-btn js-show-rule-dialog">{{ languages.ruleBtn[lang] ?? languages.ruleBtn['en'] }}</div>
+		<div class="geshop-187d-turntable">
+			<div class="geshop-187d-turntable-container">
+				<img class="turntable-bg-image" src="{{ data.turntable_image | default(data.default.u000187_default_turntable) }}">
+				<div class="geshop-187d-pointer">
+					<img class="turntable-pointer-image" src="{{ data.pointer_image | default(data.default.u000187_default_pointer2) }}">
+					<div class="geshop-187d-pointer-text js-start-draw" data-loaded="0" data-isdrawing="0">
+						<span class="inner-text">{{ data.pointer_label|default(languages.pointerText[lang] ?? languages.pointerText['en']) }}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{# 抽奖次数 #}
+		{% if data.show_spins is empty or data.show_spins == 'show' %}
+			<div class="geshop-187d-spins">{{ languages.spins[lang] ?? languages.spins['en']}}</div>
+		{% endif %}
+
+		{# 积分抽奖文案 #}
+		<div class="geshop-187d-points" style="display: none;">{{ languages.points_left[lang] ?? languages.points_left['en'] }}: <span>XX</span>; {{ languages.points_each_draw[lang] ?? languages.points_each_draw['en'] }}</div>
+
+		{# 是否展示中奖名单 #}
+		{% if data.show_list is empty or data.show_list == 'show' %}
+			<div class="geshop-187d-list">
+				<div class="geshop-187d-list-uname"><ul></ul></div>
+				<div class="geshop-187d-list-warning"><p>{{ languages.startIn[lang] ?? languages.startIn['en']}} <span class="time">xx:xx:xx:xx</span></p></div>
+				<div class="geshop-187d-list-title site-bold-strict">{{ languages.listTitle[lang] ?? languages.listTitle['en'] }}</div>
+			</div>
+		{% endif %}
+		<div class="geshop-187d-share">
+			<div class="geshop-187d-share-text">{{ data.share_title_label | default('SHARE FOR MORE CHANCES') }}</div>
+			<div class="geshop-187d-share-icons">
+			  {% if data.share_facebook_icon != ' ' %}
+				<img class="js_share_btn" data-type="facebook" src="{{ data.share_facebook_icon | default(data.default.u000187_default_fb) }}"/>
+				{% endif %}
+				{% if data.share_twitter_icon != ' ' %}
+				<img class="js_share_btn" data-type="twitter" src="{{ data.share_twitter_icon | default(data.default.u000187_default_twitter) }}"/>
+				{% endif %}
+				{% if data.share_pinterest_icon != ' ' %}
+				<img class="js_share_btn" data-type="pinterest" src="{{ data.share_pinterest_icon | default(data.default.u000187_default_pinterest) }}"/>
+				{% endif %}
+				{#
+				2020-06-14 Google+渠道下线
+				{% if data.share_google_icon != ' ' %}
+				<img class="js_share_btn" data-type="google" src="{{ data.share_google_icon | default(data.default.u000187_default_google) }}"/>
+				{% endif %}
+				#}
+				{% if data.share_line_icon != ' ' %}
+				<img class="js_share_btn" data-type="line" src="{{ data.share_line_icon | default(data.default.u000187_default_line) }}"/>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+	{{ include('temp/dialog-rule.twig') }}
+	{{ include('temp/dialog-fail.twig') }}
+	{{ include('temp/dialog-fail-not-start.twig') }}
+	{{ include('temp/dialog-share.twig') }}
+	{{ include('temp/dialog-sku.twig') }}
+	{{ include('temp/dialog-other.twig') }}
+	<script>var GESHOP_TUNRNTABLE_LANGUAGES = {{ json_encode_no_unicode(languages) }};</script>
+</div>
+

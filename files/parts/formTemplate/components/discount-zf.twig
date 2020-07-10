@@ -1,0 +1,70 @@
+{#
+config 配置项参考
+
+"discount_bg_image": { "is_public": "1", "is_m": "1", "is_app": "1" },
+"discount_bg_color": { "is_public": "1", "is_m": "1", "is_app": "1" },
+"discount_font_color": { "is_public": "1", "is_m": "1", "is_app": "1" },
+"discount_show": { "is_public": "1", "is_m": "1", "is_app": "1" },
+"discount_type": { "is_public": "1", "is_m": "1", "is_app": "1" },
+
+"discount_width": { "is_public": "1", "is_m": "0", "is_app": "1" },
+"discount_height": { "is_public": "1", "is_m": "0", "is_app": "1" },
+"discount_top": { "is_public": "1", "is_m": "0", "is_app": "1" },
+"discount_right": { "is_public": "1", "is_m": "0", "is_app": "1" },
+"discount_font_top": { "is_public": "1", "is_m": "0", "is_app": "1" },
+"discount_font_right": { "is_public": "1", "is_m": "0", "is_app": "1" },
+
+#}
+
+{# PC端 和 M端 的宽高，文字边距配置项默认值不一样的 #}
+{%
+    set discount_default = {
+        width: platform == 'pc' ? '50' : '80',
+        height: platform == 'pc' ? '50' : '80',
+        top: platform == 'pc' ? '0' : '0',
+        right: platform == 'pc' ? '0' : '0',
+        font_top: platform == 'pc' ? '11' : '18',
+        font_right: platform == 'pc' ? '9' : '15',
+    }
+%}
+
+{# 公共的配置项，无需区分端的 #}
+{% set components = [
+    { label: '宽度(px)', name: 'discount_width', default: discount_default.width, col: 2 },
+    { label: '高度(px)', name: 'discount_height', default: discount_default.width, col: 2 },
+    { label: '整体上偏移(px)', name: 'discount_top', default: discount_default.top, col: 2 },
+    { label: '整体右偏移(px)', name: 'discount_right', default: discount_default.right, col: 2 },
+    { label: '文字上偏移(px)', name: 'discount_font_top', default: discount_default.font_top, col: 2 },
+    { label: '文字右偏移(px)', name: 'discount_font_right', default: discount_default.font_right, col: 2 },
+    {
+        label: '是否显示',
+        name: 'discount_show',
+        default: '1',
+        type: 'radio',
+        options: [
+            { label: '是', value: '1' },
+            { label: '否', value: '0' }
+        ]
+    },
+    {
+        label: '显示方式',
+        name: 'discount_type',
+        default: '1',
+        type: 'radio',
+        options: [
+            { label: '***%OFF', value: '1' },
+            { label: '-***%', value: '0' }
+        ]
+    },
+    { label: '背景图片', name: 'discount_bg_image', default: '', type: 'image' },
+    { label: '背景颜色', name: 'discount_bg_color', default: '#333333', type: 'colorPicker' },
+    { label: '文字颜色', name: 'discount_font_color', default: '#ffffff', type: 'colorPicker' },
+]%}
+
+{# 合并当前端的配置项 #}
+<fieldset class="layui-elem-field">
+    <legend>折扣标配置</legend>
+    <div class="layui-field-box">
+        {{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}
+    </div>
+</fieldset>

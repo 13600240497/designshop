@@ -1,0 +1,136 @@
+<input type="hidden" class="Unwanted" name="sku_selector_parent" value=".radio-tab-group">
+
+{% set formData = {
+    id: 'U000236',
+    name: '自定义价格组件配置',
+    theme: 'model1',
+    tabs: [
+        {
+            label: '数据配置',
+            components: [
+            {
+                label: '商品设置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '数据配置',
+                    type: 'goods-manager',
+                    ipsMethodsArr: ['1','2'],
+                    ipsDefault:'2',
+                    ipsAutoLimitClose:true
+                }
+            ]
+            },
+            {
+                label: '第一行价格标签文案',
+                name: 'first_price_content',
+                default: 'New User Price:'
+            },
+            {
+                label: '第二行价格文案',
+                name: 'second_price_content',
+                default: 'Market Price:'
+            },
+            {
+                label: '市场价是否划掉',
+                name: 'is_show_del',
+                type: 'radio',
+                default: 2,
+                options: [
+                { label: '是', value: 1 },
+                { label: '否', value: 2 }
+            ]
+            }
+        ]
+        },
+        {
+            label: '样式设置',
+            components: [
+            {
+                label: '常用配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '下边距(px)',
+                    name: 'margin_bottom',
+                    default: '32',
+                    col: 2
+                },
+                {
+                    label: '背景颜色',
+                    name: 'background_color',
+                    type: 'colorPicker',
+                    default: '#F8F8F8',
+                    col: 2
+                }
+
+            ]
+            },
+            {
+                label: '商品信息配置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '第一行价格标签文字大小(px)',
+                    name: 'first_price_font_size',
+                    default: '14'
+                },
+                {
+                    label: '第一行价格标签和本店售价文字颜色',
+                    name: 'first_font_color',
+                    type: 'colorPicker',
+                    default: '#FA386A'
+                },
+                {
+                    label: '第二行价格文字颜色',
+                    name: 'second_price_font_color',
+                    type: 'colorPicker',
+                    default: '#999999'
+                },
+                {
+                    label:'商品圆角大小',
+                    name:'goods_radius',
+                    default:'4',
+                    col: 2
+                },
+                {
+                    label: '商品描边颜色',
+                    name: 'goods_border_color',
+                    type: 'colorPicker',
+                    default: '#FFFFFF',
+                    col: 2
+                },
+            ]
+            },
+            {
+                label: '折扣标配置',
+                type: 'fieldset',
+                components: [
+                {
+                    type: 'discount-rg'
+                }
+            ]
+            }
+        ]
+        }
+    ],
+    beforeSubmit: 'onSubmit',
+} %}
+
+<script>
+
+{#  自定义保存函数 #}
+function onSubmit (progress) {
+
+    var progress_status = GS_GOODS_UTILS.repeatCheck($('textarea[name=goodsSKU]'));
+    if (progress_status == 1) {
+        progress.next();
+    };
+
+}
+
+
+</script>
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

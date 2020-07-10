@@ -1,0 +1,446 @@
+<style>{{ include ('form.css') }}</style>
+
+{%
+
+set formData = {
+    id: 'U000203',
+    name: 'Tab商品列表组件配置',
+    theme: 'default',
+    tabs: [
+        {
+            label: '商品SKU',
+            components: [
+                {
+                    type:'tab',
+                    items: [
+                    {
+                        label: 'M',
+                        components: [
+                        {
+                            label: '默认每页显示商品数量',
+                            desc: '(建议输入4的倍数)',
+                            name: 'page_show_goods_number'
+                        }
+                    ]
+                    }
+                ]
+                },
+                {
+                    type: 'diy',
+                    src: 'lib/goods-manage.twig'
+                }
+            ]
+        },
+
+        {
+            label: '样式配置',
+            components: [
+                {
+                    label: '常用配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            type: 'margin-dl',
+                            dl_hasRadius: true
+                        },
+                        {
+                            label: '组件背景颜色',
+                            name: 'component_bgColor',
+                            type: 'colorPicker',
+                            default: '#FDFDFD',
+                            public: false,
+                        }
+                    ]
+                },
+                {
+                    label: '分类导航配置',
+                    type: 'fieldset',
+                    components: [
+                    {
+                        type: 'platData-dl',
+                        componentsData: [
+                        {
+                            label: '文字大小',
+                            name: 'nav_fontsize',
+                            default: 18,
+                            default_m: 18,
+                            public: false
+                        }
+                        ]
+                    }
+                    ]
+                },
+                {
+                  type: 'tab',
+                  items: [
+                        {
+                            label: '选中状态',
+                            components: [
+                                {
+                                    label: '文字颜色',
+                                    name: 'active_nav_fontcolor',
+                                    type: 'colorPicker',
+                                    default: '#FFFFFF',
+                                    public: false,
+                                },
+                                {
+                                    label: '背景颜色',
+                                    name: 'active_nav_bgColor',
+                                    type: 'colorPicker',
+                                    default: '#000000',
+                                    public: false,
+                                },
+                                {
+                                    label: '描边颜色',
+                                    name: 'active_nav_borderColor',
+                                    type: 'colorPicker',
+                                    default: '#000000',
+                                    public: false,
+                                },
+                                {
+                                    label: '背景图片',
+                                    name: 'active_nav_bgImage',
+                                    type: 'image',
+                                    public: false,
+                                }
+                            ]
+                        },
+                        {
+                            label: '未选中状态',
+                            components: [
+                                {
+                                    label: '文字颜色',
+                                    name: 'inactive_nav_fontcolor',
+                                    type: 'colorPicker',
+                                    default: '#000000',
+                                    public: false,
+                                },
+                                {
+                                    label: '背景颜色',
+                                    name: 'inactive_nav_bgColor',
+                                    type: 'colorPicker',
+                                    default: '#FFFFFF',
+                                    public: false,
+                                },
+                                {
+                                    label: '描边颜色',
+                                    name: 'inactive_nav_borderColor',
+                                    type: 'colorPicker',
+                                    default: '#333333',
+                                    public: false,
+                                },
+                                {
+                                    label: '背景图片',
+                                    name: 'inactive_nav_bgImage',
+                                    type: 'image',
+                                    public: false,
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    label: '商品信息配置',
+                    type: 'fieldset',
+                    components: [
+                        {
+                            label: '销售价文字颜色',
+                            name: 'shopprice_fontColor',
+                            type: 'colorPicker',
+                            default: '#FF4545',
+                            public: false,
+                        },
+                        {
+                            label: '折扣信息文字颜色',
+                            name: 'discount_fontColor',
+                            type: 'colorPicker',
+                            default: '#000000',
+                            public: false,
+                        },
+                        {
+                            label: '营销信息文字颜色',
+                            name: 'promotion_fontColor',
+                            type: 'colorPicker',
+                            default: '#000000',
+                            public: false,
+                        }
+                    ]
+                },
+            ]
+        }
+    ],
+    moreConfig: [
+        {
+            type: 'collapse',
+            items: [
+                {
+                    label: '分类导航配置',
+                    components: [
+                        {
+                            type: 'platData-dl',
+                            componentsData: [
+                            {
+                                label: '导航按钮宽度(PX)',
+                                name: 'nav_width',
+                                default: 172,
+                                default_m: 172,
+                                public: false,
+                                col: 2
+                            },
+                            {
+                                label: '导航按钮高度(PX)',
+                                name: 'nav_height',
+                                default: 44,
+                                default_m: 44,
+                                public: false,
+                                col: 2
+                            },
+                            {
+                                label: '导航按钮圆角(PX)',
+                                name: 'nav_borderRadius',
+                                default: 2,
+                                default_m: 2,
+                                public: false
+                            }
+                        ]
+                        }
+                    ]
+                },
+                {
+                    label: 'PC鼠标悬浮购买按钮配置',
+                    isshow: 'dl-web',
+                    components: [
+                        {
+                            label: '背景颜色',
+                            name: 'buyBtn_bgColor',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: '边框颜色',
+                            name: 'buyBtn_borderColor',
+                            type: 'colorPicker',
+                            default: '#000000',
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: 'SHOP NOW文字颜色',
+                            name: 'shopnow_fontColor',
+                            type: 'colorPicker',
+                            default: '#000000',
+                            public: false
+                        },
+                        {
+                            label: 'SHOP NOW文字大小(PX)',
+                            name: 'shopnow_fontSize',
+                            default: 16,
+                            public: false
+                        }
+                    ]
+                },
+                {
+                    label: 'See More按钮配置',
+                    isshow: 'dl-web',
+                    components: [
+                        {
+                            label: '按钮文案',
+                            name: 'seemore_btnText',
+                            default: 'See More',
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: '按钮文案颜色',
+                            name: 'seemore_fontColor',
+                            type: 'colorPicker',
+                            default: '#000000',
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: '按钮文字大小(PX)',
+                            name: 'seemore_fontSize',
+                            default: 18,
+                            public: false
+                        },
+                        {
+                            label: '宽度(PX)',
+                            name: 'seemore_width',
+                            default: 240,
+                            public: false,
+                            col:2
+                        },
+                        {
+                            label: '高度(PX)',
+                            name: 'seemore_height',
+                            default: 44,
+                            public: false,
+                            col:2
+                        },
+                        {
+                            label: '背景颜色',
+                            name: 'seemore_bgColor',
+                            type: 'colorPicker',
+                            default: '#FFFFFF',
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: '边框颜色',
+                            name: 'seemore_borderColor',
+                            type: 'colorPicker',
+                            default: '#000000',
+                            public: false,
+                            col: 2
+                        },
+                        {
+                            label: '背景图片',
+                            name: 'seemore_bgImage',
+                            type: 'image',
+                            public: false,
+                        }
+                    ]
+                },
+                {
+                    label: 'View More配置',
+                    type: 'fieldset',
+                    components: [
+                    {
+                        label: '背景颜色',
+                        name: 'view_more_bg_color',
+                        type: 'colorPicker',
+                        default: '#222222',
+                        col: 2
+                    },
+                    {
+                        label: '文字颜色',
+                        name: 'view_more_font_color',
+                        type: 'colorPicker',
+                        default: '#FFFFFF',
+                        col: 2
+                    }
+                ]
+                }
+            ]
+        }
+    ],
+    onSubmit: 'onSubmit'
+}
+
+%}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+<script>
+
+
+    {#  自定义保存函数 #}
+    function onSubmit(progress) {
+        var status = 0;
+
+        $('.nav-list-setting .nav-item').each(function(){
+            if(!$(this).find('input.category-name').val()){
+                layui.layer.msg('请填写分类名');
+                status = 1;
+                progress.cancel();
+            }
+        });
+        if (status == 1) {
+            return false;
+        }
+
+        var goodsArr = [];
+        $('textarea[name=goodsSKU]').each(function (index, element){
+            var $val = $(this).val();
+            var $categoryName =  $(this).parents('.nav-item').find('input.category-name').val();
+            var $link = $(this).parents('.nav-item').find('input[name=link]').val();
+            goodsArr.push({"categoryName": $categoryName, "lists": $val, link: $link});
+        });
+        if (goodsArr.length > 0) {
+            $('.nav-list-setting input[name=goodsSKU]').val(JSON.stringify(goodsArr));
+        } else {
+            $('.nav-list-setting input[name=goodsSKU]').val("");
+        }
+
+        var goodsArr = [];
+        $('.layui-panel textarea[name=goodsSKU]').each(function (index, element) {
+
+            var $val = $(this).val();
+            var $label = $(this).parents().find('input[name=categoryName]').val();
+            goodsArr.push({"label": $label, "lists": $val});
+        });
+        if (goodsArr.length > 0) {
+            $('.img-table input[name=goodsSKU]').val(JSON.stringify(goodsArr));
+        } else {
+            $('.img-table input[name=goodsSKU]').val("");
+        }
+        progress.next()
+    };
+
+    $(function() {
+        var $imgTable = $('.nav-list-setting');
+
+        var flagIndex =  $('.nav-list-setting .nav-item').length;
+        $('.component-form-setting-ite').on('click','.add-class',function(e){
+            var clone = $('.nav-item').eq(0).clone();
+            flagIndex++;
+            clone.find('input.category-name').val('');
+            clone.find('textarea[name=goodsSKU]').val('');
+            clone.find('input[name=link]').val('');
+            clone.find('.nav-title').html('TAB分类'+flagIndex);
+            $('.nav-list-setting').append(clone);
+            initItemIndex();
+        });
+
+        $('body').on('click','.icon-up',function () {
+            var target = $(this).closest('.nav-item');
+            if (target.prev('.nav-item').length > 0) {
+            target.prev('.nav-item').before(target.clone());
+            target.remove();
+            initItemIndex();
+            }
+        });
+
+        $('body').on('click', '.icon-down', function () {
+            var target = $(this).closest('.nav-item');
+
+            if (target.next('.nav-item').length > 0) {
+            target.next('.nav-item').after(target.clone());
+            target.remove();
+            initItemIndex();
+            }
+        });
+
+        $('body').on('click', '.icon-delete', function () {
+            var imgLen = $('.nav-list-setting .nav-item').length;
+            if (imgLen == 1){
+                layui.layer.msg('最后一项不能删除');
+            }else{
+                var target = $(this).closest('.nav-item');
+                layui.layer.confirm('确认删除吗？', {
+                    btn: ['取消', '确定'],
+                    area: '420px',
+                    skin: 'element-ui-dialog-class',
+                    icon: 3,
+                    title: '提示'
+                }, function (index) {
+                    layui.layer.close(index);
+                }, function (index) {
+                    target.remove();
+                    initItemIndex();
+                });
+            }
+        });
+
+        function initItemIndex(){
+            $('.nav-item').each(function(index){
+                var $this = $(this);
+                var listNum = index + 1;
+                $this.find('.nav-title').html('TAB分类'+listNum);
+            });
+        }
+    });
+</script>

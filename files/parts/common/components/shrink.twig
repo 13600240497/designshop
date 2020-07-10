@@ -1,0 +1,22 @@
+{#/**
+*@author: 任贸华
+*@date: 2018/11/24 16:31:41
+*@desc: tab选项卡组件
+* @param {string} layclass layui 自定义样式
+* @param {array} list 数组 [{a:1}]
+* @param {string} class content 内容部分样式
+* @param {string} title 选项卡tab标题
+* @param {string} content 选项卡content内容
+*/#}
+{% if options %}
+    <div class="layui-row shrink">
+        <div class="tit">
+            {{options.title|default('基础配置')}}<i class="layui-icon">{% if options.hide %}&#xe602;{% else %}&#xe61a;{% endif %}</i>
+        </div>
+        <div class="cont" {% if options.hide %} style="display: none"{% endif %}>
+            {{ options.content|raw }}
+        </div>
+    </div>
+{% else %}
+    {{ include ('@app/files/parts/common/components/argsErrors.twig') }}
+{% endif %}

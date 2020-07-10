@@ -1,0 +1,143 @@
+<header class="tc">
+    <h3>{{ pageData.titleText }}</h3>
+    <p class="title-link-{{ pageInstanceId }}">
+        <a href="{{ data.titleLink|default('javascript:void(0);') }}" {% if data.isOpenNew == 1 %}target="_blank"{% endif %}>
+            {% if data.titleImgSrc %}
+                <i><img src="{{ data.titleImgSrc }}" alt="rosegal"></i>
+            {% else %}
+                <i><img src="{{staticDomain}}/resources/images/rg-pc/camera.png" alt="rosegal"></i>
+            {% endif %}
+            {{ pageData.titleLinkText }}
+        </a>
+    </p>
+</header>
+<div class="w1200 clearfix"> 
+    <ul class="clearfix l-part">
+        {% if data.communityRgDefaultList %}
+            {% for item in data.communityRgDefaultList|slice(0,2) %}
+                <li class="buyer-show-item first js_show_item_{{ loop.index }}" data-index="{{ loop.index }}" data-sku="{{ item.sku | default('') }}">
+                    <img class="js_gdexp_lazy js-geshopImg-lazyload js_gbexp_lazy" src="https://geshopcss.logsss.com/imagecache/geshop/resources/images/rg/loading_big.gif" data-original="{{ item.imageSrc }}" data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.imageSrc }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }">
+                    <div class="ins-shade js_insopenquickshop">
+                        <div class="shade-content">
+                            <span class="ins-icon"></span> 
+                            <a class="view-it logsss_event" href="javascript:void(0)" rel="nofollow" data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.imageSrc }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index }}'} }"><span>{{ pageData.viewText }}</span></a>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li class="buyer-show-item first js_show_item_1" data-index="1" data-sku="">
+                <img src="{{staticDomain}}/resources/images/rg-pc/edit_icon1.png" alt="">
+                <div class="ins-shade js_insopenquickshop">
+                    <div class="shade-content">
+                        <span class="ins-icon"></span> 
+                        <a class="view-it" href="javascript:void(0)">View it</a>
+                    </div>
+                </div>
+            </li>
+            <li class="buyer-show-item first js_show_item_2" data-index="2" data-sku="">
+                <img src="{{staticDomain}}/resources/images/rg-pc/edit_icon2.png" alt="">
+                <div class="ins-shade js_insopenquickshop">
+                    <div class="shade-content">
+                        <span class="ins-icon"></span> 
+                        <a class="view-it" href="javascript:void(0)">View it</a>
+                    </div>
+                </div>
+            </li>
+        {% endif %}
+    </ul>
+    <ul class="clearfix r-part">
+        {% if data.communityRgDefaultList %}
+            {% for item in data.communityRgDefaultList|slice(2,1) %}
+                <li class="first-photo buyer-show-item js_show_item_{{ loop.index + 2 }}" data-index="{{ loop.index + 2 }}" data-sku="{{ item.sku | default('') }}">
+                    <img class="js_gdexp_lazy js-geshopImg-lazyload js_gbexp_lazy" src="https://geshopcss.logsss.com/imagecache/geshop/resources/images/rg/loading_big.gif" data-original="{{ item.imageSrc }}" data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.imageSrc }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index + 2 }}'} }">
+                    <div class="ins-shade js_insopenquickshop">
+                        <div class="shade-content">
+                            <span class="ins-icon"></span> 
+                            <a class="view-it logsss_event" href="javascript:void(0)" rel="nofollow" data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.imageSrc }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index + 2}}'} }"><span>{{ pageData.viewText }}</span></a>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li class="first-photo buyer-show-item js_show_item_3" data-index="3" data-sku="">
+                <img src="{{staticDomain}}/resources/images/rg-pc/edit_icon3.png" alt="">
+                <div class="ins-shade js_insopenquickshop">
+                    <div class="shade-content">
+                        <span class="ins-icon"></span> 
+                        <a class="view-it" href="javascript:void(0)">View it</a>
+                    </div>
+                </div>
+            </li>
+        {% endif %}
+
+        {% if data.communityRgDefaultList %}
+            {% for item in data.communityRgDefaultList|slice(3,6) %}
+                <li class="buyer-show-item js_show_item_{{ loop.index + 3 }}" data-index="{{ loop.index + 3 }}" data-sku="{{ item.sku | default('') }}">
+                    <img class="js_gdexp_lazy js-geshopImg-lazyload js_gbexp_lazy" src="https://geshopcss.logsss.com/imagecache/geshop/resources/images/rg/loading_big.gif" data-original="{{ item.imageSrc }}" data-logsss-browser-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.imageSrc }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index + 3 }}'} }">
+                    <div class="ins-shade js_insopenquickshop">
+                        <div class="shade-content">
+                            <span class="ins-icon"></span> 
+                            <a class="view-it logsss_event" href="javascript:void(0)" rel="nofollow" data-logsss-event-value="{ 'pm':'md','p':'gs-{{ pageId }}-{{ pageInstanceId }}','ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','mdID':'{{ data.imageSrc }}','cporder':'{{ layoutIndex }}','rank':'{{ loop.index + 3}}'} }"><span>{{ pageData.viewText }}</span></a>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li class="buyer-show-item  js_show_item_4" data-index="4" data-sku="">
+                <img src="{{staticDomain}}/resources/images/rg-pc/edit_icon4.png" alt="">
+                <div class="ins-shade js_insopenquickshop">
+                    <div class="shade-content">
+                        <span class="ins-icon"></span> 
+                        <a class="view-it" href="javascript:void(0)">View it</a>
+                    </div>
+                </div>
+            </li>
+            <li class="buyer-show-item  js_show_item_5" data-index="5" data-sku="">
+                <img src="{{staticDomain}}/resources/images/rg-pc/edit_icon5.png" alt="">
+                <div class="ins-shade js_insopenquickshop">
+                    <div class="shade-content">
+                        <span class="ins-icon"></span> 
+                        <a class="view-it" href="javascript:void(0)">View it</a>
+                    </div>
+                </div>
+            </li>
+            <li class="buyer-show-item  js_show_item_6" data-index="6" data-sku="">
+                <img src="{{staticDomain}}/resources/images/rg-pc/edit_icon6.png" alt="">
+                <div class="ins-shade js_insopenquickshop">
+                    <div class="shade-content">
+                        <span class="ins-icon"></span> 
+                        <a class="view-it" href="javascript:void(0)">View it</a>
+                    </div>
+                </div>
+            </li>
+            <li class="buyer-show-item  js_show_item_7" data-index="7" data-sku="">
+                <img src="{{staticDomain}}/resources/images/rg-pc/edit_icon7.png" alt="">
+                <div class="ins-shade js_insopenquickshop">
+                    <div class="shade-content">
+                        <span class="ins-icon"></span> 
+                        <a class="view-it" href="javascript:void(0)">View it</a>
+                    </div>
+                </div>
+            </li>
+            <li class="buyer-show-item  js_show_item_8" data-index="8" data-sku="">
+                <img src="{{staticDomain}}/resources/images/rg-pc/edit_icon8.png" alt="">
+                <div class="ins-shade js_insopenquickshop">
+                    <div class="shade-content">
+                        <span class="ins-icon"></span> 
+                        <a class="view-it" href="javascript:void(0)">View it</a>
+                    </div>
+                </div>
+            </li>
+            <li class="buyer-show-item  js_show_item_9" data-index="9" data-sku="">
+                <img src="{{staticDomain}}/resources/images/rg-pc/edit_icon9.png" alt="">
+                <div class="ins-shade js_insopenquickshop">
+                    <div class="shade-content">
+                        <span class="ins-icon"></span> 
+                        <a class="view-it" href="javascript:void(0)">View it</a>
+                    </div>
+                </div>
+            </li>
+        {% endif %}
+    </ul>
+</div>

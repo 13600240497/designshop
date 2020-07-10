@@ -1,0 +1,93 @@
+.geshop-coupon-style4-dialog-1 {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 10001;
+    // 状态
+    &.is-show {
+        display: block;
+    }
+}
+
+.gc4d1-wrapper {
+    position: absolute;
+    width: 600px;
+    height: 350px;
+    text-align: center;
+    background: #fff;
+    border-radius: 20px;
+    left: 50%;
+    top: 50%;
+    padding-top: 30px;
+    margin-left: -300px;
+    margin-top: -175px;
+    box-sizing: border-box;
+}
+
+.gc4d1-head {
+    font-size: 42px;
+    font-weight: 600;
+    height: 57px;
+    line-height: 57px;
+}
+
+.gc4d1-body {
+    padding: 26px 50px;
+}
+
+.gc4d1-coupon {
+    position: relative;
+    display: table;
+    width: 500px;
+    margin: 0 auto;
+    height: 180px;
+    background-size: 100% 100%;
+}
+.gc4d1-coupon-td {
+    display: table-cell;
+    vertical-align: middle;
+    p {
+        height: 19px;
+        line-height: 19px;
+        margin: 0px;
+        font-size: 14px;
+        a {
+            text-decoration: underline;
+        }
+    }
+    p:nth-child(2) {
+        font-size: 48px;
+        height: 65px;
+        line-height: 65px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        font-weight: 400;
+    }
+}
+.gc4d1-close {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    right: 23px;
+    top: 23px;
+    cursor: pointer;
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.geshop-popup-shade {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10000;
+    background-color: #000;
+    opacity: .3; 
+}

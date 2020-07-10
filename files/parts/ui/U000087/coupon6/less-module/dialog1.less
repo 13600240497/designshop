@@ -1,0 +1,117 @@
+.geshop-coupon-style4-dialog-1 {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 100001;
+
+
+    // 状态
+    &.is-show {
+        display: block;
+    }
+}
+
+.gc4d1-wrapper {
+    position: absolute;
+    width: 600px;
+    height: 350px;
+    text-align: center;
+    background: #fff;
+    border-radius: 20px;
+    left: 50%;
+    top: 50%;
+    padding-top: 1.06rem;
+    margin-left: -300px;
+    margin-top: -175px;
+    box-sizing: border-box;
+}
+
+.gc4d1-head {
+    font-size: 42 / 75rem;
+    font-weight: 600;
+    height: 57 / 75rem;
+    line-height: 57 / 75rem;
+}
+.gc4d1-body {
+    padding-top: 0.53rem;
+    button {
+        text-transform: uppercase;
+        display: inline-block;
+        width: 240 / 75rem;
+        height: 68 / 75rem;
+        background: #333333;
+        color: #fff;
+        border-radius: 68 / 75rem;
+        margin-top: 75 / 75rem;
+        line-height: 1.2em;
+        vertical-align: top;
+        a {
+            width: 100%;
+            display: table;
+            span {
+                display: table-cell;
+                vertical-align: middle;
+                text-align: center;
+            }
+            color: #fff;
+        }
+    }
+    .get-success{
+        text-align: center;
+    }
+}
+.gc4d1-coupon {
+    position: relative;
+    display: table;
+    margin: 0 auto;
+    width: 480 / 75rem;
+    height: 200 / 75rem;
+}
+.gc4d1-coupon-td {
+    display: table-cell;
+    vertical-align: middle;
+    p {
+        min-height: 19px;
+        line-height: 19px;
+        margin: 0px;
+        font-size: 14px;
+        a {
+            text-decoration: underline;
+            display: block;
+        }
+    }
+    p:nth-child(2) {
+        font-size: 48 / 75rem;
+        line-height: 1.2em;
+        margin-top: 8 / 75rem;
+        margin-bottom: 8 / 75rem;
+        font-weight: 400;
+    }
+}
+div.gc4d1-close {
+    position: absolute;
+    width: 24 / 75rem;
+    height: 24 / 75rem;
+    right: 20 / 75rem;
+    top: 20 / 75rem;
+    cursor: pointer;
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.geshop-popup-shade {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10000;
+    background-color: #000;
+    opacity: .3; 
+}

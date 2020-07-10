@@ -1,0 +1,58 @@
+<div class="layui-row layui-col-space20">
+    <div class="layui-col-md6">
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'宽度(px)',name:'popUnStartWidth',value:pageData.popUnStartWidth ,full:true,}}
+        ) }}
+    </div>
+    <div class="layui-col-md6">
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'高度(px)',name:'popUnStartHeight',value:pageData.popUnStartHeight ,full:true,}}
+        ) }}
+    </div>
+
+    <div class="layui-col-md12"  >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'背景图片',name:'popUnStartBackgroundImg',value:pageData.popUnStartBackgroundImg ,full:true,}}
+        ) }}
+    </div>
+
+    <div class="layui-col-md12" >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'背景颜色',name:'popUnStartBackgroundColor',value:pageData.popUnStartBackgroundColor ,full:true,}}
+        ) }}
+    </div>
+
+    <div class="layui-col-md6"  >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'描述文案文字颜色',name:'popUnStartDescriptionColor',value:pageData.popUnStartDescriptionColor ,full:true,}}
+        ) }}
+    </div>
+    <div class="layui-col-md6" >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'描述文案文字大小(px)',name:'popUnStartDescriptionSize',value:pageData.popUnStartDescriptionSize ,full:true,}}
+        ) }}
+    </div>
+
+    <div class="layui-col-md6"  >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'倒计时文字颜色',name:'popUnStartCountdownColor',value:pageData.popUnStartCountdownColor ,full:true,}}
+        ) }}
+    </div>
+    <div class="layui-col-md6" >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'倒计时文字大小(px)',name:'popUnStartCountdownSize',value:pageData.popUnStartCountdownSize ,full:true,}}
+        ) }}
+    </div>
+
+    <div class="layui-col-md6"  >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'描述文字上边距(px)',name:'popUnStartDescriptionMarginTop',value:pageData.popUnStartDescriptionMarginTop ,full:true,}}
+        ) }}
+    </div>
+    <div class="layui-col-md6" >
+        {{ include ('@app/files/parts/common/components/input.twig',
+            { options: { label:'按钮上边距(px)',name:'popUnStartButtonMarginTop',value:pageData.popUnStartButtonMarginTop ,full:true,}}
+        ) }}
+    </div>
+
+</div>

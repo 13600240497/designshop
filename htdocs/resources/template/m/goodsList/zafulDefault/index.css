@@ -1,0 +1,246 @@
+[data-gid="m-zaful-default"] {
+  /* goods  attribute*/
+  /* btn */
+  /* 下架 */
+}
+[data-gid="m-zaful-default"].gs-goodsWrap {
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  max-width: 100%;
+}
+[data-gid="m-zaful-default"].gs-goodsWrap ul {
+  font-size: 0;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+[data-gid="m-zaful-default"].gs-goodsWrap:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+[data-gid="m-zaful-default"].gs-goodsWrap li {
+  font-size: 12px;
+  position: relative;
+  float: left;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+[data-gid="m-zaful-default"] .layui-form-label {
+  white-space: nowrap;
+}
+[data-gid="m-zaful-default"] .gs-curtoff-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+[data-gid="m-zaful-default"] .discont-curtoff {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 40px;
+  height: 38px;
+  color: #ffffff;
+  background-color: #e33194;
+  background-size: contain;
+  line-height: 14px;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 50%;
+}
+[data-gid="m-zaful-default"] .discont-curtoff strong {
+  font-size: 16px;
+  font-weight: 700;
+  display: inline-block;
+}
+[data-gid="m-zaful-default"] .discont-curtoff .curtoff-box {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 50%;
+  font-size: 12px;
+}
+[data-gid="m-zaful-default"] .component-self-goodWrap {
+  text-align: center;
+  padding: 0 8px;
+  background-color: #ffffff;
+}
+[data-gid="m-zaful-default"] .item-name {
+  height: 34px;
+  line-height: 18px;
+  overflow: hidden;
+  padding: 5px 0;
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+[data-gid="m-zaful-default"] .item-price {
+  height: 40px;
+  line-height: 20px;
+  margin: 0;
+}
+[data-gid="m-zaful-default"] .item-price .shop-price {
+  vertical-align: middle;
+}
+[data-gid="m-zaful-default"] .item-price .bizhong {
+  display: none;
+}
+[data-gid="m-zaful-default"] .gs-btn-area {
+  margin-bottom: 10px;
+}
+[data-gid="m-zaful-default"] .gs-desc a {
+  font-size: 12px;
+  color: #666;
+  text-align: left;
+}
+[data-gid="m-zaful-default"] .market-price {
+  font-size: 12px;
+  color: #999;
+  margin-left: 5px;
+  vertical-align: middle;
+  display: inline-block;
+}
+[data-gid="m-zaful-default"] .gs-img {
+  display: table;
+  position: relative;
+  font-size: 0;
+  width: 100%;
+}
+[data-gid="m-zaful-default"] .gs-img a {
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+}
+[data-gid="m-zaful-default"] .gs-img img {
+  max-height: 100%;
+}
+[data-gid="m-zaful-default"] .gs-btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  text-decoration: none;
+}
+[data-gid="m-zaful-default"] .btn-primary {
+  color: #fff;
+  background-color: #337ab7;
+  padding: 0;
+  overflow: hidden;
+  word-break: break-all;
+  max-width: 100%;
+}
+[data-gid="m-zaful-default"] .btn-middle {
+  border-radius: 20px;
+  padding: 6px 20px;
+}
+[data-gid="m-zaful-default"] .promotion-time {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 40px;
+  line-height: 40px;
+  color: #fff;
+  font-size: 17px;
+  background: rgba(36, 36, 36, 0.6);
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+[data-gid="m-zaful-default"] .promotion-time .icon-clock {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 5px;
+  margin-top: 10px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  background-position: -83px -5px;
+}
+[data-gid="m-zaful-default"] .buyLink {
+  background-color: #999 !important;
+  color: #fff !important;
+  pointer-events: none;
+  cursor: default;
+}
+[data-gid="m-zaful-default"] .goodStatus {
+  display: inline-block;
+  position: absolute;
+  width: 2.4667rem;
+  height: 2.4667rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 1.23335rem;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: .1067rem;
+  top: 50%;
+  left: 50%;
+  margin-top: -1.23335rem;
+  margin-left: -1.23335rem;
+  z-index: 2;
+  visibility: visible;
+}
+[data-gid="m-zaful-default"] .goodStatus .goodStatus_inner {
+  display: table-cell;
+  width: 2.2533rem;
+  height: 2.2533rem;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  padding: 0 .4rem;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  vertical-align: middle;
+  font-size: 15px;
+}
+[data-gid="m-zaful-default"] .gs-goods-limit {
+  margin: .5867rem 0 0;
+  width: 100%;
+  display: block;
+  height: .1867rem;
+  border-radius: .0667rem;
+  font-size: 0;
+  position: relative;
+}
+[data-gid="m-zaful-default"] .gs-goods-limit .process-bar {
+  margin: .5867rem 0 0;
+  width: 100%;
+  display: block;
+  height: .1867rem;
+  border-radius: .0667rem;
+  font-size: 0;
+  position: relative;
+}
+[data-gid="m-zaful-default"] .gs-goods-limit .process-inner {
+  display: block;
+  height: .1867rem;
+  border-radius: .0667rem;
+  background-color: #f60;
+}

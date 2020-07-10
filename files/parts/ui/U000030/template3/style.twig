@@ -1,0 +1,39 @@
+{% set classSpace = '.geshop-U000030-style2-'~pageInstanceId %}
+
+{{ classSpace }} .component-m-nav-fixed{
+    background-color: {{ data.bgColor | default('#D8D8D8') }};
+}
+
+{{ classSpace }} ul {
+    width: 100%;
+    height: {{ (data.height | default(90)) / 75 }}rem;
+    background-color: {{ data.bgColor | default('#D8D8D8') }};
+}
+
+{{ classSpace }} li {
+    background-color: {{ data.bgColor | default('#D8D8D8') }};
+    width: {{ (data.item_width | default(180)) / 75}}rem;
+    height: {{ (data.height | default(90)) / 75 }}rem;
+    margin-right: {{ (data.margin|default(2)) / 75 }}rem;
+}
+{{ classSpace }} li:last-child {
+    margin-right: 0rem;
+}
+
+{{ classSpace }} li a {
+    color: {{ data.font_color | default('#333333') }};
+    font-size: {{ (data.font_size | default(28)) / 75 }}rem;
+    height: {{ (data.height | default(90)) / 75 }}rem;
+    line-height: {{ (data.height | default(90)) / 75 }}rem;
+}
+
+{{ classSpace }} .component-m-nav{
+    background-color: {{ data.bgColor | default('#D8D8D8') }};
+}
+
+#js_topNav .swiper-slide.m-current {
+    background-color:{{ data.bgColor_active }} !important;
+}
+#js_topNav .swiper-slide.m-current a {
+    color:{{ data.font_color_active }} !important;
+}

@@ -1,0 +1,285 @@
+{%
+	set titleData = {
+		titleWidth:data.titleWidth is not null?data.titleWidth:400,
+	}
+%}
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>优惠券组件设置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+  <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+    <div class="layui-tab">
+      <ul class="layui-tab-title">
+        <li class="layui-this">模板选择</li>
+        <li>样式设置</li>
+      </ul>
+      <div class="layui-tab-content layui-tab-content-parent">
+        <div class="layui-tab-item layui-show">
+						<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+						{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				</div>
+        <div class="layui-tab-item">
+          <div class="layui-carousel" id="form_carousel">
+            <div carousel-item>
+              <div>
+                <fieldset class="layui-elem-field">
+                  <legend>常用配置</legend>
+                  <div class="layui-field-box">
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">下边距(px)</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="boxMarginBottom" autocomplete="off" class="layui-input" value="{{ data.boxMarginBottom | default(24) }}">
+                      </div>
+                    </div>
+                    {# <div class="layui-form-item">
+                      <label class="layui-form-label">高度(px)</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="height" autocomplete="off" class="layui-input" value="{{ data.height | default(220) }}">
+                      </div>
+                    </div> #}
+                     <div class="layui-form-item">
+                      <label class="layui-form-label">上下内间距(px)</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="paddingTopBottom" autocomplete="off" class="layui-input" value="{{ data.paddingTopBottom | default(15) }}">
+                      </div>
+                    </div>
+                   
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">背景图片</label>
+                      <div class="layui-input-block">
+                        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                        <input type="text" name="bgImage" autocomplete="off" class="layui-input" value="{{ data.bgImage }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">Code文案</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="textTitle" autocomplete="off" placeholder="" class="layui-input" value="{{ data.textTitle | default('CODE') }}">
+                      </div>
+                    </div><div class="layui-form-item">
+                      <label class="layui-form-label">Code码</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="textCode" autocomplete="off" placeholder="" class="layui-input" value="{{ data.textCode | default('SCHOOL') }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">COPY 按钮是否显示</label>
+                      <div class="layui-input-block">
+                        <input type="radio" name="copyBtnIsVisible" value="1" title="是"{% if data.copyBtnIsVisible|default('1') == '1' %} checked{% endif %}>
+                        <input type="radio" name="copyBtnIsVisible" value="2" title="否"{% if data.copyBtnIsVisible|default('1') == '2' %} checked{% endif %}>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                <fieldset class="layui-elem-field">
+                  <legend>折扣配置<span style="font-size:12px;">（注意文案设置过长则隐藏）</span></legend>
+                  <div class="layui-field-box" style="margin-top:10px">
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">折扣左边文案（非必填）</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="discountLeftText" autocomplete="off" placeholder="" class="layui-input" value="{{ data.discountLeftText | default('UP TO') }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">折扣要突出的文案</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="discountMainText" autocomplete="off" placeholder="" class="layui-input" value="{{ data.discountMainText | default('$18') }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">折扣突出文案字体大小(px)</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="discountMainTextFize" autocomplete="off" placeholder="" class="layui-input" value="{{ data.discountMainTextFize | default(80) }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">折扣右边上方的文案</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="discountRightTopText" autocomplete="off" placeholder="" class="layui-input" value="{{ data.discountRightTopText | default('All Orders') }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">折扣右边下方的文案</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="discountRightBottomText" autocomplete="off" placeholder="" class="layui-input" value="{{ data.discountRightBottomText | default('Over $20') }}">
+                      </div>
+                    </div>
+                    <div class="layui-form-item">
+                      <label class="layui-form-label">折扣主要文案大小(px)</label>
+                      <div class="layui-input-block">
+                        <input type="text" name="discountTextFize" autocomplete="off" placeholder="" class="layui-input" value="{{ data.discountTextFize | default(18) }}">
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                <div class="text-right" style="margin-bottom:40px">
+                  <button type="button" id="js_moreConfig" class="layui-btn layui-btn-normal layui-btn-sm">更多配置</button>
+                </div>
+              </div>
+              <div>
+                <div class="layui-tab layui-tab-vertical">
+                  <ul class="layui-tab-title">
+                    <li class="layui-this">基础设置</li>
+                    <li>Code文案设置</li>
+                    <li>按钮基础设置</li>
+                    <li>按钮当前效果</li>
+                    <li>按钮点击后效果</li>
+                  </ul>
+                  <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">背景颜色</label>
+                        <div class="layui-input-block">
+                          <div class="color-picker-selector" data-hidden-name="bgColor"><div style="background-color: {{ data.bgColor }};"></div></div>
+                          <input type="text" class="layui-input" name="bgColor" autocomplete="off" value="{{ data.bgColor }}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">折扣字体颜色</label>
+                        <div class="layui-input-block">
+                          <div class="color-picker-selector" data-hidden-name="discountTextColor"><div style="background-color: {{ data.discountTextColor | default('#000000') }};"></div></div>
+                          <input type="text" class="layui-input" name="discountTextColor" autocomplete="off" value="{{ data.discountTextColor | default('#000000') }}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">折扣文案上边距</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="discountTextMarginTop" autocomplete="off" placeholder="" class="layui-input" value="{{ data.discountTextMarginTop | default(16) }}">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="layui-tab-item">
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">Code文案上边距</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="codeTextMarginTop" autocomplete="off" placeholder="" class="layui-input" value="{{ data.codeTextMarginTop | default(8) }}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">Code文字大小(px)</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="codeTextFontSize" autocomplete="off" class="layui-input" value="{{ data.codeTextFontSize | default(30) }}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">Code文字颜色</label>
+                        <div class="layui-input-block">
+                          <div class="color-picker-selector" data-hidden-name="codeTextColor"><div style="background-color: {{ data.codeTextColor | default('#333333') }};"></div></div>
+                          <input type="text" class="layui-input" name="codeTextColor" autocomplete="off" value="{{ data.codeTextColor | default('#333333') }}">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="layui-tab-item">
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">按钮文字大小(px)</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="btnfontSize" autocomplete="off" class="layui-input" value="{{ data.btnfontSize | default(20) }}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">按钮宽度(px)</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="btnWidth" autocomplete="off" class="layui-input" value="{{ data.btnWidth | default(160) }}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">按钮高度(px)</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="btnHeight" autocomplete="off" class="layui-input" value="{{ data.btnHeight | default(40) }}">
+                        </div>
+                      </div>
+                      
+                    </div>
+                    <div class="layui-tab-item">
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">Copy Code 文案</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="copyCodeText" autocomplete="off" placeholder="" class="layui-input" value="{{ data.copyCodeText | default('Copy Code') }}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">文字颜色</label>
+                        <div class="layui-input-block">
+                          <div class="color-picker-selector" data-hidden-name="copyCodeTextColor"><div style="background-color: {{ data.copyCodeTextColor | default('#000000') }};"></div></div>
+                          <input type="text" class="layui-input" name="copyCodeTextColor" autocomplete="off" value="{{ data.copyCodeTextColor | default('#000000') }}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">背景颜色</label>
+                        <div class="layui-input-block">
+                          <div class="color-picker-selector" data-hidden-name="copyCodeBgColor"><div style="background-color: {{ data.copyCodeBgColor | default('#D8D8D8') }};"></div></div>
+                          <input type="text" class="layui-input" name="copyCodeBgColor" autocomplete="off" value="{{ data.copyCodeBgColor | default('#D8D8D8') }}">
+                        </div>
+                      </div>
+                      {# <div class="layui-form-item">
+                        <label class="layui-form-label">按钮背景图片</label>
+                        <div class="layui-input-block">
+                          <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+                          <input type="text" name="btnBgImg" autocomplete="off" class="layui-input" value="{{ data.btnBgImg }}">
+                        </div>
+                      </div> #}
+                    </div>
+                    <div class="layui-tab-item">
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">Visited点击后文案</label>
+                        <div class="layui-input-block">
+                          <input type="text" name="copyCodeVisitedText" autocomplete="off" placeholder="" class="layui-input" value="{{ data.copyCodeVisitedText | default('Copied!') }}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">文字颜色</label>
+                        <div class="layui-input-block">
+                          <div class="color-picker-selector" data-hidden-name="copyCodeVisitedTextColor"><div style="background-color: {{ data.copyCodeVisitedTextColor | default('#9B9B9B') }};"></div></div>
+                          <input type="text" class="layui-input" name="copyCodeVisitedTextColor" autocomplete="off" value="{{ data.copyCodeVisitedTextColor | default('#9B9B9B') }}">
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label">背景颜色</label>
+                        <div class="layui-input-block">
+                          <div class="color-picker-selector" data-hidden-name="copyCodeVisitedBgColor"><div style="background-color: {{ data.copyCodeVisitedBgColor | default('#D8D8D8') }};"></div></div>
+                          <input type="text" class="layui-input" name="copyCodeVisitedBgColor" autocomplete="off" value="{{ data.copyCodeVisitedBgColor | default('#D8D8D8') }}">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <button type="button" id="js_baseConfig" class="layui-btn layui-btn-normal layui-btn-sm">基础配置</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+  <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+  <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>
+
+<script>
+  $(function() {
+    $('input[name="discountLeftText"],input[name="discountRightTopText"],input[name="discountRightBottomText"]').blur(function() {
+      var value = $(this).val(),
+        length = value.length;
+      if (length > 20) {
+        $(this).val(value.substr(0,20));
+        layer.msg('不能超出20个字符，已截取前20个字符！');
+      }
+    });
+    $('input[name="discountMainText"]').blur(function() {
+      var value = $(this).val(),
+        length = value.length;
+      if (length > 10) {
+        $(this).val(value.substr(0,10));
+        layer.msg('不能超出10个字符，已截取前10个字符！');
+      }
+    });
+  });
+</script>

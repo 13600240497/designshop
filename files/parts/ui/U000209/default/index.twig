@@ -1,0 +1,272 @@
+{% set client = siteCode|split('-') %}
+<div class="geshop-component-box component-drag geshop-u000209-default geshop-u000209-default-{{ pageInstanceId }}"
+     data-key="U000209" data-id="{{ pageInstanceId }}">
+    {{ include('style.twig') }}
+    <div class="geshop-containr"  data-fixed="{{ data.is_fixed ?? 1 }}">
+        {% if data.navList | length <= 0  %}
+            {#顶部图片#}
+            <div class="geshop-ad-wrap">
+                <ul>
+                    <li class="on">
+                        <a href="">
+                            <img src="https://geshopimg.logsss.com/uploads/G6yp2z1vAX8SCFVEIbQx93Tkeon7f0jK.png"
+                                 alt="banner">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="https://geshopimg.logsss.com/uploads/G6yp2z1vAX8SCFVEIbQx93Tkeon7f0jK.png"
+                                 alt="banner">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="https://geshopimg.logsss.com/uploads/G6yp2z1vAX8SCFVEIbQx93Tkeon7f0jK.png"
+                                 alt="banner">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="https://geshopimg.logsss.com/uploads/G6yp2z1vAX8SCFVEIbQx93Tkeon7f0jK.png"
+                                 alt="banner">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="https://geshopimg.logsss.com/uploads/G6yp2z1vAX8SCFVEIbQx93Tkeon7f0jK.png"
+                                 alt="banner">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="https://geshopimg.logsss.com/uploads/G6yp2z1vAX8SCFVEIbQx93Tkeon7f0jK.png"
+                                 alt="banner">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            {#一级导航#}
+
+            <div class="swiper-container  geshop-navswiper">
+                <div class="swiper-wrapper" style="justify-content: left">
+                    <div class="swiper-slide active">
+                        <span>Women</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <span>Plus Size</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <span>Little Black Dresses</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <span>Pink Brt</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <span>Women</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <span>Little Black Dresses</span>
+                    </div>
+                </div>
+            </div>
+
+
+            {#二级导航#}
+            <div class="secdBox">
+                {% for index in 0..5 %}
+                    <div class="swiper-container geshop-secondswiper geshop-secondswiper-{{ index }} {% if index==0 %}on{% endif %}">
+                        <div class="swiper-wrapper" style="justify-content: left">
+                            <div class="swiper-slide active">
+                                <img class="nav-img"
+                                     src="https://geshopimg.logsss.com/uploads/4NTvJ3E9HbDxGShyOcrkQ7u1dqlaZw5i.png "
+                                     alt="">
+                                <span>{{ index }}-Swimwear</span>
+                                <i class="btr" style="background-color: #d8d8d8"></i>
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="nav-img"
+                                     src="https://geshopimg.logsss.com/uploads/4NTvJ3E9HbDxGShyOcrkQ7u1dqlaZw5i.png "
+                                     alt="">
+                                <span>Women's Accessories</span>
+                                <i class="btr" style="background-color: #d8d8d8"></i>
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="nav-img"
+                                     src="https://geshopimg.logsss.com/uploads/4NTvJ3E9HbDxGShyOcrkQ7u1dqlaZw5i.png "
+                                     alt="">
+                                <span>Swallow </span>
+                                <i class="btr" style="background-color: #d8d8d8"></i>
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="nav-img"
+                                     src="https://geshopimg.logsss.com/uploads/4NTvJ3E9HbDxGShyOcrkQ7u1dqlaZw5i.png "
+                                     alt="">
+                                <span>Women's Accessories</span>
+                                <i class="btr" style="background-color: #d8d8d8"></i>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {#内容列表#}
+            <ul class="second-nav-list">
+                {% for index in 0..3 %}
+                    <li>
+                        <a href="">
+                            <img src="{{ data.default.lazyImg|default('https://geshopcss.logsss.com/imagecache/geshop/resources/images/rg/loading_big.gif') }}"
+                                 data-original="https://geshopimg.logsss.com/uploads/RO2KTybdpMct1JuLjFgYWVPrXmZEsH3q.png "
+                                 class="js-geshopImg-lazyload">
+                            {% if (data.discount_type ?? 0) == 1 %}
+                                <span class="discount-off site-font-bold">{{ item.discount ?? 50 }}% OFF</span>
+                            {% else %}
+                                <span class="discount-off site-font-bold">-{{ item.discount ?? 50 }}%</span>
+                            {% endif %}
+                        </a>
+                        <div class="shop-fast">
+                            <div class="rice-info">
+                                <p>Buy 1 Get <span class="site-font-bold" style="color: #FA386A;">15%</span> OFF</p>
+                            </div>
+                            {% if data.shop_fast %}
+                                <img class="curtoff-img" src="{{ data.shop_fast }}" alt="">
+                            {% else %}
+                                <img src="https://geshoptest.s3.amazonaws.com/uploads/XR6nmvfcejDVSgNbwHpLaqCyI08T1h9l.png"
+                                     alt="shop_fast">
+                            {% endif %}
+
+                        </div>
+                        <div class="goods-desc">
+                            <a href="" class="rg-ellipsis-1">ZAFUL HOT Slip Pockets us ZAFUL HOT </a>
+                            <p class="item-price">
+                            <span class="shop-price">
+                                <span class="my_shop_price site-bold-strict" data-orgp="22.99">$22.99</span>
+                            </span>
+                                <del class="market-price">
+                                    <span class="my_shop_price js_market_wrap" data-orgp="40.99">$40.99</span>
+                                </del>
+                            </p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+
+            {#顶部图片#}
+            <div class="geshop-ad-wrap">
+                <ul>
+
+                </ul>
+            </div>
+            {#一级导航#}
+            <div class="swiper-container  geshop-navswiper">
+                <div class="swiper-wrapper">
+
+                </div>
+            </div>
+            {#二级导航#}
+            <div class="secdBox">
+
+            </div>
+            {#商品列表#}
+            {% for ix,nav in data.navList %}
+                <div class="fbox {% if ix == 0 %}on{% endif %}">
+                    {% for index,item in nav.children %}
+                        <ul class="second-nav-list list-{{ ix }}-{{ index }} {% if index == 0 %}on{% endif %}" data-curPage="0" data-top="0">
+                        </ul>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <ul class="second-nav-listx">
+
+            </ul>
+            <div class="giftImg">
+                <img src="https://geshopimg.logsss.com/uploads/K016no8NLPkfFRXZ5IEsv4OJrl7VD3Wm.gif" alt="">
+            </div>
+            <script class="cont-goodsList" type="text/html">
+                <%# d.forEach(function(item, index) { %>
+                <li>
+                    <a href="<% geshopUrlToApp(item.url_title,item.goods_id) %>">
+                        <img src="{{ data.default.lazyImg|default('https://geshopcss.logsss.com/imagecache/geshop/resources/images/rg/loading_big.gif') }}"
+                             data-original="<% item.goods_img %>"
+                             class="js-geshopImg-lazyload">
+                        <%# if (item.promote_price != '0.00') { %>
+                            <%# if (item.discount > 0 ) { %>
+                                {% if data.discount_type == 1 %}
+                                    <span class="discount-off site-font-bold"><% item.discount %>% OFF</span>
+                                {% else %}
+                                    <span class="discount-off site-font-bold">-<% item.discount %>%</span>
+                                {% endif %}
+                            <%# }%>
+                        <%# }%>
+                    </a>
+                    <%# if ((item.promotions).length == 0 ) { %>
+                        <div class="shop-fast shop-fast-none js_fast_buy"
+                             data-href="/m-goods_fast-a-ajax_goods-id-<% item.goods_id %>">
+                    <%# } else { %>
+                        <div class="shop-fast">
+                    <%# } %>
+                        {#<a href="<% geshopUrlToApp(item.url_title,item.goods_id) %>" class="rice-info">
+                            <%# if ((item.promotions).length > 1 ) { %>
+                            <p><% (item.promotions)[0] %>...</p>
+                            <%# }else{ %>
+                            <p><% (item.promotions)[0] ? (item.promotions)[0] : '' %></p>
+                            <%# } %>
+                        </a>#}
+                        <%# if ((item.promotions).length > 0 ) { %>
+                        <a href="<% geshopUrlToApp(item.url_title,item.goods_id) %>" class="rice-info">
+                            <p><% (item.promotions)[item.promotions.length - 1] %>...</p>
+                        </a>
+                        <%# } %>
+                        {% if client[1] == 'app' %}
+                            <a href="<% geshopUrlToApp(item.url_title,item.goods_id) %>">
+                                {% if data.shop_fast %}
+                                    <img src="{{ data.shop_fast }}" alt="">
+                                {% else %}
+                                    <img src="https://geshoptest.s3.amazonaws.com/uploads/XR6nmvfcejDVSgNbwHpLaqCyI08T1h9l.png"
+                                         alt="shop_fast">
+                                {% endif %}
+                            </a>
+                        {% else %}
+                            {% if data.shop_fast %}
+                                <img src="{{ data.shop_fast }}" alt="" class="js_fast_buy"
+                                     data-href="/m-goods_fast-a-ajax_goods-id-<% item.goods_id %>">
+                            {% else %}
+                                <img src="https://geshoptest.s3.amazonaws.com/uploads/XR6nmvfcejDVSgNbwHpLaqCyI08T1h9l.png"
+                                     alt="shop_fast" class="js_fast_buy"
+                                     data-href="/m-goods_fast-a-ajax_goods-id-<% item.goods_id %>">
+                            {% endif %}
+                        {% endif %}
+
+                    </div>
+                    <div class="goods-desc">
+                        <a href="<% geshopUrlToApp(item.url_title,item.goods_id) %>" class="rg-ellipsis-1"><% item.goods_title %></a>
+                        <p class="item-price">
+                            <%# if (item.promote_price != '0.00') { %>
+                            <span class="shop-price">
+                                            <span class="my_shop_price site-bold-strict" data-orgp="<% item.promote_price %>">$<% item.promote_price %></span>
+                                        </span>
+                            <del class="market-price">
+                                <span class="my_shop_price js_market_wrap" data-orgp="<% item.market_price %>">$<% item.market_price %></span>
+                            </del>
+                            <%# }else{ %>
+                            <span class="shop-price">
+                                         <span class="my_shop_price site-bold-strict"
+                                               data-orgp="<% item.shop_price %>">$<% item.shop_price %></span>
+                                    </span>
+
+                            <%# } %>
+                        </p>
+                    </div>
+                </li>
+                <%# }) %>
+            </script>
+
+        {% endif %}
+    </div>
+    <script>
+        window.navList_{{pageInstanceId}} = {{ json_encode_no_unicode(data.navList) }};
+        window.goodsSku_{{pageInstanceId}} = {{ json_encode_no_unicode(data.goodsSKU) }};
+    </script>
+</div>
+
+

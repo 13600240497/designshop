@@ -1,0 +1,19 @@
+.geshop-u000031-bigPromote .gs-img-default-bgc {
+  width: 50%;
+  height: 273px;
+  background-color:#EDEDED !important;
+  position: relative;
+}
+
+.geshop-u000031-bigPromote .gs-default-clothes {
+  width:140px!important;
+  min-height:124px!important;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  display: block;
+}
+.geshop-u000031-bigPromote .gs-bgc-pic{
+  height: 6.4rem;
+}

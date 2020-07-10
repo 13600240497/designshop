@@ -1,0 +1,54 @@
+@box_bgColor: {{ data.box_bg_color | default('#f8f8f8') }};
+@box_mgb: {{ data.boxMarginBottom | default('40') }}px;
+@rank_icon_width: {{ data.iconWidth }}px;
+@rank_icon_height: {{ data.iconHeight }}px;
+@rank_position: {{ data.leaderBoardIconPosition }};
+@rank_fontsize: {{ data.leaderBoardOtherFontSize }}px;
+@rank_icon1: '{{ pageData.iconFirstImg }}';
+@rank_icon2: '{{ pageData.iconSecondImg }}';
+@rank_icon3: '{{ pageData.iconThirdImg }}';
+@rank_icon4: '{{ pageData.iconOtherImg }}';
+@sp_color: {{ data.leaderBoardTextColor | default('#ffecec') }};
+@sp_bgColor: {{ data.btnBgColor | default('#ff5058') }};
+
+.geshop-U000090-{{ pageInstanceId }} {
+    background: @box_bgColor;
+    margin-bottom: @box_mgb;
+
+    .ranking-bg(@url) {
+        background-image: url(@url);
+    }
+    .ranking-icon {
+        width: @rank_icon_width;
+        height: @rank_icon_height;
+        &[data-index="0"] {
+            .ranking-bg(@rank_icon1);
+        }
+        &[data-index="1"] {
+            .ranking-bg(@rank_icon2);
+        }
+        &[data-index="2"] {
+            .ranking-bg(@rank_icon3);
+        }
+        &[data-index="3"] {
+            .ranking-bg(@rank_icon4);
+            font-size: @rank_fontsize;
+        }
+    }
+
+    .product-selling-point {
+        color: @sp_color;
+        background-color: @sp_bgColor;
+    }
+
+    {%
+        include geshop.default.pc.button_buy with { style: {
+            'color': data.buyTextColor,
+            'background-color': data.buyBtnTextBgColor
+        }}
+    %}
+
+}
+
+
+

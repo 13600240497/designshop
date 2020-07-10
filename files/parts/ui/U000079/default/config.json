@@ -1,0 +1,22 @@
+{
+  "fields": {
+    "buyMarginB": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "buyText": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "buyFtS": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "buyFtC": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "buyFtCHover": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "buyLink": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "textVis": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "buyWidth": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "buyHeight": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "buyRadius": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "buyBorderS": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "borderFont": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "borderColor": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "buyBgc": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "buyBgcHover": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "buyBgImg": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "buyFtW": { "is_public": "0", "is_m": "0", "is_app": "0" },
+    "ga_name": { "is_public": "0", "is_m": "0", "is_app": "0" }
+  }
+}

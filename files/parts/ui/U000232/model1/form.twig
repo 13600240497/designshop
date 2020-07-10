@@ -1,0 +1,309 @@
+<style>
+    {{ include ('form.css')}}
+</style>
+
+{% set form_data_list = {
+    form_PC:[
+        {
+            label: '按钮是否显示',
+            name: 'btn_show',
+            type: 'radio',
+            default: '1',
+            options: [
+                { label: '是', value: '1' },
+                { label: '否', value: '0' },
+            ]
+        },
+        {
+            label:'组件上边距',
+            desc: '(px)',
+            col:2,
+            name:'pc_margin_top',
+            default:'0'
+        },
+        {
+            label:'组件下边距',
+            desc: '(px)',
+            col:2,
+            name:'pc_margin_bot',
+            default:'32'
+        },
+        {
+            label:'按钮宽度',
+            desc: '(px)',
+            col:2,
+            name:'pc_btn_width',
+            default:'200'
+        },
+        {
+            label:'按钮高度',
+            desc: '(px)',
+            col:2,
+            name:'pc_btn_height',
+            default:'50'
+        },
+        {
+            label:'背景图片',
+            type:'image',
+            name:'pc_bg_image',
+            default:''
+        },
+        {
+            label:'鼠标滑过背景颜色',
+            type:'colorPicker',
+            name:'pc_btn_hover_bgc',
+            default:'#FFFFFF',
+            col:2
+        },
+        {
+            label:'鼠标滑过文字颜色',
+            type:'colorPicker',
+            name:'pc_btn_hover_color',
+            default:'#000000',
+            col:2
+        },
+        {
+            label:'鼠标滑过边框颜色',
+            type:'colorPicker',
+            name:'pc_btn_hover_border_color',
+            default:'#333333',
+        },
+        {
+            label:'圆角大小',
+            desc: '(px)',
+            name:'pc_btn_radius',
+            default:'25'
+        },
+        {
+            label:'字体大小',
+            desc: '(px)',
+            name:'pc_ft_size',
+            default:'20'
+        }
+    ],
+    form_IPAD:[
+        {
+            label:'组件上边距',
+            desc: '(px)',
+            col:2,
+            name:'pad_margin_top',
+            default:'0'
+        },
+        {
+            label:'组件下边距',
+            desc: '(px)',
+            col:2,
+            name:'pad_margin_bot',
+            default:'32'
+        },
+        {
+            label:'按钮宽度',
+            desc: '(px)',
+            col:2,
+            name:'pad_btn_width',
+            default:'200'
+        },
+        {
+            label:'按钮高度',
+            desc: '(px)',
+            col:2,
+            name:'pad_btn_height',
+            default:'50'
+        },
+        {
+            label:'背景图片',
+            type:'image',
+            name:'pad_bg_image',
+            default:''
+        },
+        {
+            label:'圆角大小',
+            desc: '(px)',
+            name:'pad_btn_radius',
+            default:'25'
+        },
+        {
+            label:'字体大小',
+            desc: '(px)',
+            name:'pad_ft_size',
+            default:'20'
+        }
+    ],
+    form_M:[
+        {
+            label: '按钮是否显示',
+            name: 'btn_show_m',
+            type: 'radio',
+            default: '1',
+            options: [
+                { label: '是', value: '1' },
+                { label: '否', value: '0' },
+            ]
+        },
+        {
+            label:'组件上边距',
+            desc: '(px)',
+            col:2,
+            name:'m_margin_top',
+            default:'0'
+        },
+        {
+            label:'组件下边距',
+            desc: '(px)',
+            col:2,
+            name:'m_margin_bot',
+            default:'16'
+        },
+        {
+            label:'按钮宽度',
+            desc: '(px)',
+            col:2,
+            name:'m_btn_width',
+            default:'160'
+        },
+        {
+            label:'按钮高度',
+            desc: '(px)',
+            col:2,
+            name:'m_btn_height',
+            default:'40'
+        },
+        {
+            label:'背景图片',
+            type:'image',
+            name:'m_bg_image',
+            default:''
+        },
+        {
+            label:'圆角大小',
+            desc: '(px)',
+            name:'m_btn_radius',
+            default:'25'
+        },
+        {
+            label:'字体大小',
+            desc: '(px)',
+            name:'m_ft_size',
+            default:'18'
+        }
+    ]
+
+} %}
+
+
+{% set formData = {
+    id: 'U000232',
+    name: '按钮组件',
+    theme: 'model1',
+    tabs: [
+        {
+            label: '样式配置',
+            components: [
+            {
+                label:'常用配置',
+                type:'fieldset',
+                components:[
+                {
+                    label:'组件背景颜色',
+                    type:'colorPicker',
+                    name:'box_bg_color',
+                    default:''
+                },
+                {
+                    label: '按钮位置',
+                    name: 'btn_align',
+                    type: 'radio',
+                    default: 'center',
+                    options: [
+                    { label: '居左', value: 'left' },
+                    { label: '居中', value: 'center' },
+                    { label: '居右', value: 'right' }
+                ]
+                },
+                {
+                    label:'跳转链接',
+                    name:'btn_link',
+                    default:''
+                },
+                {
+                    label: '链接是否在新窗口打开',
+                    name: 'target_blank',
+                    type: 'radio',
+                    default: '1',
+                    options: [
+                    { label: '是', value: '1' },
+                    { label: '否', value: '0' },
+                ]
+                },
+                {
+                    label:'按钮文案',
+                    name:'btn_text',
+                    default:''
+                },
+                {
+                    label:'背景颜色',
+                    type:'colorPicker',
+                    name:'btn_bg_color',
+                    default:'#000000',
+                    col:2
+                },
+                {
+                    label:'文字颜色',
+                    type:'colorPicker',
+                    name:'btn_ft_color',
+                    default:'#FFFFFF',
+                    col:2
+                },
+                {
+                    label:'边框颜色',
+                    type:'colorPicker',
+                    name:'btn_border_color',
+                    default:'#000000'
+                },
+                {
+                    label: '文字粗细',
+                    name: 'font_weight',
+                    type: 'radio',
+                    default: 'bold',
+                    options: [
+                    { label: '常规', value: 'normal' },
+                    { label: '加粗', value: 'bold' },
+                ]
+                }
+            ]
+            },
+            {
+                label: '内容配置',
+                type: 'fieldset',
+                isshow: 'dl-web',
+                components: [
+                {
+                    type:'tab',
+                    items:[
+                    {
+                        label:'PC/PAD',
+                        components: form_data_list.form_PC
+                    },
+                    {
+                        label:'M',
+                        components: form_data_list.form_M
+                    },
+                ]
+                }
+            ]
+            },
+            {
+                label: '内容配置',
+                type: 'fieldset',
+                isshow: 'dl-app',
+                components: form_data_list.form_M
+            }
+        ]
+        },
+
+    ],
+    moreConfig: []
+} %}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}

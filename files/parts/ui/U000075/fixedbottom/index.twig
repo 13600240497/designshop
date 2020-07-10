@@ -1,0 +1,41 @@
+<div class="geshop-component-box component-drag geshop-U000075-fixedbottom geshop-U000075-fixedbottom-{{ pageInstanceId }}" data-key="U000075" data-id="{{ pageInstanceId }}" data-static-domain="{{staticDomain}}">
+	{{ include('style.twig') }}
+	<input type="hidden" name="editEnv" value="{{data.isEditEnv}}"/>
+	<div class="overlay"></div>
+	<div class="main-container">
+		<div class="center">
+			<div class="drawer-trigger">
+				<div class="center-align">
+					<h3 class="deal-button">{{data.btn_text | default("Today's deals")}}</h3>
+					<img class="img-fold" width="16" height="16" data-unfold-src="{{data.close_image | default('https://geshoptest.s3.amazonaws.com/uploads/u9eVA6tyf4qzgC0OPHpdSWw5IX8hnvlD.png')}}" data-fold-src="{{data.dropdown_image | default('https://geshoptest.s3.amazonaws.com/uploads/u9eVA6tyf4qzgC0OPHpdSWw5IX8hnvlD.png')}}" />
+					{# <i class="ico-fold"></i> #}
+				</div>
+			</div>
+		</div>
+		<input name="slideLen" type="hidden" value="{{data.imgList|length}}">
+		<div class="deals-main-container">
+
+				<div class="swiper-container">
+						<div class="swiper-wrapper">
+								{% if data.imgList|length == 0 %}
+										<a class="swiper-slide">
+											<img class="swiper-img" src="https://geshopimg.logsss.com/uploads/8fuoUzVlbRWMQYvTOsIe5EwJacSmjHKx.png">
+										</a>
+										<a class="swiper-slide">
+											<img class="swiper-img" src="https://geshopimg.logsss.com/uploads/8fuoUzVlbRWMQYvTOsIe5EwJacSmjHKx.png">
+										</a>
+								{% endif %}
+
+							{% for item in data.imgList%}
+								<a class="swiper-slide" {% if item.imgLink %} href="{{item.imgLink}}" {% endif %}  {% if data.is_openNew == 1 %}target="_blank"{%endif%}><img class="swiper-img swiper-lazy" data-src="{{item.imgUrl}}"></a>
+							{% endfor %}
+
+						</div>
+						<div class="swiper-pagination"></div>
+				</div>
+
+			</div>
+
+	</div>
+</div>
+

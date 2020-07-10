@@ -1,0 +1,42 @@
+{% set siteData = {
+	font_weight: 'rg' in siteCode ? 'normal' : 'bold',
+	fontFamily: 'rg' in siteCode ? 'Rubik-Medium' : null
+} %}
+
+<div class="geshop-component-box component-drag" id="U000060_{{pageInstanceId}}" data-gid="U000060" data-key="U000060" data-id="{{ pageInstanceId }}" attr="nav_flag">
+	{% if data.imgSrcLeft !='' or data.imgSrcRight !='' or data.titleText !='' %}
+	<div style="{% if data.boxMarginBottom %}margin-bottom:{{ data.boxMarginBottom|default(10) }}px;{% endif %}
+		height:{{ data.boxHeight|default(100) }}px;
+		background-color:{{ data.bgColor }};
+		width:100%;
+		overflow: hidden;
+		text-align:center;">
+		<img src="{{ data.imgSrcLeft }}" 
+			style="display:inline-block;
+			vertical-align:middle;
+			height:{{ data.boxHeight|default(100) }}px;">
+		</img>
+	 	<a href="{{ data.viewHref }}"
+		 style="display:inline-block;
+			text-align:center;
+			{% if data.viewHref %}cursor: pointer;{% else %} cursor:default; {% endif %}
+			line-height:{{ data.boxHeight|default(100) }}px;
+			font-size:{{ data.titleFont|default(24) }}px;
+			color:{{ data.titleColor }};
+		    font-family:{{ data.fontFamily|default(siteData.fontFamily) }};
+			font-weight:{{ data.titleWeight|default('normal') }};
+			padding-left:{{ data.textMargin|default(20) }}px;
+			padding-right:{{ data.textMargin|default(20) }}px;">
+			{% if data.titleText %}{{ data.titleText }}{% else %}请设置导航标题{% endif %}
+		</a> 
+		<img src="{{ data.imgSrcRight }}"
+			style="display:inline-block;
+			vertical-align:middle;
+			height:{{ data.boxHeight|default(100) }}px;">
+		</img> 
+	</div>
+	{% else %}
+		<img src="{{ data.default.picandtext }}" style="height:{{ pageData.height }}px;display:block;margin:0 auto;"></img>
+	{% endif %}
+</div>
+

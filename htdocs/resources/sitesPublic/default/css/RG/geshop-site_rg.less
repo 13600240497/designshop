@@ -1,0 +1,59 @@
+// RG 8月品牌升级样式 ==========
+#geshop-page-content[data-style="rg"], #design_view[data-style="rg"] {
+    font-family: Rubik-Regular, Arial, serif;
+    .site-font--strict{
+        font-family: Rubik-Regular, Arial, serif;
+    }
+    .site-font-bold {
+        font-family: Rubik-Medium, Arial, serif;
+    }
+    .site-bold-strict{
+        font-family: Rubik-Medium, Arial, serif;
+        font-weight: normal !important;
+    }
+
+    .shop-price-color {
+        color: #FA386A;
+    }
+    // 通用加粗处理
+    .geshop-layout-box b, .geshop-layout-box strong{
+        .site-bold-strict
+    }
+    // 单行溢出
+    .rg-ellipsis-1 {
+        display: block;
+        height: auto;
+        overflow: hidden;
+        white-space: nowrap;
+        -ms-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        box-sizing: border-box;
+    }
+    // 满减营销信息
+    .bngo-list{
+        color: #222222;
+        font-size: 14px;
+    }
+    .bngo-list .red_font{
+        .site-bold-strict
+    }
+        // 按钮border
+    .btn__site-default{
+        border-radius: 2px;
+    }
+    &.geshop_is_wap{
+        .bngo-list{
+            color: #222222;
+            font-size:0.32rem;
+            strong{
+                .site-font--strict
+            }
+        }
+        .promotion-info{
+            font-size:0.32rem;
+            strong{
+                .site-font--strict
+            }
+        }
+    }
+}

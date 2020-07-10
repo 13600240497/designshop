@@ -1,0 +1,22 @@
+{#/**
+*@author: 任贸华
+*@date: 2018/11/24 16:31:41
+*@desc: textarea 多行输入框
+* @param {string} full 是否通栏展示
+* @param {string} name 参数名
+* @param {string} value 参数值
+*/#}
+{% if options %}
+    <div class="layui-form-item layui-form-text">
+        <label class="{% if options.full %}gst-label-block{% else %}layui-form-label{% endif %} {{ options.labelClass|default('') }}">
+            {{ options.label }}
+        </label>
+        <div class="layui-input-block">
+            <textarea name={{ options.name }} placeholder={{ options.placeholder|default('请输入内容') }}  class="layui-textarea"
+                      >{{ options.value|raw }}</textarea>
+        </div>
+    </div>
+
+{% else %}
+    {{ include ('@app/files/parts/common/components/argsErrors.twig') }}
+{% endif %}

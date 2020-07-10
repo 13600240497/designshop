@@ -1,0 +1,25 @@
+<div 
+	class="geshop-component-box component-drag wrap_U000087 wrap_{{ pageInstanceId }} geshop-U000087-coupon6" 
+	data-key="U000087" 
+	data-theme="coupon6"
+	data-id="{{ pageInstanceId }}" 
+	data-static-domain="{{ staticDomain }}" 
+	data-coupon-id="{{ data.coupons_id }}"
+	data-percent-link="{{ data.pecent_coupon_link }}">
+	{{ include('style.twig') }}
+	{# templates #}
+	<script id="js_gs_coupon_template_{{ pageInstanceId }}" type="text/html">
+		{{ include('template_coupon.twig') }}
+	</script>
+	<script id="js_gs_coupon_dialog_template_{{ pageInstanceId }}" type="text/html">
+		{{ include('template_dialog.twig') }}
+	</script>
+	<script id="js_gs_coupon_dialog2_template_{{ pageInstanceId }}" type="text/html">
+		{{ include('template_alert.twig') }}
+	</script>
+	{# views #}
+	<div id="js_gs_coupon_view_{{ pageInstanceId }}"></div>
+	<div id="js_gs_coupon_dialog_view_{{ pageInstanceId }}"></div>
+	<div id="js_gs_coupon_dialog2_view_{{ pageInstanceId }}"></div>
+</div>
+

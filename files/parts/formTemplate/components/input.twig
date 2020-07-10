@@ -1,0 +1,19 @@
+<div class="layui-form-item {{ componentData.extendClass | default('') }}">
+    <label class="layui-form-label {% if componentData.public %} public-data {% endif %}">
+        {{ componentData.label }}
+        <span>{{ componentData.desc }}</span>
+    </label>
+    <div class="layui-input-block">
+        <input 
+            type="text" 
+            name="{{ componentData.name }}" 
+            autocomplete="off" 
+            class="layui-input {% if componentData.validClass is not empty %}{{ componentData.validClass }}{% endif %}"
+            value="{{ componentData.value|replace({'\"': '&quot;'}) }}"
+            placeholder="{{ componentData.placeholder | default('') }}" 
+            {% if componentData.disabled %}
+            disabled="{{ componentData.disabled }}" 
+            {% endif %}
+            data-public-tag="{{ componentData.public }}">
+    </div>
+</div>

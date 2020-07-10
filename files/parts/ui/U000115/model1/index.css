@@ -1,0 +1,24 @@
+.wrap-U000115_mobile .geshop-index-banner .swiper-pagination {
+    bottom: .32rem;
+    height: .053rem;
+}
+
+.wrap-U000115_mobile .geshop-index-banner .swiper-pagination-bullet {
+    position: relative;
+    margin: 0 .16rem!important;
+    vertical-align: top;
+    border-radius: 0;
+    background-color: rgba(255, 255, 255, .5);
+    width: .853rem;
+    height: .053rem;
+}
+
+.wrap-U000115_mobile .geshop-index-banner .swiper-pagination-bullet:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: .053rem;
+    background-color: #fff;
+}

@@ -1,0 +1,95 @@
+{% set blogDefault = [{
+       image_url: data.default.pic_387,
+       jump_url:'',
+       blog_title: 'Time To Tan – ZAFUL Striped Bikinis Lookbook',
+       description: 'On the first day that really feels like Spring, you can be sure you’ll spy ladies in breezy statement …'
+    }, {
+       image_url: data.default.pic_387,
+       jump_url:'',
+       blog_title: 'Time To Tan – ZAFUL Striped Bikinis Lookbook',
+       description: 'On the first day that really feels like'
+    }, {
+       image_url: data.default.pic_387,
+       jump_url:'',
+       blog_title: 'Time To Tan – ZAFUL Striped Bikinis Lookbook',
+       description: 'Looks it`s time to get tan'
+    }
+] %}
+
+{% set pageData = {
+    loadingImg: 'https://geshopcss.logsss.com/imagecache/geshop/resources/images/rg/loading_big.gif'
+} %}
+
+<div class="geshop-component-box component-drag geshop-U000210-default geshop-U000210-default-{{ pageInstanceId }}"
+     data-key="U000210" data-id="{{ pageInstanceId }}">
+    {{ include('style.twig') }}
+    <div class="gs-goods-wrap">
+        {% for item in data.blogIds | default(blogDefault) %}
+            <div class="{% if data.col_type == 2 %}gs-blog-col2{% elseif data.col_type == 3 %}gs-blog-col3{% elseif data.col_type == 4 %}gs-blog-col4{% else %}gs-blog-col3{% endif %}">
+                {#跳转链接#}
+                <a href="{{ item.jump_url|default("javascript:;") }}" target="_blank"
+                   class="{% if item.jump_url %}cursor-pt{% else %}cursor-df{% endif %}">
+                    {% if data.col_type == 2 %}
+                        {% if item.image_url %}
+                                <img src="{{ item.image_url|default(pageData.loadingImg) }}"
+                                     alt="{{ item.blog_title }}"
+                                     data-original="{{ item.image_url }}"
+                                     class="js-geshopImg-lazyload" />
+                        {% else %}
+                            <img src="{{ data.default.pic_590|default(pageData.loadingImg) }}"
+                                 alt="{{ item.blog_title }}"
+                                 data-original="{{ item.image_url }}"
+                                 class="js-geshopImg-lazyload" />
+                        {% endif %}
+                    {% elseif data.col_type == 3 %}
+                        {% if item.image_url %}
+                            <img src="{{ item.image_url|default(pageData.loadingImg) }}"
+                                 alt="{{ item.blog_title }}"
+                                 data-original="{{ item.image_url }}"
+                                 class="js-geshopImg-lazyload" />
+                        {% else %}
+                            <img src="{{ data.default.pic_387|default(pageData.loadingImg) }}"
+                                 alt="{{ item.blog_title }}"
+                                 data-original="{{ item.image_url }}"
+                                 class="js-geshopImg-lazyload" />
+                        {% endif %}
+                    {% elseif data.col_type == 4 %}
+                        {% if item.image_url %}
+                            <img src="{{ item.image_url|default(pageData.loadingImg) }}"
+                                 alt="{{ item.blog_title }}"
+                                 data-original="{{ item.image_url }}"
+                                 class="js-geshopImg-lazyload" />
+                        {% else %}
+                            <img src="{{ data.default.pic_285|default(pageData.loadingImg) }}"
+                                 alt="{{ item.blog_title }}"
+                                 data-original="{{ item.image_url }}"
+                                 class="js-geshopImg-lazyload" />
+                        {% endif %}
+                    {% else %}
+                        {% if item.image_url %}
+                            <img src="{{ item.image_url|default(pageData.loadingImg) }}"
+                                 alt="{{ item.blog_title }}"
+                                 data-original="{{ item.image_url }}"
+                                 class="js-geshopImg-lazyload" />
+                        {% else %}
+                            <img src="{{ data.default.pic_387|default(pageData.loadingImg) }}"
+                                 alt="{{ item.blog_title }}"
+                                 data-original="{{ item.image_url }}"
+                                 class="js-geshopImg-lazyload" />
+                        {% endif %}
+                    {% endif %}
+                </a>
+                <div class="gs-blog-content {% if data.col_type == 2 %}blog-cont-width2{% elseif data.col_type == 3 %}blog-cont-width3{% elseif data.col_type == 4 %}blog-cont-width4{% else %}blog-cont-width3{% endif %} {% if item.jump_url %}cursor-pt{% else %}cursor-df{% endif %}">
+                    <a href="{{ item.jump_url|default("javascript:;") }}" target="_blank" class="{% if item.jump_url %}cursor-pt{% else %}cursor-df{% endif %}">
+                        <span class="gs-blog-title">{{ item.blog_title }}</span>
+                        <span class="gs-blog-desc">{{ item.description }}</span>
+                    </a>
+                    <div class="gs-blog-view">
+                        <a href="{{ item.jump_url|default("javascript:;") }}" target="_blank"
+                           class="{% if item.jump_url %}cursor-pt{% else %}cursor-df{% endif %}">View</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

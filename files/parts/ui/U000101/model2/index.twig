@@ -1,0 +1,370 @@
+{% set liCol = ['geshop-col-12','geshop-col-6','geshop-col-4','geshop-col-3','geshop-col-2','geshop-col-1'] %}
+{% set suffix='px' %}
+
+{% if data.colNum == '1' %}
+	{% set colClass = liCol[0] %}
+{% elseif data.colNum == '2' %}
+	{% set colClass = liCol[1] %}
+{% elseif data.colNum == '3' %}
+	{% set colClass = liCol[2] %}
+{% elseif data.colNum == '4' %}
+	{% set colClass = liCol[3] %}
+{% elseif data.colNum == '5' %}
+	{% set colClass = liCol[4] %}
+{% else %}
+	{% set colClass = liCol[3] %}
+{% endif %}
+
+
+
+
+
+{% set pageData = {
+	price_ft_weight:data.price_ft_weight|default(0),
+	base_bg_shadow:data.base_bg_shadow|default(1),
+	lang:data.lang|default('en'),
+	base_magin_bottom:data.base_magin_bottom|default(32),
+	base_bgc:data.base_bgc is not null ? data.base_bgc:'#FFFFFF',
+	base_bgImage:data.base_bgImage,
+	base_box_width:data.base_box_width|default(1200)~suffix,
+	buy_hover_ftc:data.buy_hover_ftc|default('#FFFFFF'),
+    buy_hover_bgc:data.buy_hover_bgc|default('#FF8A00'),
+
+	right_sku:data.right_sku is not null ? data.right_sku:'',
+	right_code:data.right_code is not null ? data.right_code:'',
+	right_contents1:data.right_contents1 is not null ? data.right_contents1:'',
+	right_contents2:data.right_contents2 is not null ? data.right_contents2:'',
+	right_contents3:data.right_contents3 is not null ? data.right_contents3:'',
+	right_bgc:data.right_bgc is not null ? data.right_bgc:'#FFFFFF',
+
+	goods_fts:data.goods_fts|default(14)~suffix,
+	goods_color:data.goods_color is not null ? data.goods_color:'#333333',
+	goods_num_color:data.goods_num_color is not null ? data.goods_num_color:'#CB0403',
+	goods_num_bgc:data.goods_num_bgc is not null ? data.goods_num_bgc:'#FFEEEE',
+	goods_code_color:data.goods_code_color is not null ? data.goods_code_color:'#FF8A00',
+	goods_code_bgc:data.goods_code_bgc is not null ? data.goods_code_bgc:'#FF8A00',
+	good_introduce:data.good_introduce is not null ? data.good_introduce:'#999999',
+
+	buy_ftc:data.buy_ftc is not null ? data.buy_ftc:'#FFFFFF',
+	buy_bgc:data.buy_bgc is not null ? data.buy_bgc:'#FF8A00',
+	shop_car_bgc:data.shop_car_bgc is not null ? data.shop_car_bgc:'#CC0000',
+	shop_text:data.shop_text,
+	shop_text_size:data.shop_text_size|default(18)~suffix,
+
+	dynamic_font_color:data.dynamic_font_color is not null ? data.dynamic_font_color:'#f30240',
+	times_font_size:data.times_font_size|default(14)~suffix,
+	times_font_color:data.times_font_color is not null ? data.times_font_color:'#999999',
+	shop_price_color:data.shop_price_color is not null ? data.shop_price_color:'#FF8A00',
+	down_time_fts:data.down_time_fts|default(14)~suffix,
+	down_time_color:data.down_time_color is not null ? data.down_time_color:'#CC0000',
+
+	discount_price_color:data.discount_price_color is not null ? data.discount_price_color:'#F30240',
+	goods_label_bgc:data.goods_label_bgc is not null ? data.goods_label_bgc:'#F30240',
+	goods_label_ftc:data.goods_label_ftc is not null ? data.goods_label_ftc:'#FFFFFF',
+
+	base_bg_shadow:data.base_bg_shadow|default(0),
+	base_bg_shadow_color:data.base_bg_shadow_color is not null ? data.base_bg_shadow_color:'#CCCCCC',
+	title_line_color:data.title_line_color is not null ? data.title_line_color:'#EEEEEE',
+	goods_item_bgc:data.goods_item_bgc is not null ? data.goods_item_bgc:'#FFFFFF',
+	base_component_pd_tb:data.base_component_pd_tb|default(50)~suffix,
+
+	price_fts:data.price_fts|default(30)~suffix,
+	discount_text_fts:data.discount_text_fts|default(14)~suffix,
+	goods_title_color:data.goods_title_color is not null ? data.goods_title_color:'#333333',
+	price_before_text_color:data.price_before_text_color is not null ? data.price_before_text_color:'#999999',
+
+
+	buy_btn_width:data.buy_btn_width|default(150)~suffix,
+	cart_btn_active:data.cart_btn_active|default(1),
+	cart_btn_ftc:data.cart_btn_ftc is not null ? data.cart_btn_ftc:'#FFFFFF',
+	cart_btn_bgc:data.cart_btn_bgc is not null ? data.cart_btn_bgc:'#F30240',
+	cart_btn_width:data.cart_btn_width|default(174)~suffix,
+
+
+	rightGoodsInfo : data.goodsInfo[data.right_sku]|default({}),
+} %}
+
+{# 商品主图 #}
+{% set goodsImg =  data.main_goods_img|default(pageData.rightGoodsInfo.goods_img) %}
+ {% set goodsStatus =  pageData.rightGoodsInfo.stock_num <= 0 and  pageData.rightGoodsInfo != {} ? 'good_soldOut' :'goodsBuyPro'%}
+
+
+<div class="geshop-component-box component-drag U000101-{{ pageInstanceId }} ui-U000101_model2 geshop-gb-component ui-{{ pageInstanceId }}" data-key="U000101" data-buytext="{{ pageData.shop_text|default(gb_component_trans(lang , 'buy_now')) }}" data-id="{{ pageInstanceId }}"
+		 style="{% if pageData.base_magin_bottom %}margin-bottom: {{ pageData.base_magin_bottom }}px;{% endif %}"
+>
+	<style type="text/css">
+		.geshop-gb-component.U000101-{{ pageInstanceId }}{
+			width:{{ pageData.base_box_width }};
+			margin: auto;
+			background-color:{{ data.base_box_bgc|default('#FFFFFF') }};
+		}
+
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gb-section{
+			padding:{{ pageData.base_component_pd_tb }} 0;
+		}
+
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gb_goodsWrap {
+			width: 1000px;
+			height: 270px;
+			margin: 0 auto;
+			background: {{pageData.base_bgc}};
+			position: relative;
+		}
+
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gb_leftGood {
+			position: relative;
+			width: 270px;
+			height: 270px;
+			float: left;
+			/*padding:25px;*/
+		}
+
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gb_rightGood {
+			position: relative;
+			width: 730px;
+			height: 270px;
+			float: right;
+			padding: 24px 28px;
+			box-sizing: border-box;
+			background-color:{{ pageData.goods_item_bgc }};
+		}
+
+
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gb_imgBox {
+			width: 270px;
+			height: 270px;
+		}
+
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gb_imgBox img {
+			width: 100%;
+			height: 100%;
+		}
+
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gb_goodsName {
+			color: {{pageData.goods_color}};
+		}
+
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gb_goodBorder {
+			margin: 0;
+			height: 1px;
+			background: {{ pageData.title_line_color }};
+		}
+
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gb_times {
+			color: {{pageData.down_time_color}};
+			font-size: {{pageData.down_time_fts}};
+		}
+
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gb_times em {
+			margin-right: 8px;
+			font-size: {{pageData.down_time_fts}};
+		}
+
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gb_contentBox {
+			height: 75px;
+		}
+
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gb_price1 {
+			font-size: 14px;
+			color: {{pageData.times_font_color}};
+			margin: 0 10px;
+		}
+
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gb_price2 {
+			font-size: 26px;
+			margin: 16px 0;
+			color: {{pageData.dynamic_font_color}};
+		}
+
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gb_price2 > * {
+			display: inline-block;
+			/*vertical-align: middle;*/
+		}
+
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gb_buy {
+			color: {{pageData.buy_ftc}};
+			background: {{pageData.buy_bgc}};
+			font-size: {{pageData.shop_text_size}};
+			width: {{ pageData.buy_btn_width }};
+		}
+
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gb_buy:hover {
+			color: {{pageData.buy_hover_ftc}};
+			background-color: {{pageData.buy_hover_bgc}};
+		}
+		/* Add to Cart */
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gb_cart {
+			background: {{pageData.cart_btn_bgc}};
+			color:{{ pageData.cart_btn_ftc }};
+			width:{{ pageData.cart_btn_width }}
+		}
+
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gb_cart:hover {
+			background-color: {{data.cart_btn_bgc_hoverBC}};
+			color: {{data.cart_btn_bgc_hoverFC}}
+		}
+
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gb_stylenone {
+			list-style: none !important;
+		}
+		/* price */
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gs-shop-price .js-currency{
+			font-size:{{ pageData.price_fts }};
+			padding:0 10px;
+			{% if pageData.price_ft_weight == '1' %}
+				font-weight: bold;
+			{% endif %}
+		}
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .price-before{
+			font-size:14px;
+			color:{{ pageData.price_before_text_color }};
+		}
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gs-discount-text{
+			font-size:{{ pageData.discount_text_fts }};
+			color:{{ pageData.discount_price_color }};
+		}
+		/* section */
+		{% if pageData.base_bg_shadow == '1' %}
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gb_goodsWrap{
+			-webkit-box-shadow: 0 0 10px {{ pageData.base_bg_shadow_color }};
+			-moz-box-shadow: 0 0 10px {{ pageData.base_bg_shadow_color }};
+			box-shadow: 0 0 10px {{ pageData.base_bg_shadow_color }};
+		}
+		{% endif %}
+		/* flash sale */
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gb_flash_sale{
+			color:{{ pageData.goods_label_ftc }};
+			background-color:{{ pageData.goods_label_bgc }};
+		}
+		/*title*/
+		.geshop-gb-component.U000101-{{ pageInstanceId }} .gb_goodsName_text{
+			color:{{ pageData.goods_title_color }};
+		}
+
+    /*背景图*/
+.geshop-gb-component.ui-{{ pageInstanceId }} .gb_wrapper_common{
+{% if data.base_box_bgImage %}
+	background-image:url({{ data.base_box_bgImage }});
+{% endif %}
+{% if data.component_bg_value %}
+{{ data.component_bg_value }}
+{% endif %}
+}
+
+/*动态价格粗细*/
+.geshop-gb-component.ui-{{ pageInstanceId }} .gs-shop-price strong,.geshop-gb-component.ui-{{ pageInstanceId }} .gs-sale-price{
+{% if pageData.price_ft_weight == '1' %}
+	font-weight:bold !important;
+{% else %}
+	font-weight:normal !important;
+{% endif %}
+}
+/*投影*/
+{% if pageData.base_bg_shadow == '0'%}
+.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item,.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item_tag {
+	box-shadow: none !important;
+}
+
+{% else %}
+.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item,.geshop-gb-component.ui-{{ pageInstanceId }} .gs-list-item_tag {
+	box-shadow: 0px 0px 10px {{data.base_bg_shadow_color|default('#CCCCCC')}} !important;
+	-webkit-box-shadow: 0px 0px 10px {{data.base_bg_shadow_color|default('#CCCCCC')}} !important;
+}
+
+{% endif %}
+</style>
+	
+	<section class="gb-section gb_wrapper_common" style="{% if data.goodsInfo|length == 0 and data.isEditEnv == 0 %}display:none;{% endif %}">
+		<div class="gb_goodsWrap">
+			<li class="gs-subjectGoodItem {{ goodsStatus }}" data-track-key="{{ pageData.rightGoodsInfo.goods_sn }}">
+				<div class="gb_leftGood">
+					{# 推荐标签#}
+					{#{% if pageData.recommended_active == "1" %}<div class="gb_recommended" style="{% if data.recommended_bgImage %}background:url({{data.recommended_bgImage}}) no-repeat 0 0/100% 100%;{% endif %}"><div><span>{{pageData.discount_text}}</span></div></div>{% endif %}#}
+					{# 推荐标签 end #}
+					{# 折扣标 #}
+					{#		{% if pageData.discount_active == "1" %}
+                      {% if pageData.rightGoodsInfo == {} or pageData.rightGoodsInfo.discount > 0 %}
+                      <div class="gb_discount" style="{% if data.discount_bgImage %}background:url({{data.discount_bgImage}}) no-repeat 0 0/100% 100%;{% endif %}"> <div> <strong>{{pageData.rightGoodsInfo.discount|default('50')}}%</strong> <span>OFF</span> </div> </div>
+                      {% endif %}
+                  {% endif %}#}
+					{# 折扣标 end#}
+					<div class="gb_imgBox gs-good-label-box">
+						{# 商品图片配置 #}
+						<a href="{{ pageData.rightGoodsInfo.url_title }}" target="_special" class="gs-link track-goodsLink">
+							{% if data.goodsInfo and goodsImg %}
+								<img class="js-lazyload" data-lazy="{{ goodsImg }}" src="{{ goodsImg }}" title="{{ pageData.rightGoodsInfo.goods_title }}" alt="{{ pageData.rightGoodsInfo.goods_title }}">
+							{% else %}
+								<img class="js-lazyload" data-lazy="{{ data.default.good_gb }}" src="{{ data.default.good_gb }}">
+							{% endif %}
+							<i class="gs-goods-status" style="{% if pageData.rightGoodsInfo.stock_num <= 0 and pageData.rightGoodsInfo != {}  %} display:block; {% endif %}"><span>{{ gb_component_trans(lang , 'sold_out') }}</span></i>
+							{# <i class="gs-goods-status" style="{% if  pageData.rightGoodsInfo.startTime == 0 and pageData.rightGoodsInfo.stock_num <= 0 and pageData.rightGoodsInfo != {}  %} display:block; {% endif %}"><span>{{ gb_component_trans(lang , 'sold_out') }}</span></i> #}
+						</a>
+						{# 服务标 #}
+						{% set labelLeft = 0 %}
+						{% set item = pageData.rightGoodsInfo %}
+						{{ include ('@app/files/parts/temp/gb/common/default_pc/goodLabel.twig') }}
+					</div>
+				</div>
+				<div class="gb_rightGood">
+					<a href="{{ pageData.rightGoodsInfo.url_title }}" class="gs-link track-goodsLink">
+						<p class="gb_goodsName">
+							{% if  pageData.rightGoodsInfo.price_type == '7'%}
+							<span class="gb_flash_sale">{{ gb_component_trans(lang , 'flash_sale') }}</span>
+							{% endif %}
+							<span class="gb_goodsName_text">{{ pageData.rightGoodsInfo.goods_title|default('This is a commodity') }}</span>
+						</p>
+					</a>
+					{% if   pageData.rightGoodsInfo.startTime > 0 %}
+						<span class="gs-goodsRushDown" style="opacity:0;display:block;height:0;width:0;overflow:hidden;" data-begin="{{ pageData.rightGoodsInfo.startTime }}" data-end="{{ pageData.rightGoodsInfo.endTime }}" data-stock="{{ pageData.rightGoodsInfo.stock_num }}"></span>
+					{% endif %}
+					{# 评分 #}
+					{% if  pageData.rightGoodsInfo.pass_avg_score  %}
+						<div class="gs-rating-box">
+							<span class="gs-rating" data-value="{{ pageData.rightGoodsInfo.pass_avg_score|number_format(1, '.') }}"></span>
+							<span class="gbStarGrade_count">{{ pageData.rightGoodsInfo.pass_avg_score|number_format(1, '.') }}</span>
+						</div>
+					{% endif %}
+					{# 评分 end #}
+					<div class="gb_goodBorder"></div>
+					{#<div class="gb_contentBox">
+                      {% if pageData.rightGoodsInfo == {}  or pageData.right_contents1 != "" %} <p class="gb_contents">{{pageData.right_contents1|default('This is a product description 1')}}</p>{% endif %}
+                      {% if pageData.rightGoodsInfo == {}  or pageData.right_contents2 != "" %}<p class="gb_contents">{{pageData.right_contents2|default('This is a product description 2')}}</p>{% endif %}
+                      {% if pageData.rightGoodsInfo == {}  or pageData.right_contents3 != "" %}<p class="gb_contents">{{pageData.right_contents3|default('This is a product description 3')}}</p>{% endif %}
+              </div>#}
+
+					<p class="gb_price2 gs-shop-price">
+						<span class="gs-shop-price">
+							<span class="price-before">{{ gb_component_trans(lang , 'price') }}:</span>
+							<span class="js-currency" data-currency="{{ pageData.rightGoodsInfo.shop_price|default('0.00') }}">${{ pageData.rightGoodsInfo.shop_price|default('0.00') }} </span>
+						</span>
+						{% if pageData.rightGoodsInfo == {} or pageData.rightGoodsInfo.discount > 0 %}
+						<span class="gs-discount-text">{{ gb_component_trans(lang , 'discount') }} : {{ pageData.rightGoodsInfo.discount|default(50) }}% OFF</span>
+						{% endif %}
+{#						{% if pageData.rightGoodsInfo.discount > 0 %}
+							<span class="gb_price1">  <strike class="js-currency" data-currency="{{ pageData.rightGoodsInfo.market_price|default('0.00') }}">${{ pageData.rightGoodsInfo.market_price|default('0.00') }}</strike> </span>
+						{% endif %}#}
+
+					</p>
+					<div class="gb_single_footer">
+						{% if pageData.cart_btn_active == '1' %}
+						<span class="gb_cart js-addCart  {% if  pageData.rightGoodsInfo.stock_num <= 0 and  pageData.rightGoodsInfo != {} %} cart_good_soldOut  {% endif %}"
+							 data-sku="{{ pageData.rightGoodsInfo.goods_sku }}" data-warehousecode="{{ pageData.rightGoodsInfo.wh_code }}" data-img="{{ goodsImg }}" data-qty="1" style="">
+							{{ gb_component_trans(lang , 'add_to_cart') }}
+						</span>
+						{% endif %}
+						<a data-lang="{{ lang }}" class="track-goodsLink gb_buy buyLink {% if pageData.rightGoodsInfo.stock_num <= 0 and pageData.rightGoodsInfo != {} %} cart_good_soldOut {% endif %}" href="{{ pageData.rightGoodsInfo.url_title }}">
+							{% if pageData.rightGoodsInfo.stock_num <= 0 and  pageData.rightGoodsInfo != {} %}
+								{{ gb_component_trans(lang , 'sold_out') }}
+							{% else %}
+								{{ pageData.shop_text|default(gb_component_trans(lang , 'buy_now')) }}
+							{% endif %}
+						</a>
+					</div>
+				</div>
+
+			<li>
+		</div>
+	</section>
+</div>
+
+

@@ -1,0 +1,83 @@
+
+[data-module="U000086-1"] .coupon-inset{
+    height:100%;
+    line-height:normal;
+    position: relative;
+}
+
+[data-module="U000086-1"] .inline-box{
+   display:inline-block;
+}
+[data-module="U000086-1"] .coupon-body{
+    height:100%;
+}
+
+[data-module="U000086-1"] .over-box{
+    background: rgba(0,0,0,.6);
+    position: absolute;
+    left: 0;
+    top:0;
+    width:100%;
+    height:100%;
+    font-size:32px;
+    color:#FFFFFF;
+    text-align: center;
+    display: none;
+    z-index: 1;
+}
+[data-module="U000086-1"] .over-box-table{
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+[data-module="U000086-1"] .over-box-table span{
+    vertical-align: middle;
+    display: table-cell;
+}
+[data-module="U000086-1"]{
+    /* padding:30px; */
+    padding:60px 30px 30px;
+    box-sizing: border-box;
+    background-size:cover;
+    overflow: hidden;
+    position: relative;
+}
+[data-module="U000086-1"] .coupon-body .coupon-top{
+    /* height:43.75%; */
+}
+[data-module="U000086-1"] .coupon-body .coupon-middle,[data-module="U000086-1"] .coupon-body .coupon-bottom{
+    /* height:28.125%; */
+}
+[data-module="U000086-1"] .coupon-body .coupon-layout{
+    display: table;
+    width:100%;
+    text-align:center;
+}
+[data-module="U000086-1"] .coupon-body .coupon-layout .center-center{
+    display: table-cell;
+    vertical-align: middle;
+}
+[data-module="U000086-1"] .coupon-body .coupon-layout .coupon-btn{
+    cursor: pointer;
+    background-size:cover;
+}
+[data-module="U000086-1"] .coupon-body .coupon-bottom .center-center{
+    vertical-align: bottom;
+}
+[data-module="U000086-1"] .coupon-body .coupon-bottom .coupon-text{
+    padding-bottom: 8px;
+}
+[data-module="U000086-1"] .coupon-body .coupon-time-box strong,[data-module="U000086-1"] .coupon-body .coupon-time-box span{
+    display:inline-block;
+    vertical-align: middle;
+}
+[data-module="U000086-1"] .coupon-body .coupon-time-box strong{
+    font-weight:bold;
+}
+[data-module="U000086-1"] .coupon-body .coupon-time-box span{
+    width:10px;
+    font-size:20px;
+    font-weight:bold;
+    color:#333333;
+    margin:0 6px;
+}

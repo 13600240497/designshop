@@ -1,0 +1,16 @@
+{# rg 组件背景颜色配置 #}
+{% set components = [
+    {
+        label: '组件背景颜色',
+        name: 'box_bg_color',
+        type: 'colorPicker',
+        default: defaultParam.box_bg_color|default('#F8F8F8'),
+        col: 2
+    }
+] %}
+
+<fieldset class="layui-elem-field">
+    <div class="layui-field-box">
+        {{ include ('@app/files/parts/formTemplate/componentRender.twig', components) }}
+    </div>
+</fieldset>

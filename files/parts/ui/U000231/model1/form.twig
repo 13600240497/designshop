@@ -1,0 +1,364 @@
+<style>
+    {{ include ('form.css')}}
+</style>
+
+{% set form_data_list = {
+    form_PC:[
+        {
+            label:'组件宽度',
+            desc: '(px)',
+            name:'pc_base_width',
+            default:'302',
+            col:2
+        },
+        {
+            label:'分会场间距',
+            desc: '(px)',
+            name:'pc_part_space',
+            default:'2',
+            col:2
+        },
+        {
+            label:'分会场字体大小',
+            desc: '(px)',
+            name:'pc_part_ft_size',
+            default:'14',
+            col:2
+        },
+        {
+            label:'分会场圆角大小',
+            desc: '(px)',
+            name:'pc_part_radius',
+            default:'0',
+            col:2
+        }
+    ],
+    form_IPAD:[],
+    form_M:[
+        {
+            label:'组件宽度',
+            desc: '(px)',
+            name:'m_base_width',
+            default:'204',
+            col:2
+        },
+        {
+            label:'分会场间距',
+            desc: '(px)',
+            name:'m_part_space',
+            default:'2',
+            col:2
+        },
+        {
+            label:'分会场字体大小',
+            desc: '(px)',
+            name:'m_part_ft_size',
+            default:'14',
+            col:2
+        },
+        {
+            label:'分会场圆角大小',
+            desc: '(px)',
+            name:'m_part_radius',
+            default:'0',
+            col:2
+        }
+    ]
+
+} %}
+
+
+{% set formData = {
+    id: 'U000231',
+    name: '页面间导航',
+    theme: 'model1',
+    tabs: [
+        {
+            label: '内容配置',
+            components: [
+            {
+                label: '主会场设置',
+                type: 'fieldset',
+                components: [
+                {
+                    label: '主会场内容是否显示',
+                    name: 'main_active',
+                    type: 'radio',
+                    default: '1',
+                    options: [
+                    { label: '是', value: '1' },
+                    { label: '否', value: '0' },
+                ]
+                },
+                {
+                    label: '底部图片是否显示',
+                    name: 'top_active',
+                    type: 'radio',
+                    default: '1',
+                    options: [
+                    { label: '是', value: '1' },
+                    { label: '否', value: '0' },
+                ]
+                },
+                {
+                    label: '链接是否新开窗口显示',
+                    name: 'main_link_target',
+                    type: 'radio',
+                    default: '1',
+                    options: [
+                    { label: '是', value: '1' },
+                    { label: '否', value: '0' },
+                ]
+                },
+                {
+                    label:'主会场跳转地址',
+                    name:'main_link',
+                    default:''
+                }
+            ]
+            },
+            {
+                label:'分会场内容配置',
+                type:'fieldset',
+                components:[
+                {
+                    type:'diy',
+                    src:'lib/partOptions.twig'
+                }
+            ]
+            },
+            {
+                label:'三端数据配置',
+                type:'fieldset',
+                isshow: 'dl-web',
+                components:[
+                {
+                    type:'tab',
+                    items:[
+                    {
+                        label:'PC/PAD',
+                        components:[
+                        {
+                            label:'主会场图片',
+                            name:'pc_main_img_url',
+                            type:'image',
+                            default:''
+                        },
+                        {
+                            label:'底部图片',
+                            name:'pc_foot_img_url',
+                            type:'image',
+                            default:''
+                        },
+                        {
+                            label: '导航默认是否展开',
+                            name: 'pc_nav_active',
+                            type: 'radio',
+                            default: '1',
+                            options: [
+                            { label: '是', value: '1' },
+                            { label: '否', value: '0' },
+                        ]
+                        },
+                        {
+                            label: '导航默认位置',
+                            name: 'pc_nav_default',
+                            type: 'radio',
+                            default: '1',
+                            options: [
+                            { label: '左边', value: '1' },
+                            { label: '右边', value: '0' },
+                        ]
+                        },
+                    ]
+                    },
+                    {
+                        label:'M',
+                        components:[
+                        {
+                            label:'主会场图片',
+                            name:'m_main_img_url',
+                            type:'image',
+                            default:''
+                        },
+                        {
+                            label:'底部图片',
+                            name:'m_foot_img_url',
+                            type:'image',
+                            default:''
+                        },
+                        {
+                            label: '导航默认是否展开',
+                            name: 'm_nav_active',
+                            type: 'radio',
+                            default: '0',
+                            options: [
+                            { label: '是', value: '1' },
+                            { label: '否', value: '0' },
+                        ]
+                        },
+                        {
+                            label: '导航默认位置',
+                            name: 'm_nav_default',
+                            type: 'radio',
+                            default: '1',
+                            options: [
+                            { label: '左边', value: '1' },
+                            { label: '右边', value: '0' },
+                        ]
+                        },
+                    ]
+                    },
+                ]
+                }
+            ]
+            },
+            {
+                label:'三端数据配置',
+                type:'fieldset',
+                isshow: 'dl-app',
+                components:[
+                {
+                    label:'主会场图片',
+                    name:'m_main_img_url',
+                    type:'image',
+                    default:''
+                },
+                {
+                    label:'底部图片',
+                    name:'m_foot_img_url',
+                    type:'image',
+                    default:''
+                },
+                {
+                    label: '导航默认是否展开',
+                    name: 'm_nav_active',
+                    type: 'radio',
+                    default: '0',
+                    options: [
+                    { label: '是', value: '1' },
+                    { label: '否', value: '0' },
+                ]
+                },
+                {
+                    label: '导航默认位置',
+                    name: 'm_nav_default',
+                    type: 'radio',
+                    default: '1',
+                    options: [
+                    { label: '左边', value: '1' },
+                    { label: '右边', value: '0' },
+                ]
+                }
+            ]
+            }
+        ]
+        },
+        {
+            label:'样式配置',
+            components:[
+            {
+                label:'常用配置',
+                type:'fieldset',
+                components:[
+                {
+                    label:'组件背景颜色',
+                    type:'colorPicker',
+                    name:'bg_color',
+                    default:'#FFFFFF'
+                },
+                {
+                    label:'分会场文字颜色',
+                    type:'colorPicker',
+                    name:'part_ft_color',
+                    default:'#333333',
+                    col:2
+                },
+                {
+                    label:'分会场背景颜色',
+                    type:'colorPicker',
+                    name:'part_bg_color',
+                    default:'#D8D8D8',
+                    col:2
+                },
+                {
+                    label:'分会场Hover文字颜色',
+                    type:'colorPicker',
+                    name:'hover_part_ft_color',
+                    default:'#FFFFFF',
+                    col:2
+                },
+                {
+                    label:'分会场Hover背景颜色',
+                    type:'colorPicker',
+                    name:'hover_part_bg_color',
+                    default:'#999999',
+                    col:2
+                },
+            ]
+            },
+            {
+                label:'三端配置',
+                type:'fieldset',
+                isshow: 'dl-web',
+                components:[
+                {
+                    type:'tab',
+                    items:[
+                    {
+                        label:'PC/PAD',
+                        components: form_data_list.form_PC
+                    },
+                    {
+                        label:'M',
+                        components: form_data_list.form_M
+                    },
+                ]
+                },
+            ]
+            },
+            {
+                label:'三端配置',
+                type:'fieldset',
+                isshow: 'dl-app',
+                components:form_data_list.form_M
+            },
+
+        ]
+        }
+
+    ],
+    moreConfig: [],
+    beforeSubmit: 'onSubmit'
+} %}
+
+{# 引入渲染函数 #}
+{{ include ('@app/files/parts/formTemplate/formRender.twig', formData) }}
+
+<script>
+function onSubmit (progress) {
+    var partsArr = [];
+    var partsDataAble = 0;
+    $('.nav-list-setting .nav-item').each(function (index, item) {
+        var col = $(item).find('.line_row:checked').val();
+        var colArr = [];
+        $(item).find('.item-content').each(function (key, contItem) {
+            var text = $(contItem).find('.line-text').val(),
+                link = $(contItem).find('.line-link').val();
+            colArr.push({
+                text: text,
+                link: link
+            });
+            if (!partsDataAble && text) {
+                partsDataAble = 1;
+            }
+        });
+        partsArr.push({ "col": col, "colArr": colArr });
+    });
+
+    $('input[name=partsDataAble]').val(partsDataAble);
+    $('input[name=partsArr]').val(JSON.stringify(partsArr));
+
+    progress.next();
+}
+</script>

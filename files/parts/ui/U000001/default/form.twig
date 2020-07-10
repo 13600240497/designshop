@@ -1,0 +1,453 @@
+{% set buyBorderSArr = [
+	{name:'无',value:'none'},
+	{name:'实线',value:'solid'},
+	{name:'虚线',value:'dashed'},
+	{name:'点状',value:'dotted'},
+	{name:'双线',value:'double'},
+	{name:'继承上级',value:'inherit'},
+]%}
+
+{%
+	set pageData = {
+		goodsBgc:data.goodsBgc is not null?data.goodsBgc:'#ffffff',
+		goodsBdC:data.goodsBdC is not null?data.goodsBdC:'#FD9E62',
+		goodsFtS:data.goodsFtS|default(14),
+		discountBgc:data.discountBgc is not null?data.discountBgc:'#FD6462',
+		goodsFtC:data.goodsFtC is not null?data.goodsFtC:'#333',
+		priceC:data.priceC is not null?data.priceC:'#FD6462',
+		marketPriceFt:marketPriceFt|default(13),
+		buyBgC:data.buyBgC is not null?data.buyBgC:'#FD9E62',
+		buyBorderC:data.buyBorderC is not null?data.buyBorderC:'#FD9E62',
+		marketPriceC:data.marketPriceC is not null?data.marketPriceC:'#999999',
+		buyFtC:data.buyFtC is not null?data.buyFtC:'#ffffff',
+	}
+%}
+{{include ('@app/files/parts/temp/goods_manager.twig')}}
+<div class='design-form design-form-component design-form-visible'>
+  <h3 class='component-form-title'>商品列表设置
+    <a href="javascript:;" class="design-form-close js_closeDesignForm icon-close">
+      <i class="el-icon-close"></i>
+    </a>
+  </h3>
+  <blockquote class="component-form-quote">切换模板后，无蓝色标识的配置数据将被重置</blockquote>
+  <div class="component-form-setting-item component-form-configure-item activity-component-from-item">
+		<div class="layui-tab">
+			<ul class="layui-tab-title">
+				<li class="layui-this">模板选择</li>
+				<li>商品数据</li>
+				<li>样式设置</li>
+			</ul>
+			<div class="layui-tab-content layui-tab-content-parent">
+				<div class="layui-tab-item layui-show">
+				
+					<style> {{ include('@app/htdocs/resources/stylesheets/form-less-module/theme.css') }} </style>
+					{{ include ('@app/files/parts/formTemplate/components/theme.twig') }}
+				</div>
+				<div class="layui-tab-item radio-tab-true">
+					{{include ('@app/files/parts/formModules/userGroupItem.twig')}}
+					<div class="layui-form-item">
+						<label class="gs-label-block">商品数据</label>
+						<div class="layui-input-block">
+							<input type="radio" name="goodsDataFrom" lay-filter="goodsDataFrom" value="2" title="选品系统" {% if data.goodsDataFrom == '2' %} checked="checked" {% endif %}>
+							<input type="radio" name="goodsDataFrom" lay-filter="goodsDataFrom" value="1" title="商品SKU" {% if data.goodsDataFrom == '1' or data.goodsDataFrom is empty %} checked="checked" {% endif %}>
+						</div>
+					</div>
+					<div class="radio-tab-group">
+						<div class="goods-hide {% if data.goodsDataFrom|default('1') == '2' %}goods-visible{% endif %}" data-target="goodsDataFrom-2">
+						{# 选品系统手动自动方式 start #}
+							{% include '@app/files/parts/temp/choose_products_tpl.twig' with{'ipsMethodsArr':['1','2','3','4'],'ipsDefault':'2'} %}
+						{# 选品系统手动自动方式 end #}
+						</div>
+						<div class="goods-hide {% if data.goodsDataFrom|default('1') == '1' %}goods-visible{% endif %}" data-target="goodsDataFrom-1">
+							<div class="layui-form-item" >
+								{# <label class="layui-form-label public-data">商品SKU</label> #}
+								<label class="gs-label-block gs-label-blank"></label>
+								<div class="layui-input-block">
+									<textarea placeholder="请输入商品编号（SKU ID），编号与编号间用英文逗号隔开" class="layui-textarea" name="goodsSKU" data-public-tag="true">{{data.goodsSKU}}</textarea>
+								</div>
+								<span style="margin: 10px 0 10px 110px; display: block; color: #bbb;">"商品SKU"不可重复</span>
+							</div>
+							<div class="layui-form-item tab-add-btn">
+								<span class="layui-btn layui-btn-normal layui-btn-sm" id="gs_getList" style="float:right">商品管理</span>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+				<div class="layui-tab-item">
+					<div class="layui-carousel" id="form_carousel">
+						<div carousel-item>
+							<div>
+								<fieldset class="layui-elem-field">
+									<legend>常用配置</legend>
+									<div class="layui-field-box">
+										<div class="layui-form-item">
+											<label class="layui-form-label">商品选中边框色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="goodsBdC">
+													<div style="background-color: {{ pageData.goodsBdC }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="goodsBdC" autocomplete="off" value="{{ pageData.goodsBdC }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">折扣标显示方式</label>
+											<div class="layui-input-block">
+												<input type="radio" name="discountType" data-public-tag="true" value="1" title="***%OFF" {% if data.discountType == '1' or data.discountType is empty %} checked="checked" {% endif %}>
+												<input type="radio" name="discountType" data-public-tag="true" value="0" title="-***%" {% if data.discountType == '0' %} checked="checked" {% endif %}>
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">折扣宽度(px)</label>
+											<div class="layui-input-block"><input class="layui-input" type="text" name="discountWidth" value="{{data.discountWidth|default('60')}}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">折扣高度(px)</label>
+											<div class="layui-input-block"><input class="layui-input" type="text" name="discountHeight" value="{{data.discountHeight|default('60')}}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">折扣背景图片</label>
+											<div class="layui-input-block">
+												<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+												<input class="layui-input" type="text" name="discountBgImg" value="{{data.discountBgImg}}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">折扣文字颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="discountFtC">
+													<div style="background-color: {{ data.discountFtC }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="discountFtC" autocomplete="off" value="{{ data.discountFtC }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">折扣背景颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="discountBgc">
+													<div style="background-color: {{ pageData.discountBgc }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="discountBgc" autocomplete="off" value="{{ pageData.discountBgc }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">商品字体颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="goodsFtC">
+													<div style="background-color: {{ pageData.goodsFtC }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="goodsFtC" autocomplete="off" value="{{ pageData.goodsFtC }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">市场价颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="marketPriceC">
+													<div style="background-color: {{ pageData.marketPriceC }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="marketPriceC" autocomplete="off" value="{{ pageData.marketPriceC }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">销售价颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="priceC">
+													<div style="background-color: {{ pageData.priceC }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="priceC" autocomplete="off" value="{{ pageData.priceC }}" >
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label public-data">购买按钮文案</label>
+											<div class="layui-input-block"><input class="layui-input" type="text" name="buyText" value="{{data.buyText|default('BUY NOW')}}" data-public-tag="true">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">购买按钮字体颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="buyFtC">
+													<div style="background-color: {{ pageData.buyFtC }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="buyFtC" autocomplete="off" value="{{ pageData.buyFtC }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">购买按钮背景颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="buyBgC">
+													<div style="background-color: {{ pageData.buyBgC }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="buyBgC" autocomplete="off" value="{{ pageData.buyBgC }}">
+											</div>
+										</div>
+										<div class="layui-form-item">
+											<label class="layui-form-label">购买按钮边框颜色</label>
+											<div class="layui-input-block">
+												<div class="color-picker-selector" data-hidden-name="buyBorderC">
+													<div style="background-color: {{ pageData.buyBorderC }};"></div>
+												</div>
+												<input type="text" class="layui-input" name="buyBorderC" autocomplete="off" value="{{ pageData.buyBorderC }}">
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<div class="text-right">
+									<button type="button" id="js_moreConfig" class="layui-btn layui-btn-normal layui-btn-sm">更多配置</button>
+								</div>
+							</div>
+							<div>
+								<div class="layui-tab layui-tab-vertical">
+									<ul class="layui-tab-title">
+										<li class="layui-this">基础设置</li>
+										<li>折扣标</li>
+										<li>商品名称</li>
+										<li>市场价</li>
+										<li>销售价</li>
+										<li>购买按钮</li>
+										{# <li>库存管理</li> #}
+									</ul>
+									<div class="layui-tab-content">
+										<div class="layui-tab-item layui-show">
+											<div class="layui-form-item">
+												<label class="layui-form-label">上边距(px)</label>
+												<div class="layui-input-block">
+													<input type="text" name="boxMarginTop" autocomplete="off" class="layui-input" value="{{ data.boxMarginTop | default(0) }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">下边距(px)</label>
+												<div class="layui-input-block">
+													<input type="text" name="boxMarginBottom" autocomplete="off" class="layui-input" value="{{ data.boxMarginBottom | default(0) }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">宽度(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="baseWith" value="{{data.baseWith|default(1200)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">每列商品数量</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="colNum" value="{{data.colNum|default(4)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">整体背景颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="baseBgC">
+														<div style="background-color: {{ data.baseBgC }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="baseBgC" autocomplete="off" value="{{ data.baseBgC }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">每栏颜色</label>
+												<div class="layui-input-block">
+													<div class="color-picker-selector" data-hidden-name="goodsBgc">
+														<div style="background-color: {{ pageData.goodsBgc }};"></div>
+													</div>
+													<input type="text" class="layui-input" name="goodsBgc" autocomplete="off" value="{{ pageData.goodsBgc }}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">商品左右间距(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="gsPadding" value="{{data.gsPadding|default(10)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">商品上下间距(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="gsMarginBottom" value="{{data.gsMarginBottom|default(10)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">商品内间距(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="gsInnerPadding" value="{{data.gsInnerPadding|default(20)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">商品圆角(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="gsRadius" value="{{data.gsRadius}}">
+												</div>
+											</div>
+											{# <div class="layui-form-item">
+												<label class="layui-form-label">商品倒计时</label>
+												<div class="layui-input-block">
+													<input type="radio" name="goodsTimeActive" value="1" title="是" {% if data.goodsTimeActive == '1' %} checked="checked" {% endif %}>
+													<input type="radio" name="goodsTimeActive" value="0" title="否" {% if data.goodsTimeActive == '0' or data.goodsTimeActive is empty %} checked="checked" {% endif %}>
+												</div>
+											</div> #}
+										</div>
+										<div class="layui-tab-item">
+											<div class="layui-form-item">
+												<label class="layui-form-label">上偏移(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="discountOffsetT" value="{{data.discountOffsetT|default('-10')}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">右偏移(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="discountOffsetR" value="{{data.discountOffsetR|default('-10')}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">文字上间距(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="discountTop" value="{{data.discountTop|default('6')}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">文字左间距(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="discountLeft" value="{{data.discountLeft|default('0')}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">圆角(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="discountRadius" value="{{data.discountRadius|default('50')}}">
+												</div>
+											</div>
+
+											<div class="layui-form-item">
+												<label class="layui-form-label">后缀文字(OFF)</label>
+												<div class="layui-input-block"><input class="layui-input layui-disabled" disabled type="text" name="discountTextSuffix" value="{{get_component_trans(lang,'off')}}">
+												</div>
+											</div>
+
+											<div class="layui-form-item">
+												<label class="layui-form-label">后缀(OFF)</label>
+												<div class="layui-input-block">
+													<input type="radio" name="discountSuffix" value="1" title="是" {% if data.discountSuffix == '1' or data.discountSuffix is empty %} checked="checked" {% endif %}>
+													<input type="radio" name="discountSuffix" value="0" title="否" {% if data.discountSuffix == '0' %} checked="checked" {% endif %}>
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">是否开启</label>
+												<div class="layui-input-block">
+													<input type="radio" name="discountActive" value="1" title="是" {% if data.discountActive == '1' or data.discountActive is empty %} checked="checked" {% endif %}>
+													<input type="radio" name="discountActive" value="0" title="否" {% if data.discountActive == '0'%} checked="checked" {% endif %}>
+												</div>
+											</div>
+										</div>
+										<div class="layui-tab-item">
+											<div class="layui-form-item">
+												<label class="layui-form-label">字体大小(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="goodsFtS" value="{{pageData.goodsFtS}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">是否开启</label>
+												<div class="layui-input-block">
+													<input type="radio" name="goodsActive" value="1" title="是" {% if data.goodsActive == '1'  or data.goodsActive is empty %} checked="checked" {% endif %}>
+													<input type="radio" name="goodsActive" value="0" title="否" {% if data.goodsActive == '0'%} checked="checked" {% endif %}>
+												</div>
+											</div>
+										</div>
+										<div class="layui-tab-item">
+											<div class="layui-form-item">
+												<label class="layui-form-label">字体大小(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="marketPriceFt" value="{{pageData.marketPriceFt}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">是否开启</label>
+												<div class="layui-input-block">
+													<input type="radio" name="marketActive" value="1" title="是" {% if data.marketActive == '1' or data.marketActive is empty %} checked="checked" {% endif %}>
+													<input type="radio" name="marketActive" value="0" title="否" {% if data.marketActive == '0'%} checked="checked" {% endif %}>
+												</div>
+											</div>
+										</div>
+										<div class="layui-tab-item">
+											<div class="layui-form-item">
+												<label class="layui-form-label">字体大小(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="priceFt" value="{{data.priceFt|default(20)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">是否开启</label>
+												<div class="layui-input-block">
+													<input type="radio" name="priceActive" value="1" title="是" {% if data.priceActive == '1' or data.priceActive is empty %} checked="checked" {% endif %}>
+													<input type="radio" name="priceActive" value="0" title="否" {% if data.priceActive == '0'%} checked="checked" {% endif %}>
+												</div>
+											</div>
+										</div>
+										<div class="layui-tab-item">
+											<div class="layui-form-item">
+												<label class="layui-form-label">字体大小(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="buyFtS" value="{{data.buyFtS|default(16)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">宽度(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="buyWidth" value="{{data.buyWidth}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">高度(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="buyHeight" value="{{data.buyHeight|default(40)}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">圆角大小(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="buyRadius" value="{{data.buyRadius|default('20')}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">边框大小(px)</label>
+												<div class="layui-input-block"><input class="layui-input" type="text" name="buyBorderW" value="{{data.buyBorderW|default('0')}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">边框类型</label>
+												<div class="layui-input-block">
+													<select name="buyBorderS" lay-verify="required" value="{{data.buyBorderS|default('solid')}}">
+													{% for item in buyBorderSArr%}
+														<option value="{{item.value}}" {% if item.value == data.buyBorderS|default('solid')%}selected{% endif %}>{{item.name}}</option>
+													{% endfor %}
+													</select>
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">背景图片</label>
+												<div class="layui-input-block">
+													<a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+													<input class="layui-input" type="text" name="buyBgImg" value="{{data.buyBgImg}}">
+												</div>
+											</div>
+											<div class="layui-form-item">
+												<label class="layui-form-label">是否开启</label>
+												<div class="layui-input-block">
+													<input type="radio" name="buyActive" value="1" title="是" {% if data.buyActive == '1' or data.buyActive is empty %} checked="checked" {% endif %}>
+													<input type="radio" name="buyActive" value="0" title="否" {% if data.buyActive == '0'%} checked="checked" {% endif %}>
+												</div>
+											</div>
+										</div>
+										{# <div class="layui-tab-item">
+											<div class="layui-form-item">
+												<label class="layui-form-label">是否开启</label>
+												<div class="layui-input-block">
+													<input type="radio" name="goodsLimitActive" value="1" title="是" {% if data.goodsLimitActive == '1' %} checked="checked" {% endif %}>
+													<input type="radio" name="goodsLimitActive" value="0" title="否" {% if data.goodsLimitActive == '0' or data.goodsLimitActive is empty %} checked="checked" {% endif %}>
+												</div>
+											</div>
+										</div> #}
+									</div>
+								</div>
+								<div class="text-right">
+									<button type="button" id="js_baseConfig" class="layui-btn layui-btn-normal layui-btn-sm">基础配置</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+  </div>
+</div>
+
+<div class="layui-form-item geshop-form-operation">
+	<button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+		<span type="button" class="layui-btn layui-btn-normal" id="gs_submit">提交</span>
+	<button type="button" class="layui-btn layui-btn-normal js_submitDesignForm layui-hide">提交</button>
+</div>
+
+{{include ('@app/files/parts/temp/choose_products_form_js.twig')}}

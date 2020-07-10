@@ -1,0 +1,160 @@
+<!-- embed stylesheet begin -->
+<style type="text/css">
+	{% set class_sapce = '.geshop-U0000187-default.wrap_'~pageInstanceId %}
+    {% set unit = 'px' %}
+
+    {{ class_sapce }} {
+        margin: {{ data.component_margin_top | default(0) ~ unit }} auto {{ data.component_margin_bottom | default(32) ~ unit }};
+        width: {{ data.component_width | default(1200) ~ unit }};
+        height: {{ data.component_height | default(700) ~ unit }};
+        background-color: {{ data.component_bgColor | default('#F8F8F8') }};
+        {% if data.component_bgImage %}
+            background-image: url('{{ data.component_bgImage }}');
+        {% endif %}
+        background-size: 100%;
+    }
+
+    {# 标题栏 #}
+    {{ class_sapce }} .geshop-187d-head {
+        top: {{ data.title_top | default(32) ~ unit }};
+        left: {{ data.title_left | default(467) ~ unit }};
+        color: {{ data.title_color | default('#333333') }};
+        font-size: {{ data.title_fontsize | default(30) ~ unit }};
+        line-height: {{ data.title_fontsize | default(30) ~ unit }};
+        text-align: center;
+    }
+
+    {# 规则按钮 #}
+    {{ class_sapce }} .geshop-187d-rule-btn {
+        cursor: pointer;
+        top: {{ data.rule_btn_top | default(80) ~ unit }};
+        left: {{ data.rule_btn_left | default(1080) ~ unit }};
+        color: {{ data.rule_btn_color | default('#333333') }};
+        background-color: {{ data.rule_btn_bgColor | default('#EDEDED') }};
+    }
+
+    {# 转盘区域 #}
+    {% if data.show_list == 'show' %}
+        {{ class_sapce }} .geshop-187d-turntable {
+            top: {{ data.turntable_top | default(114) ~ unit }};
+            left: {{ data.turntable_left | default(40) ~ unit }};
+        }
+    {% else %}
+        {{ class_sapce }} .geshop-187d-turntable {
+            top: {{ data.turntable_top | default(114) ~ unit }};
+        }
+        {{ class_sapce }} .geshop-187d-turntable-container {
+            margin-left: {{ data.turntable_left | default(40) ~ unit }};
+            position: relative;
+        }
+    {% endif %}
+
+    {# 指针配置 #}
+    {{ class_sapce }} .geshop-187d-pointer {
+        top: {{ data.pointer_top | default(129) ~ unit }};
+        left: {{ data.pointer_left | default(129) ~ unit }};
+        color: {{ data.pointer_color | default('#333333') }};
+        font-size: {{ data.pointer_fontsize | default(30) ~ unit }};
+    }
+
+    {# 抽奖次数配置 #}
+    {{ class_sapce }} .geshop-187d-spins {
+        top: {{ data.spins_top | default(632) ~ unit }};
+        left: {{ data.spins_left | default(240) ~ unit }};
+        color: {{ data.spins_color | default('#333333') }};
+        font-size: {{ data.spins_fontsize | default(16) ~ unit }};
+    }
+    {{ class_sapce }} .geshop-187d-spins span {
+        color: {{ data.spins_number_color | default('#333333') }};
+    }
+
+    {# 积分兑换 #}
+    {{ class_sapce }} .geshop-187d-points {
+        top: {{ data.points_top | default(652) ~ unit }};
+        left: {{ data.points_left | default(100) ~ unit }};
+        color: {{ data.points_color | default('#333333') }};
+        font-size: {{ data.points_fontsize | default(16) ~ unit }};
+    }
+    {{ class_sapce }} .geshop-187d-points span {
+        color: {{ data.points_number_color | default('#333333') }};
+    }
+
+    {# 中奖名单 #}
+    {{ class_sapce }} .geshop-187d-list {
+        top: {{ data.list_top | default(114) ~ unit }};
+        left: {{ data.list_left | default(660) ~ unit }};
+        width: {{ data.list_width | default(500) ~ unit }};
+        height: {{ data.list_height | default(467) ~ unit }};
+        {% if data.list_bgImage is empty and data.list_bgColor is empty %}
+            background-image: url('https://geshopimg.logsss.com/uploads/yPlv68TUOQKdLhsGa2fjzIJ1mHwrFnuR.png');
+        {% else %}
+            {% if data.list_bgImage %}
+                background-image: url('{{ data.list_bgImage }}');
+            {% else %}
+                background-color: {{ data.list_bgColor }};
+            {% endif %}
+        {% endif %}
+        {% if data.list_border_color is not empty %}
+            border: solid 1px {{ data.list_border_color }};
+        {% endif %}
+    }
+    {{ class_sapce }} .geshop-187d-list-title {
+        top: {{ data.list_title_top | default(20) ~ unit }};
+        left: {{ data.list_title_left | default(190) ~ unit }};
+        color: {{ data.list_title_color | default('#333333') }};
+        font-size: {{ data.list_title_fotsize | default(18) }}px;
+    }
+    {{ class_sapce }} .geshop-187d-list-uname {
+        color: {{ data.list_uname_color | default('#333333') }};
+        margin-top: {{ data.list_content_top | default(60) ~ unit }};
+    }
+
+    {{ class_sapce }} .geshop-187d-list-uname li {
+        padding: 0 {{ data.list_content_padding_lr | default(32) ~ unit }};
+        font-size: {{ data.list_content_fontsize | default(16) ~ unit }};
+    }
+
+    {# 分享 #}
+    {{ class_sapce }} .geshop-187d-share {
+        top: {{ data.share_top | default(600) ~ unit }};
+        left: {{ data.share_left | default(944) ~ unit }};
+        color: {{ data.share_title_color | default('#333333') }};
+        font-size: {{ data.share_title_fontsize | default(14) ~ unit }};
+    }
+
+    {{ class_sapce }} .geshop-187d-dialog-rule h2 {
+        color: {{ data.rule_content_color | default('#333333') }};
+    }
+    {{ class_sapce }} .geshop-187d-dialog-rule p {
+        color: {{ data.rule_content_color | default('#333333') }};
+        font-size: {{ data.rule_content_fontsize | default(16) ~ unit }};
+    }
+
+    {{ class_sapce }} .geshop-187d-dialog-rule .geshop-187d-dialog-container {
+        background-color: {{ data.rule_dialog_bgColor|default('#FFFFF') }};
+    }
+
+    {{ class_sapce }} .geshop-187d-dialog-share .geshop-187d-dialog-container, 
+    {{ class_sapce }} .geshop-187d-dialog-sku .geshop-187d-dialog-container,
+    {{ class_sapce }} .geshop-187d-dialog-other .geshop-187d-dialog-container {
+        {% if data.success_dialog_bgImage1 %}
+            background-image: url('{{ data.success_dialog_bgImage1 }}');
+        {% endif %}
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    {{ class_sapce }} .geshop-187d-dialog-share .geshop-187d-dialog-container .geshop-187d-dialog-body p, 
+    {{ class_sapce }} .geshop-187d-dialog-sku .geshop-187d-dialog-container .geshop-187d-dialog-body p,
+    {{ class_sapce }} .geshop-187d-dialog-other .geshop-187d-dialog-container .geshop-187d-dialog-body p {
+        font-size: {{ data.success_dialog_fontsize|default(16) ~ unit }};
+        color: {{ data.success_dialog_color | default('#333333') }};
+    }
+
+    {{ class_sapce }} .geshop-187d-dialog-footer button {
+        background-color: {{ data.success_dialog_btn_bgColor|default('#333333') }};
+        color: {{ data.success_dialog_btn_color | default('#FFFFF') }};
+    }
+
+</style>
+<!-- embed stylesheet end -->

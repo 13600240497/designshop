@@ -1,0 +1,423 @@
+{%
+    set pageData = {
+        boxWidth : (data.boxWidth | default('100%')),
+        boxHeight : (data.boxHeight | default(270)),
+        boxMarginBottom : (data.boxMarginBottom | default(0)),
+        boxBackgroundColor : data.boxBackgroundColor | default('#EDEDED'),
+        boxBackgroundImage : data.boxBackgroundImage | default(''),
+        discountTextSize : (data.discountTextSize | default(64)),
+        discountTextColor : data.discountTextColor | default('#333333'),
+        discountTermTextSize : (data.discountTermTextSize | default(28)),
+        discountTermTextColor : data.discountTermTextColor | default('#333333'),
+        validText : data.validText | default('Validity：Nov.23-Nov.25'),
+        validTextSize : (data.validTextSize | default(24)),
+        validTextColor : data.validTextColor | default('#333333'),
+        validTextMarginBottom : (data.validTextMarginBottom | default(10)),
+        btnRadius : (data.btnRadius | default(24)),
+        btnSize :  (data.btnSize | default(24)),
+        btnUnreceivedBgColor : data.btnUnreceivedBgColor | default('#333333'),
+        btnUnreceivedTextColor : data.btnUnreceivedTextColor | default('#ffffff'),
+        btnUnreceivedTextBorderColor : data.btnUnreceivedTextBorderColor | default('transparent'),
+        btnReceivedBgColor : data.btnReceivedBgColor | default('#dddddd'),
+        btnReceivedTextColor : data.btnReceivedTextColor | default('#ffffff'),
+        btnReceivedTextBorderColor : data.btnReceivedTextBorderColor | default('transparent'),
+        btnFailedBgColor : data.btnFailedBgColor | default('#dddddd'),
+        btnFailedTextColor : data.btnFailedTextColor | default('#ffffff'),
+        btnFailedTextBorderColor : data.btnFailedTextBorderColor | default('transparent'),
+        couponStartTime : data.couponStartTime | default(''),
+        couponEndTime : data.couponEndTime | default(''),
+        couponDiscount : data.couponDiscount | default(''),
+        couponDiscountText : data.couponDiscountText | default(''),
+        couponId : data.couponId | default(''),
+    }
+%}
+{% set alginType = {
+  _name : 'alignType',
+  _value : data.alignType | default(2),
+  _label : '组件对齐方式',
+  _type : 3,
+  _subs : [
+    {value : 1,label : '左',},
+    {value : 2,label : '中',},
+    {value : 3,label : '右',},
+  ]
+} %}
+<script src="/resources/template/goods/index.js?v={{ serverTime }}"></script>
+<h3 class="component-form-title">
+<span>优惠券组件配置</span>
+<a href="javascript:;" class="design-form-close js_closeDesignForm icon-close"><i class="el-icon-close"></i></a>
+</h3>
+{{include ('@app/htdocs/resources/template/pc/templateList/index.twig')}}
+<div id="gs_component_countdown"   data-from="from{{ pageInstanceId }}"  class="component-form-setting-item component-form-configure-item" data-gid="U000129_timer" style="padding-bottom: 40px;">
+    <p class="geshop-title" style="margin-top: 10px;font-weight: bold;">常用配置</p>
+
+    {{include ('@app/files/parts/formModules/userGroupItem.twig')}}
+
+    <div class="layui-form-item">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 组件下边距(px)</label>
+        <div class="layui-input-block">
+          <input type="text" name="boxMarginBottom" autocomplete="off" class="layui-input" value="{{ pageData.boxMarginBottom }}">
+        </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 宽度(px)</label>
+      <div class="layui-input-block">
+        <input type="text" name="boxWidth" autocomplete="off" class="layui-input" value="{{ pageData.boxWidth }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 高度(px)</label>
+      <div class="layui-input-block">
+        <input type="text" name="boxHeight" autocomplete="off" class="layui-input" value="{{ pageData.boxHeight }}">
+      </div>
+    </div>
+    {% include '@app/files/parts/temp/from/list-from.twig' with { _cells : [alginType] ,_list2:1,} %}
+
+    <p class="geshop-title" style="margin-top: 30px;font-weight: bold;">优惠券数据输入配置</p>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span>优惠券ID</label>
+      <div class="layui-input-block">
+        <input type="text" name="couponId" autocomplete="off" class="layui-input " value="{{ pageData.couponId }}">
+      </div>
+    </div>
+    <div class="layui-form-item time-line" style="color: #9E9E9E;">
+      <div class="gs-lable-block"style="margin-bottom:10px;">优惠券领取时段</div>
+      <div class="layui-input-block" style="margin-left:0;">
+        <div style="background:#E6E6E6;border-radius:4px;line-height:40px;height:40px;box-sizing: border-box;padding: 0 10px;text-align: center;">
+            <span class="time-start" style="float: left;">
+              {{pageData.couponStartTime}}
+            </span>
+            <span> 至 </span>	
+            <span class="time-end" style="float: right;">
+              {{pageData.couponEndTime}}
+            </span>
+        </div>
+        <input type="hidden" name="couponStartTime" autocomplete="off" class="layui-input " value="{{ pageData.couponStartTime }}">
+        <input type="hidden" name="couponEndTime" autocomplete="off" class="layui-input " value="{{ pageData.couponEndTime }}">
+      </div>
+    </div>
+    <div class="layui-form-item couponDiscount-line" style="color: #9E9E9E;">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span> 优惠券折扣</label>
+      <div class="layui-input-block">
+        <div class="text" style="background:#E6E6E6;border-radius:4px;line-height:40px;height:40px;box-sizing: border-box;padding: 0 10px;"></div>
+        <input type="hidden" name="couponDiscount" autocomplete="off" class="layui-input " value="{{ pageData.couponDiscount }}">
+      </div>
+    </div>
+    <div class="layui-form-item couponDiscountText-line" style="color: #9E9E9E;">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span>优惠券折扣条件</label>
+      <div class="layui-input-block">
+        <div class="text" style="background:#E6E6E6;border-radius:4px;line-height:40px;height:40px;box-sizing: border-box;padding: 0 10px;"></div>
+        <input type="hidden" name="couponDiscountText" autocomplete="off" class="layui-input " value="{{ pageData.couponDiscountText }}">
+      </div>
+    </div>
+
+    <p class="geshop-title" style="margin-top: 30px;font-weight: bold;">优惠券内容配置</p>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span>背景颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="boxBackgroundColor"><div style="background-color: {{ pageData.boxBackgroundColor }};"></div></div>
+        <input type="text" class="layui-input" name="boxBackgroundColor" autocomplete="off" value="{{ pageData.boxBackgroundColor }}">
+      </div>
+    </div>  
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span>背景图片</label>
+      <div class="layui-input-block">
+        <a href="javascript:;" class="js_openResource design-open-resource"><i class="layui-icon">&#xe64a;</i></a>
+        <input type="text" name="boxBackgroundImage" autocomplete="off" class="layui-input" value="{{ pageData.boxBackgroundImage }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span>折扣值文字大小(PX)</label>
+      <div class="layui-input-block">
+        <input type="text" name="discountTextSize" autocomplete="off" placeholder="" class="layui-input" value="{{ pageData.discountTextSize}}">
+      </div>  
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span>折扣值文字颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="discountTextColor"><div style="background-color: {{ pageData.discountTextColor }};"></div></div>
+        <input type="text" class="layui-input" name="discountTextColor" autocomplete="off" value="{{ pageData.discountTextColor }}">
+      </div>
+    </div> 
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span>折扣条件文字大小(PX)</label>
+      <div class="layui-input-block">
+        <input type="text" name="discountTermTextSize" autocomplete="off" placeholder="" class="layui-input" value="{{ pageData.discountTermTextSize}}">
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span>折扣条件文字颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="discountTermTextColor"><div style="background-color: {{ pageData.discountTermTextColor }};"></div></div>
+        <input type="text" class="layui-input" name="discountTermTextColor" autocomplete="off" value="{{ pageData.discountTermTextColor }}">
+      </div>
+    </div> 
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span>有效时间字体文案</label>
+      <div class="layui-input-block">
+        <input type="text" name="validText" autocomplete="off" placeholder="" class="layui-input" value="{{ pageData.validText}}">
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span>有效时间文字大小(PX)</label>
+      <div class="layui-input-block">
+        <input type="text" name="validTextSize" autocomplete="off" placeholder="" class="layui-input" value="{{ pageData.validTextSize}}">
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span>有效时间文字颜色</label>
+      <div class="layui-input-block">
+        <div class="color-picker-selector" data-hidden-name="validTextColor"><div style="background-color: {{ pageData.validTextColor }};"></div></div>
+        <input type="text" class="layui-input" name="validTextColor" autocomplete="off" value="{{ pageData.validTextColor }}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span>有效时间下边距(PX)</label>
+      <div class="layui-input-block">
+        <input type="text" name="validTextMarginBottom" autocomplete="off" placeholder="" class="layui-input" value="{{ pageData.validTextMarginBottom}}">
+      </div>
+    </div>
+     <p class="geshop-title" style="margin-top: 30px;font-weight: bold;">按钮配置</p>
+      <div class="layui-form-item">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span>圆角大小(PX)</label>
+        <div class="layui-input-block">
+          <input type="text" name="btnRadius" autocomplete="off" placeholder="" class="layui-input" value="{{ pageData.btnRadius}}">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span>文字大小(PX)</label>
+        <div class="layui-input-block">
+          <input type="text" name="btnSize" autocomplete="off" placeholder="" class="layui-input" value="{{ pageData.btnSize}}">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span>未领取背景颜色</label>
+        <div class="layui-input-block">
+          <div class="color-picker-selector" data-hidden-name="btnUnreceivedBgColor"><div style="background-color: {{ pageData.btnUnreceivedBgColor }};"></div></div>
+          <input type="text" class="layui-input" name="btnUnreceivedBgColor" autocomplete="off" value="{{ pageData.btnUnreceivedBgColor }}">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span>未领取字体颜色</label>
+        <div class="layui-input-block">
+          <div class="color-picker-selector" data-hidden-name="btnUnreceivedTextColor"><div style="background-color: {{ pageData.btnUnreceivedTextColor }};"></div></div>
+          <input type="text" class="layui-input" name="btnUnreceivedTextColor" autocomplete="off" value="{{ pageData.btnUnreceivedTextColor }}">
+        </div>
+      </div> 
+      <div class="layui-form-item">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span>未领取边框颜色</label>
+        <div class="layui-input-block">
+          <div class="color-picker-selector" data-hidden-name="btnUnreceivedTextBorderColor"><div style="background-color: {{ pageData.btnUnreceivedTextBorderColor }};"></div></div>
+          <input type="text" class="layui-input" name="btnUnreceivedTextBorderColor" autocomplete="off" value="{{ pageData.btnUnreceivedTextBorderColor }}">
+        </div>
+      </div> 
+      <div class="layui-form-item">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span>已领取背景颜色</label>
+        <div class="layui-input-block">
+          <div class="color-picker-selector" data-hidden-name="btnReceivedBgColor"><div style="background-color: {{ pageData.btnReceivedBgColor }};"></div></div>
+          <input type="text" class="layui-input" name="btnReceivedBgColor" autocomplete="off" value="{{ pageData.btnReceivedBgColor }}">
+        </div>
+      </div> 
+      <div class="layui-form-item">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span>已领取字体颜色</label>
+        <div class="layui-input-block">
+          <div class="color-picker-selector" data-hidden-name="btnReceivedTextColor"><div style="background-color: {{ pageData.btnReceivedTextColor }};"></div></div>
+          <input type="text" class="layui-input" name="btnReceivedTextColor" autocomplete="off" value="{{ pageData.btnReceivedTextColor }}">
+        </div>
+      </div> 
+      <div class="layui-form-item">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span>已领取边框颜色</label>
+        <div class="layui-input-block">
+          <div class="color-picker-selector" data-hidden-name="btnReceivedTextBorderColor"><div style="background-color: {{ pageData.btnReceivedTextBorderColor }};"></div></div>
+          <input type="text" class="layui-input" name="btnReceivedTextBorderColor" autocomplete="off" value="{{ pageData.btnReceivedTextBorderColor }}">
+        </div>
+      </div> 
+      <div class="layui-form-item">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span>已失效背景颜色</label>
+        <div class="layui-input-block">
+          <div class="color-picker-selector" data-hidden-name="btnFailedBgColor"><div style="background-color: {{ pageData.btnFailedBgColor }};"></div></div>
+          <input type="text" class="layui-input" name="btnFailedBgColor" autocomplete="off" value="{{ pageData.btnFailedBgColor }}">
+        </div>
+      </div> 
+      <div class="layui-form-item">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span>已失效字体颜色</label>
+        <div class="layui-input-block">
+          <div class="color-picker-selector" data-hidden-name="btnFailedTextColor"><div style="background-color: {{ pageData.btnFailedTextColor }};"></div></div>
+          <input type="text" class="layui-input" name="btnFailedTextColor" autocomplete="off" value="{{ pageData.btnFailedTextColor }}">
+        </div>
+      </div> 
+      <div class="layui-form-item">
+        <label class="form-label-item"><span class="layui-badge-dot layui-bg-orange"></span>已失效边框颜色</label>
+        <div class="layui-input-block">
+          <div class="color-picker-selector" data-hidden-name="btnFailedTextBorderColor"><div style="background-color: {{ pageData.btnFailedTextBorderColor }};"></div></div>
+          <input type="text" class="layui-input" name="btnFailedTextBorderColor" autocomplete="off" value="{{ pageData.btnFailedTextBorderColor }}">
+        </div>
+      </div>  
+    {# <div class="clearfix advanced-config">
+        <a href="javascript:;" id="js_moreConfig" style="color:#1E9FFF">高级配置 <i></i></a>
+    </div> #}
+</div>
+
+<input type="hidden" id="siteCode" value="{{ siteCode|split('-')[0] }}" />
+
+<div class="layui-form-item geshop-form-operation">
+    <button type="button" class="layui-btn layui-btn-primary js_closeDesignForm">取消</button>
+    <button type="button" class="layui-btn layui-btn-normal js_submitDesignForm">提交</button>
+</div>
+
+<script>
+  (function(){
+    var $box = $('[ data-from="from{{ pageInstanceId }}" ]');
+    {# 优惠券ID #}
+    var $couponid =  $box.find('input[name="couponId"]');
+    {# 优惠券时间段 #}
+    var $timeLine = $box.find('.time-line');
+    {# 优惠券折扣 #}
+    var $couponDiscount =  $box.find('.couponDiscount-line');
+    {# 优惠券折扣条件 #}
+    var $couponDiscountText = $box.find('.couponDiscountText-line');
+    var couponId = '{{ pageData.couponId }}';
+    {# 转换时间 #}
+    var _formatDate = function(_d){
+      return [
+        _d.getFullYear(),
+        '-',
+        fillZero(_d.getMonth() + 1),
+        '-',
+        fillZero(_d.getDate()),
+        ' ',
+        fillZero(_d.getHours()),
+        ':',
+        fillZero(_d.getMinutes()),
+        ':',
+        fillZero(_d.getSeconds()),
+      ].join('')
+    };
+    var _inputFirm = function _inputFirm(text){
+        var _index = layer.confirm(text || '优惠券ID错误，请正确填写优惠券ID', {
+              btn: ['取消', '确定'],
+              area: '420px',
+              icon: 3,
+              skin: 'element-ui-dialog-class'
+        },function(){
+            $couponid.focus();
+            layer.close(_index);
+        },function(){
+            $couponid.focus();
+        });
+    };
+    var _jsonp = function _jsonp(param){
+            param = param || {};
+            return $.ajax($.extend({
+                dataType: "jsonp",
+                jsonp: 'callback',
+            },param));
+        };
+    var fillZero = function fillZero(n){
+            return n < 10 ? '0' + n : n ;
+        };    
+    var getCouponDetail = function getCouponDetail(_value){
+      {# GESHOP_INTERFACE.coupondetail 这个是正式版本的优惠券接口url地址 #}
+      {# var _url = 'http://www.pc-zaful.com.v1011.php5.egomsl.com/geshop/goods/coupondetail'; #}
+      var _url = GESHOP_INTERFACE.coupondetail.url;
+      var siteCode = $('#siteCode').val();
+      return _jsonp({
+          url: _url,
+          data: {
+              content : JSON.stringify({
+                  lang : '{{ lang }}',
+                  couponid : _value,
+                  pipeline: (typeof GESHOP_PIPELINE != 'undefined' ? GESHOP_PIPELINE : '')
+              })
+          },
+          success: function (res) {
+            if (res.code === 0) {
+              var couponInfo = res.data.couponInfo || {};
+              if(couponInfo.supportPipeline){
+                var supportPipeline = couponInfo.supportPipeline.split(',');
+                if(supportPipeline.indexOf(GESHOP_PIPELINE.toLocaleLowerCase()) == -1){
+                  layui.layer.msg('该优惠券不支持在当前国家使用');
+                  $('input[name="couponId"]').val('');
+                  $('.js_submitDesignForm').attr('disabled',true);
+                  return;
+                }
+              }
+              if (couponInfo.id) {
+                
+                if (siteCode == 'rg') {
+                    
+                    var startTime = parseInt(couponInfo.getStartTime) * 1000;
+                    var endTime = parseInt(couponInfo.getEndTime) * 1000;
+                } else {
+                    
+                    var startTime = parseInt(couponInfo.enableStartTime) * 1000;
+                    var endTime = parseInt(couponInfo.enableEndTime) * 1000;
+                }
+
+                if (startTime === 0) {
+                  _setTime();
+                } else {
+                  _setTime({
+                    start : _formatDate(new Date(startTime)),
+                    end : _formatDate(new Date(endTime)),
+                  });
+
+                  if (parseInt(couponInfo.type) === 1) {
+                    _setDiscount(couponInfo.offerAmount + '%');
+                  } else if(parseInt(couponInfo.type) === 2) {
+                    _setDiscount('$' + couponInfo.offerAmount);
+                  }
+                  _setDiscountText('$' + couponInfo.thresholdAmount);
+                }
+              } else {
+                _inputFirm();
+                _clearFrom();
+              }
+            } else {
+              {# 获取优惠券信息错误 #}
+              _inputFirm();
+              _clearFrom();
+            }
+          }
+      });
+    };
+    var coupunParam = JSON.stringify({
+            lang : '{{ lang }}',
+            couponid : '{{ pageData.couponId }}'
+        });
+    
+    {# 设置时间 #}
+    var _setTime = function _setTime(param){
+      param = param || {};
+      $timeLine.find('.time-start').html(param.start || '');
+      $timeLine.find('.time-end').html(param.end || '');
+    };
+    {# 设置折扣 #}
+    var _setDiscount = function _setDiscount(text){
+      $couponDiscount.find('.text').html(text || '');
+      $couponDiscount.find('input').val(text || '');
+    };
+    {# 设置折扣文案 #}
+    var _setDiscountText = function _setDiscountText(text){
+      $couponDiscountText.find('.text').html(text || '');
+      $couponDiscountText.find('input').val(text || '');
+    };
+    {# 清楚表单信息 #}
+    var _clearFrom = function clearFrom(){
+        _setTime({});
+        _setDiscount('');
+        _setDiscountText('');
+        $couponid.val('');
+    }; 
+
+    $couponid.blur(function(){
+      var $this = $(this),_value = $this.val().replace(/^\s|\s$/g,'');
+      if(!_value){
+        _clearFrom();
+      }else{
+        getCouponDetail(_value);
+      }
+    });
+    
+    if(parseInt(couponId)){
+        getCouponDetail(couponId);
+    };
+  }());
+</script>

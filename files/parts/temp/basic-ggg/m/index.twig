@@ -1,0 +1,103 @@
+{#
+    set config = {
+        type:0, /*0:普通,1:coupon优惠券，2：库存量进度条，3：APP下载二维码*/
+        time:'',// 时间
+        imgSrc:'',// 图片地址
+        title:'',// 商品标题
+        oldPrice:'',// 商品原价
+        nowPrice:'',// 商品折后价
+        couponLeft:200,// 优惠券余量，
+        couponCode:'asx1993005050',//优惠券码
+        couponRule:'发大水发大水发大水发大水',// 优惠规则
+        storeNum:20,// 当前库存剩余
+        storeAll:160,//库存总量
+        APP_price:'$20',// APP段价格
+        PC_price:'$40',// PC端价格
+        APP_imgSrc:''// APP下载二维码图片
+    }
+#}
+{%
+    set config = {
+        type:1,
+        time:'Ends In:12:05:11:02',
+        imgSrc:'https://gloimg.gbtcdn.com/gb/201312/goods-img/1461829069883227068.jpg',
+        title:'tttitle',
+        oldPrice:'$20',
+        nowPrice:'$18',
+        couponLeft:200,
+        couponCode:'asx1993005050',
+        couponRule:'发大水发大水发大水发大水',
+        storeNum:20,
+        storeAll:160,
+        APP_price:'$20',
+        PC_price:'$40',
+        APP_imgSrc:'',
+        numLeft: 9,
+    }
+%}
+
+<div class="gb-list-item-m">
+    <div class="item-content">
+         {# 头部倒计时组件 #}
+         {% if config.time %}
+         <p class="gs-goods-time gs-google-time">
+             <em class="icon-clock"></em>
+             <span class="gs-goodsRushDown" data-begin="1536908400" data-end="1539858800"></span>
+         </p>
+         {% endif %}
+         {# 图片 #}
+         <a href="" class="anthor-detail">
+                <div class="item-img-wrapper" style="width:90%;height:150px;">
+                    <img src="{{config.imgSrc}}"/>
+                    <div class="price-off-icon">
+                        <p><strong>50</strong>%</p><p>OFF</p>
+                    </div>
+                </div>
+                {# 商品标题 #}
+                <h3 class="item-title">testtest Oclean Air Intelligent APd-ppPpp Controltttttttttttttttttt Sonic Electrical Toothbrush</h3>
+         </a>
+         {% if config.type != 3 %}
+         {# 商品价格/原价 #}
+         <p class="old-price">$2.88<p>
+         {# 商品折后价 #}
+         <p class="now-price">
+                {% if config.type == 1 %}After Coupon{% endif %}
+                <em>$1.44</em>
+         <p>
+         {% endif %}
+         {# 优惠券coupon #}
+         {% if config.type == 1 %}
+         <div class="coupon" title={{config.couponRule}}>
+                <p>{{config.couponLeft}} coupon left</p>
+                <p>{{config.couponCode}}</p></div>
+         {% endif %}
+         {# 库存 200 PCs Left 或者 100%百分比显示 #}
+         {% if config.type == 2 %}
+         <div class="percent-wrap">
+                <div class="p-text-w">
+                    {# <p class="text-num"><span class="value">294</span> PCs Left</p> #}
+                    <p class="text-num">  {{gb_component_trans(lang , 'limited_to_units' , ['<span class="value">294</span>'])}} </p>
+
+                    <p class="text-per"><span class="value">294</span>{{gb_component_trans(lang , 'left')}}</p>
+                </div>
+                <div class="percent-bar">
+                    <div class="percent-inner"></div>
+                </div>
+         </div>
+         {% endif %}
+         {# APP专享价 #}
+         {% if config.type == 3 %}
+         <div class="APP-price-wrap clearfix">
+                <div class="APP-price-l">
+                    <p class="price-app">APP:<span>{{config.APP_price}}<span></p>
+                    <p class="price-pc">PC:<span>{{config.PC_price}}<span></p>
+                </div>
+                <div class="APP-price-r">
+                    <img src="{{config.APP_imgSrc}}" />
+                </div>
+         </div>
+         {% endif %}
+         {# 购买按钮 #}
+         <div class="buy-btns-wrap"><a href="" class="btn-buynow">Buy Now</a><span class="drop-cart">购物车</span></div>
+    </div>
+</div>

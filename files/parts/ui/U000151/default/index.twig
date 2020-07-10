@@ -1,0 +1,157 @@
+ 
+{% if lang %} 
+{% else %}  
+    {% set lang = 'en' %}
+{% endif %}
+
+{% set goodsData = {
+	shopTitleColor : data.shopTitleColor | default('#333333'),
+	purchasePriceTextSizeize : data.purchasePriceTextSizeize | default(28),
+} %}
+{% set unit = 'rem' %}
+{% set unitrange = 75 %}
+{% set _tabs = data.goodsID | default([{name:'订单满$xx1,加$Y1换购一下产品',ids:''},{name:'订单满$xx2,加$Y2换购一下产品',ids:''}]) %}
+<div class="geshop-component-box component-drag clearfix geshop-gift-async tab{{pageInstanceId}}" data-gid="U000151_default" data-key="U000151" data-module="U000151"
+	data-id="{{ pageInstanceId }}" attr="nav_flag" data-static-domain="{{staticDomain}}"
+	 style="background: {{ data.componentBgColor |default('#D6D6D6') }};"
+	>
+    <style type="text/css">
+		.tab{{pageInstanceId}} .goods-banners{
+			{% if data.bannerBackgroundImage == false %}
+				height:{{360 / unitrange}}{{ unit }};
+				line-height:{{360 / unitrange}}{{ unit }};
+			{% endif %}
+		}
+		.tab{{pageInstanceId}} .swiper-container{
+			height: {{ (data.tabHeadHeight | default(130)) / unitrange}}{{unit}};
+		}
+		.tab{{pageInstanceId}} .geshop-tabs .swiper-slide-active-1 .swiper-slide-item-1{  
+			{% if data.tabSelectBgurl %}background-image: url('{{data.tabSelectBgurl}}') repeat-x;{% endif %} 
+			background-color: {{data.tabSelectedBgColor|default('#333333')}};
+			color:{{data.tabSelectedTextColor|default('#ffffff')}};  
+		}
+		.tab{{pageInstanceId}} .geshop-tabs .swiper-slide-item-1 {
+			{# 未选中Tab背景图片 #}
+			{% if data.tabunSelectBgurl %}background-image: url('{{data.tabunSelectBgurl}}') repeat-x;{% endif %} 
+			background-color:{{ data.tabUnselectedBgColor | default('#ffffff')}};
+			color:{{ data.tabUnselectedTextColor | default('#333333') }};
+			font-size:{{ (data.tabFontSize | default(32)) / unitrange }}{{unit}};
+			font-family:MicrosoftYaHei-Bold;
+		} 
+		.tab{{pageInstanceId}} .geshop-tabs .swiper-slide{
+			width : {% if _tabs|length <= 1 %}100% {% else %} 50% {% endif %};
+			height:100%;
+		}
+
+    </style>
+
+	<input class="hidden-input" type="hidden"
+		serverTime="{{ serverTime }}" staticDomain="{{staticDomain}}"
+		defaultImage="{{ data.default.clothes }}"
+		failedText="{{ get_component_trans(lang,'failed') }}"
+		productsNum="{{ data.productsNum | default(4)}}" defaultImage="{{ data.default.lazyImg|default(data.default.clothes) }}" />
+		<div class="tabs-list" style="display:none;">{{ _tabs | json_encode }}</div>
+	<div class="clearfix" style="{% if data.boxMarginBottom %}margin-bottom: {{ data.boxMarginBottom / unitrange }}{{unit}};{% endif %}">
+		<div class="goods-banners" style="text-align:center;background:#EDEDED; ">
+			<img style="max-width:100%;margin: 0 auto; {% if data.bannerBackgroundImage == false %}width:{{240 / unitrange}}{{unit}};height:{{188 / unitrange}}{{unit}};{% endif %}" 
+			src="{{ data.bannerBackgroundImage | default(data.default.view) }}" />
+		</div>
+		<div class="swiper-container">
+			<div class="swiper-wrapper geshop-tabs {% if _tabs|length <= 2 %}swiper-no-swiping{% endif %}">
+				{% for item in _tabs %}
+					<div class="swiper-slide  {% if loop.first %} swiper-slide-active-1 {% endif %}" >
+						<div class="swiper-slide-item-1" style="text-align: center;" index="{{ loop.index - 1 }}">
+							<span>{{ item.name }}</span>	
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div> 
+		
+		<div class="geshop-col-12">
+			<div class="gs-goodsWrap" data-gid="gs-goods-rwDefult">
+				{% for tab in _tabs %}
+					<div class="tab-ul-item" data-inde="{{ loop.index - 1 }}">
+						<ul class="clearfix goodList">
+
+						</ul>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+		<ul style="display:none;" class="pc-gift-template">
+			<li class="geshop-col-3 goods-item" style="width:50%;"  activity-volume-number="\{\{activity_volume_number\}\}" activity-number="\{\{activity_number\}\}">
+				<div class="component-self-goodBox">
+					<div class="component-self-goodWrap" style="background-color:{{data.itemBgColor|default('#ffffff')}};">
+						<div class="gs-img" data-editEnv="{{data.isEditEnv}}">
+							<a href="\{\{url_title\}\}" class="logsss_event goods-link"
+								data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','
+									ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'\{\{goods_sn\}\}',
+									'cporder':'{{ layoutIndex }}','rank':'\{\{index\}\}'},'skuinfo':{'sku':'\{\{goods_sn\}\}','pam':'0','pc':'\{\{catid\}\}','k':'\{\{warecode\}\}'} }"
+							>
+								{% if data.isEditEnv == 1 %}
+									<img src="\{\{goods_img\}\}"> 
+									{% else %}
+									<img class="js_gdexp_lazy js-geshopImg-lazyload"
+										src="{{data.default.clothes|default(data.default.lazyImg)}}" 
+										data-original="\{\{goods_img\}\}"
+										data-logsss-browser-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','bv':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'\{\{goods_sn\}\}','cporder':'{{ layoutIndex }}','rank':'\{\{index\}\}'} }"
+									>
+								{% endif %}
+								{# 过期活动 #}
+								<div class="goods-mask act-end">
+									<span>{{ get_component_trans(lang,'btn_ended') }}</span>
+								</div>
+								{# 活动卖完 #}
+								<div class="goods-mask act-sale-out">
+									<span>{{ get_component_trans(lang,'failed') }}</span>
+								</div>
+								
+							</a>
+						</div>
+
+						<div class="goods-des">
+							<div class="goods-title">
+								<a href="\{\{url_title\}\}" style="color:{{ goodsData.shopTitleColor }}"
+									data-logsss-event-value="{ 'pm':'mp','p':'gs-{{ pageId }}-{{ pageInstanceId }}','
+										ubcta':{'cpID':'{{ pageInstanceId }}','cpnum':'{{ compKey }}','cplocation':'{{ uiIndex }}','sku':'\{\{goods_sn\}\}',
+										'cporder':'{{ layoutIndex }}','rank':'\{\{index\}\}'},'skuinfo':{'sku':'\{\{goods_sn\}\}','pam':'0','pc':'\{\{catid\}\}','k':'\{\{warecode\}\}'} }"
+								>
+								\{\{goods_title\}\}</a>
+							</div>						
+							<div class="goods-price"
+								style="text-align:left;
+								font-size:{{ goodsData.purchasePriceTextSizeize / unitrange}}{{unit}};
+								line-height:{{ 38 / unitrange }}{{ unit }};
+								min-height:{{ 38 / unitrange }}{{ unit }};
+								color:{{ data.purchasePriceTextColor | default('#333333')}};
+								margin:{{ 12 / unitrange }}{{ unit }} 0;"
+							>
+								{{ data.purchasePriceText | default('Now Only') }}  <span class="my_shop_price" data-orgp="\{\{increaseamount\}\}">$\{\{increaseamount\}\}</span>
+							</div>
+							<div class="market-price my_shop_price js_market_wrap" data-orgp="\{\{shop_price\}\}" style="color:{{ data.marketPriceFontColor | default('#9E9E9E') }}">
+								$\{\{shop_price\}\}		
+							</div>
+							<a href="\{\{url_title\}\}" style="width: 100%; text-align: center; background-color: {{ data.btnBgColor | default('#333333') }}; display: block; color: {{ data.btnFontColor | default('#ffffff') }};
+								margin-top: {{ (18 / 75) | number_format(3, '.') }}rem;
+								line-height: {{ (data.btnHeight / 75) | default(48 / 75) | number_format(3, '.') }}rem;
+								height: {{ (data.btnHeight / 75) | default(48 / 75) | number_format(3, '.') }}rem;
+								font-size: {{ (data.btnFontSize / 75) | default(28 / 75) | number_format(3, '.') }}rem;
+							">{{ data.btnText | default('Buy Now') }}</a>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,284 @@
+{
+    "fields": {
+        "goodsDataFrom": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "gsSelectLevel0": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "gsSelectLevel1": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "gsSelectLevel2": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "ipsGoodsSKU": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "ipsAutoInfo": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "ipsAutoRuleSKU": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "gsSelectLevel3": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "gsSelectLevel4": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "gsSelectLevel5": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "ipsMethods": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "ipsInfo": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "goodsSKU": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "margin_top": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "margin_bottom": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "show_goods_number": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "bg_radius_size": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "goods_radius_size": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "price_first_content": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "price_font_size": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "shop_price_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "price_second_content": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "price_second_font_color": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "is_show_del": {
+            "is_public": "0",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discount_bg_image": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discount_bg_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discount_font_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discount_show": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discount_type": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "discount_width": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "discount_height": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "discount_top": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "discount_right": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "discount_font_top": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "discount_font_right": {
+            "is_public": "0",
+            "is_m": "0",
+            "is_app": "1"
+        },
+        "view_more_bg_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "view_more_font_color": {
+            "is_public": "1",
+            "is_m": "1",
+            "is_app": "1"
+        },
+        "goodsDataFrom": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "gsSelectLevel0": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "gsSelectLevel1": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "gsSelectLevel2": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "ipsGoodsSKU": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "ipsAutoInfo": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "ipsAutoRuleSKU": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "gsSelectLevel3": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "gsSelectLevel4": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "gsSelectLevel5": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "ipsMethods": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "ipsInfo": {"is_public": "0", "is_m": "1", "is_app": "1"},
+        "ipsFilterInfo": {"is_public": "0", "is_m": "1", "is_app": "1"}
+    },
+    "languages": {
+        "sold_out": {
+            "cn": "售罄",
+            "zh-tw": "售罄",
+            "en": "SOLD OUT",
+            "ar": "بيعت كلها",
+            "de": "Ausverkauft",
+            "es": "AGOTADO",
+            "fr": "ÉPUISÉ",
+            "it": "ESAURITO",
+            "id": "Habis terjual",
+            "pt": "ESGOTADO",
+            "ru": "Продано",
+            "th": "ขายหมดแล้ว",
+            "ja": "売り切れ",
+            "ro": "VANDUT"
+        },
+        "price_first_content": {
+            "cn": "新用户专享价",
+            "zh-tw": "新用戶價格：",
+            "en": "New User Price:",
+            "ar": "سعر لمستخدم جديد فقط:",
+            "de": "Neuer Benutzerpreis:",
+            "es": "Nuevo precio de usuario:",
+            "fr": "Prix pour Nouvel Utilisateur:",
+            "it": "Prezzo per i clienti nuovi",
+            "id": "Harga Pengguna Baru:",
+            "pt": "Preço do Novo Usuário:",
+            "ru": "Цена для новых клиентов",
+            "th": "ราคาพิเศษสำหรับผู้ใช้ใหม่:",
+            "ja": "新規ユーザー限定価格",
+            "ro": "Pret pentru utilizator nou: "
+        },
+        "price_second_content": {
+            "cn": "市场价",
+            "zh-tw": "市場價：",
+            "en": "Market Price:",
+            "ar": "سعر السوق:",
+            "de": "Marktpreis:",
+            "es": "Precio de mercado:",
+            "fr": "Prix en Boutique:",
+            "it": "Prezzo del mercato",
+            "id": "Harga Normal:",
+            "pt": "Preço de mercado:",
+            "ru": "Рыночная цена",
+            "th": "ราคาขายมราตลาด:",
+            "ja": "市場価格",
+            "ro": "Pretul de piata: "
+        },
+        "view_more": {
+            "cn": "查看更多",
+            "zh-tw": "查看更多",
+            "en": "VIEW MORE",
+            "ar": "عرض المزيد",
+            "de": "Mehr sehen",
+            "es": "Ver más",
+            "fr": "Afficher plus",
+            "it": "Vedi di più",
+            "id": "Lihat lebih banyak",
+            "pt": "Veja mais",
+            "ru": "Посмотреть больше",
+            "th": "ดูเพิ่มเติม",
+            "ja": "もっと見る",
+            "ro": "VEZI MAI MULT"
+        },
+        "view_less": {
+            "cn": "查看部分",
+            "zh-tw": "查看部分",
+            "en": "VIEW LESS",
+            "ar": "عرض أقل",
+            "de": "Weniger anzeigen",
+            "es": "Ver menos",
+            "fr": "Voir moins",
+            "it": "Visualizza meno",
+            "id": "Lihat lebih sedikit",
+            "pt": "Ver menos",
+            "ru": "Смотреть меньше",
+            "th": "ดูน้อยลง",
+            "ja": "セクションを見る",
+            "ro": "VEZI MAI PUTIN"
+        }
+    }
+}
