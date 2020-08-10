@@ -1,0 +1,75 @@
+.php-diff {
+    color: #333;
+    border: 1px solid #ddd;
+    word-break: break-all;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+}
+table.php-diff {
+    background: #fff;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+table.php-diff ins,
+ol.changes ins {
+    background: #dfd;
+    text-decoration: none;
+}
+table.php-diff del,
+ol.changes del {
+    text-decoration: none;
+    background: #fdd;
+}
+table.php-diff thead th {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d8d8d8;
+    border-right: 1px solid #d8d8d8;
+}
+table.php-diff tbody th {
+    width: 4em;
+    text-align: center;
+    padding: 1px 2px;
+    border-right: 1px solid #d8d8d8;
+    vertical-align: top;
+    font-size: 13px;
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.3);
+}
+table.php-diff tbody.change-replace th.delete,
+table.php-diff tbody.change-delete th {
+    border-color: #f1c0c0;
+    background: #fdd;
+}
+table.php-diff tbody.change-replace th.insert,
+table.php-diff tbody.change-insert th {
+    border-color: #c1e9c1;
+    background: #dfd;
+}
+table.php-diff tbody.skipped {
+    background: #f7f7f7;
+}
+table.php-diff td {
+    padding: 1px 2px;
+}
+table.php-diff.inline .change-replace .left,
+table.php-diff.inline .change-delete .left {
+    background: #fdd;
+}
+table.php-diff.inline .change-replace .right,
+table.php-diff.inline .change-insert .right {
+    background: #dfd;
+}
+ol.changes {
+    padding: 10px 10px 10px 30px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    line-height: 180%;
+    background: #f2f2f2;
+}
+li.has-diff .php-diff {
+    /*display: none;*/
+}

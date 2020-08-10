@@ -1,0 +1,17 @@
+syntax = "proto3";
+package protobuf;
+
+message Request {
+    message Header {
+         string service = 1;
+         string method = 2;
+         string domain = 3;
+         string version = 4;
+         int32 type = 5;
+         string mId = 6;
+         string url = 7;
+         string tokenId = 8;
+    }
+     Header header = 1;
+     string body = 2;
+}

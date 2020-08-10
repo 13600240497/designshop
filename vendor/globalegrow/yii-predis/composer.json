@@ -1,0 +1,44 @@
+{
+    "name": "globalegrow/yii-predis",
+    "description": "yii2框架使用predis包，实现sentinel，cluster等",
+    "keywords": ["yii2", "predis"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mashanling",
+            "email": "mashanling@globalegrow.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://www.composer-satis.com.master.test50.egomsl.com"
+        }
+    ],
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "secure-http":false
+    },
+    "autoload": {
+        "psr-4": {
+            "Globalegrow\\YiiPredis\\": ["src"]
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Globalegrow\\Tests\\": ["tests"]
+        }
+    },
+    "require": {
+        "php": ">=5.6",
+        "yiisoft/yii2-redis": "^2.0",
+        "predis/predis": "^1.1"
+    },
+    "require-dev": {
+        "globalegrow/base": "^1.0",
+        "phpunit/php-token-stream": "<2",
+        "phpunit/phpunit": "^5"
+    }
+}

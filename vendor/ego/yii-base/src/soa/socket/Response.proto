@@ -1,0 +1,13 @@
+syntax = "proto3";
+package protobuf;
+
+message Response {
+    message Header {
+         string message = 1;
+         int32 code = 2;
+         bool success = 3;
+         string mId = 4;
+    }
+     string body = 1;
+     Header header = 2;
+}

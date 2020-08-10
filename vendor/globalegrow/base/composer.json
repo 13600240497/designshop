@@ -1,0 +1,28 @@
+{
+    "name": "globalegrow/base",
+    "description": "基础组件库",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mashanling",
+            "email": "mashanling@globalegrow.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Globalegrow\\Base\\": ["src"]
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Globalegrow\\Tests\\": ["tests"]
+        }
+    },
+    "require": {
+        "php": ">=5.6"
+    },
+    "require-dev": {
+        "phpunit/php-token-stream": "<2",
+        "phpunit/phpunit": "^5"
+    }
+}
