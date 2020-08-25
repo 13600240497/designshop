@@ -178,12 +178,6 @@ return [
 			'rules'               => require('rules.php'),
 		],
 		'url'             => 'app\components\Url',
-		'rms'             => [
-			'class'    => 'app\components\Rms',
-			'url'      => 'http://www.rms110.com.master.php7.egomsl.com/api-source?project_code=M1804003',
-			'token'    => 'w8qwn9fJMEBKAQxKZXHE',
-			'redisKey' => 'geshop:rms:error_log_mq',
-		],
 		'user'            => [
 			'class'         => 'app\base\User',
 			'identityClass' => 'app\base\Identity',

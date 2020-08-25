@@ -10,22 +10,22 @@ return [
 		'redis'    => [
 			'parameters' => [
 				[
-					'host' => '192.168.6.176',
-					'port' => 26390,
+					'host' => '192.168.33.10',
+					'port' => 6379,
 				],
-				[
+				/*[
 					'host' => '192.168.6.176',
 					'port' => 26391,
 				],
 				[
 					'host' => '192.168.6.176',
 					'port' => 26392,
-				],
+				],*/
 			],
-			'options'    => [
+			/*'options'    => [
 				'replication' => 'sentinel',
 				'service'     => 'sentinel-192.168.6.176-26388',
-			],
+			],*/
 		],
 		'apiRedis' => [
 			'parameters' => [
@@ -62,9 +62,9 @@ return [
             'class' => 'yii\db\Connection',
             'charset' => 'utf8',
             'enableSchemaCache' => false !== strpos(YII_ENV, 'product'),
-            'dsn' => 'mysql:host=10.60.49.163;dbname=geshop_test',
-            'username' => 'geshop',
-            'password' => 'geshop_test',
+            'dsn' => 'mysql:host=192.168.33.10;dbname=designshop',
+            'username' => 'root',
+            'password' => 'mysql',
         ]
 
 	],

@@ -47,6 +47,5 @@ function dump(...$msg)
     }
 }
 
-defined('APOLLO_CONFIG_PATH') || define('APOLLO_CONFIG_PATH', '/data/www/apollo-config');
 require(__DIR__ . '/../base/CommonFunction.php');
 return require(__DIR__ . '/../vendor/ego/yii-base/src/bootstrap/bootstrap.php');
