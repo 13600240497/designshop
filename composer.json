@@ -13,23 +13,13 @@
         "linslin/yii2-curl": "*",
         "phpoffice/phpexcel": "^1.8",
         "yiisoft/yii2-imagine": "^2.1",
-        "yiisoft/yii2-twig": "^2.2",
-		"clothing/service-tracing": "^1.0",
-        "clothing/utils": "^1.0"
+        "yiisoft/yii2-twig": "^2.2"
     },
     "repositories": [
         {
             "type": "composer",
             "url": "https://asset-packagist.org"
-        },
-		{
-            "url": "git@gitlab.egomsl.com:clothing/packages/service-tracing.git",
-            "type": "git"
-        },
-        {
-            "url": "git@gitlab.egomsl.com:clothing/packages/utils.git",
-            "type": "git"
-         }
+        }
 
     ],
     "config": {

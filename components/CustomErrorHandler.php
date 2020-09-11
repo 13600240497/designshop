@@ -10,27 +10,11 @@ use yii\web\ErrorHandler;
  */
 class CustomErrorHandler extends ErrorHandler
 {
-    protected static $tracerClient;
-
-    public function getTracerClient()
-    {
-        return self::$tracerClient ?: Tracer::singleton()->newBinaryClient('server');
-    }
     /**
      * @inheritdoc
      */
     protected function renderException($exception)
     {
-        /**
-         * 监听异常信息
-         */
-        if ( PHP_SAPI != 'cli'){
-            $request = $this->getTracerClient()->newRequest('exception', ['异常'])->start();
-            $request->setException($exception);
-            $request->finish();
-        }
-
-        app()->rms->observeException($exception);
         if (404 === intval($exception->statusCode)) {
             echo  $this->renderFile(APP_PATH . '/views/error/404.php', []);
         } else {

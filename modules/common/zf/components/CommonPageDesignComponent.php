@@ -119,7 +119,7 @@ class CommonPageDesignComponent extends Component
 			: SITE_GROUP_CODE;
 		$this->redisPrefix = $websiteCode . '::';
 
-		$this->uiKeyIncludeSku = app()->params['conponentForSkuCopy'];
+//		$this->uiKeyIncludeSku = app()->params['conponentForSkuCopy'];
 
 		$moduleId = strtolower(app()->controller->module->module->id);
 		if (!empty($_REQUEST[static::FIELD_PAGE_ID]) && \in_array($moduleId, ['activity', 'advertisement'], true)) {

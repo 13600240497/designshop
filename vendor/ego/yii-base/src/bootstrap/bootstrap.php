@@ -55,7 +55,7 @@ if (is_file($file = APP_PATH . '/config/web.local.php')) {
 if (SITE_GROUP_CODE == 'gb' && is_file($file = APP_PATH . '/config/gb_web.php')) {
     $config = yii\helpers\ArrayHelper::merge($config, require($file));
 }
-(new app\base\ServiceTrack())->setupTracer();
+
 
 return $config;
 

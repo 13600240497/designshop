@@ -15,7 +15,7 @@ class CustomErrorHandler extends ErrorHandler
         /**
          * 监听异常信息
          */
-        app()->rms->observeException($exception);
+
         parent::renderException($exception);
     }
 }

@@ -1,6 +1,0 @@
-parameters:
-  level: 7
-  paths:
-    - src
-  ignoreErrors:
-    - '#^Parameter \#1 \$e of function exception_as_string expects Throwable, Throwable\|null given\.$#'

@@ -1,7 +1,6 @@
 <?php
 namespace Globalegrow\YiiPredis;
 
-use app\base\ServiceTrack;
 use yii;
 use Predis\Client;
 
@@ -56,7 +55,6 @@ class Connection extends \yii\redis\Connection
         }
 
         $this->client = new Client($this->parameters, $this->options);
-        ServiceTrack::getRedisProxyTracerClient($this->client) ?: $this->client;
         $this->initConnection();
     }
 
