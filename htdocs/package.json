@@ -15,7 +15,7 @@
     "license": "ISC",
     "devDependencies": {
         "@webpack-cli/update": "^0.1.2",
-        "axios": "^0.18.1",
+        "axios": "^0.21.1",
         "babel-core": "^6.26.3",
         "babel-eslint": "^8.2.3",
         "babel-loader": "^7.1.4",
@@ -56,7 +56,7 @@
     "dependencies": {
         "@xunlei/vue-lazy-component": "^1.1.3",
         "ant-design-vue": "^1.3.10",
-        "axios": "^0.18.0",
+        "axios": "^0.21.1",
         "babel-runtime": "^6.26.0",
         "clipboard": "^2.0.4",
         "element-ui": "^2.3.9",
