@@ -57,7 +57,7 @@
     "less-loader": "^4.1.0",
     "node-sass": "^4.11.0",
     "nodemon": "^1.18.11",
-    "postcss": "^7.0.5",
+    "postcss": "^7.0.36",
     "postcss-loader": "^3.0.0",
     "style-loader": "^0.23.0",
     "uglify-js": "^3.5.6",
